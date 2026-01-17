@@ -1,0 +1,166 @@
+---
+title: "W9: Powietrze Wilgotne"
+subtitle: "Psychrometria, Klimatyzacja i Wykres Molliera"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Powietrze: Więcej niż Azot i Tlen {data-menu-title="Wstęp"}
+
+### Składnik Zmienny
+
+Powietrze atmosferyczne to zawsze mieszanina:
+1.  **Powietrza Suchego:** ($N_2, O_2, Ar, CO_2$) - skład stały.
+2.  **Pary Wodnej:** ($H_2O$) - skład bardzo zmienny (0% - 4%).
+
+::: {.callout-note title="Prawo Daltona"}
+Całkowite ciśnienie powietrza to suma ciśnień cząstkowych:
+$$ p_b = p_p + p_w $$
+($p_p$ - ciśnienie powietrza suchego, $p_w$ - ciśnienie cząstkowe pary wodnej).
+:::
+
+## Parametry Wilgotności
+
+### Ile wody w wodzie?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**1. Wilgotność bezwzględna ($x$):**
+Ile gramów wody przypada na 1 kg powietrza **suchego**.
+$$ X = \frac{m_w}{m_p} \quad [\text{kg wilg} / \text{kg sz}] $$
+
+**2. Wilgotność względna ($\varphi$):**
+Jak blisko jesteśmy nasycenia (mgły).
+$$ \varphi = \frac{p_w}{p_{s}} \cdot 100\% $$
+($p_s$ - ciśnienie nasycenia w danej temp.).
+:::
+
+::: {.column width="50%"}
+::: {.callout-tip title="Punkt Rosy"}
+Temperatura, do której trzeba schłodzić powietrze, aby zaczęło się skraplać (pojawienie się rosy).
+$\varphi = 100\%$
+:::
+:::
+
+::::
+
+## Wykres Molliera ($i-x$)
+
+### Mapa Klimatyzacji
+
+To podstawowe narzędzie inżyniera wentylacji. Ma specyficzny, **ukośnokątny** układ współrzędnych.
+
+*   **Oś pionowa:** Temperatura $T$ (izotermy lekko wznoszą się w prawo).
+*   **Oś pozioma:** Wilgotność $x$ (linie pionowe).
+*   **Linie ukośne:** Entalpia $i$ sentalpia (=const).
+*   **Krzywe:** Wilgotność względna $\varphi$.
+
+## Wizualizacja: Schemat Wykresu $i-x$
+
+```{r}
+#| label: ix-diagram
+#| echo: false
+#| fig-width: 10
+#| fig-height: 6
+
+library(ggplot2)
+
+# Simplified visualization of i-x chart logic
+x_vals <- seq(0, 30, length.out=100) # Moisture content g/kg
+
+# Isotherms (Simplified approximation)
+t_20 <- rep(20, 100)
+t_30 <- rep(30, 100)
+
+# Saturation Line (Phi = 100%) - Exponential curve
+max_x_sat <- 30
+sat_curve <- data.frame(
+  x = seq(0, max_x_sat, length.out=100),
+  t = 10 + (seq(0, max_x_sat, length.out=100)^1.5)/5
+)
+
+ggplot() +
+  # Saturation Curve
+  geom_line(data=sat_curve, aes(x=x, y=t), color="blue", size=2) +
+  annotate("text", x=25, y=35, label="phi = 100% (Nasycenie)", color="blue", angle=45) +
+  
+  # Process: Heating (Vertical Up?) No, heating is x=const, T goes up
+  geom_segment(aes(x=10, y=20, xend=10, yend=40), arrow=arrow(), color="red", size=1.5) +
+  annotate("text", x=11, y=30, label="Ogrzewanie (x=const)", color="red", angle=90) +
+  
+  # Process: Cooling with Dehumidification
+  geom_segment(aes(x=20, y=30, xend=10, yend=15), arrow=arrow(), color="purple", size=1.5) +
+  annotate("text", x=15, y=22, label="Chłodzenie i Osuszanie", color="purple") +
+  
+  labs(title="Schemat Procesów na wykresie T-x (uproszczony)", x="Wilgotność x [g/kg]", y="Temperatura T [C]") +
+  theme_minimal()
+```
+
+## Procesy Klimatyzacyjne
+
+### Co robimy z powietrzem?
+
+1.  **Ogrzewanie:** Zimą. Ruch pionowo w górę (temp rośnie, $x$ stałe, ale $\varphi$ maleje! - dlatego mamy suche usta).
+2.  **Chłodzenie:** Latem. Ruch pionowo w dół. Jeśli dotkniemy linii $\varphi=100\%$, woda się wykropli (klimatyzator "kapie").
+3.  **Nawilżanie:**
+    *   **Parą:** Ruch wzdłuż izotermy (wzrost $x$).
+    *   **Wodą (Zraszanie):** Ruch adiabatyczny (wzdłuż linii stałej entalpii) - temperatura spada! (chłodzenie wyparne).
+
+## Podsumowanie
+
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  **Powietrze wilgotne** to mieszanina gazu doskonałego i pary wodnej.
+2.  **Punkt rosy** to granica, której inżynier budowlany boi się najbardziej (wilgoć w ścianach).
+3.  Ogrzewanie powietrza **zmniejsza** jego wilgotność względną (wysusza je).
+:::
+
+## Zapowiedź W10
+
+### Wymiana Ciepła cz. 1
+
+Jak ciepło ucieka z naszego domu?
+
+*   **Przewodzenie:** Przez ściany (Prawo Fouriera).
+*   **Konwekcja:** Przez ruch powietrza (Prawo Newtona).
+*   Dlaczego styropian jest ciepły, a metal zimny?

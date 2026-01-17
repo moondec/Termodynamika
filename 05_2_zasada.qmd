@@ -1,0 +1,225 @@
+---
+title: "W5: II Zasada Termodynamiki"
+subtitle: "Entropia, Nieodwracalność i Obieg Carnota"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Dlaczego I Zasada to za mało? {data-menu-title="Wstęp"}
+
+### Kierunek Procesów
+
+:::: {.columns}
+
+::: {.column width="60%"}
+I Zasada Termodynamiki mówi o **zachowaniu energii** (bilans musi wyjść na zero). Ale nie mówi nic o **kierunku** przemian.
+
+::: incremental
+*   Dlaczego ciepło płynie samoistnie tylko z ciała cieplejszego do zimniejszego?
+*   Dlaczego wrzątek stygnie, ale zimna woda sama się nie zagotuje (pobierając ciepło z otoczenia)?
+*   Dlaczego, gdy upuścisz szklankę, rozbija się na kawałki, ale kawałki nigdy same nie złożą się w szklankę?
+:::
+:::
+
+::: {.column width="40%"}
+::: {.callout-important title="Problem"}
+I Zasada nie zabrania procesom biec "wstecz", o ile energia się zgadza. Jednak w rzeczywistości tak się nie dzieje.
+:::
+:::
+
+::::
+
+## Procesy Odwracalne i Nieodwracalne
+
+### Ideał vs Rzeczywistość
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Proces Odwracalny (Idealny):**
+Można go cofnąć w dół po tej samej ścieżce bez zostawiania jakiegokolwiek śladu w otoczeniu.
+*   Brak tarcia.
+*   Nieskończenie małe różnice temperatur.
+
+**Proces Nieodwracalny (Rzeczywisty):**
+Cofnięcie wymaga nakładu pracy z zewnątrz (zostawia ślad).
+*   Tarcie, mieszanie, spalanie.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: rev-irrev-diagram
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+library(ggplot2)
+df_arrow <- data.frame(x=c(0, 10), y=c(0, 0))
+
+ggplot() +
+  geom_segment(aes(x=1, y=1, xend=9, yend=1), arrow=arrow(type="closed"), color="blue", size=2) +
+  annotate("text", x=5, y=1.5, label="SAMORZUTNIE (Gorące -> Zimne)", color="blue", fontface="bold") +
+  
+  geom_segment(aes(x=9, y=-1, xend=1, yend=-1), arrow=arrow(type="closed"), color="red", size=2, linetype="dashed") +
+  annotate("text", x=5, y=-1.5, label="WYMUSZENIE (Pompa Ciepła)", color="red") +
+  
+  ylim(-3, 3) + xlim(0, 10) + theme_void()
+```
+:::
+
+::::
+
+## II Zasada Termodynamiki: Sformułowania
+
+### Wiele twarzy jednej prawdy
+
+::: {.panel-tabset}
+
+## Kelvin-Planck
+> "Nie jest możliwy proces cykliczny, którego jedynym wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę."
+
+*   **Wniosek:** Nie da się zbudować silnika o sprawności 100% (Perpetuum Mobile II rodzaju). Musimy oddać część ciepła do chłodnicy.
+
+## Clausius
+> "Ciepło nie może samoistnie przepływać z ciała o niższej temperaturze do ciała o wyższej temperaturze."
+
+*   **Wniosek:** Aby schłodzić piwo w lodówce (zabrać ciepło z zimnego wnętrza), musimy dostarczyć prąd (pracę).
+
+:::
+
+## Entropia ($S$)
+
+### Miarą Nieuporządkowania
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Clausius wprowadził nową funkcję stanu:
+
+$$ dS = \frac{dQ_{odwr}}{T} $$
+
+*   **Dla układów izolowanych:**
+    $$ \Delta S \ge 0 $$
+    (Entropia Wszechświata zawsze rośnie).
+
+*   **Intuicja:** Entropia to miara "rozproszenia" energii. Energia skoncentrowana (paliwo) jest użyteczna. Energia rozproszona (ciepło w otoczeniu) jest bezużyteczna.
+:::
+
+::: {.column width="40%"}
+::: {.callout-note title="Strzałka Czasu"}
+To dlatego czas płynie tylko w jedną stronę – w stronę większego nieporządku (wyższej entropii).
+:::
+:::
+
+::::
+
+## Obieg Carnota: Wzorzec Doskonałości
+
+### Najwyższa możliwa sprawność
+
+Silnik działający między dwoma źródłami ciepła ($T_{g}$ - grzejnik, $T_{ch}$ - chłodnica) ma najwyższą sprawność, jeśli składa się z procesów odwracalnych:
+1.  **Izotermiczne rozprężanie** (pobieranie ciepła $Q_{in}$ w $T_g$).
+2.  **Adiabatyczne rozprężanie** (spadek temperatury do $T_{ch}$, Praca).
+3.  **Izotermiczne sprężanie** (oddawanie ciepła $Q_{out}$ w $T_{ch}$).
+4.  **Adiabatyczne sprężanie** (wzrost temperatury do $T_g$, Praca).
+
+$$ \eta_{Carnot} = 1 - \frac{T_{ch}}{T_{g}} $$
+
+## Wizualizacja Obiegu Carnota (T-s)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Wykres T-s jest dla Carnota idealny – obieg to po prostu **prostokąt**.
+
+*   Pole pod górną linią = $Q_{dost}$
+*   Pole pod dolną linią = $Q_{wyl}$
+*   **Pole prostokąta = Praca ($L$)**
+
+$$ \eta = \frac{\text{Pole Pracy}}{\text{Pole Ciepła Dostarczonego}} $$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: carnot-ts
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+df_carnot <- data.frame(
+  s = c(1, 4, 4, 1, 1),
+  T = c(600, 600, 300, 300, 600),
+  Label = c("1", "2", "3", "4", "1")
+)
+
+ggplot(df_carnot, aes(x=s, y=T)) +
+  geom_polygon(fill="lightgreen", alpha=0.5, color="darkgreen", size=2) +
+  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold") +
+  annotate("text", x=2.5, y=450, label="PRACA (L)", fontface="bold", color="darkgreen") +
+  annotate("text", x=2.5, y=620, label="Pobieranie Q_dost (T_g)", color="red") +
+  annotate("text", x=2.5, y=280, label="Oddawanie Q_wyl (T_ch)", color="blue") +
+  theme_minimal() +
+  labs(title="Obieg Carnota na wykresie T-s", x="Entropia s [kJ/kgK]", y="Temperatura T [K]")
+```
+:::
+
+::::
+
+## Podsumowanie II Zasady
+
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  Nie da się zamienić całego ciepła na pracę (musisz mieć chłodnicę!).
+2.  Sprawność silnika zależy tylko od temperatur źródeł ($T_g$ i $T_{ch}$).
+3.  **Entropia** w układach rzeczywistych zawsze rośnie (nieodwracalność).
+4.  Obieg Carnota wyznacza teoretyczną granicę, do której dążymy w inżynierii.
+:::
+
+## Zapowiedź W6
+
+### Obiegi Gazowe (Silniki Spalinowe)
+
+W następnym odcinku zejdziemy z idealnego nieba (Carnot) na ziemię:
+
+*   **Obieg Otto:** Jak działa Twój samochód na benzynę?
+*   **Obieg Diesla:** Dlaczego diesle palą mniej?
+*   **Obieg Sabathe:** Model rzekomo "najbardziej rzeczywisty".

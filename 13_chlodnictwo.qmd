@@ -1,0 +1,165 @@
+---
+title: "W13: Chłodnictwo i Pompy Ciepła"
+subtitle: "Obiegi Lewobieżne i Czynniki Chłodnicze"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Obiegi Lewobieżne {data-menu-title="Wstęp"}
+
+### Pod Prąd Natury
+
+II Zasada Termodynamiki mówi, że ciepło płynie od ciepłego do zimnego.
+Obiegi chłodnicze robią coś przeciwnego: **pompują ciepło z zimnego do ciepłego**.
+
+**Koszt:** Musimy dostarczyć pracą napędową (kompresor).
+
+Dwa cele, jedna maszyna:
+1.  **Chłodziarka:** Celem jest zabranie ciepła z obszaru o niskiej temperaturze (wnętrze lodówki). $Q_2 = cel$.
+2.  **Pompa Ciepła:** Celem jest oddanie ciepła do obszaru o wysokiej temperaturze (grzejnik w domu). $Q_1 = cel$.
+
+## Obieg Lindego
+
+### Standard Chłodnictwa
+
+Najpopularniejszy obieg sprężarkowy. Składa się z 4 elementów:
+1.  **Parownik:** Odbiór ciepła (wrzenie czynnika w niskiej temp.).
+2.  **Sprężarka:** Podniesienie ciśnienia (i temperatury).
+3.  **Skraplacz:** Oddanie ciepła (skraplanie czynnika w wysokiej temp.).
+4.  **Zawór rozprężny:** Dławienie (gwałtowny spadek ciśnienia i temperatury).
+
+::: {.callout-important title="Uwaga"}
+W przeciwieństwie do elektrowni, tu **nie ma turbiny**. Zamiast odzyskiwać pracę przy rozprężaniu, stosujemy tani i prosty zawór dławiący (strata egzergetyczna, ale zysk ekonomiczny).
+:::
+
+## Współczynnik Efektywności (COP)
+
+Nie używamy pojęcia "sprawność" ($\eta < 1$), bo możemy przepompować więcej ciepła niż zużyliśmy prądu!
+
+$$ COP_{ch} = \frac{Q_{odebrane}}{L_{sprężarki}} $$
+$$ COP_{PC} = \frac{Q_{oddane}}{L_{sprężarki}} = COP_{ch} + 1 $$
+
+*   Typowy COP pompy ciepła: 3.0 - 5.0 (Za 1 kWh prądu dostajesz 4 kWh ciepła).
+
+## Wykres log(p)-h
+
+### Podstawowe Narzędzie Chłodnika
+
+Dla "lewobieżnych" wykres T-s jest mniej wygodny. Króluje **log(p)-h** (ciśnienie-entalpia), bo łatwo na nim odczytać ciepło i pracę.
+
+```{r}
+#| label: logph-diagram
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+library(ggplot2)
+
+# Simplified Saturation Curve (Bell shape focused on p-h)
+h_sat_liq <- seq(100, 300, length.out=50)
+p_sat_liq <- 10^( (h_sat_liq-100)/100 ) # Log scale simulation
+h_sat_vap <- seq(300, 500, length.out=50)
+p_sat_vap <- 10^( (500-h_sat_vap)/100 )
+
+dome <- data.frame(
+  h = c(h_sat_liq, rev(h_sat_vap)),
+  p = c(p_sat_liq, rev(p_sat_vap))
+)
+
+# Cycle Points
+# 1: Compressor Inlet (Saturated Vapor)
+h1 <- 450; p1 <- 2
+# 2: Compressor Outlet (Superheated)
+h2 <- 550; p2 <- 15
+# 3: Condenser Outlet (Saturated Liquid)
+h3 <- 250; p3 <- 15
+# 4: Expansion Valve Outlet (Mixture) - Isenthalpic! h4=h3
+h4 <- 250; p4 <- 2
+
+cycle <- data.frame(
+  h = c(h1, h2, h3, h4, h1),
+  p = c(p1, p2, p3, p4, p1),
+  label = c("1", "2", "3", "4", "1")
+)
+
+ggplot() +
+  # Dome
+  geom_path(data=dome, aes(x=h, y=p), color="grey", size=1) +
+  # Cycle
+  geom_path(data=cycle, aes(x=h, y=p), color="blue", size=2, arrow=arrow()) +
+  geom_text(data=cycle, aes(x=h, y=p, label=label), vjust=-1, fontface="bold", size=5) +
+  
+  scale_y_log10() +
+  labs(title="Obieg Lindego na wykresie log(p)-h", x="Entalpia h", y="Ciśnienie p (skala log)") +
+  theme_minimal()
+```
+
+## Czynniki Chłodnicze
+
+### Ewolucja i Ekologia
+
+Co płynie w rurkach?
+1.  **Przeszłość:** Freony (CFC, np. R12). Dziura ozonowa -> Zakazane.
+2.  **Teraźniejszość:** HFC (R134a, R410A). Wysoki efekt cieplarniany (GWP). Wycofywane.
+3.  **Przyszłość (Naturalne):**
+    *   **Amoniak (R717):** Przemysł. Toksyczny, ale świetny termodynamicznie.
+    *   **CO2 (R744):** Motoryzacja, supermarkety. Wysokie ciśnienia.
+    *   **Propan (R290):** Małe pompy ciepła. Palny!
+
+## Podsumowanie
+
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  **Chłodnictwo** to walka z naturą (transport ciepła "pod górę").
+2.  **Zawór rozprężny** to kluczowy element odróżniający lodówkę od elektrowni.
+3.  **Pompy ciepła** są przyszłością ogrzewnictwa dzięki COP > 1.
+:::
+
+## Zapowiedź W14
+
+### Dynamika Gazów
+
+Powietrze nie zawsze jest "spokojne". Co się dzieje przy prędkościach naddźwiękowych?
+
+*   Dysza Lavala: Jak rozpędzić gaz powyżej Mach 1?
+*   Dyfuzor: Jak zamienić prędkość na ciśnienie?
+*   Fala uderzeniowa.

@@ -1,0 +1,143 @@
+---
+title: "W15: Egzergia i Zrównoważony Rozwój"
+subtitle: "Jakość Energii i Przyszłość Energetyki"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Ilość vs Jakość {data-menu-title="Wstęp"}
+
+### Paradoks Energii
+
+Z I Zasady wynika, że energia jest niezniszczalna.
+Dlaczego więc "oszczędzamy energię"?
+Ponieważ tracimy jej **jakość**!
+
+**Egzergia ($B$):**
+Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia.
+*   Prąd elektryczny: 100% egzergii (Czysta praca).
+*   Gorąca para: ~40-60% egzergii (Można napędzić turbinę).
+*   Letnia woda (30°C): ~0% egzergii (Bezużyteczna termodynamicznie).
+
+## Prawo Gouy-Stodoli
+
+### Strata Egzergii
+
+$$ \delta B = T_o \cdot \Delta S_{gen} $$
+Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i tym samym **bezpowrotnie niszczy egzergię**.
+
+::: {.callout-important title="Wniosek Inżynierski"}
+Nie walczymy tylko o sprawność energetyczną ($\eta$). Walczymy o sprawność egzergetyczną ($ \eta_b $). Nie używaj prądu (wysoka jakość) do grzania wody (niska jakość), jeśli możesz użyć pompy ciepła!
+:::
+
+## Nowoczesne Technologie
+
+### Kogeneracja (CHP)
+
+Jednoczesna produkcja prądu i ciepła.
+*   Silnik spalinowy napędza prądnicę.
+*   Gorące spaliny i woda chłodząca ogrzewają budynek.
+*   Sprawność całkowita: ~90% (w porównaniu do 40% w samej elektrowni).
+
+### Odnawialne Źródła Energii (OZE)
+
+1.  **Słońce (PV):** Bezpośrednia zamiana fotonów na prąd.
+2.  **Wiatr:** Energia kinetyczna powietrza.
+3.  **Wodór:** Nośnik energii, a nie źródło! (Musimy go najpierw wyprodukować).
+
+## Wykres Sankeya
+
+### Bilans Przepływu Energii
+
+Wizualizacja strat w typowym procesie energetycznym.
+
+```{r}
+#| label: sankey-diagram
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+library(ggplot2)
+
+# Simplified Sankey representation using geom_polygon
+# Energy Flow: Fuel (100) -> Combustion (90) -> Steam (80) -> Turbine (35) -> Electricity (35)
+#                                     \-> Chimney (10)  \-> Condenser (45)
+
+# Coordinates for polygon
+df_fuel <- data.frame(x=c(0, 2, 2, 0), y=c(4, 4, 6, 6), group="Paliwo (100%)")
+df_elec <- data.frame(x=c(8, 10, 10, 8), y=c(4.5, 4.5, 5.5, 5.5), group="Prąd (35%)")
+df_loss <- data.frame(x=c(4, 6, 6, 4), y=c(2, 2, 3, 3), group="Straty (Ciepło)")
+
+ggplot() +
+  geom_rect(aes(xmin=0, xmax=3, ymin=4, ymax=6), fill="black") + 
+  annotate("text", x=1.5, y=5, label="Paliwo (100)", color="white") +
+  
+  geom_segment(aes(x=3, y=5, xend=7, yend=5), size=20, color="grey") +
+  
+  geom_segment(aes(x=7, y=5, xend=10, yend=5), size=7, color="blue", arrow=arrow()) +
+  annotate("text", x=8.5, y=5.5, label="Prąd (35)", color="blue") +
+  
+  geom_segment(aes(x=5, y=5, xend=5, yend=1), size=10, color="red", arrow=arrow()) +
+  annotate("text", x=5, y=0.5, label="Straty (65)", color="red") +
+  
+  ylim(0, 7) + xlim(0, 10) + theme_void() +
+  labs(title="Bilans Energetyczny Elektrowni (Uproszczony)")
+```
+
+## Podsumowanie Całego Kursu
+
+Dziękuję za wspólny semestr!
+
+Przeszliśmy drogę od **definicji temperatury**, przez **idealne gazy**, aż po **rzeczywiste maszyny** i **przyszłość planety**.
+
+### Kluczowe Przesłanie:
+
+> "Energia jest jedyną walutą we Wszechświecie, za którą musisz płacić podatki (entropię)."
+
+Powodzenia na egzaminie i w przyszłej karierze inżynierskiej!
+
+## Lektura i Źródła
+
+1.  Szargut J.: *Termodynamika Techniczna*.
+2.  Wiśniewski S.: *Termodynamika Techniczna*.
+3.  Cengel Y.A., Boles M.A.: *Thermodynamics: An Engineering Approach*.

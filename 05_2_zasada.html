@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="04_1_gazy_files/libs/clipboard/clipboard.min.js"></script>
-<script src="04_1_gazy_files/libs/quarto-html/tabby.min.js"></script>
-<script src="04_1_gazy_files/libs/quarto-html/popper.min.js"></script>
-<script src="04_1_gazy_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="04_1_gazy_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="04_1_gazy_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="04_1_gazy_files/libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="05_2_zasada_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05_2_zasada_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05_2_zasada_files/libs/quarto-html/popper.min.js"></script>
+<script src="05_2_zasada_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05_2_zasada_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05_2_zasada_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="05_2_zasada_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
-  <title>W4: Właściwości Substancji Czystych - I</title>
+  <title>W5: II Zasada Termodynamiki</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="04_1_gazy_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="04_1_gazy_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="05_2_zasada_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05_2_zasada_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,15 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="04_1_gazy_files/libs/revealjs/dist/theme/quarto-89a1b2b057483ab19401415e1e8796e9.css">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="04_1_gazy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="05_2_zasada_files/libs/revealjs/dist/theme/quarto-a65cb5c500c237b5f57940f5aa8a0e53.css">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="05_2_zasada_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -126,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
       background-image: url("img/background_red.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -156,8 +146,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">W4: Właściwości Substancji Czystych - I</h1>
-  <p class="subtitle">Gazy doskonałe i rzeczywiste</p>
+  <h1 class="title">W5: II Zasada Termodynamiki</h1>
+  <p class="subtitle">Entropia, Nieodwracalność i Obieg Carnota</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -167,332 +157,190 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
-            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
-            <p><img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
 </div>
 
 </section>
-<section id="wprowadzenie-do-substancji-czystych" class="slide level2" data-menu-title="Wstęp">
-<h2>Wprowadzenie do Substancji Czystych</h2>
-<h3 id="definicja-fazy-i-substancji">Definicja Fazy i Substancji</h3>
+<section id="dlaczego-i-zasada-to-za-mało" class="slide level2" data-menu-title="Wstęp">
+<h2>Dlaczego I Zasada to za mało?</h2>
+<h3 id="kierunek-procesów">Kierunek Procesów</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><strong>Substancja czysta</strong> ma jednolity i niezmienny skład chemiczny w całej objętości (np. woda, azot, hel).</p>
-</div>
+<p>I Zasada Termodynamiki mówi o <strong>zachowaniu energii</strong> (bilans musi wyjść na zero). Ale nie mówi nic o <strong>kierunku</strong> przemian.</p>
 <ul>
-<li class="fragment"><strong>Faza:</strong> Makroskopowa część układu, która jest jednorodna pod względem fizycznym i chemicznym.
-<ul>
-<li class="fragment"><em>Intuicja:</em> Wyobraź sobie szklankę wody z lodem – to jedna substancja (H₂O), ale <strong>dwie fazy</strong> (ciecz i ciało stałe).</li>
-</ul></li>
-<li class="fragment"><strong>Równowaga fazowa:</strong> Stan “pokoju” w układzie – parametry nie zmieniają się, a fazy nie “walczą” o cząsteczki.</li>
+<li class="fragment">Dlaczego ciepło płynie samoistnie tylko z ciała cieplejszego do zimniejszego?</li>
+<li class="fragment">Dlaczego wrzątek stygnie, ale zimna woda sama się nie zagotuje (pobierając ciepło z otoczenia)?</li>
+<li class="fragment">Dlaczego, gdy upuścisz szklankę, rozbija się na kawałki, ale kawałki nigdy same nie złożą się w szklankę?</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/pierwsza.png" style="width:80.0%"></p>
-<figcaption>Substancja czysta vs Mieszanina</figcaption>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="punkt-potrójny-i-krytyczny" class="slide level2">
-<h2>Punkt Potrójny i Krytyczny</h2>
-<h3 id="granice-współistnienia">Granice Współistnienia</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><strong>Punkt potrójny:</strong> Jedyny stan (<span class="math inline">\(p, T\)</span>), w którym lód, woda i para wodna mogą współistnieć jednocześnie “w zgodzie”.
-<ul>
-<li>Dla wody: <span class="math inline">\(T = 273,16\)</span> K, <span class="math inline">\(p = 611\)</span> Pa.</li>
-</ul></li>
-</ul>
-<ul>
-<li class="fragment"><strong>Punkt krytyczny (<span class="math inline">\(K\)</span>):</strong> Stan, w którym różnica między cieczą a gazem znika.
-<ul>
-<li class="fragment">Powyżej <span class="math inline">\(T_k\)</span> nie da się skroplić gazu samym ściskaniem – cząsteczki mają za dużo energii kinetycznej, by “złożyć się” w ciecz.</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="04_1_gazy_files/figure-revealjs/phase-diagram-simple-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="gaz-doskonały-powtórzenie" class="slide level2">
-<h2>Gaz Doskonały – Powtórzenie</h2>
-<h3 id="model-teoretyczny">Model Teoretyczny</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Gaz doskonały to abstrakcyjny model:</p>
-<ul>
-<li><strong>Cząstki punktowe:</strong> Nie zajmują miejsca (objętość własna = 0).</li>
-<li><strong>Brak miłości i nienawiści:</strong> Cząsteczki nie przyciągają się ani nie odpychają.</li>
-<li><strong>Zderzenia idealne:</strong> Niczym kule bilardowe tracące energię tylko na ruch.</li>
-</ul>
-<div title="Równanie Clapeyrona">
+<div title="Problem">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Równanie Clapeyrona</strong></p>
+<p><strong>Problem</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[ p \cdot v = R \cdot T \]</span> <span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+<p>I Zasada nie zabrania procesom biec “wstecz”, o ile energia się zgadza. Jednak w rzeczywistości tak się nie dzieje.</p>
 </div>
 </div>
 </div>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/tlok.png" style="width:100.0%"></p>
-<figcaption>Model cząsteczkowy gazu doskonałego</figcaption>
-</figure>
 </div>
 </div></div>
 </section>
-<section id="stała-gazowa-dwie-twarze" class="slide level2">
-<h2>Stała Gazowa: Dwie Twarze</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Cecha</th>
-<th style="text-align: left;"><strong>Indywidualna (<span class="math inline">\(R\)</span>)</strong></th>
-<th style="text-align: left;"><strong>Uniwersalna (<span class="math inline">\(R_u\)</span>)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Wzór</strong></td>
-<td style="text-align: left;"><span class="math inline">\(R = \frac{R_u}{M}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(R_u = M \cdot R\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Zastosowanie</strong></td>
-<td style="text-align: left;">Inżynieria (masy, kg)</td>
-<td style="text-align: left;">Chemia / Fizyka (mole)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Wartość</strong></td>
-<td style="text-align: left;">Zmienna (Powietrze: 287)</td>
-<td style="text-align: left;">Stała (<span class="math inline">\(\approx 8314\)</span> J/kmolK)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Profesor radzi:</strong> W technice pracujemy na kilogramach (“ile waży czynnik?”), więc <span class="math inline">\(R\)</span> jest Twoim najlepszym przyjacielem.</p>
-</blockquote>
-</section>
-<section id="gazy-rzeczywiste" class="slide level2">
-<h2>Gazy Rzeczywiste</h2>
-<h3 id="dlaczego-doskonały-nie-wystarcza">Dlaczego “doskonały” nie wystarcza?</h3>
-<div class="columns">
-<div class="column" style="width:100%;">
-<p>Gazy rzeczywiste to “prawdziwi ludzie” w tłumie:</p>
-<ol type="1">
-<li><strong>Mają swoją objętość:</strong> Nie da się ich ścisnąć do zera.</li>
-<li><strong>Oddziałują na siebie:</strong> Siły przyciągania van der Waalsa “hamują” cząsteczki uderzające w ściankę (spadek ciśnienia).</li>
-</ol>
-<p><strong>Rozwinięcie wirialne (najdokładniejszy opis):</strong> <span class="math display">\[ z = \frac{pV_m}{RT} = 1 + \frac{B(T)}{V_m} + \frac{C(T)}{V_m^2} + \dots \]</span> <em>Gdzie <span class="math inline">\(z\)</span> to współczynnik ściśliwości (<span class="math inline">\(z=1\)</span> dla gazu doskonałego).</em></p>
-</div></div>
-</section>
-<section id="równanie-van-der-waalsa" class="slide level2">
-<h2>Równanie van der Waalsa</h2>
-<h3 id="poprawki-fizyczne">Poprawki Fizyczne</h3>
-<p><span class="math display">\[ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT \]</span></p>
-<ul>
-<li class="fragment"><strong>Poprawka <span class="math inline">\(a\)</span> (Kohezja):</strong> “Siła przyciągania”. Cząsteczki trzymają się razem, więc słabiej uderzają w ścianki naczynia. Ciśnienie zmierzone jest mniejsze niż by wynikało z modelu.</li>
-<li class="fragment"><strong>Poprawka <span class="math inline">\(b\)</span> (Kowolumen):</strong> “Ciasnota”. Cząsteczki same zajmują miejsce, więc wolna przestrzeń dla ruchu jest mniejsza.</li>
-</ul>
-</section>
-<section id="izotermy-andrewsa" class="slide level2">
-<h2>Izotermy Andrewsa</h2>
-<h3 id="eksperymentalny-dowód">Eksperymentalny Dowód</h3>
+<section id="procesy-odwracalne-i-nieodwracalne" class="slide level2">
+<h2>Procesy Odwracalne i Nieodwracalne</h2>
+<h3 id="ideał-vs-rzeczywistość">Ideał vs Rzeczywistość</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Zrozumienie, jak gaz zmienia się w ciecz:</p>
+<p><strong>Proces Odwracalny (Idealny):</strong> Można go cofnąć w dół po tej samej ścieżce bez zostawiania jakiegokolwiek śladu w otoczeniu. * Brak tarcia. * Nieskończenie małe różnice temperatur.</p>
+<p><strong>Proces Nieodwracalny (Rzeczywisty):</strong> Cofnięcie wymaga nakładu pracy z zewnątrz (zostawia ślad). * Tarcie, mieszanie, spalanie.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="05_2_zasada_files/figure-revealjs/rev-irrev-diagram-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="ii-zasada-termodynamiki-sformułowania" class="slide level2">
+<h2>II Zasada Termodynamiki: Sformułowania</h2>
+<h3 id="wiele-twarzy-jednej-prawdy">Wiele twarzy jednej prawdy</h3>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Kelvin-Planck</a></li><li><a href="#tabset-1-2">Clausius</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<blockquote>
+<p>“Nie jest możliwy proces cykliczny, którego jedynym wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.”</p>
+</blockquote>
 <ul>
-<li><strong>Wysoka temperatura:</strong> Gaz zachowuje się niemal idealnie (proste krzywe).</li>
-<li><strong>Niska temperatura:</strong> Pojawia się “półka” – obszar, gdzie mimo zmniejszania objętości, ciśnienie nie rośnie (skraplanie).</li>
-<li><strong>Izoterma krytyczna:</strong> Ostatnia krzywa, która “dotyka” wierzchołka kopuły.</li>
+<li><strong>Wniosek:</strong> Nie da się zbudować silnika o sprawności 100% (Perpetuum Mobile II rodzaju). Musimy oddać część ciepła do chłodnicy.</li>
 </ul>
+</div>
+<div id="tabset-1-2">
+<blockquote>
+<p>“Ciepło nie może samoistnie przepływać z ciała o niższej temperaturze do ciała o wyższej temperaturze.”</p>
+</blockquote>
+<ul>
+<li><strong>Wniosek:</strong> Aby schłodzić piwo w lodówce (zabrać ciepło z zimnego wnętrza), musimy dostarczyć prąd (pracę).</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="entropia-s" class="slide level2">
+<h2>Entropia (<span class="math inline">\(S\)</span>)</h2>
+<h3 id="miarą-nieuporządkowania">Miarą Nieuporządkowania</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Clausius wprowadził nową funkcję stanu:</p>
+<p><span class="math display">\[ dS = \frac{dQ_{odwr}}{T} \]</span></p>
+<ul>
+<li><p><strong>Dla układów izolowanych:</strong> <span class="math display">\[ \Delta S \ge 0 \]</span> (Entropia Wszechświata zawsze rośnie).</p></li>
+<li><p><strong>Intuicja:</strong> Entropia to miara “rozproszenia” energii. Energia skoncentrowana (paliwo) jest użyteczna. Energia rozproszona (ciepło w otoczeniu) jest bezużyteczna.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div title="Strzałka Czasu">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Adnotacja</strong></p>
+<p><strong>Strzałka Czasu</strong></p>
 </div>
 <div class="callout-content">
-<p>Andrews udowodnił, że nie ma ostrej granicy między gazem a cieczą powyżej punktu krytycznego.</p>
+<p>To dlatego czas płynie tylko w jedną stronę – w stronę większego nieporządku (wyższej entropii).</p>
 </div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="04_1_gazy_files/figure-revealjs/andrews-isotherms-1.png" width="576"></p>
-</figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="para-nasycona-i-jakość-pary" class="slide level2">
-<h2>Para Nasycona i Jakość Pary</h2>
-<h3 id="kopuła-nasycenia">“Kopuła” Nasycenia</h3>
+<section id="obieg-carnota-wzorzec-doskonałości" class="slide level2">
+<h2>Obieg Carnota: Wzorzec Doskonałości</h2>
+<h3 id="najwyższa-możliwa-sprawność">Najwyższa możliwa sprawność</h3>
+<p>Silnik działający między dwoma źródłami ciepła (<span class="math inline">\(T_{g}\)</span> - grzejnik, <span class="math inline">\(T_{ch}\)</span> - chłodnica) ma najwyższą sprawność, jeśli składa się z procesów odwracalnych: 1. <strong>Izotermiczne rozprężanie</strong> (pobieranie ciepła <span class="math inline">\(Q_{in}\)</span> w <span class="math inline">\(T_g\)</span>). 2. <strong>Adiabatyczne rozprężanie</strong> (spadek temperatury do <span class="math inline">\(T_{ch}\)</span>, Praca). 3. <strong>Izotermiczne sprężanie</strong> (oddawanie ciepła <span class="math inline">\(Q_{out}\)</span> w <span class="math inline">\(T_{ch}\)</span>). 4. <strong>Adiabatyczne sprężanie</strong> (wzrost temperatury do <span class="math inline">\(T_g\)</span>, Praca).</p>
+<p><span class="math display">\[ \eta_{Carnot} = 1 - \frac{T_{ch}}{T_{g}} \]</span></p>
+</section>
+<section id="wizualizacja-obiegu-carnota-t-s" class="slide level2">
+<h2>Wizualizacja Obiegu Carnota (T-s)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<p>Wykres T-s jest dla Carnota idealny – obieg to po prostu <strong>prostokąt</strong>.</p>
 <ul>
-<li><strong>Para nasycona mokra:</strong> Mieszanina cieczy i pary (jak mgła).</li>
-<li><strong>Stopień suchości (<span class="math inline">\(x\)</span>):</strong> Ile “pary w parze”.
-<ul>
-<li><span class="math inline">\(x=0\)</span>: Sam wrzątek.</li>
-<li><span class="math inline">\(x=1\)</span>: Sama “sucha” para.</li>
-</ul></li>
+<li>Pole pod górną linią = <span class="math inline">\(Q_{dost}\)</span></li>
+<li>Pole pod dolną linią = <span class="math inline">\(Q_{wyl}\)</span></li>
+<li><strong>Pole prostokąta = Praca (<span class="math inline">\(L\)</span>)</strong></li>
 </ul>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Wskazówka</strong></p>
-</div>
-<div class="callout-content">
-<p>Wewnątrz “kopuły” ciśnienie i temperatura są od siebie zależne – znając jedno, znamy drugie!</p>
-</div>
-</div>
-</div>
+<p><span class="math display">\[ \eta = \frac{\text{Pole Pracy}}{\text{Pole Ciepła Dostarczonego}} \]</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="04_1_gazy_files/figure-revealjs/steam-dome-1.png" width="576"></p>
+<p><img data-src="05_2_zasada_files/figure-revealjs/carnot-ts-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="obliczanie-parametrów-pary-mokrej" class="slide level2">
-<h2>Obliczanie Parametrów Pary Mokrej</h2>
-<h3 id="średnie-ważone">Średnie Ważone</h3>
-<p>Parametry pary mokrej (objętość, entalpia, entropia) obliczamy jako sumę udziałów fazy ciekłej i gazowej:</p>
-<ul>
-<li><strong>Objętość:</strong> <span class="math inline">\(v = v' + x(v'' - v')\)</span></li>
-<li><strong>Entalpia:</strong> <span class="math inline">\(h = h' + x(h'' - h')\)</span></li>
-<li><strong>Entropia:</strong> <span class="math inline">\(s = s' + x(s'' - s')\)</span></li>
-</ul>
-<p><em>Wartości z primem (‘) i bisem (’’) odczytujemy z <strong>tablic pary wodnej</strong> dla danego ciśnienia lub temperatury.</em></p>
-</section>
-<section id="tablice-i-wykresy" class="slide level2">
-<h2>Tablice i Wykresy</h2>
-<h3 id="narzędzia-inżynierskie">Narzędzia Inżynierskie</h3>
-<ul>
-<li><strong>Tablice Pary Nasyconej:</strong> Uszeregowane według temperatury (T) lub ciśnienia (p).</li>
-<li><strong>Wykres <span class="math inline">\(h-s\)</span> (Molliera):</strong> Kluczowy do analizy rozprężania w turbinach (izentropy to linie pionowe).</li>
-<li><strong>Wykres <span class="math inline">\(p-h\)</span>:</strong> Podstawowy w chłodnictwie; pozwala łatwo odczytać efekt chłodniczy i pracę sprężania.</li>
-</ul>
-</section>
-<section id="równanie-clapeyrona-clausiusa" class="slide level2">
-<h2>Równanie Clapeyrona-Clausiusa</h2>
-<h3 id="nachylenie-krzywej-wrzenia">Nachylenie Krzywej Wrzenia</h3>
-<p>Określa zależność między zmianą ciśnienia a zmianą temperatury podczas przemiany fazowej:</p>
-<p><span class="math display">\[ \frac{dp}{dT} = \frac{Q_{przemiany}}{T(v'' - v')} \]</span></p>
-<ul>
-<li>Dla parowania/wrzenia: <span class="math inline">\(\frac{dp}{dT} &gt; 0\)</span> (wzrost ciśnienia podnosi temp. wrzenia).</li>
-<li>Dla topnienia lodu: <span class="math inline">\(\frac{dp}{dT} &lt; 0\)</span> (wzrost ciśnienia obniża temp. topnienia).</li>
-</ul>
-</section>
-<section id="para-przegrzana" class="slide level2">
-<h2>Para Przegrzana</h2>
-<h3 id="powyżej-linii-nasycenia">Powyżej Linii Nasycenia</h3>
-<p>Para przegrzana powstaje przez dalsze ogrzewanie pary suchej przy stałym ciśnieniu.</p>
-<ul>
-<li>Ma temperaturę wyższą od temperatury nasycenia dla danego ciśnienia (<span class="math inline">\(T &gt; T_s\)</span>).</li>
-<li>Jej parametry wyznacza się z osobnych tablic (np. Tablica 6) lub wykresów.</li>
-<li>W miarę oddalania się od krzywej granicznej, jej właściwości zbliżają się do gazu doskonałego.</li>
-</ul>
-</section>
-<section id="przejście-fazowe-ii-rodzaju" class="slide level2">
-<h2>Przejście Fazowe II Rodzaju</h2>
-<h3 id="przemiany-ciągłe">Przemiany Ciągłe</h3>
-<p>W przeciwieństwie do parowania (I rodzaj), tutaj <strong>brak ciepła przemiany</strong> (<span class="math inline">\(Q_p=0\)</span>) i skokowej zmiany objętości.</p>
-<ul>
-<li>Przykład: Przejście ferromagnetyk – paramagnetyk (temp. Curie).</li>
-<li>Przykład: Przejście helu w stan nadciekły (linia <span class="math inline">\(\lambda\)</span>).</li>
-<li>Cechą charakterystyczną jest <strong>nieciągłość ciepła właściwego</strong> (<span class="math inline">\(c_p\)</span>) oraz współczynników rozszerzalności.</li>
-</ul>
-</section>
-<section id="podsumowanie-i-wnioski" class="slide level2">
-<h2>Podsumowanie i Wnioski</h2>
+<section id="podsumowanie-ii-zasady" class="slide level2">
+<h2>Podsumowanie II Zasady</h2>
 <div style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;">
 <ol type="1">
-<li><strong>Substancje czyste</strong> zmieniają właściwości skokowo podczas przemian fazowych (np. parowanie).</li>
-<li><strong>Para mokra</strong> to układ “mglisty”, którego stan określa stopień suchości <span class="math inline">\(x\)</span>.</li>
-<li><strong>Gazy rzeczywiste</strong> wymagają poprawek na objętość cząstek i siły ich wzajemnego “przyciągania”.</li>
-<li><strong>Wykresy i tablice</strong> to codzienne narzędzia inżyniera – uczymy się ich, aby projektować realne maszyny.</li>
+<li>Nie da się zamienić całego ciepła na pracę (musisz mieć chłodnicę!).</li>
+<li>Sprawność silnika zależy tylko od temperatur źródeł (<span class="math inline">\(T_g\)</span> i <span class="math inline">\(T_{ch}\)</span>).</li>
+<li><strong>Entropia</strong> w układach rzeczywistych zawsze rośnie (nieodwracalność).</li>
+<li>Obieg Carnota wyznacza teoretyczną granicę, do której dążymy w inżynierii.</li>
 </ol>
 </div>
 </section>
-<section id="zapowiedź-w5" class="slide level2">
-<h2>Zapowiedź W5</h2>
-<h3 id="ii-zasada-termodynamiki">II Zasada Termodynamiki</h3>
-<p>W kolejnym wykładzie zajmiemy się kierunkiem procesów:</p>
+<section id="zapowiedź-w6" class="slide level2">
+<h2>Zapowiedź W6</h2>
+<h3 id="obiegi-gazowe-silniki-spalinowe">Obiegi Gazowe (Silniki Spalinowe)</h3>
+<p>W następnym odcinku zejdziemy z idealnego nieba (Carnot) na ziemię:</p>
 <ul>
-<li>Dlaczego niektóre procesy są <strong>nieodwracalne</strong>?</li>
-<li>Czym jest <strong>entropia</strong> i jak rośnie w układzie izolowanym?</li>
-<li><strong>Obieg Carnota</strong> jako wzorzec sprawności.</li>
+<li><strong>Obieg Otto:</strong> Jak działa Twój samochód na benzynę?</li>
+<li><strong>Obieg Diesla:</strong> Dlaczego diesle palą mniej?</li>
+<li><strong>Obieg Sabathe:</strong> Model rzekomo “najbardziej rzeczywisty”.</li>
 </ul>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Termodynamika Techniczna</p>
+
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="04_1_gazy_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="04_1_gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/appearance/appearance.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="04_1_gazy_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="04_1_gazy_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="05_2_zasada_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -661,7 +509,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.2,
+        margin: 0.1,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',

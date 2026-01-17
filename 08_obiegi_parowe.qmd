@@ -1,0 +1,175 @@
+---
+title: "W8: Siłownie Parowe"
+subtitle: "Obieg Rankine’a i Energetyka Zawodowa"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Król Energetyki: Obieg Clausiusa-Rankine’a {data-menu-title="Wstęp"}
+
+### Dlaczego Para Wodna?
+
+Około 80% elektryczności na świecie pochodzi z tego obiegu (węgiel, gaz, atom, biomasa).
+
+**Dlaczego para?**
+1.  **Woda jest tania** i dostępna.
+2.  **Ogromna entalpia parowania:** Mała masa czynnika przenosi gigantyczną energię.
+3.  **Łatwe pompowanie:** Skroplona woda (w skraplaczu) zajmuje mało miejsca, więc praca pompy jest znikoma w porównaniu do pracy turbiny.
+
+## Schemat Siłowni Parowej
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Cztery Główne Urządzenia:
+1.  **Kocioł (B):** Zamienia wodę w parę (izobara $p_1$).
+2.  **Turbina (T):** Para rozpręża się, wykonując pracę (adiabata $s=const$).
+3.  **Skraplacz (S):** Zamienia parę z powrotem w wodę (izobara $p_2$).
+4.  **Pompa (P):** Tłoczy wodę z powrotem do kotła.
+:::
+
+::: {.column width="50%"}
+![Schemat ideowy bloku energetycznego](img/wymiennik.png){width="100%"}
+:::
+
+::::
+
+## Obieg Rankine’a na wykresie T-s
+
+### "Pod Kopułą"
+
+```{r}
+#| label: rankine-ts
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+library(ggplot2)
+
+# 1. Saturation Dome
+s_liq <- seq(0, 3, length.out=50)
+t_liq <- 300 + s_liq^2 * 40
+s_vap <- seq(3, 8, length.out=50)
+t_vap <- 660 - (s_vap-3)^2 * 25
+dome <- data.frame(s=c(s_liq, rev(s_vap)), t=c(t_liq, rev(t_vap)))
+
+# 2. Cycle Points (Approximate)
+# 1-2: Expansion in Turbine (Isentropic)
+s3 <- 6.5; t3 <- 550 # Inlet Turbine (Superheated)
+s4 <- 6.5; t4 <- 320 # Outlet Turbine (Wet Steam)
+
+# 4-1: Condensation (Isobaric/Isothermal inside dome)
+s1 <- 0.5; t1 <- 320 # Liquid water at condenser pressure
+
+# 1-2: Pump (Isentropic compression - vertical up)
+s2 <- 0.5; t2 <- 325 # Slightly higher temp after pump
+
+# 2-3: Heating in Boiler (Isobaric)
+# Follows liquid line up to saturation, then across, then up
+s_heat <- c(0.5, 2.8, 6.5)
+t_heat <- c(325, 550, 550) # Simplified isobar
+
+cycle <- data.frame(
+  s = c(s3, s4, s1, s2, 2.5, 5, s3),
+  t = c(t3, t4, t1, t2, 450, 450, t3),
+  label = c("3", "4", "1", "2", "", "2'", "3")
+)
+
+ggplot() +
+  # Dome
+  geom_line(data=dome, aes(x=s, y=t), color="grey", size=1) +
+  geom_text(aes(x=3, y=670, label="Punkt Krytyczny K"), color="grey") +
+  
+  # Cycle
+  geom_path(data=cycle, aes(x=s, y=t), color="#e60000", size=2, arrow=arrow(length=unit(0.5,"cm"))) +
+  geom_text(data=cycle, aes(x=s, y=t, label=label), vjust=-1, size=6, fontface="bold") +
+  
+  annotate("text", x=6.7, y=450, label="Turbina (Praca)", color="blue", angle=-90) +
+  annotate("text", x=3.5, y=300, label="Skraplacz (Q_wyl)", color="blue") +
+  annotate("text", x=3.5, y=570, label="Kocioł (Q_dost)", color="red") +
+  
+  labs(title="Obieg C-R z parą przegrzaną", x="Entropia s", y="Temperatura T") +
+  theme_minimal()
+```
+
+## Metody Podnoszenia Sprawności
+
+### 1. Przegrzew Wtórny
+
+Zamiast rozprężać parę od razu do ciśnienia skraplacza (punkt 4), przerywamy proces w połowie, wracamy do kotła, podgrzewamy ponownie i dopiero rozprężamy w drugiej części turbiny.
+
+*   **Cel:** Zwiększenie średniej temperatury dostarczania ciepła.
+*   **Bonus:** "Suchsza" para na wylocie (mniejsza erozja łopatek turbiny przez kropelki wody).
+
+### 2. Regeneracja (Podgrzewanie wody zasilającej)
+
+Zabieramy część pary z turbiny (upusty) i używamy jej, żeby podgrzać wodę idącą do kotła.
+*   Nie marnujemy ciepła w skraplaczu.
+*   Kocioł ma mniej roboty (woda jest już ciepła).
+
+## Nieodwracalność w Rzeczywistości
+
+W idealnym obiegu procesy w turbinie i pompie są **izentropowe** ($s=const$, pionowe linie).
+W rzeczywistości tarcie powoduje **wzrost entropii** ($\Delta s > 0$).
+
+*   Linia rozprężania w turbinie odchyla się w prawo.
+*   Sprawność wewnętrzna turbiny $\eta_i < 1$.
+*   Para na wylocie ma wyższą entalpię (= mniej pracy oddanej na wał).
+
+## Podsumowanie
+
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  **Obieg Rankine’a** to fundament współczesnej cywilizacji (prąd).
+2.  Skraplacz jest konieczny (II Zasada!), ale to tam tracimy najwięcej energii (ciepło odpadowe).
+3.  Przegrzew wtórny i regeneracja to standardowe metody walki o każdy procent sprawności.
+:::
+
+## Zapowiedź W9
+
+### Powietrze Wilgotne i Wentylacja
+
+Zmieniamy temat. Odchodzimy od silników i wchodzimy w świat klimatyzacji.
+
+*   Co to jest wilgotność względna?
+*   Wykres Molliera $i-x$ dla powietrza wilgotnego.
+*   Dlaczego zimą mamy suche usta, a latem jest duszno?

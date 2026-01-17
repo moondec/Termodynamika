@@ -1,0 +1,182 @@
+---
+title: "W6: Obiegi Gazowe Porównawcze"
+subtitle: "Silniki Spalinowe: Otto, Diesel i Sabathe"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Od Teorii do Praktyki {data-menu-title="Wstęp"}
+
+### Dlaczego nie Carnot?
+
+Obieg Carnota ma najwyższą sprawność, ale jest **niepraktyczny**:
+1.  Izotermiczne procesy wymagają nieskończenie wolnej wymiany ciepła (mała moc).
+2.  Ogromne ciśnienia przy znikomej pracy użytecznej (bardzo "chudy" wykres p-v).
+
+::: {.callout-note title="Cel Inżyniera"}
+Potrzebujemy obiegów, które dają **dużą moc** z małego silnika, nawet kosztem nieco niższej sprawności.
+:::
+
+## Obieg Otto (Silniki ZI)
+
+### Zapłon Iskrowy (Benzyna)
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Charakterystyka:
+*   Mieszanka paliwowo-powietrzna zasysana do cylindra.
+*   Sprężanie mieszanki.
+*   **Zapłon od iskry (objętość $V \approx const$):** Spalanie jest tak szybkie, że tłok nie zdąży się ruszyć (izochora).
+
+$$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} $$
+
+*   $\varepsilon = V_{max}/V_{min}$ (Stopień sprężania).
+*   Im wyższe sprężanie, tym lepiej (ale uwaga na spalanie stukowe!).
+:::
+
+::: {.column width="40%"}
+![Schemat silnika ZI](img/tlok.png){width="100%"}
+:::
+
+::::
+
+## Wizualizacja: Obieg Otto
+
+```{r}
+#| label: otto-cycle-plot
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+library(ggplot2)
+
+# Parameters
+gamma <- 1.4
+r <- 8 # Compression ratio
+v1 <- 8; p1 <- 1
+v2 <- 1; p2 <- p1 * (v1/v2)^gamma
+p3 <- p2 * 3.5 # Heat addition
+v3 <- v2
+p4 <- p3 * (v3/v1)^gamma
+v4 <- v1
+
+# Adiabatic curves
+v_comp <- seq(v2, v1, length.out=100)
+p_comp <- p1 * (v1/v_comp)^gamma
+
+v_exp <- seq(v2, v1, length.out=100)
+p_exp <- p3 * (v3/v_exp)^gamma
+
+df_otto <- data.frame(
+  v = c(v_comp, rev(v_exp), v2, v2, v1, v1),
+  p = c(p_comp, rev(p_exp), p2, p3, p4, p1),
+  group = c(rep("Sprężanie", 100), rep("Praca", 100), "Zapłon", "Zapłon", "Wydech", "Wydech")
+)
+
+ggplot() +
+  geom_line(data=data.frame(v=v_comp, p=p_comp), aes(x=v, y=p), color="blue", size=1.5) +
+  geom_line(data=data.frame(v=v_exp, p=p_exp), aes(x=v, y=p), color="orange", size=1.5) +
+  geom_segment(aes(x=v2, y=p2, xend=v3, yend=p3), color="red", size=1.5, arrow=arrow()) +
+  geom_segment(aes(x=v4, y=p4, xend=v1, yend=p1), color="green", size=1.5, arrow=arrow()) +
+  annotate("text", x=v2, y=p3, label="Q_dost (Izochora)", vjust=-1, color="red") +
+  annotate("text", x=v1, y=p4, label="Q_wyl (Izochora)", vjust=2, color="green") +
+  labs(title="Obieg Otto (p-V)", x="Objętość", y="Ciśnienie") +
+  theme_minimal()
+```
+
+## Obieg Diesla (Silniki ZS)
+
+### Zapłon Samoczynny (Ropa)
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Różnica względem Otto:
+*   Zasysane jest **samo powietrze**.
+*   Bardzo wysoki stopień sprężania ($\varepsilon \approx 16-24$).
+*   Paliwo wtrystkiwane do gorącego powietrza.
+*   **Spalanie (objętość rośnie, $p \approx const$):** Tłok ucieka w dół podczas wtrysku, więc ciśnienie jest stałe (izobara).
+
+$$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{k-1}} \cdot \frac{\rho^k - 1}{k(\rho - 1)} $$
+:::
+
+::: {.column width="40%"}
+::: {.callout-tip}
+Dzięki wyższemu $\varepsilon$, Diesle są zazwyczaj sprawniejsze, mimo że teoretyczny wzór wygląda gorzej (czynnik w nawiasie > 1 obniża sprawność).
+:::
+:::
+
+::::
+
+## Porównanie: Otto vs Diesel
+
+### Kto wygrywa?
+
+*   **Przy tym samym stopniu sprężania:** Otto > Diesel.
+*   **W rzeczywistości:** Diesel > Otto.
+    *   Dlaczego? Bo w Dieslu możemy ścisnąć powietrze znacznie mocniej (nie ma ryzyka zapłonu paliwa).
+    *   Benzyna przy $\varepsilon > 12$ wybuchłaby sama (spalanie stukowe).
+    *   Diesel pracuje na $\varepsilon \approx 20$.
+
+| Cecha | Otto (Benzyna) | Diesel (ON) |
+| :--- | :--- | :--- |
+| **Doprowadzanie ciepła** | Izochoryczne ($V=const$) | Izobaryczne ($p=const$) |
+| **Stopień sprężania** | Niski (8-12) | Wysoki (16-24) |
+| **Zapłon** | Iskra | Samoczynny (temp.) |
+
+## Podsumowanie i Wnioski
+
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  **Obieg Otta:** Szybkie spalanie (izochora), silniki lżejsze, wyższe obroty.
+2.  **Obieg Diesla:** Wolniejsze spalanie (izobara), cięższa budowa, ale wyższa sprawność dzięki sprężaniu.
+3.  **Sprawność:** Zależy kluczowo od stopnia sprężania $\varepsilon$. Chcesz oszczędzać paliwo? Zwiększaj sprężanie!
+:::
+
+## Zapowiedź W7
+
+### Obiegi Prawobieżne cd. i Obiegi Owrócone
+
+*   **Obieg Sabathe:** Połączenie Otto i Diesla (najbliższy prawdy).
+*   **Turbiny gazowe:** Obieg Joule’a-Braytona (samoloty).
+*   **A co gdyby odwrócić strzałki?** Lodówki i Pompy Ciepła (Obieg Lindego).

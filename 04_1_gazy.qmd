@@ -72,113 +72,233 @@ editor: source
 
 ### Definicja Fazy i Substancji
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-**Substancja czysta** ma jednolity i niezmienny skład chemiczny w całej objętości.
+**Substancja czysta** ma jednolity i niezmienny skład chemiczny w całej objętości (np. woda, azot, hel).
 :::
 
 ::: incremental 
-*   **Faza:** Makroskopowa część układu o jednorodnych właściwościach fizycznych, oddzielona granicą faz.
-*   **Stany skupienia:** Ciało stałe, ciecz, gaz.
-*   **Równowaga fazowa:** Stan, w którym parametry nie zmieniają się w czasie i nie ma przepływów energii ani materii między fazami.
+*   **Faza:** Makroskopowa część układu, która jest jednorodna pod względem fizycznym i chemicznym.
+    *   *Intuicja:* Wyobraź sobie szklankę wody z lodem – to jedna substancja (H₂O), ale **dwie fazy** (ciecz i ciało stałe).
+*   **Równowaga fazowa:** Stan "pokoju" w układzie – parametry nie zmieniają się, a fazy nie "walczą" o cząsteczki.
 :::
+:::
+
+::: {.column width="40%"}
+![Substancja czysta vs Mieszanina](img/pierwsza.png){width="80%"}
+:::
+
+::::
 
 ## Punkt Potrójny i Krytyczny
 
 ### Granice Współistnienia
 
-*   **Punkt potrójny:** Stan, w którym w równowadze współistnieją trzy fazy (stała, ciekła, gazowa).
-    *   Dla wody: $T = 273,16$ K ($0,01^\circ$C), $p = 610,62$ Pa.
+:::: {.columns}
+
+::: {.column width="50%"}
+*   **Punkt potrójny:** Jedyny stan ($p, T$), w którym lód, woda i para wodna mogą współistnieć jednocześnie "w zgodzie".
+    *   Dla wody: $T = 273,16$ K, $p = 611$ Pa.
 
 ::: incremental 
-*   Punkt krytyczny ($K$): Stan, w którym znikają różnice między fazą ciekłą a gazową.
-    *   Powyżej $T_k$ substancja jest gazem i nie można jej skroplić przez samo zwiększenie ciśnienia.
-    
+*   **Punkt krytyczny ($K$):** Stan, w którym różnica między cieczą a gazem znika.
+    *   Powyżej $T_k$ nie da się skroplić gazu samym ściskaniem – cząsteczki mają za dużo energii kinetycznej, by "złożyć się" w ciecz.
 :::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: phase-diagram-simple
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+# Uproszczone dane dla wykresu p-T wody (nie w skali, poglądowe)
+curve_sublimation <- data.frame(T = seq(0, 273.16, length.out=50), p = seq(0, 611, length.out=50)^0.5 * 25)
+curve_vaporization <- data.frame(T = seq(273.16, 647, length.out=50), p = 611 + (seq(0, 22, length.out=50)^4)*0.5)
+curve_fusion <- data.frame(T = 273.16 - (seq(0, 10, length.out=10)^2)*0.01, p = seq(611, 2000, length.out=10))
+
+ggplot() +
+  geom_line(data=curve_sublimation, aes(x=T, y=p), color="#e60000", size=1.5) +
+  geom_line(data=curve_vaporization, aes(x=T, y=p), color="#e60000", size=1.5) +
+  geom_line(data=curve_fusion, aes(x=T, y=p), color="#e60000", size=1.5) +
+  annotate("text", x=150, y=1000, label="CIAŁO STAŁE", fontface="bold") +
+  annotate("text", x=400, y=1500, label="CIECZ", fontface="bold") +
+  annotate("text", x=500, y=200, label="GAZ", fontface="bold") +
+  annotate("point", x=273.16, y=611, color="blue", size=4) +
+  annotate("text", x=273.16, y=100, label="Punkt potrójny", color="blue") +
+  annotate("point", x=647, y=22060, color="darkgreen", size=4) +
+  annotate("text", x=600, y=18000, label="Punkt krytyczny (K)", color="darkgreen") +
+  theme_minimal() +
+  labs(x="Temperatura T [K]", y="Ciśnienie p [Pa]", title="Uproszczony wykres fazowy p-T") +
+  scale_y_log10()
+```
+:::
+
+::::
 
 ## Gaz Doskonały – Powtórzenie
 
 ### Model Teoretyczny
 
-Gaz doskonały to abstrakcyjny model cząstek punktowych (pozbawionych objętości) bez oddziaływań na odległość, zderzających się sprężyście.
+:::: {.columns}
 
-**Równanie Clapeyrona:**
+::: {.column width="60%"}
+Gaz doskonały to abstrakcyjny model:
+
+*   **Cząstki punktowe:** Nie zajmują miejsca (objętość własna = 0).
+*   **Brak miłości i nienawiści:** Cząsteczki nie przyciągają się ani nie odpychają.
+*   **Zderzenia idealne:** Niczym kule bilardowe tracące energię tylko na ruch.
+
+::: {.callout-important title="Równanie Clapeyrona"}
 $$ p \cdot v = R \cdot T $$
-Po pomnożeniu obu stron przez ilość (G ~ m w [kg]) substancji gazu otrzymujemy:
 $$ p \cdot V = m \cdot R \cdot T $$
-*   **Indywidualna stała gazowa ($R$):** $\ \ \ \ c_p - c_v = R$
+:::
+:::
 
-*   **$R$ można wyliczyć z** $k / \mu_d$, gdzie:
-    - $k$ - stała Bolzmanna ($1,38044 \cdot 10^{-26}$ kJ/K)
-    - $\mu_d$ - masa 1 cząsteczki danego gazu.
-    
+::: {.column width="40%"}
+![Model cząsteczkowy gazu doskonałego](img/tlok.png){width="100%"}
+:::
 
-## Dalsze przekształcenia uwzględniające liczbę Avogadra i masę molową (M) prowadzą do _uniwersalnego równania stanu gazów doskonałych i półdoskonałych_ 
+::::
 
-$$ p \cdot V = n \cdot (MR) \cdot T $$
+## Stała Gazowa: Dwie Twarze
 
-
-*   **Uniwersalna stała gazowa ($MR$ - iloczyn masy molowej i stałej gazowej):** $8314,29$ J/(kmol·K). 
-*   **$R$ można również wyliczyć z wzoru** $R = (MR) / M$.
-
-## Dwie twarze stałej gazowej
-
-| Cecha | **Indywidualna stała gazowa ($R$)** | **Uniwersalna stała gazowa ($R_u$)** |
+| Cecha | **Indywidualna ($R$)** | **Uniwersalna ($R_u$)** |
 | :--- | :--- | :--- |
 | **Wzór** | $R = \frac{R_u}{M}$ | $R_u = M \cdot R$ |
-| **Jednostka** | $\frac{\text{J}}{\text{kg} \cdot \text{K}}$ | $\frac{\text{J}}{\text{kmol} \cdot \text{K}}$ |
 | **Zastosowanie** | Inżynieria (masy, kg) | Chemia / Fizyka (mole) |
-| **Wartość** | Zmienna (Powietrze: 287, Wodór: 4124) | Stała ($\approx 8314$) |
+| **Wartość** | Zmienna (Powietrze: 287) | Stała ($\approx 8314$ J/kmolK) |
 
-> **Zapamiętaj:** W termodynamice technicznej zazwyczaj używamy **$R$** (indywidualnej), bo turbiny zasilamy kilogramami pary, a nie molami.
-
+> **Profesor radzi:** W technice pracujemy na kilogramach ("ile waży czynnik?"), więc $R$ jest Twoim najlepszym przyjacielem.
 
 ## Gazy Rzeczywiste
 
-### Odstępstwa od Doskonałości
+### Dlaczego "doskonały" nie wystarcza?
 
-Gazy rzeczywiste wykazują oddziaływania międzycząsteczkowe (siły van der Waalsa), co jest widoczne przy wysokich ciśnieniach i niskich temperaturach.
+:::: {.columns}
 
-**Rozwinięcie wirialne:**
-Najogólniejsza postać równania stanu gazów rzeczywistych:
-$$ \frac{pV_m}{RT} = 1 + \frac{B(T)}{V_m} + \frac{C(T)}{V_m^2} + \dots $$.
+::: {.column width="100%"}
+Gazy rzeczywiste to "prawdziwi ludzie" w tłumie:
 
+1.  **Mają swoją objętość:** Nie da się ich ścisnąć do zera.
+2.  **Oddziałują na siebie:** Siły przyciągania van der Waalsa "hamują" cząsteczki uderzające w ściankę (spadek ciśnienia).
+
+**Rozwinięcie wirialne (najdokładniejszy opis):**
+$$ z = \frac{pV_m}{RT} = 1 + \frac{B(T)}{V_m} + \frac{C(T)}{V_m^2} + \dots $$
+*Gdzie $z$ to współczynnik ściśliwości ($z=1$ dla gazu doskonałego).*
+:::
+
+::::
 
 ## Równanie van der Waalsa
 
 ### Poprawki Fizyczne
 
-Wprowadza dwie kluczowe poprawki do równania gazu doskonałego:
-
 $$ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT $$
 
-1.  **Poprawka $a/V_m^2$:** Uwzględnia siły przyciągania cząsteczek (ciśnienie wewnętrzne).
-2.  **Poprawka $b$:** Uwzględnia skończoną objętość samych cząsteczek (objętość niedostępna).
-
-
-## Parametry Zredukowane
-
-### Hipoteza Stanów Odpowiednich
-
-Jeśli wyrazimy parametry przez ich wartości krytyczne:
-$\pi = p/p_k$, $\tau = T/T_k$, $\omega = V_m/V_{mk}$.
-
-**Zredukowane równanie van der Waalsa:**
-$$ \left( \pi + \frac{3}{\omega^2} \right) (3\omega - 1) = 8\tau $$.
-
-::: {.callout-note title="Definicja"}
-**Wniosek:** Substancje o tych samych parametrach zredukowanych zachowują się podobnie termodynamicznie.
+::: incremental
+*   **Poprawka $a$ (Kohezja):** "Siła przyciągania". Cząsteczki trzymają się razem, więc słabiej uderzają w ścianki naczynia. Ciśnienie zmierzone jest mniejsze niż by wynikało z modelu.
+*   **Poprawka $b$ (Kowolumen):** "Ciasnota". Cząsteczki same zajmują miejsce, więc wolna przestrzeń dla ruchu jest mniejsza.
 :::
 
+## Izotermy Andrewsa
+
+### Eksperymentalny Dowód
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Zrozumienie, jak gaz zmienia się w ciecz:
+
+*   **Wysoka temperatura:** Gaz zachowuje się niemal idealnie (proste krzywe).
+*   **Niska temperatura:** Pojawia się "półka" – obszar, gdzie mimo zmniejszania objętości, ciśnienie nie rośnie (skraplanie).
+*   **Izoterma krytyczna:** Ostatnia krzywa, która "dotyka" wierzchołka kopuły.
+
+::: {.callout-note}
+ Andrews udowodnił, że nie ma ostrej granicy między gazem a cieczą powyżej punktu krytycznego.
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: andrews-isotherms
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+v <- seq(0.5, 5, length.out=100)
+df <- data.frame(
+  v = rep(v, 3),
+  p = c(5/v, 3/(v-0.4) - 1/v^2, 2/(v-0.4) - 2/v^2), # Uproszczone izotermy
+  temp = rep(c("Wysoka (Gaz)", "Krytyczna", "Niska (Skraplanie)"), each=100)
+)
+df$p[df$p < 0] <- 0
+df$p[df$temp == "Niska (Skraplanie)" & df$v > 1.5 & df$v < 4] <- 1.1 # Pozioma półka
+
+ggplot(df, aes(x=v, y=p, color=temp)) +
+  geom_line(size=1.5) +
+  ylim(0, 10) +
+  theme_minimal() +
+  labs(x="Objętość właściwa v", y="Ciśnienie p", title="Izotermy Andrewsa (schemat)", color="Temperatura")
+```
+:::
+
+::::
 
 ## Para Nasycona i Jakość Pary
 
-### Mieszanina Dwu fazowa
+### "Kopuła" Nasycenia
 
-*   **Para nasycona mokra:** Mieszanina cieczy wrzącej i pary nasyconej suchej.
-*   **Stopień suchości ($x$):** Stosunek masy pary suchej do masy pary mokrej.
-    $$ x = \frac{m''}{m' + m''} $$
-    *   $x=0$: ciecz nasycona (punkt pęcherzyków).
-    *   $x=1$: para nasycona sucha (punkt rosy).
+:::: {.columns}
+
+::: {.column width="50%"}
+*   **Para nasycona mokra:** Mieszanina cieczy i pary (jak mgła).
+*   **Stopień suchości ($x$):** Ile "pary w parze".
+    *   $x=0$: Sam wrzątek.
+    *   $x=1$: Sama "sucha" para.
+
+::: {.callout-tip}
+Wewnątrz "kopuły" ciśnienie i temperatura są od siebie zależne – znając jedno, znamy drugie!
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: steam-dome
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+# Uproszczona kopuła nasycenia (T-s)
+s_liq <- seq(0, 4.4, length.out=100)
+T_liq <- 273 + (s_liq*50) # Bardzo uproszczone
+s_vap <- seq(4.4, 9, length.out=100)
+T_vap <- 647 - (s_vap-4.4)^2 * 15 # Bardzo uproszczone
+
+dome <- data.frame(
+  s = c(s_liq, rev(s_vap)),
+  T = c(T_liq, rev(T_vap))
+)
+
+ggplot(dome, aes(x=s, y=T)) +
+  geom_line(color="blue", size=2) +
+  geom_area(fill="lightblue", alpha=0.3) +
+  annotate("text", x=2, y=400, label="CIECZ", color="blue") +
+  annotate("text", x=4.5, y=450, label="PARA MOKRA", color="#e60000", fontface="bold") +
+  annotate("text", x=7.5, y=400, label="PARA PRZEGRZANA", color="darkgreen") +
+  annotate("point", x=4.4, y=647, color="black", size=3) +
+  annotate("text", x=4.4, y=670, label="Punkt krytyczny (K)") +
+  theme_minimal() +
+  labs(x="Entropia s [kJ/kgK]", y="Temperatura T [K]", title="Wykres T-s z obszarem dwufazowym")
+```
+:::
+
+::::
 
 
 ## Obliczanie Parametrów Pary Mokrej
@@ -239,10 +359,12 @@ W przeciwieństwie do parowania (I rodzaj), tutaj **brak ciepła przemiany** ($Q
 
 ## Podsumowanie i Wnioski
 
-*   **Substancje czyste** zmieniają właściwości skokowo podczas przemian fazowych.
-*   **Para mokra** to układ dwufazowy, którego stan określa stopień suchości $x$.
-*   **Gazy rzeczywiste** opisujemy równaniem van der Waalsa, uwzględniając rozmiar cząstek i ich przyciąganie.
-*   Umiejętność korzystania z **tablic i wykresów ($h-s, p-h$)** jest niezbędna do bilansowania maszyn cieplnych.
+::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
+1.  **Substancje czyste** zmieniają właściwości skokowo podczas przemian fazowych (np. parowanie).
+2.  **Para mokra** to układ "mglisty", którego stan określa stopień suchości $x$.
+3.  **Gazy rzeczywiste** wymagają poprawek na objętość cząstek i siły ich wzajemnego "przyciągania".
+4.  **Wykresy i tablice** to codzienne narzędzia inżyniera – uczymy się ich, aby projektować realne maszyny.
+:::
 
 
 ## Zapowiedź W5
