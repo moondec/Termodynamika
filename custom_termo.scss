@@ -1,0 +1,16 @@
+/*-- scss:rules --*/
+
+/* 1. Globalna naprawa tła (działa na to, co zdefiniujesz w YAML) */
+.reveal .slide-background-content {
+  background-size: 100% 100% !important; /* Rozciągnij do ramki (Koniec z kafelkami!) */
+  background-position: center center !important;
+  opacity: 0.1; /* Blade tło */
+}
+
+/* 2. Wyjątek dla slajdu tytułowego */
+/* Klasę 'title-bg' przypiszemy w YAML */
+.reveal .slide-background.title-bg .slide-background-content {
+  background-image: none !important;    /* Usuń obrazek */
+  background-color: white !important;   /* Białe tło */
+  opacity: 1 !important;                /* Pełne krycie (musi być 1, żeby nie było szare) */
+}

@@ -1,0 +1,256 @@
+---
+title: "W4: Właściwości Substancji Czystych - I"
+subtitle: "Gazy doskonałe i rzeczywiste"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" 
+         style="height: 200px;">
+    
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
+         style="height: 200px;">
+         
+    <img src="img/KBiG.jpg" 
+         style="height: 200px;">
+         
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
+    include-in-header:
+      text: |
+        <style>
+        /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
+        body {
+            background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
+        }
+
+        /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            
+            /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+            background-size: contain !important; 
+            
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+
+        /* 3. Wyjątek dla tytułowego */
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important; /* Slajd tytułowy pozostanie biały */
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t       # Numeracja: slajd obecny / wszystkich
+    show-slide-number: all
+    transition: slide       # Animacja przejścia
+    chalkboard: true        # WŁĄCZA PISANIE PO EKRANIE (ikona ołówka)
+    footer: "Termodynamika Techniczna" # Stopka na każdym slajdzie
+    center: false           # Tekst od góry (nie wyśrodkowany pionowo)
+    code-overflow: wrap
+    highlight-style: a11y
+    width: 1600             # Szerokość (Full HD) 1600x900, Mac Pro: 1512x982
+    height: 900
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer            # <--- Aktywacja pluginu
+    pointer:               # <--- Konfiguracja lasera
+      color: "#e60000"     # Klasyczna czerwień
+      pointerSize: 20      # Rozmiar kropki (piksele)
+      alwaysVisible: false # Jeśli true, laser jest włączony od razu po starcie
+editor: source
+---
+
+## Wprowadzenie do Substancji Czystych {data-menu-title="Wstęp"}
+
+### Definicja Fazy i Substancji
+
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+**Substancja czysta** ma jednolity i niezmienny skład chemiczny w całej objętości.
+:::
+
+::: incremental 
+*   **Faza:** Makroskopowa część układu o jednorodnych właściwościach fizycznych, oddzielona granicą faz.
+*   **Stany skupienia:** Ciało stałe, ciecz, gaz.
+*   **Równowaga fazowa:** Stan, w którym parametry nie zmieniają się w czasie i nie ma przepływów energii ani materii między fazami.
+:::
+
+## Punkt Potrójny i Krytyczny
+
+### Granice Współistnienia
+
+*   **Punkt potrójny:** Stan, w którym w równowadze współistnieją trzy fazy (stała, ciekła, gazowa).
+    *   Dla wody: $T = 273,16$ K ($0,01^\circ$C), $p = 610,62$ Pa.
+
+::: incremental 
+*   Punkt krytyczny ($K$): Stan, w którym znikają różnice między fazą ciekłą a gazową.
+    *   Powyżej $T_k$ substancja jest gazem i nie można jej skroplić przez samo zwiększenie ciśnienia.
+    
+:::
+
+## Gaz Doskonały – Powtórzenie
+
+### Model Teoretyczny
+
+Gaz doskonały to abstrakcyjny model cząstek punktowych (pozbawionych objętości) bez oddziaływań na odległość, zderzających się sprężyście.
+
+**Równanie Clapeyrona:**
+$$ p \cdot v = R \cdot T $$
+Po pomnożeniu obu stron przez ilość (G ~ m w [kg]) substancji gazu otrzymujemy:
+$$ p \cdot V = m \cdot R \cdot T $$
+*   **Indywidualna stała gazowa ($R$):** $\ \ \ \ c_p - c_v = R$
+
+*   **$R$ można wyliczyć z** $k / \mu_d$, gdzie:
+    - $k$ - stała Bolzmanna ($1,38044 \cdot 10^{-26}$ kJ/K)
+    - $\mu_d$ - masa 1 cząsteczki danego gazu.
+    
+
+## Dalsze przekształcenia uwzględniające liczbę Avogadra i masę molową (M) prowadzą do _uniwersalnego równania stanu gazów doskonałych i półdoskonałych_ 
+
+$$ p \cdot V = n \cdot (MR) \cdot T $$
+
+
+*   **Uniwersalna stała gazowa ($MR$ - iloczyn masy molowej i stałej gazowej):** $8314,29$ J/(kmol·K). 
+*   **$R$ można również wyliczyć z wzoru** $R = (MR) / M$.
+
+## Dwie twarze stałej gazowej
+
+| Cecha | **Indywidualna stała gazowa ($R$)** | **Uniwersalna stała gazowa ($R_u$)** |
+| :--- | :--- | :--- |
+| **Wzór** | $R = \frac{R_u}{M}$ | $R_u = M \cdot R$ |
+| **Jednostka** | $\frac{\text{J}}{\text{kg} \cdot \text{K}}$ | $\frac{\text{J}}{\text{kmol} \cdot \text{K}}$ |
+| **Zastosowanie** | Inżynieria (masy, kg) | Chemia / Fizyka (mole) |
+| **Wartość** | Zmienna (Powietrze: 287, Wodór: 4124) | Stała ($\approx 8314$) |
+
+> **Zapamiętaj:** W termodynamice technicznej zazwyczaj używamy **$R$** (indywidualnej), bo turbiny zasilamy kilogramami pary, a nie molami.
+
+
+## Gazy Rzeczywiste
+
+### Odstępstwa od Doskonałości
+
+Gazy rzeczywiste wykazują oddziaływania międzycząsteczkowe (siły van der Waalsa), co jest widoczne przy wysokich ciśnieniach i niskich temperaturach.
+
+**Rozwinięcie wirialne:**
+Najogólniejsza postać równania stanu gazów rzeczywistych:
+$$ \frac{pV_m}{RT} = 1 + \frac{B(T)}{V_m} + \frac{C(T)}{V_m^2} + \dots $$.
+
+
+## Równanie van der Waalsa
+
+### Poprawki Fizyczne
+
+Wprowadza dwie kluczowe poprawki do równania gazu doskonałego:
+
+$$ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT $$
+
+1.  **Poprawka $a/V_m^2$:** Uwzględnia siły przyciągania cząsteczek (ciśnienie wewnętrzne).
+2.  **Poprawka $b$:** Uwzględnia skończoną objętość samych cząsteczek (objętość niedostępna).
+
+
+## Parametry Zredukowane
+
+### Hipoteza Stanów Odpowiednich
+
+Jeśli wyrazimy parametry przez ich wartości krytyczne:
+$\pi = p/p_k$, $\tau = T/T_k$, $\omega = V_m/V_{mk}$.
+
+**Zredukowane równanie van der Waalsa:**
+$$ \left( \pi + \frac{3}{\omega^2} \right) (3\omega - 1) = 8\tau $$.
+
+::: {.callout-note title="Definicja"}
+**Wniosek:** Substancje o tych samych parametrach zredukowanych zachowują się podobnie termodynamicznie.
+:::
+
+
+## Para Nasycona i Jakość Pary
+
+### Mieszanina Dwu fazowa
+
+*   **Para nasycona mokra:** Mieszanina cieczy wrzącej i pary nasyconej suchej.
+*   **Stopień suchości ($x$):** Stosunek masy pary suchej do masy pary mokrej.
+    $$ x = \frac{m''}{m' + m''} $$
+    *   $x=0$: ciecz nasycona (punkt pęcherzyków).
+    *   $x=1$: para nasycona sucha (punkt rosy).
+
+
+## Obliczanie Parametrów Pary Mokrej
+
+### Średnie Ważone
+
+Parametry pary mokrej (objętość, entalpia, entropia) obliczamy jako sumę udziałów fazy ciekłej i gazowej:
+
+*   **Objętość:** $v = v' + x(v'' - v')$
+*   **Entalpia:** $h = h' + x(h'' - h')$
+*   **Entropia:** $s = s' + x(s'' - s')$
+
+*Wartości z primem (') i bisem ('') odczytujemy z **tablic pary wodnej** dla danego ciśnienia lub temperatury.*
+
+
+## Tablice i Wykresy
+
+### Narzędzia Inżynierskie
+
+*   **Tablice Pary Nasyconej:** Uszeregowane według temperatury (T) lub ciśnienia (p).
+*   **Wykres $h-s$ (Molliera):** Kluczowy do analizy rozprężania w turbinach (izentropy to linie pionowe).
+*   **Wykres $p-h$:** Podstawowy w chłodnictwie; pozwala łatwo odczytać efekt chłodniczy i pracę sprężania.
+
+
+## Równanie Clapeyrona-Clausiusa
+
+### Nachylenie Krzywej Wrzenia
+
+Określa zależność między zmianą ciśnienia a zmianą temperatury podczas przemiany fazowej:
+
+$$ \frac{dp}{dT} = \frac{Q_{przemiany}}{T(v'' - v')} $$
+
+*   Dla parowania/wrzenia: $\frac{dp}{dT} > 0$ (wzrost ciśnienia podnosi temp. wrzenia).
+*   Dla topnienia lodu: $\frac{dp}{dT} < 0$ (wzrost ciśnienia obniża temp. topnienia).
+
+
+## Para Przegrzana
+
+### Powyżej Linii Nasycenia
+
+Para przegrzana powstaje przez dalsze ogrzewanie pary suchej przy stałym ciśnieniu.
+
+*   Ma temperaturę wyższą od temperatury nasycenia dla danego ciśnienia ($T > T_s$).
+*   Jej parametry wyznacza się z osobnych tablic (np. Tablica 6) lub wykresów.
+*   W miarę oddalania się od krzywej granicznej, jej właściwości zbliżają się do gazu doskonałego.
+
+
+## Przejście Fazowe II Rodzaju
+
+### Przemiany Ciągłe
+
+W przeciwieństwie do parowania (I rodzaj), tutaj **brak ciepła przemiany** ($Q_p=0$) i skokowej zmiany objętości.
+
+*   Przykład: Przejście ferromagnetyk – paramagnetyk (temp. Curie).
+*   Przykład: Przejście helu w stan nadciekły (linia $\lambda$).
+*   Cechą charakterystyczną jest **nieciągłość ciepła właściwego** ($c_p$) oraz współczynników rozszerzalności.
+
+
+## Podsumowanie i Wnioski
+
+*   **Substancje czyste** zmieniają właściwości skokowo podczas przemian fazowych.
+*   **Para mokra** to układ dwufazowy, którego stan określa stopień suchości $x$.
+*   **Gazy rzeczywiste** opisujemy równaniem van der Waalsa, uwzględniając rozmiar cząstek i ich przyciąganie.
+*   Umiejętność korzystania z **tablic i wykresów ($h-s, p-h$)** jest niezbędna do bilansowania maszyn cieplnych.
+
+
+## Zapowiedź W5
+
+### II Zasada Termodynamiki
+
+W kolejnym wykładzie zajmiemy się kierunkiem procesów:
+
+*   Dlaczego niektóre procesy są **nieodwracalne**?
+*   Czym jest **entropia** i jak rośnie w układzie izolowanym?
+*   **Obieg Carnota** jako wzorzec sprawności.
