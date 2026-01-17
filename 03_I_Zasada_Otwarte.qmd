@@ -1,0 +1,248 @@
+---
+title: "W3: I Zasada Termodynamiki - Przepływy"
+subtitle: "Układy Otwarte, Entalpia i Urządzenia Techniczne"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Układy Otwarte** (Objętość Kontrolna)
+2.  **Zasada Zachowania Masy**
+3.  **Praca Przepływu** (Flow Work)
+4.  **Entalpia** – dlaczego jest tak ważna?
+5.  **Równanie Energii Przepływu Ustalonego (SSFE)**
+6.  **Analiza Urządzeń**: Dysze, Turbiny, Sprężarki, Dławiki.
+
+---
+
+## 1. Objętość Kontrolna (Control Volume)
+
+W inżynierii rzadko śledzimy stałą masę gazu (układ zamknięty). Częściej interesuje nas urządzenie, przez które masa **przepływa**.
+Np. silnik odrzutowy, pompa wodna, kaloryfer.
+
+Granica układu to **Powierzchnia Kontrolna**. Może być:
+*   Rzeczywista (ściany rury).
+*   Wirtualna (wlot i wylot).
+
+---
+
+## 2. Zasada Zachowania Masy
+
+Dla przepływu ustalonego (Steady Flow), ilość masy w środku urządzenia jest stała ($dm/dt = 0$).
+
+Zatem:
+$$ \sum \dot{m}_{we} = \sum \dot{m}_{wy} $$
+
+Gdzie strumień masy $\dot{m}$ [kg/s]:
+$$ \dot{m} = \rho \cdot w \cdot A = \frac{w \cdot A}{v} $$
+
+*   $\rho$: Gęstość
+*   $w$: Prędkość średnia przepływu [m/s]
+*   $A$: Pole przekroju [m²]
+*   $v$: Objętość właściwa
+
+---
+
+## 3. Praca Przepływu (Flow Work)
+
+Aby wcisnąć element płynu do zbiornika o ciśnieniu $p$, musimy wykonać pracę.
+Wyobraźmy sobie niewidzialny tłok popychający płyn.
+
+$$ W_{flow} = F \cdot L = (p \cdot A) \cdot L = p \cdot V $$
+
+Praca właściwa przepływu (na kg):
+$$ w_{flow} = p \cdot v $$
+
+To energia, którą płyn "niesie" ze sobą tylko dlatego, że jest pod ciśnieniem i płynie.
+
+---
+
+## 4. Entalpia ($H$)
+
+W płynącym strumieniu całkowita energia cząsteczki to:
+$E = U$ (wewnętrzna) $+ \, pv$ (praca przepływu).
+
+Dla wygody inżynierowie zdefiniowali nową funkcję stanu będącą ich sumą:
+
+$$ h = u + p \cdot v $$
+
+**Entalpia ($h$)** = Energia Wewnętrzna + Praca Przepływu.
+
+Dzięki temu nie musimy osobno liczyć pracy wpychania/wypychania płynu z układu! Wystarczy użyć entalpii w bilansie.
+
+---
+
+## 5. Równanie Energii Przepływu Ustalonego (SSFE)
+
+I Zasada Termodynamiki dla układu otwartego:
+
+$$ \dot{Q} - \dot{W}_{tech} = \sum \dot{m}_{wy} \left( h + \frac{w^2}{2} + gz \right)_{wy} - \sum \dot{m}_{we} \left( h + \frac{w^2}{2} + gz \right)_{we} $$
+
+Dla jednego wlotu i wylotu ($\dot{m}_{we} = \dot{m}_{wy} = \dot{m}$):
+
+$$ q - w_{tech} = (h_2 - h_1) + \frac{w_2^2 - w_1^2}{2} + g(z_2 - z_1) $$
+
+*   $w_{tech}$: Praca techniczna (wału, np. turbiny).
+*   Zmiany kinetyczne i potencjalne często są pomijalne.
+
+---
+
+## 6. Analiza Urządzeń Technicznych
+
+Używając SSFE, analizujemy kluczowe maszyny.
+
+### A. Dysza (Nozzle)
+
+Cel: Zwiększenie prędkości kosztem ciśnienia.
+*   $Q \approx 0$ (za szybki proces na wymianę ciepła).
+*   $W = 0$ (brak wału).
+*   $\Delta E_p \approx 0$.
+
+Bilans (uproszczony):
+$$ 0 = (h_2 - h_1) + \frac{w_2^2 - w_1^2}{2} $$
+$$ w_2 = \sqrt{2(h_1 - h_2) + w_1^2} $$
+
+Prędkość bierze się ze spadku entalpii!
+
+---
+
+## B. Turbina
+
+Cel: Produkcja pracy ($W > 0$) kosztem entalpii gazu.
+*   Doskonale zaizolowana ($Q \approx 0$).
+*   Zmiany kinetyczne małe.
+
+Bilans:
+$$ -w_{tech} = h_2 - h_1 $$
+$$ w_{tech} = h_1 - h_2 $$
+
+Praca turbiny równa się spadkowi entalpii czynnika.
+
+---
+
+## C. Sprężarka / Pompa
+
+Cel: Zwiększenie ciśnienia kosztem dostarczonej pracy ($W < 0$).
+Jest to odwrotność turbiny.
+
+Bilans:
+$$ w_{kompresora} = h_2 - h_1 $$
+(Musimy dostarczyć energię, aby zwiększyć entalpię).
+
+---
+
+## D. Zawór Dławiący (Throttling Valve)
+
+Cel: Gwałtowny spadek ciśnienia (bez odzysku pracy).
+Np. rurka kapilarna w lodówce, lekko odkręcony kran.
+
+*   $Q = 0$ (adiabatyczny, mała powierzchnia).
+*   $W = 0$ (nic się nie kręci).
+*   $\Delta E_k \approx 0$ (lokalnie rośnie, ale daleko za zaworem wraca do normy).
+
+Bilans:
+$$ h_2 = h_1 $$
+**Proces Izentpowy ($h=const$).**
+
+Dla gazu doskonałego ($h \sim T$), oznacza to $T_1 = T_2$.
+Dla gazów rzeczywistych (chłodnictwo) następuje znaczny spadek temperatury! (Efekt Joule'a-Thomsona).
+
+---
+
+## E. Wymiennik Ciepła
+
+Cel: Wymiana ciepła między dwoma płynami, które się nie mieszają.
+*   Układ jako całość jest adiabatyczny (nie tracimy ciepła na zewnątrz, tylko między płynami).
+*   $W = 0$.
+
+$$ \dot{m}_{gorący} (h_{we} - h_{wy})_{gorący} = \dot{m}_{zimny} (h_{wy} - h_{we})_{zimny} $$
+
+To co jeden oddał, drugi zabrał.
+
+---
+
+## Wizualizacja: Praca Techniczna na p-v
+
+Praca techniczna układu otwartego to pole "na lewo" od krzywej (rzut na oś p).
+
+$$ w_{tech} = - \int v \, dp $$
+
+```{r}
+#| label: tech-work
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+library(ggplot2)
+
+v <- seq(1, 5, length.out=100)
+p <- 10 / v 
+
+df <- data.frame(v=v, p=p)
+
+ggplot(df, aes(x=v, y=p)) +
+  geom_line(size=2, color="red") +
+  # Area to the left (y-axis)
+  geom_ribbon(aes(xmin=0, xmax=v), fill="pink", alpha=0.5) +
+  annotate("text", x=1.5, y=5, label="W_tech = Pole do osi p", size=6) +
+  labs(title="Praca Techniczna vs Objętościowa", x="Objętość v", y="Ciśnienie p") +
+  theme_minimal()
+```
+
+Różnica jest kluczowa: Praca sprężarki (otwartej) jest większa niż praca tłoka (zamkniętego) przy tym samym sprężaniu!
+
+---
+
+## Podsumowanie W3
+
+1.  **Układ otwarty**: Masa przepływa. Bilans obejmuje entalpię ($h$).
+2.  **Entalpia ($h=u+pv$)**: Zawiera energię wewnętrzną i pracę "przepychania".
+3.  **SSFE**: Podstawowe równanie maszyn przepływowych.
+4.  **Dysza**: $h \downarrow, w \uparrow$.
+5.  **Turbina**: $h \downarrow, W \uparrow$.
+6.  **Dławienie**: $h = const$, $p \downarrow$.
+
+### Pytanie rekrutacyjne
+Dlaczego para parzy bardziej niż woda o tej samej temperaturze 100°C?
+(Bo niesie ogromną entalpię parowania, którą oddaje przy skraplaniu na skórze - bilans energii!).

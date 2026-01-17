@@ -1,0 +1,222 @@
+---
+title: "W6: Przemiany Gazowe II"
+subtitle: "Adiabata i Politropa - W stronę rzeczywistości"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Przemiana Adiabatyczna** (Izentropa)
+2.  **Równanie Poissona**
+3.  **Praca Sprężania Adiabatycznego**
+4.  **Przemiana Politropowa** (Uogólnienie)
+5.  **Porównanie Przemian na Wykresach**
+
+---
+
+## 1. Przemiana Adiabatyczna
+
+**Definicja:** Proces bez wymiany ciepła z otoczeniem.
+$$ q = 0 $$
+
+Realizacja techniczna:
+1.  **Doskonała izolacja:** Styropian, wełna (termos).
+2.  **Bardzo szybki proces:** Gaz nie zdąży wymienić ciepła ze ściankami (np. suw sprężania w silniku samochodowym, przelot przez dyszę).
+
+Dla procesu odwracalnego (brak tarcia), adiabata jest **izentropą** ($s=const$).
+
+---
+
+## 2. Równanie Poissona
+
+Z I Zasady ($dq = du + pdv = 0$) wyprowadza się związek:
+
+$$ p \cdot v^k = const $$
+
+*   $k = C_p / C_v$: Wykładnik adiabaty (dla powietrza 1.4).
+
+Zależności T-v i T-p:
+$$ T \cdot v^{k-1} = const $$
+$$ T \cdot p^{\frac{1-k}{k}} = const \Rightarrow \frac{T_2}{T_1} = \left( \frac{p_2}{p_1} \right)^{\frac{k-1}{k}} $$
+
+::: {.callout-important}
+Podczas sprężania adiabatycznego temperatura **gwałtownie rośnie**!
+(Dlatego diesel zapala mieszankę od samego ciśnienia).
+:::
+
+---
+
+## Adiabata: Wykresy
+
+Adiabata jest **bardziej stroma** niż izoterma na wykresie p-v.
+
+```{r}
+#| label: adiabat
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+library(ggplot2)
+library(patchwork)
+
+v <- seq(1, 4, length.out=100)
+p_iso <- 4/v  # T=const (pv^1)
+p_adia <- 4/(v^1.4) # S=const (pv^1.4)
+
+pv_plot <- ggplot() +
+  geom_line(aes(x=v, y=p_iso), size=1, color="blue", linetype="dashed") +
+  geom_line(aes(x=v, y=p_adia), size=2, color="red") +
+  annotate("text", x=3, y=1.5, label="Izoterma", color="blue") +
+  annotate("text", x=2, y=0.5, label="Adiabata", color="red") +
+  labs(title="p-v (Porównanie)", x="v", y="p") +
+  theme_minimal()
+
+# T-s (Vertical line)
+ts_plot <- ggplot() +
+  geom_segment(aes(x=2, y=5, xend=2, yend=2), arrow=arrow(), size=2, color="red") +
+  labs(title="T-s (Rozprężanie)", x="s", y="T") +
+  theme_minimal()
+
+pv_plot + ts_plot
+```
+
+---
+
+## 3. Praca w Adiabacie
+
+Ponieważ $q=0$, cała praca pochodzi ze zmiany energii wewnętrznej.
+
+1.  **Praca Objętościowa:**
+    $$ w = -\Delta u = -C_v (T_2 - T_1) = C_v (T_1 - T_2) $$
+    lub
+    $$ w = \frac{p_1 v_1 - p_2 v_2}{k - 1} $$
+
+2.  **Praca Techniczna:**
+    Dla adiabaty $w_t = k \cdot w$.
+    $$ w_t = \Delta h = C_p (T_2 - T_1) $$
+    (To jest praca potrzebna do napędu kompresora).
+
+---
+
+## 4. Przemiana Politropowa
+
+Procesy rzeczywiste rzadko są idealnie adiabatyczne ($k=1.4$) albo izotermiczne ($k=1$). Zazwyczaj są gdzieś pomiędzy.
+
+Uogólnione równanie:
+$$ p \cdot v^n = const $$
+
+*   $n$: Wykładnik politropy ($-\infty < n < +\infty$).
+
+Politropa pokrywa wszystkie inne przemiany!
+1.  **$n=0$**: Izobara ($p=const$)
+2.  **$n=1$**: Izoterma ($pv=const$)
+3.  **$n=k$**: Adiabata ($pv^k=const$)
+4.  **$n=\infty$**: Izochora ($v=const$)
+
+---
+
+## Ciepło Politropowe
+
+W politropie ciepło JEST wymieniane (ale w specyficzny sposób).
+
+Ciepło właściwe politropowe $C_n$:
+$$ C_n = C_v \frac{n-k}{n-1} $$
+
+Ciepło procesu:
+$$ q = C_n (T_2 - T_1) $$
+
+Dla sprężarek tłokowych często $1 < n < k$ (np. $n=1.2$). Oznacza to, że trochę chłodzimy cylinder (bliżej izotermy), co oszczędza pracę!
+
+---
+
+## 5. Zestawienie Graficzne (Słoneczko Termodynamiczne)
+
+Wszystkie przemiany wychodzą z jednego punktu.
+
+```{r}
+#| label: polyp-sun
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6
+
+v <- seq(1, 3, length.out=100)
+# Start point (1, 10)
+# Isobar n=0 -> p=10
+p_0 <- rep(10, 100)
+# Isotherm n=1 -> p = 10/v
+p_1 <- 10/v
+# Adiabat n=1.4 -> p = 10 / v^1.4
+p_k <- 10 / v^1.4
+# Isochor n=inf -> Vertical line at v=1
+
+ggplot() +
+  geom_line(aes(x=v, y=p_0), color="green", size=1.5) +
+  geom_line(aes(x=v, y=p_1), color="blue", size=1.5) +
+  geom_line(aes(x=v, y=p_k), color="red", size=1.5) +
+  geom_segment(aes(x=1, y=10, xend=1, yend=2), color="purple", size=1.5) + # Isochor expansion? Pressure drop
+  
+  annotate("text", x=2, y=10.5, label="n=0 (p)", color="green") +
+  annotate("text", x=2, y=5.5, label="n=1 (T)", color="blue") +
+  annotate("text", x=2, y=2.5, label="n=k (s)", color="red") +
+  annotate("text", x=1.1, y=3, label="n=inf (v)", color="purple") +
+  
+  labs(title="Rozprężanie: Która krzywa daje najwięcej pracy?", subtitle="Pole pod wykresem!", x="v", y="p") +
+  theme_minimal()
+```
+
+Kolejność (od góry): Izobara > Izoterma > Adiabata > Izochora.
+**Wniosek:** Żeby uzyskać max pracę z rozprężania, trzeba grzać (izoterma/izobara). Żeby zużyć min pracy na sprężanie, trzeba chłodzić (izoterma)!
+
+---
+
+## Podsumowanie W6
+
+1.  **Adiabata:** $q=0$, $T$ rośnie przy sprężaniu. $pv^{1.4}=const$.
+2.  **Praca techniczna kompresora:** Zależy od entalpii (czyli temperatury końca sprężania). Im zimniej, tym taniej sprężać.
+3.  **Politropa:** Rzeczywisty model procesów ($pv^n=const$).
+4.  **Wnioski inżynierskie:** Chłodzenie sprężarek się opłaca (zmniejsza $n$ w stronę 1).
+
+### Pytanie kontrolne
+Dlaczego wylot z dezodorantu jest zimny?
+(Gwałtowne rozprężanie adiabatyczne gazu pędnego. Energia wewnętrzna maleje, wykonując pracę ekspansji $\rightarrow$ T spada).

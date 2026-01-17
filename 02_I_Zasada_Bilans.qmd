@@ -1,0 +1,285 @@
+---
+title: "W2: I Zasada Termodynamiki"
+subtitle: "Bilans Energii w Układach Zamkniętych"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Formy Energii** (Wewnętrzna, Kinetyczna, Potencjalna)
+2.  **Mechanizmy Transferu Energii**
+    *   Ciepło ($Q$)
+    *   Praca ($W$)
+3.  **Praca Objętościowa** (Układy z ruchomą granicą)
+4.  **I Zasada Termodynamiki** (Zasada Zachowania Energii)
+5.  **Ciepła Właściwe** ($C_v$ i $C_p$)
+
+---
+
+## 1. Formy Energii Całkowitej ($E$)
+
+Energia całkowita układu ($E$) to suma:
+
+1.  **Energia Wewnętrzna ($U$):**
+    *   Suma wszystkich mikroskopowych form energii (drgania atomów, rotacje, wiązania chemiczne).
+    *   Zależy silnie od Temperatury!
+2.  **Energia Kinetyczna ($E_k$):**
+    *   Ruch całego układu (np. lecący pocisk).
+    *   $E_k = \frac{m v^2}{2}$
+3.  **Energia Potencjalna ($E_p$):**
+    *   Położenie w polu grawitacyjnym.
+    *   $E_p = m g z$
+
+$$ E = U + E_k + E_p \approx U \quad \text{(dla układów stacjonarnych)} $$
+
+---
+
+## Energia Wewnętrzna ($U$)
+
+Najważniejszy składnik w termodynamice.
+
+*   Dla gazów doskonałych zależy **tylko** od temperatury: $U = f(T)$.
+*   Jest funkcją stanu (nie zależy od drogi).
+*   Zmiana $\Delta U$ jest kluczowa dla bilansu.
+
+---
+
+## 2. Transfer Energii: Ciepło ($Q$)
+
+Energia przekazywana między układem a otoczeniem wyłącznie z powodu **różnicy temperatur**.
+
+*   Kierunek: Zawsze od $T_{wysokiej}$ do $T_{niskiej}$.
+*   Proces adiabatyczny: Taki, w którym $Q = 0$ (doskonała izolacja).
+
+**Konwencja znaków:**
+*   $Q > 0$: Ciepło **dostarczone** do układu (+) (Ogrzewanie).
+*   $Q < 0$: Ciepło **oddane** przez układ (-) (Chłodzenie).
+
+Jednostka: Dżul [J] lub kJ.
+
+---
+
+## Transfer Energii: Praca ($W$)
+
+Energia przekazywana, która nie jest ciepłem. Związana z działaniem siły na drodze.
+$$ W = \int F \cdot ds $$
+
+Formy pracy:
+1.  Praca tłoka (objętościowa).
+2.  Praca wału (obrotowa).
+3.  Praca elektryczna.
+
+**Konwencja znaków (Konwencja energetyczna - "egoistyczna dla układu"):**
+*   $W > 0$: Praca **wykonana PRZEZ** układ (np. silnik działa).
+*   $W < 0$: Praca **wykonana NA** układzie (np. sprężarka zużywa prąd).
+
+::: {.callout-note}
+Uwaga: W niektórych podręcznikach chemików znak jest odwrotny ($W > 0$ gdy praca dodana). My stosujemy konwencję inżynierską.
+:::
+
+---
+
+## Porównanie $Q$ i $W$
+
+| Cecha | Ciepło (Q) | Praca (W) |
+| :--- | :--- | :--- |
+| **Przyczyna** | $\Delta T$ | Siła $\cdot$ Droga |
+| **Jakość** | Niska (Entropia) | Wysoka (Szlahetna) |
+| **Funkcja stanu?** | NIE (Funkcja procesu) | NIE (Funkcja procesu) |
+
+Wielkości te nazywamy "funkcjami przejścia". Zależą od ścieżki (path-dependent).
+Nie można powiedzieć "układ ma w sobie ciepło". Układ ma energię wewnętrzną.
+
+---
+
+## 3. Praca Objętościowa (Boundary Work)
+
+Praca związana z ekspansją lub kompresją gazu w cylindrze z tłokiem.
+
+$$ \delta W = F \cdot ds = (p \cdot A) \cdot ds = p \cdot (A \cdot ds) = p \cdot dV $$
+
+Całkowita praca procesu 1-2:
+$$ W_{1-2} = \int_{V_1}^{V_2} p \, dV $$
+
+Interpretacja geometryczna: **Pole pod krzywą procesu na wykresie p-V**.
+
+---
+
+## Wizualizacja: Pole pod Krzywą
+
+```{r}
+#| label: pv-work
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+library(ggplot2)
+
+v <- seq(1, 5, length.out=100)
+p <- 10 / v # Isothermal expansion p = C/v
+
+df <- data.frame(v=v, p=p)
+
+ggplot(df, aes(x=v, y=p)) +
+  geom_line(size=2, color="blue") +
+  geom_area(fill="lightblue", alpha=0.5) +
+  annotate("text", x=3, y=1, label="W = Pole pod krzywą", size=6) +
+  annotate("text", x=1, y=10.5, label="1", size=6, fontface="bold") +
+  annotate("text", x=5, y=1.5, label="2", size=6, fontface="bold") +
+  labs(title="Praca ekspansji na wykresie p-V", x="Objętość V", y="Ciśnienie p") +
+  theme_minimal()
+```
+
+Im większe ciśnienie w trakcie rozprężania, tym większa praca wykonana przez tłok.
+
+---
+
+## Przykłady Pracy Objętościowej
+
+1.  **Izochora ($V = const$, $dV = 0$):**
+    $$ W = \int p \cdot 0 = 0 $$
+    (Tłok się nie rusza $\rightarrow$ brak pracy mechanicznej).
+
+2.  **Izobara ($p = const$):**
+    $$ W = p \int_{V_1}^{V_2} dV = p (V_2 - V_1) $$
+
+---
+
+## 4. I Zasada Termodynamiki
+
+Podstawowe prawo przyrody: **Zasada Zachowania Energii**.
+
+> Energia nie może być stworzona ani zniszczona, może jedynie zmieniać formę.
+
+Dla układu zamkniętego wykonującego cykl:
+$$ \oint \delta Q = \oint \delta W $$
+(Suma ciepła netto = Suma pracy netto).
+
+---
+
+## I Zasada dla Procesu (Układ Zamknięty)
+
+Jeśli układ przechodzi ze stanu 1 do 2:
+
+$$ \Delta E_{układu} = E_{wejście} - E_{wyjście} $$
+
+Dla układu stacjonarnych ($\Delta E_k \approx 0, \Delta E_p \approx 0$):
+$$ \Delta U = Q_{netto} - W_{netto} $$
+
+lub w formie różniczkowej:
+$$ dU = \delta Q - \delta W $$
+
+Jest to fundament rozwiązywania zadań.
+"Zmiana zawartości portfela = Przychody - Wydatki".
+
+---
+
+## Przykład Bilansu
+
+:::{.callout-example}
+Gaz w cylindrze otrzymuje **50 kJ ciepła** i wykonuje przy tym **20 kJ pracy** (podnosząc tłok). Jak zmieniła się energia wewnętrzna?
+
+$$ \Delta U = Q - W $$
+$$ \Delta U = (+50 \text{ kJ}) - (+20 \text{ kJ}) = 30 \text{ kJ} $$
+
+Energia gazu wzrosła o 30 kJ (gaz się ogrzał).
+:::
+
+---
+
+## 5. Ciepła Właściwe (Specific Heats)
+
+Ile energii potrzeba, żeby ogrzać 1 kg substancji o 1 K?
+
+Istnieją dwa rodzaje ciepła właściwego dla gazów:
+
+1.  **Przy stałej objętości ($C_v$):**
+    Definicja: $C_v = \left( \frac{\partial u}{\partial T} \right)_v$
+    Fizycznie: Całe ciepło idzie w $\Delta U$ (bo nie ma pracy).
+
+2.  **Przy stałym ciśnieniu ($C_p$):**
+    Definicja: $C_p = \left( \frac{\partial h}{\partial T} \right)_p$
+    Fizycznie: Część ciepła idzie w $\Delta U$, a część na pracę ekspansji ($p \Delta v$).
+
+---
+
+## Związek $C_p$ i $C_v$
+
+Zawsze:
+$$ C_p > C_v $$
+(Bo przy $p=const$ musimy dodatkowo "nakarmić" pracę objętościową rozszerzającego się gazu).
+
+Dla gazu doskonałego (Relacja Mayera):
+$$ C_p - C_v = R $$
+($R$ - indywidualna stała gazowa).
+
+**Wykładnik adiabaty ($k$ lub $\gamma$):**
+$$ k = \frac{C_p}{C_v} > 1 $$
+Dla powietrza $k \approx 1.4$.
+
+---
+
+## Obliczanie $\Delta U$ i $\Delta H$
+
+Dla gazów doskonałych (zawsze prawdziwe, bez względu na proces!):
+
+$$ \Delta U = m \cdot C_v \cdot \Delta T $$
+
+$$ \Delta H = m \cdot C_p \cdot \Delta T $$
+
+::: {.callout-warning}
+To są wzory na **zmianę funkcji stanu**. Można ich użyć nawet w procesie izobarycznym, aby policzyć $\Delta U$ (używając $C_v$). Nie mylić z ciepłem wymienionym w procesie!
+:::
+
+---
+
+## Podsumowanie W2
+
+1.  **Energia Wewnętrzna ($U$)**: Suma energii mikrocząsteczek.
+2.  **Praca Objętościowa**: Pole pod krzywą procesu ($W = \int p dV$).
+3.  **I Zasada**: $\Delta U = Q - W$. Bilans musi się zgadzać.
+4.  **Ciepła Właściwe**: $C_p > C_v$, ich różnica to stała gazowa $R$.
+
+### Zadanie Domowe
+Zrobić bilans energii dla grzałki elektrycznej w sztywnym zbiorniku (izochora). Czy $W=0$? (Podpowiedź: Praca elektryczna!).

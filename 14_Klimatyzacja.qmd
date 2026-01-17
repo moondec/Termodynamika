@@ -1,0 +1,183 @@
+---
+title: "W14: Procesy Klimatyzacyjne"
+subtitle: "Projektowanie procesów na wykresie i-x"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Centrala Wentylacyjna (AHU)**
+2.  **Ogrzewanie i Chłodzenie**
+3.  **Nawilżanie** (Parowe vs Wodne)
+4.  **Mieszanie Strumieni** (Dźwignia)
+5.  **Przemiany Sezonowe** (Zima vs Lato)
+
+---
+
+## 1. Centrala Wentylacyjna (AHU)
+
+Fabryka powietrza. Składa się z sekcji:
+1.  Filtr (czystość).
+2.  Nagrzewnica (zima).
+3.  Chłodnica (lato).
+4.  Nawilżacz (zima).
+5.  Odzysk ciepła (rekuperator).
+
+Każdy element realizuje konkretny proces termodynamiczny na wykresie i-x.
+
+---
+
+## 2. Ogrzewanie i Chłodzenie
+
+### Ogrzewanie (Nagrzewnica)
+*   **Proces:** $x = const$ (nie dodajemy wody).
+*   **Kierunek:** Pionowo w górę na i-x.
+*   **Efekt:** Temperatura rośnie, ale **wilgotność względna $\varphi$ spada!**
+    (Dlatego zimą w ogrzewanym domu jest sucho - $\varphi \approx 20-30\%$).
+
+### Chłodzenie Jawne (Chłodnica Sucha)
+*   **Proces:** $x = const$.
+*   **Kierunek:** Pionowo w dół.
+*   **Limit:** Temperatura punktu rosy ($t_R$). Jeśli zejdziemy niżej, zacznie się wykraplanie (chłodzenie mokre).
+
+---
+
+## 3. Nawilżanie
+
+Jak dodać wodę do powietrza?
+
+### A. Nawilżanie Parowe (Lanca Parowa)
+Wtryskujemy gorącą parę ($100^\circ C$).
+*   **Proces:** $t \approx const$ (izoterma).
+*   **Kierunek:** Pionowo w prawo.
+*   **Zaleta:** Higieniczne, łatwa kontrola.
+*   **Wada:** Drogie (musimy wytworzyć parę = energia).
+
+### B. Nawilżanie Wodne (Zraszacz/Adiabatyczne)
+Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować.
+*   **Proces:** $i = const$ (Izentpalpa).
+*   **Kierunek:** Ukośnie w dół-prawo (wzdłuż linii entalpii).
+*   **Efekt:** Wilgotność rośnie ($x \uparrow$), ale temperatura spada ($t \downarrow$)!
+*   **Zastosowanie:** Chłodzenie wyparne (tanie chłodzenie latem).
+
+---
+
+## 4. Mieszanie Strumieni
+
+Mieszamy powietrze świeże (zewnętrzne Z) z powietrzem obiegowym (z sali S).
+
+**Reguła Dźwigni:**
+Punkt mieszania M leży na prostej łączącej Z i S.
+Odległość zależy od proporcji strumieni masy.
+
+$$ \frac{m_Z}{m_S} = \frac{\text{odcinek } SM}{\text{odcinek } ZM} $$
+
+$$ h_M = g_Z h_Z + g_S h_S $$
+$$ x_M = g_Z x_Z + g_S x_S $$
+($g$ - udział masowy).
+
+---
+
+## Wizualizacja: Mieszanie
+
+```{r}
+#| label: mixing
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6
+
+library(ggplot2)
+
+df_mix <- data.frame(
+  x = c(5, 10, 20),
+  t = c(0, 18, 25),
+  label = c("Z (Zima)", "M (Mieszanina)", "S (Sala)")
+)
+
+ggplot(df_mix, aes(x=x, y=t)) +
+  geom_line(color="grey", size=1) + # Mixing line
+  geom_point(aes(color=label), size=5) +
+  geom_text(aes(label=label), vjust=-1) +
+  labs(title="Mieszanie Zimą", x="x", y="t") +
+  theme_minimal()
+```
+
+Mieszanie pozwala zaoszczędzić ogromne ilości energii (recyrkulacja ciepłego powietrza z sali).
+
+---
+
+## 5. Przemiany Sezonowe
+
+### ZIMA (Cel: Ogrzać i Nawilżyć)
+Punkt Zewnętrzny: -10C, 90%.
+Punkt Celowy: 22C, 50%.
+
+Ścieżka:
+1.  Mieszanie (odzysk ciepła).
+2.  Wstępne ogrzewanie.
+3.  Nawilżanie (parowe lub wodne).
+    *   Jeśli wodne: temperatura spadnie, więc musimy przegrzać bardziej!
+4.  Wtórne ogrzewanie (jeśli trzeba).
+
+### LATO (Cel: Ochłodzić i Osuszyć)
+Punkt Zewnętrzny: 32C, 40%.
+Punkt Celowy: 24C, 50%.
+
+Ścieżka:
+1.  Chłodzenie aż do punktu rosy (chłodnica mokra).
+2.  Wyraplanie wilgoci (zmniejszanie $x$).
+3.  Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12C) na ludzi.
+
+---
+
+## Podsumowanie W14
+
+1.  **AHU** to ciąg procesów termodynamicznych.
+2.  **Ogrzewanie** osusza powietrze (względnie).
+3.  **Nawilżanie adiabatyczne** (wodne) darmowo chłodzi powietrze.
+4.  **Mieszanie** to prosta średnia ważona na wykresie.
+5.  **Klimatyzacja letnia** jest najdroższa, bo wymaga usuwania ciepła utajonego (skraplanie pary).
+
+### Zadanie Domowe
+Zaprojektuj proces zimowy: Zewn (-5C, x=2g/kg). Cel (20C, x=10g/kg). Ile wody trzeba dolać i ile ciepła dostarczyć?

@@ -1,0 +1,176 @@
+---
+title: "W13: Powietrze Wilgotne"
+subtitle: "Psychrometria i Wykres Molliera"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Skład Powietrza Wilgotnego** (Prawo Daltona)
+2.  **Parametry Wilgotności** ($\varphi$, $x$)
+3.  **Entalpia Powietrza Wilgotnego** ($i$)
+4.  **Konstrukcja Wykresu Molliera i-x**
+5.  **Punkt Rosy i Temperatura Termometru Mokrego**
+
+---
+
+## 1. Mieszanina Dwu-składnikowa
+
+Powietrze wilgotne traktujemy jako mieszaninę:
+1.  **Powietrze Suche (p):** Gaz doskonały ($N_2, O_2, Ar$). Masa $m_p$.
+2.  **Para Wodna (w):** Gaz "pół-doskonały" (blisko nasycenia). Masa $m_w$.
+
+$$ p_{barometryczne} = p_p + p_w $$
+
+W typowych warunkach $p_w$ jest bardzo małe (1-3 kPa), ale decyduje o naszym komforcie!
+
+---
+
+## 2. Parametry Wilgotności
+
+Inżynierowie używają dwóch definicji:
+
+### Wilgotność Względna ($\varphi$ lub $RH$)
+Stosunek ciśnienia cząstkowego pary do ciśnienia nasycenia w danej temperaturze.
+$$ \varphi = \frac{p_w}{p_{sat}(T)} \cdot 100\% $$
+Mówi nam, jak blisko jesteśmy mgły (nasycenia).
+
+### Wilgotność Bezwzględna ($x$ lub $X$) (Zawartość wilgoci)
+Stosunek masy pary do masy powietrza suchego!
+$$ x = \frac{m_w}{m_p} = 0.622 \frac{p_w}{p_b - p_w} \quad [\frac{kg_{H2O}}{kg_{suchego}}] $$
+
+Dlaczego tak? Bo w procesach (np. ogrzewania) masa powietrza suchego się nie zmienia, więc $x=const$.
+
+---
+
+## 3. Entalpia ($i$ lub $h$)
+
+Entalpia powietrza wilgotnego odniesiona jest do 1 kg powietrza suchego.
+
+$$ i = i_{powietrza} + x \cdot i_{pary} $$
+
+Przyjmując $0 C$ jako punkt odniesienia:
+$$ i = (1.005 \cdot t) + x \cdot (2501 + 1.86 \cdot t) \quad [\frac{kJ}{kg}] $$
+
+*   1.005: $C_p$ powietrza.
+*   2501: Ciepło parowania wody ($r$) w 0C.
+*   1.86: $C_p$ pary wodnej.
+
+Wniosek: **Para niesie ogromną energię (ciepło utajone)!**
+
+---
+
+## 4. Wykres Molliera h-x (i-x)
+
+Standard w Europie Środkowej. (Amerykanie używają Carrier Psychrometric Chart).
+
+Układ ukośnokątny:
+*   Oś pionowa: Temperatura $t$.
+*   Oś pozioma: Wilgotność $x$.
+*   Linie izentalp ($i=const$): Biegną ukośnie pod kątem 135 stopni (dlatego wykres jest przekoszony, żeby izotermy były prawie poziome).
+
+### Linie na wykresie:
+1.  **Izotermy:** Lekko wznoszą się w prawo (dla tego samego $t$, wilgotne powietrze ma wyższą entalpię).
+2.  **Linie stałej wilgotności względnej $\varphi$:** Krzywe "bananowe". $\varphi=100\%$ to linia graniczna (nasycenia).
+
+---
+
+## Wizualizacja: Wykres i-x
+
+```{r}
+#| label: ix-diagram-adv
+#| echo: false
+#| fig-width: 10
+#| fig-height: 6
+
+library(ggplot2)
+
+x <- seq(0, 30, length.out=100) # g/kg
+# Saturation curve approx x_s = A * exp(B*t) -> t = ln(x/A)/B
+# t = 10 + (x/2)^1.3
+t_sat <- 5 + 1.2 * x + 0.05 * x^2
+sat_curve <- data.frame(x=x, t=t_sat)
+
+# Isotherms
+df_iso <- data.frame(
+  x = rep(x, 2),
+  t = c(rep(20, 100), rep(30, 100)),
+  group = rep(c("20C", "30C"), each=100)
+)
+
+ggplot() +
+  geom_line(data=sat_curve, aes(x=x, y=t), color="blue", size=2) +
+  geom_line(data=df_iso, aes(x=x, y=t, group=group), color="red", linetype="dashed") +
+  annotate("text", x=25, y=70, label="phi=100%", color="blue") +
+  annotate("text", x=5, y=22, label="t=20C") +
+  annotate("text", x=5, y=32, label="t=30C") +
+  labs(title="Schemat Wykresu Molliera i-x", x="x [g/kg]", y="t [C]") +
+  theme_minimal()
+```
+
+---
+
+## 5. Temperatury w Psychrometrii
+
+Mamy aż trzy definicje temperatury!
+
+1.  **Temperatura termometru suchego ($t$):** To co widzimy na zwykłym termometrze.
+2.  **Temperatura Punktu Rosy ($t_R$):** Temperatura, do której trzeba schłodzić powietrze (przy $x=const$), żeby zaczęło się skraplać ($\varphi=100\%$). Ważne w budownictwie (wilgoć na oknach).
+3.  **Temperatura termometru mokrego ($t_m$):** Najniższa temperatura, jaką można uzyskać przez odparowanie wody (nawilżanie adiabatyczne). Mierzona termometrem owiniętym mokrą gazą.
+
+Związek: $t \ge t_m \ge t_R$.
+Równe tylko dla $\varphi=100\%$.
+
+---
+
+## Podsumowanie W13
+
+1.  **x vs $\varphi$:** $x$ to ilość paliwa (wody), $\varphi$ to stopień napełnienia baku (ile jeszcze zmieści).
+2.  **Entalpia:** Zależy głównie od wilgotności (ciepło utajone).
+3.  **Punkt Rosy:** Kluczowy parametr aby uniknąć grzyba na ścianie.
+4.  **Wykres i-x:** Narzędzie do śledzenia procesów (następny wykład).
+
+### Zadanie Domowe
+Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"?
+(Bo temperatura szkła jest niższa niż temperatura punktu rosy otaczającego powietrza).

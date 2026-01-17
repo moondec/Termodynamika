@@ -1,0 +1,263 @@
+---
+title: "W10: Silniki Spalinowe"
+subtitle: "Obiegi Otto, Diesla i Sabathe"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Standard Powietrzny** (Założenia)
+2.  **Parametry Geometryczne** (Stopień sprężania)
+3.  **Obieg Otto** (Silnik benzynowy)
+4.  **Obieg Diesla** (Silnik wysokoprężny)
+5.  **Porównanie Sprawności**
+6.  **Ciśnienie Średnie Indykowane**
+
+---
+
+## 1. Standard Powietrzny
+
+Rzeczywisty proces spalania jest skomplikowany (zmiana składu chemicznego, tarcie).
+W termodynamice stosujemy model uproszczony (Air-Standard Assumptions):
+
+1.  Czynnik roboczy to **powietrze** (gaz doskonały).
+2.  Obieg jest **zamknięty** (nie ma wymiany ładunku).
+3.  Spalanie zastępujemy **doprowadzeniem ciepła** ze źrodła zewnętrznego.
+4.  Wydech zastępujemy **odprowadzeniem ciepła** (chłodzeniem).
+5.  Wszystkie procesy są odwracalne.
+
+---
+
+## 2. Geometria Silnika
+
+Kluczowe parametry:
+1.  **GMP (TDC):** Górny Martwy Punkt (min objętość, $V_{min}$).
+2.  **DMP (BDC):** Dolny Martwy Punkt (max objętość, $V_{max}$).
+3.  **Objętość skokowa ($V_s$):** $V_{max} - V_{min}$.
+
+### Stopień Sprężania ($\varepsilon$)
+Najważniejszy parametr decydujący o sprawności!
+
+$$ \varepsilon = \frac{V_{max}}{V_{min}} $$
+
+*   Silniki benzynowe: $\varepsilon = 8 - 12$.
+*   Diesle: $\varepsilon = 14 - 24$.
+
+---
+
+## 3. Obieg Otto (Zapłon Iskrowy - ZI)
+
+Model silnika benzynowego. Mieszanka paliwowo-powietrzna jest sprężana, a potem zapalana iskrą.
+
+Procesy:
+1.  **1-2:** Sprężanie izentropowe ($s=const$).
+2.  **2-3:** Doprowadzenie ciepła przy **stałej objętości** ($v=const$) - "Eksplozja".
+3.  **3-4:** Rozprężanie izentropowe (Praca).
+4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości** (Wydech).
+
+---
+
+## Otto: Wykres i Sprawność
+
+```{r}
+#| label: otto
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+library(ggplot2)
+
+# Otto cycle points
+v_min <- 1; v_max <- 8
+epsilon <- v_max/v_min
+k <- 1.4
+
+# 1-2 Adiabatic compression
+v12 <- seq(v_max, v_min, length.out=50)
+p1 <- 1
+p2 <- p1 * (v_max/v_min)^k
+p12 <- p1 * (v_max/v12)^k
+
+# 2-3 Isochoric heating
+p3 <- p2 * 3 # Explosion ratio
+v23 <- rep(v_min, 50)
+p23 <- seq(p2, p3, length.out=50)
+
+# 3-4 Adiabatic expansion
+v34 <- seq(v_min, v_max, length.out=50)
+p34 <- p3 * (v_min/v34)^k
+p4 <- tail(p34, 1)
+
+# 4-1 Isochoric cooling
+v41 <- rep(v_max, 50)
+p41 <- seq(p4, p1, length.out=50)
+
+df_otto <- data.frame(
+  v = c(v12, v23, v34, v41),
+  p = c(p12, p23, p34, p41),
+  part = rep(c("1-2", "2-3", "3-4", "4-1"), each=50)
+)
+
+ggplot(df_otto, aes(x=v, y=p)) + geom_path(size=2, color="red") +
+  annotate("text", x=v_max, y=p1, label="1", vjust=2) +
+  annotate("text", x=v_min, y=p2, label="2", hjust=2) +
+  annotate("text", x=v_min, y=p3, label="3", hjust=2) +
+  annotate("text", x=v_max, y=p4, label="4", vjust=-1) +
+  geom_text(aes(x=2, y=p3/2), label="Q_in (Izohora)") +
+  theme_minimal() + labs(title="Obieg Otto (ZI)", x="v", y="p")
+```
+
+$$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} $$
+
+Wniosek: Im wyższy stopień sprężania, tym wyższa sprawność.
+Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).
+
+---
+
+## 4. Obieg Diesla (Zapłon Samoczynny - ZS)
+
+Model silnika wysokoprężnego. Sprężamy samo powietrze (do bardzo wysokiej temperatury), a potem wtryskujemy paliwo.
+
+Różnica: Paliwo pali się wolniej, w miarę jak tłok idzie w dół.
+Dlatego spalanie modelujemy jako **Izobarę** ($p=const$).
+
+Procesy:
+1.  **1-2:** Sprężanie izentropowe.
+2.  **2-3:** Doprowadzenie ciepła przy **stałym ciśnieniu** ($p=const$).
+3.  **3-4:** Rozprężanie izentropowe.
+4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości**.
+
+---
+
+## Diesel: Wykres
+
+```{r}
+#| label: diesel
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+# Diesel points
+v_min <- 1; v_max <- 18 # Higher compression ratio
+p1 <- 1
+k <- 1.4
+
+# 1-2
+v12 <- seq(v_max, v_min, length.out=50)
+p2 <- p1 * (v_max/v_min)^k
+p12 <- p1 * (v_max/v12)^k
+
+# 2-3 Isobaric heating (Cut-off)
+v3 <- v_min * 2 # Cut-off ratio rc = 2
+v23 <- seq(v_min, v3, length.out=50)
+p23 <- rep(p2, 50)
+p3 <- p2
+
+# 3-4 Expansion
+v34 <- seq(v3, v_max, length.out=50)
+p34 <- p3 * (v3/v34)^k
+p4 <- tail(p34, 1)
+
+# 4-1 Cooling
+v41 <- rep(v_max, 50)
+p41 <- seq(p4, p1, length.out=50)
+
+df_diesel <- data.frame(
+  v = c(v12, v23, v34, v41),
+  p = c(p12, p23, p34, p41)
+)
+
+ggplot(df_diesel, aes(x=v, y=p)) + geom_path(size=2, color="blue") +
+   annotate("text", x=v_max, y=p1, label="1", vjust=2) +
+  theme_minimal() + labs(title="Obieg Diesla (ZS)", x="v", y="p")
+```
+
+---
+
+## Sprawność Diesla
+
+Zależy od stopnia obciążenia silnika (Stopnia obciążenia $\rho = V_3/V_2$).
+
+$$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{k-1}} \left[ \frac{\rho^k - 1}{k(\rho - 1)} \right] $$
+
+*   Człon w nawiasie jest zawsze $> 1$.
+*   Dla tego samego stopnia sprężania $\varepsilon$, Otto jest sprawniejszy niż Diesel!
+*   ALE: Diesle mogą pracować na znacznie wyższym $\varepsilon$ (brak spalania stukowego), więc w praktyce są sprawniejsze.
+
+---
+
+## 5. Obieg Sabathe (Mieszany)
+
+Model najbardziej zbliżony do nowoczesnych diesli szybkoobrotowych (Common Rail).
+Ciepło doprowadzane jest częściowo przy $V=const$, a częściowo przy $p=const$.
+
+Jest to uogólnienie obu poprzednich obiegów.
+
+---
+
+## 6. Ciśnienie Średnie Indykowane ($p_{me}$)
+
+Jak porównać silnik od kosiarki (mały $V_s$) z silnikiem okrętowym (duży $V_s$)?
+Używamy parametru uniezależnionego od wielkości.
+
+**Mean Effective Pressure ($MEP$):**
+Stałe ciśnienie, które działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.
+
+$$ p_{me} = \frac{W_{net}}{V_s} $$
+
+Dla nowoczesnych silników turbo: $p_{me} \approx 20-30 \text{ bar}$.
+Dla wolnossących: $10-12 \text{ bar}$.
+
+---
+
+## Podsumowanie W10
+
+1.  **Stopień sprężania $\varepsilon$** to klucz do sprawności.
+2.  **Otto:** Ogrzewanie izochoryczne ($V=const$). Ograniczony przez spalanie stukowe.
+3.  **Diesel:** Ogrzewanie izobaryczne ($p=const$). Wyższe sprężanie $\rightarrow$ mniejsze zużycie paliwa.
+4.  Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).
+
+### Zadanie Domowe
+Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($k=1.4$).
+Wynik: $\eta = 1 - 1/10^{0.4} \approx 60\%$. (Rzeczywista to ok 30-35%).

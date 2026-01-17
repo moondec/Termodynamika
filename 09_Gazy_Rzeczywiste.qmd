@@ -1,0 +1,199 @@
+---
+title: "W9: Gazy Rzeczywiste i Para"
+subtitle: "Gdy model gazu doskonałego zawodzi"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Dlaczego gaz doskonały to za mało?**
+2.  **Równanie van der Waalsa**
+3.  **Przemiany Fazowe** (Woda $\to$ Para)
+4.  **Wykresy Fazowe** (p-v, p-T, T-s)
+5.  **Tablice Parowe** (Jak z nich korzystać)
+6.  **Stopień Suchości pary ($x$)**
+
+---
+
+## 1. Gazy Rzeczywiste
+
+Model $pV=mRT$ zakłada brak objętości własnej cząsteczek i brak oddziaływań.
+Przy **wysokim ciśnieniu** cząsteczki są upchane tak gęsto, że "czują" się nawzajem.
+Przy **niskiej temperaturze** siły przyciągania zaczynają dominować (skraplanie).
+
+### Współczynnik Ściśliwości ($Z$)
+Korekta do równania idealnego:
+$$ pV = Z \cdot mRT $$
+*   $Z=1$: Gaz doskonały.
+*   $Z < 1$: Dominują siły przyciągania (gaz "łatwiej ściągnąć").
+*   $Z > 1$: Dominuje objętość własna (gaz "trudniej ściągnąć").
+
+---
+
+## 2. Równanie van der Waalsa
+
+Pierwsze historyczne równanie opisujące gaz rzeczywisty i ciecz.
+
+$$ \left( p + \frac{a}{v^2} \right) (v - b) = R \cdot T $$
+
+*   **Poprawka ciśnieniowa ($a/v^2$):** Uwzględnia siły przyciągania między cząsteczkami (zmniejszają ciśnienie na ścianki).
+*   **Poprawka objętościowa ($b$):** Odejmuje objętość własną cząsteczek ("covolume") od dostępnej objętości.
+
+Dzięki temu równaniu możemy przewidzieć istnienie **punktu krytycznego**.
+
+---
+
+## 3. Przemiany Fazowe Wody
+
+Ogrzewanie lodu pod ciśnieniem 1 atm:
+1.  **Lód (-10C):** Ciało stałe.
+2.  **Topnienie (0C):** Mieszanina lód+woda. $T=const$.
+3.  **Woda (0-100C):** Ciecz (Subcooled liquid).
+4.  **Wrzenie (100C):** Mieszanina woda+para. $T=const$ (Nasycenie).
+5.  **Para (100C+):** Para przegrzana (Superheated vapor).
+
+W termodynamice technicznej (energetyka) interesuje nas głównie etap 3-5.
+
+---
+
+## Wykres p-v (Isotermy Andrewsa)
+
+Dla gazu rzeczywistego izotermy nie są idealnymi hiperbolami. W obszarze "pod kopułą" stają się poziome!
+
+```{r}
+#| label: andrews
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+library(ggplot2)
+
+v <- seq(0.5, 5, length.out=100)
+# Van der Waals isotherm simulation (qualitative)
+# p = RT/(v-b) - a/v^2
+R <- 1; T_high <- 1.5; a <- 3; b <- 0.3
+p_ideal <- R*T_high/(v-b) - a/v^2
+
+ggplot() +
+  ylim(0, 5) +
+  annotate("text", x=2.5, y=4, label="Gaz Doskonały (T > Tkryt)", color="red") +
+  annotate("text", x=2.5, y=1, label="Obszar Dwufazowy (p=const)", color="blue") +
+  # Simplified dome
+  geom_segment(aes(x=1, y=0, xend=2.5, yend=2), color="grey", size=2) +
+  geom_segment(aes(x=2.5, y=2, xend=4, yend=0), color="grey", size=2) +
+  annotate("point", x=2.5, y=2, size=5, color="black") +
+  annotate("text", x=2.5, y=2.5, label="Punkt Krytyczny") +
+  theme_minimal() + labs(title="Schemat izoterm gazu rzeczywistego", x="v", y="p")
+```
+
+---
+
+## 4. Wykres T-s (Kopuła Nasycenia)
+
+Najważniejszy wykres w energetyce parowej.
+
+*   Linia po lewej: **Ciecz nasycona** ($x=0$).
+*   Linia po prawej: **Para nasycona sucha** ($x=1$).
+*   Środek: **Para mokra** (Mieszanina).
+*   Góra: **Punkt Krytyczny** (powyżej nie ma różnicy między cieczą a parą).
+
+W obszarze pary mokrej izobara ($p=const$) pokrywa się z izotermą ($T=const$).
+
+---
+
+## 5. Stopień Suchości ($x$)
+
+Parametr określający skład mieszaniny parowo-wodnej.
+
+$$ x = \frac{m_{pary}}{m_{pary} + m_{cieczy}} $$
+
+*   $x=0$: Sama woda (wrząca).
+*   $x=1$: Sama para.
+*   $x=0.9$: 90% pary, 10% kropel wody.
+
+Właściwości mieszaniny liczymy ze średniej ważonej:
+$$ h_{mix} = (1-x) \cdot h' + x \cdot h'' $$
+gdzie $h'$ to entalpia cieczy, a $h''$ entalpia pary nasyconej.
+
+---
+
+## 6. Tablice Parowe
+
+Skoro nie działa $pV=mRT$, inżynierowie zmierzyli parametry wody i spisali je w tabele.
+
+Dwa rodzaje tabel:
+1.  **Tablice Nasycenia (Saturation):**
+    Wejście: T lub p.
+    Wyjście: $v', v'', h', h'', s', s''$.
+    Stosujemy, gdy jesteśmy "pod kopułą" lub na linii nasycenia.
+
+2.  **Tablice Pary Przegrzanej (Superheated):**
+    Wejście: p I T (musimy znać dwa parametry, bo są niezależne!).
+    Wyjście: $v, h, s$.
+
+---
+
+## Przykład Użycia Tabel
+
+:::{.callout-example}
+Mamy wodę przy $p=1$ bar i $T=150^\circ C$. W jakim jest stanie?
+
+1.  Idziemy do tabeli nasycenia dla $p=1$ bar.
+2.  Odczytujemy $T_{nasycenia} \approx 99.6^\circ C$.
+3.  Nasza temperatura ($150$) > $T_{nas}$ ($99.6$).
+4.  Wniosek: Jest to **Para Przegrzana**.
+5.  Idziemy do tabeli dla pary przegrzanej, szukamy (1 bar, 150 C) i odczytujemy entalpię.
+:::
+
+---
+
+## Podsumowanie W9
+
+1.  **Gazy rzeczywiste** mają objętość własną i siły przyciągania. Równanie Clapeyrona kłamie przy wysokich ciśnieniach.
+2.  **Punkt Krytyczny:** Koniec krzywej wrzenia. Powyżej woda przechodzi w parę płynnie (bez wrzenia).
+3.  **Para Mokra:** Mieszanina, której stan określa stopień suchości $x$.
+4.  **Tablice Parowe:** Podstawowe narzędzie pracy energetyka.
+
+### Zadanie Domowe
+Znaleźć w internecie tablice parowe wody i odczytać entalpię pary nasyconej suchej dla ciśnienia 100 bar. (Sprawdź, czy maleje czy rośnie z ciśnieniem?).

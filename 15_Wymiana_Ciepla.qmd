@@ -1,0 +1,174 @@
+---
+title: "W15: Wymiana Ciepła i Spalanie"
+subtitle: "Mechanizmy Transportu i Źródła Energii"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Trzy Mechanizmy Wymiany Ciepła**
+2.  **Przewodzenie** (Prawo Fouriera, Ściana)
+3.  **Konwekcja** (Prawo Newtona, Liczba Nusselta)
+4.  **Promieniowanie** (Prawo Stefana-Boltzmanna)
+5.  **Podstawy Spalania** (Stechiometria)
+
+---
+
+## 1. Mechanizmy Wymiany Ciepła
+
+Ciepło płynie zawsze, gdy istnieje $\Delta T$.
+Jakim "autobusem"?
+
+1.  **Przewodzenie (Conduction):** Przekazywanie energii przez drgania sieci krystalicznej (ciała stałe). B. wydajne w metalach.
+2.  **Konwekcja (Convection):** Unoszenie energii przez ruch płynu (woda, powietrze).
+3.  **Promieniowanie (Radiation):** Fala elektromagnetyczna. Działa w próżni.
+
+---
+
+## 2. Przewodzenie i Prawo Fouriera
+
+Strumień ciepła jest proporcjonalny do gradientu temperatury.
+
+$$ \dot{q} = - \lambda \frac{dT}{dx} \quad [\frac{W}{m^2}] $$
+
+*   $\lambda$ (Lambda): Przewodność cieplna materiału.
+    *   Miedź: 400 W/mK
+    *   Cegła: 0.8 W/mK
+    *   Styropian: 0.04 W/mK (Izolator ma niską lambdę).
+
+### Ściana Płaska
+$$ \dot{Q} = \frac{\lambda}{\delta} A (T_1 - T_2) $$
+$\delta$: Grubość ściany.
+
+---
+
+## Opór Cieplny ($R$)
+
+Analogia elektryczna:
+$$ \dot{Q} = \frac{\Delta T}{R_{term}} $$
+$$ R_{przewodzenia} = \frac{\delta}{\lambda A} $$
+
+Dla ściany wielowarstwowej (cegła + styropian + tynk):
+$$ R_{calkowite} = R_1 + R_2 + R_3 $$
+
+Duży opór = Dobra izolacja.
+
+---
+
+## 3. Konwekcja i Prawo Newtona
+
+Ruch płynu "zmywa" ciepło z powierzchni.
+
+$$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
+
+*   $\alpha$ (Alfa): Współczynnik przejmowania ciepła.
+    *   Konwekcja naturalna (kaloryfer): 5-20 W/m²K
+    *   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
+    *   Wrzenie wody: 5000+ W/m²K
+
+Współczynnik Przenikania ($k$ lub $U$ dla budynków):
+Suma oporów (konwekcja wew $\to$ ściana $\to$ konwekcja zew).
+
+---
+
+## 4. Promieniowanie
+
+Każde ciało emituje światło.
+Moc emisji ciała doskonale czarnego:
+
+$$ E_b = \sigma T^4 $$
+
+*   $\sigma$: Stała Stefana-Boltzmanna ($5.67 \cdot 10^{-8}$).
+*   $T$: Temperatura w **Kelvinach**!
+
+### Wymiana między ciałami
+$$ \dot{Q} = \varepsilon \sigma A (T_1^4 - T_2^4) $$
+
+Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w budownictwie też jest ważne (straty przez okna).
+
+---
+
+## 5. Spalanie (Combustion)
+
+Skąd bierzemy ciepło ($Q_H$)? Z energii chemicznej paliw.
+
+Reakcja egzotermiczna utleniania C i H.
+$$ C + O_2 \to CO_2 + Ciepło $$
+$$ 2H_2 + O_2 \to 2H_2O + Ciepło $$
+
+### Wartość Opałowa ($W_d$) vs Ciepło Spalania ($W_g$)
+*   **Ciepło Spalania (HHV):** Zakładamy, że woda ze spalin skropliła się (odzyskaliśmy ciepło utajone).
+*   **Wartość Opałowa (LHV):** Woda ucieka jako para kominem. (Standard w starych kotłach).
+
+Kotły kondensacyjne wykorzystują HHV (sprawność > 100% względem LHV).
+
+---
+
+## Stechiometria
+
+Ile powietrza potrzeba do spalenia 1 kg węgla?
+Teoretycznie ok. 9 kg powietrza.
+
+Współczynnik nadmiaru powietrza $\lambda$ (nie mylić z przewodnością!):
+$$ \lambda = \frac{\text{Powietrze Rzeczywiste}}{\text{Powietrze Teoretyczne}} $$
+
+*   $\lambda = 1$: Idealnie (stechiometria).
+*   $\lambda < 1$: Za mało tlenu $\to$ Sadza i CO (Czad). Śmierć i starta energii.
+*   $\lambda > 1$: Nadmiar tlenu. Bezpiecznie, ale grzejemy azot (strata kominowa).
+    Dążymy do $\lambda \approx 1.1 - 1.2$.
+
+---
+
+## Podsumowanie Całego Kursu (W1-W15)
+
+1.  Zrozumieliśmy **Energię** (I Zasada).
+2.  Zrozumieliśmy **Ograniczenia** (II Zasada, Entropia).
+3.  Poznaliśmy **Maszyny** (Silniki, Turbiny, Lodówki).
+4.  Nauczyliśmy się **Aplikacji** (HVAC, Wymiana Ciepła).
+
+Jesteście teraz uzbrojeni w wiedzę inżynierską. Pamiętajcie:
+Termodynamika to nauka o tym, co jest **możliwe**, a co jest **bajką**.
+
+Dziękuję za uwagę!
+Powodzenia na Egzaminie!

@@ -1,0 +1,190 @@
+---
+title: "W12: Chłodnictwo"
+subtitle: "Obiegi Lewobieżne w Praktyce"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Termodynamika Chłodzenia** (Transport "pod górę")
+2.  **Idealny Obieg Chłodniczy** (Odwrócony Carnot)
+3.  **Rzeczywisty Obieg Sprężarkowy** (Linde)
+4.  **Wykres log(p)-h**
+5.  **Czynniki Chłodnicze** (Freony vs Eko)
+6.  **Pompy Ciepła** (Zastosowanie grzewcze)
+
+---
+
+## 1. Idea Chłodzenia
+
+Ciepło naturalnie płynie $T_{wys} \to T_{nis}$.
+Aby je zmusić do przepływu $T_{nis} \to T_{wys}$, musimy dostarczyć energię (kompensacja spadku entropii).
+
+**Chłodziarka:** Maszyna, która utrzymuje $T_L < T_{otoczenia}$.
+Cel: $Q_L$ (ciepło odebrane z komory).
+Koszt: $W$ (praca sprężarki).
+
+$$ COP = \frac{Q_L}{W} $$
+
+Dla domowej lodówki COP $\approx 2-3$.
+To znaczy, że 1 kW prądu "przepompowuje" 3 kW ciepła.
+
+---
+
+## 2. Dlaczego nie Carnot?
+
+Odwrócony obieg Carnota ma najwyższe COP. Dlaczego go nie budujemy?
+
+1.  **Sprężanie pary mokrej:** Wymagałoby sprężarki, która radzi sobie z kropelkami cieczy (zniszczyłyby ją).
+2.  **Rozprężanie w turbinie:** Mały zysk energii (ciecz ma małą objętość właściwą) przy ogromnym koszcie turbiny.
+
+Rozwiązanie: **Obieg Lindego**.
+
+---
+
+## 3. Obieg Lindego (Kompresorowy)
+
+Zmiany względem Carnota:
+1.  **Dławienie zamiast Turbiny:** Używamy taniej rurki kapilarnej (zaworu rozprężnego). Proces $h=const$ (nieodwracalny, strata egzergii, ale prosta budowa).
+2.  **Sprężanie pary suchej:** Odparowujemy czynnik całkowicie, a nawet go lekko przegrzewamy, żeby nie uszkodzić sprężarki.
+
+---
+
+## 4. Wykres log(p)-h
+
+Standardowy diagram dla inżynierów HVAC.
+
+*   Oś Y: Ciśnienie (skala logarytmiczna). Poziome linie to izobary (parownik/skraplacz).
+*   Oś X: Entalpia. Długość odcinków to bezpośrednio ciepło lub praca.
+
+Procesy:
+1.  **1-2 Sprężanie:** Krzywa idąca w prawo-górę (adiabata $s=const$). Długość rzutu na oś X to praca $W$.
+2.  **2-3 Skraplanie:** Pozioma linia w lewo (izobara). Długość odcinka to $Q_H$ (ciepło oddane "za lodówkę").
+3.  **3-4 Dławienie:** Pionowa linia w dół (izentalpa $h=const$).
+4.  **4-1 Parowanie:** Pozioma linia w prawo. Długość odcinka to $Q_L$ (efekt chłodniczy).
+
+---
+
+## Wizualizacja: Obieg na p-h
+
+```{r}
+#| label: ph-cycle
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6
+
+library(ggplot2)
+
+# Simplified p-h diagram logic
+# Saturation curve approximation
+h_sat_liq <- seq(100, 300, length.out=50)
+p_sat_liq <- 10^( (h_sat_liq-100)/100 ) 
+h_sat_vap <- seq(300, 500, length.out=50)
+p_sat_vap <- 10^( (500-h_sat_vap)/100 )
+
+dome <- data.frame(
+  h = c(h_sat_liq, rev(h_sat_vap)),
+  p = c(p_sat_liq, rev(p_sat_vap))
+)
+
+# Cycle
+h1 <- 450; p1 <- 2   # Compressor Inlet
+h2 <- 500; p2 <- 15  # Compressor Outlet
+h3 <- 250; p3 <- 15  # Condenser Outlet
+h4 <- 250; p4 <- 2   # Evaporator Inlet
+
+cycle <- data.frame(
+  h = c(h1, h2, h3, h4, h1),
+  p = c(p1, p2, p3, p4, p1),
+  label = c("1 (Para)", "2 (Gorąca)", "3 (Ciecz)", "4 (Mieszanina)", "1")
+)
+
+ggplot() +
+  geom_path(data=dome, aes(x=h, y=p), color="grey") +
+  geom_path(data=cycle, aes(x=h, y=p), color="blue", size=2, arrow=arrow()) +
+  annotate("text", x=350, y=1, label="Parowanie (Q_L)") +
+  annotate("text", x=350, y=20, label="Skraplanie (Q_H)") +
+  scale_y_log10() +
+  theme_minimal() + labs(title="Obieg Lindego", x="h [kJ/kg]", y="p [bar]")
+```
+
+---
+
+## 5. Czynniki Chłodnicze
+
+Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$ w parowniku) i skraplać się w wysokiej ($40^\circ C$ w skraplaczu) przy rozsądnych ciśnieniach.
+
+Ewolucja:
+1.  **CFC (Freony, np. R12):** Niszczyły ozon. Zakazane (Protokół Montrealski).
+2.  **HFC (np. R134a):** Nie niszczą ozonu, ale są silnymi gazami cieplarnianymi (GWP=1430). Wycofywane.
+3.  **HFO (np. R1234yf):** Niskie GWP, ale lekko palne.
+4.  **Naturalne:**
+    *   **Amoniak (R717):** Doskonały termodynamicznie, ale trujący. Przemysł.
+    *   **CO2 (R744):** Wymaga b. wysokich ciśnień (100 bar). Supermarkety.
+    *   **Propan (R290):** Palny, ale świetny w małych pompach ciepła.
+
+---
+
+## 6. Pompy Ciepła
+
+"Lodówka włożona oknem do środka".
+Chłodzimy dwór (odbieramy $Q_L$ z gruntu/powietrza), a grzejemy dom ($Q_H$ ze skraplacza).
+
+$$ COP_{grzania} = \frac{Q_H}{W} = \frac{Q_L + W}{W} = COP_{chłodzenia} + 1 $$
+
+Dlatego pompa ciepła zawsze ma sprawność > 100% (liczoną jako ciepło/prąd).
+
+Ograniczenie: Gdy na dworze jest -20C, $T_L$ spada, różnica temperatur rośnie, COP spada. Przy mrozach pompa ciepła traci sens i włącza się grzałka elektryczna (COP=1).
+
+---
+
+## Podsumowanie W12
+
+1.  **Obieg lewobieżny** wymaga pracy.
+2.  **Linde vs Carnot:** Zastąpiliśmy turbinę dławieniem (strata, ale tanio) i sprężamy parę suchą.
+3.  **p-h:** Kluczowy wykres. Pole prostokąta pod parownikiem to moc chłodnicza.
+4.  **Ekologia:** Idziemy w stronę propanu i CO2.
+
+### Zadanie Domowe
+Narysuj schemat domowej lodówki i wskaż, gdzie jest parownik (zamrażalnik) a gdzie skraplacz (kratka z tyłu). Dlaczego kratka jest ciepła?

@@ -1,0 +1,259 @@
+---
+title: "W5: Przemiany Gazowe I"
+subtitle: "Analiza Procesów: Izobara, Izochora, Izoterma"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Metodyka Analizy Przemian** (Co liczymy?)
+2.  **Przemiana Izochoryczna** ($v=const$)
+3.  **Przemiana Izobaryczna** ($p=const$)
+4.  **Przemiana Izotermiczna** ($T=const$)
+5.  **Zestawienie Zbiorcze**
+
+---
+
+## 1. Metodyka Analizy
+
+Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika):
+
+1.  **Równanie procesu:** Związek między $p$ i $v$.
+2.  **Praca objętościowa ($w$):** Pole pod krzywą na $p-v$.
+    $$ w = \int p \, dv $$
+3.  **Praca techniczna ($w_t$):** Pole do osi $p$.
+    $$ w_t = - \int v \, dp $$
+4.  **Ciepło ($q$):** Z I Zasady Termodynamiki.
+    $$ q = \Delta u + w \quad \text{lub} \quad q = \Delta h + w_t $$
+
+Pamiętamy zawsze:
+*   $\Delta u = C_v \Delta T$
+*   $\Delta h = C_p \Delta T$
+
+---
+
+## 2. Przemiana Izochoryczna
+
+**Warunek:** $V = const \Rightarrow v_1 = v_2$
+Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
+
+### Równanie Stanu
+Z Clapeyrona ($pv=RT$):
+$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} $$
+(Prawo Charlesa). Ciśnienie rośnie proporcjonalnie do temperatury.
+
+### Wykres p-v i T-s
+
+```{r}
+#| label: isochor
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+library(ggplot2)
+library(patchwork)
+
+# p-v (Vertical line)
+pv_plot <- ggplot() +
+  geom_segment(aes(x=1, y=1, xend=1, yend=5), arrow=arrow(), size=1.5, color="blue") +
+  labs(title="p-v (Izochora)", x="v", y="p") +
+  theme_minimal()
+
+# T-s (Exponential curve slope)
+# ds = Cv dT/T -> s - s0 = Cv ln(T/T0) -> T = T0 exp(ds/Cv)
+s <- seq(0, 2, length.out=100)
+T_val <- exp(s) 
+ts_plot <- ggplot() +
+  geom_line(aes(x=s, y=T_val), size=1.5, color="red", arrow=arrow()) +
+  labs(title="T-s (Ogrzewanie)", x="s", y="T") +
+  theme_minimal()
+
+pv_plot + ts_plot
+```
+
+---
+
+## Izochora: Bilans Energii
+
+1.  **Praca Objętościowa:**
+    $$ w = \int p \, dv = 0 $$
+    (Brak przemieszczenia tłoka - brak pracy).
+
+2.  **Ciepło:**
+    Z I Zasady: $q = \Delta u + w = \Delta u + 0$
+    $$ q = \Delta u = C_v (T_2 - T_1) $$
+
+3.  **Praca Techniczna:**
+    $$ w_t = - \int v \, dp = -v (p_2 - p_1) $$
+    (W układzie otwartym izochora wymaga pracy technicznej, np. pompa).
+
+---
+
+## 3. Przemiana Izobaryczna
+
+**Warunek:** $p = const \Rightarrow p_1 = p_2$
+Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem (obciążonym stałym ciężarem).
+
+### Równanie Stanu
+$$ \frac{v_1}{T_1} = \frac{v_2}{T_2} $$
+(Prawo Gay-Lussaca). Objętość rośnie z temperaturą.
+
+---
+
+## Izobara: Wykresy
+
+```{r}
+#| label: isobar
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+# p-v (Horizontal line)
+pv_plot <- ggplot() +
+  geom_segment(aes(x=1, y=2, xend=4, yend=2), arrow=arrow(), size=1.5, color="blue") +
+  labs(title="p-v (Izobara)", x="v", y="p") +
+  theme_minimal()
+
+# T-s (Slopier curve than isochor)
+# ds = Cp dT/T. Since Cp > Cv, slope dT/ds = T/Cp is smaller!
+s <- seq(0, 2, length.out=100)
+T_val <- exp(s/1.4) 
+ts_plot <- ggplot() +
+  geom_line(aes(x=s, y=T_val), size=1.5, color="red", arrow=arrow()) +
+  labs(title="T-s (Ekspansja)", x="s", y="T") +
+  theme_minimal()
+
+pv_plot + ts_plot
+```
+
+---
+
+## Izobara: Bilans Energii
+
+1.  **Praca Objętościowa:**
+    $$ w = \int_{v_1}^{v_2} p \, dv = p (v_2 - v_1) = R (T_2 - T_1) $$
+
+2.  **Ciepło:**
+    $$ q = \Delta u + w = C_v \Delta T + R \Delta T = (C_v + R) \Delta T $$
+    $$ q = C_p (T_2 - T_1) = \Delta h $$
+    (W izobarze całe ciepło idzie na zmianę entalpii!).
+
+3.  **Praca Techniczna:**
+    $$ w_t = - \int v \, dp = 0 $$
+    (Brak zmiany ciśnienia - brak pracy technicznej w układzie otwartym bez wału).
+
+---
+
+## 4. Przemiana Izotermiczna
+
+**Warunek:** $T = const \Rightarrow T_1 = T_2$
+Przykład: Bardzo powolne sprężanie w chłodzonym cylindrze (idealnie oddajemy ciepło).
+
+### Równanie Stanu
+$$ p_1 v_1 = p_2 v_2 = const $$
+(Prawo Boyle’a-Mariotte’a).
+Krzywa na wykresie p-v to **hiperbola równoosiowa**.
+
+$$ \Delta u = C_v \Delta T = 0 $$
+$$ \Delta h = C_p \Delta T = 0 $$
+Energia wewnętrzna gazu doskonałego się nie zmienia!
+
+---
+
+## Izoterma: Wykresy
+
+```{r}
+#| label: isotherm
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+# p-v (Hyperbola)
+v <- seq(1, 4, length.out=100)
+p <- 4/v
+pv_plot <- ggplot() +
+  geom_line(aes(x=v, y=p), size=1.5, color="blue", arrow=arrow()) +
+  labs(title="p-v (Izoterma)", x="v", y="p") +
+  theme_minimal()
+
+# T-s (Horizontal line)
+ts_plot <- ggplot() +
+  geom_segment(aes(x=1, y=2, xend=4, yend=2), arrow=arrow(), size=1.5, color="red") +
+  labs(title="T-s (Ekspansja)", x="s", y="T") +
+  theme_minimal()
+
+pv_plot + ts_plot
+```
+
+---
+
+## Izoterma: Bilans Energii
+
+1.  **Praca Objętościowa:**
+    $$ w = \int_{v_1}^{v_2} \frac{RT}{v} \, dv = RT \ln \left( \frac{v_2}{v_1} \right) = RT \ln \left( \frac{p_1}{p_2} \right) $$
+
+2.  **Ciepło:**
+    Z I Zasady: $\Delta u = 0 \Rightarrow q = w$.
+    $$ q = RT \ln \left( \frac{v_2}{v_1} \right) $$
+    (Wszystko co dostarczymy jako ciepło, zamienia się w pracę. Silnik idealny? Nie, to tylko pojedynczy proces, nie cykl).
+
+3.  **Praca Techniczna:**
+    Dla izotermy $pv=const$, więc $w_t = w$.
+
+---
+
+## Podsumowanie W5
+
+### Zestawienie Wzorów ($q$)
+
+| Przemiana | Warunek | Ciepło $q$ | Praca $w$ | $\Delta u$ |
+| :--- | :---: | :---: | :---: | :---: |
+| **Izochora** | $v=const$ | $C_v \Delta T$ | 0 | $C_v \Delta T$ |
+| **Izobara** | $p=const$ | $C_p \Delta T$ | $p \Delta v$ | $C_v \Delta T$ |
+| **Izoterma** | $T=const$ | $RT \ln(v_2/v_1)$ | $q$ | 0 |
+
+Zauważcie: $\Delta u$ zawsze liczymy tak samo ($C_v \Delta T$), ale ciepło $q$ zależy od procesu!
+
+### Zadanie Domowe
+Sprężamy powietrze izotermicznie od 1 do 10 barów w temp 20C. Oblicz pracę i ciepło oddane.

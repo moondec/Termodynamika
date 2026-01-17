@@ -1,0 +1,254 @@
+---
+title: "W4: Gazy Doskonałe"
+subtitle: "Równanie Clapeyrona, Ciepła Właściwe i Mieszaniny"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Model Gazu Doskonałego** (Założenia)
+2.  **Równanie Stanu** (Clapeyron)
+3.  **Stała Gazowa $R$** (Indywidualna vs Uniwersalna)
+4.  **Ciepła Właściwe** (Relacja Mayera)
+5.  **Mieszaniny Gazowe** (Prawo Daltona)
+6.  **Wstęp do Gazów Pół-doskonałych** (Zależność $C_p$ od $T$)
+
+---
+
+## 1. Model Gazu Doskonałego
+
+Gaz doskonały to teoretyczny model materii, który świetnie opisuje gazy (powietrze, azot, tlen, wodór) w typowych warunkach technicznych.
+
+### Założenia Kinetyczno-Molekularne
+
+1.  **Objętość cząsteczek = 0:** Cząsteczki są punktami materialnymi (zaniedbujemy ich własną objętość).
+2.  **Brak oddziaływań:** Brak sił przyciągania/odpychania między cząsteczkami (tylko zderzenia sprężyste).
+3.  **Zderzenia sprężyste:** Energia kinetyczna jest zachowana podczas zderzeń.
+
+### Kiedy to nie działa?
+*   Bardzo wysokie ciśnienia (cząsteczki są "blisko" siebie - siły van der Waalsa).
+*   Bardzo niskie temperatury (blisko skraplania).
+*   Dla pary wodnej w okolicach nasycenia! (Tutaj błąd może wynieść >20%).
+
+---
+
+## 2. Równanie Stanu Gazu Doskonałego
+
+Najsłynniejsze równanie termodynamiki:
+
+$$ p \cdot V = m \cdot R \cdot T $$
+
+*   $p$: Ciśnienie absolutne [Pa] (nie bary!)
+*   $V$: Objętość [$m^3$]
+*   $m$: Masa gazu [kg]
+*   $R$: Indywidualna stała gazowa [J/(kg K)]
+*   $T$: Temperatura absolutna [K] (nie Celsjusze!)
+
+### Wersja Molowa
+
+$$ p \cdot V = n \cdot M \cdot R \cdot T = n \cdot (MR) \cdot T $$
+$$ p \cdot V = n \cdot R_u \cdot T $$
+
+*   $n$: Liczba moli [kmol]
+*   $R_u$: Uniwersalna stała gazowa.
+
+---
+
+## 3. Stała Gazowa ($R$)
+
+To źródło wielu pomyłek na kolokwiach.
+
+**Uniwersalna Stała Gazowa ($R_u$ lub $\mathcal{R}$):**
+Ta sama dla każdego gazu!
+$$ R_u = 8314 \frac{J}{kmol \cdot K} $$
+
+**Indywidualna Stała Gazowa ($R$):**
+Zależy od masy molowej gazu ($M$).
+$$ R = \frac{R_u}{M} $$
+
+:::{.callout-example title="Dla Powietrza"}
+Masa molowa powietrza $M \approx 29$ kg/kmol.
+$$ R_{pow} = \frac{8314}{29} \approx 287 \frac{J}{kg \cdot K} $$
+:::
+
+---
+
+## Co to jest MOL?
+
+Jednostka liczności materii.
+**1 kmol = $6.022 \cdot 10^{26}$ cząsteczek** (Liczba Avogadra dla kmola).
+
+W technice używamy **kmol** (kilomol), bo pasuje do **kg**.
+Masa molowa $M$ to masa 1 kmola substancji.
+
+*   Wodór ($H_2$): $M = 2$ kg/kmol.
+*   Tlen ($O_2$): $M = 32$ kg/kmol.
+*   Azot ($N_2$): $M = 28$ kg/kmol.
+*   Dwutlenek węgla ($CO_2$): $M = 44$ kg/kmol.
+
+---
+
+## 4. Ciepła Właściwe (Powtórzenie i Rozszerzenie)
+
+Jak wiemy z W2:
+*   $C_v = (\partial u / \partial T)_v$
+*   $C_p = (\partial h / \partial T)_p$
+
+Dla gazu doskonałego $u$ i $h$ zależą tylko od $T$.
+
+$$ du = C_v dT \quad \quad dh = C_p dT $$
+
+### Relacja Mayera
+Dlaczego $R$ jest różnicą ciepeł?
+$$ h = u + pv = u + RT $$
+Różniczkując po $T$:
+$$ \frac{dh}{dT} = \frac{du}{dT} + R $$
+$$ C_p = C_v + R $$
+
+---
+
+## Wykładnik Adiabaty ($k$)
+
+Stosunek ciepeł właściwych. Decyduje o tym, jak mocno gaz się grzeje przy sprężaniu.
+
+$$ k = \frac{C_p}{C_v} $$
+
+Teoria kinetyczna gazów przewiduje wartości $k$ w zależności od budowy cząsteczki:
+
+1.  **Gazy 1-atomowe (He, Ar):**
+    *   $k = 1.66$ ($5/3$)
+2.  **Gazy 2-atomowe (Powietrze, $H_2, N_2, O_2$):**
+    *   $k = 1.4$ ($7/5$) - **Najważniejsza wartość w kursie!**
+3.  **Gazy 3+ atomowe ($CO_2, CH_4$, Para wodna):**
+    *   $k \approx 1.3$ (zmienne z temperaturą).
+
+---
+
+## 5. Mieszaniny Gazowe (Prawo Daltona)
+
+Większość gazów technicznych to mieszaniny (powietrze, spaliny).
+Jak traktować mieszaninę? Jak jeden gaz zastępczy!
+
+### Prawo Daltona
+Ciśnienie całkowite mieszaniny to suma ciśnień cząstkowych składników.
+$$ p = p_1 + p_2 + ... + p_n $$
+
+**Ciśnienie cząstkowe ($p_i$):** Ciśnienie, jakie wywierałby składnik $i$, gdyby sam zajmował całą objętość $V$ w tej samej temperaturze.
+
+$$ p_i = x_i \cdot p $$
+gdzie $x_i = n_i / n_{calkowite}$ to ułamek molowy.
+
+---
+
+## Ułamek Masowy ($g_i$) vs Molowy ($x_i$)
+
+W analizie spalania to kluczowe.
+
+1.  **Ułamek masowy:**
+    $$ g_i = \frac{m_i}{m_{cal}} $$
+    (Suma = 1)
+
+2.  **Ułamek molowy (objętościowy):**
+    $$ x_i = \frac{n_i}{n_{cal}} = \frac{V_i}{V_{cal}} $$
+    (Dla gazów doskonałych ułamek molowy to to samo co ułamek objętościowy!).
+
+### Stała gazowa mieszaniny
+$$ R_{miesz} = \sum g_i \cdot R_i $$
+(Średnia ważona po masie!).
+
+---
+
+## Wizualizacja: Prawo Daltona
+
+```{r}
+#| label: dalton
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+library(ggplot2)
+
+# Visualization of mixing gases
+part_a <- data.frame(x=runif(20), y=runif(20), type="A (Niebieski)")
+part_b <- data.frame(x=runif(10), y=runif(10), type="B (Czerwony)")
+
+ggplot() +
+  geom_point(data=part_a, aes(x,y), color="blue", size=5) +
+  geom_point(data=part_b, aes(x,y), color="red", size=5) +
+  theme_void() +
+  ggtitle("Mieszanina: p = p_A + p_B") +
+  theme(plot.title = element_text(hjust = 0.5, size=20)) +
+  annotate("text", x=0.5, y=-0.1, label="Objętość V, Temperatura T", size=6) +
+  rect(mapping=aes(xmin=0, xmax=1, ymin=0, ymax=1), color="black", fill=NA, size=2)
+```
+
+Każdy gaz "myśli", że jest sam w zbiorniku, ale uderza w ścianki dokładając swoje ciśnienie.
+
+---
+
+## 6. Gazy Pół-doskonałe
+
+W modelu "idealnym" $C_p$ jest stałe.
+W rzeczywistości $C_p$ rośnie wraz z temperaturą (cząsteczki zaczynają silniej drgać).
+
+Gdy $T$ zmienia się znacznie (np. spalanie w silniku: $300K \rightarrow 2500K$), musimy uwzględnić $C_p(T)$.
+
+Wzory empiryczne:
+$$ C_p(T) = a + bT + cT^2 + dT^3 $$
+
+W tym kursie dla uproszczenia zakładamy stałe $C_p$, chyba że powiedziano inaczej (Model "zimnego powietrza standardowego").
+
+---
+
+## Podsumowanie W4
+
+1.  **Równanie Clapeyrona**: $pV=mRT$. Pamiętaj o jednostkach (Pa, K, J/kgK)!
+2.  **Stała gazowa $R$**: $R = 8314/M$. Dla powietrza 287.
+3.  **Ciepła**: $C_p = C_v + R$. Dla powietrza $k=1.4$.
+4.  **Dalton**: Ciśnienia cząstkowe się sumują.
+5.  **Model**: Działa świetnie dla niskich ciśnień i wysokich temperatur. Nie używać dla pary w elektrowni!
+
+### Zadanie Domowe
+Oblicz masę powietrza w sali wykładowej ($10m \times 20m \times 3m$) przy $p=100 kPa$ i $T=20^\circ C$. Porównaj z masą wody w szklance.
+(Wynik może zaskoczyć - to setki kilogramów!).
