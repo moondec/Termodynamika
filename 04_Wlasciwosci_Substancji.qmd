@@ -68,7 +68,20 @@ format:
 editor: source
 ---
 
-## Wprowadzenie do Substancji Czystych {data-menu-title="Wstęp"}
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Substancje Czyste i Fazy** (Punkt Potrójny)
+2.  **Model Gazu Doskonałego** (Clapeyron, $R$)
+3.  **Ciepła Właściwe** (Relacja Mayera)
+4.  **Mieszaniny Gazowe** (Prawo Daltona)
+5.  **Gazy Rzeczywiste** (Van der Waals, Andrews)
+6.  **Para Nasycona** (Tablice, Wykresy)
+
+![](img/substancja_vs_mieszanina.png){width="50%" fig-align="center"}
+
+---
+
+## 1. Wprowadzenie do Substancji Czystych {data-menu-title="Wstęp"}
 
 ### Definicja Fazy i Substancji
 
@@ -80,17 +93,19 @@ editor: source
 :::
 
 ::: incremental 
-*   **Faza:** Makroskopowa część układu, która jest jednorodna pod względem fizycznym i chemicznym.
-    *   *Intuicja:* Wyobraź sobie szklankę wody z lodem – to jedna substancja (H₂O), ale **dwie fazy** (ciecz i ciało stałe).
-*   **Równowaga fazowa:** Stan "pokoju" w układzie – parametry nie zmieniają się, a fazy nie "walczą" o cząsteczki.
+*   **Faza:** Makroskopowa część układu o jednorodnych właściwościach fizycznych, oddzielona granicą faz.
+*   **Stany skupienia:** Ciało stałe, ciecz, gaz.
+*   **Równowaga fazowa:** Stan, w którym parametry nie zmieniają się w czasie i nie ma przepływów energii ani materii między fazami.
 :::
 :::
 
 ::: {.column width="40%"}
-![Substancja czysta vs Mieszanina](img/pierwsza.png){width="80%"}
+![Substancja czysta vs Mieszanina](img/substancja_vs_mieszanina.png){width="100%"}
 :::
 
 ::::
+
+---
 
 ## Punkt Potrójny i Krytyczny
 
@@ -99,12 +114,12 @@ editor: source
 :::: {.columns}
 
 ::: {.column width="50%"}
-*   **Punkt potrójny:** Jedyny stan ($p, T$), w którym lód, woda i para wodna mogą współistnieć jednocześnie "w zgodzie".
-    *   Dla wody: $T = 273,16$ K, $p = 611$ Pa.
+*   **Punkt potrójny:** Stan, w którym w równowadze współistnieją trzy fazy (stała, ciekła, gazowa).
+    *   Dla wody: $T = 273,16$ K ($0,01^\circ$C), $p = 610,62$ Pa.
 
 ::: incremental 
-*   **Punkt krytyczny ($K$):** Stan, w którym różnica między cieczą a gazem znika.
-    *   Powyżej $T_k$ nie da się skroplić gazu samym ściskaniem – cząsteczki mają za dużo energii kinetycznej, by "złożyć się" w ciecz.
+*   **Punkt krytyczny ($K$):** Stan, w którym znikają różnice między fazą ciekłą a gazową.
+    *   Powyżej $T_k$ substancja jest gazem i nie można jej skroplić przez samo zwiększenie ciśnienia.
 :::
 :::
 
@@ -141,70 +156,114 @@ ggplot() +
 
 ::::
 
-## Gaz Doskonały – Powtórzenie
+---
+
+## 2. Gaz Doskonały
 
 ### Model Teoretyczny
 
-:::: {.columns}
+Gaz doskonały to abstrakcyjny model cząstek punktowych (pozbawionych objętości) bez oddziaływań na odległość, zderzających się sprężyście.
 
-::: {.column width="60%"}
-Gaz doskonały to abstrakcyjny model:
-
-*   **Cząstki punktowe:** Nie zajmują miejsca (objętość własna = 0).
-*   **Brak miłości i nienawiści:** Cząsteczki nie przyciągają się ani nie odpychają.
-*   **Zderzenia idealne:** Niczym kule bilardowe tracące energię tylko na ruch.
-
-::: {.callout-important title="Równanie Clapeyrona"}
+**Równanie Clapeyrona:**
 $$ p \cdot v = R \cdot T $$
+Po pomnożeniu obu stron przez masę ($m$):
 $$ p \cdot V = m \cdot R \cdot T $$
-:::
-:::
 
-::: {.column width="40%"}
-![Model cząsteczkowy gazu doskonałego](img/tlok.png){width="100%"}
-:::
+*   **Równanie uniwersalne:**
+$$ p \cdot V = n \cdot (MR) \cdot T $$
+gdzie $n$ to liczba moli, a $MR = R_u$ to uniwersalna stała gazowa.
 
-::::
+---
 
-## Stała Gazowa: Dwie Twarze
+## Stała Gazowa ($R$ vs $R_u$)
 
-| Cecha | **Indywidualna ($R$)** | **Uniwersalna ($R_u$)** |
+### Dwie Twarze Stałej Gazowej
+
+| Cecha | **Indywidualna stała gazowa ($R$)** | **Uniwersalna stała gazowa ($R_u$)** |
 | :--- | :--- | :--- |
 | **Wzór** | $R = \frac{R_u}{M}$ | $R_u = M \cdot R$ |
+| **Jednostka** | $\frac{\text{J}}{\text{kg} \cdot \text{K}}$ | $\frac{\text{J}}{\text{kmol} \cdot \text{K}}$ |
 | **Zastosowanie** | Inżynieria (masy, kg) | Chemia / Fizyka (mole) |
-| **Wartość** | Zmienna (Powietrze: 287) | Stała ($\approx 8314$ J/kmolK) |
+| **Wartość** | Zmienna (Powietrze: 287, Wodór: 4124) | Stała ($\approx 8314$) |
 
-> **Profesor radzi:** W technice pracujemy na kilogramach ("ile waży czynnik?"), więc $R$ jest Twoim najlepszym przyjacielem.
+> **Zapamiętaj:** W termodynamice technicznej zazwyczaj używamy **$R$** (indywidualnej), bo turbiny zasilamy kilogramami pary, a nie molami.
 
-## Gazy Rzeczywiste
+---
 
-### Dlaczego "doskonały" nie wystarcza?
+## 3. Ciepła Właściwe (Powtórzenie)
 
-:::: {.columns}
+Jak wiemy z W2:
+*   $C_v = (\partial u / \partial T)_v$
+*   $C_p = (\partial h / \partial T)_p$
 
-::: {.column width="100%"}
-Gazy rzeczywiste to "prawdziwi ludzie" w tłumie:
+### Relacja Mayera
+Dlaczego $R$ jest różnicą ciepeł?
+$$ h = u + pv = u + RT \implies C_p = C_v + R $$
 
-1.  **Mają swoją objętość:** Nie da się ich ścisnąć do zera.
-2.  **Oddziałują na siebie:** Siły przyciągania van der Waalsa "hamują" cząsteczki uderzające w ściankę (spadek ciśnienia).
+### Wykładnik Adiabaty ($k$)
+$$ k = \frac{C_p}{C_v} $$
+*   Gazy 1-atomowe (He, Ar): $k \approx 1.66$
+*   Gazy 2-atomowe (Powietrze, $N_2, O_2$): $k \approx 1.4$
+*   Gazy 3+ atomowe ($CO_2$, Para): $k \approx 1.3$
 
-**Rozwinięcie wirialne (najdokładniejszy opis):**
-$$ z = \frac{pV_m}{RT} = 1 + \frac{B(T)}{V_m} + \frac{C(T)}{V_m^2} + \dots $$
-*Gdzie $z$ to współczynnik ściśliwości ($z=1$ dla gazu doskonałego).*
-:::
+---
 
-::::
+## 4. Mieszaniny Gazowe (Prawo Daltona)
 
-## Równanie van der Waalsa
+Większość gazów technicznych to mieszaniny (powietrze, spaliny).
 
-### Poprawki Fizyczne
+### Prawo Daltona
+Ciśnienie całkowite mieszaniny to suma ciśnień cząstkowych składników.
+$$ p = p_1 + p_2 + ... + p_n $$
 
+**Ciśnienie cząstkowe ($p_i$):** Ciśnienie, jakie wywierałby składnik $i$, gdyby sam zajmował całą objętość $V$ w tej samej temperaturze.
+$$ p_i = x_i \cdot p $$
+
+---
+
+## Wizualizacja: Prawo Daltona
+
+```{r}
+#| label: dalton
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4
+
+# Visualization of mixing gases
+set.seed(123)
+part_a <- data.frame(x=runif(20), y=runif(20), type="A (Niebieski)")
+part_b <- data.frame(x=runif(10), y=runif(10), type="B (Czerwony)")
+
+ggplot() +
+  geom_point(data=part_a, aes(x,y), color="blue", size=5) +
+  geom_point(data=part_b, aes(x,y), color="red", size=5) +
+  theme_void() +
+  ggtitle("Mieszanina: p = p_A + p_B") +
+  theme(plot.title = element_text(hjust = 0.5, size=20)) +
+  annotate("text", x=0.5, y=-0.1, label="Objętość V, Temperatura T", size=6) +
+  geom_rect(aes(xmin=0, xmax=1, ymin=0, ymax=1), color="black", fill=NA, size=2)
+```
+
+Każdy gaz "myśli", że jest sam w zbiorniku, ale uderza w ścianki dokładając swoje ciśnienie.
+
+---
+
+## 5. Gazy Rzeczywiste
+
+### Odstępstwa od Doskonałości
+
+Gazy rzeczywiste wykazują oddziaływania międzycząsteczkowe (siły van der Waalsa).
+
+**Równanie van der Waalsa:**
 $$ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT $$
 
-::: incremental
-*   **Poprawka $a$ (Kohezja):** "Siła przyciągania". Cząsteczki trzymają się razem, więc słabiej uderzają w ścianki naczynia. Ciśnienie zmierzone jest mniejsze niż by wynikało z modelu.
-*   **Poprawka $b$ (Kowolumen):** "Ciasnota". Cząsteczki same zajmują miejsce, więc wolna przestrzeń dla ruchu jest mniejsza.
-:::
+1.  **Poprawka $a/V_m^2$:** Uwzględnia siły przyciągania cząsteczek (ciśnienie wewnętrzne).
+2.  **Poprawka $b$:** Uwzględnia skończoną objętość samych cząsteczek.
+
+**Parametry Zredukowane:**
+Jeśli wyrazimy parametry przez wartości krytyczne ($p/p_k$, $T/T_k$), wiele gazów zachowuje się tak samo (Zasada Stanów Odpowiednich).
+
+---
 
 ## Izotermy Andrewsa
 
@@ -214,14 +273,9 @@ $$ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT $$
 
 ::: {.column width="50%"}
 Zrozumienie, jak gaz zmienia się w ciecz:
-
-*   **Wysoka temperatura:** Gaz zachowuje się niemal idealnie (proste krzywe).
-*   **Niska temperatura:** Pojawia się "półka" – obszar, gdzie mimo zmniejszania objętości, ciśnienie nie rośnie (skraplanie).
-*   **Izoterma krytyczna:** Ostatnia krzywa, która "dotyka" wierzchołka kopuły.
-
-::: {.callout-note}
- Andrews udowodnił, że nie ma ostrej granicy między gazem a cieczą powyżej punktu krytycznego.
-:::
+*   **Wysoka temperatura:** Gaz zachowuje się niemal idealnie.
+*   **Niska temperatura:** Pojawia się obszar skraplania (stałe ciśnienie = stała temperatura).
+*   **Punkt krytyczny:** Wierzchołek kopuły, gdzie znika różnica między cieczą a parą.
 :::
 
 ::: {.column width="50%"}
@@ -250,21 +304,20 @@ ggplot(df, aes(x=v, y=p, color=temp)) +
 
 ::::
 
-## Para Nasycona i Jakość Pary
+---
+
+## 6. Para Nasycona i Jakość Pary
 
 ### "Kopuła" Nasycenia
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-*   **Para nasycona mokra:** Mieszanina cieczy i pary (jak mgła).
-*   **Stopień suchości ($x$):** Ile "pary w parze".
-    *   $x=0$: Sam wrzątek.
-    *   $x=1$: Sama "sucha" para.
-
-::: {.callout-tip}
-Wewnątrz "kopuły" ciśnienie i temperatura są od siebie zależne – znając jedno, znamy drugie!
-:::
+*   **Para nasycona mokra:** Mieszanina cieczy i pary (mgła).
+*   **Stopień suchości ($x$):**
+    $$ x = \frac{m_{pary}}{m_{cieczy} + m_{pary}} $$
+    *   $x=0$: Ciecz nasycona (wrząca).
+    *   $x=1$: Para nasycona sucha.
 :::
 
 ::: {.column width="50%"}
@@ -300,79 +353,71 @@ ggplot(dome, aes(x=s, y=T)) +
 
 ::::
 
+---
 
 ## Obliczanie Parametrów Pary Mokrej
 
 ### Średnie Ważone
 
-Parametry pary mokrej (objętość, entalpia, entropia) obliczamy jako sumę udziałów fazy ciekłej i gazowej:
+Parametry (objętość, entalpia, entropia) obliczamy jako sumę udziałów fazy ciekłej (') i gazowej (''):
 
 *   **Objętość:** $v = v' + x(v'' - v')$
 *   **Entalpia:** $h = h' + x(h'' - h')$
 *   **Entropia:** $s = s' + x(s'' - s')$
 
-*Wartości z primem (') i bisem ('') odczytujemy z **tablic pary wodnej** dla danego ciśnienia lub temperatury.*
+*Dane $v', v'', h', h''$ odczytujemy z Tablic Pary Wodnej.*
 
+---
 
-## Tablice i Wykresy
+## Tablice i Wykresy: Narzędzia Inżyniera
 
-### Narzędzia Inżynierskie
+1.  **Tablice Pary Nasyconej:**
+    *   Podają parametry na linii granicznej ($x=0$ i $x=1$) w funkcji $T$ lub $p$.
+2.  **Wykres $h-s$ (Molliera):**
+    *   Kluczowy dla turbin parowych.
+    *   Procesy adiabatyczne (bez straty ciepła) to linie pionowe ($s = const$).
+3.  **Wykres $p-h$ (Logarytmiczny):**
+    *   Kluczowy dla chłodnictwa i pomp ciepła.
+    *   Łatwo odczytać entalpię, a więc i ciepło przemiany.
 
-*   **Tablice Pary Nasyconej:** Uszeregowane według temperatury (T) lub ciśnienia (p).
-*   **Wykres $h-s$ (Molliera):** Kluczowy do analizy rozprężania w turbinach (izentropy to linie pionowe).
-*   **Wykres $p-h$:** Podstawowy w chłodnictwie; pozwala łatwo odczytać efekt chłodniczy i pracę sprężania.
-
+---
 
 ## Równanie Clapeyrona-Clausiusa
 
-### Nachylenie Krzywej Wrzenia
-
-Określa zależność między zmianą ciśnienia a zmianą temperatury podczas przemiany fazowej:
+Określa zależność między zmianą ciśnienia a zmianą temperatury wrzenia/topnienia:
 
 $$ \frac{dp}{dT} = \frac{Q_{przemiany}}{T(v'' - v')} $$
 
-*   Dla parowania/wrzenia: $\frac{dp}{dT} > 0$ (wzrost ciśnienia podnosi temp. wrzenia).
-*   Dla topnienia lodu: $\frac{dp}{dT} < 0$ (wzrost ciśnienia obniża temp. topnienia).
+*   Gdy $v'' > v'$ (typowe wrzenie): wzrost ciśnienia $\to$ wzrost temperatury wrzenia.
+*   Gdy $v'' < v'$ (topnienie lodu): wzrost ciśnienia $\to$ **spadek** temperatury topnienia (dlatego łyżwy działają!).
 
+---
 
 ## Para Przegrzana
 
-### Powyżej Linii Nasycenia
+Para o temperaturze wyższej niż temperatura nasycenia dla danego ciśnienia ($T > T_s$).
+*   Jest daleka od obszaru "mokrego", zachowuje się coraz bardziej jak **gaz doskonały**.
+*   Nie ma w niej kropel cieczy (bezpieczna dla łopatek turbin!).
 
-Para przegrzana powstaje przez dalsze ogrzewanie pary suchej przy stałym ciśnieniu.
-
-*   Ma temperaturę wyższą od temperatury nasycenia dla danego ciśnienia ($T > T_s$).
-*   Jej parametry wyznacza się z osobnych tablic (np. Tablica 6) lub wykresów.
-*   W miarę oddalania się od krzywej granicznej, jej właściwości zbliżają się do gazu doskonałego.
-
+---
 
 ## Przejście Fazowe II Rodzaju
 
-### Przemiany Ciągłe
+*   **Przejścia I rodzaju:** Skokowa zmiana entropii i objętości (ciepło utajone). Np. wrzenie.
+*   **Przejścia II rodzaju:** Ciągła zmiana entropii i objętości, ale skokowa zmiana **ciepła właściwego** ($C_p$).
+    *   Przejście ferromagnetyk $\to$ paramagnetyk (Punkt Curie).
+    *   Nadciekłość helu.
 
-W przeciwieństwie do parowania (I rodzaj), tutaj **brak ciepła przemiany** ($Q_p=0$) i skokowej zmiany objętości.
+---
 
-*   Przykład: Przejście ferromagnetyk – paramagnetyk (temp. Curie).
-*   Przykład: Przejście helu w stan nadciekły (linia $\lambda$).
-*   Cechą charakterystyczną jest **nieciągłość ciepła właściwego** ($c_p$) oraz współczynników rozszerzalności.
+## Podsumowanie W4
 
+1.  **Substancje czyste:** Wyróżniamy fazy (Stała, Ciecz, Gaz) rozdzielone liniami przemian.
+2.  **Gaz Doskonały vs Rzeczywisty:** Model Idealny ($pV=mRT$) działa świetnie dla powietrza, ale dla par i wysokich ciśnień potrzebujemy van der Waalsa.
+3.  **Mieszaniny:** Każdy składnik dokłada swoje ciśnienie cząstkowe (Dalton).
+4.  **Para wodna:** Używamy tablic i wykresów ($h-s, T-s$), a parametry pary mokrej liczymy ze stopnia suchości $x$.
 
-## Podsumowanie i Wnioski
-
-::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f9f9f9; border-radius: 5px;"}
-1.  **Substancje czyste** zmieniają właściwości skokowo podczas przemian fazowych (np. parowanie).
-2.  **Para mokra** to układ "mglisty", którego stan określa stopień suchości $x$.
-3.  **Gazy rzeczywiste** wymagają poprawek na objętość cząstek i siły ich wzajemnego "przyciągania".
-4.  **Wykresy i tablice** to codzienne narzędzia inżyniera – uczymy się ich, aby projektować realne maszyny.
-:::
-
-
-## Zapowiedź W5
-
-### II Zasada Termodynamiki
-
-W kolejnym wykładzie zajmiemy się kierunkiem procesów:
-
-*   Dlaczego niektóre procesy są **nieodwracalne**?
-*   Czym jest **entropia** i jak rośnie w układzie izolowanym?
-*   **Obieg Carnota** jako wzorzec sprawności.
+### Zadanie Domowe
+Sprawdź w tablicach parowych:
+1.  Jaka jest temperatura wrzenia wody przy ciśnieniu $p = 5$ bar?
+2.  Ile razy większą objętość ma para sucha od wody wrzącej przy $1$ bar?

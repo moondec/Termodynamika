@@ -602,7 +602,7 @@ Wyobraź sobie szklankę gorącej herbaty. Jeśli przelejesz połowę herbaty do
 ::::
 
 :::: {.column width="50%"}
-![](img/zerowa.png){width="100%" fig-align="left"} ***
+![](img/zerowa.png){width="100%" fig-align="left"} \*\*\*
 
 ::: {style="font-size: 0.7em; color: red;" .fragment .fade-up .callout-tip title="Prostym językiem"}
 Dwa ciała znajdujące się w równowadze termicznej z trzecim ciałem są także w równowadze termicznej między sobą.
@@ -682,88 +682,6 @@ $$ p V = \frac{1}{3} N m \overline{v^2} $$
 **Właściwości ciśnienia:** - W gazie jako całości rozkład prędkości jest **izotropowy**. - Ciśnienie to siła $dF$ wywierana przez cząstki na pole powierzchni $A$: $p = dF/A$.
 :::
 :::::
-
-## Manometr U-rurkowy
-
-Proste urządzenie do pomiaru małych różnic ciśnień.
-
-```{r}
-#| label: manometer
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5
-
-library(ggplot2)
-library(ggforce)
-
-# Geometria U-rurki
-r_tube <- 1.0     # Promień osi rurki
-w_tube <- 0.6     # Szerokość rurki (średnica)
-h_left <- 4       # Wysokość cieczy lewa
-h_right <- 7      # Wysokość cieczy prawa
-h_max <- 10       # Wysokość rurki
-
-# Promienie ścianek (zewnętrzna i wewnętrzna)
-r_outer <- r_tube + w_tube/2
-r_inner <- r_tube - w_tube/2
-
-# 1. CIECZ (Niebieska)
-# --------------------
-# Syfon (łuk na dole)
-# Słupy cieczy prostokątne
-
-# 2. ŚCIANKI (Szare/Czarne kontury)
-# ---------------------------------
-
-ggplot() +
-  # --- CIECZ (LIQUID) ---
-  # Łuk dolny (U-kształt: od 3 do 9 przez 6 -> start=pi/2, end=1.5*pi)
-  geom_arc_bar(aes(x0=0, y0=0, r0=r_inner, r=r_outer, start=pi/2, end=1.5*pi), 
-               fill="#3498db", color=NA) +
-  
-  # Lewa noga cieczy
-  geom_rect(aes(xmin=-r_outer, xmax=-r_inner, ymin=0, ymax=h_left), fill="#3498db") +
-  
-  # Prawa noga cieczy
-  geom_rect(aes(xmin=r_inner, xmax=r_outer, ymin=0, ymax=h_right), fill="#3498db") +
-  
-  # --- ŚCIANKI RURKI (WALLS) ---
-  # Zewnętrzny łuk (dół)
-  geom_arc(aes(x0=0, y0=0, r=r_outer, start=pi/2, end=1.5*pi), size=1.5, color="grey30") +
-  # Wewnętrzny łuk (dół)
-  geom_arc(aes(x0=0, y0=0, r=r_inner, start=pi/2, end=1.5*pi), size=1.5, color="grey30") +
-  
-  # Lewe ściany pionowe
-  geom_segment(aes(x=-r_outer, xend=-r_outer, y=0, yend=h_max), size=1.5, color="grey30") +
-  geom_segment(aes(x=-r_inner, xend=-r_inner, y=0, yend=h_max), size=1.5, color="grey30") +
-  
-  # Prawe ściany pionowe
-  geom_segment(aes(x=r_outer, xend=r_outer, y=0, yend=h_max), size=1.5, color="grey30") +
-  geom_segment(aes(x=r_inner, xend=r_inner, y=0, yend=h_max), size=1.5, color="grey30") +
-  
-  # --- OZNACZENIA ---
-  # Poziom cieczy lewy
-  geom_segment(aes(x=-r_outer-0.5, xend=-r_inner+0.5, y=h_left, yend=h_left), linetype="dashed") +
-  annotate("text", x=-2.5, y=h_left, label="p[1] (gaz)", parse=TRUE, fontface="bold", size=5) +
-  
-  # Poziom cieczy prawy
-  geom_segment(aes(x=r_inner-0.5, xend=r_outer+0.5, y=h_right, yend=h_right), linetype="dashed") +
-  annotate("text", x=2.5, y=h_right, label="p[2] (atm)", parse=TRUE, fontface="bold", size=5) +
-  
-  # Delta h wymiarowanie
-  geom_segment(aes(x=0, xend=0, y=h_left, yend=h_right), arrow=arrow(length=unit(0.2,"cm"), ends="both")) +
-  annotate("label", x=0, y=(h_left+h_right)/2, label="Delta*h", parse=TRUE, fill="white") +
-  
-  # Linie pomocnicze do h
-  geom_segment(aes(x=-r_inner, xend=0, y=h_left, yend=h_left), linetype="dotted", alpha=0.5) +
-  geom_segment(aes(x=r_inner, xend=0, y=h_right, yend=h_right), linetype="dotted", alpha=0.5) +
-  
-  theme_void() +
-  coord_fixed() + 
-  xlim(-3.5, 3.5) + ylim(-2, 11)
-```
-
-$$ \Delta p = \rho_{cieczy} \cdot g \cdot h $$
 
 ## Współczynniki Termiczne
 
@@ -875,15 +793,266 @@ Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja i
 
 **Przykłady wykresów fazowych:** - Woda (posiadająca punkt potrójny). - Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
 :::
+
+::: {.column width="50%"}
+<!-- Wstaw wykres fazowy p-T dla wody -->
+
+```{r}
+#| label: fig-p-T
+#| fig-cap: "Wykres stanów faz wody we współrzędnych $p-T$."
+#| echo: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 6
+
+library(ggplot2)
+library(ggrepel)
+
+# 1. Stałe termodynamiczne (SI)
+T_tp <- 273.16        # K
+P_tp <- 611.657       # Pa
+T_c  <- 647.10        # K
+P_c  <- 22.064e6      # Pa
+P_atm <- 101325       # Pa
+
+# 2. Funkcje krzywych (fizycznie spójne)
+# Parowanie: ln(P/P_tp) = A * (1 - T_tp/T)
+A_vap <- log(P_c / P_tp) / (1 - T_tp / T_c)
+p_vap <- function(temp) P_tp * exp(A_vap * (1 - T_tp / temp))
+
+# Sublimacja
+A_sub <- 22.5 
+p_sub <- function(temp) P_tp * exp(A_sub * (1 - T_tp / temp))
+
+# Topnienie (anomalia: dT/dp < 0)
+t_melt <- function(pres) T_tp - (7.4e-8 * (pres - P_tp))
+
+# 3. Generowanie danych
+df_vap  <- data.frame(T = seq(T_tp, T_c, length.out = 200))
+df_vap$P <- p_vap(df_vap$T)
+
+df_sub  <- data.frame(T = seq(220, T_tp, length.out = 100))
+df_sub$P <- p_sub(df_sub$T)
+
+p_m_seq <- exp(seq(log(P_tp), log(1e9), length.out = 100))
+df_melt <- data.frame(T = t_melt(p_m_seq), P = p_m_seq)
+
+# Punkty charakterystyczne
+points <- data.frame(
+  T = c(T_tp, T_c, 373.15),
+  P = c(P_tp, P_c, P_atm),
+  label = c("Punkt potrójny", "Punkt krytyczny", "Wrzenie (1 atm)")
+)
+
+# 4. Wykres
+ggplot() +
+  # Obszar nadkrytyczny (tło)
+  annotate("rect", xmin = T_c, xmax = 750, ymin = P_c, ymax = 1e9, fill = "grey90", alpha = 0.5) +
+  # Linie fazowe
+  geom_line(data = df_sub, aes(x = T, y = P), color = "blue", size = 1) +
+  geom_line(data = df_vap, aes(x = T, y = P), color = "red", size = 1.2) +
+  geom_line(data = df_melt, aes(x = T, y = P), color = "darkgreen", size = 1) +
+  # Punkty
+  geom_point(data = points, aes(x = T, y = P), size = 3) +
+  # Etykiety punktów (W dół i w lewo)
+  geom_text_repel(data = points, aes(x = T, y = P, label = label),
+                  nudge_x = 80, # Przesunięcie w prawo [K]
+                  nudge_y = -0.5, # Przesunięcie w dół (w skali log10)
+                  segment.color = "grey50",
+                  arrow = arrow(length = unit(0.02, "npc")),
+                  fontface = "bold", size = 3.5) +
+  # Napisy obszarów (odsunięte od linii)
+  annotate("text", x = 240, y = 1e6, label = "LÓD", size = 5, fontface = "bold", color = "blue") +
+  annotate("text", x = 420, y = 1e8, label = "WODA CIEKŁA", size = 5, fontface = "bold", color = "darkgreen") +
+  annotate("text", x = 550, y = 1e4, label = "PARA", size = 5, fontface = "bold", color = "red") +
+  # FLUID NADKRYTYCZNY (tylko w dół względem poprzedniej pozycji)
+  annotate("text", x = 700, y = 8e7, label = "STAN\nNADKRY\nTYCZNY", 
+           fontface = "italic", color = "grey30", size = 4) +
+  # Konfiguracja osi
+  scale_y_log10(limits = c(10, 1e9), 
+                breaks = c(P_tp, 101325, P_c),
+                labels = c("611.7 Pa", "101.3 kPa", "22.06 MPa")) +
+  scale_x_continuous(limits = c(220, 750), breaks = seq(200, 800, 50)) +
+  labs(
+       x = "Temperatura T [K]", y = "Ciśnienie p [Pa]") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14))
+
+```
+
+:::
 :::::
 
----
+## Mechanika Statystyczna
 
-## Pytania Kontrolne
+### Prawdopodobieństwo Układu
 
-1.  Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?
-2.  Czy temperatura w $^\circ C$ jest parametrem intensywnym czy ekstensywnym?
-3.  Jeśli manometr na oponie pokazuje 2.2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?
-    *   Odp: $2.2 + 1.0 = 3.2$ bara.
+::::: columns
+::: {.column width="50%"}
+Makrostan o ustalonej energii $E$ może być zrealizowany na $\Omega$ sposobów (mikrostanów).
 
-Dziękuję za uwagę!
+W dużych układach (makroskopowych) prawdopodobieństwo, że stan różni się od najbardziej prawdopodobnego (równowagowego), jest znikome.
+:::
+
+::: {.column width="50%"}
+**Przykład dyskretny (4 cząstki,** $E_{max} = 4\epsilon$): - Makrostan $E=3\epsilon$ ma **4 mikrostany**. - Makrostan $E=2\epsilon$ ma **6 mikrostanów**.
+
+::: {.r-fit-text .fragment .fade-up}
+O co tu chodzi???
+:::
+:::
+:::::
+
+## 1. Model: 4 Cząstki, 2 Poziomy Energii
+Wyobraźmy sobie biuro z 4 pracownikami: **Ania, Bartek, Cezary, Daria**.
+Każdy z nich może być w dwóch stanach:
+* 😴 **Stan 0:** Odpoczywa (Energia = 0)
+* ☕ **Stan 1:** Pracuje (Energia = $\epsilon$)
+
+Maksymalna energia biura ($E_{max}$) to sytuacja, gdy wszyscy pracują ($4\epsilon$).
+
+## 2. Analiza Makrostanu $E = 3\epsilon$
+Szef wchodzi i widzi, że **wykonano 3 jednostki pracy**. To jest **Makrostan**.
+Na ile sposobów mogło się to udać? (Szukamy **Mikrostanów**).
+
+Musimy wybrać 3 pracujących (lub 1 śpiącego).
+
+1.  😴 Ania śpi, reszta pracuje.
+2.  😴 Bartek śpi, reszta pracuje.
+3.  😴 Cezary śpi, reszta pracuje.
+4.  😴 Daria śpi, reszta pracuje.
+
+**Wynik:** $W = 4$ mikrostany.
+
+## 3. Analiza Makrostanu $E = 2\epsilon$
+Szef widzi, że **wykonano 2 jednostki pracy**.
+Kto mógł pracować? (Kombinacje 2 z 4).
+
+1.  Ania + Bartek
+2.  Ania + Cezary
+3.  Ania + Daria
+4.  Bartek + Cezary
+5.  Bartek + Daria
+6.  Cezary + Daria
+
+**Wynik:** $W = 6$ mikrostanów.
+
+## 4. Wnioski: Co wybierze natura?
+Natura "losuje" mikrostany na ślepo. Każdy układ (np. Ania+Bartek) jest tak samo prawdopodobny.
+
+* Szansa na trafienie $E=3\epsilon$: **4 losy**.
+* Szansa na trafienie $E=2\epsilon$: **6 losów**.
+
+**Fundamentalne Prawo:** Układy dążą do stanu o **największej liczbie mikrostanów** (największym prawdopodobieństwie).
+To właśnie jest **ENTROPIA** ($S$).
+$$S = k \ln(W)$$
+Gdzie $W$ to liczba mikrostanów. Stan $E=2\epsilon$ ma wyższą entropię niż $E=3\epsilon$.
+
+## Wprowadzenie do I Zasady
+
+### Ciepło i Praca
+
+Zmiana stanu układu odbywa się poprzez wymianę **ciepła** lub **pracy**.
+
+::::: columns
+::: {.column width="50%"}
+### Ciepło (đQ)
+
+-   **Definicja:** Sposób przekazywania energii termicznej związany z różnicą temperatur.
+-   Nie jest funkcją stanu, zależy od drogi procesu.
+:::
+
+::: {.column width="50%"}
+### Praca (đL)
+
+-   **Definicja:** Przekazywanie energii niezwiązane z różnicą temperatur (np. praca objętościowa).
+-   Nie jest funkcją stanu.
+:::
+:::::
+
+::: {style="font-size: 0.7em; color: red;" .fragment .fade-up .callout-tip title="Wyjaśnienie"}
+Matematycy oznaczają tę "zależność od drogi" przekreślonym d ($\delta Q$ lub $đQ$). To ostrzeżenie: "Nie całkuj tego tak po prostu! Musisz znać przebieg procesu, żeby policzyć sumę ciepła"
+:::
+## Praca Termodynamiczna
+
+### Praca Objętościowa
+
+Praca jest kluczowym pojęciem w analizie silników i maszyn.
+
+**Dla procesów kwazistatycznych, praca objętościowa jest dana jako:** $$ đL = p \cdot dV $$ *W inżynierii często używamy notacji* $đL = p dV$ w kontekście I Zasady.
+
+### Praca Techniczna
+
+W module W2 (I Zasada) wprowadzona zostanie również **praca techniczna** i **praca napędowa sprężarki**, kluczowe dla układów otwartych.
+
+## I Zasada dla Układów Zamkniętych
+
+### Forma Różniczkowa
+
+Dla **układów zamkniętych** (gdzie nie ma wymiany masy) i przy braku pracy nieobjętościowej (np. elektrycznej, magnetycznej) obowiązuje zasada zachowania energii:
+
+$$ dU = đQ - p dV $$
+
+Gdzie $U$ jest energią wewnętrzną, $Q$ jest ciepłem, a $p dV$ jest pracą objętościową.
+
+## Wstęp do Termodynamiki Kwantowej
+
+### Kwantyzacja Stanu
+
+W głębszej analizie (fizyka statystyczna), energia układu $E$ może zmieniać się w sposób ciągły (opis klasyczny) lub dyskretny (opis kwantowy).
+
+::::: columns
+::: {.column width="50%"}
+Dla cząstki w pudle: $$ E = \frac{p^2}{2m} $$ *Opis klasyczny, pęd* $p$.
+:::
+
+::: {.column width="50%"}
+$$ E = \frac{h^2}{8mL^2} (n_x^2 + n_y^2 + n_z^2) $$ *Opis kwantowy, z liczbami kwantowymi* $n_x, n_y, n_z$. *(Gdzie* $h$ jest stałą Plancka)
+:::
+:::::
+
+## Skala Temperatury Kelvina
+
+### Związek z II Zasadą
+
+Skala Kelvina jest naturalnie zdefiniowana przez **sprawność teoretycznie idealnego obiegu Carnota**.
+
+-   **Twierdzenie Carnota:** Sprawność obiegu odwracalnego zależy tylko od temperatur zbiorników ($T_1, T_2$), a nie od czynnika roboczego.
+
+Na tej podstawie ustalono bezwzględną skalę temperatury poprzez warunek: $$ \frac{Q_2}{Q_1} = \frac{T_2}{T_1} $$
+
+## Podsumowanie W1
+
+### Kluczowe Koncepcje
+
+::: incremental
+-   Termodynamika operuje na **makroskopowych parametrach** ($p, T, V$).
+-   **Zasada Zerowa** definiuje temperaturę i równowagę.
+-   Rozróżniamy układy **izolowane, zamknięte i otwarte**.
+-   Równanie Stanu wiąże $p, T, V$ (np. równanie van der Waalsa dla gazów rzeczywistych).
+-   Procesy idealne są **kwazistatyczne** (odwracalne).
+:::
+
+## Przejście do W2
+
+### I Zasada Termodynamiki (Bilans Energii)
+
+Następny wykład skupi się na ilościowym opisaniu energii:
+
+| Moduł W2 (4h) | Kluczowe Zagadnienia | Powiązane Ćwiczenia |
+|:-----------------------|:-----------------------|:-----------------------|
+| **Bilans Energii** | Energia wewnętrzna, Praca objętościowa, Ciepło | **Ć2:** Obliczanie pracy i ciepła dla układów zamkniętych |
+| **Entalpia (**$H$) | Definicja $H = U + pV$ i jej znaczenie techniczne | **Ć2:** Zadania z SSFE |
+| **Układy Otwarte** | **Równanie Przepływu Ustalonego** | Analiza sprężarek, turbin, dławików |
+
+## Wstęp do Fizyki Statystycznej
+
+### Materiały Dodatkowe (Dla Zainteresowanych)
+
+-   Definicja potencjału chemicznego ($\mu_i$) dla układów otwartych (zmienna liczba cząstek $N_i$).
+-   Potrzeba uwzględnienia **fluktuacji** w małych układach.
+-   Literatura uzupełniająca: (K. Stachulec, A. K. Wróblewski).
+
+### Dziękuję za Uwagę!
+
+-   Zapraszam na Ćwiczenia 1 (Ć1) – **Parametry Stanu i Przeliczanie Jednostek**.

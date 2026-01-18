@@ -6,7 +6,7 @@
 <script src="02_I_Zasada_Bilans_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="02_I_Zasada_Bilans_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="02_I_Zasada_Bilans_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02_I_Zasada_Bilans_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="02_I_Zasada_Bilans_files/libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="02_I_Zasada_Bilans_files/libs/revealjs/dist/theme/quarto-a65cb5c500c237b5f57940f5aa8a0e53.css">
+  <link rel="stylesheet" href="02_I_Zasada_Bilans_files/libs/revealjs/dist/theme/quarto-89a1b2b057483ab19401415e1e8796e9.css">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -126,17 +126,27 @@
     }
   </style>
   <style>
-  body { background-color: #1a1a1a; }
+  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
+  body {
+      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
+  }
+
+  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("img/background_vi.png") !important;
+
+      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
       background-size: contain !important;
+
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
+
+  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important;
+      background-color: white !important; /* Slajd tytułowy pozostanie biały */
       opacity: 1 !important;
   }
   </style>
@@ -157,210 +167,384 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
+            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
+            <p><img src="img/KBiG.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
 </div>
 
 </section>
-<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
-<h2>Agenda Wykładu</h2>
-<ol type="1">
-<li><strong>Formy Energii</strong> (Wewnętrzna, Kinetyczna, Potencjalna)</li>
-<li><strong>Mechanizmy Transferu Energii</strong>
+<section id="wstęp-do-i-zasady-termodynamiki" class="slide level2">
+<h2>Wstęp do I Zasady Termodynamiki</h2>
+<h3 id="zasada-zachowania-energii">Zasada Zachowania Energii</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Pierwsza Zasada Termodynamiki</strong> to sformułowanie zasady <code>zachowania energii</code> dla zjawisk termicznych.</p>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li>Ciepło (<span class="math inline">\(Q\)</span>)</li>
-<li>Praca (<span class="math inline">\(W\)</span>)</li>
-</ul></li>
-<li><strong>Praca Objętościowa</strong> (Układy z ruchomą granicą)</li>
-<li><strong>I Zasada Termodynamiki</strong> (Zasada Zachowania Energii)</li>
-<li><strong>Ciepła Właściwe</strong> (<span class="math inline">\(C_v\)</span> i <span class="math inline">\(C_p\)</span>)</li>
-</ol>
-</section>
-<section id="formy-energii-całkowitej-e" class="slide level2">
-<h2>1. Formy Energii Całkowitej (<span class="math inline">\(E\)</span>)</h2>
-<p>Energia całkowita układu (<span class="math inline">\(E\)</span>) to suma:</p>
-<ol type="1">
-<li><strong>Energia Wewnętrzna (<span class="math inline">\(U\)</span>):</strong>
-<ul>
-<li>Suma wszystkich mikroskopowych form energii (drgania atomów, rotacje, wiązania chemiczne).</li>
-<li>Zależy silnie od Temperatury!</li>
-</ul></li>
-<li><strong>Energia Kinetyczna (<span class="math inline">\(E_k\)</span>):</strong>
-<ul>
-<li>Ruch całego układu (np. lecący pocisk).</li>
-<li><span class="math inline">\(E_k = \frac{m v^2}{2}\)</span></li>
-</ul></li>
-<li><strong>Energia Potencjalna (<span class="math inline">\(E_p\)</span>):</strong>
-<ul>
-<li>Położenie w polu grawitacyjnym.</li>
-<li><span class="math inline">\(E_p = m g z\)</span></li>
-</ul></li>
-</ol>
-<p><span class="math display">\[ E = U + E_k + E_p \approx U \quad \text{(dla układów stacjonarnych)} \]</span></p>
+<li class="fragment">Postuluje ona równoważność <strong>pracy (<span class="math inline">\(L\)</span>)</strong> i <strong>ciepła (<span class="math inline">\(Q\)</span>)</strong> jako sposobów przekazywania energii.</li>
+<li class="fragment">Dla układu izolowanego zmiana energii wewnętrznej wynosi zero: <span class="math inline">\(dU = 0\)</span>.</li>
+<li class="fragment">Niemożliwe jest zbudowanie <strong>perpetuum mobile pierwszego rodzaju</strong> (maszyny wykonującej pracę bez zasilania energią z zewnątrz).</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/pierwsza.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="energia-wewnętrzna-u" class="slide level2">
 <h2>Energia Wewnętrzna (<span class="math inline">\(U\)</span>)</h2>
-<p>Najważniejszy składnik w termodynamice.</p>
+<h3 id="definicja-i-charakterystyka">Definicja i Charakterystyka</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Energia wewnętrzna (<span class="math inline">\(U\)</span>)</strong> to suma całkowitej energii kinetycznej składników układu i energii potencjalnej ich wzajemnego oddziaływania.</p>
+</div>
 <ul>
-<li>Dla gazów doskonałych zależy <strong>tylko</strong> od temperatury: <span class="math inline">\(U = f(T)\)</span>.</li>
-<li>Jest funkcją stanu (nie zależy od drogi).</li>
-<li>Zmiana <span class="math inline">\(\Delta U\)</span> jest kluczowa dla bilansu.</li>
+<li class="fragment">Jest <strong>funkcją stanu</strong>: jej zmiana zależy tylko od stanu początkowego i końcowego, a nie od drogi procesu.</li>
+<li class="fragment">Jest wielkością <strong>ekstensywną</strong> (addytywną).</li>
+<li class="fragment">Dla <strong>gazu doskonałego</strong> <span class="math inline">\(U\)</span> zależy wyłącznie od temperatury: <span class="math inline">\(U = f(T)\)</span>.</li>
 </ul>
 </section>
-<section id="transfer-energii-ciepło-q" class="slide level2">
-<h2>2. Transfer Energii: Ciepło (<span class="math inline">\(Q\)</span>)</h2>
-<p>Energia przekazywana między układem a otoczeniem wyłącznie z powodu <strong>różnicy temperatur</strong>.</p>
-<ul>
-<li>Kierunek: Zawsze od <span class="math inline">\(T_{wysokiej}\)</span> do <span class="math inline">\(T_{niskiej}\)</span>.</li>
-<li>Proces adiabatyczny: Taki, w którym <span class="math inline">\(Q = 0\)</span> (doskonała izolacja).</li>
-</ul>
-<p><strong>Konwencja znaków:</strong> * <span class="math inline">\(Q &gt; 0\)</span>: Ciepło <strong>dostarczone</strong> do układu (+) (Ogrzewanie). * <span class="math inline">\(Q &lt; 0\)</span>: Ciepło <strong>oddane</strong> przez układ (-) (Chłodzenie).</p>
-<p>Jednostka: Dżul [J] lub kJ.</p>
-</section>
-<section id="transfer-energii-praca-w" class="slide level2">
-<h2>Transfer Energii: Praca (<span class="math inline">\(W\)</span>)</h2>
-<p>Energia przekazywana, która nie jest ciepłem. Związana z działaniem siły na drodze. <span class="math display">\[ W = \int F \cdot ds \]</span></p>
-<p>Formy pracy: 1. Praca tłoka (objętościowa). 2. Praca wału (obrotowa). 3. Praca elektryczna.</p>
-<p><strong>Konwencja znaków (Konwencja energetyczna - “egoistyczna dla układu”):</strong> * <span class="math inline">\(W &gt; 0\)</span>: Praca <strong>wykonana PRZEZ</strong> układ (np. silnik działa). * <span class="math inline">\(W &lt; 0\)</span>: Praca <strong>wykonana NA</strong> układzie (np. sprężarka zużywa prąd).</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Adnotacja</strong></p>
-</div>
-<div class="callout-content">
-<p>Uwaga: W niektórych podręcznikach chemików znak jest odwrotny (<span class="math inline">\(W &gt; 0\)</span> gdy praca dodana). My stosujemy konwencję inżynierską.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="porównanie-q-i-w" class="slide level2">
-<h2>Porównanie <span class="math inline">\(Q\)</span> i <span class="math inline">\(W\)</span></h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Cecha</th>
-<th style="text-align: left;">Ciepło (Q)</th>
-<th style="text-align: left;">Praca (W)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Przyczyna</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\Delta T\)</span></td>
-<td style="text-align: left;">Siła <span class="math inline">\(\cdot\)</span> Droga</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Jakość</strong></td>
-<td style="text-align: left;">Niska (Entropia)</td>
-<td style="text-align: left;">Wysoka (Szlahetna)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Funkcja stanu?</strong></td>
-<td style="text-align: left;">NIE (Funkcja procesu)</td>
-<td style="text-align: left;">NIE (Funkcja procesu)</td>
-</tr>
-</tbody>
-</table>
-<p>Wielkości te nazywamy “funkcjami przejścia”. Zależą od ścieżki (path-dependent). Nie można powiedzieć “układ ma w sobie ciepło”. Układ ma energię wewnętrzną.</p>
-</section>
-<section id="praca-objętościowa-boundary-work" class="slide level2">
-<h2>3. Praca Objętościowa (Boundary Work)</h2>
-<p>Praca związana z ekspansją lub kompresją gazu w cylindrze z tłokiem.</p>
-<p><span class="math display">\[ \delta W = F \cdot ds = (p \cdot A) \cdot ds = p \cdot (A \cdot ds) = p \cdot dV \]</span></p>
-<p>Całkowita praca procesu 1-2: <span class="math display">\[ W_{1-2} = \int_{V_1}^{V_2} p \, dV \]</span></p>
-<p>Interpretacja geometryczna: <strong>Pole pod krzywą procesu na wykresie p-V</strong>.</p>
-</section>
-<section id="wizualizacja-pole-pod-krzywą" class="slide level2">
-<h2>Wizualizacja: Pole pod Krzywą</h2>
-
-<img data-src="02_I_Zasada_Bilans_files/figure-revealjs/pv-work-1.png" width="768" class="r-stretch"><p>Im większe ciśnienie w trakcie rozprężania, tym większa praca wykonana przez tłok.</p>
-</section>
-<section id="przykłady-pracy-objętościowej" class="slide level2">
-<h2>Przykłady Pracy Objętościowej</h2>
+<section id="różniczki-zupełne-i-niezupełne" class="slide level2">
+<h2>Różniczki Zupełne i Niezupełne</h2>
+<h3 id="d-vs.-đ">d vs.&nbsp;đ</h3>
+<p>W termodynamice kluczowe jest rozróżnienie matematyczne:</p>
 <ol type="1">
-<li><p><strong>Izochora (<span class="math inline">\(V = const\)</span>, <span class="math inline">\(dV = 0\)</span>):</strong> <span class="math display">\[ W = \int p \cdot 0 = 0 \]</span> (Tłok się nie rusza <span class="math inline">\(\rightarrow\)</span> brak pracy mechanicznej).</p></li>
-<li><p><strong>Izobara (<span class="math inline">\(p = const\)</span>):</strong> <span class="math display">\[ W = p \int_{V_1}^{V_2} dV = p (V_2 - V_1) \]</span></p></li>
+<li class="fragment"><strong>Różniczka zupełna (<span class="math inline">\(d\)</span>):</strong> Dotyczy funkcji stanu (<span class="math inline">\(U, H, S\)</span>). Całka po drodze zamkniętej wynosi zero: <span class="math inline">\(\oint dU = 0\)</span>.</li>
+<li class="fragment"><strong>Forma Pfaffa (różniczka niezupełna <span class="math inline">\(đ\)</span>):</strong> Dotyczy wielkości procesowych (<span class="math inline">\(Q, L\)</span>). Ich wartość zależy od drogi przejścia: <span class="math inline">\(\oint đQ \neq 0\)</span>.</li>
 </ol>
-</section>
-<section id="i-zasada-termodynamiki" class="slide level2">
-<h2>4. I Zasada Termodynamiki</h2>
-<p>Podstawowe prawo przyrody: <strong>Zasada Zachowania Energii</strong>.</p>
-<blockquote>
-<p>Energia nie może być stworzona ani zniszczona, może jedynie zmieniać formę.</p>
-</blockquote>
-<p>Dla układu zamkniętego wykonującego cykl: <span class="math display">\[ \oint \delta Q = \oint \delta W \]</span> (Suma ciepła netto = Suma pracy netto).</p>
-</section>
-<section id="i-zasada-dla-procesu-układ-zamknięty" class="slide level2">
-<h2>I Zasada dla Procesu (Układ Zamknięty)</h2>
-<p>Jeśli układ przechodzi ze stanu 1 do 2:</p>
-<p><span class="math display">\[ \Delta E_{układu} = E_{wejście} - E_{wyjście} \]</span></p>
-<p>Dla układu stacjonarnych (<span class="math inline">\(\Delta E_k \approx 0, \Delta E_p \approx 0\)</span>): <span class="math display">\[ \Delta U = Q_{netto} - W_{netto} \]</span></p>
-<p>lub w formie różniczkowej: <span class="math display">\[ dU = \delta Q - \delta W \]</span></p>
-<p>Jest to fundament rozwiązywania zadań. “Zmiana zawartości portfela = Przychody - Wydatki”.</p>
-</section>
-<section id="przykład-bilansu" class="slide level2">
-<h2>Przykład Bilansu</h2>
-<div class="callout-example">
-<p>Gaz w cylindrze otrzymuje <strong>50 kJ ciepła</strong> i wykonuje przy tym <strong>20 kJ pracy</strong> (podnosząc tłok). Jak zmieniła się energia wewnętrzna?</p>
-<p><span class="math display">\[ \Delta U = Q - W \]</span> <span class="math display">\[ \Delta U = (+50 \text{ kJ}) - (+20 \text{ kJ}) = 30 \text{ kJ} \]</span></p>
-<p>Energia gazu wzrosła o 30 kJ (gaz się ogrzał).</p>
-</div>
-</section>
-<section id="ciepła-właściwe-specific-heats" class="slide level2">
-<h2>5. Ciepła Właściwe (Specific Heats)</h2>
-<p>Ile energii potrzeba, żeby ogrzać 1 kg substancji o 1 K?</p>
-<p>Istnieją dwa rodzaje ciepła właściwego dla gazów:</p>
-<ol type="1">
-<li><p><strong>Przy stałej objętości (<span class="math inline">\(C_v\)</span>):</strong> Definicja: <span class="math inline">\(C_v = \left( \frac{\partial u}{\partial T} \right)_v\)</span> Fizycznie: Całe ciepło idzie w <span class="math inline">\(\Delta U\)</span> (bo nie ma pracy).</p></li>
-<li><p><strong>Przy stałym ciśnieniu (<span class="math inline">\(C_p\)</span>):</strong> Definicja: <span class="math inline">\(C_p = \left( \frac{\partial h}{\partial T} \right)_p\)</span> Fizycznie: Część ciepła idzie w <span class="math inline">\(\Delta U\)</span>, a część na pracę ekspansji (<span class="math inline">\(p \Delta v\)</span>).</p></li>
-</ol>
-</section>
-<section id="związek-c_p-i-c_v" class="slide level2">
-<h2>Związek <span class="math inline">\(C_p\)</span> i <span class="math inline">\(C_v\)</span></h2>
-<p>Zawsze: <span class="math display">\[ C_p &gt; C_v \]</span> (Bo przy <span class="math inline">\(p=const\)</span> musimy dodatkowo “nakarmić” pracę objętościową rozszerzającego się gazu).</p>
-<p>Dla gazu doskonałego (Relacja Mayera): <span class="math display">\[ C_p - C_v = R \]</span> (<span class="math inline">\(R\)</span> - indywidualna stała gazowa).</p>
-<p><strong>Wykładnik adiabaty (<span class="math inline">\(k\)</span> lub <span class="math inline">\(\gamma\)</span>):</strong> <span class="math display">\[ k = \frac{C_p}{C_v} &gt; 1 \]</span> Dla powietrza <span class="math inline">\(k \approx 1.4\)</span>.</p>
-</section>
-<section id="obliczanie-delta-u-i-delta-h" class="slide level2">
-<h2>Obliczanie <span class="math inline">\(\Delta U\)</span> i <span class="math inline">\(\Delta H\)</span></h2>
-<p>Dla gazów doskonałych (zawsze prawdziwe, bez względu na proces!):</p>
-<p><span class="math display">\[ \Delta U = m \cdot C_v \cdot \Delta T \]</span></p>
-<p><span class="math display">\[ \Delta H = m \cdot C_p \cdot \Delta T \]</span></p>
+<div class="fragment fade-up" title="Ciekawe" style="font-size: 1.0em; color: blue;">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Ostrzeżenie</strong></p>
+<p><strong>Ciekawe</strong></p>
 </div>
 <div class="callout-content">
-<p>To są wzory na <strong>zmianę funkcji stanu</strong>. Można ich użyć nawet w procesie izobarycznym, aby policzyć <span class="math inline">\(\Delta U\)</span> (używając <span class="math inline">\(C_v\)</span>). Nie mylić z ciepłem wymienionym w procesie!</p>
+<p><em>Czynnik całkujący (<span class="math inline">\(1/T\)</span>) pozwala zamienić <span class="math inline">\(đQ\)</span> w różniczkę zupełną entropii <span class="math inline">\(dS = đQ/T\)</span></em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up" title="Do tego wrócimy..." style="font-size: 1.0em; color: red;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Do tego wrócimy…</strong></p>
+</div>
+<div class="callout-content">
+<p>W tym momencie wchodzimy w podstawy II zasady termodynamiki…</p>
+</div>
 </div>
 </div>
 </div>
 </section>
-<section id="podsumowanie-w2" class="slide level2">
-<h2>Podsumowanie W2</h2>
-<ol type="1">
-<li><strong>Energia Wewnętrzna (<span class="math inline">\(U\)</span>)</strong>: Suma energii mikrocząsteczek.</li>
-<li><strong>Praca Objętościowa</strong>: Pole pod krzywą procesu (<span class="math inline">\(W = \int p dV\)</span>).</li>
-<li><strong>I Zasada</strong>: <span class="math inline">\(\Delta U = Q - W\)</span>. Bilans musi się zgadzać.</li>
-<li><strong>Ciepła Właściwe</strong>: <span class="math inline">\(C_p &gt; C_v\)</span>, ich różnica to stała gazowa <span class="math inline">\(R\)</span>.</li>
-</ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Zrobić bilans energii dla grzałki elektrycznej w sztywnym zbiorniku (izochora). Czy <span class="math inline">\(W=0\)</span>? (Podpowiedź: Praca elektryczna!).</p>
+<section id="ciepło-q" class="slide level2">
+<h2>Ciepło (<span class="math inline">\(Q\)</span>)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="definicja-i-konwencja-znaków">Definicja i Konwencja Znaków</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Ciepło</strong> to energia przekazywana przez granicę układu na skutek <strong>różnicy temperatur</strong>.</p>
+</div>
+<ul>
+<li class="fragment">Nie jest funkcją stanu (zależy od drogi procesu).</li>
+<li class="fragment"><strong><span class="math inline">\(đQ &gt; 0\)</span>:</strong> układ pobiera ciepło z otoczenia.</li>
+<li class="fragment"><strong><span class="math inline">\(đQ &lt; 0\)</span>:</strong> układ oddaje ciepło do otoczenia.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="text-align: center;">
+<p><img data-src="img/box2.png" style="width:80.0%"></p>
+<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
+<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+</div>
+</div>
+</div></div>
+<div class="fragment fade-up">
+<p><strong>I Zasada Termodynamiki (postać różniczkowa):</strong> <span class="math display">\[ dU = đQ - đL \]</span></p>
+</div>
+</section>
+<section id="praca-l" class="slide level2">
+<h2>Praca (<span class="math inline">\(L\)</span>)</h2>
+<h3 id="praca-objętościowa">Praca Objętościowa</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.7em;">
+<p>Praca makroskopowa jest określona przez zmianę parametrów układu pod wpływem sił uogólnionych.</p>
+<p><strong>Czyli, przykładowo: Praca gazu zależy od tego, jak duże jest ciśnienie i o ile zmieniła się objętość.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Elementarna praca objętościowa (bezwzględna):</strong> <span class="math display">\[ đL = p \cdot dV \]</span> <em>(Gdzie <span class="math inline">\(p\)</span> to ciśnienie, a <span class="math inline">\(dV\)</span> to zmiana objętości)</em>.</p>
+<ul>
+<li><strong>Sprężanie (<span class="math inline">\(dV &lt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
+<li><strong>Rozprężanie (<span class="math inline">\(dV &gt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL &gt; 0\)</span>).</li>
+<li><strong>Nie uwzględniamy tu tarcia</strong></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="02_I_Zasada_Bilans_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="i-zasada-dla-układów-zamkniętych" class="slide level2">
+<h2>I Zasada dla Układów Zamkniętych</h2>
+<h3 id="bilans-energii">Bilans Energii</h3>
+<p>Dla procesów kwazistatycznych w układach zamkniętych (bez wymiany masy), przy braku pracy nieobjętościowej:</p>
+<p><span class="math display">\[ dU = đQ - p \cdot dV \]</span></p>
+<h3 id="postać-całkowa">Postać całkowa:</h3>
+<p><span class="math display">\[ \Delta U = Q - L \]</span></p>
+<div style="text-align: left; margin-left: 150px;">
+<p>Gdzie:</p>
+<ul>
+<li><span class="math inline">\(\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)\)</span>.</li>
+<li><span class="math inline">\(L = \int_{V_1}^{V_2} p(V) dV\)</span>.</li>
+</ul>
+</div>
+<div class="r-stack fragment fade-up" style="position: absolute; top: 0.1%; right: 10%; width: 100%;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="img/tlok2.png" style="margin-top: 10px; width: 95%;"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="img/praca2.png" style="width: 100%;"></p>
+<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
+<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+</div>
+</div></div>
+</div>
+</section>
+<section>
+<section id="a-co-jeśli-mamy-układ-otwarty---przepływowy" class="title-slide slide level1 center" style="text-align: center;">
+<h1>A co jeśli mamy układ otwarty - przepływowy</h1>
 
 </section>
+<section id="entalpia-h" class="slide level2">
+<h2>Entalpia (<span class="math inline">\(H\)</span>)</h2>
+<h3 id="definicja-i-znaczenie">Definicja i Znaczenie</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Entalpia (<span class="math inline">\(H\)</span> lub <span class="math inline">\(I\)</span>)</strong> jest funkcją stanu zdefiniowaną jako suma energii wewnętrznej i iloczynu ciśnienia oraz objętości.</p>
+</div>
+<p><span class="math display">\[ H = U + p \cdot V \]</span></p>
+<ul>
+<li class="fragment">Jest wielkością <strong>ekstensywną</strong>.</li>
+<li class="fragment">Dla gazów doskonałych zależy tylko od temperatury.</li>
+<li class="fragment">Różniczka entalpii: <span class="math inline">\(dH = dU + p dV + V dp\)</span></li>
+</ul>
+<div class="fragment fade-up" title="Znaczenie" style="font-size: 0.9em;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Znaczenie</strong></p>
+</div>
+<div class="callout-content">
+<p>Człon <span class="math inline">\(p \cdot V\)</span> można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce “rozepchać” przeciwko ciśnieniu otoczenia (<span class="math inline">\(p\)</span>) zajmując objętość (<span class="math inline">\(V\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="analogia-dla-entalpii-z-życia-impreza-w-klubie" class="slide level2">
+<h2>Analogia dla <strong><em>entalpii</em></strong> z życia: “Impreza w Klubie”</h2>
+<p>Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnieniem).</p>
+<ol type="1">
+<li><strong>Twoja energia (<span class="math inline">\(U\)</span>):</strong> To jak dobrze tańczysz.</li>
+<li><strong>Praca wejścia (<span class="math inline">\(pV\)</span>):</strong> Aby wejść, musisz rozepchnąć tłum łokciami.
+<ul>
+<li>Im większy ścisk w klubie (wyższe <span class="math inline">\(p\)</span>), tym więcej energii zużywasz na samo wejście.</li>
+<li>Im jesteś “szerszy” (większe <span class="math inline">\(v\)</span>), tym więcej miejsca zajmujesz.</li>
+</ul></li>
+</ol>
+<p><strong>Entalpia (<span class="math inline">\(H\)</span>)</strong> to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.</p>
+</section>
+<section id="kiedy-używamy-u-a-kiedy-h" class="slide level2">
+<h2>Kiedy używamy <span class="math inline">\(U\)</span>, a kiedy <span class="math inline">\(H\)</span>?</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>To jest najważniejszy slajd dla inżyniera!</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sytuacja</th>
+<th style="text-align: left;">Używamy</th>
+<th style="text-align: left;">Dlaczego?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Układ Zamknięty</strong><br>(Garnek, Tłok)</td>
+<td style="text-align: left;"><strong><span class="math inline">\(U\)</span></strong></td>
+<td style="text-align: left;">Gaz nigdzie nie idzie. “Siedzi” w miejscu. Nie musi się wpychać do rury.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Układ Otwarty</strong><br>(Turbina, Kocioł)</td>
+<td style="text-align: left;"><strong><span class="math inline">\(H\)</span></strong></td>
+<td style="text-align: left;">Gaz płynie. Musi wykonać pracę przetłaczania (<span class="math inline">\(pV\)</span>), żeby wpłynąć i wypłynąć.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entalpia-w-technice" class="slide level2">
+<h2>Entalpia w Technice</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>W nawiązaniu do <strong>I zasady termodynamiki</strong>, zmiana energii wewnętrznej wynosi: <span class="math inline">\(dU=đQ − p dV\)</span>. Zatem: <span class="math inline">\(đQ = dU + p dV\)</span>, a w procesach <strong>izobarycznych<br>(<span class="math inline">\(p = const, dp = 0\)</span>)</strong>, dlatego:</p>
+</div>
+<p><span class="math display">\[ đQ = dU + p dV = d(U + pV) = dH \]</span></p>
+<div class="fragment fade-up" title="**Wniosek:**" style="background-color: #fff5cc; font-size: 0.8em;">
+<div class="callout callout-warning callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>W przemianie przy stałym ciśnieniu doprowadzone ciepło jest równe przyrostowi entalpii. Jest to kluczowe przy projektowaniu kotłów i wymienników ciepła.</p>
+<p><span class="math display">\[Q_{p=const} =\Delta H\]</span> To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: <span class="math inline">\(Q=H_{wylot} − H_{wlot}\)</span>. Żadnego całkowania!</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="fragment" style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;">A co się dzieje z energią dostarczaną przy stałej obiętości?</span></p>
+</section>
+<section id="entalpia-e-a-energia-wewnętrzna-u" class="slide level2">
+<h2>Entalpia (E) a Energia Wewnętrzna (U)</h2>
+<h3 id="ponieważ-q-delta-u-l---i-zasada-termodynamiki-z-której-wynika-że-jeżeli">Ponieważ: <span style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"><span class="math inline">\(Q = \Delta U + L\)</span></span> - I zasada termodynamiki, z której wynika, że jeżeli:</h3>
+<ol type="1">
+<li>Zachodzi przemiana izochoryczna: <strong>V=const</strong>.</li>
+<li>Skoro objętość się nie zmienia (<strong>dV=0</strong>), to tłok się nie przesuwa.</li>
+<li>Praca objętościowa: <span class="highlight-red"><span class="math inline">\(L = \int pdV = 0\)</span></span>.</li>
+</ol>
+<p>To: <span class="math display">\[ Q_{V=const} = \Delta U + 0 \]</span></p>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Stąd wynikają różnice w cieple właściwym <span class="math inline">\(c_p\)</span> i <span class="math inline">\(c_v\)</span>. <span class="fragment">Które jest większe i dlaczego?</span></p>
+</div>
+</section>
+<section id="pojemność-cieplna" class="slide level2">
+<h2>Pojemność Cieplna</h2>
+<table class="caption-top">
+<caption>Porównanie przemian charakterystycznych gazu doskonałego</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Cecha</th>
+<th style="text-align: left;">Przemiana Izochoryczna (<span class="math inline">\(V=const\)</span>)</th>
+<th style="text-align: left;">Przemiana Izobaryczna (<span class="math inline">\(p=const\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Analogia</strong></td>
+<td style="text-align: left;">“Szczelny garnek” (Szybkowar)</td>
+<td style="text-align: left;">“Cylinder z ruchomym tłokiem”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Warunek</strong></td>
+<td style="text-align: left;"><span class="math inline">\(dV = 0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(dp = 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Praca (<span class="math inline">\(L\)</span>)</strong></td>
+<td style="text-align: left;"><strong>0</strong> (Układ nie wykonuje pracy)</td>
+<td style="text-align: left;"><span class="math inline">\(p \cdot (V_2 - V_1)\)</span> (Układ “płaci” za ekspansję)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Bilans Ciepła</strong></td>
+<td style="text-align: left;"><strong><span class="math inline">\(Q = \Delta U\)</span></strong></td>
+<td style="text-align: left;"><strong><span class="math inline">\(Q = \Delta H\)</span></strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Ciepło właściwe</strong></td>
+<td style="text-align: left;"><strong><span class="math inline">\(c_v = \frac{\Delta u}{\Delta T}\)</span></strong></td>
+<td style="text-align: left;"><strong><span class="math inline">\(c_p = \frac{\Delta h}{\Delta T}\)</span></strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="c_p-c_v-zastosowanie-praktyczne" class="slide level2">
+<h2><span class="math inline">\(C_p\)</span> &gt; <span class="math inline">\(C_v\)</span> (Zastosowanie praktyczne)</h2>
+<ul>
+<li>Przy <span class="math inline">\(v=const \ (c_v)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz TYLKO się ogrzewa.</span></li>
+<li>Przy <span class="math inline">\(p=const \ (c_p)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.</span></li>
+</ul>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Dlatego, żeby ogrzać gaz o 1 stopień przy stałym ciśnieniu, musimy dostarczyć więcej ciepła (bo część ucieka na pracę). Stąd wynika wzór Mayera: <span class="math display">\[ C_p - C_v = n \cdot R_u \]</span></p>
+</div>
+</section>
+
+<section id="uwaga-na-oznaczenia" class="slide level2">
+<h2>Uwaga na oznaczenia!</h2>
+<p>Wzory <span class="math inline">\(c_p - c_v = ...\)</span> ma różne postacie w zależności od jednostek.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Wersja</th>
+<th style="text-align: left;">Wzór</th>
+<th style="text-align: left;">Jednostka</th>
+<th style="text-align: left;">Stała Gazowa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Techniczna</strong> (kg)</td>
+<td style="text-align: left;"><span class="math inline">\(c_p - c_v = R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{kg \cdot K}\)</span></td>
+<td style="text-align: left;"><strong>Indywidualna</strong> (<span class="math inline">\(R\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Molowa</strong> (kmol)</td>
+<td style="text-align: left;"><span class="math inline">\(C_{p,m} - C_{v,m} = R_u\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{kmol \cdot K}\)</span></td>
+<td style="text-align: left;"><strong>Uniwersalna</strong> (<span class="math inline">\(MR\)</span>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Całkowita</strong> (Cały układ)</td>
+<td style="text-align: left;"><span class="math inline">\(C_p - C_v = n \cdot R_u\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{K}\)</span></td>
+<td style="text-align: left;">Uniwersalna</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Zasada na Egzamin:</strong> Jeśli widzisz małe <span class="math inline">\(c\)</span> i <span class="math inline">\(R\)</span>, <strong>nie wstawiaj tam <span class="math inline">\(n\)</span></strong>! Inżynierowie w elektrowniach liczą na kilogramy (<span class="math inline">\(R\)</span>), a nie na mole (<span class="math inline">\(n \cdot R_u\)</span>).</p>
+</blockquote>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Termodynamika Techniczna</p>
 </div>
 </div></div>
 
@@ -549,7 +733,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',

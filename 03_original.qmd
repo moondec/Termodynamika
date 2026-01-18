@@ -150,7 +150,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
   
 :::
 
-## Równanie Przepływu Ustalonego (Równanie Szewalskiego dla Gazów)
+## Równanie Przepływu Ustalonego
 
 ### Postać Ogólna Bilansu Mocy
 

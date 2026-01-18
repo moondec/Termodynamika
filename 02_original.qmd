@@ -460,7 +460,7 @@ $$ C_p - C_v = n \cdot R_u $$, lub
 $$ c_p - c_v = R $$
 
 ## Uwaga na oznaczenia!
-Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
+Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
 | :--- | :--- | :--- | :--- |
@@ -472,3 +472,5 @@ Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 > Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
 > Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
 
+
+# cdn...
