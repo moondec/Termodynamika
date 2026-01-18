@@ -156,7 +156,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
 
 Dla maszyny działającej w sposób ustalony (strumień masy $\dot{m} = const$):
 
-$$ \underbrace{\dot{Q} + \dot{W}_{tech}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}} 
+$$ \underbrace{\dot{Q} + \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}} 
 = 
 \dot{m} 
 \left[ 
@@ -176,7 +176,7 @@ $$ \underbrace{\dot{Q} + \dot{W}_{tech}}_{\substack{\text{Moc wymienna} \\ \text
 Gdzie:
 
 *   $\dot{Q}$ – strumień ciepła (moc cieplna) [W].
-*   $\dot{W}_{tech}$ – moc techniczna (na wale) [W].
+*   $\dot{L}_{t}$ – moc techniczna (na wale) [W].
 *   $\dot{m}$ – Strumień masy czynnika [kg/s]
 *   $h$ – entalpia właściwa [J/kg].
 

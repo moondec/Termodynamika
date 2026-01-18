@@ -262,7 +262,7 @@ Używamy parametru uniezależnionego od wielkości.
 **Mean Effective Pressure ($MEP$):**
 Stałe ciśnienie, które działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.
 
-$$ p_{me} = \frac{W_{net}}{V_s} $$
+$$ p_{me} = \frac{L}{V_s} $$
 
 Dla nowoczesnych silników turbo: $p_{me} \approx 20-30 \text{ bar}$.
 Dla wolnossących: $10-12 \text{ bar}$.

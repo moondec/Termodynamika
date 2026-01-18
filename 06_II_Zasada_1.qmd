@@ -98,7 +98,7 @@ Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności
 Urządzenie cykliczne, które zamienia ciepło na pracę.
 
 1.  Pobiera ciepło $Q_H$ ze źródła o wysokiej temperaturze ($T_H$).
-2.  Zamienia część tego ciepła na pracę użyteczną $W$.
+2.  Zamienia część tego ciepła na pracę użyteczną $L$.
 3.  Oddaje pozostałe (niewykorzystane) ciepło $Q_L$ do źródła dolnego ($T_L$).
 
 ### Sprawność Termiczna
@@ -111,7 +111,7 @@ $$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \fr
 To "odwrócony" silnik cieplny.
 
 1.  Pobiera ciepło $Q_L$ z zimnego wnętrza ($T_L$).
-2.  Wymaga dostarczenia pracy $W$ (sprężarka).
+2.  Wymaga dostarczenia pracy $L$ (sprężarka).
 3.  Oddaje ciepło $Q_H$ do ciepłego otoczenia ($T_H$).
 
 ### Współczynniki Efektywności (COP)

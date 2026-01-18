@@ -63,9 +63,9 @@ Aby je zmusić do przepływu $T_{nis} \to T_{wys}$, musimy dostarczyć energię 
 
 **Chłodziarka:** Maszyna, która utrzymuje $T_L < T_{otoczenia}$.
 Cel: $Q_L$ (ciepło odebrane z komory).
-Koszt: $W$ (praca sprężarki).
+Koszt: $L$ (praca sprężarki).
 
-$$ COP = \frac{Q_L}{W} $$
+$$ COP = \frac{Q_L}{L} $$
 
 Dla domowej lodówki COP $\approx 2-3$.
 To znaczy, że 1 kW prądu "przepompowuje" 3 kW ciepła.
@@ -99,7 +99,7 @@ Standardowy diagram dla inżynierów HVAC.
 *   Oś X: Entalpia. Długość odcinków to bezpośrednio ciepło lub praca.
 
 Procesy:
-1.  **1-2 Sprężanie:** Krzywa idąca w prawo-górę (adiabata $s=const$). Długość rzutu na oś X to praca $W$.
+1.  **1-2 Sprężanie:** Krzywa idąca w prawo-górę (adiabata $s=const$). Długość rzutu na oś X to praca $L$.
 2.  **2-3 Skraplanie:** Pozioma linia w lewo (izobara). Długość odcinka to $Q_H$ (ciepło oddane "za lodówkę").
 3.  **3-4 Dławienie:** Pionowa linia w dół (izentalpa $h=const$).
 4.  **4-1 Parowanie:** Pozioma linia w prawo. Długość odcinka to $Q_L$ (efekt chłodniczy).
@@ -171,7 +171,7 @@ Ewolucja:
 "Lodówka włożona oknem do środka".
 Chłodzimy dwór (odbieramy $Q_L$ z gruntu/powietrza), a grzejemy dom ($Q_H$ ze skraplacza).
 
-$$ COP_{grzania} = \frac{Q_H}{W} = \frac{Q_L + W}{W} = COP_{chłodzenia} + 1 $$
+$$ COP_{grzania} = \frac{Q_H}{L} = \frac{Q_L + L}{L} = COP_{chłodzenia} + 1 $$
 
 Dlatego pompa ciepła zawsze ma sprawność > 100% (liczoną jako ciepło/prąd).
 

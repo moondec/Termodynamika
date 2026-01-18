@@ -76,7 +76,7 @@ editor: source
 :::
 
 *   **Przykłady:** Woda ($H_2O$), Azot ($N_2$), Hel ($He$), Dwutlenek węgla ($CO_2$).
-*   **A co z powietrzem?** Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako *jednorodną* substancję zastępczą (dopóki nie skraplamy tlenu/azotu).
+*   **A co z powietrzem?** Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako *jednorodną* substancję zastępczą (dopóki nie skraplamy tlenu/azotu). {.fragment}
 
 ---
 
@@ -109,9 +109,11 @@ Substancja czysta może występować w różnych fazach (stanach skupienia):
 
 Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia (Kinetyczna Teoria Gazów):
 
+::: incremental
 1.  **Objętość cząsteczek = 0:** Cząsteczki traktujemy jako punkty materialne. W rzeczywistości mają skończoną średnicę.
 2.  **Brak oddziaływań:** Między cząsteczkami nie działają żadne siły przyciągania ani odpychania (poza momentem zderzenia).
 3.  **Zderzenia doskonale sprężyste:** Nie ma straty energii kinetycznej podczas zderzeń.
+:::
 
 ---
 
@@ -150,7 +152,7 @@ $$ p \cdot V = m \cdot R \cdot T $$
 
 Tu studenci najczęściej robią błędy!
 
-### Uniwersalna Stała Gazowa ($R_u$ lub $\mathcal{R}$)
+### Uniwersalna Stała Gazowa ($R_u$ lub $\mathcal{R}$, lub $R_m$, lub $RM$)
 Stała fizyczna, niezależna od rodzaju gazu:
 $$ R_u \approx 8314.46 \quad \frac{J}{kmol \cdot K} $$
 Używana w chemii w równaniu dla moli: $pV = n R_u T$.
@@ -212,7 +214,7 @@ $$ C_p = C_v + R $$
 
 $$ C_p > C_v $$
 
-Ogrzewanie przy stałym ciśnieniu wymaga **więcej** energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji ($Work = p \Delta v$).
+Ogrzewanie przy stałym ciśnieniu wymaga **więcej** energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji ($L = p \Delta V$).
 
 Ciepło dostarczone ($Q_p$) rozdziela się na:
 1.  Wzrost energii wewnętrznej (temperatury).
@@ -222,11 +224,26 @@ Przy $V=const$, praca wynosi zero, więc całe ciepło idzie w temperaturę.
 
 ---
 
-## Wykładnik Adiabaty $k$ (Kappa)
+## Uwaga na oznaczenia!
+Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
+
+| Wersja | Wzór | Jednostka | Stała Gazowa |
+| :--- | :--- | :--- | :--- |
+| **Techniczna** (kg) | $c_p - c_v = R$ | $\frac{J}{kg \cdot K}$ | **Indywidualna** ($R$) |
+| **Molowa** (kmol) | $C_{p,m} - C_{v,m} = R_u$ | $\frac{J}{kmol \cdot K}$ | **Uniwersalna** ($MR$) |
+| **Całkowita** (Cały układ) | $C_p - C_v = n \cdot R_u$ | $\frac{J}{K}$ | Uniwersalna |
+
+> **Zasada na Egzamin:**
+> Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
+> Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
+
+---
+
+## Wykładnik Adiabaty $\kappa$ (Kappa) lub $\gamma$ (Gamma)
 
 Stosunek ciepeł właściwych nazywamy wykładnikiem adiabaty:
 
-$$ k = \frac{C_p}{C_v} $$
+$$ \kappa = \frac{C_p}{C_v} $$
 
 Wartość $k$ zależy od budowy cząsteczki (stopni swobody):
 
@@ -237,6 +254,23 @@ Wartość $k$ zależy od budowy cząsteczki (stopni swobody):
 | **Wieloatomowe** | 3+ | $\approx 1.30$ | $CO_2, H_2O, CH_4$ |
 
 *Najważniejsza liczba w inżynierii: Powietrze ma $k=1.4$.*
+
+---
+
+## Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty
+
+### Stała Boltzmanna $k$ (lub $k_B$), występuje w fizyce statystycznej (wzór na entropię $S=kln(W)$) oraz w definicji stałej gazowej <br>
+($R_u = N_A \cdot k$).
+
+| Cecha | Stała Boltzmanna | Wykładnik Adiabaty |
+|:---|:---|:---|
+| **Symbol preferowany** | **$k$** (lub $k_B$) | **$\kappa$** (Kappa) lub $\gamma$ (Gamma) |
+| **Symbol mylący** | - | **$k$** (Występuje w starszych źródłach - unikać!) |
+| **Co to jest?** | Stała fizyczna Wszechświata (Mikro) | Własność termodynamiczna gazu (Makro) |
+| **Wzór definicyjny** | $k = \frac{R_u}{N_A}$ | $\kappa = \frac{c_p}{c_v}$ |
+| **Rząd wielkości** | $\approx 1,38 \cdot 10^{-23}$ (Bardzo mała) | $> 1$ (Dla powietrza $\approx 1,4$) |
+| **Jednostka** | $[\text{J}/\text{K}]$ | Brak (liczba bezwymiarowa) |
+: Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty {tbl-colwidths="[25,35,40]"}
 
 ---
 
@@ -363,33 +397,81 @@ Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu dosko
 ```{r}
 #| label: andrews
 #| echo: false
-#| fig-width: 6
-#| fig-height: 5
+#| fig-width: 8.5
+#| fig-height: 7
 
-v_r <- seq(0.5, 4, length.out=200)
+library(ggplot2)
 
-# Ideal gas
-p_ideal <- 2/v_r
+# Funkcja Ciśnienia van der Waalsa (zredukowana): P = 8T/(3v-1) - 3/v^2
+vdw_p <- function(v, t) {
+  p_val <- 8*t / (3*v - 1) - 3 / v^2
+  return(p_val)
+}
 
-# Real gas (schematic)
-# T > Tk
-p_high <- 2.2/v_r 
-# T = Tk (inflection point)
-p_crit <- 4*v_r^(-3) - 3*v_r^(-4) + 1 # Fake function for visual
-# T < Tk
-p_low <- 2/v_r
-p_low[v_r > 1 & v_r < 3] <- 1 # Plateu
+# Zakres objętości
+v <- seq(0.45, 5, length.out=300)
 
-dfa <- data.frame(
-  v = rep(v_r, 3),
-  p = c(p_high, p_crit, p_low),
-  Type = rep(c("T > Tk (Gaz)", "T = Tk (Krytyczna)", "T < Tk (Skraplanie)"), each=200)
+# Izotermy do wygenerowania
+t_vals <- c(0.85, 0.9, 1.0, 1.1, 1.2)
+labels <- c("T < Tc (0.85)", "T < Tc (0.90)", "T = Tc (1.0)", "T > Tc (1.1)", "T > Tc (1.2)")
+
+df_iso <- data.frame()
+
+for(i in 1:length(t_vals)){
+  t <- t_vals[i]
+  p <- vdw_p(v, t)
+  
+  # Korekta "plateau" dla T < 1 (konstrukcja Maxwella - uproszczona, "na oko" dla wykresu)
+  if(t == 0.85){
+    p_sat <- 0.504
+    v_l <- 0.553; v_g <- 3.13
+    p[v >= v_l & v <= v_g] <- p_sat 
+  }
+  if(t == 0.90){
+    p_sat <- 0.647
+    v_l <- 0.63; v_g <- 2.25
+    p[v >= v_l & v <= v_g] <- p_sat
+  }
+  
+  # Przycinanie dla estetyki (żeby nie uciekało w nieskończoność przy v->0.33)
+  p[p > 3] <- NA
+  p[p < 0] <- NA
+  
+  df_iso <- rbind(df_iso, data.frame(v=v, p=p, t=as.factor(t), label=labels[i]))
+}
+
+# Krzywa nasycenia (Dome) - Punkty graniczne plateau + punkt krytyczny (1,1)
+df_dome <- data.frame(
+  v = c(0.553, 0.63, 1.0, 2.25, 3.13),
+  p = c(0.504, 0.647, 1.0, 0.647, 0.504)
 )
+# Wygładzanie kopuły
+fit <- smooth.spline(df_dome$v, df_dome$p, df=4)
+df_dome_smooth <- data.frame(predict(fit, seq(0.553, 3.13, length.out=100)))
 
-ggplot(dfa, aes(v, p, color=Type)) + geom_line(size=1.5) + ylim(0, 5) +
-  theme_minimal() + labs(title="Izotermy Andrewsa", y="p", x="v")
+ggplot() +
+  # Izotermy
+  geom_line(data=df_iso, aes(x=v, y=p, color=label, group=label), size=1.5) +
+  # Kopuła
+  geom_line(data=df_dome_smooth, aes(x=x, y=y), linetype="dotted", size=1.2, color="navy") +
+  # Punkt Krytyczny
+  geom_point(aes(x=1, y=1), size=5, color="black") +
+  annotate("text", x=1.1, y=1.05, label="Punkt Krytyczny", size=6, fontface="bold", hjust=0) +
+  annotate("text", x=0.8, y=0.3, label="Ciecz", color="navy") +
+  annotate("text", x=3.5, y=0.3, label="Gaz", color="navy") +
+  annotate("text", x=2, y=0.55, label="Mieszanina L+G", color="navy", size=4) +
+  
+  # Styling
+  ylim(0.2, 2.5) + xlim(0.4, 4) +
+  scale_color_viridis_d(name="Temperatura") +
+  labs(title="Izotermy Andrewsa (Model Van der Waalsa)", 
+       x="Objętość zredukowana v_r", 
+       y="Ciśnienie zredukowane p_r") +
+  theme_minimal(base_size = 18) +
+  theme(legend.position="right")
 ```
 :::
+
 
 ::: {.column width="40%"}
 *   Dla $T > T_{kryt}$: Izotermy gładkie (jak g.d.).
@@ -410,7 +492,12 @@ $$ Z = \frac{pv}{RT} $$
 *   Dla gazu doskonałego: $Z = 1$.
 *   Dla gazu rzeczywistego: $Z \neq 1$ (może być 0.8, może być 1.2).
 
-**Zasada:** Różne gazy w tych samych stanach zredukowanych ($T/T_{kryt}$ i $p/p_{kryt}$) mają w przybliżeniu to samo $Z$. Daje to uniwersalne wykresy dla wszystkich gazów.
+### Parametry Zredukowane
+Sprowadzamy różne gazy do "wspólnego mianownika", dzieląc ich parametry przez parametry w punkcie krytycznym:
+
+$$ p_r = \frac{p}{p_{kryt}}, \quad v_r = \frac{v}{v_{kryt}}, \quad T_r = \frac{T}{T_{kryt}} $$
+
+**Zasada:** Różne gazy w tych samych stanach zredukowanych ($p_r, T_r$) mają w przybliżeniu to samo $Z$.
 
 ---
 

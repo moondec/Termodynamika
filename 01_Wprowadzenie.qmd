@@ -106,7 +106,7 @@ Bada ona przemiany pomiędzy różnymi formami energii, *przede wszystkim* międ
 
 :::{style="text-align: left; margin-left: 150px;"}
 -   **Ciepłem** ($Q$)
--   **Pracą** ($L$ lub $W$)
+-   **Pracą** ($L$)
 :::
 
 ### Termodynamika Techniczna w Inżynierii {.fragment .fade-up}

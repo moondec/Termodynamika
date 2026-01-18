@@ -6,7 +6,7 @@
 <script src="04_Wlasciwosci_Substancji_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="04_Wlasciwosci_Substancji_files/libs/revealjs/dist/theme/quarto-34305f86072cf02266a28ded5fc352bc.css">
+  <link rel="stylesheet" href="04_Wlasciwosci_Substancji_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -126,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
       background-image: url("img/background_red.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -157,7 +147,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">W4: Właściwości Substancji Czystych - I</h1>
-  <p class="subtitle">Gazy doskonałe i rzeczywiste</p>
+  <p class="subtitle">Gazy Doskonałe, Mieszaniny i Rzeczywiste</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -179,262 +169,369 @@
 <section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
 <h2>Agenda Wykładu</h2>
 <ol type="1">
-<li><strong>Substancje Czyste i Fazy</strong> (Punkt Potrójny)</li>
-<li><strong>Model Gazu Doskonałego</strong> (Clapeyron, <span class="math inline">\(R\)</span>)</li>
-<li><strong>Ciepła Właściwe</strong> (Relacja Mayera)</li>
+<li><strong>Substancje Czyste</strong> (Definicje, Fazy)</li>
+<li><strong>Gaz Doskonały</strong> (Założenia modelu)</li>
+<li><strong>Równanie Stanu</strong> (Clapeyron, Stała Gazowa <span class="math inline">\(R\)</span>)</li>
+<li><strong>Ciepła Właściwe</strong> (Relacja Mayera, Wykładnik <span class="math inline">\(k\)</span>)</li>
 <li><strong>Mieszaniny Gazowe</strong> (Prawo Daltona)</li>
 <li><strong>Gazy Rzeczywiste</strong> (Van der Waals, Andrews)</li>
-<li><strong>Para Nasycona</strong> (Tablice, Wykresy)</li>
 </ol>
 
 <img data-src="img/substancja_vs_mieszanina.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
-<section id="wprowadzenie-do-substancji-czystych" class="slide level2" data-menu-title="Wstęp">
+<section id="wprowadzenie-do-substancji-czystych" class="slide level2">
 <h2>1. Wprowadzenie do Substancji Czystych</h2>
-<h3 id="definicja-fazy-i-substancji">Definicja Fazy i Substancji</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><strong>Substancja czysta</strong> ma jednolity i niezmienny skład chemiczny w całej objętości (np. woda, azot, hel).</p>
+<h3 id="definicja">Definicja</h3>
+<div style="border-left: 10px solid #e60000; padding: 20px; background-color: #f0f0f0;">
+<p><strong>Substancja czysta</strong> to substancja, która ma stały i jednorodny skład chemiczny w całej swojej objętości.</p>
 </div>
 <ul>
-<li class="fragment"><strong>Faza:</strong> Makroskopowa część układu o jednorodnych właściwościach fizycznych, oddzielona granicą faz.</li>
-<li class="fragment"><strong>Stany skupienia:</strong> Ciało stałe, ciecz, gaz.</li>
-<li class="fragment"><strong>Równowaga fazowa:</strong> Stan, w którym parametry nie zmieniają się w czasie i nie ma przepływów energii ani materii między fazami.</li>
+<li><strong>Przykłady:</strong> Woda (<span class="math inline">\(H_2O\)</span>), Azot (<span class="math inline">\(N_2\)</span>), Hel (<span class="math inline">\(He\)</span>), Dwutlenek węgla (<span class="math inline">\(CO_2\)</span>).</li>
+<li><strong>A co z powietrzem?</strong> Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako <em>jednorodną</em> substancję zastępczą (dopóki nie skraplamy tlenu/azotu). {.fragment}</li>
 </ul>
-</div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/substancja_vs_mieszanina.png" style="width:100.0%"></p>
-<figcaption>Substancja czysta vs Mieszanina</figcaption>
-</figure>
-</div>
-</div></div>
 </section>
-<section id="punkt-potrójny-i-krytyczny" class="slide level2">
-<h2>Punkt Potrójny i Krytyczny</h2>
-<h3 id="granice-współistnienia">Granice Współistnienia</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="fazy-materii" class="slide level2">
+<h2>Fazy Materii</h2>
+<p>Substancja czysta może występować w różnych fazach (stanach skupienia):</p>
+<ol type="1">
+<li><strong>Ciało Stałe (Solid):</strong> Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.</li>
+<li><strong>Ciecz (Liquid):</strong> Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).</li>
+<li><strong>Gaz (Gas/Vapor):</strong> Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.</li>
+</ol>
+</section>
+<section id="równowaga-fazowa" class="slide level2">
+<h2>Równowaga Fazowa</h2>
 <ul>
-<li><strong>Punkt potrójny:</strong> Stan, w którym w równowadze współistnieją trzy fazy (stała, ciekła, gazowa).
+<li class="fragment">Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w <span class="math inline">\(0^\circ C\)</span>).</li>
+<li class="fragment"><strong>Przemiany fazowe:</strong>
 <ul>
-<li>Dla wody: <span class="math inline">\(T = 273,16\)</span> K (<span class="math inline">\(0,01^\circ\)</span>C), <span class="math inline">\(p = 610,62\)</span> Pa.</li>
+<li class="fragment">Topnienie / Krzepnięcie (Stałe <span class="math inline">\(\leftrightarrow\)</span> Ciecz)</li>
+<li class="fragment">Parowanie / Skraplanie (Ciecz <span class="math inline">\(\leftrightarrow\)</span> Gaz)</li>
+<li class="fragment">Sublimacja / Resublimacja (Stałe <span class="math inline">\(\leftrightarrow\)</span> Gaz)</li>
 </ul></li>
-</ul>
-<ul>
-<li class="fragment"><strong>Punkt krytyczny (<span class="math inline">\(K\)</span>):</strong> Stan, w którym znikają różnice między fazą ciekłą a gazową.
-<ul>
-<li class="fragment">Powyżej <span class="math inline">\(T_k\)</span> substancja jest gazem i nie można jej skroplić przez samo zwiększenie ciśnienia.</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/phase-diagram-simple-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="gaz-doskonały" class="slide level2">
-<h2>2. Gaz Doskonały</h2>
-<h3 id="model-teoretyczny">Model Teoretyczny</h3>
-<p>Gaz doskonały to abstrakcyjny model cząstek punktowych (pozbawionych objętości) bez oddziaływań na odległość, zderzających się sprężyście.</p>
-<p><strong>Równanie Clapeyrona:</strong> <span class="math display">\[ p \cdot v = R \cdot T \]</span> Po pomnożeniu obu stron przez masę (<span class="math inline">\(m\)</span>): <span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
-<ul>
-<li><strong>Równanie uniwersalne:</strong> <span class="math display">\[ p \cdot V = n \cdot (MR) \cdot T \]</span> gdzie <span class="math inline">\(n\)</span> to liczba moli, a <span class="math inline">\(MR = R_u\)</span> to uniwersalna stała gazowa.</li>
+<li class="fragment">Podczas przemiany fazowej (dla substancji czystej), przy stałym ciśnieniu, temperatura pozostaje <strong>STAŁA</strong>.</li>
 </ul>
 </section>
-<section id="stała-gazowa-r-vs-r_u" class="slide level2">
-<h2>Stała Gazowa (<span class="math inline">\(R\)</span> vs <span class="math inline">\(R_u\)</span>)</h2>
-<h3 id="dwie-twarze-stałej-gazowej">Dwie Twarze Stałej Gazowej</h3>
+<section id="model-gazu-doskonałego" class="slide level2">
+<h2>2. Model Gazu Doskonałego</h2>
+<h3 id="abstarakcja-vs-rzeczywistość">Abstarakcja vs Rzeczywistość</h3>
+<p>Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia (Kinetyczna Teoria Gazów):</p>
+<ol type="1">
+<li class="fragment"><strong>Objętość cząsteczek = 0:</strong> Cząsteczki traktujemy jako punkty materialne. W rzeczywistości mają skończoną średnicę.</li>
+<li class="fragment"><strong>Brak oddziaływań:</strong> Między cząsteczkami nie działają żadne siły przyciągania ani odpychania (poza momentem zderzenia).</li>
+<li class="fragment"><strong>Zderzenia doskonale sprężyste:</strong> Nie ma straty energii kinetycznej podczas zderzeń.</li>
+</ol>
+</section>
+<section id="kiedy-stosować-gaz-doskonały" class="slide level2">
+<h2>Kiedy stosować Gaz Doskonały?</h2>
+<p>Model ten jest zadziwiająco dokładny dla większości gazów rzeczywistych, JEŚLI:</p>
+<ol type="1">
+<li><strong>Ciśnienie jest niskie:</strong> Cząsteczki są daleko od siebie (siły pomijalne).</li>
+<li><strong>Temperatura jest wysoka:</strong> Energia kinetyczna dominuje nad energią potencjalną oddziaływań.</li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adnotacja</strong></p>
+</div>
+<div class="callout-content">
+<p>Dla powietrza w warunkach otoczenia (<span class="math inline">\(p \approx 1\)</span> bar, <span class="math inline">\(T \approx 20^\circ C\)</span>), błąd modelu gazu doskonałego wynosi poniżej 1%.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="równanie-stanu-clapeyron" class="slide level2">
+<h2>3. Równanie Stanu (Clapeyron)</h2>
+<p>Wiązanie między ciśnieniem (<span class="math inline">\(p\)</span>), temperaturą (<span class="math inline">\(T\)</span>) i objętością (<span class="math inline">\(v\)</span>) dla gazu doskonałego:</p>
+<p><span class="math display">\[ p \cdot v = R \cdot T \]</span></p>
+<p>Mnożąc przez masę <span class="math inline">\(m\)</span> (gdzie <span class="math inline">\(V = m \cdot v\)</span>):</p>
+<p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+<ul>
+<li><span class="math inline">\(p\)</span> – Ciśnienie absolutne <span class="math inline">\([Pa]\)</span></li>
+<li><span class="math inline">\(V\)</span> – Objętość <span class="math inline">\([m^3]\)</span></li>
+<li><span class="math inline">\(T\)</span> – Temperatura absolutna <span class="math inline">\([K]\)</span> (<span class="math inline">\(T_{Kelvin} = T_{Celsjusz} + 273.15\)</span>)</li>
+<li><span class="math inline">\(m\)</span> – Masa <span class="math inline">\([kg]\)</span></li>
+<li><span class="math inline">\(R\)</span> – Indywidualna stała gazowa <span class="math inline">\([J/(kg\cdot K)]\)</span></li>
+</ul>
+</section>
+<section id="stała-gazowa-uniwersalna-czy-indywidualna" class="slide level2">
+<h2>Stała Gazowa Uniwersalna czy Indywidualna?</h2>
+<p>Tu studenci najczęściej robią błędy!</p>
+<h3 id="uniwersalna-stała-gazowa-r_u-lub-mathcalr-lub-r_m-lub-rm">Uniwersalna Stała Gazowa (<span class="math inline">\(R_u\)</span> lub <span class="math inline">\(\mathcal{R}\)</span>, lub <span class="math inline">\(R_m\)</span>, lub <span class="math inline">\(RM\)</span>)</h3>
+<p>Stała fizyczna, niezależna od rodzaju gazu: <span class="math display">\[ R_u \approx 8314.46 \quad \frac{J}{kmol \cdot K} \]</span> Używana w chemii w równaniu dla moli: <span class="math inline">\(pV = n R_u T\)</span>.</p>
+<h3 id="indywidualna-stała-gazowa-r">Indywidualna Stała Gazowa (<span class="math inline">\(R\)</span>)</h3>
+<p>Zależy od masy molowej (<span class="math inline">\(M\)</span>) konkretnego gazu: <span class="math display">\[ R = \frac{R_u}{M} \]</span> Używana w technice w równaniu dla masy: <span class="math inline">\(pV = m R T\)</span>.</p>
+</section>
+<section id="przykłady-stałej-gazowej-r" class="slide level2">
+<h2>Przykłady Stałej Gazowej <span class="math inline">\(R\)</span></h2>
+<p><span class="math display">\[ R = \frac{8314}{M} \]</span></p>
+<ol type="1">
+<li><p><strong>Powietrze</strong> (<span class="math inline">\(M \approx 29\)</span> kg/kmol): <span class="math display">\[ R_{pow} = \frac{8314}{29} \approx 287 \quad \frac{J}{kg \cdot K} \]</span></p></li>
+<li><p><strong>Wodór <span class="math inline">\(H_2\)</span></strong> (<span class="math inline">\(M \approx 2\)</span> kg/kmol): <span class="math display">\[ R_{H2} = \frac{8314}{2} \approx 4157 \quad \frac{J}{kg \cdot K} \]</span></p></li>
+<li><p><strong>Dwutlenek węgla <span class="math inline">\(CO_2\)</span></strong> (<span class="math inline">\(M \approx 44\)</span> kg/kmol): <span class="math display">\[ R_{CO2} = \frac{8314}{44} \approx 189 \quad \frac{J}{kg \cdot K} \]</span></p></li>
+</ol>
+</section>
+<section id="ciepła-właściwe" class="slide level2">
+<h2>4. Ciepła Właściwe</h2>
+<p>Ilość ciepła potrzebna do podgrzania 1 kg substancji o 1 K. Dla gazów zależy to od sposobu ogrzewania!</p>
+<ul>
+<li><p><strong><span class="math inline">\(C_v\)</span> (przy stałej objętości):</strong> Całe ciepło idzie na wzrost energii wewnętrznej <span class="math inline">\(u\)</span>. <span class="math display">\[ C_v = \left( \frac{\partial u}{\partial T} \right)_v \]</span></p></li>
+<li><p><strong><span class="math inline">\(C_p\)</span> (przy stałym ciśnieniu):</strong> Ciepło idzie na wzrost <span class="math inline">\(u\)</span> ORAZ na wykonanie pracy objętościowej (rozpychanie tłoka). <span class="math display">\[ C_p = \left( \frac{\partial h}{\partial T} \right)_p \]</span></p></li>
+</ul>
+</section>
+<section id="relacja-mayera-wyprowadzenie" class="slide level2">
+<h2>Relacja Mayera (Wyprowadzenie)</h2>
+<p>Dla gazu doskonałego entalpia <span class="math inline">\(h\)</span> zależy tylko od temperatury. Definicja entalpii: <span class="math display">\[ h = u + p \cdot v \]</span></p>
+<p>Podstawiając z Clapeyrona (<span class="math inline">\(pv = RT\)</span>): <span class="math display">\[ h = u + R \cdot T \]</span></p>
+<p>Różniczkując obie strony po temperaturze <span class="math inline">\(T\)</span>: <span class="math display">\[ \frac{dh}{dT} = \frac{du}{dT} + R \]</span></p>
+<p>Ponieważ dla g.d. <span class="math inline">\(dh/dT = C_p\)</span> oraz <span class="math inline">\(du/dT = C_v\)</span>:</p>
+<p><span class="math display">\[ C_p = C_v + R \]</span></p>
+</section>
+<section id="co-wynika-z-relacji-mayera" class="slide level2">
+<h2>Co wynika z Relacji Mayera?</h2>
+<p><span class="math display">\[ C_p &gt; C_v \]</span></p>
+<p>Ogrzewanie przy stałym ciśnieniu wymaga <strong>więcej</strong> energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji (<span class="math inline">\(L = p \Delta V\)</span>).</p>
+<p>Ciepło dostarczone (<span class="math inline">\(Q_p\)</span>) rozdziela się na: 1. Wzrost energii wewnętrznej (temperatury). 2. Pracę wypychania tłoka.</p>
+<p>Przy <span class="math inline">\(V=const\)</span>, praca wynosi zero, więc całe ciepło idzie w temperaturę.</p>
+</section>
+<section id="uwaga-na-oznaczenia" class="slide level2">
+<h2>Uwaga na oznaczenia!</h2>
+<p>Wzór <span class="math inline">\(c_p - c_v = ...\)</span> ma różne postacie w zależności od jednostek.</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Cecha</th>
-<th style="text-align: left;"><strong>Indywidualna stała gazowa (<span class="math inline">\(R\)</span>)</strong></th>
-<th style="text-align: left;"><strong>Uniwersalna stała gazowa (<span class="math inline">\(R_u\)</span>)</strong></th>
+<th style="text-align: left;">Wersja</th>
+<th style="text-align: left;">Wzór</th>
+<th style="text-align: left;">Jednostka</th>
+<th style="text-align: left;">Stała Gazowa</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Wzór</strong></td>
-<td style="text-align: left;"><span class="math inline">\(R = \frac{R_u}{M}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(R_u = M \cdot R\)</span></td>
+<td style="text-align: left;"><strong>Techniczna</strong> (kg)</td>
+<td style="text-align: left;"><span class="math inline">\(c_p - c_v = R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{kg \cdot K}\)</span></td>
+<td style="text-align: left;"><strong>Indywidualna</strong> (<span class="math inline">\(R\)</span>)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Jednostka</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{\text{J}}{\text{kg} \cdot \text{K}}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{\text{J}}{\text{kmol} \cdot \text{K}}\)</span></td>
+<td style="text-align: left;"><strong>Molowa</strong> (kmol)</td>
+<td style="text-align: left;"><span class="math inline">\(C_{p,m} - C_{v,m} = R_u\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{kmol \cdot K}\)</span></td>
+<td style="text-align: left;"><strong>Uniwersalna</strong> (<span class="math inline">\(MR\)</span>)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Zastosowanie</strong></td>
-<td style="text-align: left;">Inżynieria (masy, kg)</td>
-<td style="text-align: left;">Chemia / Fizyka (mole)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Wartość</strong></td>
-<td style="text-align: left;">Zmienna (Powietrze: 287, Wodór: 4124)</td>
-<td style="text-align: left;">Stała (<span class="math inline">\(\approx 8314\)</span>)</td>
+<td style="text-align: left;"><strong>Całkowita</strong> (Cały układ)</td>
+<td style="text-align: left;"><span class="math inline">\(C_p - C_v = n \cdot R_u\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{J}{K}\)</span></td>
+<td style="text-align: left;">Uniwersalna</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Zapamiętaj:</strong> W termodynamice technicznej zazwyczaj używamy <strong><span class="math inline">\(R\)</span></strong> (indywidualnej), bo turbiny zasilamy kilogramami pary, a nie molami.</p>
+<p><strong>Zasada na Egzamin:</strong> Jeśli widzisz małe <span class="math inline">\(c\)</span> i <span class="math inline">\(R\)</span>, <strong>nie wstawiaj tam <span class="math inline">\(n\)</span></strong>! Inżynierowie w elektrowniach liczą na kilogramy (<span class="math inline">\(R\)</span>), a nie na mole (<span class="math inline">\(n \cdot R_u\)</span>).</p>
 </blockquote>
 </section>
-<section id="ciepła-właściwe-powtórzenie" class="slide level2">
-<h2>3. Ciepła Właściwe (Powtórzenie)</h2>
-<p>Jak wiemy z W2: * <span class="math inline">\(C_v = (\partial u / \partial T)_v\)</span> * <span class="math inline">\(C_p = (\partial h / \partial T)_p\)</span></p>
-<h3 id="relacja-mayera">Relacja Mayera</h3>
-<p>Dlaczego <span class="math inline">\(R\)</span> jest różnicą ciepeł? <span class="math display">\[ h = u + pv = u + RT \implies C_p = C_v + R \]</span></p>
-<h3 id="wykładnik-adiabaty-k">Wykładnik Adiabaty (<span class="math inline">\(k\)</span>)</h3>
-<p><span class="math display">\[ k = \frac{C_p}{C_v} \]</span> * Gazy 1-atomowe (He, Ar): <span class="math inline">\(k \approx 1.66\)</span> * Gazy 2-atomowe (Powietrze, <span class="math inline">\(N_2, O_2\)</span>): <span class="math inline">\(k \approx 1.4\)</span> * Gazy 3+ atomowe (<span class="math inline">\(CO_2\)</span>, Para): <span class="math inline">\(k \approx 1.3\)</span></p>
+<section id="wykładnik-adiabaty-kappa-kappa-lub-gamma-gamma" class="slide level2">
+<h2>Wykładnik Adiabaty <span class="math inline">\(\kappa\)</span> (Kappa) lub <span class="math inline">\(\gamma\)</span> (Gamma)</h2>
+<p>Stosunek ciepeł właściwych nazywamy wykładnikiem adiabaty:</p>
+<p><span class="math display">\[ \kappa = \frac{C_p}{C_v} \]</span></p>
+<p>Wartość <span class="math inline">\(k\)</span> zależy od budowy cząsteczki (stopni swobody):</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gaz</th>
+<th style="text-align: center;">Atomowość</th>
+<th style="text-align: center;"><span class="math inline">\(k\)</span></th>
+<th style="text-align: left;">Przykład</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Jednoatomowe</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\approx 1.66\)</span></td>
+<td style="text-align: left;">Hel, Argon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Dwuatomowe</strong></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\approx 1.40\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(N_2, O_2\)</span>, Powietrze</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Wieloatomowe</strong></td>
+<td style="text-align: center;">3+</td>
+<td style="text-align: center;"><span class="math inline">\(\approx 1.30\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(CO_2, H_2O, CH_4\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><em>Najważniejsza liczba w inżynierii: Powietrze ma <span class="math inline">\(k=1.4\)</span>.</em></p>
 </section>
-<section id="mieszaniny-gazowe-prawo-daltona" class="slide level2">
-<h2>4. Mieszaniny Gazowe (Prawo Daltona)</h2>
-<p>Większość gazów technicznych to mieszaniny (powietrze, spaliny).</p>
-<h3 id="prawo-daltona">Prawo Daltona</h3>
-<p>Ciśnienie całkowite mieszaniny to suma ciśnień cząstkowych składników. <span class="math display">\[ p = p_1 + p_2 + ... + p_n \]</span></p>
-<p><strong>Ciśnienie cząstkowe (<span class="math inline">\(p_i\)</span>):</strong> Ciśnienie, jakie wywierałby składnik <span class="math inline">\(i\)</span>, gdyby sam zajmował całą objętość <span class="math inline">\(V\)</span> w tej samej temperaturze. <span class="math display">\[ p_i = x_i \cdot p \]</span></p>
+<section id="porównanie-stała-boltzmanna-vs-wykładnik-adiabaty" class="slide level2">
+<h2>Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty</h2>
+<h3 id="stała-boltzmanna-k-lub-k_b-występuje-w-fizyce-statystycznej-wzór-na-entropię-sklnw-oraz-w-definicji-stałej-gazowej">Stała Boltzmanna <span class="math inline">\(k\)</span> (lub <span class="math inline">\(k_B\)</span>), występuje w fizyce statystycznej (wzór na entropię <span class="math inline">\(S=kln(W)\)</span>) oraz w definicji stałej gazowej <br></h3>
+<p>(<span class="math inline">\(R_u = N_A \cdot k\)</span>).</p>
+<table class="caption-top">
+<caption>Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 35%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Cecha</th>
+<th style="text-align: left;">Stała Boltzmanna</th>
+<th style="text-align: left;">Wykładnik Adiabaty</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Symbol preferowany</strong></td>
+<td style="text-align: left;"><strong><span class="math inline">\(k\)</span></strong> (lub <span class="math inline">\(k_B\)</span>)</td>
+<td style="text-align: left;"><strong><span class="math inline">\(\kappa\)</span></strong> (Kappa) lub <span class="math inline">\(\gamma\)</span> (Gamma)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Symbol mylący</strong></td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><strong><span class="math inline">\(k\)</span></strong> (Występuje w starszych źródłach - unikać!)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Co to jest?</strong></td>
+<td style="text-align: left;">Stała fizyczna Wszechświata (Mikro)</td>
+<td style="text-align: left;">Własność termodynamiczna gazu (Makro)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Wzór definicyjny</strong></td>
+<td style="text-align: left;"><span class="math inline">\(k = \frac{R_u}{N_A}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\kappa = \frac{c_p}{c_v}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Rząd wielkości</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\approx 1,38 \cdot 10^{-23}\)</span> (Bardzo mała)</td>
+<td style="text-align: left;"><span class="math inline">\(&gt; 1\)</span> (Dla powietrza <span class="math inline">\(\approx 1,4\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Jednostka</strong></td>
+<td style="text-align: left;"><span class="math inline">\([\text{J}/\text{K}]\)</span></td>
+<td style="text-align: left;">Brak (liczba bezwymiarowa)</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="wizualizacja-prawo-daltona" class="slide level2">
-<h2>Wizualizacja: Prawo Daltona</h2>
+<section id="energia-i-entalpia-gazu-doskonałego" class="slide level2">
+<h2>Energia i Entalpia Gazu Doskonałego</h2>
+<p>Pamiętamy z I Zasady, że dla g.d. te parametry zależą <strong>tylko</strong> od temperatury (Eksperyment Joule’a).</p>
+<p>Dlatego zmiany tych parametrów liczymy zawsze tak samo, niezależnie od procesu (nawet jeśli <span class="math inline">\(p\)</span> czy <span class="math inline">\(v\)</span> się zmieniają!):</p>
+<p><span class="math display">\[ \Delta u = C_v \cdot (T_2 - T_1) \]</span></p>
+<p><span class="math display">\[ \Delta h = C_p \cdot (T_2 - T_1) \]</span></p>
+<p>To potężne uproszczenie w obliczeniach inżynierskich.</p>
+</section>
+<section id="mieszaniny-gazowe" class="slide level2">
+<h2>5. Mieszaniny Gazowe</h2>
+<p>W technice rzadko pracujemy z czystym tlenem czy azotem. Zazwyczaj mamy mieszaninę (np. spaliny w silniku, powietrze w wentylacji).</p>
+<p>Model Daltona pozwala traktować mieszaninę gazów doskonałych jak <strong>jeden gaz zastępczy</strong>.</p>
+<p>Potrzebujemy tylko obliczyć zastępczą stałą gazową <span class="math inline">\(R_{miesz}\)</span> i zastępcze ciepło właściwe.</p>
+</section>
+<section id="prawo-daltona-ciśnienia" class="slide level2">
+<h2>Prawo Daltona (Ciśnienia)</h2>
+<div style="border: 2px solid blue; padding: 20px;">
+<p>Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.</p>
+</div>
+<p><span class="math display">\[ p_{calk} = p_1 + p_2 + ... + p_n = \sum p_i \]</span></p>
+<p><strong>Ciśnienie cząstkowe (<span class="math inline">\(p_i\)</span>):</strong> To ciśnienie, jakie wywierałby dany składnik, gdyby <strong>SAM</strong> zajmował całą objętość zbiornika <span class="math inline">\(V\)</span> w tej samej temperaturze <span class="math inline">\(T\)</span>.</p>
+</section>
+<section id="wizualizacja-prawa-daltona" class="slide level2">
+<h2>Wizualizacja Prawa Daltona</h2>
 
-<img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/dalton-1.png" width="960" class="r-stretch"><p>Każdy gaz “myśli”, że jest sam w zbiorniku, ale uderza w ścianki dokładając swoje ciśnienie.</p>
+<img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/dalton-viz-1.png" width="960" class="r-stretch"></section>
+<section id="udziały-molowe-y_i-i-obliczanie-p_i" class="slide level2">
+<h2>Udziały Molowe (<span class="math inline">\(y_i\)</span>) i Obliczanie <span class="math inline">\(p_i\)</span></h2>
+<p>W g.d ciśnienie wynika z liczby uderzeń cząsteczek. Zatem ciśnienie cząstkowe zależy wprost od ilości moli danego gazu:</p>
+<p><span class="math display">\[ y_i = \frac{n_i}{n_{calk}} \quad (\text{Ułamek molowy}) \]</span></p>
+<p>Z Prawa Daltona wynika prosta zależność:</p>
+<p><span class="math display">\[ p_i = y_i \cdot p_{calk} \]</span></p>
+<p>Dlaczego w atmosferze (<span class="math inline">\(p \approx 100 kPa\)</span>) ciśnienie tlenu (“ciśnienie parcjalne”) wynosi ok. 21 kPa? Bo tlen stanowi 21% cząsteczek powietrza (<span class="math inline">\(y_{O2} = 0.21\)</span>).</p>
 </section>
-<section id="gazy-rzeczywiste" class="slide level2">
-<h2>5. Gazy Rzeczywiste</h2>
-<h3 id="odstępstwa-od-doskonałości">Odstępstwa od Doskonałości</h3>
-<p>Gazy rzeczywiste wykazują oddziaływania międzycząsteczkowe (siły van der Waalsa).</p>
-<p><strong>Równanie van der Waalsa:</strong> <span class="math display">\[ \left( p + \frac{a}{V_m^2} \right) (V_m - b) = RT \]</span></p>
+<section id="gazy-rzeczywiste---granice-modelu" class="slide level2">
+<h2>6. Gazy Rzeczywiste - Granice Modelu</h2>
+<p>Gdy ciśnienie jest bardzo wysokie (np. w butli z tlenem 200 bar) lub temperatura niska (skraplanie), założenia g.d. przestają działać.</p>
 <ol type="1">
-<li><strong>Poprawka <span class="math inline">\(a/V_m^2\)</span>:</strong> Uwzględnia siły przyciągania cząsteczek (ciśnienie wewnętrzne).</li>
-<li><strong>Poprawka <span class="math inline">\(b\)</span>:</strong> Uwzględnia skończoną objętość samych cząsteczek.</li>
+<li>Cząsteczki są upakowane ciasno <span class="math inline">\(\to\)</span> ich własna objętość zaczyna mieć znaczenie.</li>
+<li>Siły przyciągania (van der Waalsa) zaczynają sklejać cząsteczki.</li>
 </ol>
-<p><strong>Parametry Zredukowane:</strong> Jeśli wyrazimy parametry przez wartości krytyczne (<span class="math inline">\(p/p_k\)</span>, <span class="math inline">\(T/T_k\)</span>), wiele gazów zachowuje się tak samo (Zasada Stanów Odpowiednich).</p>
+<p>Potrzebujemy lepszego równania stanu.</p>
 </section>
-<section id="izotermy-andrewsa" class="slide level2">
-<h2>Izotermy Andrewsa</h2>
-<h3 id="eksperymentalny-dowód">Eksperymentalny Dowód</h3>
+<section id="równanie-van-der-waalsa" class="slide level2">
+<h2>Równanie Van der Waalsa</h2>
+<p><span class="math display">\[ \left( p + \frac{a}{v^2} \right) (v - b) = R T \]</span></p>
+<p>Dwie poprawki względem Clapeyrona (<span class="math inline">\(pv=RT\)</span>):</p>
+<ol type="1">
+<li><strong>Człon kohezji (<span class="math inline">\(a/v^2\)</span>):</strong> Uwzględnia przyciąganie między cząsteczkami. Zmniejsza efektywne ciśnienie wywierane na ścianki (bo cząsteczki są “ściągane” do środka przez sąsiadów).</li>
+<li><strong>Kowolumen (<span class="math inline">\(b\)</span>):</strong> Uwzględnia objętość własną cząsteczek. Dostępna przestrzeń ruchu to nie całe <span class="math inline">\(v\)</span>, ale <span class="math inline">\((v-b)\)</span>.</li>
+</ol>
+</section>
+<section id="izotermy-andrewsa-gaz-rzeczywisty" class="slide level2">
+<h2>Izotermy Andrewsa (Gaz Rzeczywisty)</h2>
+<p>Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu doskonałego (<span class="math inline">\(p \sim 1/v\)</span>).</p>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p>Zrozumienie, jak gaz zmienia się w ciecz: * <strong>Wysoka temperatura:</strong> Gaz zachowuje się niemal idealnie. * <strong>Niska temperatura:</strong> Pojawia się obszar skraplania (stałe ciśnienie = stała temperatura). * <strong>Punkt krytyczny:</strong> Wierzchołek kopuły, gdzie znika różnica między cieczą a parą.</p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/andrews-isotherms-1.png" width="576"></p>
+<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/andrews-1.png" width="816"></p>
 </figure>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>Dla <span class="math inline">\(T &gt; T_{kryt}\)</span>: Izotermy gładkie (jak g.d.).</li>
+<li>Dla <span class="math inline">\(T &lt; T_{kryt}\)</span>: Pojawia się poziomy odcinek. To <strong>współistnienie cieczy i pary</strong> (wrzenie przy stałym ciśnieniu).</li>
+<li>Gdybyśmy użyli tu modelu <span class="math inline">\(pV=mRT\)</span>, dostalibyśmy błąd rzędu 100%!</li>
+</ul>
 </div></div>
 </section>
-<section id="para-nasycona-i-jakość-pary" class="slide level2">
-<h2>6. Para Nasycona i Jakość Pary</h2>
-<h3 id="kopuła-nasycenia">“Kopuła” Nasycenia</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="zasada-stanów-odpowiednich" class="slide level2">
+<h2>Zasada Stanów Odpowiednich</h2>
+<p>Inżynierowie poradzili sobie z różnorodnością gazów wprowadzając <strong>Współczynnik Ściśliwości <span class="math inline">\(Z\)</span></strong>:</p>
+<p><span class="math display">\[ Z = \frac{pv}{RT} \]</span></p>
 <ul>
-<li><strong>Para nasycona mokra:</strong> Mieszanina cieczy i pary (mgła).</li>
-<li><strong>Stopień suchości (<span class="math inline">\(x\)</span>):</strong> <span class="math display">\[ x = \frac{m_{pary}}{m_{cieczy} + m_{pary}} \]</span>
-<ul>
-<li><span class="math inline">\(x=0\)</span>: Ciecz nasycona (wrząca).</li>
-<li><span class="math inline">\(x=1\)</span>: Para nasycona sucha.</li>
-</ul></li>
+<li>Dla gazu doskonałego: <span class="math inline">\(Z = 1\)</span>.</li>
+<li>Dla gazu rzeczywistego: <span class="math inline">\(Z \neq 1\)</span> (może być 0.8, może być 1.2).</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/steam-dome-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
+<h3 id="parametry-zredukowane">Parametry Zredukowane</h3>
+<p>Sprowadzamy różne gazy do “wspólnego mianownika”, dzieląc ich parametry przez parametry w punkcie krytycznym:</p>
+<p><span class="math display">\[ p_r = \frac{p}{p_{kryt}}, \quad v_r = \frac{v}{v_{kryt}}, \quad T_r = \frac{T}{T_{kryt}} \]</span></p>
+<p><strong>Zasada:</strong> Różne gazy w tych samych stanach zredukowanych (<span class="math inline">\(p_r, T_r\)</span>) mają w przybliżeniu to samo <span class="math inline">\(Z\)</span>.</p>
 </section>
-<section id="obliczanie-parametrów-pary-mokrej" class="slide level2">
-<h2>Obliczanie Parametrów Pary Mokrej</h2>
-<h3 id="średnie-ważone">Średnie Ważone</h3>
-<p>Parametry (objętość, entalpia, entropia) obliczamy jako sumę udziałów fazy ciekłej (‘) i gazowej (’’):</p>
-<ul>
-<li><strong>Objętość:</strong> <span class="math inline">\(v = v' + x(v'' - v')\)</span></li>
-<li><strong>Entalpia:</strong> <span class="math inline">\(h = h' + x(h'' - h')\)</span></li>
-<li><strong>Entropia:</strong> <span class="math inline">\(s = s' + x(s'' - s')\)</span></li>
-</ul>
-<p><em>Dane <span class="math inline">\(v', v'', h', h''\)</span> odczytujemy z Tablic Pary Wodnej.</em></p>
-</section>
-<section id="tablice-i-wykresy-narzędzia-inżyniera" class="slide level2">
-<h2>Tablice i Wykresy: Narzędzia Inżyniera</h2>
+<section id="podsumowanie-wykładu-4" class="slide level2">
+<h2>Podsumowanie Wykładu 4</h2>
 <ol type="1">
-<li><strong>Tablice Pary Nasyconej:</strong>
-<ul>
-<li>Podają parametry na linii granicznej (<span class="math inline">\(x=0\)</span> i <span class="math inline">\(x=1\)</span>) w funkcji <span class="math inline">\(T\)</span> lub <span class="math inline">\(p\)</span>.</li>
-</ul></li>
-<li><strong>Wykres <span class="math inline">\(h-s\)</span> (Molliera):</strong>
-<ul>
-<li>Kluczowy dla turbin parowych.</li>
-<li>Procesy adiabatyczne (bez straty ciepła) to linie pionowe (<span class="math inline">\(s = const\)</span>).</li>
-</ul></li>
-<li><strong>Wykres <span class="math inline">\(p-h\)</span> (Logarytmiczny):</strong>
-<ul>
-<li>Kluczowy dla chłodnictwa i pomp ciepła.</li>
-<li>Łatwo odczytać entalpię, a więc i ciepło przemiany.</li>
-</ul></li>
+<li><strong>Gaz Doskonały:</strong> Dobry dla niskich ciśnień. Równanie <span class="math inline">\(pv=RT\)</span>.</li>
+<li><strong>Stała <span class="math inline">\(R\)</span>:</strong> Pamiętaj o różnicy między uniwersalną (<span class="math inline">\(8314\)</span>) a indywidualną (<span class="math inline">\(R_u/M\)</span>).</li>
+<li><strong>Ciepła:</strong> <span class="math inline">\(C_p = C_v + R\)</span>. Dla powietrza wykładnik <span class="math inline">\(k=1.4\)</span>.</li>
+<li><strong>Mieszaniny:</strong> Ciśnienia cząstkowe sumują się (Dalton).</li>
+<li><strong>Rzeczywistość:</strong> Siły van der Waalsa i objętość cząsteczek zmieniają zachowanie gazu blisko skraplania (Izotermy Andrewsa, współczynnik <span class="math inline">\(Z\)</span>).</li>
 </ol>
-</section>
-<section id="równanie-clapeyrona-clausiusa" class="slide level2">
-<h2>Równanie Clapeyrona-Clausiusa</h2>
-<p>Określa zależność między zmianą ciśnienia a zmianą temperatury wrzenia/topnienia:</p>
-<p><span class="math display">\[ \frac{dp}{dT} = \frac{Q_{przemiany}}{T(v'' - v')} \]</span></p>
-<ul>
-<li>Gdy <span class="math inline">\(v'' &gt; v'\)</span> (typowe wrzenie): wzrost ciśnienia <span class="math inline">\(\to\)</span> wzrost temperatury wrzenia.</li>
-<li>Gdy <span class="math inline">\(v'' &lt; v'\)</span> (topnienie lodu): wzrost ciśnienia <span class="math inline">\(\to\)</span> <strong>spadek</strong> temperatury topnienia (dlatego łyżwy działają!).</li>
-</ul>
-</section>
-<section id="para-przegrzana" class="slide level2">
-<h2>Para Przegrzana</h2>
-<p>Para o temperaturze wyższej niż temperatura nasycenia dla danego ciśnienia (<span class="math inline">\(T &gt; T_s\)</span>). * Jest daleka od obszaru “mokrego”, zachowuje się coraz bardziej jak <strong>gaz doskonały</strong>. * Nie ma w niej kropel cieczy (bezpieczna dla łopatek turbin!).</p>
-</section>
-<section id="przejście-fazowe-ii-rodzaju" class="slide level2">
-<h2>Przejście Fazowe II Rodzaju</h2>
-<ul>
-<li><strong>Przejścia I rodzaju:</strong> Skokowa zmiana entropii i objętości (ciepło utajone). Np. wrzenie.</li>
-<li><strong>Przejścia II rodzaju:</strong> Ciągła zmiana entropii i objętości, ale skokowa zmiana <strong>ciepła właściwego</strong> (<span class="math inline">\(C_p\)</span>).
-<ul>
-<li>Przejście ferromagnetyk <span class="math inline">\(\to\)</span> paramagnetyk (Punkt Curie).</li>
-<li>Nadciekłość helu.</li>
-</ul></li>
-</ul>
-</section>
-<section id="podsumowanie-w4" class="slide level2">
-<h2>Podsumowanie W4</h2>
-<ol type="1">
-<li><strong>Substancje czyste:</strong> Wyróżniamy fazy (Stała, Ciecz, Gaz) rozdzielone liniami przemian.</li>
-<li><strong>Gaz Doskonały vs Rzeczywisty:</strong> Model Idealny (<span class="math inline">\(pV=mRT\)</span>) działa świetnie dla powietrza, ale dla par i wysokich ciśnień potrzebujemy van der Waalsa.</li>
-<li><strong>Mieszaniny:</strong> Każdy składnik dokłada swoje ciśnienie cząstkowe (Dalton).</li>
-<li><strong>Para wodna:</strong> Używamy tablic i wykresów (<span class="math inline">\(h-s, T-s\)</span>), a parametry pary mokrej liczymy ze stopnia suchości <span class="math inline">\(x\)</span>.</li>
-</ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Sprawdź w tablicach parowych: 1. Jaka jest temperatura wrzenia wody przy ciśnieniu <span class="math inline">\(p = 5\)</span> bar? 2. Ile razy większą objętość ma para sucha od wody wrzącej przy <span class="math inline">\(1\)</span> bar?</p>
+<h3 id="zapowiedź-w5">Zapowiedź W5</h3>
+<p>W kolejnym wykładzie wejdziemy w obszar <strong>Pary Wodnej</strong>: wrzenie, tablice parowe, turbiny!</p>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Termodynamika Techniczna</p>
+<p>Termodynamika Techniczna (W4)</p>
 </div>
 </div></div>
 
