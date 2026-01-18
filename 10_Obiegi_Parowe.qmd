@@ -1,0 +1,204 @@
+---
+title: "W10: Obiegi Parowe (Siłownie)"
+subtitle: "Obieg Rankine'a i Układy Parowo-Gazowe"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+            filter: grayscale(30%); 
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Fundament Energetyki** (Dlaczego para?)
+2.  **Obieg Clausiusa-Rankine'a** (Schemat i T-s)
+3.  **Suchość Pary** i erozja łopatek.
+4.  **Przegrzew Wtórny** (Reheat)
+5.  **Regeneracja Podgrzewaczowa** (Regeneration)
+6.  **Układy Gazowo-Parowe** (IGCC/CCGT)
+
+---
+
+## 1. Dlaczego Para Wodna?
+
+Siłownie parowe produkują >70% elektryczności na świecie (węgiel, atom, biomasa).
+Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
+
+### Komponenty Siłowni:
+1.  **Pompa wodna:** Spręża ciecz (mała praca, bo ciecz nieściśliwa).
+2.  **Kocioł (Generator Pary):** Dostarcza ciepło, zamienia wodę w parę.
+3.  **Turbina:** Para rozpręża się, napędzając generator.
+4.  **Skraplacz:** Para skrapla się do wody (oddając ciepło do rzeki/chłodni).
+
+---
+
+## 2. Obieg Clausiusa-Rankine'a (C-R)
+
+Jest to realizacja obiegu Carnota dla pary, ale z modyfikacjami.
+Procesy:
+1.  **1-2:** Sprężanie izentropowe wody w pompie.
+2.  **2-3:** Izobaryczne podgrzewanie i wrzenie w kotle.
+3.  **3-4:** Rozprężanie izentropowe pary w turbinie.
+4.  **4-1:** Izobaryczne (i izotermiczne) skraplanie.
+
+**Sprawność:**
+$$ \eta_{C-R} = \frac{W_{turbiny} - W_{pompy}}{Q_{dostarczone}} \approx \frac{h_3 - h_4}{h_3 - h_2} $$
+(Praca pompy jest zwykle pomijalnie mała).
+
+---
+
+## Wykres T-s dla C-R
+
+```{r}
+#| label: rankine-ts
+#| echo: false
+#| fig-width: 10
+#| fig-height: 5
+
+library(ggplot2)
+
+# Dome construction
+s_liq <- seq(0, 3, length.out=50)
+t_liq <- 300 + s_liq^2 * 40
+s_vap <- seq(3, 8, length.out=50)
+t_vap <- 660 - (s_vap-3)^2 * 25
+dome <- data.frame(s=c(s_liq, rev(s_vap)), t=c(t_liq, rev(t_vap)))
+
+# Cycle Points for Basic Rankine
+# 1: Saturated liquid (Condenser outlet)
+s1 <- 1.0; t1 <- 320 
+# 2: Pump outlet (simulated)
+s2 <- 1.0; t2 <- 325 
+# 3: Superheated steam inlet
+s3 <- 6.5; t3 <- 550 
+# 4: Turbine outlet (Wet steam)
+s4 <- 6.5; t4 <- 320 
+
+ggplot() +
+  # Dome
+  geom_line(data=dome, aes(x=s, y=t), color="black", size=1) +
+  annotate("text", x=4, y=670, label="Punkt Krytyczny") +
+  
+  # Cycle Lines
+  geom_segment(aes(x=s1, y=t1, xend=s2, yend=t2), color="blue", size=2) + # Pump
+  geom_curve(aes(x=s2, y=t2, xend=s3, yend=t3), curvature=-0.2, color="red", size=2) + # Boiler
+  geom_segment(aes(x=s3, y=t3, xend=s4, yend=t4), color="orange", size=2, arrow=arrow()) + # Turbine
+  geom_segment(aes(x=s4, y=t4, xend=s1, yend=t1), color="cyan", size=2, arrow=arrow()) + # Condenser
+  
+  annotate("text", x=7, y=450, label="Praca (Turbina)", color="orange") +
+  annotate("text", x=4, y=300, label="Skraplacz (Q_out)", color="cyan") +
+  
+  theme_minimal() + labs(title="Obieg Rankine'a", x="Entropia s [kJ/kgK]", y="Temperatura T [K]")
+```
+
+---
+
+## 3. Problem Wilgotności (Erozja)
+
+Zauważ, że punkt 4 (wylot z turbiny) leży "pod kopułą".
+Oznacza to, że jest to **para mokra** (mieszanina pary i kropelek wody).
+
+*   Jeśli $x < 0.85-0.90$ (więcej niż 10-15% wody):
+    *   Kropelki wody uderzają w łopatki wirnika z prędkością kilkuset m/s.
+    *   Powoduje to **erozję** (wżery) i zniszczenie turbiny.
+
+**Rozwiązanie:** Musimy przesunąć punkt 4 w prawo. Jak?
+1.  Zwiększyć temperaturę przegrzania $T_3$ (Limity materiałowe stali).
+2.  Zastosować **Przegrzew Wtórny**.
+
+---
+
+## 4. Przegrzew Wtórny (Reheat)
+
+Proces:
+1.  Para rozpręża się w turbinie Wysokoprężnej (HP) tylko częściowo (nie wchodzi głęboko pod kopułę).
+2.  Wracamy z parą do kotła i podgrzewamy ją ponownie do $T_{max}$.
+3.  Para wraca do turbiny Niskoprężnej (LP) i rozpręża się do ciśnienia skraplacza.
+
+**Zalety:**
+*   Punkt końcowy przesuwa się w prawo (para suchsza).
+*   Zwiększa się średnia temperatura dostarczania ciepła ($\eta \uparrow$).
+*   Większa praca z 1 kg pary (dwa etapy ekspansji).
+
+---
+
+## 5. Regeneracja (Podgrzewanie Wody)
+
+W zwykłym Rankine'ie do kotła trafia zimna woda ze skraplacza (np. 30°C).
+To marnotrawstwo spalać węgiel, żeby podgrzać wodę z 30 do 100°C.
+
+**Rozwiązanie:**
+Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.
+
+*   Woda wchodząca do kotła jest już gorąca.
+*   Sprawność rośnie drastycznie (zbliżamy się do Carnota).
+*   W nowoczesnych blokach mamy 7-9 wymienników regeneracyjnych.
+
+---
+
+## 6. Układy Gazowo-Parowe (CCGT)
+
+Połączenie Braytona (W9) i Rankine'a (W10).
+
+1.  **Góra (Top Cycle):** Turbina Gazowa (Spaliny wylotowe mają ~550°C).
+2.  **Kocioł Odzysknicowy (HRSG):** Zamiast palić węgiel, używamy gorących spalin z TG do zagotowania wody.
+3.  **Dół (Bottom Cycle):** Turbina Parowa zasilana z HRSG.
+
+**Wynik:**
+Z tego samego paliwa (gazu) mamy prąd z dwóch turbin!
+Sprawność: **> 60%** (Klasyczna węglowa ma max 46%).
+To obecnie najczystsza technologia spalania paliw kopalnych.
+
+---
+
+## Podsumowanie W10
+
+1.  **Obieg Rankine'a** rządzi światową energetyką.
+2.  **Klucz do sprawności:**
+    *   Wysokie parametry pary (Ciśnienie i Temperatura).
+    *   Niskie ciśnienie w skraplaczu (Próżnia).
+    *   Regeneracja i Przegrzew.
+3.  **Skraplacz** to konieczność (zamknięcie obiegu), ale i największa strata energii (ciepło odpadowe).
+
+### Zadanie Domowe
+Dlaczego nie stosujemy wprost obiegu Carnota dla pary wodnej? (Dlaczego nie sprężamy pary mokrej w pompie?).
+
+**Odpowiedź:** Pompy źle znoszą bąbelki gazu (kawitacja), a sprężanie dwufazowe jest technicznie trudne i energochłonne. Łatwiej skroplić całość i sprężać samą ciecz.

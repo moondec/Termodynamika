@@ -1,6 +1,6 @@
 ---
-title: "W10: Silniki Spalinowe"
-subtitle: "Obiegi Otto, Diesla i Sabathe"
+title: "W9: Obiegi Gazowe (Silnikowe)"
+subtitle: "Silniki Spalinowe i Turbiny Gazowe"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -51,8 +51,8 @@ editor: source
 2.  **Parametry Geometryczne** (Stopień sprężania)
 3.  **Obieg Otto** (Silnik benzynowy)
 4.  **Obieg Diesla** (Silnik wysokoprężny)
-5.  **Porównanie Sprawności**
-6.  **Ciśnienie Średnie Indykowane**
+5.  **Obieg Joule'a-Braytona** (Turbina Gazowa)
+6.  **Porównanie Sprawności i Ciśnienie Średnie**
 
 ---
 
@@ -227,12 +227,30 @@ $$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{k-1}} \left[ \frac{\rho^k - 1}{k(\r
 
 ---
 
-## 5. Obieg Sabathe (Mieszany)
+## 5. Obieg Joule'a-Braytona (Turbina Gazowa)
 
-Model najbardziej zbliżony do nowoczesnych diesli szybkoobrotowych (Common Rail).
-Ciepło doprowadzane jest częściowo przy $V=const$, a częściowo przy $p=const$.
+Podstawa działania silników lotniczych i elektrowni szczytowych.
+Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.
 
-Jest to uogólnienie obu poprzednich obiegów.
+1.  **Sprężarka:** Sprężanie adiabatyczne powietrza.
+2.  **Komora Spalania:** Izobaryczne doprowadzenie ciepła ($p=const$).
+3.  **Turbina:** Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).
+4.  **Otoczenie:** Izobaryczne chłodzenie (wyrzut spalin).
+
+---
+
+## Sprawność Braytona
+
+Zależy od sprężu ($\pi = p_2/p_1$) a nie stopnia sprężania $\varepsilon$.
+
+$$ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{k-1}{k}}} $$
+
+W przeciwieństwie do Diesla, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć $\pi = 30-40$.
+Problemem jest wytrzymałość łopatek turbiny na temperaturę ($T_3 \approx 1400-1600^\circ C$).
+
+### Praca Wsteczna (Back Work Ratio)
+Własność Turbin Gazowych (TG): Sprężarka zużywa aż **50-60%** mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %).
+Dlatego TG są bardzo czułe na sprawność komponentów.
 
 ---
 
@@ -251,12 +269,13 @@ Dla wolnossących: $10-12 \text{ bar}$.
 
 ---
 
-## Podsumowanie W10
+## Podsumowanie W9
 
-1.  **Stopień sprężania $\varepsilon$** to klucz do sprawności.
-2.  **Otto:** Ogrzewanie izochoryczne ($V=const$). Ograniczony przez spalanie stukowe.
-3.  **Diesel:** Ogrzewanie izobaryczne ($p=const$). Wyższe sprężanie $\rightarrow$ mniejsze zużycie paliwa.
-4.  Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).
+1.  **Stopień sprężania $\varepsilon$** to klucz do sprawności w silnikach tłokowych.
+2.  **Otto:** Ogrzewanie izochoryczne. Ograniczenie: stukowe.
+3.  **Diesel:** Ogrzewanie izobaryczne. Wysokie $\varepsilon$.
+4.  **Brayton:** Maszyny przepływowe. Obieg otwarty pracy ciągłej.
+5.  Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).
 
 ### Zadanie Domowe
 Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($k=1.4$).

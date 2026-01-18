@@ -1,6 +1,6 @@
 ---
-title: "W15: Wymiana Ciepła i Spalanie"
-subtitle: "Mechanizmy Transportu i Źródła Energii"
+title: "W14: Wymiana Ciepła"
+subtitle: "Mechanizmy Transportu Energii"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -51,7 +51,7 @@ editor: source
 2.  **Przewodzenie** (Prawo Fouriera, Ściana)
 3.  **Konwekcja** (Prawo Newtona, Liczba Nusselta)
 4.  **Promieniowanie** (Prawo Stefana-Boltzmanna)
-5.  **Podstawy Spalania** (Stechiometria)
+5.  **Przenikanie Ciepła** (Współczynnik U)
 
 ---
 
@@ -107,8 +107,16 @@ $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
     *   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
     *   Wrzenie wody: 5000+ W/m²K
 
-Współczynnik Przenikania ($k$ lub $U$ dla budynków):
-Suma oporów (konwekcja wew $\to$ ściana $\to$ konwekcja zew).
+---
+
+## Przenikanie Ciepła (Współczynnik U)
+
+W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn.
+Suma oporów (R_si + R_sciany + R_se).
+
+$$ U = k = \frac{1}{R_{si} + \Sigma \frac{\delta}{\lambda} + R_{se}} $$
+
+Dla nowoczesnego domu $U < 0.2$ W/(m²K).
 
 ---
 
@@ -129,46 +137,26 @@ Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w bu
 
 ---
 
-## 5. Spalanie (Combustion)
+## 5. Wymienniki Ciepła
 
-Skąd bierzemy ciepło ($Q_H$)? Z energii chemicznej paliw.
+Urządzenia do przekazywania ciepła z jednego płynu do drugiego bez mieszania ich.
 
-Reakcja egzotermiczna utleniania C i H.
-$$ C + O_2 \to CO_2 + Ciepło $$
-$$ 2H_2 + O_2 \to 2H_2O + Ciepło $$
+*   **Współprąd:** Oba płyny płyną w tym samym kierunku.
+*   **Przeciwprąd:** Płyną przeciwnie. (Najbardziej efektywny!).
 
-### Wartość Opałowa ($W_d$) vs Ciepło Spalania ($W_g$)
-*   **Ciepło Spalania (HHV):** Zakładamy, że woda ze spalin skropliła się (odzyskaliśmy ciepło utajone).
-*   **Wartość Opałowa (LHV):** Woda ucieka jako para kominem. (Standard w starych kotłach).
+$$ \dot{Q} = U A \Delta T_{ln} $$
 
-Kotły kondensacyjne wykorzystują HHV (sprawność > 100% względem LHV).
+$\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
 
 ---
 
-## Stechiometria
+## Podsumowanie W14
 
-Ile powietrza potrzeba do spalenia 1 kg węgla?
-Teoretycznie ok. 9 kg powietrza.
+1.  **Izolacja** to walka z przewodzeniem ($\lambda$).
+2.  **Radiator** to walka z konwekcją (zwiększanie $A$ i $\alpha$).
+3.  **Promieniowanie** zależy od $T^4$ - małe zmiany temperatury dają wielkie zmiany mocy.
+4.  **Współczynnik U** to klucz do energooszczędnych budynków.
 
-Współczynnik nadmiaru powietrza $\lambda$ (nie mylić z przewodnością!):
-$$ \lambda = \frac{\text{Powietrze Rzeczywiste}}{\text{Powietrze Teoretyczne}} $$
-
-*   $\lambda = 1$: Idealnie (stechiometria).
-*   $\lambda < 1$: Za mało tlenu $\to$ Sadza i CO (Czad). Śmierć i starta energii.
-*   $\lambda > 1$: Nadmiar tlenu. Bezpiecznie, ale grzejemy azot (strata kominowa).
-    Dążymy do $\lambda \approx 1.1 - 1.2$.
-
----
-
-## Podsumowanie Całego Kursu (W1-W15)
-
-1.  Zrozumieliśmy **Energię** (I Zasada).
-2.  Zrozumieliśmy **Ograniczenia** (II Zasada, Entropia).
-3.  Poznaliśmy **Maszyny** (Silniki, Turbiny, Lodówki).
-4.  Nauczyliśmy się **Aplikacji** (HVAC, Wymiana Ciepła).
-
-Jesteście teraz uzbrojeni w wiedzę inżynierską. Pamiętajcie:
-Termodynamika to nauka o tym, co jest **możliwe**, a co jest **bajką**.
-
-Dziękuję za uwagę!
-Powodzenia na Egzaminie!
+### Zadanie Domowe
+Oblicz współczynnik U dla ściany: Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
+Wynik: $R_{ceg} = 0.31$, $R_{styr} = 3.75$. $R_{tot} \approx 4.06$. $U = 1/4.06 \approx 0.25$.

@@ -1,5 +1,5 @@
 ---
-title: "W13: Powietrze Wilgotne"
+title: "W12: Powietrze Wilgotne"
 subtitle: "Psychrometria i Wykres Molliera"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |
@@ -164,7 +164,7 @@ Równe tylko dla $\varphi=100\%$.
 
 ---
 
-## Podsumowanie W13
+## Podsumowanie W12
 
 1.  **x vs $\varphi$:** $x$ to ilość paliwa (wody), $\varphi$ to stopień napełnienia baku (ile jeszcze zmieści).
 2.  **Entalpia:** Zależy głównie od wilgotności (ciepło utajone).

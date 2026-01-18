@@ -1,0 +1,158 @@
+---
+title: "W15: Spalanie i Egzergia"
+subtitle: "Paliwa, Chemia i Zrównoważony Rozwój"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+revealjs-plugins:
+  - appearance
+  - pointer
+pointer:
+  color: "#e60000"
+  pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Paliwa i Źródła Energii**
+2.  **Stechiometria Spalania** ($C+O_2$)
+3.  **Wartość Opałowa vs Ciepło Spalania**
+4.  **Egzergia** (Jakość Energii)
+5.  **Prawo Gouy-Stodoli** (Straty)
+6.  **Podsumowanie Kursu Termodynamiki**
+
+---
+
+## 1. Źródła Energii Chemicznej
+
+Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna).
+
+**Rodzaje Paliw:**
+1.  **Stałe:** Węgiel kamienny, Brunatny, Drewno (Biomasa).
+    *   Skład: C, H, O, N, S, W (Wilgoć), A (Popiół).
+2.  **Ciekłe:** Ropa naftowa, Benzyna, Mazut.
+    *   Głównie węglowodory.
+3.  **Gazowe:** Gaz ziemny (Metan $CH_4$), Wodór $H_2$.
+
+### Trójkąt Spalania (Gibbsa)
+Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, tym wyższa wartość opałowa, ale trudniejsze spalanie.
+
+---
+
+## 2. Stechiometria Spalania
+
+Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?
+$$ C + O_2 \rightarrow CO_2 $$
+
+A dla Metanu?
+$$ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O $$
+
+**Zapotrzebowanie na Powietrze:**
+Powietrze to nie czysty tlen! To 21% $O_2$ i 79% $N_2$.
+Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4.76 $m^3$ powietrza**.
+
+### Współczynnik Nadmiaru Powietrza ($\lambda$)
+*   $\lambda = 1$: Idealnie (stechiometria).
+*   $\lambda < 1$: Za mało tlenu $\to$ Sadza i CO (Czad). Strata energii!
+*   $\lambda > 1$: Nadmiar tlenu. Pełne spalanie, ale strata kominowa (grzejemy azot).
+
+---
+
+## 3. Wartość Opałowa ($W_d$)
+
+To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
+
+**Ciepło Spalania ($HHV$):**
+Całkowita energia uwolniona. Zakładamy, że woda ze spalin uległa **skropleniu** (odzyskujemy ciepło utajone).
+
+**Wartość Opałowa ($LHV$):**
+Energia "użyteczna" w zwykłym kotle. Woda ucieka w postaci pary kominem (tracimy ciepło parowania).
+
+$$ W_o = C_s - r \cdot m_{H2O} $$
+
+Kotły kondensacyjne wykorzystują HHV, osiągając sprawność > 100% (względem LHV).
+
+---
+
+## 4. Egzergia: Ilość vs Jakość
+
+Z I Zasady wynika, że energia jest niezniszczalna. Dlaczego więc "oszczędzamy energię"?
+Ponieważ tracimy jej **jakość**!
+
+**Egzergia ($B$):**
+Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia.
+
+*   Prąd elektryczny: 100% egzergii (Czysta praca).
+*   Gorąca para: ~50% egzergii (Można napędzić turbinę).
+*   Letnia woda (30°C): ~0% egzergii (Bezużyteczna termodynamicznie).
+
+---
+
+## 5. Prawo Gouy-Stodoli
+
+Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.
+
+$$ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} $$
+
+### Wykres Sankeya
+Wizualizacja strat w elektrowni:
+1.  Paliwo (100%) $\to$ Kocioł.
+2.  Straty kominowe (10%).
+3.  Straty w skraplaczu (50% - to największa strata!).
+4.  Praca turbiny (40%) $\to$ Prąd.
+
+Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło "odpadowe" ogrzewa miasta.
+
+---
+
+## 6. Podsumowanie Kursu
+
+Przeszliśmy drogę od:
+1.  **Podstaw:** Parametry stanu ($p, T$), gazy doskonałe.
+2.  **Zasad:** I Zasada (Bilans), II Zasada (Entropia).
+3.  **Mediów:** Para wodna, Powietrze wilgotne.
+4.  **Maszyn:** Silniki, Turbiny, Sprężarki, Lodówki.
+5.  **Aplikacji:** Wymiana ciepła, Spalanie.
+
+### Egzamin
+Proszę przygotować się z:
+1.  Obliczeń gazowych (Clapeyron, przemiany).
+2.  Obiegów termodynamicznych (Liczenie sprawności).
+3.  Podstaw wymiany ciepła i spalania.
+
+> "Energia jest jedyną walutą we Wszechświecie, za którą musisz płacić podatki (entropię)."
+
+Dziękuję za wspólny semestr!

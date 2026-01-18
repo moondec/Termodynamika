@@ -1,5 +1,5 @@
 ---
-title: "W14: Procesy Klimatyzacyjne"
+title: "W13: Procesy Klimatyzacyjne"
 subtitle: "Projektowanie procesów na wykresie i-x"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |
@@ -171,7 +171,7 @@ Punkt Celowy: 24C, 50%.
 
 ---
 
-## Podsumowanie W14
+## Podsumowanie W13
 
 1.  **AHU** to ciąg procesów termodynamicznych.
 2.  **Ogrzewanie** osusza powietrze (względnie).

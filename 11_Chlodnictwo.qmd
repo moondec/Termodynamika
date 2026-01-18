@@ -1,5 +1,5 @@
 ---
-title: "W12: Chłodnictwo"
+title: "W11: Chłodnictwo"
 subtitle: "Obiegi Lewobieżne w Praktyce"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |
@@ -179,7 +179,7 @@ Ograniczenie: Gdy na dworze jest -20C, $T_L$ spada, różnica temperatur rośnie
 
 ---
 
-## Podsumowanie W12
+## Podsumowanie W11
 
 1.  **Obieg lewobieżny** wymaga pracy.
 2.  **Linde vs Carnot:** Zastąpiliśmy turbinę dławieniem (strata, ale tanio) i sprężamy parę suchą.

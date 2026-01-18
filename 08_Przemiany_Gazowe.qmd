@@ -1,0 +1,273 @@
+---
+title: "W8: Przemiany Gazów Doskonałych"
+subtitle: "Analiza Procesów: Izobara, Izochora, Izoterma, Adiabata"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Metodyka Analizy** (Co liczymy?)
+2.  **Przemiana Izochoryczna** ($v=const$)
+3.  **Przemiana Izobaryczna** ($p=const$)
+4.  **Przemiana Izotermiczna** ($T=const$)
+5.  **Przemiana Adiabatyczna** ($q=0$)
+6.  **Przemiana Politropowa** (Uogólnienie)
+
+---
+
+## 1. Metodyka Analizy
+
+Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika):
+
+1.  **Równanie procesu:** Związek między $p$ i $v$.
+2.  **Praca objętościowa ($w$):** Pole pod krzywą na $p-v$.
+    $$ w = \int p \, dv $$
+3.  **Praca techniczna ($w_t$):** Pole do osi $p$.
+    $$ w_t = - \int v \, dp $$
+4.  **Ciepło ($q$):** Z I Zasady Termodynamiki.
+    $$ q = \Delta u + w \quad \text{lub} \quad q = \Delta h + w_t $$
+
+Pamiętamy zawsze: $\Delta u = C_v \Delta T$ oraz $\Delta h = C_p \Delta T$.
+
+---
+
+## 2. Przemiana Izochoryczna
+
+**Warunek:** $V = const \Rightarrow v_1 = v_2$
+Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
+
+### Równanie Stanu (Charlesa)
+$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} $$
+
+:::: {.columns}
+::: {.column width="60%"}
+### Bilans Energii
+1.  **Praca:** $w = 0$ (brak ruchu tłoka).
+2.  **Ciepło:** $q = \Delta u = C_v (T_2 - T_1)$.
+3.  **Wykres:** Linia pionowa na $p-v$.
+:::
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+library(ggplot2)
+ggplot() + geom_segment(aes(x=1, y=1, xend=1, yend=4), arrow=arrow(), size=2, color="blue") +
+  theme_minimal() + labs(title="Izochora p-v", x="v", y="p")
+```
+:::
+::::
+
+---
+
+## 3. Przemiana Izobaryczna
+
+**Warunek:** $p = const$
+Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.
+
+### Równanie Stanu (Gay-Lussaca)
+$$ \frac{v_1}{T_1} = \frac{v_2}{T_2} $$
+
+:::: {.columns}
+::: {.column width="60%"}
+### Bilans Energii
+1.  **Praca:** $w = p(v_2 - v_1) = R(T_2 - T_1)$.
+2.  **Ciepło:** $q = \Delta h = C_p (T_2 - T_1)$.
+    *   Ważne: W izobarze ciepło idzie na zmianę entalpii!
+3.  **Praca Tech:** $w_t = 0$ (brak sprężarki).
+:::
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+ggplot() + geom_segment(aes(x=1, y=2, xend=4, yend=2), arrow=arrow(), size=2, color="blue") +
+  theme_minimal() + labs(title="Izobara p-v", x="v", y="p")
+```
+:::
+::::
+
+---
+
+## 4. Przemiana Izotermiczna
+
+**Warunek:** $T = const \Rightarrow \Delta u = 0, \Delta h = 0$
+Przykład: Bardzo powolne sprężanie z chłodzeniem.
+
+### Równanie Stanu (Boyle-Mariotte)
+$$ p_1 v_1 = p_2 v_2 = const $$
+
+:::: {.columns}
+::: {.column width="60%"}
+### Bilans Energii
+1.  **Praca:** $w = RT \ln(v_2/v_1)$.
+2.  **Ciepło:** $q = w$ (Całe ciepło zamienia się w pracę, bo $\Delta u=0$).
+3.  **Wykres:** Hiperbola równoosiowa.
+:::
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+v <- seq(1, 4, 0.1)
+ggplot() + geom_line(aes(x=v, y=4/v), size=2, color="blue") +
+  theme_minimal() + labs(title="Izoterma p-v", x="v", y="p")
+```
+:::
+::::
+
+---
+
+## 5. Przemiana Adiabatyczna
+
+**Warunek:** $q = 0$ (Izolacja lub szybki proces).
+Jeśli odwracalna $\to$ **Izentropa** ($s = const$).
+
+### Równanie Poissona
+$$ p v^k = const $$
+$$ T v^{k-1} = const $$
+
+:::: {.columns}
+::: {.column width="60%"}
+### Bilans Energii
+1.  **Ciepło:** $q = 0$.
+2.  **Praca:** $w = -\Delta u = C_v(T_1 - T_2)$.
+    *   Praca kosztem energii wewnętrznej (spadek T przy rozprężaniu).
+3.  **Wykres:** Bardziej stroma niż izoterma ($k > 1$).
+:::
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+v <- seq(1, 4, 0.1)
+ggplot() + 
+  geom_line(aes(x=v, y=4/v), size=1, color="grey", linetype="dashed") +
+  geom_line(aes(x=v, y=4/(v^1.4)), size=2, color="red") +
+  annotate("text", x=2, y=0.5, label="Adiabata", color="red") +
+  theme_minimal() + labs(title="Adiabata p-v", x="v", y="p")
+```
+:::
+::::
+
+---
+
+## 6. Przemiana Politropowa (Uogólnienie)
+
+Równanie ogólne dla wszystkich procesów:
+$$ p v^n = const $$
+
+gdzie $n$ to wykładnik politropy.
+
+| $n$ | Imię | Warunek |
+| :---: | :--- | :--- |
+| **0** | Izobara | $p=const$ |
+| **1** | Izoterma | $T=const$ |
+| **k** | Adiabata | $q=0$ |
+| **$\infty$** | Izochora | $v=const$ |
+
+W sprężarkach tłokowych rzeczywiste sprężanie to politropa z $1 < n < k$ (chłodzenie cylindra).
+
+---
+
+## Zestawienie Graficzne
+
+Porównanie rozprężania z tego samego punktu:
+
+```{r}
+#| label: polyp-sun
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+v <- seq(1, 3, length.out=100)
+# Start point (1, 10)
+p_0 <- rep(10, 100) # n=0
+p_1 <- 10/v         # n=1
+p_k <- 10 / v^1.4   # n=k
+
+ggplot() +
+  geom_line(aes(x=v, y=p_0), color="green", size=1.5) +
+  geom_line(aes(x=v, y=p_1), color="blue", size=1.5) +
+  geom_line(aes(x=v, y=p_k), color="red", size=1.5) +
+  geom_segment(aes(x=1, y=10, xend=1, yend=2), color="purple", size=1.5) + 
+  
+  annotate("text", x=2.5, y=10.5, label="Izobara (n=0)", color="green") +
+  annotate("text", x=2.5, y=4.5, label="Izoterma (n=1)", color="blue") +
+  annotate("text", x=2.5, y=2.0, label="Adiabata (n=k)", color="red") +
+  annotate("text", x=1.1, y=3, label="Izochora", color="purple") +
+  
+  labs(title="Porównanie Przemian (Rozprężanie)", x="v", y="p") +
+  theme_minimal()
+```
+
+**Pole pod wykresem = PRACA.**
+Najwięcej pracy daje Izobara, najmniej Adiabata.
+
+---
+
+## Praca Techniczna w Przemianach
+
+Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:
+
+$$ w_t = n \cdot w $$
+(dla politropy $pv^n=const$).
+
+*   Dla izobary ($n=0$): $w_t = 0$.
+*   Dla izotermy ($n=1$): $w_t = w$.
+*   Dla adiabaty ($n=k$): $w_t = k \cdot w = \Delta h$.
+
+### Wniosek dla Sprężarki
+Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izotermy** (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.
+
+---
+
+## Podsumowanie W8
+
+| Przemiana | $n$ | Ciepło $q$ | Praca $w$ | $w_t$ |
+| :--- | :---: | :---: | :---: | :---: |
+| **Izochora** | $\infty$ | $\Delta u$ | 0 | $-v\Delta p$|
+| **Izobara** | 0 | $\Delta h$ | $p \Delta v$ | 0 |
+| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $q$ | $w$ |
+| **Adiabata** | k | 0 | $-\Delta u$ | $\Delta h$ |
+
+To jest najważniejsza tabela w termodynamice gazów.
+Nasze narzędzia na kolejne wykłady o obiegach silnikowych!

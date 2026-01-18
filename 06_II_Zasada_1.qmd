@@ -1,0 +1,237 @@
+---
+title: "W6: II Zasada Termodynamiki - I"
+subtitle: "Silniki Cieplne, Obieg Carnota i Nieodwracalność"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    footer: "Termodynamika Techniczna (W6)"
+    width: 1600
+    height: 900
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Ograniczenia I Zasady** (Kierunek Procesów)
+2.  **Silniki Cieplne i Pompy Ciepła** (Zasada Działania)
+3.  **Sformułowania II Zasady** (Kelvin vs Clausius)
+4.  **Procesy Odwracalne i Nieodwracalne**
+5.  **Obieg Carnota** (Silnik Idealny)
+6.  **Skala Termodynamiczna Temperatury**
+
+---
+
+## 1. Dlaczego I Zasada to za mało?
+
+### Kierunek Procesów
+
+:::: {.columns}
+
+::: {.column width="60%"}
+I Zasada Termodynamiki mówi o **zachowaniu energii** (bilans musi wyjść na zero). Ale nie mówi nic o **kierunku** przemian.
+
+::: incremental
+*   Dlaczego ciepło płynie samoistnie tylko z ciała cieplejszego do zimniejszego?
+*   Dlaczego wrzątek stygnie, ale zimna woda sama się nie zagotuje (pobierając ciepło z otoczenia)?
+*   Dlaczego, gdy upuścisz szklankę, rozbija się na kawałki, ale kawałki nigdy same nie złożą się w szklankę?
+:::
+:::
+
+::: {.column width="40%"}
+::: {.callout-important title="Problem"}
+I Zasada nie zabrania procesom biec "wstecz", o ile energia się zgadza. Jednak w rzeczywistości tak się nie dzieje. Potrzebujemy II Zasady ("Drogowskazu").
+:::
+:::
+
+::::
+
+---
+
+## 2. Źródła Ciepła (Rezerwuary)
+
+Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):
+
+1.  **Źródło górne ($T_H$):** Piec, Reaktor Jądrowy, Słońce. Dostarcza ciepło $Q_H$ (High).
+2.  **Źródło dolne ($T_L$):** Rzeka, Atmosfera, Grunt. Odbiera ciepło odpadowe $Q_L$ (Low).
+
+---
+
+## Silnik Cieplny (Heat Engine)
+
+Urządzenie cykliczne, które zamienia ciepło na pracę.
+
+1.  Pobiera ciepło $Q_H$ ze źródła o wysokiej temperaturze ($T_H$).
+2.  Zamienia część tego ciepła na pracę użyteczną $W$.
+3.  Oddaje pozostałe (niewykorzystane) ciepło $Q_L$ do źródła dolnego ($T_L$).
+
+### Sprawność Termiczna
+$$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} $$
+
+---
+
+## Chłodziarka i Pompa Ciepła
+
+To "odwrócony" silnik cieplny.
+
+1.  Pobiera ciepło $Q_L$ z zimnego wnętrza ($T_L$).
+2.  Wymaga dostarczenia pracy $W$ (sprężarka).
+3.  Oddaje ciepło $Q_H$ do ciepłego otoczenia ($T_H$).
+
+### Współczynniki Efektywności (COP)
+*   **Chłodziarka:** Cel to $Q_L$.
+    $$ COP_R = \frac{Q_L}{W} $$
+*   **Pompa Ciepła:** Cel to $Q_H$ (ogrzewanie).
+    $$ COP_{HP} = \frac{Q_H}{W} = COP_R + 1 $$
+
+---
+
+## 3. Sformułowania II Zasady
+
+### Sformułowanie Kelvina-Plancka
+> Nie jest możliwy proces cykliczny, którego **jedynym** wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.
+
+Wniosek: **Silnik o sprawności 100% jest niemożliwy.**
+Musimy oddać część ciepła $Q_L$ do chłodnicy. $Q_L \neq 0$.
+
+### Sformułowanie Clausiusa
+> Nie jest możliwe zbudowanie urządzenia, którego **jedynym** skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.
+
+Wniosek: **Chłodziarka musi zużywać prąd.** Ciepło nie popłynie "pod górę" samoistnie.
+
+---
+
+## Równoważność Sformułowań
+
+Te dwa twierdzenia brzmią różnie, ale są równoważne.
+
+Jeśli złamiesz jedno, złamiesz też drugie.
+*   Gdybyś miał silnik 100% sprawny (łamie K-P), mógłbyś nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).
+
+---
+
+## 4. Procesy Odwracalne i Nieodwracalne
+
+### Proces Odwracalny (Idealny)
+Można go cofnąć wzdłuż tej samej ścieżki, nie zostawiając żadnego śladu w otoczeniu.
+*   Wymogi: Brak tarcia, kwazistatyczność (nieskończenie powolny), nieskończenie małe różnice temperatur $\Delta T \to 0$.
+
+### Proces Nieodwracalny (Rzeczywisty)
+Cofnięcie wymaga nakładu pracy z zewnątrz.
+*   Źródła nieodwracalności: Tarcie, mieszanie płynów, opór elektryczny, reakcje chemiczne, przepływ ciepła przy skończonej $\Delta T$.
+
+---
+
+## 5. Obieg Carnota: Wzorzec Doskonałości
+
+Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami $T_H$ i $T_L$.
+
+Składa się z 4 procesów **odwracalnych**:
+1.  **Izotermiczne rozprężanie** (w $T_H$): Pobranie ciepła $Q_H$.
+2.  **Adiabatyczne rozprężanie:** Temperatura spada z $T_H$ do $T_L$. Praca wykonana kosztem energii wewn.
+3.  **Izotermiczne sprężanie** (w $T_L$): Oddanie ciepła $Q_L$.
+4.  **Adiabatyczne sprężanie:** Temperatura rośnie z $T_L$ do $T_H$.
+
+---
+
+## Wizualizacja Obiegu Carnota (T-s)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Na wykresie T-s (Temperatura-Entropia) obieg Carnota to idealny **prostokąt**.
+
+*   Izotermy ($T=const$): Poziome.
+*   Adiabaty odwracalne ($s=const$): Pionowe.
+
+$$ \eta_{Carnot} = 1 - \frac{T_L}{T_H} $$
+
+To maksymalna teoretyczna sprawność, jakakolwiek maszyna może osiągnąć.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: carnot-ts
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+df_carnot <- data.frame(
+  s = c(1, 4, 4, 1, 1),
+  T = c(600, 600, 300, 300, 600),
+  Label = c("1", "2", "3", "4", "1")
+)
+
+ggplot(df_carnot, aes(x=s, y=T)) +
+  geom_polygon(fill="lightgreen", alpha=0.5, color="darkgreen", size=2) +
+  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold") +
+  annotate("text", x=2.5, y=450, label="PRACA (L)", fontface="bold", color="darkgreen") +
+  annotate("text", x=2.5, y=620, label="Pobieranie Q_H (T_H)", color="red") +
+  annotate("text", x=2.5, y=280, label="Oddawanie Q_L (T_L)", color="blue") +
+  theme_minimal() +
+  labs(title="Obieg Carnota na wykresie T-s", x="Entropia s [kJ/kgK]", y="Temperatura T [K]")
+```
+:::
+
+::::
+
+---
+
+## Wnioski z Carnota
+
+$$ \eta = 1 - \frac{T_L}{T_H} $$
+
+1.  **Sprawność zależy tylko od temperatur.** Nie zależy od czynnika roboczego (powietrze, para, hel - bez znaczenia).
+2.  **Im wyższa $T_H$, tym lepiej.** Dlatego w elektrowniach dążymy do jak najwyższych temperatur pary (np. $600^\circ C$).
+3.  **Im niższa $T_L$, tym lepiej.** Ale jesteśmy ograniczeni temperaturą otoczenia (ok. $20^\circ C$ lub $300 K$).
+4.  **$\eta < 100\%$:** Aby mieć $\eta=1$, musielibyśmy mieć $T_L = 0 K$ (niemożliwe).
+
+---
+
+## Podsumowanie W6
+
+1.  **II Zasada:** Energia ma jakość. Ciepło nie zamieni się w 100% na pracę.
+2.  **Kelvin-Planck:** Nie ma silnika o sprawności 100%. Musi być chłodnica.
+3.  **Clausius:** Ciepło płynie z ciepłego do zimnego samoistnie.
+4.  **Carnot:** Wyznacza teoretyczną granicę sprawności ($\eta = 1 - T_L/T_H$).
+
+### Zapowiedź W7
+W kolejnym wykładzie zajmiemy się matematycznym opisem nieporządku - **Entropią**.

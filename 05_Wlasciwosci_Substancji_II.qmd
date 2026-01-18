@@ -1,0 +1,274 @@
+---
+title: "W5: Właściwości Substancji Czystych - II"
+subtitle: "Para Wodna, Przemiany Fazowe i Tablice"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    footer: "Termodynamika Techniczna (W5)"
+    width: 1600
+    height: 900
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
+editor: source
+---
+
+## Agenda Wykładu {data-menu-title="Agenda"}
+
+1.  **Termodynamika Przemian Fazowych** (Clapeyron-Clausius)
+2.  **Para Nasycona** (Sucha vs Mokra)
+3.  **Stopień Suchości ($x$)**
+4.  **Tablice Pary Wodnej** (Jak korzystać?)
+5.  **Wykresy Termodynamiczne** (T-s, h-s, p-h)
+6.  **Para Przegrzana**
+
+---
+
+## 1. Termodynamika Przemian Fazowych
+
+### Rodzaje Przemian
+
+*   **I Rodzaju:** Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała ($T=const$).
+    *   Wrzenie (Ciecz $\to$ Gaz)
+    *   Topnienie (Ciało stałe $\to$ Ciecz)
+*   **II Rodzaju:** Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego $C_p$.
+    *   Przejście w nadciekłość (Hel).
+
+### Ciepło Utajone (Latent Heat)
+Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury (Kinetycznej).
+Dla wody:
+*   Ciepło parowania ($r$): $2257 \text{ kJ/kg}$ (ogromne!)
+*   Ciepło topnienia: $333 \text{ kJ/kg}$
+
+---
+
+## Równanie Clapeyrona-Clausiusa
+
+Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:
+
+$$ \frac{dp}{dT} = \frac{r}{T (v'' - v')} $$
+
+*   $r$: Ciepło przemiany [J/kg]
+*   $v''$: Objętość właściwa pary (gazu)
+*   $v'$: Objętość właściwa cieczy
+
+::: {.callout-note}
+Ponieważ zazwyczaj $v'' > v'$ (gaz większy od cieczy) i $r > 0$ (trzeba grzać), to $dp/dT > 0$.
+Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w $120^\circ C$, co przyspiesza gotowanie).
+:::
+
+---
+
+## Wyjątek Wody: Topnienie
+
+Woda (lód) ma unikalną cechę: $v_{Lód} > v_{Woda}$ (lód pływa!).
+Zatem $v'' - v' < 0$ (dla topnienia).
+
+$$ \frac{dp}{dT} < 0 $$
+
+Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
+*   Dlatego pod płozą łyżwy (wysokie ciśnienie) lód topi się w temp. np. $-2^\circ C$, tworząc warstewkę wody (poślizg).
+
+---
+
+## 2. Para Nasycona - Struktura
+
+Gdy podgrzewamy wodę pod stałym ciśnieniem:
+1.  **Ciecz Dochłodzona:** $T < T_{wrzenia}$.
+2.  **Ciecz Nasycona ($x=0$):** $T = T_{wrzenia}$. Pierwszy bąbel pary.
+3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu!
+4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała.
+5.  **Para Przegrzana:** Dalszy wzrost $T > T_{wrzenia}$.
+
+---
+
+## Wykres T-s dla Wody (Kopuła)
+
+Obszar pod dzwonem to mieszanina (Para Mokra).
+
+```{r}
+#| label: steam-dome
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6
+
+library(ggplot2)
+
+# Uproszczona kopuła nasycenia (T-s)
+s_liq <- seq(0, 4.4, length.out=100)
+T_liq <- 273 + (s_liq^1.5 * 30) # Fake liquid line
+s_vap <- seq(4.4, 9, length.out=100)
+T_vap <- 647 - (s_vap-4.4)^2 * 15 # Fake vapor line
+
+dome <- data.frame(
+  s = c(s_liq, rev(s_vap)),
+  T = c(T_liq, rev(T_vap))
+)
+
+ggplot(dome, aes(x=s, y=T)) +
+  geom_line(color="blue", size=2) +
+  geom_area(fill="lightblue", alpha=0.3) +
+  
+  geom_segment(aes(x=1, y=400, xend=8, yend=400), color="red", size=1.5, linetype="dashed") +
+  annotate("text", x=4.5, y=380, label="P = const (Izobara parowania)", color="red") +
+
+  annotate("text", x=1.5, y=500, label="CIECZ", color="blue", fontface="bold") +
+  annotate("text", x=4.5, y=500, label="x (0...1)", color="#e60000", fontface="bold") +
+  annotate("text", x=7.5, y=500, label="PARA PRZEGRZANA", color="darkgreen", fontface="bold") +
+  
+  annotate("point", x=4.4, y=647, color="black", size=4) +
+  annotate("text", x=4.4, y=670, label="PK (Punkt Krytyczny)", fontface="bold") +
+  
+  theme_minimal() +
+  labs(x="Entropia s [kJ/kgK]", y="Temperatura T [K]", title="Wykres T-s: Obszary fazowe")
+```
+
+---
+
+## 3. Stopień Suchości ($x$)
+
+Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.
+
+$$ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} $$
+
+*   $x = 0$: $100\%$ cieczy (linia lewa).
+*   $x = 1$: $100\%$ pary (linia prawa).
+*   $x = 0.8$: $80\%$ pary, $20\%$ wody (typowa para wylotowa z turbiny).
+
+---
+
+## Obliczanie Właściwości Pary Mokrej
+
+Jeśli znamy $x$, możemy obliczyć dowolny parametr właściwy ($y$), znając wartości graniczne z tablic:
+*   $y'$ (dla cieczy nasyconej)
+*   $y''$ (dla pary suchej)
+
+Wzór ogólny:
+$$ y_x = y' + x \cdot (y'' - y') $$
+
+Zastosowanie:
+*   $v_x = v' + x(v'' - v')$  (Objętość)
+*   $h_x = h' + x(h'' - h')$  (Entalpia - do bilansu energii!)
+*   $s_x = s' + x(s'' - s')$  (Entropia - do sprawności)
+
+---
+
+## 4. Tablice Pary Wodnej
+
+Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
+
+Rodzaje tablic:
+1.  **Tablice Nasycenia (wg Temperatury lub Ciśnienia):**
+    *   Używamy, gdy wiemy, że mamy wrzenie $(p, T_{nasycenia})$.
+    *   Odczytujemy $v', v'', h', h'', s', s''$.
+2.  **Tablice Pary Przegrzanej:**
+    *   Używamy, gdy $T > T_{nasycenia}$ (dla danego $p$).
+    *   Jest to macierz $(p, T) \to v, h, s$.
+3.  **Tablice Cieczy Sprężonej:**
+    *   Gdy $T < T_{nasycenia}$. Zazwyczaj zakładamy $v \approx v'$.
+
+---
+
+## Przykład Odczytu (Nasycenie)
+
+Mamy wodę wrzącą pod ciśnieniem atmosferycznym ($p=1$ bar $\approx 0.1$ MPa).
+Szukamy w Tablicy Nasycenia (wg ciśnienia):
+
+| p [MPa] | T_sat [C] | v' [m3/kg] | v'' [m3/kg] | h' [kJ/kg] | h'' [kJ/kg] |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 0.10 | **99.6** | 0.001043 | **1.694** | 417 | **2675** |
+
+Wnioski:
+1.  Temp. wrzenia to $99.6^\circ C$.
+2.  Para zajmuje 1600 razy więcej miejsca niż woda ($1.694 / 0.001$). Wybuchowe rozszerzanie!
+3.  Żeby odparować wodę, trzeba dostarczyć $2675 - 417 = 2258 \text{ kJ/kg}$.
+
+---
+
+## 5. Wykresy Termodynamiczne
+
+### Wykres h-s (Molliera)
+*   Oś Y: Entalpia $h$ (Energia).
+*   Oś X: Entropia $s$.
+*   **Zastosowanie:** Turbiny parowe.
+*   Rozprężanie adiabatyczne (idealna turbina) to linia **pionowa w dół** ($\Delta s = 0$).
+*   Różnica wysokości na wykresie ($h_1 - h_2$) to uzyskana PRACA.
+
+### Wykres p-h (Logarytmiczny)
+*   Oś Y: Ciśnienie $\ln(p)$.
+*   Oś X: Entalpia $h$.
+*   **Zastosowanie:** Chłodnictwo / Pompy Ciepła.
+*   "Kopuła" jest mocno przechylona w prawo.
+
+---
+
+## Mollier w Praktyce
+
+Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
+
+1.  Znajdujemy punkt przecięcia izobary $100$ bar i izotermy $500^\circ C$.
+2.  Odczytujemy $h_1$.
+3.  Rysujemy linię pionową w dół do przecięcia z izobarą $0.1$ bar.
+4.  Odczytujemy $h_2$.
+5.  $w_{turbiny} = h_1 - h_2$.
+6.  Odczytujemy $x_2$ (stopień suchości na wylocie). Jeśli $x < 0.85$, erozja łopatek zniszczy turbinę!
+
+---
+
+## 6. Para Przegrzana
+
+Para o temperaturze wyższej niż nasycenia.
+Stosujemy ją w energetyce, aby:
+1.  Zwiększyć sprawność obiegu (wyższa średnia temp. grzania).
+2.  Uniknąć skraplania w końcowych stopniach turbiny (ochrona łopatek).
+
+Cechy:
+*   Zachowuje się coraz bardziej jak **gaz doskonały** im wyższa/mniejsze ciśnienie temperatury.
+*   Dla pary przegrzanej: $h \approx C_p T$.
+
+---
+
+## Podsumowanie W5
+
+1.  **Przemiany fazowe:** I rodzaju (z $r$) i II rodzaju.
+2.  **Clapeyron-Clausius:** $dp/dT$ zależy od różnicy objętości faz.
+3.  **Stopień suchości $x$:** Udział pary w mieszaninie. Klucz do obliczania $h_x, s_x, v_x$.
+4.  **Tablice:** Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.
+5.  **Mollier (h-s):** Niezastąpiony do szybkiej analizy procesów w turbinach.
+
+### Zadanie Domowe
+Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: $p=1$ bar, $x=0.9$. Odczytaj entalpię.
