@@ -62,17 +62,25 @@ editor: source
 
 ### Rodzaje Przemian
 
+::: incremental
 *   **I Rodzaju:** Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała ($T=const$).
     *   Wrzenie (Ciecz $\to$ Gaz)
     *   Topnienie (Ciało stałe $\to$ Ciecz)
 *   **II Rodzaju:** Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego $C_p$.
     *   Przejście w nadciekłość (Hel).
+:::
 
-### Ciepło Utajone (Latent Heat)
-Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury (Kinetycznej).
-Dla wody:
+### Ciepło Utajone (Latent Heat){.fragment}
+
+
+####  Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.{.fragment}
+
+#### Dla wody:{.fragment}
+
+::: incremental
 *   Ciepło parowania ($r$): $2257 \text{ kJ/kg}$ (ogromne!)
 *   Ciepło topnienia: $333 \text{ kJ/kg}$
+:::
 
 ---
 
@@ -80,13 +88,13 @@ Dla wody:
 
 Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:
 
-$$ \frac{dp}{dT} = \frac{r}{T (v'' - v')} $$
+$$ \frac{dp}{dT} = \frac{Q_{r}}{T (v'' - v')} $$
 
-*   $r$: Ciepło przemiany [J/kg]
+*   $Q_r$: Ciepło przemiany (ciepło parowania lub topnienia) [J/kg]
 *   $v''$: Objętość właściwa pary (gazu)
 *   $v'$: Objętość właściwa cieczy
 
-::: {.callout-note}
+::: {.callout-note .fragment}
 Ponieważ zazwyczaj $v'' > v'$ (gaz większy od cieczy) i $r > 0$ (trzeba grzać), to $dp/dT > 0$.
 Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w $120^\circ C$, co przyspiesza gotowanie).
 :::
@@ -101,7 +109,10 @@ Zatem $v'' - v' < 0$ (dla topnienia).
 $$ \frac{dp}{dT} < 0 $$
 
 Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
+
+::: {.fragment .fade-up}
 *   Dlatego pod płozą łyżwy (wysokie ciśnienie) lód topi się w temp. np. $-2^\circ C$, tworząc warstewkę wody (poślizg).
+:::
 
 ---
 

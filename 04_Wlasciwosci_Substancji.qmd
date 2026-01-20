@@ -492,12 +492,20 @@ $$ Z = \frac{pv}{RT} $$
 *   Dla gazu doskonałego: $Z = 1$.
 *   Dla gazu rzeczywistego: $Z \neq 1$ (może być 0.8, może być 1.2).
 
-### Parametry Zredukowane
+---
+
+## Parametry Zredukowane
 Sprowadzamy różne gazy do "wspólnego mianownika", dzieląc ich parametry przez parametry w punkcie krytycznym:
 
 $$ p_r = \frac{p}{p_{kryt}}, \quad v_r = \frac{v}{v_{kryt}}, \quad T_r = \frac{T}{T_{kryt}} $$
 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 **Zasada:** Różne gazy w tych samych stanach zredukowanych ($p_r, T_r$) mają w przybliżeniu to samo $Z$.
+:::
+
+::: {.callout-note title="Analogia"}
+Zasadę tę można porównać do przeliczania wieku psa na "ludzkie lata".
+:::
 
 ---
 

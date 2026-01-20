@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="03_I_Zasada_Otwarte_files/libs/clipboard/clipboard.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/tabby.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/popper.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="05_Wlasciwosci_Substancji_II_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/popper.min.js"></script>
+<script src="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
-  <title>W3: I Zasada Termodynamiki - cz. II</title>
+  <title>W5: Właściwości Substancji Czystych - II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,15 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/theme/quarto-34305f86072cf02266a28ded5fc352bc.css">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -126,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_green.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+      background-image: url("img/background_red.png") !important;
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -156,8 +146,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">W3: I Zasada Termodynamiki - cz. II</h1>
-  <p class="subtitle">Bilans Energii w Układach Otwartych</p>
+  <h1 class="title">W5: Właściwości Substancji Czystych - II</h1>
+  <p class="subtitle">Para Wodna, Przemiany Fazowe i Tablice</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -167,260 +157,219 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
-            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
-            <p><img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
 </div>
 
 </section>
-<section id="pojęcie-pracy-technicznej" class="slide level2">
-<h2>Pojęcie Pracy Technicznej</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div style="text-align: center;">
-<p><img src="img/praca_techniczna.png" style="width: 100%;"></p>
-</div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
-</div>
+<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
+<h2>Agenda Wykładu</h2>
+<ol type="1">
+<li><strong>Termodynamika Przemian Fazowych</strong> (Clapeyron-Clausius)</li>
+<li><strong>Para Nasycona</strong> (Sucha vs Mokra)</li>
+<li><strong>Stopień Suchości (<span class="math inline">\(x\)</span>)</strong></li>
+<li><strong>Tablice Pary Wodnej</strong> (Jak korzystać?)</li>
+<li><strong>Wykresy Termodynamiczne</strong> (T-s, h-s, p-h)</li>
+<li><strong>Para Przegrzana</strong></li>
+</ol>
+</section>
+<section id="termodynamika-przemian-fazowych" class="slide level2">
+<h2>1. Termodynamika Przemian Fazowych</h2>
+<h3 id="rodzaje-przemian">Rodzaje Przemian</h3>
 <ul>
-<li class="fragment"><strong>Sprężanie (<span class="math inline">\(dp &gt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
-<li class="fragment"><strong>Rozprężanie (<span class="math inline">\(dp &lt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL &gt; 0\)</span>).</li>
-<li class="fragment"><strong>Nadal nie uwzględniamy tu tarcia</strong></li>
+<li class="fragment"><strong>I Rodzaju:</strong> Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała (<span class="math inline">\(T=const\)</span>).
+<ul>
+<li class="fragment">Wrzenie (Ciecz <span class="math inline">\(\to\)</span> Gaz)</li>
+<li class="fragment">Topnienie (Ciało stałe <span class="math inline">\(\to\)</span> Ciecz)</li>
+</ul></li>
+<li class="fragment"><strong>II Rodzaju:</strong> Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego <span class="math inline">\(C_p\)</span>.
+<ul>
+<li class="fragment">Przejście w nadciekłość (Hel).</li>
+</ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[L_t = L_{1-2} + L_n + L_w = L_{1-2} + p_1 V_1 - p_2 V_2\]</span></p>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><span class="math display">\[đL_t = -V dp\]</span> <span class="math display">\[L_t = -\int_{p_1}^{p_2} V(p) dp\]</span></p>
-</div>
-<div title="Definicja">
+<h3 class="fragment" id="ciepło-utajone-latent-heat">Ciepło Utajone (Latent Heat)</h3>
+<h4 class="fragment" id="energia-potrzebna-do-zerwania-wiązań-międzycząsteczkowych-bez-zmiany-temperatury.">Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.</h4>
+<h4 class="fragment" id="dla-wody">Dla wody:</h4>
+<ul>
+<li class="fragment">Ciepło parowania (<span class="math inline">\(r\)</span>): <span class="math inline">\(2257 \text{ kJ/kg}\)</span> (ogromne!)</li>
+<li class="fragment">Ciepło topnienia: <span class="math inline">\(333 \text{ kJ/kg}\)</span></li>
+</ul>
+</section>
+<section id="równanie-clapeyrona-clausiusa" class="slide level2">
+<h2>Równanie Clapeyrona-Clausiusa</h2>
+<p>Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:</p>
+<p><span class="math display">\[ \frac{dp}{dT} = \frac{Q_{r}}{T (v'' - v')} \]</span></p>
+<ul>
+<li><span class="math inline">\(Q_r\)</span>: Ciepło przemiany (ciepło parowania lub topnienia) [J/kg]</li>
+<li><span class="math inline">\(v''\)</span>: Objętość właściwa pary (gazu)</li>
+<li><span class="math inline">\(v'\)</span>: Objętość właściwa cieczy</li>
+</ul>
+<div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definicja</strong></p>
+<p><strong>Adnotacja</strong></p>
 </div>
 <div class="callout-content">
-<p>W układzie <span class="math inline">\(p-V\)</span>, pracę techniczną przedstawia pole pomiędzy krzywą przemiany a osią rzędnych (<span class="math inline">\(p\)</span>).</p>
+<p>Ponieważ zazwyczaj <span class="math inline">\(v'' &gt; v'\)</span> (gaz większy od cieczy) i <span class="math inline">\(r &gt; 0\)</span> (trzeba grzać), to <span class="math inline">\(dp/dT &gt; 0\)</span>. Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w <span class="math inline">\(120^\circ C\)</span>, co przyspiesza gotowanie).</p>
 </div>
 </div>
 </div>
 </div>
-</div></div>
 </section>
+<section id="wyjątek-wody-topnienie" class="slide level2">
+<h2>Wyjątek Wody: Topnienie</h2>
+<p>Woda (lód) ma unikalną cechę: <span class="math inline">\(v_{Lód} &gt; v_{Woda}\)</span> (lód pływa!). Zatem <span class="math inline">\(v'' - v' &lt; 0\)</span> (dla topnienia).</p>
+<p><span class="math display">\[ \frac{dp}{dT} &lt; 0 \]</span></p>
+<p>Wzrost ciśnienia <strong>obniża</strong> temperaturę topnienia lodu.</p>
+<div class="fragment fade-up">
+<ul>
+<li>Dlatego pod płozą łyżwy (wysokie ciśnienie) lód topi się w temp. np. <span class="math inline">\(-2^\circ C\)</span>, tworząc warstewkę wody (poślizg).</li>
+</ul>
+</div>
+</section>
+<section id="para-nasycona---struktura" class="slide level2">
+<h2>2. Para Nasycona - Struktura</h2>
+<p>Gdy podgrzewamy wodę pod stałym ciśnieniem: 1. <strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>. 2. <strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary. 3. <strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu! 4. <strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała. 5. <strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.</p>
+</section>
+<section id="wykres-t-s-dla-wody-kopuła" class="slide level2">
+<h2>Wykres T-s dla Wody (Kopuła)</h2>
+<p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
 
-<section id="układy-otwarte" class="slide level2">
-<h2>Układy Otwarte</h2>
-<h3 id="kontrola-przepływu-materii">Kontrola Przepływu Materii</h3>
-<p>W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę bilansową) przepływa czynnik roboczy.</p>
+<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="768" class="r-stretch"></section>
+<section id="stopień-suchości-x" class="slide level2">
+<h2>3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
+<p>Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.</p>
+<p><span class="math display">\[ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} \]</span></p>
 <ul>
-<li>Należy uwzględnić <strong>pracę tłoczenia</strong> (wprowadzenia i wyprowadzenia czynnika).</li>
-<li>Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.</li>
-</ul>
-<div style="text-align: center;">
-<p><img src="img/wymiennik.png" style="width: 55%;"></p>
-</div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
-</div>
-</section>
-<section id="równanie-przepływu-ustalonego-równanie-szewalskiego-dla-gazów" class="slide level2">
-<h2>Równanie Przepływu Ustalonego (Równanie Szewalskiego dla Gazów)</h2>
-<h3 id="postać-ogólna-bilansu-mocy">Postać Ogólna Bilansu Mocy</h3>
-<p>Dla maszyny działającej w sposób ustalony (strumień masy <span class="math inline">\(\dot{m} = const\)</span>):</p>
-<p><span class="math display">\[ \underbrace{\dot{Q} + \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
-=
-\dot{m}
-\left[
-  \underbrace{(h_2 - h_1)}_{\Delta \text{Entalpii}}
-  +
-  \underbrace{\frac{w_2^2 - w_1^2}{2}}_{\substack{\Delta \text{En. Kinetycznej} \\ (\text{tu } w \text{ to prędkość!})}}
-  +
-  \underbrace{g(z_2 - z_1)}_{\Delta \text{En. Potencjalnej}}
-\right] \]</span></p>
-<div style="font-size: 0.7em;">
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Gdzie:</p>
-<ul>
-<li><span class="math inline">\(\dot{Q}\)</span> – strumień ciepła (moc cieplna) [W].</li>
-<li><span class="math inline">\(\dot{L}_{t}\)</span> – moc techniczna (na wale) [W].</li>
-<li><span class="math inline">\(\dot{m}\)</span> – Strumień masy czynnika [kg/s]</li>
-<li><span class="math inline">\(h\)</span> – entalpia właściwa [J/kg].</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><span class="math inline">\(w\)</span> – prędkość przepływu [J/kg].</li>
-<li><span class="math inline">\(g \Delta z\)</span> – energia potencjalna [J/kg].</li>
-<li><span class="math inline">\(z\)</span> – wysokość [m]</li>
-</ul>
-</div></div>
-</div>
-</section>
-<section id="zastosowanie-turbina" class="slide level2">
-<h2>Zastosowanie: Turbina</h2>
-<h3 id="ekspansja-czynnika">Ekspansja Czynnika</h3>
-<p>W turbinach (parowych lub gazowych) czynnik rozpręża się, wykonując pracę techniczną.</p>
-<ul>
-<li>Zazwyczaj proces jest <strong>adiabatyczny</strong> (<span class="math inline">\(\dot{Q} \approx 0\)</span>).</li>
-<li>Zmiany energii kinetycznej i potencjalnej są często pomijalne.</li>
-</ul>
-<p><strong>Uproszczony bilans:</strong> <span class="math display">\[ P_i = \dot{m} (h_1 - h_2) \]</span> Gdzie <span class="math inline">\(P_i\)</span> to moc wewnętrzna turbiny.</p>
-</section>
-<section id="zastosowanie-sprężarka-i-pompa" class="slide level2">
-<h2>Zastosowanie: Sprężarka i Pompa</h2>
-<h3 id="kompresja-czynnika">Kompresja Czynnika</h3>
-<p>Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnienie czynnika.</p>
-<ul>
-<li>Moc napędowa sprężarki <span class="math inline">\(N &lt; 0\)</span> (według konwencji inżynierskiej).</li>
-<li>W pompach (ciecz nieściśliwa) praca techniczna wynosi: <span class="math inline">\(l_t = v \Delta p\)</span>.</li>
-</ul>
-<p><strong>Bilans dla sprężarki:</strong> <span class="math display">\[ P_d = \dot{m} (h_2 - h_1) - \dot{Q} \]</span></p>
-</section>
-<section id="zastosowanie-wymiennik-ciepła" class="slide level2">
-<h2>Zastosowanie: Wymiennik Ciepła</h2>
-<h3 id="przepływ-izobaryczny">Przepływ Izobaryczny</h3>
-<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej (<span class="math inline">\(L_{tech} = 0\)</span>).</p>
-<p><strong>Bilans dla jednego czynnika:</strong> <span class="math display">\[ \dot{Q} = \dot{m} (h_2 - h_1) \]</span></p>
-<p>Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz): <span class="math display">\[ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B \]</span></p>
-</section>
-<section id="zastosowanie-dławienie" class="slide level2">
-<h2>Zastosowanie: Dławienie</h2>
-<h3 id="proces-izentalpowy">Proces Izentalpowy</h3>
-<p>Dławienie zachodzi podczas przepływu przez zawór lub zwężkę bez wymiany ciepła i pracy.</p>
-<p><span class="math display">\[ h_1 = h_2 \]</span></p>
-<ul>
-<li>Dla gazu doskonałego temperatura nie ulega zmianie.</li>
-<li>Dla gazów rzeczywistych występuje <strong>efekt Joule’a-Thomsona</strong> (zmiana temperatury).</li>
+<li><span class="math inline">\(x = 0\)</span>: <span class="math inline">\(100\%\)</span> cieczy (linia lewa).</li>
+<li><span class="math inline">\(x = 1\)</span>: <span class="math inline">\(100\%\)</span> pary (linia prawa).</li>
+<li><span class="math inline">\(x = 0.8\)</span>: <span class="math inline">\(80\%\)</span> pary, <span class="math inline">\(20\%\)</span> wody (typowa para wylotowa z turbiny).</li>
 </ul>
 </section>
-<section id="zasada-ekwipartycji-energii" class="slide level2">
-<h2>Zasada Ekwipartycji Energii</h2>
-<h3 id="teoria-ciepła-właściwego">Teoria Ciepła Właściwego</h3>
-<p>Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej [22].</p>
-<p>Średnia energia na jeden stopień swobody: <span class="math display">\[ \langle E_i \rangle = \frac{1}{2} k T \]</span></p>
-<ul>
-<li><strong>Ruch postępowy:</strong> 3 stopnie (<span class="math inline">\(3 \cdot \frac{1}{2} kT\)</span>).</li>
-<li><strong>Ruch obrotowy:</strong> +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).</li>
-<li><strong>Drgania (oscylacje):</strong> Wnoszą wkład energii kinetycznej i potencjalnej.</li>
-</ul>
+<section id="obliczanie-właściwości-pary-mokrej" class="slide level2">
+<h2>Obliczanie Właściwości Pary Mokrej</h2>
+<p>Jeśli znamy <span class="math inline">\(x\)</span>, możemy obliczyć dowolny parametr właściwy (<span class="math inline">\(y\)</span>), znając wartości graniczne z tablic: * <span class="math inline">\(y'\)</span> (dla cieczy nasyconej) * <span class="math inline">\(y''\)</span> (dla pary suchej)</p>
+<p>Wzór ogólny: <span class="math display">\[ y_x = y' + x \cdot (y'' - y') \]</span></p>
+<p>Zastosowanie: * <span class="math inline">\(v_x = v' + x(v'' - v')\)</span> (Objętość) * <span class="math inline">\(h_x = h' + x(h'' - h')\)</span> (Entalpia - do bilansu energii!) * <span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</p>
 </section>
-<section id="ciepło-właściwe-gazów" class="slide level2">
-<h2>Ciepło Właściwe Gazów</h2>
-<h3 id="wartości-teoretyczne-c_v">Wartości Teoretyczne <span class="math inline">\(c_v\)</span></h3>
-<p>Wartość molowego ciepła właściwego zależy od liczby stopni swobody (<span class="math inline">\(f\)</span>):</p>
-<p><span class="math display">\[ (Mc_v) = \frac{f}{2} (MR) \]</span></p>
-<table class="caption-top">
+<section id="tablice-pary-wodnej" class="slide level2">
+<h2>4. Tablice Pary Wodnej</h2>
+<p>Inżynier nie “liczy” pary z równania gazu doskonałego. Inżynier <strong>odczytuje</strong> z tablic.</p>
+<p>Rodzaje tablic: 1. <strong>Tablice Nasycenia (wg Temperatury lub Ciśnienia):</strong> * Używamy, gdy wiemy, że mamy wrzenie <span class="math inline">\((p, T_{nasycenia})\)</span>. * Odczytujemy <span class="math inline">\(v', v'', h', h'', s', s''\)</span>. 2. <strong>Tablice Pary Przegrzanej:</strong> * Używamy, gdy <span class="math inline">\(T &gt; T_{nasycenia}\)</span> (dla danego <span class="math inline">\(p\)</span>). * Jest to macierz <span class="math inline">\((p, T) \to v, h, s\)</span>. 3. <strong>Tablice Cieczy Sprężonej:</strong> * Gdy <span class="math inline">\(T &lt; T_{nasycenia}\)</span>. Zazwyczaj zakładamy <span class="math inline">\(v \approx v'\)</span>.</p>
+</section>
+<section id="przykład-odczytu-nasycenie" class="slide level2">
+<h2>Przykład Odczytu (Nasycenie)</h2>
+<p>Mamy wodę wrzącą pod ciśnieniem atmosferycznym (<span class="math inline">\(p=1\)</span> bar <span class="math inline">\(\approx 0.1\)</span> MPa). Szukamy w Tablicy Nasycenia (wg ciśnienia):</p>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Typ Gazu</th>
-<th style="text-align: left;"><span class="math inline">\(f\)</span></th>
-<th style="text-align: left;"><span class="math inline">\((Mc_v)\)</span></th>
-<th style="text-align: left;">Przykład</th>
+<th style="text-align: center;">p [MPa]</th>
+<th style="text-align: center;">T_sat [C]</th>
+<th style="text-align: center;">v’ [m3/kg]</th>
+<th style="text-align: center;">v’’ [m3/kg]</th>
+<th style="text-align: center;">h’ [kJ/kg]</th>
+<th style="text-align: center;">h’’ [kJ/kg]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Jednoatomowy</strong></td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;"><span class="math inline">\(1.5 R\)</span></td>
-<td style="text-align: left;">Ar, He</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Dwuatomowy</strong></td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;"><span class="math inline">\(2.5 R\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(N_2, O_2\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Wieloatomowy</strong></td>
-<td style="text-align: left;">6</td>
-<td style="text-align: left;"><span class="math inline">\(3.0 R\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(H_2O, CH_4\)</span></td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;"><strong>99.6</strong></td>
+<td style="text-align: center;">0.001043</td>
+<td style="text-align: center;"><strong>1.694</strong></td>
+<td style="text-align: center;">417</td>
+<td style="text-align: center;"><strong>2675</strong></td>
 </tr>
 </tbody>
 </table>
-<p><em>Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)</em>.</p>
+<p>Wnioski: 1. Temp. wrzenia to <span class="math inline">\(99.6^\circ C\)</span>. 2. Para zajmuje 1600 razy więcej miejsca niż woda (<span class="math inline">\(1.694 / 0.001\)</span>). Wybuchowe rozszerzanie! 3. Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</p>
 </section>
-<section id="i-zasada-w-procesach-spalania" class="slide level2">
-<h2>I Zasada w Procesach Spalania</h2>
-<h3 id="energia-chemiczna">Energia Chemiczna</h3>
-<p>W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.</p>
-<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> Ciepło wydzielone przy zupełnym spaleniu jednostki paliwa, gdy woda w spalinach pozostaje w postaci pary.</p>
-<p><strong>Bilans energetyczny komory spalania:</strong> <span class="math display">\[ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
-</section>
-<section id="zjawisko-joulea-thomsona" class="slide level2">
-<h2>Zjawisko Joule’a-Thomsona</h2>
-<h3 id="dławienie-adiabatyczne">Dławienie Adiabatyczne</h3>
-<p>Współczynnik <span class="math inline">\(\mu\)</span> określa zmianę temperatury przy spadku ciśnienia w procesie izentalpowym:</p>
-<p><span class="math display">\[ \mu = \left(\frac{\partial T}{\partial p}\right)_H \]</span></p>
+<section id="wykresy-termodynamiczne" class="slide level2">
+<h2>5. Wykresy Termodynamiczne</h2>
+<h3 id="wykres-h-s-molliera">Wykres h-s (Molliera)</h3>
 <ul>
-<li><strong><span class="math inline">\(\mu &gt; 0\)</span>:</strong> Gaz ochładza się przy dławieniu (większość gazów w temp. pokojowej).</li>
-<li><strong><span class="math inline">\(\mu &lt; 0\)</span>:</strong> Gaz ogrzewa się (np. wodór, hel w temp. pokojowej).</li>
-<li><strong>Krzywa inwersji:</strong> Linia, na której <span class="math inline">\(\mu = 0\)</span>.</li>
+<li>Oś Y: Entalpia <span class="math inline">\(h\)</span> (Energia).</li>
+<li>Oś X: Entropia <span class="math inline">\(s\)</span>.</li>
+<li><strong>Zastosowanie:</strong> Turbiny parowe.</li>
+<li>Rozprężanie adiabatyczne (idealna turbina) to linia <strong>pionowa w dół</strong> (<span class="math inline">\(\Delta s = 0\)</span>).</li>
+<li>Różnica wysokości na wykresie (<span class="math inline">\(h_1 - h_2\)</span>) to uzyskana PRACA.</li>
+</ul>
+<h3 id="wykres-p-h-logarytmiczny">Wykres p-h (Logarytmiczny)</h3>
+<ul>
+<li>Oś Y: Ciśnienie <span class="math inline">\(\ln(p)\)</span>.</li>
+<li>Oś X: Entalpia <span class="math inline">\(h\)</span>.</li>
+<li><strong>Zastosowanie:</strong> Chłodnictwo / Pompy Ciepła.</li>
+<li>“Kopuła” jest mocno przechylona w prawo.</li>
 </ul>
 </section>
-<section id="analiza-egzergetyczna-wstęp" class="slide level2">
-<h2>Analiza Egzergetyczna (Wstęp)</h2>
-<h3 id="energia-dostępna">Energia Dostępna</h3>
-<p>Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu równowagi z otoczeniem.</p>
-<ul>
-<li>I Zasada mówi o ilości energii (konserwacja).</li>
-<li>II Zasada mówi o jakości energii (degradacja).</li>
-<li><strong>Strata egzergii (<span class="math inline">\(\delta B\)</span>):</strong> Jest proporcjonalna do przyrostu entropii (Prawo Gouya-Stodoli).</li>
-</ul>
+<section id="mollier-w-praktyce" class="slide level2">
+<h2>Mollier w Praktyce</h2>
+<p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ C\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0.1\)</span> bar.</p>
+<ol type="1">
+<li>Znajdujemy punkt przecięcia izobary <span class="math inline">\(100\)</span> bar i izotermy <span class="math inline">\(500^\circ C\)</span>.</li>
+<li>Odczytujemy <span class="math inline">\(h_1\)</span>.</li>
+<li>Rysujemy linię pionową w dół do przecięcia z izobarą <span class="math inline">\(0.1\)</span> bar.</li>
+<li>Odczytujemy <span class="math inline">\(h_2\)</span>.</li>
+<li><span class="math inline">\(w_{turbiny} = h_1 - h_2\)</span>.</li>
+<li>Odczytujemy <span class="math inline">\(x_2\)</span> (stopień suchości na wylocie). Jeśli <span class="math inline">\(x &lt; 0.85\)</span>, erozja łopatek zniszczy turbinę!</li>
+</ol>
 </section>
-<section id="podsumowanie-w2-i-3" class="slide level2">
-<h2>Podsumowanie W2 i 3</h2>
-<h3 id="kluczowe-wnioski">Kluczowe Wnioski</h3>
-<ul>
-<li><strong>Energia wewnętrzna i entalpia</strong> to kluczowe funkcje stanu do bilansowania energii.</li>
-<li>I Zasada dla układów zamkniętych: <span class="math inline">\(Q + W = \Delta U\)</span>.</li>
-<li>I Zasada dla układów otwartych: <strong>Równanie stałego przepływu</strong> oparte na entalpii.</li>
-<li><strong>Praca techniczna</strong> występuje w maszynach przepływowych.</li>
-<li>Ciepła właściwe zależą od budowy cząsteczki i temperatury.</li>
-</ul>
+<section id="para-przegrzana" class="slide level2">
+<h2>6. Para Przegrzana</h2>
+<p>Para o temperaturze wyższej niż nasycenia. Stosujemy ją w energetyce, aby: 1. Zwiększyć sprawność obiegu (wyższa średnia temp. grzania). 2. Uniknąć skraplania w końcowych stopniach turbiny (ochrona łopatek).</p>
+<p>Cechy: * Zachowuje się coraz bardziej jak <strong>gaz doskonały</strong> im wyższa/mniejsze ciśnienie temperatury. * Dla pary przegrzanej: <span class="math inline">\(h \approx C_p T\)</span>.</p>
 </section>
-<section id="przejście-do-w4" class="slide level2">
-<h2>Przejście do W4</h2>
-<h3 id="właściwości-substancji-czystych">Właściwości Substancji Czystych</h3>
-<p>W następnym module nauczymy się, jak wyznaczać parametry dla substancji zmieniających fazę:</p>
-<ul>
-<li>Korzystanie z <strong>tablic pary wodnej</strong>.</li>
-<li>Praca z wykresami <strong>h-s</strong> (Molliera) oraz <strong>p-h</strong>.</li>
-<li>Obliczanie stopnia suchości pary mokrej (<span class="math inline">\(x\)</span>).</li>
-</ul>
+<section id="podsumowanie-w5" class="slide level2">
+<h2>Podsumowanie W5</h2>
+<ol type="1">
+<li><strong>Przemiany fazowe:</strong> I rodzaju (z <span class="math inline">\(r\)</span>) i II rodzaju.</li>
+<li><strong>Clapeyron-Clausius:</strong> <span class="math inline">\(dp/dT\)</span> zależy od różnicy objętości faz.</li>
+<li><strong>Stopień suchości <span class="math inline">\(x\)</span>:</strong> Udział pary w mieszaninie. Klucz do obliczania <span class="math inline">\(h_x, s_x, v_x\)</span>.</li>
+<li><strong>Tablice:</strong> Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.</li>
+<li><strong>Mollier (h-s):</strong> Niezastąpiony do szybkiej analizy procesów w turbinach.</li>
+</ol>
+<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+<p>Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: <span class="math inline">\(p=1\)</span> bar, <span class="math inline">\(x=0.9\)</span>. Odczytaj entalpię.</p>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Termodynamika Techniczna (W3)</p>
+<p>Termodynamika Techniczna (W5)</p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/appearance/appearance.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -618,6 +567,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

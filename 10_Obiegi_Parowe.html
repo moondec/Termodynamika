@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="szablon_files/libs/clipboard/clipboard.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tabby.min.js"></script>
-<script src="szablon_files/libs/quarto-html/popper.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="szablon_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="10_Obiegi_Parowe_files/libs/clipboard/clipboard.min.js"></script>
+<script src="10_Obiegi_Parowe_files/libs/quarto-html/tabby.min.js"></script>
+<script src="10_Obiegi_Parowe_files/libs/quarto-html/popper.min.js"></script>
+<script src="10_Obiegi_Parowe_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="10_Obiegi_Parowe_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="10_Obiegi_Parowe_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="10_Obiegi_Parowe_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ściąga Formatowania Quarto</title>
+  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <title>W10: Obiegi Parowe (Siłownie)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="10_Obiegi_Parowe_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="10_Obiegi_Parowe_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,11 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="10_Obiegi_Parowe_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="10_Obiegi_Parowe_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -121,28 +126,19 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+      background-image: url("img/background_red.png") !important;
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
+      filter: grayscale(30%);
   }
   </style>
 </head>
@@ -151,121 +147,107 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ściąga Formatowania Quarto</h1>
-  <p class="subtitle">Gotowe bloki do kopiowania (Copy-Paste)</p>
+  <h1 class="title">W10: Obiegi Parowe (Siłownie)</h1>
+  <p class="subtitle">Obieg Rankine’a i Układy Parowo-Gazowe</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="tekst-rozmiary-i-kolory" class="slide level2">
-<h2>1. Tekst: Rozmiary i Kolory</h2>
-<p>To jest standardowy tekst.</p>
-<div style="font-size: 0.6em; color: gray;">
-<p>To jest mały, szary tekst (idealny do przypisów/źródeł).</p>
-</div>
-<div style="font-size: 1.5em; color: #e60000; font-weight: bold;">
-<p>Wielki, czerwony i pogrubiony tekst (Wniosek).</p>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<p>Tekst wyśrodkowany w poziomie z marginesem od góry.</p>
-</div>
+<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
+<h2>Agenda Wykładu</h2>
+<ol type="1">
+<li><strong>Fundament Energetyki</strong> (Dlaczego para?)</li>
+<li><strong>Obieg Clausiusa-Rankine’a</strong> (Schemat i T-s)</li>
+<li><strong>Suchość Pary</strong> i erozja łopatek.</li>
+<li><strong>Przegrzew Wtórny</strong> (Reheat)</li>
+<li><strong>Regeneracja Podgrzewaczowa</strong> (Regeneration)</li>
+<li><strong>Układy Gazowo-Parowe</strong> (IGCC/CCGT)</li>
+</ol>
 </section>
-<section id="układ-dwie-kolumny" class="slide level2">
-<h2>2. Układ: Dwie Kolumny</h2>
-<p>Najczęstszy układ slajdu: Tekst po lewej, Grafika po prawej.</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Lista punktowa:</strong></p>
+<section id="dlaczego-para-wodna" class="slide level2">
+<h2>1. Dlaczego Para Wodna?</h2>
+<p>Siłownie parowe produkują &gt;70% elektryczności na świecie (węgiel, atom, biomasa). Woda jest tania, nietoksyczna i ma <strong>ogromne ciepło parowania</strong>.</p>
+<h3 id="komponenty-siłowni">Komponenty Siłowni:</h3>
+<ol type="1">
+<li><strong>Pompa wodna:</strong> Spręża ciecz (mała praca, bo ciecz nieściśliwa).</li>
+<li><strong>Kocioł (Generator Pary):</strong> Dostarcza ciepło, zamienia wodę w parę.</li>
+<li><strong>Turbina:</strong> Para rozpręża się, napędzając generator.</li>
+<li><strong>Skraplacz:</strong> Para skrapla się do wody (oddając ciepło do rzeki/chłodni).</li>
+</ol>
+</section>
+<section id="obieg-clausiusa-rankinea-c-r" class="slide level2">
+<h2>2. Obieg Clausiusa-Rankine’a (C-R)</h2>
+<p>Jest to realizacja obiegu Carnota dla pary, ale z modyfikacjami. Procesy: 1. <strong>1-2:</strong> Sprężanie izentropowe wody w pompie. 2. <strong>2-3:</strong> Izobaryczne podgrzewanie i wrzenie w kotle. 3. <strong>3-4:</strong> Rozprężanie izentropowe pary w turbinie. 4. <strong>4-1:</strong> Izobaryczne (i izotermiczne) skraplanie.</p>
+<p><strong>Sprawność:</strong> <span class="math display">\[ \eta_{C-R} = \frac{W_{turbiny} - W_{pompy}}{Q_{dostarczone}} \approx \frac{h_3 - h_4}{h_3 - h_2} \]</span> (Praca pompy jest zwykle pomijalnie mała).</p>
+</section>
+<section id="wykres-t-s-dla-c-r" class="slide level2">
+<h2>Wykres T-s dla C-R</h2>
+
+<img data-src="10_Obiegi_Parowe_files/figure-revealjs/rankine-ts-1.png" width="960" class="r-stretch"></section>
+<section id="problem-wilgotności-erozja" class="slide level2">
+<h2>3. Problem Wilgotności (Erozja)</h2>
+<p>Zauważ, że punkt 4 (wylot z turbiny) leży “pod kopułą”. Oznacza to, że jest to <strong>para mokra</strong> (mieszanina pary i kropelek wody).</p>
 <ul>
-<li>Punkt pierwszy</li>
-<li>Punkt drugi</li>
-<li>Punkt trzeci</li>
+<li>Jeśli <span class="math inline">\(x &lt; 0.85-0.90\)</span> (więcej niż 10-15% wody):
+<ul>
+<li>Kropelki wody uderzają w łopatki wirnika z prędkością kilkuset m/s.</li>
+<li>Powoduje to <strong>erozję</strong> (wżery) i zniszczenie turbiny.</li>
+</ul></li>
 </ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="https://placeholder.co/400x300.png"></p>
-</div></div>
+<p><strong>Rozwiązanie:</strong> Musimy przesunąć punkt 4 w prawo. Jak? 1. Zwiększyć temperaturę przegrzania <span class="math inline">\(T_3\)</span> (Limity materiałowe stali). 2. Zastosować <strong>Przegrzew Wtórny</strong>.</p>
 </section>
-<section id="ramki-i-wyróżnienia-callouts" class="slide level2">
-<h2>3. Ramki i Wyróżnienia (Callouts)</h2>
-<div title="Definicja">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definicja</strong></p>
-</div>
-<div class="callout-content">
-<p>Energia wewnętrzna układu izolowanego jest stała.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Pamiętaj o uzgodnieniu jednostek przed podstawieniem do wzoru!</p>
-</div>
-</div>
-</div>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>To jest ramka zdefiniowana ręcznie (czerwona obwódka).</p>
-</div>
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<section id="przegrzew-wtórny-reheat" class="slide level2">
+<h2>4. Przegrzew Wtórny (Reheat)</h2>
+<p>Proces: 1. Para rozpręża się w turbinie Wysokoprężnej (HP) tylko częściowo (nie wchodzi głęboko pod kopułę). 2. Wracamy z parą do kotła i podgrzewamy ją ponownie do <span class="math inline">\(T_{max}\)</span>. 3. Para wraca do turbiny Niskoprężnej (LP) i rozpręża się do ciśnienia skraplacza.</p>
+<p><strong>Zalety:</strong> * Punkt końcowy przesuwa się w prawo (para suchsza). * Zwiększa się średnia temperatura dostarczania ciepła (<span class="math inline">\(\eta \uparrow\)</span>). * Większa praca z 1 kg pary (dwa etapy ekspansji).</p>
 </section>
-<section class="slide level2">
-
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<section id="regeneracja-podgrzewanie-wody" class="slide level2">
+<h2>5. Regeneracja (Podgrzewanie Wody)</h2>
+<p>W zwykłym Rankine’ie do kotła trafia zimna woda ze skraplacza (np. 30°C). To marnotrawstwo spalać węgiel, żeby podgrzać wodę z 30 do 100°C.</p>
+<p><strong>Rozwiązanie:</strong> Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.</p>
+<ul>
+<li>Woda wchodząca do kotła jest już gorąca.</li>
+<li>Sprawność rośnie drastycznie (zbliżamy się do Carnota).</li>
+<li>W nowoczesnych blokach mamy 7-9 wymienników regeneracyjnych.</li>
+</ul>
 </section>
-<section id="section" class="slide level2">
-<h2><!--.highlight-red, .highlight-blue, .highlight-green.--></h2>
+<section id="układy-gazowo-parowe-ccgt" class="slide level2">
+<h2>6. Układy Gazowo-Parowe (CCGT)</h2>
+<p>Połączenie Braytona (W9) i Rankine’a (W10).</p>
+<ol type="1">
+<li><strong>Góra (Top Cycle):</strong> Turbina Gazowa (Spaliny wylotowe mają ~550°C).</li>
+<li><strong>Kocioł Odzysknicowy (HRSG):</strong> Zamiast palić węgiel, używamy gorących spalin z TG do zagotowania wody.</li>
+<li><strong>Dół (Bottom Cycle):</strong> Turbina Parowa zasilana z HRSG.</li>
+</ol>
+<p><strong>Wynik:</strong> Z tego samego paliwa (gazu) mamy prąd z dwóch turbin! Sprawność: <strong>&gt; 60%</strong> (Klasyczna węglowa ma max 46%). To obecnie najczystsza technologia spalania paliw kopalnych.</p>
 </section>
-<section id="wykresy-r-czysty-styl" class="slide level2">
-<h2>4. Wykresy R (Czysty styl)</h2>
-
-<img data-src="szablon_files/figure-revealjs/fig-przyklad-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960" id="fig-przyklad"><p class="caption">
-Rysunek&nbsp;1: Podpis pod wykresem
-</p></section>
-<section id="nakładanie-obiektów-overlay---metoda-1" class="slide level2">
-<h2>Nakładanie Obiektów (Overlay) - Metoda 1</h2>
-<div class="r-stack">
-<p><img src="https://placehold.co/600x400" style="opacity: 0.5;"></p>
-<div style="background: white; padding: .1%; border: 2px solid red;">
-NAPIS NA GRAFICE
-</div>
-<p><img src="https://placehold.co/400" style="margin-top: 25%;"></p>
-<p><img src="img/tlok2.png" style="width: 20%;"></p>
-<p><img data-src="img/praca2.png" width="300"></p>
-</div>
-</section>
-<section id="nakładanie-obiektów---metoda-2-precyzyjna" class="slide level2">
-<h2>Nakładanie Obiektów - Metoda 2 (Precyzyjna)</h2>
-<div style="position: relative; height: 600px; border: 1px dashed gray;">
-<div style="position: absolute; top: 0; right: 0; background: yellow; padding: 1%;">
-<p>UWAGA!</p>
-</div>
-<div style="position: absolute; top: 200px; left: 100px; color: red; font-size: 2em; font-weight: bold;">
-<p>ΔU=0</p>
-</div>
-</div>
-</section>
-<section id="tytuł-sekcji" class="slide level2 center">
-<h2>Tytuł Sekcji</h2>
-<div style="text-align: justify; width: 70%; margin: 0 auto; font-size: 1.2em;">
-<p>To jest tekst, który jest idealnie wyjustowany do obu krawędzi. Dzięki zastosowaniu parametru <code>width: 70%</code>, tekst nie dotyka krawędzi ekranu, co wygląda znacznie bardziej profesjonalnie. Parametr <code>margin: 0 auto</code> sprawia, że cały ten blok tekstu znajduje się na środku slajdu, mimo że sam tekst jest „rozciągnięty” wewnątrz bloku.</p>
-</div>
-</section>
-<section id="a-co-jeśli-mamy-układ-otwarty---przepływowy" class="title-slide slide level1 center" style="text-align: center;">
-<h1>A co jeśli mamy układ otwarty - przepływowy</h1>
+<section id="podsumowanie-w10" class="slide level2">
+<h2>Podsumowanie W10</h2>
+<ol type="1">
+<li><strong>Obieg Rankine’a</strong> rządzi światową energetyką.</li>
+<li><strong>Klucz do sprawności:</strong>
+<ul>
+<li>Wysokie parametry pary (Ciśnienie i Temperatura).</li>
+<li>Niskie ciśnienie w skraplaczu (Próżnia).</li>
+<li>Regeneracja i Przegrzew.</li>
+</ul></li>
+<li><strong>Skraplacz</strong> to konieczność (zamknięcie obiegu), ale i największa strata energii (ciepło odpadowe).</li>
+</ol>
+<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+<p>Dlaczego nie stosujemy wprost obiegu Carnota dla pary wodnej? (Dlaczego nie sprężamy pary mokrej w pompie?).</p>
+<p><strong>Odpowiedź:</strong> Pompy źle znoszą bąbelki gazu (kawitacja), a sprężanie dwufazowe jest technicznie trudne i energochłonne. Łatwiej skroplić całość i sprężać samą ciecz.</p>
 
 </section>
     </div>
@@ -276,19 +258,22 @@ NAPIS NA GRAFICE
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="szablon_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="szablon_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="10_Obiegi_Parowe_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -303,7 +288,10 @@ NAPIS NA GRAFICE
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'appearance': {"hideagain":true,"delay":300,"debug":false,"appearevent":"slidetransitionend","autoappear":false,"autoelements":false,"appearparents":false},
+'pointer': {"key":"q","color":"#e60000","pointerSize":20,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -429,7 +417,7 @@ NAPIS NA GRAFICE
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -474,7 +462,7 @@ NAPIS NA GRAFICE
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Appearance, RevealPointer, QuartoSupport,
 
           RevealMath,
           RevealNotes,

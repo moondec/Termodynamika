@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="szablon_files/libs/clipboard/clipboard.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tabby.min.js"></script>
-<script src="szablon_files/libs/quarto-html/popper.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="szablon_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="15_Spalanie_Egzergia_files/libs/clipboard/clipboard.min.js"></script>
+<script src="15_Spalanie_Egzergia_files/libs/quarto-html/tabby.min.js"></script>
+<script src="15_Spalanie_Egzergia_files/libs/quarto-html/popper.min.js"></script>
+<script src="15_Spalanie_Egzergia_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="15_Spalanie_Egzergia_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="15_Spalanie_Egzergia_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="15_Spalanie_Egzergia_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ściąga Formatowania Quarto</title>
+  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <title>W15: Spalanie i Egzergia</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="15_Spalanie_Egzergia_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="15_Spalanie_Egzergia_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,11 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="15_Spalanie_Egzergia_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="15_Spalanie_Egzergia_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -121,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+      background-image: url("img/background_red.png") !important;
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -151,121 +146,89 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ściąga Formatowania Quarto</h1>
-  <p class="subtitle">Gotowe bloki do kopiowania (Copy-Paste)</p>
+  <h1 class="title">W15: Spalanie i Egzergia</h1>
+  <p class="subtitle">Paliwa, Chemia i Zrównoważony Rozwój</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="tekst-rozmiary-i-kolory" class="slide level2">
-<h2>1. Tekst: Rozmiary i Kolory</h2>
-<p>To jest standardowy tekst.</p>
-<div style="font-size: 0.6em; color: gray;">
-<p>To jest mały, szary tekst (idealny do przypisów/źródeł).</p>
-</div>
-<div style="font-size: 1.5em; color: #e60000; font-weight: bold;">
-<p>Wielki, czerwony i pogrubiony tekst (Wniosek).</p>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<p>Tekst wyśrodkowany w poziomie z marginesem od góry.</p>
-</div>
+<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
+<h2>Agenda Wykładu</h2>
+<ol type="1">
+<li><strong>Paliwa i Źródła Energii</strong></li>
+<li><strong>Stechiometria Spalania</strong> (<span class="math inline">\(C+O_2\)</span>)</li>
+<li><strong>Wartość Opałowa vs Ciepło Spalania</strong></li>
+<li><strong>Egzergia</strong> (Jakość Energii)</li>
+<li><strong>Prawo Gouy-Stodoli</strong> (Straty)</li>
+<li><strong>Podsumowanie Kursu Termodynamiki</strong></li>
+</ol>
 </section>
-<section id="układ-dwie-kolumny" class="slide level2">
-<h2>2. Układ: Dwie Kolumny</h2>
-<p>Najczęstszy układ slajdu: Tekst po lewej, Grafika po prawej.</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Lista punktowa:</strong></p>
+<section id="źródła-energii-chemicznej" class="slide level2">
+<h2>1. Źródła Energii Chemicznej</h2>
+<p>Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna).</p>
+<p><strong>Rodzaje Paliw:</strong> 1. <strong>Stałe:</strong> Węgiel kamienny, Brunatny, Drewno (Biomasa). * Skład: C, H, O, N, S, W (Wilgoć), A (Popiół). 2. <strong>Ciekłe:</strong> Ropa naftowa, Benzyna, Mazut. * Głównie węglowodory. 3. <strong>Gazowe:</strong> Gaz ziemny (Metan <span class="math inline">\(CH_4\)</span>), Wodór <span class="math inline">\(H_2\)</span>.</p>
+<h3 id="trójkąt-spalania-gibbsa">Trójkąt Spalania (Gibbsa)</h3>
+<p>Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, tym wyższa wartość opałowa, ale trudniejsze spalanie.</p>
+</section>
+<section id="stechiometria-spalania" class="slide level2">
+<h2>2. Stechiometria Spalania</h2>
+<p>Ile tlenu potrzeba, żeby spalić 1 kmol Węgla? <span class="math display">\[ C + O_2 \rightarrow CO_2 \]</span></p>
+<p>A dla Metanu? <span class="math display">\[ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O \]</span></p>
+<p><strong>Zapotrzebowanie na Powietrze:</strong> Powietrze to nie czysty tlen! To 21% <span class="math inline">\(O_2\)</span> i 79% <span class="math inline">\(N_2\)</span>. Aby dostarczyć 1 <span class="math inline">\(m^3\)</span> tlenu, trzeba zassać ok. <strong>4.76 <span class="math inline">\(m^3\)</span> powietrza</strong>.</p>
+<h3 id="współczynnik-nadmiaru-powietrza-lambda">Współczynnik Nadmiaru Powietrza (<span class="math inline">\(\lambda\)</span>)</h3>
 <ul>
-<li>Punkt pierwszy</li>
-<li>Punkt drugi</li>
-<li>Punkt trzeci</li>
+<li><span class="math inline">\(\lambda = 1\)</span>: Idealnie (stechiometria).</li>
+<li><span class="math inline">\(\lambda &lt; 1\)</span>: Za mało tlenu <span class="math inline">\(\to\)</span> Sadza i CO (Czad). Strata energii!</li>
+<li><span class="math inline">\(\lambda &gt; 1\)</span>: Nadmiar tlenu. Pełne spalanie, ale strata kominowa (grzejemy azot).</li>
 </ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="https://placeholder.co/400x300.png"></p>
-</div></div>
 </section>
-<section id="ramki-i-wyróżnienia-callouts" class="slide level2">
-<h2>3. Ramki i Wyróżnienia (Callouts)</h2>
-<div title="Definicja">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definicja</strong></p>
-</div>
-<div class="callout-content">
-<p>Energia wewnętrzna układu izolowanego jest stała.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Pamiętaj o uzgodnieniu jednostek przed podstawieniem do wzoru!</p>
-</div>
-</div>
-</div>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>To jest ramka zdefiniowana ręcznie (czerwona obwódka).</p>
-</div>
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<section id="wartość-opałowa-w_d" class="slide level2">
+<h2>3. Wartość Opałowa (<span class="math inline">\(W_d\)</span>)</h2>
+<p>To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).</p>
+<p><strong>Ciepło Spalania (<span class="math inline">\(HHV\)</span>):</strong> Całkowita energia uwolniona. Zakładamy, że woda ze spalin uległa <strong>skropleniu</strong> (odzyskujemy ciepło utajone).</p>
+<p><strong>Wartość Opałowa (<span class="math inline">\(LHV\)</span>):</strong> Energia “użyteczna” w zwykłym kotle. Woda ucieka w postaci pary kominem (tracimy ciepło parowania).</p>
+<p><span class="math display">\[ W_o = C_s - r \cdot m_{H2O} \]</span></p>
+<p>Kotły kondensacyjne wykorzystują HHV, osiągając sprawność &gt; 100% (względem LHV).</p>
 </section>
-<section class="slide level2">
-
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<section id="egzergia-ilość-vs-jakość" class="slide level2">
+<h2>4. Egzergia: Ilość vs Jakość</h2>
+<p>Z I Zasady wynika, że energia jest niezniszczalna. Dlaczego więc “oszczędzamy energię”? Ponieważ tracimy jej <strong>jakość</strong>!</p>
+<p><strong>Egzergia (<span class="math inline">\(B\)</span>):</strong> Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia.</p>
+<ul>
+<li>Prąd elektryczny: 100% egzergii (Czysta praca).</li>
+<li>Gorąca para: ~50% egzergii (Można napędzić turbinę).</li>
+<li>Letnia woda (30°C): ~0% egzergii (Bezużyteczna termodynamicznie).</li>
+</ul>
 </section>
-<section id="section" class="slide level2">
-<h2><!--.highlight-red, .highlight-blue, .highlight-green.--></h2>
+<section id="prawo-gouy-stodoli" class="slide level2">
+<h2>5. Prawo Gouy-Stodoli</h2>
+<p>Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.</p>
+<p><span class="math display">\[ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} \]</span></p>
+<h3 id="wykres-sankeya">Wykres Sankeya</h3>
+<p>Wizualizacja strat w elektrowni: 1. Paliwo (100%) <span class="math inline">\(\to\)</span> Kocioł. 2. Straty kominowe (10%). 3. Straty w skraplaczu (50% - to największa strata!). 4. Praca turbiny (40%) <span class="math inline">\(\to\)</span> Prąd.</p>
+<p>Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło “odpadowe” ogrzewa miasta.</p>
 </section>
-<section id="wykresy-r-czysty-styl" class="slide level2">
-<h2>4. Wykresy R (Czysty styl)</h2>
-
-<img data-src="szablon_files/figure-revealjs/fig-przyklad-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960" id="fig-przyklad"><p class="caption">
-Rysunek&nbsp;1: Podpis pod wykresem
-</p></section>
-<section id="nakładanie-obiektów-overlay---metoda-1" class="slide level2">
-<h2>Nakładanie Obiektów (Overlay) - Metoda 1</h2>
-<div class="r-stack">
-<p><img src="https://placehold.co/600x400" style="opacity: 0.5;"></p>
-<div style="background: white; padding: .1%; border: 2px solid red;">
-NAPIS NA GRAFICE
-</div>
-<p><img src="https://placehold.co/400" style="margin-top: 25%;"></p>
-<p><img src="img/tlok2.png" style="width: 20%;"></p>
-<p><img data-src="img/praca2.png" width="300"></p>
-</div>
-</section>
-<section id="nakładanie-obiektów---metoda-2-precyzyjna" class="slide level2">
-<h2>Nakładanie Obiektów - Metoda 2 (Precyzyjna)</h2>
-<div style="position: relative; height: 600px; border: 1px dashed gray;">
-<div style="position: absolute; top: 0; right: 0; background: yellow; padding: 1%;">
-<p>UWAGA!</p>
-</div>
-<div style="position: absolute; top: 200px; left: 100px; color: red; font-size: 2em; font-weight: bold;">
-<p>ΔU=0</p>
-</div>
-</div>
-</section>
-<section id="tytuł-sekcji" class="slide level2 center">
-<h2>Tytuł Sekcji</h2>
-<div style="text-align: justify; width: 70%; margin: 0 auto; font-size: 1.2em;">
-<p>To jest tekst, który jest idealnie wyjustowany do obu krawędzi. Dzięki zastosowaniu parametru <code>width: 70%</code>, tekst nie dotyka krawędzi ekranu, co wygląda znacznie bardziej profesjonalnie. Parametr <code>margin: 0 auto</code> sprawia, że cały ten blok tekstu znajduje się na środku slajdu, mimo że sam tekst jest „rozciągnięty” wewnątrz bloku.</p>
-</div>
-</section>
-<section id="a-co-jeśli-mamy-układ-otwarty---przepływowy" class="title-slide slide level1 center" style="text-align: center;">
-<h1>A co jeśli mamy układ otwarty - przepływowy</h1>
+<section id="podsumowanie-kursu" class="slide level2">
+<h2>6. Podsumowanie Kursu</h2>
+<p>Przeszliśmy drogę od: 1. <strong>Podstaw:</strong> Parametry stanu (<span class="math inline">\(p, T\)</span>), gazy doskonałe. 2. <strong>Zasad:</strong> I Zasada (Bilans), II Zasada (Entropia). 3. <strong>Mediów:</strong> Para wodna, Powietrze wilgotne. 4. <strong>Maszyn:</strong> Silniki, Turbiny, Sprężarki, Lodówki. 5. <strong>Aplikacji:</strong> Wymiana ciepła, Spalanie.</p>
+<h3 id="egzamin">Egzamin</h3>
+<p>Proszę przygotować się z: 1. Obliczeń gazowych (Clapeyron, przemiany). 2. Obiegów termodynamicznych (Liczenie sprawności). 3. Podstaw wymiany ciepła i spalania.</p>
+<blockquote>
+<p>“Energia jest jedyną walutą we Wszechświecie, za którą musisz płacić podatki (entropię).”</p>
+</blockquote>
+<p>Dziękuję za wspólny semestr!</p>
 
 </section>
     </div>
@@ -276,19 +239,22 @@ NAPIS NA GRAFICE
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="szablon_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="szablon_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="15_Spalanie_Egzergia_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -303,7 +269,10 @@ NAPIS NA GRAFICE
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'appearance': {"hideagain":true,"delay":300,"debug":false,"appearevent":"slidetransitionend","autoappear":false,"autoelements":false,"appearparents":false},
+'pointer': {"key":"q","color":"#e60000","pointerSize":20,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -429,7 +398,7 @@ NAPIS NA GRAFICE
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -474,7 +443,7 @@ NAPIS NA GRAFICE
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Appearance, RevealPointer, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -483,44 +452,6 @@ NAPIS NA GRAFICE
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

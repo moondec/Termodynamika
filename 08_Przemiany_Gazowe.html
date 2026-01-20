@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="szablon_files/libs/clipboard/clipboard.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tabby.min.js"></script>
-<script src="szablon_files/libs/quarto-html/popper.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="szablon_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="08_Przemiany_Gazowe_files/libs/clipboard/clipboard.min.js"></script>
+<script src="08_Przemiany_Gazowe_files/libs/quarto-html/tabby.min.js"></script>
+<script src="08_Przemiany_Gazowe_files/libs/quarto-html/popper.min.js"></script>
+<script src="08_Przemiany_Gazowe_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="08_Przemiany_Gazowe_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="08_Przemiany_Gazowe_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="08_Przemiany_Gazowe_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ściąga Formatowania Quarto</title>
+  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <title>W8: Przemiany Gazów Doskonałych</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="08_Przemiany_Gazowe_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="08_Przemiany_Gazowe_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,11 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="08_Przemiany_Gazowe_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="08_Przemiany_Gazowe_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -121,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+      background-image: url("img/background_red.png") !important;
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -151,121 +146,251 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ściąga Formatowania Quarto</h1>
-  <p class="subtitle">Gotowe bloki do kopiowania (Copy-Paste)</p>
+  <h1 class="title">W8: Przemiany Gazów Doskonałych</h1>
+  <p class="subtitle">Analiza Procesów: Izobara, Izochora, Izoterma, Adiabata</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="tekst-rozmiary-i-kolory" class="slide level2">
-<h2>1. Tekst: Rozmiary i Kolory</h2>
-<p>To jest standardowy tekst.</p>
-<div style="font-size: 0.6em; color: gray;">
-<p>To jest mały, szary tekst (idealny do przypisów/źródeł).</p>
-</div>
-<div style="font-size: 1.5em; color: #e60000; font-weight: bold;">
-<p>Wielki, czerwony i pogrubiony tekst (Wniosek).</p>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<p>Tekst wyśrodkowany w poziomie z marginesem od góry.</p>
-</div>
+<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
+<h2>Agenda Wykładu</h2>
+<ol type="1">
+<li><strong>Metodyka Analizy</strong> (Co liczymy?)</li>
+<li><strong>Przemiana Izochoryczna</strong> (<span class="math inline">\(v=const\)</span>)</li>
+<li><strong>Przemiana Izobaryczna</strong> (<span class="math inline">\(p=const\)</span>)</li>
+<li><strong>Przemiana Izotermiczna</strong> (<span class="math inline">\(T=const\)</span>)</li>
+<li><strong>Przemiana Adiabatyczna</strong> (<span class="math inline">\(q=0\)</span>)</li>
+<li><strong>Przemiana Politropowa</strong> (Uogólnienie)</li>
+</ol>
 </section>
-<section id="układ-dwie-kolumny" class="slide level2">
-<h2>2. Układ: Dwie Kolumny</h2>
-<p>Najczęstszy układ slajdu: Tekst po lewej, Grafika po prawej.</p>
+<section id="metodyka-analizy" class="slide level2">
+<h2>1. Metodyka Analizy</h2>
+<p>Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika):</p>
+<ol type="1">
+<li><strong>Równanie procesu:</strong> Związek między <span class="math inline">\(p\)</span> i <span class="math inline">\(v\)</span>.</li>
+<li><strong>Praca objętościowa (<span class="math inline">\(w\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ w = \int p \, dv \]</span></li>
+<li><strong>Praca techniczna (<span class="math inline">\(w_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ w_t = - \int v \, dp \]</span></li>
+<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u + w \quad \text{lub} \quad q = \Delta h + w_t \]</span></li>
+</ol>
+<p>Pamiętamy zawsze: <span class="math inline">\(\Delta u = C_v \Delta T\)</span> oraz <span class="math inline">\(\Delta h = C_p \Delta T\)</span>.</p>
+</section>
+<section id="przemiana-izochoryczna" class="slide level2">
+<h2>2. Przemiana Izochoryczna</h2>
+<p><strong>Warunek:</strong> <span class="math inline">\(V = const \Rightarrow v_1 = v_2\)</span> Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).</p>
+<h3 id="równanie-stanu-charlesa">Równanie Stanu (Charlesa)</h3>
+<p><span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \]</span></p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p><strong>Lista punktowa:</strong></p>
-<ul>
-<li>Punkt pierwszy</li>
-<li>Punkt drugi</li>
-<li>Punkt trzeci</li>
-</ul>
+<h3 id="bilans-energii">Bilans Energii</h3>
+<ol type="1">
+<li><strong>Praca:</strong> <span class="math inline">\(w = 0\)</span> (brak ruchu tłoka).</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = \Delta u = C_v (T_2 - T_1)\)</span>.</li>
+<li><strong>Wykres:</strong> Linia pionowa na <span class="math inline">\(p-v\)</span>.</li>
+</ol>
 </div><div class="column" style="width:40%;">
-<p><img data-src="https://placeholder.co/400x300.png"></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div></div>
 </section>
-<section id="ramki-i-wyróżnienia-callouts" class="slide level2">
-<h2>3. Ramki i Wyróżnienia (Callouts)</h2>
-<div title="Definicja">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definicja</strong></p>
-</div>
-<div class="callout-content">
-<p>Energia wewnętrzna układu izolowanego jest stała.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Pamiętaj o uzgodnieniu jednostek przed podstawieniem do wzoru!</p>
-</div>
+<section id="przemiana-izobaryczna" class="slide level2">
+<h2>3. Przemiana Izobaryczna</h2>
+<p><strong>Warunek:</strong> <span class="math inline">\(p = const\)</span> Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.</p>
+<h3 id="równanie-stanu-gay-lussaca">Równanie Stanu (Gay-Lussaca)</h3>
+<p><span class="math display">\[ \frac{v_1}{T_1} = \frac{v_2}{T_2} \]</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="bilans-energii-1">Bilans Energii</h3>
+<ol type="1">
+<li><strong>Praca:</strong> <span class="math inline">\(w = p(v_2 - v_1) = R(T_2 - T_1)\)</span>.</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = \Delta h = C_p (T_2 - T_1)\)</span>.
+<ul>
+<li>Ważne: W izobarze ciepło idzie na zmianę entalpii!</li>
+</ul></li>
+<li><strong>Praca Tech:</strong> <span class="math inline">\(w_t = 0\)</span> (brak sprężarki).</li>
+</ol>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>To jest ramka zdefiniowana ręcznie (czerwona obwódka).</p>
 </div>
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+</div></div>
 </section>
-<section class="slide level2">
+<section id="przemiana-izotermiczna" class="slide level2">
+<h2>4. Przemiana Izotermiczna</h2>
+<p><strong>Warunek:</strong> <span class="math inline">\(T = const \Rightarrow \Delta u = 0, \Delta h = 0\)</span> Przykład: Bardzo powolne sprężanie z chłodzeniem.</p>
+<h3 id="równanie-stanu-boyle-mariotte">Równanie Stanu (Boyle-Mariotte)</h3>
+<p><span class="math display">\[ p_1 v_1 = p_2 v_2 = const \]</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="bilans-energii-2">Bilans Energii</h3>
+<ol type="1">
+<li><strong>Praca:</strong> <span class="math inline">\(w = RT \ln(v_2/v_1)\)</span>.</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = w\)</span> (Całe ciepło zamienia się w pracę, bo <span class="math inline">\(\Delta u=0\)</span>).</li>
+<li><strong>Wykres:</strong> Hiperbola równoosiowa.</li>
+</ol>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="przemiana-adiabatyczna" class="slide level2">
+<h2>5. Przemiana Adiabatyczna</h2>
+<p><strong>Warunek:</strong> <span class="math inline">\(q = 0\)</span> (Izolacja lub szybki proces). Jeśli odwracalna <span class="math inline">\(\to\)</span> <strong>Izentropa</strong> (<span class="math inline">\(s = const\)</span>).</p>
+<h3 id="równanie-poissona">Równanie Poissona</h3>
+<p><span class="math display">\[ p v^k = const \]</span> <span class="math display">\[ T v^{k-1} = const \]</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="bilans-energii-3">Bilans Energii</h3>
+<ol type="1">
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = 0\)</span>.</li>
+<li><strong>Praca:</strong> <span class="math inline">\(w = -\Delta u = C_v(T_1 - T_2)\)</span>.
+<ul>
+<li>Praca kosztem energii wewnętrznej (spadek T przy rozprężaniu).</li>
+</ul></li>
+<li><strong>Wykres:</strong> Bardziej stroma niż izoterma (<span class="math inline">\(k &gt; 1\)</span>).</li>
+</ol>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="przemiana-politropowa-uogólnienie" class="slide level2">
+<h2>6. Przemiana Politropowa (Uogólnienie)</h2>
+<p>Równanie ogólne dla wszystkich procesów: <span class="math display">\[ p v^n = const \]</span></p>
+<p>gdzie <span class="math inline">\(n\)</span> to wykładnik politropy.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: left;">Imię</th>
+<th style="text-align: left;">Warunek</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: left;">Izobara</td>
+<td style="text-align: left;"><span class="math inline">\(p=const\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Izoterma</td>
+<td style="text-align: left;"><span class="math inline">\(T=const\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>k</strong></td>
+<td style="text-align: left;">Adiabata</td>
+<td style="text-align: left;"><span class="math inline">\(q=0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong><span class="math inline">\(\infty\)</span></strong></td>
+<td style="text-align: left;">Izochora</td>
+<td style="text-align: left;"><span class="math inline">\(v=const\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>W sprężarkach tłokowych rzeczywiste sprężanie to politropa z <span class="math inline">\(1 &lt; n &lt; k\)</span> (chłodzenie cylindra).</p>
+</section>
+<section id="zestawienie-graficzne" class="slide level2">
+<h2>Zestawienie Graficzne</h2>
+<p>Porównanie rozprężania z tego samego punktu:</p>
 
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/polyp-sun-1.png" width="768" class="r-stretch"><p><strong>Pole pod wykresem = PRACA.</strong> Najwięcej pracy daje Izobara, najmniej Adiabata.</p>
 </section>
-<section id="section" class="slide level2">
-<h2><!--.highlight-red, .highlight-blue, .highlight-green.--></h2>
+<section id="praca-techniczna-w-przemianach" class="slide level2">
+<h2>Praca Techniczna w Przemianach</h2>
+<p>Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:</p>
+<p><span class="math display">\[ w_t = n \cdot w \]</span> (dla politropy <span class="math inline">\(pv^n=const\)</span>).</p>
+<ul>
+<li>Dla izobary (<span class="math inline">\(n=0\)</span>): <span class="math inline">\(w_t = 0\)</span>.</li>
+<li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(w_t = w\)</span>.</li>
+<li>Dla adiabaty (<span class="math inline">\(n=k\)</span>): <span class="math inline">\(w_t = k \cdot w = \Delta h\)</span>.</li>
+</ul>
+<h3 id="wniosek-dla-sprężarki">Wniosek dla Sprężarki</h3>
+<p>Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do <strong>izotermy</strong> (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.</p>
 </section>
-<section id="wykresy-r-czysty-styl" class="slide level2">
-<h2>4. Wykresy R (Czysty styl)</h2>
-
-<img data-src="szablon_files/figure-revealjs/fig-przyklad-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960" id="fig-przyklad"><p class="caption">
-Rysunek&nbsp;1: Podpis pod wykresem
-</p></section>
-<section id="nakładanie-obiektów-overlay---metoda-1" class="slide level2">
-<h2>Nakładanie Obiektów (Overlay) - Metoda 1</h2>
-<div class="r-stack">
-<p><img src="https://placehold.co/600x400" style="opacity: 0.5;"></p>
-<div style="background: white; padding: .1%; border: 2px solid red;">
-NAPIS NA GRAFICE
-</div>
-<p><img src="https://placehold.co/400" style="margin-top: 25%;"></p>
-<p><img src="img/tlok2.png" style="width: 20%;"></p>
-<p><img data-src="img/praca2.png" width="300"></p>
-</div>
-</section>
-<section id="nakładanie-obiektów---metoda-2-precyzyjna" class="slide level2">
-<h2>Nakładanie Obiektów - Metoda 2 (Precyzyjna)</h2>
-<div style="position: relative; height: 600px; border: 1px dashed gray;">
-<div style="position: absolute; top: 0; right: 0; background: yellow; padding: 1%;">
-<p>UWAGA!</p>
-</div>
-<div style="position: absolute; top: 200px; left: 100px; color: red; font-size: 2em; font-weight: bold;">
-<p>ΔU=0</p>
-</div>
-</div>
-</section>
-<section id="tytuł-sekcji" class="slide level2 center">
-<h2>Tytuł Sekcji</h2>
-<div style="text-align: justify; width: 70%; margin: 0 auto; font-size: 1.2em;">
-<p>To jest tekst, który jest idealnie wyjustowany do obu krawędzi. Dzięki zastosowaniu parametru <code>width: 70%</code>, tekst nie dotyka krawędzi ekranu, co wygląda znacznie bardziej profesjonalnie. Parametr <code>margin: 0 auto</code> sprawia, że cały ten blok tekstu znajduje się na środku slajdu, mimo że sam tekst jest „rozciągnięty” wewnątrz bloku.</p>
-</div>
-</section>
-<section id="a-co-jeśli-mamy-układ-otwarty---przepływowy" class="title-slide slide level1 center" style="text-align: center;">
-<h1>A co jeśli mamy układ otwarty - przepływowy</h1>
+<section id="podsumowanie-w8" class="slide level2">
+<h2>Podsumowanie W8</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Przemiana</th>
+<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: center;">Ciepło <span class="math inline">\(q\)</span></th>
+<th style="text-align: center;">Praca <span class="math inline">\(w\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(w_t\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Izochora</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\Delta u\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(-v\Delta p\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Izobara</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\Delta h\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(p \Delta v\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Izoterma</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(RT \ln(v_2/v_1)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(w\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Adiabata</strong></td>
+<td style="text-align: center;">k</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(-\Delta u\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\Delta h\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>To jest najważniejsza tabela w termodynamice gazów. Nasze narzędzia na kolejne wykłady o obiegach silnikowych!</p>
 
 </section>
     </div>
@@ -276,19 +401,22 @@ NAPIS NA GRAFICE
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="szablon_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="szablon_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="08_Przemiany_Gazowe_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -303,7 +431,10 @@ NAPIS NA GRAFICE
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'appearance': {"hideagain":true,"delay":300,"debug":false,"appearevent":"slidetransitionend","autoappear":false,"autoelements":false,"appearparents":false},
+'pointer': {"key":"q","color":"#e60000","pointerSize":20,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -429,7 +560,7 @@ NAPIS NA GRAFICE
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -454,7 +585,7 @@ NAPIS NA GRAFICE
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -474,7 +605,7 @@ NAPIS NA GRAFICE
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Appearance, RevealPointer, QuartoSupport,
 
           RevealMath,
           RevealNotes,

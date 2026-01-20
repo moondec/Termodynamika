@@ -20,3 +20,5 @@ Thumbs.db
 # Custom excludes
 lib/
 agentnfo
+.httr-oauth
+.quarto

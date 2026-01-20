@@ -6,8 +6,8 @@
 <script src="02_I_Zasada_Bilans_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="02_I_Zasada_Bilans_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="02_I_Zasada_Bilans_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="02_I_Zasada_Bilans_files/libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="02_I_Zasada_Bilans_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
   <title>W2: I Zasada Termodynamiki</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="02_I_Zasada_Bilans_files/libs/revealjs/dist/theme/quarto-89a1b2b057483ab19401415e1e8796e9.css">
+  <link rel="stylesheet" href="02_I_Zasada_Bilans_files/libs/revealjs/dist/theme/quarto-34305f86072cf02266a28ded5fc352bc.css">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="02_I_Zasada_Bilans_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -544,7 +544,7 @@
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Termodynamika Techniczna</p>
+<p>Termodynamika Techniczna (W2)</p>
 </div>
 </div></div>
 
@@ -736,7 +736,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -848,13 +848,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
-<script src="szablon_files/libs/clipboard/clipboard.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tabby.min.js"></script>
-<script src="szablon_files/libs/quarto-html/popper.min.js"></script>
-<script src="szablon_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="szablon_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="szablon_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="12_Powietrze_Wilgotne_files/libs/clipboard/clipboard.min.js"></script>
+<script src="12_Powietrze_Wilgotne_files/libs/quarto-html/tabby.min.js"></script>
+<script src="12_Powietrze_Wilgotne_files/libs/quarto-html/popper.min.js"></script>
+<script src="12_Powietrze_Wilgotne_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="12_Powietrze_Wilgotne_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="12_Powietrze_Wilgotne_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="12_Powietrze_Wilgotne_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ściąga Formatowania Quarto</title>
+  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <title>W12: Powietrze Wilgotne</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="12_Powietrze_Wilgotne_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="12_Powietrze_Wilgotne_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,11 +29,15 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="szablon_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="szablon_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="12_Powietrze_Wilgotne_files/libs/revealjs/dist/theme/quarto-188795bc9284110dc6b83db29285abdb.css">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
+  <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -121,27 +126,17 @@
     }
   </style>
   <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
+  body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
+      background-image: url("img/background_red.png") !important;
       background-size: contain !important;
-
       background-repeat: no-repeat !important;
       background-position: center center !important;
       opacity: 0.1 !important;
   }
-
-  /* 3. Wyjątek dla tytułowego */
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
+      background-color: white !important;
       opacity: 1 !important;
   }
   </style>
@@ -151,121 +146,95 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ściąga Formatowania Quarto</h1>
-  <p class="subtitle">Gotowe bloki do kopiowania (Copy-Paste)</p>
+  <h1 class="title">W12: Powietrze Wilgotne</h1>
+  <p class="subtitle">Psychrometria i Wykres Molliera</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="tekst-rozmiary-i-kolory" class="slide level2">
-<h2>1. Tekst: Rozmiary i Kolory</h2>
-<p>To jest standardowy tekst.</p>
-<div style="font-size: 0.6em; color: gray;">
-<p>To jest mały, szary tekst (idealny do przypisów/źródeł).</p>
-</div>
-<div style="font-size: 1.5em; color: #e60000; font-weight: bold;">
-<p>Wielki, czerwony i pogrubiony tekst (Wniosek).</p>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<p>Tekst wyśrodkowany w poziomie z marginesem od góry.</p>
-</div>
+<section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
+<h2>Agenda Wykładu</h2>
+<ol type="1">
+<li><strong>Skład Powietrza Wilgotnego</strong> (Prawo Daltona)</li>
+<li><strong>Parametry Wilgotności</strong> (<span class="math inline">\(\varphi\)</span>, <span class="math inline">\(x\)</span>)</li>
+<li><strong>Entalpia Powietrza Wilgotnego</strong> (<span class="math inline">\(i\)</span>)</li>
+<li><strong>Konstrukcja Wykresu Molliera i-x</strong></li>
+<li><strong>Punkt Rosy i Temperatura Termometru Mokrego</strong></li>
+</ol>
 </section>
-<section id="układ-dwie-kolumny" class="slide level2">
-<h2>2. Układ: Dwie Kolumny</h2>
-<p>Najczęstszy układ slajdu: Tekst po lewej, Grafika po prawej.</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Lista punktowa:</strong></p>
+<section id="mieszanina-dwu-składnikowa" class="slide level2">
+<h2>1. Mieszanina Dwu-składnikowa</h2>
+<p>Powietrze wilgotne traktujemy jako mieszaninę: 1. <strong>Powietrze Suche (p):</strong> Gaz doskonały (<span class="math inline">\(N_2, O_2, Ar\)</span>). Masa <span class="math inline">\(m_p\)</span>. 2. <strong>Para Wodna (w):</strong> Gaz “pół-doskonały” (blisko nasycenia). Masa <span class="math inline">\(m_w\)</span>.</p>
+<p><span class="math display">\[ p_{barometryczne} = p_p + p_w \]</span></p>
+<p>W typowych warunkach <span class="math inline">\(p_w\)</span> jest bardzo małe (1-3 kPa), ale decyduje o naszym komforcie!</p>
+</section>
+<section id="parametry-wilgotności" class="slide level2">
+<h2>2. Parametry Wilgotności</h2>
+<p>Inżynierowie używają dwóch definicji:</p>
+<h3 id="wilgotność-względna-varphi-lub-rh">Wilgotność Względna (<span class="math inline">\(\varphi\)</span> lub <span class="math inline">\(RH\)</span>)</h3>
+<p>Stosunek ciśnienia cząstkowego pary do ciśnienia nasycenia w danej temperaturze. <span class="math display">\[ \varphi = \frac{p_w}{p_{sat}(T)} \cdot 100\% \]</span> Mówi nam, jak blisko jesteśmy mgły (nasycenia).</p>
+<h3 id="wilgotność-bezwzględna-x-lub-x-zawartość-wilgoci">Wilgotność Bezwzględna (<span class="math inline">\(x\)</span> lub <span class="math inline">\(X\)</span>) (Zawartość wilgoci)</h3>
+<p>Stosunek masy pary do masy powietrza suchego! <span class="math display">\[ x = \frac{m_w}{m_p} = 0.622 \frac{p_w}{p_b - p_w} \quad [\frac{kg_{H2O}}{kg_{suchego}}] \]</span></p>
+<p>Dlaczego tak? Bo w procesach (np. ogrzewania) masa powietrza suchego się nie zmienia, więc <span class="math inline">\(x=const\)</span>.</p>
+</section>
+<section id="entalpia-i-lub-h" class="slide level2">
+<h2>3. Entalpia (<span class="math inline">\(i\)</span> lub <span class="math inline">\(h\)</span>)</h2>
+<p>Entalpia powietrza wilgotnego odniesiona jest do 1 kg powietrza suchego.</p>
+<p><span class="math display">\[ i = i_{powietrza} + x \cdot i_{pary} \]</span></p>
+<p>Przyjmując <span class="math inline">\(0 C\)</span> jako punkt odniesienia: <span class="math display">\[ i = (1.005 \cdot t) + x \cdot (2501 + 1.86 \cdot t) \quad [\frac{kJ}{kg}] \]</span></p>
 <ul>
-<li>Punkt pierwszy</li>
-<li>Punkt drugi</li>
-<li>Punkt trzeci</li>
+<li>1.005: <span class="math inline">\(C_p\)</span> powietrza.</li>
+<li>2501: Ciepło parowania wody (<span class="math inline">\(r\)</span>) w 0C.</li>
+<li>1.86: <span class="math inline">\(C_p\)</span> pary wodnej.</li>
 </ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="https://placeholder.co/400x300.png"></p>
-</div></div>
+<p>Wniosek: <strong>Para niesie ogromną energię (ciepło utajone)!</strong></p>
 </section>
-<section id="ramki-i-wyróżnienia-callouts" class="slide level2">
-<h2>3. Ramki i Wyróżnienia (Callouts)</h2>
-<div title="Definicja">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definicja</strong></p>
-</div>
-<div class="callout-content">
-<p>Energia wewnętrzna układu izolowanego jest stała.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Pamiętaj o uzgodnieniu jednostek przed podstawieniem do wzoru!</p>
-</div>
-</div>
-</div>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>To jest ramka zdefiniowana ręcznie (czerwona obwódka).</p>
-</div>
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<section id="wykres-molliera-h-x-i-x" class="slide level2">
+<h2>4. Wykres Molliera h-x (i-x)</h2>
+<p>Standard w Europie Środkowej. (Amerykanie używają Carrier Psychrometric Chart).</p>
+<p>Układ ukośnokątny: * Oś pionowa: Temperatura <span class="math inline">\(t\)</span>. * Oś pozioma: Wilgotność <span class="math inline">\(x\)</span>. * Linie izentalp (<span class="math inline">\(i=const\)</span>): Biegną ukośnie pod kątem 135 stopni (dlatego wykres jest przekoszony, żeby izotermy były prawie poziome).</p>
+<h3 id="linie-na-wykresie">Linie na wykresie:</h3>
+<ol type="1">
+<li><strong>Izotermy:</strong> Lekko wznoszą się w prawo (dla tego samego <span class="math inline">\(t\)</span>, wilgotne powietrze ma wyższą entalpię).</li>
+<li><strong>Linie stałej wilgotności względnej <span class="math inline">\(\varphi\)</span>:</strong> Krzywe “bananowe”. <span class="math inline">\(\varphi=100\%\)</span> to linia graniczna (nasycenia).</li>
+</ol>
 </section>
-<section class="slide level2">
+<section id="wizualizacja-wykres-i-x" class="slide level2">
+<h2>Wizualizacja: Wykres i-x</h2>
 
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.</p>
-</div>
+<img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-adv-1.png" width="960" class="r-stretch"></section>
+<section id="temperatury-w-psychrometrii" class="slide level2">
+<h2>5. Temperatury w Psychrometrii</h2>
+<p>Mamy aż trzy definicje temperatury!</p>
+<ol type="1">
+<li><strong>Temperatura termometru suchego (<span class="math inline">\(t\)</span>):</strong> To co widzimy na zwykłym termometrze.</li>
+<li><strong>Temperatura Punktu Rosy (<span class="math inline">\(t_R\)</span>):</strong> Temperatura, do której trzeba schłodzić powietrze (przy <span class="math inline">\(x=const\)</span>), żeby zaczęło się skraplać (<span class="math inline">\(\varphi=100\%\)</span>). Ważne w budownictwie (wilgoć na oknach).</li>
+<li><strong>Temperatura termometru mokrego (<span class="math inline">\(t_m\)</span>):</strong> Najniższa temperatura, jaką można uzyskać przez odparowanie wody (nawilżanie adiabatyczne). Mierzona termometrem owiniętym mokrą gazą.</li>
+</ol>
+<p>Związek: <span class="math inline">\(t \ge t_m \ge t_R\)</span>. Równe tylko dla <span class="math inline">\(\varphi=100\%\)</span>.</p>
 </section>
-<section id="section" class="slide level2">
-<h2><!--.highlight-red, .highlight-blue, .highlight-green.--></h2>
-</section>
-<section id="wykresy-r-czysty-styl" class="slide level2">
-<h2>4. Wykresy R (Czysty styl)</h2>
-
-<img data-src="szablon_files/figure-revealjs/fig-przyklad-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960" id="fig-przyklad"><p class="caption">
-Rysunek&nbsp;1: Podpis pod wykresem
-</p></section>
-<section id="nakładanie-obiektów-overlay---metoda-1" class="slide level2">
-<h2>Nakładanie Obiektów (Overlay) - Metoda 1</h2>
-<div class="r-stack">
-<p><img src="https://placehold.co/600x400" style="opacity: 0.5;"></p>
-<div style="background: white; padding: .1%; border: 2px solid red;">
-NAPIS NA GRAFICE
-</div>
-<p><img src="https://placehold.co/400" style="margin-top: 25%;"></p>
-<p><img src="img/tlok2.png" style="width: 20%;"></p>
-<p><img data-src="img/praca2.png" width="300"></p>
-</div>
-</section>
-<section id="nakładanie-obiektów---metoda-2-precyzyjna" class="slide level2">
-<h2>Nakładanie Obiektów - Metoda 2 (Precyzyjna)</h2>
-<div style="position: relative; height: 600px; border: 1px dashed gray;">
-<div style="position: absolute; top: 0; right: 0; background: yellow; padding: 1%;">
-<p>UWAGA!</p>
-</div>
-<div style="position: absolute; top: 200px; left: 100px; color: red; font-size: 2em; font-weight: bold;">
-<p>ΔU=0</p>
-</div>
-</div>
-</section>
-<section id="tytuł-sekcji" class="slide level2 center">
-<h2>Tytuł Sekcji</h2>
-<div style="text-align: justify; width: 70%; margin: 0 auto; font-size: 1.2em;">
-<p>To jest tekst, który jest idealnie wyjustowany do obu krawędzi. Dzięki zastosowaniu parametru <code>width: 70%</code>, tekst nie dotyka krawędzi ekranu, co wygląda znacznie bardziej profesjonalnie. Parametr <code>margin: 0 auto</code> sprawia, że cały ten blok tekstu znajduje się na środku slajdu, mimo że sam tekst jest „rozciągnięty” wewnątrz bloku.</p>
-</div>
-</section>
-<section id="a-co-jeśli-mamy-układ-otwarty---przepływowy" class="title-slide slide level1 center" style="text-align: center;">
-<h1>A co jeśli mamy układ otwarty - przepływowy</h1>
+<section id="podsumowanie-w12" class="slide level2">
+<h2>Podsumowanie W12</h2>
+<ol type="1">
+<li><strong>x vs <span class="math inline">\(\varphi\)</span>:</strong> <span class="math inline">\(x\)</span> to ilość paliwa (wody), <span class="math inline">\(\varphi\)</span> to stopień napełnienia baku (ile jeszcze zmieści).</li>
+<li><strong>Entalpia:</strong> Zależy głównie od wilgotności (ciepło utajone).</li>
+<li><strong>Punkt Rosy:</strong> Kluczowy parametr aby uniknąć grzyba na ścianie.</li>
+<li><strong>Wykres i-x:</strong> Narzędzie do śledzenia procesów (następny wykład).</li>
+</ol>
+<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+<p>Latem (<span class="math inline">\(30^\circ C\)</span>) pijesz zimne piwo (<span class="math inline">\(4^\circ C\)</span>). Dlaczego butelka “poci się”? (Bo temperatura szkła jest niższa niż temperatura punktu rosy otaczającego powietrza).</p>
 
 </section>
     </div>
@@ -276,19 +245,22 @@ NAPIS NA GRAFICE
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="szablon_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="szablon_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/appearance/appearance.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="szablon_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="szablon_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -303,7 +275,10 @@ NAPIS NA GRAFICE
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'appearance': {"hideagain":true,"delay":300,"debug":false,"appearevent":"slidetransitionend","autoappear":false,"autoelements":false,"appearparents":false},
+'pointer': {"key":"q","color":"#e60000","pointerSize":20,"alwaysVisible":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -429,7 +404,7 @@ NAPIS NA GRAFICE
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -474,7 +449,7 @@ NAPIS NA GRAFICE
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Appearance, RevealPointer, QuartoSupport,
 
           RevealMath,
           RevealNotes,
