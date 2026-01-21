@@ -111,7 +111,7 @@ Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.
 ```{r}
 #| label: fig-przyklad
 #| fig-cap: "Podpis pod wykresem"
-#| fig-align: center
+#| fig-align: center # centruje wykres na slajdzie
 #| echo: false
 #| warning: false
 

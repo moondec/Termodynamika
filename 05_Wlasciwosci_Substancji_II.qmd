@@ -116,14 +116,216 @@ Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
 
 ---
 
+## Wykres stanów faz wody we współrzędnych $p-T$.{.center}
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 6
+#| fig-align: center
+library(ggplot2)
+library(ggrepel)
+# 1. Stałe termodynamiczne (SI)
+T_tp <- 273.16        # K
+P_tp <- 611.657       # Pa
+T_c  <- 647.10        # K
+P_c  <- 22.064e6      # Pa
+P_atm <- 101325       # Pa
+# 2. Funkcje krzywych (fizycznie spójne)
+
+# Parowanie: ln(P/P_tp) = A * (1 - T_tp/T)
+A_vap <- log(P_c / P_tp) / (1 - T_tp / T_c)
+p_vap <- function(temp) P_tp * exp(A_vap * (1 - T_tp / temp))
+# Sublimacja
+A_sub <- 22.5 
+p_sub <- function(temp) P_tp * exp(A_sub * (1 - T_tp / temp))
+
+# Topnienie (anomalia: dT/dp < 0)
+t_melt <- function(pres) T_tp - (7.4e-8 * (pres - P_tp))
+# 3. Generowanie danych
+df_vap  <- data.frame(T = seq(T_tp, T_c, length.out = 200))
+df_vap$P <- p_vap(df_vap$T)
+df_sub  <- data.frame(T = seq(220, T_tp, length.out = 100))
+df_sub$P <- p_sub(df_sub$T)
+p_m_seq <- exp(seq(log(P_tp), log(1e9), length.out = 100))
+df_melt <- data.frame(T = t_melt(p_m_seq), P = p_m_seq)
+# Punkty charakterystyczne
+points <- data.frame(
+  T = c(T_tp, T_c, 373.15),
+  P = c(P_tp, P_c, P_atm),
+  label = c("Punkt potrójny", "Punkt krytyczny", "Wrzenie (1 atm)")
+)
+ 
+# 4. Wykres
+ggplot() +
+  # Obszar nadkrytyczny (tło)
+  annotate("rect", xmin = T_c, xmax = 750, ymin = P_c, ymax = 1e9, fill = "grey90", alpha = 0.5) +
+  # Linie fazowe
+  geom_line(data = df_sub, aes(x = T, y = P), color = "blue", size = 1) +
+  geom_line(data = df_vap, aes(x = T, y = P), color = "red", size = 1.2) +
+  geom_line(data = df_melt, aes(x = T, y = P), color = "darkgreen", size = 1) +
+  # Punkty
+  geom_point(data = points, aes(x = T, y = P), size = 3) +
+  # Etykiety punktów (W dół i w lewo)
+  geom_text_repel(data = points, aes(x = T, y = P, label = label),
+                  nudge_x = 80, # Przesunięcie w prawo [K]
+                  nudge_y = -0.5, # Przesunięcie w dół (w skali log10)
+                  segment.color = "grey50",
+                  arrow = arrow(length = unit(0.02, "npc")),
+                  fontface = "bold", size = 3.5) +
+  # Napisy obszarów (odsunięte od linii)
+  annotate("text", x = 240, y = 1e6, label = "LÓD", size = 5, fontface = "bold", color = "blue") +
+  annotate("text", x = 420, y = 1e8, label = "WODA CIEKŁA", size = 5, fontface = "bold", color = "darkgreen") +
+  annotate("text", x = 550, y = 1e4, label = "PARA", size = 5, fontface = "bold", color = "red") +
+  # FLUID NADKRYTYCZNY (tylko w dół względem poprzedniej pozycji)
+  annotate("text", x = 700, y = 8e7, label = "STAN\nNADKRY\nTYCZNY", 
+           fontface = "italic", color = "grey30", size = 4) +
+  # Konfiguracja osi
+  scale_y_log10(limits = c(10, 1e9), 
+                breaks = c(P_tp, 101325, P_c),
+                labels = c("611.7 Pa", "101.3 kPa", "22.06 MPa")) +
+  scale_x_continuous(limits = c(220, 750), breaks = seq(200, 800, 50)) +
+  labs(
+       x = "Temperatura T [K]", y = "Ciśnienie p [Pa]") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 14))
+```
+
+---
+
+## 4. Tablice Pary Wodnej
+
+Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
+
+Rodzaje tablic:
+
+::: {.fragment}
+1.  **Tablice Nasycenia (wg Temperatury lub Ciśnienia):**
+    *   Używamy, gdy wiemy, że mamy wrzenie $(p, T_{nasycenia})$.
+    *   Odczytujemy $v', v'', h', h'', s', s''$.
+:::
+
+::: {.fragment}
+2.  **Tablice Pary Przegrzanej:**
+    *   Używamy, gdy $T > T_{nasycenia}$ (dla danego $p$).
+    *   Jest to macierz $(p, T) \to v, h, s$.
+:::
+    
+::: {.fragment}    
+3.  **Tablice Cieczy Sprężonej:**
+    *   Gdy $T < T_{nasycenia}$. Zazwyczaj zakładamy $v \approx v'$.
+:::
+
+---
+
 ## 2. Para Nasycona - Struktura
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
-1.  **Ciecz Dochłodzona:** $T < T_{wrzenia}$.
+
+::: increament
+1.  **Ciecz Dochłodzona:** $T < T_{wrzenia}$. 
+    - 💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, "tłok" jest nisko.
 2.  **Ciecz Nasycona ($x=0$):** $T = T_{wrzenia}$. Pierwszy bąbel pary.
-3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu!
-4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała.
+    - 💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.
+3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu! 
+    - ☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań). 
+4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała. 
+    - ☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze "gęsta".
 5.  **Para Przegrzana:** Dalszy wzrost $T > T_{wrzenia}$.
+    - 💨🔥 Gaz, który zachowuje się jak "szalony". Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!
+:::
+
+---
+
+## 2. Para Nasycona - jak to działa w maszynie
+
+```{r}
+#| fig-align: center
+#| fig-height: 4
+#| fig-width: 10
+#| echo: false
+#| warning: false
+
+library(ggplot2)
+library(dplyr)
+
+# Tworzenie danych dla 5 stanów
+states <- data.frame(
+  State = factor(c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)", 
+                   "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)", 
+                   "5. Para\nPrzegrzana"),
+                 levels = c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)", 
+                            "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)", 
+                            "5. Para\nPrzegrzana")),
+  Piston_Height = c(1.5, 1.8, 3.5, 5.5, 7.0), # Wysokość tłoka
+  Water_Level = c(1.5, 1.8, 1.0, 0, 0)        # Poziom cieczy
+)
+
+# Funkcja generująca cząsteczki (kropki) dla każdego stanu
+generate_particles <- function(state_idx, n=50) {
+  state_name <- levels(states$State)[state_idx]
+  h_piston <- states$Piston_Height[state_idx]
+  h_water <- states$Water_Level[state_idx]
+  
+  points <- data.frame()
+  
+  # Cząsteczki Wody (Niebieskie, gęsto upakowane na dole)
+  if (h_water > 0) {
+    water_pts <- data.frame(
+      x = runif(n * h_water, 0, 1),
+      y = runif(n * h_water, 0, h_water),
+      type = "Ciecz",
+      State = state_name
+    )
+    points <- rbind(points, water_pts)
+  }
+  
+  # Cząsteczki Pary (Szare, rzadkie, powyżej wody)
+  if (h_piston > h_water) {
+    # Im wyższy stan, tym rzadsze cząsteczki (rozszerzalność)
+    density_factor <- if(state_idx == 5) 0.3 else 0.8 
+    
+    vapor_pts <- data.frame(
+      x = runif(n * (h_piston - h_water) * density_factor, 0, 1),
+      y = runif(n * (h_piston - h_water) * density_factor, h_water, h_piston),
+      type = "Para",
+      State = state_name
+    )
+    points <- rbind(points, vapor_pts)
+  }
+  return(points)
+}
+
+all_particles <- do.call(rbind, lapply(1:5, generate_particles))
+
+# Rysowanie
+ggplot() +
+  # --- ŚCIANKI CYLINDRA ---
+  geom_rect(data = states, aes(xmin = 0, xmax = 1, ymin = 0, ymax = 8), 
+            fill = NA, color = "black", size = 1) +
+  
+  # --- TŁOK (Linia pozioma) ---
+  geom_segment(data = states, aes(x = 0, xend = 1, y = Piston_Height, yend = Piston_Height),
+               size = 2, color = "darkred") +
+  # Trzpień tłoka
+  geom_segment(data = states, aes(x = 0.5, xend = 0.5, y = Piston_Height, yend = Piston_Height + 1),
+               size = 1, color = "darkred") +
+  
+  # --- CZĄSTECZKI ---
+  geom_point(data = all_particles, aes(x = x, y = y, color = type), size = 3, alpha = 0.7) +
+  
+  # --- FORMATOWANIE ---
+  facet_wrap(~State, nrow = 1, strip.position = "bottom") +
+  scale_color_manual(values = c("Ciecz" = "#3498db", "Para" = "#95a5a6")) +
+  theme_void() +
+  theme(
+    strip.text = element_text(size = 11, face = "bold", margin = margin(t = 10)),
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16)
+  ) +
+  labs(title = "Ewolucja czynnika: Od Cieczy do Pary Przegrzanej")
+```
 
 ---
 
@@ -195,22 +397,6 @@ Zastosowanie:
 *   $v_x = v' + x(v'' - v')$  (Objętość)
 *   $h_x = h' + x(h'' - h')$  (Entalpia - do bilansu energii!)
 *   $s_x = s' + x(s'' - s')$  (Entropia - do sprawności)
-
----
-
-## 4. Tablice Pary Wodnej
-
-Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
-
-Rodzaje tablic:
-1.  **Tablice Nasycenia (wg Temperatury lub Ciśnienia):**
-    *   Używamy, gdy wiemy, że mamy wrzenie $(p, T_{nasycenia})$.
-    *   Odczytujemy $v', v'', h', h'', s', s''$.
-2.  **Tablice Pary Przegrzanej:**
-    *   Używamy, gdy $T > T_{nasycenia}$ (dla danego $p$).
-    *   Jest to macierz $(p, T) \to v, h, s$.
-3.  **Tablice Cieczy Sprężonej:**
-    *   Gdy $T < T_{nasycenia}$. Zazwyczaj zakładamy $v \approx v'$.
 
 ---
 

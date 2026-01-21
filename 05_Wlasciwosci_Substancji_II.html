@@ -233,10 +233,73 @@
 </ul>
 </div>
 </section>
+<section id="wykres-stanów-faz-wody-we-współrzędnych-p-t." class="slide level2 center">
+<h2>Wykres stanów faz wody we współrzędnych <span class="math inline">\(p-T\)</span>.</h2>
+
+<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<section id="tablice-pary-wodnej" class="slide level2">
+<h2>4. Tablice Pary Wodnej</h2>
+<p>Inżynier nie “liczy” pary z równania gazu doskonałego. Inżynier <strong>odczytuje</strong> z tablic.</p>
+<p>Rodzaje tablic:</p>
+<div class="fragment">
+<ol type="1">
+<li><strong>Tablice Nasycenia (wg Temperatury lub Ciśnienia):</strong>
+<ul>
+<li>Używamy, gdy wiemy, że mamy wrzenie <span class="math inline">\((p, T_{nasycenia})\)</span>.</li>
+<li>Odczytujemy <span class="math inline">\(v', v'', h', h'', s', s''\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><strong>Tablice Pary Przegrzanej:</strong>
+<ul>
+<li>Używamy, gdy <span class="math inline">\(T &gt; T_{nasycenia}\)</span> (dla danego <span class="math inline">\(p\)</span>).</li>
+<li>Jest to macierz <span class="math inline">\((p, T) \to v, h, s\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><strong>Tablice Cieczy Sprężonej:</strong>
+<ul>
+<li>Gdy <span class="math inline">\(T &lt; T_{nasycenia}\)</span>. Zazwyczaj zakładamy <span class="math inline">\(v \approx v'\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+</section>
 <section id="para-nasycona---struktura" class="slide level2">
 <h2>2. Para Nasycona - Struktura</h2>
-<p>Gdy podgrzewamy wodę pod stałym ciśnieniem: 1. <strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>. 2. <strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary. 3. <strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu! 4. <strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała. 5. <strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.</p>
+<p>Gdy podgrzewamy wodę pod stałym ciśnieniem:</p>
+<div class="increament">
+<ol type="1">
+<li><strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>.
+<ul>
+<li>💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
+</ul></li>
+<li><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary.
+<ul>
+<li>💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
+</ul></li>
+<li><strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu!
+<ul>
+<li>☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań).</li>
+</ul></li>
+<li><strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała.
+<ul>
+<li>☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
+</ul></li>
+<li><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.
+<ul>
+<li>💨🔥 Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
+</ul></li>
+</ol>
+</div>
 </section>
+<section id="para-nasycona---jak-to-działa-w-maszynie" class="slide level2">
+<h2>2. Para Nasycona - jak to działa w maszynie</h2>
+
+<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="wykres-t-s-dla-wody-kopuła" class="slide level2">
 <h2>Wykres T-s dla Wody (Kopuła)</h2>
 <p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
@@ -257,11 +320,6 @@
 <p>Jeśli znamy <span class="math inline">\(x\)</span>, możemy obliczyć dowolny parametr właściwy (<span class="math inline">\(y\)</span>), znając wartości graniczne z tablic: * <span class="math inline">\(y'\)</span> (dla cieczy nasyconej) * <span class="math inline">\(y''\)</span> (dla pary suchej)</p>
 <p>Wzór ogólny: <span class="math display">\[ y_x = y' + x \cdot (y'' - y') \]</span></p>
 <p>Zastosowanie: * <span class="math inline">\(v_x = v' + x(v'' - v')\)</span> (Objętość) * <span class="math inline">\(h_x = h' + x(h'' - h')\)</span> (Entalpia - do bilansu energii!) * <span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</p>
-</section>
-<section id="tablice-pary-wodnej" class="slide level2">
-<h2>4. Tablice Pary Wodnej</h2>
-<p>Inżynier nie “liczy” pary z równania gazu doskonałego. Inżynier <strong>odczytuje</strong> z tablic.</p>
-<p>Rodzaje tablic: 1. <strong>Tablice Nasycenia (wg Temperatury lub Ciśnienia):</strong> * Używamy, gdy wiemy, że mamy wrzenie <span class="math inline">\((p, T_{nasycenia})\)</span>. * Odczytujemy <span class="math inline">\(v', v'', h', h'', s', s''\)</span>. 2. <strong>Tablice Pary Przegrzanej:</strong> * Używamy, gdy <span class="math inline">\(T &gt; T_{nasycenia}\)</span> (dla danego <span class="math inline">\(p\)</span>). * Jest to macierz <span class="math inline">\((p, T) \to v, h, s\)</span>. 3. <strong>Tablice Cieczy Sprężonej:</strong> * Gdy <span class="math inline">\(T &lt; T_{nasycenia}\)</span>. Zazwyczaj zakładamy <span class="math inline">\(v \approx v'\)</span>.</p>
 </section>
 <section id="przykład-odczytu-nasycenie" class="slide level2">
 <h2>Przykład Odczytu (Nasycenie)</h2>
