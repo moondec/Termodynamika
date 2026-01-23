@@ -303,8 +303,22 @@
 <section id="wykres-t-s-dla-wody-kopuła" class="slide level2">
 <h2>Wykres T-s dla Wody (Kopuła)</h2>
 <p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
-
-<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="768" class="r-stretch"></section>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="font-size: 0.6em; color: gray;">źródło:<a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/kopula.png"></p>
+</div></div>
+</section>
 <section id="stopień-suchości-x" class="slide level2">
 <h2>3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
 <p>Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.</p>
@@ -317,9 +331,19 @@
 </section>
 <section id="obliczanie-właściwości-pary-mokrej" class="slide level2">
 <h2>Obliczanie Właściwości Pary Mokrej</h2>
-<p>Jeśli znamy <span class="math inline">\(x\)</span>, możemy obliczyć dowolny parametr właściwy (<span class="math inline">\(y\)</span>), znając wartości graniczne z tablic: * <span class="math inline">\(y'\)</span> (dla cieczy nasyconej) * <span class="math inline">\(y''\)</span> (dla pary suchej)</p>
-<p>Wzór ogólny: <span class="math display">\[ y_x = y' + x \cdot (y'' - y') \]</span></p>
-<p>Zastosowanie: * <span class="math inline">\(v_x = v' + x(v'' - v')\)</span> (Objętość) * <span class="math inline">\(h_x = h' + x(h'' - h')\)</span> (Entalpia - do bilansu energii!) * <span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</p>
+<p>Jeśli znamy <span class="math inline">\(x\)</span>, możemy obliczyć dowolny parametr właściwy (<span class="math inline">\(y\)</span>), znając wartości graniczne z tablic:</p>
+<ul>
+<li><span class="math inline">\(y'\)</span> (dla cieczy nasyconej)</li>
+<li><span class="math inline">\(y''\)</span> (dla pary suchej)</li>
+</ul>
+<p>Wzór ogólny:</p>
+<p><span class="math display">\[ y_x = y' + x \cdot (y'' - y') \]</span></p>
+<p>Zastosowanie:</p>
+<ul>
+<li><span class="math inline">\(v_x = v' + x(v'' - v')\)</span> (Objętość)</li>
+<li><span class="math inline">\(h_x = h' + x(h'' - h')\)</span> (Entalpia - do bilansu energii!)</li>
+<li><span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</li>
+</ul>
 </section>
 <section id="przykład-odczytu-nasycenie" class="slide level2">
 <h2>Przykład Odczytu (Nasycenie)</h2>
@@ -354,10 +378,17 @@
 </tr>
 </tbody>
 </table>
-<p>Wnioski: 1. Temp. wrzenia to <span class="math inline">\(99.6^\circ C\)</span>. 2. Para zajmuje 1600 razy więcej miejsca niż woda (<span class="math inline">\(1.694 / 0.001\)</span>). Wybuchowe rozszerzanie! 3. Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</p>
+<p>Wnioski:</p>
+<ol type="1">
+<li>Temp. wrzenia to <span class="math inline">\(99.6^\circ C\)</span>.</li>
+<li>Para zajmuje 1600 razy więcej miejsca niż woda (<span class="math inline">\(1.694 / 0.001\)</span>). Wybuchowe rozszerzanie!</li>
+<li>Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</li>
+</ol>
 </section>
 <section id="wykresy-termodynamiczne" class="slide level2">
 <h2>5. Wykresy Termodynamiczne</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <h3 id="wykres-h-s-molliera">Wykres h-s (Molliera)</h3>
 <ul>
 <li>Oś Y: Entalpia <span class="math inline">\(h\)</span> (Energia).</li>
@@ -366,13 +397,12 @@
 <li>Rozprężanie adiabatyczne (idealna turbina) to linia <strong>pionowa w dół</strong> (<span class="math inline">\(\Delta s = 0\)</span>).</li>
 <li>Różnica wysokości na wykresie (<span class="math inline">\(h_1 - h_2\)</span>) to uzyskana PRACA.</li>
 </ul>
-<h3 id="wykres-p-h-logarytmiczny">Wykres p-h (Logarytmiczny)</h3>
-<ul>
-<li>Oś Y: Ciśnienie <span class="math inline">\(\ln(p)\)</span>.</li>
-<li>Oś X: Entalpia <span class="math inline">\(h\)</span>.</li>
-<li><strong>Zastosowanie:</strong> Chłodnictwo / Pompy Ciepła.</li>
-<li>“Kopuła” jest mocno przechylona w prawo.</li>
-</ul>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T−s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz <strong>praca techniczna</strong> są na nim przedstawiane <strong>jako odcinki</strong>, a nie pola powierzchni</p>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/mollier-chart.png" style="width:100.0%"></p>
+</div></div>
 </section>
 <section id="mollier-w-praktyce" class="slide level2">
 <h2>Mollier w Praktyce</h2>
@@ -386,10 +416,45 @@
 <li>Odczytujemy <span class="math inline">\(x_2\)</span> (stopień suchości na wylocie). Jeśli <span class="math inline">\(x &lt; 0.85\)</span>, erozja łopatek zniszczy turbinę!</li>
 </ol>
 </section>
+<section id="wykresy-termodynamiczne-1" class="slide level2">
+<h2>5. Wykresy Termodynamiczne</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="wykres-p-h-logarytmiczny">Wykres p-h (Logarytmiczny)</h3>
+<ul>
+<li>Oś Y: Ciśnienie absolutne <span class="math inline">\(\ln(p)\)</span>.</li>
+<li>Oś X: Entalpia właściwa <span class="math inline">\(h\)</span>.</li>
+<li><strong>Zastosowanie:</strong> Chłodnictwo / Pompy Ciepła.</li>
+<li>“Kopuła” jest mocno przechylona w prawo.</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="img/p_h_diagram.png" style="width:100.0%"></p>
+</div></div>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.6em; position: absolute; top: 60%;">
+<p>Analiza typowego obiegu chłodniczego:</p>
+<ol type="1">
+<li>Parowanie: Pozioma linia w prawo (pobieranie ciepła <span class="math inline">\(q_d = \Delta h\)</span>).</li>
+<li>Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca sprężarki <span class="math inline">\(l_t= \Delta h\)</span>).</li>
+<li>Skraplanie: Pozioma linia w lewo (oddawanie ciepła <span class="math inline">\(q_w=\Delta h\)</span>).</li>
+<li>Dławienie: Pionowa linia w dół (stała entalpia).</li>
+</ol>
+<p>Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X</p>
+</div>
+</section>
 <section id="para-przegrzana" class="slide level2">
-<h2>6. Para Przegrzana</h2>
-<p>Para o temperaturze wyższej niż nasycenia. Stosujemy ją w energetyce, aby: 1. Zwiększyć sprawność obiegu (wyższa średnia temp. grzania). 2. Uniknąć skraplania w końcowych stopniach turbiny (ochrona łopatek).</p>
-<p>Cechy: * Zachowuje się coraz bardziej jak <strong>gaz doskonały</strong> im wyższa/mniejsze ciśnienie temperatury. * Dla pary przegrzanej: <span class="math inline">\(h \approx C_p T\)</span>.</p>
+<h2>Para Przegrzana</h2>
+<h3 id="powyżej-linii-nasycenia">Powyżej Linii Nasycenia</h3>
+<p>Para o temperaturze wyższej niż temperatura nasycenia <strong>przy danym ciśnieniu</strong> (<span class="math inline">\(T &gt; T_s\)</span>).</p>
+<p><strong>Zastosowanie w energetyce (Obieg Rankine’a):</strong></p>
+<ol type="1">
+<li>Zwiększenie sprawności (wyższa średnia temp. doprowadzania ciepła).</li>
+<li>Ochrona turbiny (mniejsze zawilgocenie w ostatnich stopniach).</li>
+</ol>
+<p><strong>Cechy fizyczne:</strong></p>
+<ul>
+<li>Zachowuje się coraz bardziej jak <strong>gaz doskonały</strong> im <strong>wyższa temperatura</strong> i <strong>niższe ciśnienie</strong>.</li>
+<li>W obszarze dalekim od nasycenia: <span class="math inline">\(h \approx C_p T\)</span> (dla gazu doskonałego).</li>
+</ul>
 </section>
 <section id="podsumowanie-w5" class="slide level2">
 <h2>Podsumowanie W5</h2>
