@@ -34,6 +34,7 @@ format:
     show-slide-number: all
     transition: slide
     chalkboard: true
+    footer: "Termodynamika Techniczna (W8)"
     width: 1600
     height: 900
     margin: 0.2
@@ -48,32 +49,106 @@ editor: source
 
 ## Agenda Wykładu {data-menu-title="Agenda"}
 
-1.  **Metodyka Analizy** (Co liczymy?)
-2.  **Przemiana Izochoryczna** ($v=const$)
-3.  **Przemiana Izobaryczna** ($p=const$)
-4.  **Przemiana Izotermiczna** ($T=const$)
-5.  **Przemiana Adiabatyczna** ($q=0$)
-6.  **Przemiana Politropowa** (Uogólnienie)
+1.  **Proces termodynamiczny** (przemiana)
+2.  **Metodyka Analizy** (Co liczymy?)
+3.  **Przemiana Izochoryczna** ($v=const$)
+4.  **Przemiana Izobaryczna** ($p=const$)
+5.  **Przemiana Izotermiczna** ($T=const$)
+6.  **Przemiana Adiabatyczna** ($q=0$)
+7.  **Przemiana Politropowa** (Uogólnienie)
 
 ---
 
-## 1. Metodyka Analizy
+## 1. Definicja Procesu Termodynamicznego
 
-Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika):
+::: {.callout-note appearance="simple"}
+**Proces termodynamiczny (przemiana)** to zmiana stanu układu, w której zmienia się wartość co najmniej jednego z parametrów termodynamicznych ($p, V, T$).
+:::
+
+::: {.incremental}
+*   **Proces kwazistatyczny:** Przebiega nieskończenie powoli, układ w każdej chwili jest w stanie równowagi.
+*   **Proces odwracalny:** Możliwe jest przejście odwrotne przez te same stany pośrednie bez zmian w otoczeniu.
+
+:::
+
+---
+
+## I Zasada Termodynamiki - Kontekst
+
+::: {.callout-note appearance="simple"}
+Dla układu zamkniętego w procesie kwazistatycznym I zasada przyjmuje postać:
+:::
+
+$$ dU = đQ + đL $$
+
+Gdzie:
+
+*   $dU$ – zmiana energii wewnętrznej
+*   $đQ$ – ciepło elementarne wymienione z otoczeniem
+*   $đL$ – praca elementarna wykonana **na układzie**.
+
+---
+
+## Praca Objętościowa
+
+W procesach odwracalnych praca objętościowa wyraża się wzorem:
+
+$$ đL = -p dV $$
+
+Całkowita praca przy zmianie objętości od $V_1$ do $V_2$:
+
+$$ L_{1-2} = -\int_{V_1}^{V_2} p(V) dV $$
+
+::: {.callout-note appearance="simple"}
+**Konwencja znaku:** Jeśli $dV > 0$ (rozprężanie), to $L < 0$ (układ wykonuje pracę). Jeśli $dV < 0$ (sprężanie), to $L > 0$ (siły zewnętrzne wykonują pracę na układzie).
+:::
+
+---
+
+## Właściwości Gazu Doskonałego (Przypomnienie)
+
+Podstawowe wzory i zależności:
+
+1.  **Równanie Clapeyrona:** $pV = nRT$
+2.  **Energię wewnętrzną:** Zależy tylko od temperatury, $dU = C_V dT$.
+3.  **Entalpię:** Zależy tylko od temperatury, $dH = C_p dT$.
+4.  **Równanie Mayera:** $C_p - C_V = nR$.
+
+---
+
+## 2. Metodyka Analizy
+
+::: {.callout-note appearance="simple"}
+Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br>
+(Wszytkie wielkości wyrażamy jako "właściwe", czyli dzielimy przez masę):
+:::
+
+:::: {.columns}
+
+::: {.column width="60%"}
 
 1.  **Równanie procesu:** Związek między $p$ i $v$.
-2.  **Praca objętościowa ($w$):** Pole pod krzywą na $p-v$.
-    $$ w = \int p \, dv $$
+2.  **Praca objętościowa ($l$):** Pole pod krzywą na $p-v$.
+    $$ l = \int p \, dv $$
 3.  **Praca techniczna ($w_t$):** Pole do osi $p$.
-    $$ w_t = - \int v \, dp $$
+    $$ l_t = - \int v \, dp $$
 4.  **Ciepło ($q$):** Z I Zasady Termodynamiki.
-    $$ q = \Delta u + w \quad \text{lub} \quad q = \Delta h + w_t $$
+    $$ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t $$
+:::
 
-Pamiętamy zawsze: $\Delta u = C_v \Delta T$ oraz $\Delta h = C_p \Delta T$.
+::: {.column width="40%"}
+
+::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+
+Pamiętamy zawsze: $$\Delta u = C_v \Delta T$$ oraz $$\Delta h = C_p \Delta T$$
+:::
+
+:::
+::::
 
 ---
 
-## 2. Przemiana Izochoryczna
+## 3. Przemiana Izochoryczna
 
 **Warunek:** $V = const \Rightarrow v_1 = v_2$
 Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
@@ -84,9 +159,11 @@ $$ \frac{p_1}{T_1} = \frac{p_2}{T_2} $$
 :::: {.columns}
 ::: {.column width="60%"}
 ### Bilans Energii
-1.  **Praca:** $w = 0$ (brak ruchu tłoka).
+
+1.  **Praca:** $l = 0$ (brak ruchu tłoka).
 2.  **Ciepło:** $q = \Delta u = C_v (T_2 - T_1)$.
-3.  **Wykres:** Linia pionowa na $p-v$.
+3.  **Wykres p-v:** Linia pionowa (prostopadła do osi V). Pole pod wykresem (praca) wynosi zero.
+4.  **Wykres T-s:** Krzywa wykładnicza (nachylenie zależy od $C_V$).
 :::
 ::: {.column width="40%"}
 ```{r}
@@ -101,7 +178,28 @@ ggplot() + geom_segment(aes(x=1, y=1, xend=1, yend=4), arrow=arrow(), size=2, co
 
 ---
 
-## 3. Przemiana Izobaryczna
+## Wykresy (Izochora)
+
+
+*Wizualizacja:*
+Wzrost temperatury $\rightarrow$ Wzrost ciśnienia $\rightarrow$ Wzrost entropii (ogrzewanie izochoryczne).
+
+---
+
+## Ciepło i Entropia (Izochora)
+
+**Ciepło przemiany:**
+$$ Q_{1-2} = \Delta U = \int_{T_1}^{T_2} C_V(T) dT $$
+Dla $C_V = const$:
+$$ Q_{1-2} = n C_{V,m} (T_2 - T_1) $$
+
+**Zmiana entropii:**
+$$ \Delta S = \int \frac{đQ}{T} = \int_{T_1}^{T_2} \frac{C_V dT}{T} = C_V \ln\left(\frac{T_2}{T_1}\right) $$
+lub wyrażając przez ciśnienia: $\Delta S = C_V \ln(p_2/p_1)$.
+
+---
+
+## 4. Przemiana Izobaryczna
 
 **Warunek:** $p = const$
 Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.
@@ -112,10 +210,15 @@ $$ \frac{v_1}{T_1} = \frac{v_2}{T_2} $$
 :::: {.columns}
 ::: {.column width="60%"}
 ### Bilans Energii
-1.  **Praca:** $w = p(v_2 - v_1) = R(T_2 - T_1)$.
+1.  **Praca:** $l = p(v_2 - v_1) = R(T_2 - T_1)$.
 2.  **Ciepło:** $q = \Delta h = C_p (T_2 - T_1)$.
-    *   Ważne: W izobarze ciepło idzie na zmianę entalpii!
-3.  **Praca Tech:** $w_t = 0$ (brak sprężarki).
+
+::: {.callout-warning appearance="simple"}
+Ważne: W izobarze ciepło idzie na zmianę entalpii!
+    
+:::
+    
+3.  **Praca Tech:** $l_t = 0$ (brak sprężarki).
 :::
 ::: {.column width="40%"}
 ```{r}
@@ -129,7 +232,30 @@ ggplot() + geom_segment(aes(x=1, y=2, xend=4, yend=2), arrow=arrow(), size=2, co
 
 ---
 
-## 4. Przemiana Izotermiczna
+## Ciepło i Entalpia (Izobara)
+
+Z I zasady termodynamiki ($dU = đQ - pdV \Rightarrow đQ = dU + pdV = dH$):
+
+$$ Q_{1-2} = \Delta H = \int_{T_1}^{T_2} C_p dT $$
+
+Dla stałego $C_p$:
+$$ Q_{1-2} = n C_{p,m} (T_2 - T_1) $$
+
+Ciepło dostarczone w procesie izobarycznym jest równe zmianie **entalpii**.
+
+---
+
+## Wykresy (Izobara)
+
+*   **Wykres p-V:** Linia pozioma. Pole pod wykresem to prostokąt o polu $p(V_2-V_1)$.
+*   **Wykres T-s:** Krzywa logarytmiczna, ale **mniej stroma** niż izochora (ponieważ $C_p > C_V$).
+
+Zmiana entropii:
+$$ \Delta S = C_p \ln\left(\frac{T_2}{T_1}\right) = C_p \ln\left(\frac{V_2}{V_1}\right) $$.
+
+---
+
+## 5. Przemiana Izotermiczna
 
 **Warunek:** $T = const \Rightarrow \Delta u = 0, \Delta h = 0$
 Przykład: Bardzo powolne sprężanie z chłodzeniem.
@@ -140,7 +266,7 @@ $$ p_1 v_1 = p_2 v_2 = const $$
 :::: {.columns}
 ::: {.column width="60%"}
 ### Bilans Energii
-1.  **Praca:** $w = RT \ln(v_2/v_1)$.
+1.  **Praca:** $l = RT \ln(v_2/v_1)$.
 2.  **Ciepło:** $q = w$ (Całe ciepło zamienia się w pracę, bo $\Delta u=0$).
 3.  **Wykres:** Hiperbola równoosiowa.
 :::
@@ -157,7 +283,30 @@ ggplot() + geom_line(aes(x=v, y=4/v), size=2, color="blue") +
 
 ---
 
-## 5. Przemiana Adiabatyczna
+## Bilans Energii (Izoterma)
+
+Skoro $\Delta U = 0$, to z I zasady termodynamiki:
+$$ 0 = Q + L \Rightarrow Q = -L $$
+
+::: {.callout-warning appearance="simple"}
+Ciepło dostarczone do układu jest w całości zamieniane na pracę wykonaną przez układ (lub odwrotnie przy sprężaniu).
+:::
+
+---
+
+## Obliczenia Pracy i Entropii (Izoterma)
+
+**Praca (wykonana na układzie):**
+
+$$ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) $$
+$$ L_{1-2} = nRT \ln\left(\frac{p_2}{p_1}\right) $$
+
+**Zmiana entropii:**
+$$ \Delta S = \frac{Q}{T} = \frac{-L}{T} = nR \ln\left(\frac{V_2}{V_1}\right) $$
+
+---
+
+## 6. Przemiana Adiabatyczna
 
 **Warunek:** $q = 0$ (Izolacja lub szybki proces).
 Jeśli odwracalna $\to$ **Izentropa** ($s = const$).
@@ -168,13 +317,17 @@ $$ T v^{k-1} = const $$
 
 :::: {.columns}
 ::: {.column width="60%"}
+
 ### Bilans Energii
+
 1.  **Ciepło:** $q = 0$.
-2.  **Praca:** $w = -\Delta u = C_v(T_1 - T_2)$.
+2.  **Praca:** $l = -\Delta u = C_v(T_1 - T_2)$.
     *   Praca kosztem energii wewnętrznej (spadek T przy rozprężaniu).
 3.  **Wykres:** Bardziej stroma niż izoterma ($k > 1$).
+
 :::
 ::: {.column width="40%"}
+
 ```{r}
 #| echo: false
 #| fig-height: 4
@@ -185,14 +338,28 @@ ggplot() +
   annotate("text", x=2, y=0.5, label="Adiabata", color="red") +
   theme_minimal() + labs(title="Adiabata p-v", x="v", y="p")
 ```
+
 :::
 ::::
 
 ---
 
-## 6. Przemiana Politropowa (Uogólnienie)
+## Wykresy (Adiabata)
+
+*   **Wykres p-V:** Krzywa podobna do hiperboli, ale **bardziej stroma** niż izoterma (ponieważ $\gamma > 1$).
+*   **Wykres T-s:** Linia pionowa ($S = const$). Pole pod wykresem (ciepło) wynosi zero.
+
+Porównanie nachyleń na p-V:
+
+$$ \left(\frac{\partial p}{\partial V}\right)_S = \gamma \left(\frac{\partial p}{\partial V}\right)_T $$
+
+
+---
+
+## 7. Przemiana Politropowa (Uogólnienie)
 
 Równanie ogólne dla wszystkich procesów:
+
 $$ p v^n = const $$
 
 gdzie $n$ to wykładnik politropy.
@@ -240,7 +407,7 @@ ggplot() +
 ```
 
 **Pole pod wykresem = PRACA.**
-Najwięcej pracy daje Izobara, najmniej Adiabata.
+Najwięcej pracy daje Izobara, najmniej Adiabata (nie licząc Izochory, gdzie L = 0).
 
 ---
 
@@ -248,12 +415,12 @@ Najwięcej pracy daje Izobara, najmniej Adiabata.
 
 Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:
 
-$$ w_t = n \cdot w $$
+$$ l_t = n \cdot l $$
 (dla politropy $pv^n=const$).
 
-*   Dla izobary ($n=0$): $w_t = 0$.
-*   Dla izotermy ($n=1$): $w_t = w$.
-*   Dla adiabaty ($n=k$): $w_t = k \cdot w = \Delta h$.
+*   Dla izobary ($n=0$): $l_t = 0$.
+*   Dla izotermy ($n=1$): $l_t = l$.
+*   Dla adiabaty ($n=k$): $l_t = k \cdot l = \Delta h$.
 
 ### Wniosek dla Sprężarki
 Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izotermy** (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.
@@ -266,7 +433,7 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 | :--- | :---: | :---: | :---: | :---: |
 | **Izochora** | $\infty$ | $\Delta u$ | 0 | $-v\Delta p$|
 | **Izobara** | 0 | $\Delta h$ | $p \Delta v$ | 0 |
-| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $q$ | $w$ |
+| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $q$ | $l$ |
 | **Adiabata** | k | 0 | $-\Delta u$ | $\Delta h$ |
 
 To jest najważniejsza tabela w termodynamice gazów.

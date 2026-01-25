@@ -132,7 +132,7 @@
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.2 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -177,43 +177,89 @@
 <section id="nierówność-clausiusa" class="slide level2">
 <h2>1. Nierówność Clausiusa</h2>
 <p>Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:</p>
-<p><span class="math display">\[ \oint \frac{\delta Q}{T} \le 0 \]</span></p>
-<ul>
-<li>Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.</li>
-</ul>
-<h3 id="interpretacja">Interpretacja:</h3>
+<p><span class="math display">\[ \oint \frac{đ Q}{T} \le 0 \]</span></p>
+<blockquote>
+<p>Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.</p>
+</blockquote>
+<div class="fragment" title="Interpretacja">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Interpretacja</strong></p>
+</div>
+<div class="callout-content">
 <ol type="1">
 <li><strong><span class="math inline">\(= 0\)</span></strong>: Cykl jest <strong>odwracalny</strong> (idealny, brak tarcia).</li>
 <li><strong><span class="math inline">\(&lt; 0\)</span></strong>: Cykl jest <strong>nieodwracalny</strong> (rzeczywisty, straty).</li>
 <li><strong><span class="math inline">\(&gt; 0\)</span></strong>: Cykl jest <strong>niemożliwy</strong> (łamie II Zasadę).</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="entropia-s" class="slide level2">
 <h2>2. Entropia (<span class="math inline">\(S\)</span>)</h2>
-<p>Skoro dla procesu odwracalnego <span class="math inline">\(\oint \frac{\delta Q_{rev}}{T} = 0\)</span>, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.</p>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Skoro dla procesu odwracalnego <span class="math inline">\(\oint \frac{đ Q_{rev}}{T} = 0\)</span>, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.</p>
+</div>
+<div class="fragment">
+<blockquote>
 <p>Definiujemy nową funkcję stanu - <strong>Entropię (<span class="math inline">\(S\)</span>)</strong>:</p>
-<p><span class="math display">\[ dS = \left( \frac{\delta Q}{T} \right)_{rev} \]</span></p>
+</blockquote>
+<p><span class="math display">\[ dS = \left( \frac{đ Q}{T} \right)_{rev} \]</span></p>
+</div>
+<div class="fragment" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <p>Jednostka: <span class="math inline">\([J/K]\)</span> (lub dla entropii właściwej <span class="math inline">\(s\)</span>: <span class="math inline">\([J/(kg\cdot K)]\)</span>).</p>
+</div>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <h3 id="co-to-oznacza-fizycznie">Co to oznacza fizycznie?</h3>
 <p>Entropia jest miarą <strong>nieuporządkowania</strong> układu (statystycznie) oraz miarą <strong>niezdolności energii do wykonania pracy</strong>.</p>
+</div>
 </section>
 <section id="entropia-a-kierunek-przekazu-ciepła" class="slide level2">
 <h2>Entropia a Kierunek Przekazu Ciepła</h2>
 <p>Dlaczego ciepło płynie od gorącego do zimnego?</p>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ol type="1">
-<li>Ciało A (<span class="math inline">\(T_H\)</span>) oddaje ciepło <span class="math inline">\(Q\)</span>: <span class="math display">\[ \Delta S_A = \frac{-Q}{T_H} \]</span> (Spadek entropii)</li>
-<li>Ciało B (<span class="math inline">\(T_L\)</span>) pobiera ciepło <span class="math inline">\(Q\)</span>: <span class="math display">\[ \Delta S_B = \frac{+Q}{T_L} \]</span> (Wzrost entropii)</li>
+<li><p>Ciało A (<span class="math inline">\(T_H\)</span>) oddaje ciepło <span class="math inline">\(Q\)</span>:</p>
+<p><span class="math display">\[ \Delta S_A = \frac{-Q}{T_H} \]</span></p>
+<p><span class="fragment highlight-red">(Spadek entropii)</span></p></li>
+<li><p>Ciało B (<span class="math inline">\(T_L\)</span>) pobiera ciepło <span class="math inline">\(Q\)</span>:</p>
+<p><span class="math display">\[ \Delta S_B = \frac{+Q}{T_L} \]</span></p>
+<p><span class="fragment highlight-red">(Wzrost entropii)</span></p></li>
 </ol>
-<p>Suma zmian: <span class="math inline">\(\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})\)</span>. Ponieważ <span class="math inline">\(T_H &gt; T_L\)</span>, to wynik jest <strong>DODATNI</strong>. Całkowita entropia rośnie! Proces spontaniczny.</p>
+</div><div class="column" style="width:60%;">
+<div class="fragment" title="Suma zmian:">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Suma zmian:</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})\]</span> Ponieważ <span class="math inline">\(T_H &gt; T_L\)</span>, to wynik jest <strong>DODATNI</strong>. Całkowita entropia rośnie! Proces spontaniczny.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="zasada-wzrostu-entropii" class="slide level2">
 <h2>3. Zasada Wzrostu Entropii</h2>
 <p>Dla układu izolowanego (adiabatycznego):</p>
-<p><span class="math display">\[ \Delta S_{izul} \ge 0 \]</span></p>
+<p><span class="math display">\[ \Delta S_{izol} \ge 0 \]</span></p>
 <ul>
-<li>W procesach odwracalnych entropia układu izolowanego jest stała (<span class="math inline">\(\Delta S = 0\)</span>).</li>
-<li>W procesach rzeczywistych (nieodwracalnych) entropia układu izolowanego <strong>ZAWSZE ROŚNIE</strong>.</li>
+<li class="fragment">W procesach odwracalnych entropia układu izolowanego jest stała (<span class="math inline">\(\Delta S = 0\)</span>).</li>
+<li class="fragment">W procesach rzeczywistych (nieodwracalnych) entropia układu izolowanego <strong>ZAWSZE ROŚNIE</strong>.</li>
 </ul>
+<div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -223,15 +269,18 @@
 <p><strong>Adnotacja</strong></p>
 </div>
 <div class="callout-content">
-<p>Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza “Strzałkę Czasu”.</p>
+<p>Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza “Strzałkę Czasu” <span class="fragment highlight-red">i być może uniemożliwia podróże w czasie (w przeszłość).</span></p>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="generacja-entropii-s_gen" class="slide level2">
 <h2>Generacja Entropii (<span class="math inline">\(S_{gen}\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Możemy zapisać bilans entropii dla dowolnego procesu:</p>
-<p><span class="math display">\[ \Delta S_{ukladu} = \int \frac{\delta Q}{T_{granicy}} + S_{gen} \]</span></p>
+</div>
+<p><span class="math display">\[ \Delta S_{ukladu} = \int \frac{đ Q}{T_{granicy}} + S_{gen} \]</span></p>
 <ul>
 <li><span class="math inline">\(S_{gen}\)</span>: Entropia generowana wewnątrz układu przez nieodwracalności (tarcie, mieszanie, spalanie).</li>
 <li><strong><span class="math inline">\(S_{gen}\)</span> nigdy nie może być ujemne!</strong>
@@ -243,26 +292,69 @@
 </section>
 <section id="obliczanie-zmian-entropii" class="slide level2">
 <h2>4. Obliczanie Zmian Entropii</h2>
-<h3 id="dla-płynów-nieściśliwych-ciecze-ciała-stałe">Dla płynów nieściśliwych (Ciecze, Ciała stałe)</h3>
+<h3 id="dla-ciał-nieściśliwych-ciecze-ciała-stałe">Dla ciał nieściśliwych (Ciecze, Ciała stałe)</h3>
 <p><span class="math inline">\(v \approx const\)</span>, <span class="math inline">\(C_p \approx C_v = C\)</span>.</p>
 <p><span class="math display">\[ \Delta s = C \cdot \ln \left( \frac{T_2}{T_1} \right) \]</span></p>
 <h3 id="dla-gazów-doskonałych">Dla Gazów Doskonałych</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
 <p>Mamy dwa wzory (zależnie od znanych zmiennych):</p>
 <ol type="1">
 <li><span class="math display">\[ \Delta s = C_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{p_2}{p_1} \right) \]</span></li>
 <li><span class="math display">\[ \Delta s = C_v \ln \left( \frac{T_2}{T_1} \right) + R \ln \left( \frac{v_2}{v_1} \right) \]</span></li>
 </ol>
-<p><strong>Uwaga:</strong> W procesie adiabatycznym odwracalnym (izentropowym), <span class="math inline">\(\Delta s = 0\)</span>. Wzory te wtedy służą do wyprowadzenia <span class="math inline">\(pv^k=const\)</span>!</p>
+</div><div class="column" style="width:60%;">
+<div class="fragment fade-up">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Uwaga:</strong> W procesie adiabatycznym odwracalnym (izentropowym), <span class="math inline">\(\Delta s = 0\)</span>. <br>Wzory te wtedy służą do wyprowadzenia <span class="math display">\[pv^k=const\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="wykres-t-s-i-ciepło" class="slide level2">
 <h2>Wykres T-s i Ciepło</h2>
 <p>Dla procesu odwracalnego: <span class="math display">\[ Q_{rev} = \int_{1}^{2} T \, dS \]</span></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="fragment fade-left" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Na wykresie T-s, pole powierzchni pod krzywą przemiany reprezentuje <strong>ciepło wymienione</strong> w procesie (podobnie jak pole na p-v reprezentuje pracę).</p>
+</div>
+<div class="fragment fade-right" style="font-size: 0.8em;">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <ul>
 <li>Proces w prawo (<span class="math inline">\(ds &gt; 0\)</span>): Pobieranie ciepła.</li>
 <li>Proces w lewo (<span class="math inline">\(ds &lt; 0\)</span>): Oddawanie ciepła.</li>
 <li>Proces pionowy (<span class="math inline">\(ds = 0\)</span>): Adiabata (brak ciepła).</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="07_II_Zasada_2_files/figure-revealjs/carnot-ts-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="iii-zasada-termodynamiki" class="slide level2">
 <h2>5. III Zasada Termodynamiki</h2>
@@ -271,11 +363,24 @@
 <p>Entropia kryształu substancji doskonałej w temperaturze zera bezwzględnego (<span class="math inline">\(0 K\)</span>) jest równa <strong>ZERO</strong>.</p>
 </blockquote>
 <p><span class="math display">\[ \lim_{T \to 0} S = 0 \]</span></p>
-<h3 id="konsekwencje">Konsekwencje:</h3>
+<div class="fragment" title="Konsekwencje:">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Konsekwencje:</strong></p>
+</div>
+<div class="callout-content">
 <ol type="1">
 <li>Daje “punkt odniesienia” dla entropii. W przeciwieństwie do energii wewnętrznej <span class="math inline">\(U\)</span> (gdzie znamy tylko <span class="math inline">\(\Delta U\)</span>), dla entropii możemy wyznaczyć wartość bezwzględną.</li>
 <li>Nie da się osiągnąć zera bezwzględnego w skończonej liczbie kroków.</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="podsumowanie-w7" class="slide level2">
 <h2>Podsumowanie W7</h2>
@@ -286,7 +391,9 @@
 <li><strong>Wzory:</strong> <span class="math display">\[ \Delta s = C_p \ln(T_2/T_1) - R \ln(p_2/p_1) \]</span></li>
 <li><strong>III Zasada:</strong> W <span class="math inline">\(0 K\)</span> entropia wynosi 0 (stan idealnego porządku).</li>
 </ol>
-<h3 id="zapowiedź-w8">Zapowiedź W8</h3>
+</section>
+<section id="zapowiedź-w8" class="slide level2">
+<h2>Zapowiedź W8</h2>
 <p>Ubrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie <strong>Przemiany Gazowe</strong> (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.</p>
 
 </section>
@@ -511,6 +618,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

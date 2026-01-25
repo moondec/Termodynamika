@@ -37,7 +37,7 @@ format:
             
             background-repeat: no-repeat !important;
             background-position: center center !important;
-            opacity: 0.1 !important;
+            opacity: 0.2 !important;
         }
 
         /* 3. Wyjątek dla tytułowego */

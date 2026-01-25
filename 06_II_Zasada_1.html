@@ -128,11 +128,11 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("img/background_green.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.3 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -204,68 +204,369 @@
 </div>
 </div></div>
 </section>
+<section id="przykłady-procesów-nieodwracalnych" class="slide level2">
+<h2>Przykłady Procesów Nieodwracalnych</h2>
+<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<p>Dlaczego film puszczony od tyłu wygląda nienaturalnie?</p>
+</div>
+<ol type="1">
+<li class="fragment"><strong>Rozprężanie swobodne gazu:</strong> Gaz wypuszczony z butli do próżni nigdy sam nie wróci do butli, chociaż energia by na to pozwoliła.</li>
+<li class="fragment"><strong>Mieszanie płynów:</strong> Kawa z mlekiem nigdy sama się nie rozdzieli .</li>
+<li class="fragment"><strong>Tarcie:</strong> Tarcie zamienia pracę na ciepło. Ogrzanie klocka hamulcowego nie sprawi, że samochód zacznie jechać.</li>
+<li class="fragment"><strong>Przepływ ciepła:</strong> Ciepło płynie tylko <span class="math inline">\(\Delta T &gt; 0\)</span>.</li>
+</ol>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adnotacja</strong></p>
+</div>
+<div class="callout-content">
+<p>Wszystkie te procesy generują <strong>Entropię</strong> (miarę nieporządku), o czym powiemy w W7.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="źródła-ciepła-rezerwuary" class="slide level2">
 <h2>2. Źródła Ciepła (Rezerwuary)</h2>
+<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <p>Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):</p>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ol type="1">
 <li><strong>Źródło górne (<span class="math inline">\(T_H\)</span>):</strong> Piec, Reaktor Jądrowy, Słońce. Dostarcza ciepło <span class="math inline">\(Q_H\)</span> (High).</li>
 <li><strong>Źródło dolne (<span class="math inline">\(T_L\)</span>):</strong> Rzeka, Atmosfera, Grunt. Odbiera ciepło odpadowe <span class="math inline">\(Q_L\)</span> (Low).</li>
 </ol>
+<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zachodzą one od stanu wyższym potencjal do stanów opotencjale niższym.</p>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/unnamed-chunk-1-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
-<section id="silnik-cieplny-heat-engine" class="slide level2">
-<h2>Silnik Cieplny (Heat Engine)</h2>
-<p>Urządzenie cykliczne, które zamienia ciepło na pracę.</p>
+<section id="silnik-cieplny" class="slide level2">
+<h2>Silnik Cieplny</h2>
+<p><span style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">Urządzenie cykliczne, które zamienia ciepło na pracę.</span></p>
 <ol type="1">
-<li>Pobiera ciepło <span class="math inline">\(Q_H\)</span> ze źródła o wysokiej temperaturze (<span class="math inline">\(T_H\)</span>).</li>
-<li>Zamienia część tego ciepła na pracę użyteczną <span class="math inline">\(L\)</span>.</li>
-<li>Oddaje pozostałe (niewykorzystane) ciepło <span class="math inline">\(Q_L\)</span> do źródła dolnego (<span class="math inline">\(T_L\)</span>).</li>
+<li class="fragment">Pobiera ciepło <span class="math inline">\(Q_H\)</span> ze źródła o wysokiej temperaturze (<span class="math inline">\(T_H\)</span>).</li>
+<li class="fragment">Zamienia część tego ciepła na pracę użyteczną <span class="math inline">\(L\)</span>.</li>
+<li class="fragment">Oddaje pozostałe (niewykorzystane) ciepło <span class="math inline">\(Q_L\)</span> do źródła dolnego (<span class="math inline">\(T_L\)</span>).</li>
 </ol>
+<div class="fragment">
 <h3 id="sprawność-termiczna">Sprawność Termiczna</h3>
 <p><span class="math display">\[ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} \]</span></p>
+</div>
 </section>
 <section id="chłodziarka-i-pompa-ciepła" class="slide level2">
 <h2>Chłodziarka i Pompa Ciepła</h2>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
 <p>To “odwrócony” silnik cieplny.</p>
+</div>
 <ol type="1">
-<li>Pobiera ciepło <span class="math inline">\(Q_L\)</span> z zimnego wnętrza (<span class="math inline">\(T_L\)</span>).</li>
-<li>Wymaga dostarczenia pracy <span class="math inline">\(L\)</span> (sprężarka).</li>
-<li>Oddaje ciepło <span class="math inline">\(Q_H\)</span> do ciepłego otoczenia (<span class="math inline">\(T_H\)</span>).</li>
+<li class="fragment">Pobiera ciepło <span class="math inline">\(Q_L\)</span> z zimnego wnętrza (<span class="math inline">\(T_L\)</span>).</li>
+<li class="fragment">Wymaga dostarczenia pracy <span class="math inline">\(L\)</span> (sprężarka).</li>
+<li class="fragment">Oddaje ciepło <span class="math inline">\(Q_H\)</span> do ciepłego otoczenia (<span class="math inline">\(T_H\)</span>).</li>
 </ol>
+<div class="fragment">
 <h3 id="współczynniki-efektywności-cop">Współczynniki Efektywności (COP)</h3>
 <ul>
-<li><strong>Chłodziarka:</strong> Cel to <span class="math inline">\(Q_L\)</span>. <span class="math display">\[ COP_R = \frac{Q_L}{W} \]</span></li>
-<li><strong>Pompa Ciepła:</strong> Cel to <span class="math inline">\(Q_H\)</span> (ogrzewanie). <span class="math display">\[ COP_{HP} = \frac{Q_H}{W} = COP_R + 1 \]</span></li>
+<li class="fragment"><strong>Chłodziarka:</strong> Cel to <span class="math inline">\(Q_L\)</span>. <span class="math display">\[ COP_R = \frac{Q_L}{W} \]</span></li>
+<li class="fragment"><strong>Pompa Ciepła:</strong> Cel to <span class="math inline">\(Q_H\)</span> (ogrzewanie). <span class="math display">\[ COP_{HP} = \frac{Q_H}{W} = COP_R + 1 \]</span></li>
 </ul>
+</div>
+</section>
+<section id="przykład-obliczeniowy-silnik" class="slide level2">
+<h2>Przykład Obliczeniowy: Silnik</h2>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<p>Załóżmy, że silnik pobiera <span class="math inline">\(Q_H = 100 \text{ kJ}\)</span> ciepła z pieca i wykonuje <span class="math inline">\(W = 30 \text{ kJ}\)</span> pracy.</p>
+</div>
+<ol type="1">
+<li class="fragment"><p><strong>Ile ciepła oddaje do otoczenia (<span class="math inline">\(Q_L\)</span>)?</strong> <span class="math display">\[ Q_L = Q_H - W = 100 - 30 = 70 \text{ kJ} \]</span></p></li>
+<li class="fragment"><p><strong>Jaka jest sprawność termiczna (<span class="math inline">\(\eta_{th}\)</span>)?</strong> <span class="math display">\[ \eta_{th} = \frac{W}{Q_H} = \frac{30}{100} = 0.30 = 30\% \]</span></p></li>
+</ol>
+<div class="fragment" title="**Wniosek:**">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Większość energii (70%) jest marnowana jako ciepło odpadowe! To typowa wartość dla silników spalinowych.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="analiza-cop-współczynnik-wydajności" class="slide level2">
+<h2>Analiza COP (Współczynnik Wydajności)</h2>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<p>Dlaczego <span class="math inline">\(COP\)</span> może być większe od 1 (np. 3 lub 4)? Czy to perpetuum mobile? <span class="fragment" style="color: #e60000; font-weight: bold;"><strong>NIE!</strong></span></p>
+</div>
+<ul>
+<li class="fragment">Pompujemy ciepło, a nie je wytwarzamy.</li>
+<li class="fragment">Płacimy pracą (<span class="math inline">\(W\)</span>) tylko za przenoszenie energii. <span class="math display">\[ COP_{HP} = \frac{Q_H}{W} = \frac{Q_L + W}{W} = \frac{Q_L}{W} + 1 = COP_R + 1 \]</span></li>
+</ul>
+<div class="fragment" title="**Wniosek:**">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Jeśli <span class="math inline">\(COP_{HP} = 4\)</span>, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w domu (1 kWh z prądu + 3 kWh z darmowego powietrza na zewnątrz).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="sformułowania-ii-zasady" class="slide level2">
 <h2>3. Sformułowania II Zasady</h2>
-<h3 id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
+<h3 style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;" id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
+<div class="fragment" style="font-size: .8em;">
 <blockquote>
 <p>Nie jest możliwy proces cykliczny, którego <strong>jedynym</strong> wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.</p>
 </blockquote>
-<p>Wniosek: <strong>Silnik o sprawności 100% jest niemożliwy.</strong> Musimy oddać część ciepła <span class="math inline">\(Q_L\)</span> do chłodnicy. <span class="math inline">\(Q_L \neq 0\)</span>.</p>
-<h3 id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
+</div>
+<div class="fragment" title="**Wniosek:**" style="font-size: .8em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Silnik o sprawności 100% jest niemożliwy.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="fragment" style="color: #65210d; font-weight: bold;">Musimy oddać część ciepła <span class="math inline">\(Q_L\)</span> do chłodnicy. <span class="math inline">\(Q_L \neq 0\)</span>.</span></p>
+<h3 class="fragment" style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;" id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
+<div class="fragment" style="font-size: .8em;">
 <blockquote>
 <p>Nie jest możliwe zbudowanie urządzenia, którego <strong>jedynym</strong> skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.</p>
 </blockquote>
-<p>Wniosek: <strong>Chłodziarka musi zużywać prąd.</strong> Ciepło nie popłynie “pod górę” samoistnie.</p>
+</div>
+<div class="fragment" title="**Wniosek:**" style="font-size: .8em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Chłodziarka musi zużywać prąd.</strong> Ciepło nie popłynie “pod górę” samoistnie.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="równoważność-sformułowań" class="slide level2">
 <h2>Równoważność Sformułowań</h2>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
 <p>Te dwa twierdzenia brzmią różnie, ale są równoważne.</p>
-<p>Jeśli złamiesz jedno, złamiesz też drugie. * Gdybyś miał silnik 100% sprawny (łamie K-P), mógłbyś nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).</p>
+<p>Złamanie jednego, oznacza złamanie też drugiego.</p>
+</div>
+<ul>
+<li class="fragment">Gdyby silnik byłw w 100% sprawny (łamie K-P), możnaby nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).</li>
+</ul>
+</section>
+<section id="perpetuum-mobile-ii-rodzaju" class="slide level2">
+<h2>Perpetuum Mobile II Rodzaju</h2>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<p>Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).</p>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Wyobraźmy sobie statek, który pobiera ciepło z oceanu (<span class="math inline">\(T \approx 15^\circ C\)</span>) i zamienia je w całości na napęd.</p>
+<ul>
+<li>I Zasada? <strong>Spełniona</strong> (Energia z wody <span class="math inline">\(\to\)</span> Praca).</li>
+<li>II Zasada? <strong>Złamana</strong> (Brak <span class="math inline">\(Q_L\)</span>, <span class="math inline">\(\eta = 100\%\)</span>).</li>
+</ul>
+<div style="border: 2px solid red; padding: 10px; text-align: center;">
+<p><strong>NIEMOŻLIWE</strong> <span class="math display">\[ Q_H \to [SILNIK] \to W \]</span> (Brak strzałki <span class="math inline">\(Q_L\)</span>)</p>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/unnamed-chunk-2-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="procesy-odwracalne-i-nieodwracalne" class="slide level2">
 <h2>4. Procesy Odwracalne i Nieodwracalne</h2>
 <h3 id="proces-odwracalny-idealny">Proces Odwracalny (Idealny)</h3>
-<p>Można go cofnąć wzdłuż tej samej ścieżki, nie zostawiając żadnego śladu w otoczeniu. * Wymogi: Brak tarcia, kwazistatyczność (nieskończenie powolny), nieskończenie małe różnice temperatur <span class="math inline">\(\Delta T \to 0\)</span>.</p>
-<h3 id="proces-nieodwracalny-rzeczywisty">Proces Nieodwracalny (Rzeczywisty)</h3>
-<p>Cofnięcie wymaga nakładu pracy z zewnątrz. * Źródła nieodwracalności: Tarcie, mieszanie płynów, opór elektryczny, reakcje chemiczne, przepływ ciepła przy skończonej <span class="math inline">\(\Delta T\)</span>.</p>
+<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<p>Można go cofnąć wzdłuż tej samej ścieżki, nie zostawiając żadnego śladu w otoczeniu.</p>
+</div>
+<div class="fragment">
+<blockquote>
+<p>Wymogi: Brak tarcia, kwazistatyczność (nieskończenie powolny), nieskończenie małe różnice temperatur <span class="math inline">\(\Delta T \to 0\)</span>.</p>
+</blockquote>
+</div>
+<h3 class="fragment" id="proces-nieodwracalny-rzeczywisty">Proces Nieodwracalny (Rzeczywisty)</h3>
+<div class="fragment" style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<p>Cofnięcie wymaga nakładu pracy z zewnątrz.</p>
+</div>
+<div class="fragment">
+<blockquote>
+<p>Źródła nieodwracalności: Tarcie, mieszanie płynów, opór elektryczny, reakcje chemiczne, przepływ ciepła przy skończonej <span class="math inline">\(\Delta T\)</span>.</p>
+</blockquote>
+</div>
+</section>
+<section id="źródła-nieodwracalności" class="slide level2">
+<h2>Źródła Nieodwracalności</h2>
+<div style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;">
+<p>Co sprawia, że procesu nie da się cofnąć bez strat?</p>
+</div>
+<ol type="1">
+<li class="fragment"><strong>Tarcie</strong> (Solidne i lepkość płynów) - zamiana pracy na ciepło jest jednostronna.</li>
+<li class="fragment"><strong>Nierównowaga sił</strong> (Gwałtowne rozprężanie) - ciśnienie wewnętrzne jest znacznie wyższe niż zewnętrzne.</li>
+<li class="fragment"><strong>Wymiana ciepła przy skończonym <span class="math inline">\(\Delta T\)</span></strong> - im większa różnica temperatur, tym większa nieodwracalność.</li>
+<li class="fragment"><strong>Reakcje chemiczne</strong> - spalanie jest wysoce nieodwracalne (nie da się odzyskać paliwa ze spalin przez ogrzanie).</li>
+<li class="fragment"><strong>Opór elektryczny</strong> - przepływ prądu zawsze generuje ciepło Joule’a.</li>
+</ol>
+</section>
+<section id="proces-kwazistatyczny-wewnętrznie-odwracalny" class="slide level2">
+<h2>Proces Kwazistatyczny (Wewnętrznie Odwracalny)</h2>
+<div style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;">
+<p>Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi.</p>
+</div>
+<ul>
+<li class="fragment">Dzieje się to “nieskończenie powoli”.</li>
+<li class="fragment">W każdym momencie <span class="math inline">\(P_{układu} \approx P_{otoczenia}\)</span>.</li>
+<li class="fragment">W każdym momencie <span class="math inline">\(T_{układu} \approx T_{otoczenia}\)</span>.</li>
+</ul>
+<div class="fragment">
+<p>Taki proces to <strong>idelizacja</strong> (jak punkt materialny w mechanice). Służy do wyznaczenia teoretycznych granic wydajności.</p>
+</div>
 </section>
 <section id="obieg-carnota-wzorzec-doskonałości" class="slide level2">
 <h2>5. Obieg Carnota: Wzorzec Doskonałości</h2>
 <p>Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami <span class="math inline">\(T_H\)</span> i <span class="math inline">\(T_L\)</span>.</p>
-<p>Składa się z 4 procesów <strong>odwracalnych</strong>: 1. <strong>Izotermiczne rozprężanie</strong> (w <span class="math inline">\(T_H\)</span>): Pobranie ciepła <span class="math inline">\(Q_H\)</span>. 2. <strong>Adiabatyczne rozprężanie:</strong> Temperatura spada z <span class="math inline">\(T_H\)</span> do <span class="math inline">\(T_L\)</span>. Praca wykonana kosztem energii wewn. 3. <strong>Izotermiczne sprężanie</strong> (w <span class="math inline">\(T_L\)</span>): Oddanie ciepła <span class="math inline">\(Q_L\)</span>. 4. <strong>Adiabatyczne sprężanie:</strong> Temperatura rośnie z <span class="math inline">\(T_L\)</span> do <span class="math inline">\(T_H\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Składa się z 4 procesów <strong>odwracalnych</strong>:</p>
+<div class="fragment highlight-red" style="font-size: 0.6em;">
+<ol type="1">
+<li><strong>Izotermiczne rozprężanie</strong> (w <span class="math inline">\(T_H\)</span>): Pobranie ciepła <span class="math inline">\(Q_H\)</span>.</li>
+</ol>
+</div>
+<div class="fragment highlight-red" style="font-size: 0.6em;">
+<ol start="2" type="1">
+<li><strong>Adiabatyczne rozprężanie:</strong> Temperatura spada z <span class="math inline">\(T_H\)</span> do <span class="math inline">\(T_L\)</span>. Praca wykonana kosztem energii wewn.</li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment highlight-red" style="font-size: 0.6em;">
+<ol start="3" type="1">
+<li><strong>Izotermiczne sprężanie</strong> (w <span class="math inline">\(T_L\)</span>): Oddanie ciepła <span class="math inline">\(Q_L\)</span>.</li>
+</ol>
+</div>
+<div class="fragment highlight-red" style="font-size: 0.6em;">
+<ol start="4" type="1">
+<li><strong>Adiabatyczne sprężanie:</strong> Temperatura rośnie z <span class="math inline">\(T_L\)</span> do <span class="math inline">\(T_H\)</span>.</li>
+</ol>
+</div>
+</div></div>
+<div style="text-align: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/Carnot_p_v.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+</figure>
+</div>
+<div style="font-size: 0.5em; color: gray; margin-top: -60px;">
+<p>Źródło: <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> 2000, J. Szargut.</p>
+</div>
+</div>
+</section>
+<section id="obieg-carnota-krok-po-kroku-1-2" class="slide level2">
+<h2>Obieg Carnota: Krok po Kroku (1-2)</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1-2: Rozprężanie Izotermiczne</a></li><li><a href="#tabset-1-2">2-3: Rozprężanie Adiabatyczne</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li><strong>Stan:</strong> Kontakt ze źródłem górnym <span class="math inline">\(T_H\)</span>.</li>
+<li><strong>Proces:</strong> Gaz rozpręża się powoli, wykonując pracę na tłoku.</li>
+<li><strong>Energia:</strong> Aby <span class="math inline">\(T=const\)</span>, gaz musi pobrać ciepło <span class="math inline">\(Q_H\)</span>.</li>
+<li><strong>Entropia:</strong> Rośnie (dostarczamy ciepło).</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li><strong>Stan:</strong> Izolacja termiczna (brak wymiany ciepła).</li>
+<li><strong>Proces:</strong> Dalsze rozprężanie kosztem energii wewnętrznej.</li>
+<li><strong>Efekt:</strong> Temperatura spada z <span class="math inline">\(T_H\)</span> do <span class="math inline">\(T_L\)</span>.</li>
+<li><strong>Entropia:</strong> Stała (<span class="math inline">\(dQ=0\)</span>, proces odwracalny).</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="obieg-carnota-krok-po-kroku-3-4" class="slide level2">
+<h2>Obieg Carnota: Krok po Kroku (3-4)</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">3-4: Sprężanie Izotermiczne</a></li><li><a href="#tabset-2-2">4-1: Sprężanie Adiabatyczne</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<ul>
+<li><strong>Stan:</strong> Kontakt ze źródłem dolnym <span class="math inline">\(T_L\)</span>.</li>
+<li><strong>Proces:</strong> Tłok spręża gaz (praca zewnętrzna).</li>
+<li><strong>Energia:</strong> Aby <span class="math inline">\(T=const\)</span> (gaz nie ogrzewa się), musimy oddać ciepło <span class="math inline">\(Q_L\)</span>.</li>
+<li><strong>Entropia:</strong> Maleje (oddajemy ciepło).</li>
+</ul>
+</div>
+<div id="tabset-2-2">
+<ul>
+<li><strong>Stan:</strong> Izolacja termiczna.</li>
+<li><strong>Proces:</strong> Dalsze sprężanie podnosi temperaturę.</li>
+<li><strong>Efekt:</strong> Temperatura wraca z <span class="math inline">\(T_L\)</span> do <span class="math inline">\(T_H\)</span>. Zamykamy cykl.</li>
+<li><strong>Entropia:</strong> Stała.</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="wizualizacja-obiegu-carnota-t-s" class="slide level2">
 <h2>Wizualizacja Obiegu Carnota (T-s)</h2>
@@ -276,8 +577,10 @@
 <li>Izotermy (<span class="math inline">\(T=const\)</span>): Poziome.</li>
 <li>Adiabaty odwracalne (<span class="math inline">\(s=const\)</span>): Pionowe.</li>
 </ul>
+<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;">
 <p><span class="math display">\[ \eta_{Carnot} = 1 - \frac{T_L}{T_H} \]</span></p>
-<p>To maksymalna teoretyczna sprawność, jakakolwiek maszyna może osiągnąć.</p>
+</div>
+<p>To maksymalna teoretyczna sprawność, maszyny cieplnej.</p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -292,21 +595,66 @@
 </section>
 <section id="wnioski-z-carnota" class="slide level2">
 <h2>Wnioski z Carnota</h2>
+<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;">
 <p><span class="math display">\[ \eta = 1 - \frac{T_L}{T_H} \]</span></p>
+</div>
 <ol type="1">
-<li><strong>Sprawność zależy tylko od temperatur.</strong> Nie zależy od czynnika roboczego (powietrze, para, hel - bez znaczenia).</li>
-<li><strong>Im wyższa <span class="math inline">\(T_H\)</span>, tym lepiej.</strong> Dlatego w elektrowniach dążymy do jak najwyższych temperatur pary (np. <span class="math inline">\(600^\circ C\)</span>).</li>
-<li><strong>Im niższa <span class="math inline">\(T_L\)</span>, tym lepiej.</strong> Ale jesteśmy ograniczeni temperaturą otoczenia (ok. <span class="math inline">\(20^\circ C\)</span> lub <span class="math inline">\(300 K\)</span>).</li>
-<li><strong><span class="math inline">\(\eta &lt; 100\%\)</span>:</strong> Aby mieć <span class="math inline">\(\eta=1\)</span>, musielibyśmy mieć <span class="math inline">\(T_L = 0 K\)</span> (niemożliwe).</li>
+<li class="fragment"><strong>Sprawność zależy tylko od temperatur.</strong> Nie zależy od czynnika roboczego (powietrze, para, hel - bez znaczenia).</li>
+<li class="fragment"><strong>Im wyższa <span class="math inline">\(T_H\)</span>, tym lepiej.</strong> Dlatego w elektrowniach dążymy do jak najwyższych temperatur pary (np. <span class="math inline">\(600^\circ C\)</span>).</li>
+<li class="fragment"><strong>Im niższa <span class="math inline">\(T_L\)</span>, tym lepiej.</strong> Ale jesteśmy ograniczeni temperaturą otoczenia (ok. <span class="math inline">\(20^\circ C\)</span> lub <span class="math inline">\(300 K\)</span>).</li>
+<li class="fragment"><strong><span class="math inline">\(\eta &lt; 100\%\)</span>:</strong> Aby mieć <span class="math inline">\(\eta=1\)</span>, musielibyśmy mieć <span class="math inline">\(T_L = 0 K\)</span> (niemożliwe).</li>
 </ol>
+</section>
+<section id="potrzeba-niezależnej-skali-temperatury" class="slide level2">
+<h2>Potrzeba Niezależnej Skali Temperatury</h2>
+<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<p>Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.</p>
+</div>
+<ul>
+<li class="fragment">Rozszerzalność rtęci nie jest idealnie liniowa w każdej temperaturze.</li>
+<li class="fragment">Różne termometry mogą wskazywać nieco inne wartości.</li>
+</ul>
+<div class="fragment">
+<p><strong>Potrzebujemy skali uniwersalnej</strong>, niezależnej od użytego materiału. Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.</p>
+</div>
+</section>
+<section id="termodynamiczna-skala-temperatury-kelvina" class="slide level2">
+<h2>Termodynamiczna Skala Temperatury (Kelvina)</h2>
+<div style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;">
+<p>Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:</p>
+</div>
+<div style="border: 3px solid #d58e01; background-color: #e9d795; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;">
+<p><span class="math display">\[ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} \]</span></p>
+</div>
+<ul>
+<li class="fragment">Stosunek temperatur jest równy stosunkowi ciepła wymienianego w obiegu odwracalnym.</li>
+<li class="fragment">Skala ta nie zależy od czynnika roboczego.</li>
+<li class="fragment"><strong>Zero absolutne (<span class="math inline">\(0 K\)</span>):</strong> Teoretyczny stan, w którym silnik Carnota miałby sprawność 100% (nie oddawałby ciepła <span class="math inline">\(Q_L=0\)</span>).</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adnotacja</strong></p>
+</div>
+<div class="callout-content">
+<p>Jednostka Kelvina jest podstawową jednostką w układzie SI. <span class="math inline">\(T(K) = t(^\circ C) + 273.15\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="podsumowanie-w6" class="slide level2">
 <h2>Podsumowanie W6</h2>
 <ol type="1">
-<li><strong>II Zasada:</strong> Energia ma jakość. Ciepło nie zamieni się w 100% na pracę.</li>
-<li><strong>Kelvin-Planck:</strong> Nie ma silnika o sprawności 100%. Musi być chłodnica.</li>
-<li><strong>Clausius:</strong> Ciepło płynie z ciepłego do zimnego samoistnie.</li>
+<li><strong>II Zasada:</strong> Energia ma jakość. Procesy rzeczywiste są nieodwracalne (tarcie, <span class="math inline">\(\Delta T\)</span>).</li>
+<li><strong>Silniki:</strong> Nie ma silnika o sprawności 100% (Kelvin-Planck).</li>
+<li><strong>Pompy Ciepła:</strong> Wymagają pracy, by transportować ciepło “pod górę” (Clausius).</li>
 <li><strong>Carnot:</strong> Wyznacza teoretyczną granicę sprawności (<span class="math inline">\(\eta = 1 - T_L/T_H\)</span>).</li>
+<li><strong>Skala Termodynamiczna:</strong> Definiuje temperaturę niezależnie od substancji.</li>
 </ol>
 <h3 id="zapowiedź-w7">Zapowiedź W7</h3>
 <p>W kolejnym wykładzie zajmiemy się matematycznym opisem nieporządku - <strong>Entropią</strong>.</p>

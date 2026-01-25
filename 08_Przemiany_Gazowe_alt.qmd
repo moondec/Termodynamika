@@ -1,0 +1,367 @@
+---
+title: "W8: Przemiany Gazów Doskonałych"
+subtitle: "Analiza Procesów: Izobara, Izochora, Izoterma, Adiabata"
+author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="img/KBiG.jpg" style="height: 200px;">
+  </div>
+lang: pl
+format:
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    include-in-header:
+      text: |
+        <style>
+        body { background-color: #1a1a1a; }
+        .reveal .slide-background-content {
+            background-image: url("img/background_red.png") !important;
+            background-size: contain !important; 
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            opacity: 0.1 !important;
+        }
+        .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+            background-image: none !important;
+            background-color: white !important;
+            opacity: 1 !important;
+        }
+        </style>
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    width: 1600
+    height: 900
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
+editor: source
+---
+
+# Wstęp i Podstawy {data-menu-title="Wstęp"}
+
+## Cel wykładu
+
+Celem dzisiejszego wykładu jest szczegółowa analiza charakterystycznych przemian gazu doskonałego:
+1.  **Izochorycznej** ($V = const$)
+2.  **Izobarycznej** ($p = const$)
+3.  **Izotermicznej** ($T = const$)
+4.  **Adiabatycznej** ($Q = 0$)
+5.  **Politropowej** (uogólnienie)
+
+Analiza obejmie bilans energii (I Zasada Termodynamiki) oraz reprezentację na wykresach $p-V$ i $T-s$ [1, 2].
+
+---
+
+## Definicja Procesu Termodynamicznego
+
+**Proces termodynamiczny (przemiana)** to zmiana stanu układu, w której zmienia się wartość co najmniej jednego z parametrów termodynamicznych ($p, V, T$) [3].
+
+*   **Proces kwazistatyczny:** Przebiega nieskończenie powoli, układ w każdej chwili jest w stanie równowagi.
+*   **Proces odwracalny:** Możliwe jest przejście odwrotne przez te same stany pośrednie bez zmian w otoczeniu [3, 4].
+
+---
+
+## I Zasada Termodynamiki - Kontekst
+
+Dla układu zamkniętego w procesie kwazistatycznym I zasada przyjmuje postać:
+
+$$ dU = đQ + đW $$
+
+Gdzie:
+*   $dU$ – zmiana energii wewnętrznej
+*   $đQ$ – ciepło elementarne wymienione z otoczeniem
+*   $đW$ – praca elementarna wykonana **na układzie** [5].
+
+---
+
+## Praca Objętościowa
+
+W procesach odwracalnych praca objętościowa wyraża się wzorem:
+
+$$ đW = -p dV $$
+
+Całkowita praca przy zmianie objętości od $V_1$ do $V_2$:
+
+$$ W_{1-2} = -\int_{V_1}^{V_2} p(V) dV $$
+
+*   **Konwencja znaku:** Jeśli $dV > 0$ (rozprężanie), to $W < 0$ (układ wykonuje pracę). Jeśli $dV < 0$ (sprężanie), to $W > 0$ (siły zewnętrzne wykonują pracę na układzie) [1, 6].
+
+---
+
+## Właściwości Gazu Doskonałego (Przypomnienie)
+
+W dalszej analizie wykorzystamy:
+1.  **Równanie Clapeyrona:** $pV = nRT$ [7]
+2.  **Energię wewnętrzną:** Zależy tylko od temperatury, $dU = C_V dT$ [8, 9].
+3.  **Entalpię:** Zależy tylko od temperatury, $dH = C_p dT$ [9].
+4.  **Równanie Mayera:** $C_p - C_V = nR$ [10].
+
+---
+
+# 1. Przemiana Izochoryczna {data-menu-title="Izochora"}
+
+## Definicja i Warunki
+
+**Przemiana izochoryczna** to proces zachodzący przy stałej objętości.
+
+*   Warunek: **$V = const$**
+*   Różniczka: **$dV = 0$**
+
+Z prawa Charlesa (dla gazu doskonałego):
+$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} $$
+Ciśnienie jest wprost proporcjonalne do temperatury [1].
+
+---
+
+## Bilans Energii (Izochora)
+
+Skoro $dV = 0$, to praca objętościowa:
+$$ đW = -p dV = 0 $$
+
+Z I zasady termodynamiki ($dU = đQ + đW$):
+$$ dU = đQ $$
+
+**Wniosek:** W przemianie izochorycznej całe dostarczone ciepło zużywane jest na przyrost energii wewnętrznej gazu [9].
+
+---
+
+## Ciepło i Entropia (Izochora)
+
+**Ciepło przemiany:**
+$$ Q_{1-2} = \Delta U = \int_{T_1}^{T_2} C_V(T) dT $$
+Dla $C_V = const$:
+$$ Q_{1-2} = n C_{V,m} (T_2 - T_1) $$
+
+**Zmiana entropii:**
+$$ \Delta S = \int \frac{đQ}{T} = \int_{T_1}^{T_2} \frac{C_V dT}{T} = C_V \ln\left(\frac{T_2}{T_1}\right) $$
+lub wyrażając przez ciśnienia: $\Delta S = C_V \ln(p_2/p_1)$ [11].
+
+---
+
+## Wykresy (Izochora)
+
+*   **Wykres p-V:** Linia pionowa (prostopadła do osi V). Pole pod wykresem (praca) wynosi zero.
+*   **Wykres T-s:** Krzywa wykładnicza (nachylenie zależy od $C_V$).
+
+*Wizualizacja:*
+Wzrost temperatury $\rightarrow$ Wzrost ciśnienia $\rightarrow$ Wzrost entropii (ogrzewanie izochoryczne) [9, 12].
+
+---
+
+# 2. Przemiana Izobaryczna {data-menu-title="Izobara"}
+
+## Definicja i Warunki
+
+**Przemiana izobaryczna** to proces zachodzący przy stałym ciśnieniu.
+
+*   Warunek: **$p = const$**
+*   Różniczka: **$dp = 0$**
+
+Z prawa Gay-Lussaca:
+$$ \frac{V_1}{T_1} = \frac{V_2}{T_2} $$
+Objętość rośnie liniowo z temperaturą [9].
+
+---
+
+## Praca w Przemianie Izobarycznej
+
+Praca bezwzględna wykonana na układzie:
+$$ W_{1-2} = -\int_{V_1}^{V_2} p dV = -p (V_2 - V_1) $$
+
+Z równania stanu gazu:
+$$ W_{1-2} = -nR (T_2 - T_1) $$
+
+Jeśli gaz się rozszerza ($V_2 > V_1$), praca sił zewnętrznych jest ujemna (gaz wykonuje pracę) [9].
+
+---
+
+## Ciepło i Entalpia (Izobara)
+
+Z I zasady termodynamiki ($dU = đQ - pdV \Rightarrow đQ = dU + pdV = dH$):
+
+$$ Q_{1-2} = \Delta H = \int_{T_1}^{T_2} C_p dT $$
+
+Dla stałego $C_p$:
+$$ Q_{1-2} = n C_{p,m} (T_2 - T_1) $$
+
+Ciepło dostarczone w procesie izobarycznym jest równe zmianie **entalpii** [9].
+
+---
+
+## Wykresy (Izobara)
+
+*   **Wykres p-V:** Linia pozioma. Pole pod wykresem to prostokąt o polu $p(V_2-V_1)$.
+*   **Wykres T-s:** Krzywa logarytmiczna, ale **mniej stroma** niż izochora (ponieważ $C_p > C_V$).
+
+Zmiana entropii:
+$$ \Delta S = C_p \ln\left(\frac{T_2}{T_1}\right) = C_p \ln\left(\frac{V_2}{V_1}\right) $$
+[12].
+
+---
+
+# 3. Przemiana Izotermiczna {data-menu-title="Izoterma"}
+
+## Definicja i Warunki
+
+**Przemiana izotermiczna** zachodzi w stałej temperaturze.
+
+*   Warunek: **$T = const$**
+*   Warunek gazu doskonałego: **$dU = 0$** (energia wewnętrzna zależy tylko od T)
+
+Prawo Boyle’a-Mariotte’a:
+$$ p_1 V_1 = p_2 V_2 = const $$
+Krzywa na wykresie p-V jest hiperbolą [9].
+
+---
+
+## Bilans Energii (Izoterma)
+
+Skoro $\Delta U = 0$, to z I zasady termodynamiki:
+$$ 0 = Q + W \Rightarrow Q = -W $$
+
+Ciepło dostarczone do układu jest w całości zamieniane na pracę wykonaną przez układ (lub odwrotnie przy sprężaniu) [13].
+
+---
+
+## Obliczenia Pracy i Entropii (Izoterma)
+
+**Praca (wykonana na układzie):**
+$$ W_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) $$
+$$ W_{1-2} = nRT \ln\left(\frac{p_2}{p_1}\right) $$
+
+**Zmiana entropii:**
+$$ \Delta S = \frac{Q}{T} = \frac{-W}{T} = nR \ln\left(\frac{V_2}{V_1}\right) $$
+[11, 13].
+
+---
+
+# 4. Przemiana Adiabatyczna {data-menu-title="Adiabata"}
+
+## Definicja i Warunek Izolacji
+
+**Przemiana adiabatyczna** zachodzi bez wymiany ciepła z otoczeniem.
+
+*   Warunek: **$đQ = 0$**
+*   Dla procesu odwracalnego: **$dS = 0$** (izentropa)
+
+Układ jest izolowany termicznie. Praca jest wykonywana kosztem energii wewnętrznej [13].
+
+---
+
+## Równanie Poissona
+
+Dla gazu doskonałego równanie adiabaty odwracalnej (równanie Poissona):
+
+$$ p V^{\gamma} = const $$
+
+Gdzie $\gamma$ (kappa) to wykładnik adiabaty:
+$$ \gamma = \frac{C_p}{C_V} > 1 $$
+
+Związki temperatur i objętości:
+$$ T V^{\gamma-1} = const $$
+[13].
+
+---
+
+## Praca w Przemianie Adiabatycznej
+
+Z I zasady termodynamiki ($dU = đW$, bo $đQ=0$):
+
+$$ W_{1-2} = \Delta U = C_V (T_2 - T_1) $$
+
+Alternatywny wzór (z wykorzystaniem parametrów p, V):
+$$ W_{1-2} = \frac{p_2 V_2 - p_1 V_1}{\gamma - 1} $$
+Praca sprężania powoduje wzrost energii wewnętrznej i wzrost temperatury [14].
+
+---
+
+## Wykresy (Adiabata)
+
+*   **Wykres p-V:** Krzywa podobna do hiperboli, ale **bardziej stroma** niż izoterma (ponieważ $\gamma > 1$).
+*   **Wykres T-s:** Linia pionowa ($S = const$). Pole pod wykresem (ciepło) wynosi zero.
+
+Porównanie nachyleń na p-V:
+$$ \left(\frac{\partial p}{\partial V}\right)_S = \gamma \left(\frac{\partial p}{\partial V}\right)_T $$
+[12, 15].
+
+---
+
+# 5. Przemiana Politropowa {data-menu-title="Politropa"}
+
+## Uogólnienie Procesów
+
+**Przemiana politropowa** to ogólny proces, w którym pojemność cieplna $C$ jest stała.
+
+Równanie politropy:
+$$ p V^n = const $$
+
+Gdzie $n$ to wykładnik politropy:
+$$ n = \frac{C - C_p}{C - C_V} $$
+[2, 14].
+
+---
+
+## Szczególne przypadki Politropy
+
+Wszystkie omówione wcześniej przemiany są szczególnymi przypadkami politropy dla konkretnych wartości $n$:
+
+*   **Izobara:** $n = 0$ ($p = const$)
+*   **Izoterma:** $n = 1$ ($pV = const$)
+*   **Adiabata:** $n = \gamma$ ($pV^\gamma = const$)
+*   **Izochora:** $n = \pm \infty$
+
+[16].
+
+---
+
+## Praca i Ciepło w Politropie
+
+**Praca (analogicznie do adiabaty):**
+$$ W_{1-2} = \frac{nR(T_2 - T_1)}{n - 1} $$
+
+**Ciepło:**
+Wymieniane ciepło zależy od wykładnika $n$:
+$$ Q_{1-2} = C_V \frac{n - \gamma}{n - 1} (T_2 - T_1) $$
+
+Dla $1 < n < \gamma$ (częsty przypadek w sprężarkach chłodzonych), ciepło jest odprowadzane, mimo że temperatura rośnie [16].
+
+---
+
+# Podsumowanie i Porównanie {data-menu-title="Podsumowanie"}
+
+## Reprezentacja na wykresie p-V
+
+Rozchodzenie się linii z jednego punktu początkowego (sprężanie):
+
+1.  **Adiabata ($n=\gamma$):** Najbardziej stroma, największy przyrost ciśnienia.
+2.  **Politropa ($1<n<\gamma$):** Pośrednia.
+3.  **Izoterma ($n=1$):** Mniej stroma.
+4.  **Izobara ($n=0$):** Pozioma.
+
+*Największą pracę sprężania (pole powierzchni) wykonujemy w przemianie adiabatycznej, najmniejszą w izotermicznej (przy tym samym stopniu sprężania)* [17, 18].
+
+---
+
+## Zestawienie Wzorów
+
+| Przemiana | Równanie | Praca ($W$) | Ciepło ($Q$) |
+|:---:|:---:|:---:|:---:|
+| **Izochora** | $V=const$ | $0$ | $\Delta U = C_V \Delta T$ |
+| **Izobara** | $p=const$ | $-p \Delta V$ | $\Delta H = C_p \Delta T$ |
+| **Izoterma** | $T=const$ | $-nRT \ln(V_2/V_1)$ | $-W$ |
+| **Adiabata** | $pV^\gamma=const$ | $\Delta U$ | $0$ |
+
+[1, 9, 13, 14].
+
+---
+
+## Dziękuję za uwagę

@@ -22,7 +22,7 @@ format:
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
-            opacity: 0.1 !important;
+            opacity: 0.2 !important;
         }
         .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
             background-image: none !important;
@@ -61,29 +61,42 @@ editor: source
 
 Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:
 
-$$ \oint \frac{\delta Q}{T} \le 0 $$
+$$ \oint \frac{đ Q}{T} \le 0 $$
 
-*   Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.
+>Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.
 
-### Interpretacja:
+
+::: {.fragment .callout-note title="Interpretacja"}
 1.  **$= 0$**: Cykl jest **odwracalny** (idealny, brak tarcia).
 2.  **$< 0$**: Cykl jest **nieodwracalny** (rzeczywisty, straty).
 3.  **$> 0$**: Cykl jest **niemożliwy** (łamie II Zasadę).
+:::
 
 ---
 
 ## 2. Entropia ($S$)
 
-Skoro dla procesu odwracalnego $\oint \frac{\delta Q_{rev}}{T} = 0$, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+Skoro dla procesu odwracalnego $\oint \frac{đ Q_{rev}}{T} = 0$, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
+:::
 
-Definiujemy nową funkcję stanu - **Entropię ($S$)**:
+::: {.fragment}
+>Definiujemy nową funkcję stanu - **Entropię ($S$)**:
 
-$$ dS = \left( \frac{\delta Q}{T} \right)_{rev} $$
 
+
+$$ dS = \left( \frac{đ Q}{T} \right)_{rev} $$
+
+:::
+
+::: {.fragment style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Jednostka: $[J/K]$ (lub dla entropii właściwej $s$: $[J/(kg\cdot K)]$).
+:::
 
+::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 ### Co to oznacza fizycznie?
 Entropia jest miarą **nieuporządkowania** układu (statystycznie) oraz miarą **niezdolności energii do wykonania pracy**.
+:::
 
 ---
 
@@ -91,13 +104,31 @@ Entropia jest miarą **nieuporządkowania** układu (statystycznie) oraz miarą 
 
 Dlaczego ciepło płynie od gorącego do zimnego?
 
-1.  Ciało A ($T_H$) oddaje ciepło $Q$: 
-    $$ \Delta S_A = \frac{-Q}{T_H} $$ (Spadek entropii)
-2.  Ciało B ($T_L$) pobiera ciepło $Q$: 
-    $$ \Delta S_B = \frac{+Q}{T_L} $$ (Wzrost entropii)
+:::: {.columns}
 
-Suma zmian: $\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})$.
+::: {.column width="40%"}
+
+1.  Ciało A ($T_H$) oddaje ciepło $Q$: 
+
+    $$ \Delta S_A = \frac{-Q}{T_H} $$ 
+    
+    [ (Spadek entropii) ]{.fragment .highlight-red}
+2.  Ciało B ($T_L$) pobiera ciepło $Q$: 
+
+    $$ \Delta S_B = \frac{+Q}{T_L} $$ 
+    
+    [ (Wzrost entropii) ]{.fragment .highlight-red}
+    
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment .callout-note title="Suma zmian:"}
+$$\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})$$
 Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! Proces spontaniczny.
+:::
+:::
+::::
 
 ---
 
@@ -105,22 +136,28 @@ Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! P
 
 Dla układu izolowanego (adiabatycznego):
 
-$$ \Delta S_{izul} \ge 0 $$
+$$ \Delta S_{izol} \ge 0 $$
+
+::: incremental
 
 *   W procesach odwracalnych entropia układu izolowanego jest stała ($\Delta S = 0$).
 *   W procesach rzeczywistych (nieodwracalnych) entropia układu izolowanego **ZAWSZE ROŚNIE**.
 
-::: {.callout-note}
-Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza "Strzałkę Czasu".
+:::
+
+::: {.fragment .callout-note}
+Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza "Strzałkę Czasu" [ i być może uniemożliwia podróże w czasie (w przeszłość).]{.fragment .highlight-red}
 :::
 
 ---
 
 ## Generacja Entropii ($S_{gen}$)
 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Możemy zapisać bilans entropii dla dowolnego procesu:
+:::
 
-$$ \Delta S_{ukladu} = \int \frac{\delta Q}{T_{granicy}} + S_{gen} $$
+$$ \Delta S_{ukladu} = \int \frac{đ Q}{T_{granicy}} + S_{gen} $$
 
 *   $S_{gen}$: Entropia generowana wewnątrz układu przez nieodwracalności (tarcie, mieszanie, spalanie).
 *   **$S_{gen}$ nigdy nie może być ujemne!**
@@ -131,18 +168,31 @@ $$ \Delta S_{ukladu} = \int \frac{\delta Q}{T_{granicy}} + S_{gen} $$
 
 ## 4. Obliczanie Zmian Entropii
 
-### Dla płynów nieściśliwych (Ciecze, Ciała stałe)
+### Dla ciał nieściśliwych (Ciecze, Ciała stałe)
+
 $v \approx const$, $C_p \approx C_v = C$.
 
 $$ \Delta s = C \cdot \ln \left( \frac{T_2}{T_1} \right) $$
 
 ### Dla Gazów Doskonałych
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
 Mamy dwa wzory (zależnie od znanych zmiennych):
 
 1.  $$ \Delta s = C_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{p_2}{p_1} \right) $$
 2.  $$ \Delta s = C_v \ln \left( \frac{T_2}{T_1} \right) + R \ln \left( \frac{v_2}{v_1} \right) $$
+:::
+::: {.column width="60%"}
 
-**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. Wzory te wtedy służą do wyprowadzenia $pv^k=const$!
+::: {.fragment .fade-up .callout-warning appearance="simple"}
+**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. <br>Wzory te wtedy służą do wyprowadzenia $$pv^k=const$$
+:::
+
+:::
+::::
 
 ---
 
@@ -151,11 +201,85 @@ Mamy dwa wzory (zależnie od znanych zmiennych):
 Dla procesu odwracalnego:
 $$ Q_{rev} = \int_{1}^{2} T \, dS $$
 
-Na wykresie T-s, pole powierzchni pod krzywą przemiany reprezentuje **ciepło wymienione** w procesie (podobnie jak pole na p-v reprezentuje pracę).
+:::: {.columns}
 
+::: {.column width="55%"}
+
+::: {.fragment .fade-left style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+Na wykresie T-s, pole powierzchni pod krzywą przemiany reprezentuje **ciepło wymienione** w procesie (podobnie jak pole na p-v reprezentuje pracę).
+:::
+
+::: {.fragment .fade-right .callout-warning appearance="simple" style="font-size: 0.8em;"}
 *   Proces w prawo ($ds > 0$): Pobieranie ciepła.
 *   Proces w lewo ($ds < 0$): Oddawanie ciepła.
 *   Proces pionowy ($ds = 0$): Adiabata (brak ciepła).
+
+:::
+
+:::
+
+::: {.column width="45%"}
+
+::: {.fragment}
+
+```{r}
+#| label: carnot-ts
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5
+
+library(ggplot2)
+
+# Dane do wykresu (bez zmian)
+df_carnot <- data.frame(
+  s = c(1, 4, 4, 1, 1),
+  T = c(600, 600, 300, 300, 600),
+  Label = c("1", "2", "3", "4", "1")
+)
+
+ggplot(df_carnot, aes(x=s, y=T)) +
+  # Obszar cyklu
+  # Zmiana: size -> linewidth (nowy standard ggplot2)
+  geom_polygon(fill="lightgreen", alpha=0.5, color="darkgreen", linewidth=2) +
+  
+  # Oznaczenia punktów 1-4
+  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold") +
+  
+  # --- OPISY Z FORMATOWANIEM MATEMATYCZNYM (parse = TRUE) ---
+  
+  # 1. Środek (Praca = Ciepło Netto)
+  # Używamy atop(), żeby zrobić dwie linijki tekstu matematycznego
+  annotate("text", x=2.5, y=450, 
+           label = "atop(Q[rev])", 
+           fontface="bold", color="darkgreen", size=5, parse=TRUE) +
+  
+  # 2. Góra (Pobieranie ciepła)
+  # 'Text' * Zmienna skleja napis z symbolem
+  annotate("text", x=2.5, y=630, 
+           label = "'Pobieranie ' * Q[H] * ' (Izoterma ' * T[H] * ')'", 
+           color="red", size=4.5, parse=TRUE) +
+  
+  # 3. Dół (Oddawanie ciepła)
+  annotate("text", x=2.5, y=270, 
+           label = "'Oddawanie ' * Q[L] * ' (Izoterma ' * T[L] * ')'", 
+           color="blue", size=4.5, parse=TRUE) +
+  
+  # --- ESTETYKA ---
+  theme_minimal() +
+  # Formatowanie osi z jednostkami w nawiasach
+  labs(
+    title = expression(paste("Obieg Carnota na wykresie ", T-s)),
+    x = expression("Entropia " * s ~ bgroup("[", kJ/kgK, "]")),
+    y = expression("Temperatura " * T ~ bgroup("[", K, "]"))
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
+    axis.title = element_text(size = 12)
+  )
+```
+:::
+:::
+::::
 
 ---
 
@@ -167,9 +291,10 @@ Sformułowana przez Nernsta:
 
 $$ \lim_{T \to 0} S = 0 $$
 
-### Konsekwencje:
+::: {.fragment .callout-warning title="Konsekwencje:"}
 1.  Daje "punkt odniesienia" dla entropii. W przeciwieństwie do energii wewnętrznej $U$ (gdzie znamy tylko $\Delta U$), dla entropii możemy wyznaczyć wartość bezwzględną.
 2.  Nie da się osiągnąć zera bezwzględnego w skończonej liczbie kroków.
+:::
 
 ---
 
@@ -182,5 +307,5 @@ $$ \lim_{T \to 0} S = 0 $$
     $$ \Delta s = C_p \ln(T_2/T_1) - R \ln(p_2/p_1) $$
 5.  **III Zasada:** W $0 K$ entropia wynosi 0 (stan idealnego porządku).
 
-### Zapowiedź W8
+## Zapowiedź W8
 Ubrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie **Przemiany Gazowe** (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.
