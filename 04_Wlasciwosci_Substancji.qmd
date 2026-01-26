@@ -257,6 +257,41 @@ Wartość $k$ zależy od budowy cząsteczki (stopni swobody):
 
 ---
 
+
+---
+
+## Zasada Ekwipartycji Energii
+
+### Teoria Ciepła Właściwego
+
+Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej [22].
+
+Średnia energia na jeden stopień swobody:
+$$ \langle E_i \rangle = \frac{1}{2} k T $$
+
+*   **Ruch postępowy:** 3 stopnie ($3 \cdot \frac{1}{2} kT$).
+*   **Ruch obrotowy:** +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).
+*   **Drgania (oscylacje):** Wnoszą wkład energii kinetycznej i potencjalnej.
+
+
+## Ciepło Właściwe Gazów
+
+### Wartości Teoretyczne $c_v$
+
+Wartość molowego ciepła właściwego zależy od liczby stopni swobody ($f$):
+
+$$ (Mc_v) = \frac{f}{2} (MR) $$
+
+| Typ Gazu | $f$ | $(Mc_v)$ | Przykład |
+| :--- | :--- | :--- | :--- |
+| **Jednoatomowy** | 3 | $1.5 R$ | Ar, He |
+| **Dwuatomowy** | 5 | $2.5 R$ | $N_2, O_2$ |
+| **Wieloatomowy** | 6 | $3.0 R$ | $H_2O, CH_4$ |
+
+*Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)*.
+
+---
+
 ## Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty
 
 ### Stała Boltzmanna $k$ (lub $k_B$), występuje w fizyce statystycznej (wzór na entropię $S=kln(W)$) oraz w definicji stałej gazowej <br>
@@ -371,6 +406,7 @@ Gdy ciśnienie jest bardzo wysokie (np. w butli z tlenem 200 bar) lub temperatur
 
 1.  Cząsteczki są upakowane ciasno $\to$ ich własna objętość zaczyna mieć znaczenie.
 2.  Siły przyciągania (van der Waalsa) zaczynają sklejać cząsteczki.
+3.  **Efekt Joule'a-Thomsona:** Dławienie ($h=const$) powoduje zmianę temperatury.
 
 Potrzebujemy lepszego równania stanu.
 
@@ -513,9 +549,9 @@ Zasadę tę można porównać do przeliczania wieku psa na "ludzkie lata".
 
 1.  **Gaz Doskonały:** Dobry dla niskich ciśnień. Równanie $pv=RT$.
 2.  **Stała $R$:** Pamiętaj o różnicy między uniwersalną ($8314$) a indywidualną ($R_u/M$).
-3.  **Ciepła:** $C_p = C_v + R$. Dla powietrza wykładnik $k=1.4$.
+3.  **Ciepła:** $C_p = C_v + R$. Wartości zależą od stopni swobody ($f$).
 4.  **Mieszaniny:** Ciśnienia cząstkowe sumują się (Dalton).
-5.  **Rzeczywistość:** Siły van der Waalsa i objętość cząsteczek zmieniają zachowanie gazu blisko skraplania (Izotermy Andrewsa, współczynnik $Z$).
+5.  **Rzeczywistość:** Siły międzycząsteczkowe (Van der Waals) powodują efekty takie jak skraplanie czy zmiana temperatury przy dławieniu (Joule-Thomson).
 
 ### Zapowiedź W5
 W kolejnym wykładzie wejdziemy w obszar **Pary Wodnej**: wrzenie, tablice parowe, turbiny!

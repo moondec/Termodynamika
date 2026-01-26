@@ -1,5 +1,5 @@
 ---
-title: "Wprowadzenie do Termodynamiki Technicznej"
+title: "W1: Wprowadzenie do Termodynamiki Technicznej"
 subtitle: "Podstawowe Pojęcia, Układy, Równowaga i Procesy"
 author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
 institute: |

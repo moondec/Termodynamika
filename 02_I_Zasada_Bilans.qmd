@@ -472,3 +472,16 @@ Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 > Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
 > Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
 
+
+## Podsumowanie W2
+
+### Kluczowe Wnioski
+
+1.  **Energia Wewnętrzna ($U$):** Funkcja stanu, zależy od temperatury (dla g.d.).
+2.  **I Zasada Termodynamiki:** Bilans energii dla układów zamkniętych.
+    $$ \Delta U = Q - L $$
+3.  **Praca Objętościowa ($L$):** Zależy od zmiany objętości ($pdV$) i drogi procesu.
+4.  **Entalpia ($H$):** Suma energii wewnętrznej i pracy przetłaczania ($U+pV$).
+5.  **Ciepła Właściwe:** $C_p > C_v$, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.
+
+

@@ -244,35 +244,7 @@ $$ h_1 = h_2 $$
 *   Dla gazów rzeczywistych występuje **efekt Joule'a-Thomsona** (zmiana temperatury).
 
 
-## Zasada Ekwipartycji Energii
 
-### Teoria Ciepła Właściwego
-
-Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej [22].
-
-Średnia energia na jeden stopień swobody:
-$$ \langle E_i \rangle = \frac{1}{2} k T $$
-
-*   **Ruch postępowy:** 3 stopnie ($3 \cdot \frac{1}{2} kT$).
-*   **Ruch obrotowy:** +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).
-*   **Drgania (oscylacje):** Wnoszą wkład energii kinetycznej i potencjalnej.
-
-
-## Ciepło Właściwe Gazów
-
-### Wartości Teoretyczne $c_v$
-
-Wartość molowego ciepła właściwego zależy od liczby stopni swobody ($f$):
-
-$$ (Mc_v) = \frac{f}{2} (MR) $$
-
-| Typ Gazu | $f$ | $(Mc_v)$ | Przykład |
-| :--- | :--- | :--- | :--- |
-| **Jednoatomowy** | 3 | $1.5 R$ | Ar, He |
-| **Dwuatomowy** | 5 | $2.5 R$ | $N_2, O_2$ |
-| **Wieloatomowy** | 6 | $3.0 R$ | $H_2O, CH_4$ |
-
-*Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)*.
 
 
 ## I Zasada w Procesach Spalania
@@ -311,15 +283,15 @@ Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu 
 *   **Strata egzergii ($\delta B$):** Jest proporcjonalna do przyrostu entropii (Prawo Gouya-Stodoli).
 
 
-## Podsumowanie W2 i 3
+## Podsumowanie W3
 
 ### Kluczowe Wnioski
 
-*   **Energia wewnętrzna i entalpia** to kluczowe funkcje stanu do bilansowania energii.
-*   I Zasada dla układów zamkniętych: $Q + W = \Delta U$.
-*   I Zasada dla układów otwartych: **Równanie stałego przepływu** oparte na entalpii.
-*   **Praca techniczna** występuje w maszynach przepływowych.
-*   Ciepła właściwe zależą od budowy cząsteczki i temperatury.
+*   **Układy Otwarte:** Wymagają uwzględnienia pracy technicznej ($L_t$) i entalpii ($H$).
+*   **Równanie Szewalskiego:** Bilans energii dla przepływu ustalonego (turbiny, sprężarki, wymienniki).
+*   **Praca Techniczna:** Pole do osi rzędnych ($p$).
+*   **Dławienie:** Proces izentalpowy ($h=const$), któremu może towarzyszyć zmiana temperatury (J-T).
+
 
 ## Przejście do W4
 
