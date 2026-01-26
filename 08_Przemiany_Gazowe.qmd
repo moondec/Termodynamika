@@ -109,10 +109,10 @@ $$ L_{1-2} = -\int_{V_1}^{V_2} p(V) dV $$
 
 Podstawowe wzory i zależności:
 
-1.  **Równanie Clapeyrona:** $pV = nRT$
-2.  **Energię wewnętrzną:** Zależy tylko od temperatury, $dU = C_V dT$.
-3.  **Entalpię:** Zależy tylko od temperatury, $dH = C_p dT$.
-4.  **Równanie Mayera:** $C_p - C_V = nR$.
+1.  **Równanie Clapeyrona:** $pV = nRT$ lub $pv = RT$ (dla 1 kg)
+2.  **Energię wewnętrzną:** Zależy tylko od temperatury, $du = c_v dT$.
+3.  **Entalpię:** Zależy tylko od temperatury, $dh = c_p dT$.
+4.  **Równanie Mayera:** $C_p - C_V = nR$ lub $c_p - c_v = R$.
 
 ---
 
@@ -120,7 +120,7 @@ Podstawowe wzory i zależności:
 
 ::: {.callout-note appearance="simple"}
 Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br>
-(Wszytkie wielkości wyrażamy jako "właściwe", czyli dzielimy przez masę):
+(Wszystkie wielkości wyrażamy jako "właściwe", czyli małe litery):
 :::
 
 :::: {.columns}
@@ -129,18 +129,18 @@ Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)
 
 1.  **Równanie procesu:** Związek między $p$ i $v$.
 2.  **Praca objętościowa ($l$):** Pole pod krzywą na $p-v$.
-    $$ l = \int p \, dv $$
-3.  **Praca techniczna ($w_t$):** Pole do osi $p$.
-    $$ l_t = - \int v \, dp $$
+    $$ l = -\int p \, dv $$
+3.  **Praca techniczna ($l_t$):** Pole do osi $p$.
+    $$ l_t = \int v \, dp $$
 4.  **Ciepło ($q$):** Z I Zasady Termodynamiki.
-    $$ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t $$
+    $$ q = \Delta u - l \quad \text{lub} \quad q = \Delta h - l_t $$
 :::
 
 ::: {.column width="40%"}
 
 ::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 
-Pamiętamy zawsze: $$\Delta u = C_v \Delta T$$ oraz $$\Delta h = C_p \Delta T$$
+Pamiętamy zawsze: $$\Delta u = c_v \Delta T$$ oraz $$\Delta h = c_p \Delta T$$
 :::
 
 :::
@@ -148,242 +148,324 @@ Pamiętamy zawsze: $$\Delta u = C_v \Delta T$$ oraz $$\Delta h = C_p \Delta T$$
 
 ---
 
-## 3. Przemiana Izochoryczna
+## 3. Przemiana Izochoryczna ($v=const$)
 
-**Warunek:** $V = const \Rightarrow v_1 = v_2$
-Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
+::: {.callout-note title="**Warunek:**"}
+$dv = 0 \Rightarrow l = 0$
+:::
 
-### Równanie Stanu (Charlesa)
-$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} $$
+::: {.fragment .fade-up .callout-tip title="Przykład"}
+Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
+:::
 
 :::: {.columns}
-::: {.column width="60%"}
-### Bilans Energii
-
-1.  **Praca:** $l = 0$ (brak ruchu tłoka).
-2.  **Ciepło:** $q = \Delta u = C_v (T_2 - T_1)$.
-3.  **Wykres p-v:** Linia pionowa (prostopadła do osi V). Pole pod wykresem (praca) wynosi zero.
-4.  **Wykres T-s:** Krzywa wykładnicza (nachylenie zależy od $C_V$).
+::: {.fragment .fade-rigth .column width="50%"}
+### Równanie Stanu (Charlesa)
+$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} \Rightarrow \frac{p}{T} = const $$
 :::
-::: {.column width="40%"}
+
+::: {.fragment .fade-left  .column width="50%"}
+### Bilans Energii (1 kg)
+
+1.  **Praca:** $l = 0$.
+2.  **Ciepło:** $q = \Delta u = c_v (T_2 - T_1)$.
+3.  **Entropia:** $\Delta s = c_v \ln(T_2/T_1)$.
+:::
+::::
+
+---
+
+## Izochora: Podsumowanie
+
+*   **Ogrzewanie ($T \uparrow$):** Ciśnienie rośnie ($p \uparrow$). Entropia rośnie ($s \uparrow$).
+*   **Chłodzenie ($T \downarrow$):** Ciśnienie spada ($p \downarrow$). Entropia maleje ($s \downarrow$).
+*   Całe dostarczone ciepło idzie na wzrost energii wewnętrznej: $q = \Delta u$.
+
 ```{r}
 #| echo: false
-#| fig-height: 4
+#| fig-height: 5
+#| fig-width: 8
+
 library(ggplot2)
-ggplot() + geom_segment(aes(x=1, y=1, xend=1, yend=4), arrow=arrow(), size=2, color="blue") +
-  theme_minimal() + labs(title="Izochora p-v", x="v", y="p")
+library(patchwork)
+
+# Dane
+p1 <- 1; p2 <- 3; v <- 1
+dt_iso <- data.frame(x=c(v,v), y=c(p1,p2))
+
+# Wykres p-v
+p1_plot <- ggplot(dt_iso, aes(x=x, y=y)) +
+  geom_line(color="blue", size=1.5) +
+  geom_point(size=3) +
+  geom_segment(aes(x=v, y=p1, xend=v, yend=p2), arrow=arrow(length=unit(0.3,"cm")), color="blue") +
+  annotate("text", x=v+0.2, y=p1, label="1", size=7) +
+  annotate("text", x=v+0.2, y=p2, label="2", size=7) +
+  labs(title=expression("Izochora " * p-v), x=expression(v), y=expression(p)) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+# Wykres T-s (Krzywa wykładnicza)
+s <- seq(1, 1.5, length.out=50)
+T_vals <- exp((s-1)/0.718) * 300 # Przybliżenie dla powietrza
+dt_ts <- data.frame(s=s, T=T_vals)
+
+p2_plot <- ggplot(dt_ts, aes(x=s, y=T)) +
+  geom_line(color="red", size=1.5) +
+  geom_point(data=dt_ts[c(1,50),], size=3) +
+  labs(title=expression("Izochora " * T-s), x=expression(s), y=expression(T)) +
+  annotate("text", x=1.03, y=550, label="Delta*s == c[v] * ln(T[2]/T[1])", parse=TRUE, hjust=0, size=6) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+p1_plot + p2_plot
 ```
+---
+
+## 4. Przemiana Izobaryczna ($p=const$)
+
+::: {.callout-note title="**Warunek:**"}
+$dp = 0 \Rightarrow l_t = 0$
 :::
-::::
-
----
-
-## Wykresy (Izochora)
-
-
-*Wizualizacja:*
-Wzrost temperatury $\rightarrow$ Wzrost ciśnienia $\rightarrow$ Wzrost entropii (ogrzewanie izochoryczne).
-
----
-
-## Ciepło i Entropia (Izochora)
-
-**Ciepło przemiany:**
-$$ Q_{1-2} = \Delta U = \int_{T_1}^{T_2} C_V(T) dT $$
-Dla $C_V = const$:
-$$ Q_{1-2} = n C_{V,m} (T_2 - T_1) $$
-
-**Zmiana entropii:**
-$$ \Delta S = \int \frac{đQ}{T} = \int_{T_1}^{T_2} \frac{C_V dT}{T} = C_V \ln\left(\frac{T_2}{T_1}\right) $$
-lub wyrażając przez ciśnienia: $\Delta S = C_V \ln(p_2/p_1)$.
-
----
-
-## 4. Przemiana Izobaryczna
-
-**Warunek:** $p = const$
-Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.
-
-### Równanie Stanu (Gay-Lussaca)
-$$ \frac{v_1}{T_1} = \frac{v_2}{T_2} $$
+::: {.fragment .fade-up .callout-tip title="Przykład"}
+Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.
+:::
 
 :::: {.columns}
-::: {.column width="60%"}
-### Bilans Energii
-1.  **Praca:** $l = p(v_2 - v_1) = R(T_2 - T_1)$.
-2.  **Ciepło:** $q = \Delta h = C_p (T_2 - T_1)$.
+::: {.fragment .fade-rigth .column width="50%"}
+### Równanie Stanu (Gay-Lussaca)
+$$ \frac{v_1}{T_1} = \frac{v_2}{T_2} \Rightarrow \frac{v}{T} = const $$
+
+:::
+::: {.fragment .fade-left .column width="50%"}
+### Bilans Energii (1 kg)
+1.  **Praca ($l$):** $p(v_2 - v_1) = R(T_2 - T_1)$.
+2.  **Ciepło ($q$):** $\Delta h = c_p(T_2 - T_1)$.
 
 ::: {.callout-warning appearance="simple"}
-Ważne: W izobarze ciepło idzie na zmianę entalpii!
-    
+W izobarze ciepło jest równe zmianie entalpii ($q = \Delta h$).
 :::
-    
-3.  **Praca Tech:** $l_t = 0$ (brak sprężarki).
-:::
-::: {.column width="40%"}
-```{r}
-#| echo: false
-#| fig-height: 4
-ggplot() + geom_segment(aes(x=1, y=2, xend=4, yend=2), arrow=arrow(), size=2, color="blue") +
-  theme_minimal() + labs(title="Izobara p-v", x="v", y="p")
-```
 :::
 ::::
 
 ---
 
-## Ciepło i Entalpia (Izobara)
+## Izobara: Podsumowanie
 
-Z I zasady termodynamiki ($dU = đQ - pdV \Rightarrow đQ = dU + pdV = dH$):
+1.  **Ciepło:** $Q_{1-2} = n c_p (T_2 - T_1)$.
+2.  **Praca:** Część ciepła idzie na wykonanie pracy objętościowej (rozszerzanie), reszta na podgrzanie (wzrost $u$).
+3.  **Wykres p-v:** Linia pozioma.
+4.  Standardowa zmiana entropii: $\Delta s = c_p \ln(T_2/T_1)$.
 
-$$ Q_{1-2} = \Delta H = \int_{T_1}^{T_2} C_p dT $$
+```{r}
+#| echo: false
+#| fig-height: 5
+#| fig-width: 8
 
-Dla stałego $C_p$:
-$$ Q_{1-2} = n C_{p,m} (T_2 - T_1) $$
+# Dane
+v1 <- 1; v2 <- 3; p <- 2
+dt_iso <- data.frame(x=c(v1,v2), y=c(p,p))
 
-Ciepło dostarczone w procesie izobarycznym jest równe zmianie **entalpii**.
+# Wykres p-v
+p1_plot <- ggplot(dt_iso, aes(x=x, y=y)) +
+  geom_line(color="green", size=1.5) +
+  geom_point(size=3) +
+  geom_segment(aes(x=v1, y=p, xend=v2, yend=p), arrow=arrow(length=unit(0.3,"cm")), color="green") +
+  annotate("text", x=v1, y=p+0.2, label="1", size=7) +
+  annotate("text", x=v2, y=p+0.2, label="2", size=7) +
+  # Składnia plotmath dla pola pracy
+  annotate("text", x=2, y=1, label="l == p(v[2]-v[1])", parse=TRUE, size=6) + 
+  labs(title=expression("Izobara " * p-v), x=expression(v), y=expression(p)) +
+  ylim(0, 3) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+# Wykres T-s (Mniej stroma niż izochora)
+s <- seq(1, 1.5, length.out=50)
+T_vals_p <- exp((s-1)/1.005) * 300 # cp > cv, więc wolniejszy wzrost T
+dt_ts_p <- data.frame(s=s, T=T_vals_p)
+
+p2_plot <- ggplot(dt_ts_p, aes(x=s, y=T)) +
+  geom_line(color="orange", size=1.5) +
+  geom_point(data=dt_ts_p[c(1,50),], size=3) +
+  labs(title=expression("Izobara " * T-s), x=expression(s), y=expression(T)) +
+  annotate("text", x=1.3, y=320, label="Mniej stroma\nniż izochora", size=6) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+p1_plot + p2_plot
+```
 
 ---
 
-## Wykresy (Izobara)
+## 5. Przemiana Izotermiczna ($T=const$)
 
-*   **Wykres p-V:** Linia pozioma. Pole pod wykresem to prostokąt o polu $p(V_2-V_1)$.
-*   **Wykres T-s:** Krzywa logarytmiczna, ale **mniej stroma** niż izochora (ponieważ $C_p > C_V$).
+::: {.callout-note title="**Warunek:**"}
+$\Delta u = 0, \Delta h = 0$ (Dla gazu doskonałego $u, h = f(T)$)<br>
+:::
+::: {.fragment .fade-up .callout-tip title="Przykład"}
+Bardzo powolne sprężanie z chłodzeniem.
+:::
 
-Zmiana entropii:
-$$ \Delta S = C_p \ln\left(\frac{T_2}{T_1}\right) = C_p \ln\left(\frac{V_2}{V_1}\right) $$.
-
----
-
-## 5. Przemiana Izotermiczna
-
-**Warunek:** $T = const \Rightarrow \Delta u = 0, \Delta h = 0$
-Przykład: Bardzo powolne sprężanie z chłodzeniem.
+:::: {.columns}
+::: {.fragment .fade-left .column width="50%"}
 
 ### Równanie Stanu (Boyle-Mariotte)
 $$ p_1 v_1 = p_2 v_2 = const $$
-
-:::: {.columns}
-::: {.column width="60%"}
-### Bilans Energii
-1.  **Praca:** $l = RT \ln(v_2/v_1)$.
-2.  **Ciepło:** $q = w$ (Całe ciepło zamienia się w pracę, bo $\Delta u=0$).
-3.  **Wykres:** Hiperbola równoosiowa.
 :::
-::: {.column width="40%"}
-```{r}
-#| echo: false
-#| fig-height: 4
-v <- seq(1, 4, 0.1)
-ggplot() + geom_line(aes(x=v, y=4/v), size=2, color="blue") +
-  theme_minimal() + labs(title="Izoterma p-v", x="v", y="p")
-```
+
+::: {.fragment .fade-right .column width="50%"}
+### Bilans Energii (1 kg)
+1.  **Praca:** $l = -RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
+2.  **Ciepło:** $q = -l$ (Całe ciepło zamienia się w pracę).
+3.  **Wykres T-s:** Pozioma linia prosta ($T=const$).
 :::
 ::::
-
----
-
-## Bilans Energii (Izoterma)
-
-Skoro $\Delta U = 0$, to z I zasady termodynamiki:
-$$ 0 = Q + L \Rightarrow Q = -L $$
-
-::: {.callout-warning appearance="simple"}
-Ciepło dostarczone do układu jest w całości zamieniane na pracę wykonaną przez układ (lub odwrotnie przy sprężaniu).
-:::
 
 ---
 
 ## Obliczenia Pracy i Entropii (Izoterma)
 
 **Praca (wykonana na układzie):**
+$$ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) = nRT \ln\left(\frac{p_2}{p_1}\right) $$
 
-$$ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) $$
-$$ L_{1-2} = nRT \ln\left(\frac{p_2}{p_1}\right) $$
-
+::: {.fragment .fade-right .callout-important appearance="simple"}
 **Zmiana entropii:**
-$$ \Delta S = \frac{Q}{T} = \frac{-L}{T} = nR \ln\left(\frac{V_2}{V_1}\right) $$
+$$ \Delta S = \frac{Q}{T} = nR \ln\left(\frac{V_2}{V_1}\right) $$
+Proces dostarczania ciepła w $T=const$ powoduje wzrost nieporządku (objętości).
+
+:::
 
 ---
 
-## 6. Przemiana Adiabatyczna
+## Izoterma: Podsumowanie
 
-**Warunek:** $q = 0$ (Izolacja lub szybki proces).
-Jeśli odwracalna $\to$ **Izentropa** ($s = const$).
-
-### Równanie Poissona
-$$ p v^k = const $$
-$$ T v^{k-1} = const $$
-
-:::: {.columns}
-::: {.column width="60%"}
-
-### Bilans Energii
-
-1.  **Ciepło:** $q = 0$.
-2.  **Praca:** $l = -\Delta u = C_v(T_1 - T_2)$.
-    *   Praca kosztem energii wewnętrznej (spadek T przy rozprężaniu).
-3.  **Wykres:** Bardziej stroma niż izoterma ($k > 1$).
-
-:::
-::: {.column width="40%"}
+1.  **Praca:** $l = -RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
+2.  **Ciepło:** $q = -l$ (Całe ciepło zamienia się w pracę).
+3.  **Wykres T-s:** Pozioma linia prosta ($T=const$).
 
 ```{r}
 #| echo: false
-#| fig-height: 4
+#| fig-height: 5
+#| fig-width: 8
+
 v <- seq(1, 4, 0.1)
-ggplot() + 
-  geom_line(aes(x=v, y=4/v), size=1, color="grey", linetype="dashed") +
-  geom_line(aes(x=v, y=4/(v^1.4)), size=2, color="red") +
-  annotate("text", x=2, y=0.5, label="Adiabata", color="red") +
-  theme_minimal() + labs(title="Adiabata p-v", x="v", y="p")
+p <- 4/v
+
+# p-v
+p1_plot <- ggplot() + 
+  geom_line(aes(x=v, y=p), size=2, color="blue") +
+  annotate("text", x=2, y=3, label="T=const", color="blue", size=6) +
+  labs(title=expression("Izoterma " * p-v), x=expression(v), y=expression(p)) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+# T-s
+s <- seq(1, 4, 1)
+T_val <- rep(300, 4)
+p2_plot <- ggplot() +
+  geom_line(aes(x=s, y=T_val), size=2, color="blue") +
+  annotate("text", x=2.5, y=320, label="T == 300 ~ K", parse=TRUE, size=6) +
+  labs(title=expression("Izoterma " * T-s), x=expression(s), y=expression(T)) +
+  ylim(0, 400) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+p1_plot + p2_plot
 ```
+
+---
+
+## 6. Przemiana Adiabatyczna ($q=0$)
+::: {.callout-note title="**Warunek:**"}
+$dq = 0$. (Izolacja termiczna)
+:::
+::: {.fragment .fade-up .callout-tip title="Wskazówka praktyczna"}
+Dla procesu odwracalnego: **Izentropa** ($ds = 0, s = const$).
+:::
+
+:::: {.columns}
+::: {.fragment .fade-right .column width="50%"}
+
+### Równanie Poissona
+$$ p v^k = const \quad \text{oraz} \quad T v^{k-1} = const $$
+
+:::
+::: {.fragment .fade-left .column width="50%"}
+
+### Bilans Energii (1 kg)
+
+1.  **Ciepło:** $q = 0$.
+2.  **Praca:** $l = -\Delta u = c_v(T_1 - T_2)$.
+    *   Rozprężanie: $T \downarrow$ (kosztem energii wewn).
+3.  **Wykres T-s:** Pionowa linia prosta ($s=const$).
+
 
 :::
 ::::
 
 ---
 
-## Wykresy (Adiabata)
+## Wykresy i Właściwości (Adiabata)
 
-*   **Wykres p-V:** Krzywa podobna do hiperboli, ale **bardziej stroma** niż izoterma (ponieważ $\gamma > 1$).
-*   **Wykres T-s:** Linia pionowa ($S = const$). Pole pod wykresem (ciepło) wynosi zero.
+*   **Wykres p-V:** Krzywa **bardziej stroma** niż izoterma (ponieważ $k > 1$).
+*   **Wykres T-s:** Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.
+*   **Praca Techniczna:** $l_t = k \cdot l = \Delta h$.
 
-Porównanie nachyleń na p-V:
+```{r}
+#| echo: false
+#| fig-height: 5
+#| fig-width: 8
 
-$$ \left(\frac{\partial p}{\partial V}\right)_S = \gamma \left(\frac{\partial p}{\partial V}\right)_T $$
+v <- seq(1, 4, 0.1)
+# p-v
+p1_plot <- ggplot() + 
+  geom_line(aes(x=v, y=4/v), size=1, color="grey", linetype="dashed") +
+  geom_line(aes(x=v, y=4/(v^1.4)), size=2, color="red") +
+  annotate("text", x=2.5, y=3, label="Izoterma", color="grey", size=5) +
+  annotate("text", x=2, y=0.5, label="Adiabata", color="red", size=6) +
+  labs(title=expression("Adiabata " * p-v), x=expression(v), y=expression(p)) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
 
+# T-s
+s <- 1
+T_adj <- seq(200, 500, 10)
+p2_plot <- ggplot() +
+  geom_segment(aes(x=s, y=200, xend=s, yend=500), size=2, color="red") +
+  annotate("text", x=1.3, y=350, label="s=const", color="red", size=6) +
+  labs(title=expression("Adiabata (Izentropa) " * T-s), x=expression(s), y=expression(T)) +
+  xlim(0, 2) + ylim(100, 600) +
+  theme_minimal() + theme(plot.title=element_text(size=14))
+
+p1_plot + p2_plot
+```
 
 ---
 
 ## 7. Przemiana Politropowa (Uogólnienie)
 
-Równanie ogólne dla wszystkich procesów:
-
+::: {.callout-important title="Równanie ogólne dla wszystkich procesów:"}
 $$ p v^n = const $$
+
+:::
 
 gdzie $n$ to wykładnik politropy.
 
-| $n$ | Imię | Warunek |
+| $n$ | Nazwa | Warunek |
 | :---: | :--- | :--- |
 | **0** | Izobara | $p=const$ |
 | **1** | Izoterma | $T=const$ |
 | **k** | Adiabata | $q=0$ |
 | **$\infty$** | Izochora | $v=const$ |
 
+::: {.callout-important title="Warto wiedzieć" style="font-size: 0.6em;"}
 W sprężarkach tłokowych rzeczywiste sprężanie to politropa z $1 < n < k$ (chłodzenie cylindra).
+:::
 
 ---
 
 ## Zestawienie Graficzne
 
-Porównanie rozprężania z tego samego punktu:
+### Porównanie rozprężania z tego samego punktu:
 
 ```{r}
 #| label: polyp-sun
 #| echo: false
-#| fig-width: 8
-#| fig-height: 5
+#| fig-width: 10
+#| fig-height: 6
 
 v <- seq(1, 3, length.out=100)
 # Start point (1, 10)
@@ -397,17 +479,19 @@ ggplot() +
   geom_line(aes(x=v, y=p_k), color="red", size=1.5) +
   geom_segment(aes(x=1, y=10, xend=1, yend=2), color="purple", size=1.5) + 
   
-  annotate("text", x=2.5, y=10.5, label="Izobara (n=0)", color="green") +
-  annotate("text", x=2.5, y=4.5, label="Izoterma (n=1)", color="blue") +
-  annotate("text", x=2.5, y=2.0, label="Adiabata (n=k)", color="red") +
-  annotate("text", x=1.1, y=3, label="Izochora", color="purple") +
+  annotate("text", x=2.5, y=10.5, label="Izobara (n=0)", color="green", size=6) +
+  annotate("text", x=2.5, y=4.5, label="Izoterma (n=1)", color="blue", size=6) +
+  annotate("text", x=2.5, y=2.0, label="Adiabata (n=k)", color="red", size=6) +
+  annotate("text", x=1.1, y=3, label="Izochora", color="purple", size=6) +
   
   labs(title="Porównanie Przemian (Rozprężanie)", x="v", y="p") +
-  theme_minimal()
+  theme_minimal() + theme(plot.title=element_text(size=16))
 ```
 
-**Pole pod wykresem = PRACA.**
+
+::: {.callout-important title="**Pole pod wykresem = PRACA.**"}
 Najwięcej pracy daje Izobara, najmniej Adiabata (nie licząc Izochory, gdzie L = 0).
+:::
 
 ---
 
@@ -422,19 +506,28 @@ $$ l_t = n \cdot l $$
 *   Dla izotermy ($n=1$): $l_t = l$.
 *   Dla adiabaty ($n=k$): $l_t = k \cdot l = \Delta h$.
 
-### Wniosek dla Sprężarki
+gdzie: k ($\kappa$) to $c_p/c_v$
+
+::: {.fragment .callout-tip title= "**Wniosek dla Sprężarki:**"}
 Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izotermy** (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.
+:::
 
 ---
 
 ## Podsumowanie W8
 
-| Przemiana | $n$ | Ciepło $q$ | Praca $w$ | $w_t$ |
+| Przemiana | $n$ | Ciepło $q$ | Praca $l$ | Praca tech. $l_t$ |
 | :--- | :---: | :---: | :---: | :---: |
 | **Izochora** | $\infty$ | $\Delta u$ | 0 | $-v\Delta p$|
 | **Izobara** | 0 | $\Delta h$ | $p \Delta v$ | 0 |
-| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $q$ | $l$ |
+| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $-q$ | $l$ |
 | **Adiabata** | k | 0 | $-\Delta u$ | $\Delta h$ |
 
-To jest najważniejsza tabela w termodynamice gazów.
+::: {.callout-important title="**Kluczowe do Zapamiętania:**"}
+
+*   $q$ zawsze wiąże się z polem pod wykresem **T-s**.
+*   $l$ zawsze wiąże się z polem pod wykresem **p-v**.
+
+:::
+
 Nasze narzędzia na kolejne wykłady o obiegach silnikowych!

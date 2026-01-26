@@ -96,6 +96,27 @@ To jest ramka zdefiniowana ręcznie (czerwona obwódka).
 Energia wewnętrzna gazu doskonałego zależy tylko od temperatury.
 :::
 
+## Rodzaje ramek Callout
+
+::: {.callout-note title="Definicja"}
+Energia wewnętrzna ($U$) to suma energii kinetycznej i potencjalnej cząsteczek.
+:::
+
+::: {.callout-tip title="Wskazówka praktyczna"}
+W obliczeniach inżynierskich temperaturę zawsze zamieniaj na Kelviny ($K = ^\circ C + 273.15$).
+:::
+
+::: {.callout-warning title="Uwaga na jednostki"}
+Pamiętaj, że w równaniu Clapeyrona ciśnienie musi być w Paskalach ($Pa$), a nie w barach!
+:::
+
+::: {.callout-important title="Kluczowy wniosek"}
+Sprawność cyklu Carnota zależy **tylko** od temperatur źródeł ciepła.
+:::
+
+::: {.callout-caution title="Ograniczenia modelu"}
+Wzór stosuje się tylko dla gazów doskonałych ($p \to 0$).
+:::
 ---
 
 ::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}

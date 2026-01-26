@@ -234,10 +234,10 @@
 <h2>Właściwości Gazu Doskonałego (Przypomnienie)</h2>
 <p>Podstawowe wzory i zależności:</p>
 <ol type="1">
-<li><strong>Równanie Clapeyrona:</strong> <span class="math inline">\(pV = nRT\)</span></li>
-<li><strong>Energię wewnętrzną:</strong> Zależy tylko od temperatury, <span class="math inline">\(dU = C_V dT\)</span>.</li>
-<li><strong>Entalpię:</strong> Zależy tylko od temperatury, <span class="math inline">\(dH = C_p dT\)</span>.</li>
-<li><strong>Równanie Mayera:</strong> <span class="math inline">\(C_p - C_V = nR\)</span>.</li>
+<li><strong>Równanie Clapeyrona:</strong> <span class="math inline">\(pV = nRT\)</span> lub <span class="math inline">\(pv = RT\)</span> (dla 1 kg)</li>
+<li><strong>Energię wewnętrzną:</strong> Zależy tylko od temperatury, <span class="math inline">\(du = c_v dT\)</span>.</li>
+<li><strong>Entalpię:</strong> Zależy tylko od temperatury, <span class="math inline">\(dh = c_p dT\)</span>.</li>
+<li><strong>Równanie Mayera:</strong> <span class="math inline">\(C_p - C_V = nR\)</span> lub <span class="math inline">\(c_p - c_v = R\)</span>.</li>
 </ol>
 </section>
 <section id="metodyka-analizy" class="slide level2">
@@ -248,7 +248,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br> (Wszytkie wielkości wyrażamy jako “właściwe”, czyli dzielimy przez masę):</p>
+<p>Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br> (Wszystkie wielkości wyrażamy jako “właściwe”, czyli małe litery):</p>
 </div>
 </div>
 </div>
@@ -256,62 +256,111 @@
 <div class="column" style="width:60%;">
 <ol type="1">
 <li><strong>Równanie procesu:</strong> Związek między <span class="math inline">\(p\)</span> i <span class="math inline">\(v\)</span>.</li>
-<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ l = \int p \, dv \]</span></li>
-<li><strong>Praca techniczna (<span class="math inline">\(w_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ l_t = - \int v \, dp \]</span></li>
-<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t \]</span></li>
+<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ l = -\int p \, dv \]</span></li>
+<li><strong>Praca techniczna (<span class="math inline">\(l_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ l_t = \int v \, dp \]</span></li>
+<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u - l \quad \text{lub} \quad q = \Delta h - l_t \]</span></li>
 </ol>
 </div><div class="column" style="width:40%;">
 <div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Pamiętamy zawsze: <span class="math display">\[\Delta u = C_v \Delta T\]</span> oraz <span class="math display">\[\Delta h = C_p \Delta T\]</span></p>
+<p>Pamiętamy zawsze: <span class="math display">\[\Delta u = c_v \Delta T\]</span> oraz <span class="math display">\[\Delta h = c_p \Delta T\]</span></p>
 </div>
 </div></div>
 </section>
-<section id="przemiana-izochoryczna" class="slide level2">
-<h2>3. Przemiana Izochoryczna</h2>
-<p><strong>Warunek:</strong> <span class="math inline">\(V = const \Rightarrow v_1 = v_2\)</span> Przykład: Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).</p>
+<section id="przemiana-izochoryczna-vconst" class="slide level2">
+<h2>3. Przemiana Izochoryczna (<span class="math inline">\(v=const\)</span>)</h2>
+<div title="**Warunek:**">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Warunek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(dv = 0 \Rightarrow l = 0\)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up" title="Przykład">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Przykład</strong></p>
+</div>
+<div class="callout-content">
+<p>Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="fragment fade-rigth column" style="width:50%;">
 <h3 id="równanie-stanu-charlesa">Równanie Stanu (Charlesa)</h3>
-<p><span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \]</span></p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<h3 id="bilans-energii">Bilans Energii</h3>
+<p><span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \Rightarrow \frac{p}{T} = const \]</span></p>
+</div><div class="fragment fade-left column" style="width:50%;">
+<h3 id="bilans-energii-1-kg">Bilans Energii (1 kg)</h3>
 <ol type="1">
-<li><strong>Praca:</strong> <span class="math inline">\(l = 0\)</span> (brak ruchu tłoka).</li>
-<li><strong>Ciepło:</strong> <span class="math inline">\(q = \Delta u = C_v (T_2 - T_1)\)</span>.</li>
-<li><strong>Wykres p-v:</strong> Linia pionowa (prostopadła do osi V). Pole pod wykresem (praca) wynosi zero.</li>
-<li><strong>Wykres T-s:</strong> Krzywa wykładnicza (nachylenie zależy od <span class="math inline">\(C_V\)</span>).</li>
+<li><strong>Praca:</strong> <span class="math inline">\(l = 0\)</span>.</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = \Delta u = c_v (T_2 - T_1)\)</span>.</li>
+<li><strong>Entropia:</strong> <span class="math inline">\(\Delta s = c_v \ln(T_2/T_1)\)</span>.</li>
 </ol>
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
 </div></div>
 </section>
-<section id="wykresy-izochora" class="slide level2">
-<h2>Wykresy (Izochora)</h2>
-<p><em>Wizualizacja:</em> Wzrost temperatury <span class="math inline">\(\rightarrow\)</span> Wzrost ciśnienia <span class="math inline">\(\rightarrow\)</span> Wzrost entropii (ogrzewanie izochoryczne).</p>
-</section>
-<section id="ciepło-i-entropia-izochora" class="slide level2">
-<h2>Ciepło i Entropia (Izochora)</h2>
-<p><strong>Ciepło przemiany:</strong> <span class="math display">\[ Q_{1-2} = \Delta U = \int_{T_1}^{T_2} C_V(T) dT \]</span> Dla <span class="math inline">\(C_V = const\)</span>: <span class="math display">\[ Q_{1-2} = n C_{V,m} (T_2 - T_1) \]</span></p>
-<p><strong>Zmiana entropii:</strong> <span class="math display">\[ \Delta S = \int \frac{đQ}{T} = \int_{T_1}^{T_2} \frac{C_V dT}{T} = C_V \ln\left(\frac{T_2}{T_1}\right) \]</span> lub wyrażając przez ciśnienia: <span class="math inline">\(\Delta S = C_V \ln(p_2/p_1)\)</span>.</p>
-</section>
-<section id="przemiana-izobaryczna" class="slide level2">
-<h2>4. Przemiana Izobaryczna</h2>
-<p><strong>Warunek:</strong> <span class="math inline">\(p = const\)</span> Przykład: Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.</p>
-<h3 id="równanie-stanu-gay-lussaca">Równanie Stanu (Gay-Lussaca)</h3>
-<p><span class="math display">\[ \frac{v_1}{T_1} = \frac{v_2}{T_2} \]</span></p>
+<section id="izochora-podsumowanie" class="slide level2">
+<h2>Izochora: Podsumowanie</h2>
+<ul>
+<li><strong>Ogrzewanie (<span class="math inline">\(T \uparrow\)</span>):</strong> Ciśnienie rośnie (<span class="math inline">\(p \uparrow\)</span>). Entropia rośnie (<span class="math inline">\(s \uparrow\)</span>).</li>
+<li><strong>Chłodzenie (<span class="math inline">\(T \downarrow\)</span>):</strong> Ciśnienie spada (<span class="math inline">\(p \downarrow\)</span>). Entropia maleje (<span class="math inline">\(s \downarrow\)</span>).</li>
+<li>Całe dostarczone ciepło idzie na wzrost energii wewnętrznej: <span class="math inline">\(q = \Delta u\)</span>.</li>
+</ul>
+
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-1-1.png" width="768" class="r-stretch"></section>
+<section id="przemiana-izobaryczna-pconst" class="slide level2">
+<h2>4. Przemiana Izobaryczna (<span class="math inline">\(p=const\)</span>)</h2>
+<div title="**Warunek:**">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Warunek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(dp = 0 \Rightarrow l_t = 0\)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up" title="Przykład">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Przykład</strong></p>
+</div>
+<div class="callout-content">
+<p>Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="columns">
-<div class="column" style="width:60%;">
-<h3 id="bilans-energii-1">Bilans Energii</h3>
+<div class="fragment fade-rigth column" style="width:50%;">
+<h3 id="równanie-stanu-gay-lussaca">Równanie Stanu (Gay-Lussaca)</h3>
+<p><span class="math display">\[ \frac{v_1}{T_1} = \frac{v_2}{T_2} \Rightarrow \frac{v}{T} = const \]</span></p>
+</div><div class="fragment fade-left column" style="width:50%;">
+<h3 id="bilans-energii-1-kg-1">Bilans Energii (1 kg)</h3>
 <ol type="1">
-<li><strong>Praca:</strong> <span class="math inline">\(l = p(v_2 - v_1) = R(T_2 - T_1)\)</span>.</li>
-<li><strong>Ciepło:</strong> <span class="math inline">\(q = \Delta h = C_p (T_2 - T_1)\)</span>.</li>
+<li><strong>Praca (<span class="math inline">\(l\)</span>):</strong> <span class="math inline">\(p(v_2 - v_1) = R(T_2 - T_1)\)</span>.</li>
+<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> <span class="math inline">\(\Delta h = c_p(T_2 - T_1)\)</span>.</li>
 </ol>
 <div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
@@ -319,132 +368,172 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Ważne: W izobarze ciepło idzie na zmianę entalpii!</p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li><strong>Praca Tech:</strong> <span class="math inline">\(l_t = 0\)</span> (brak sprężarki).</li>
-</ol>
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
+<p>W izobarze ciepło jest równe zmianie entalpii (<span class="math inline">\(q = \Delta h\)</span>).</p>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="ciepło-i-entalpia-izobara" class="slide level2">
-<h2>Ciepło i Entalpia (Izobara)</h2>
-<p>Z I zasady termodynamiki (<span class="math inline">\(dU = đQ - pdV \Rightarrow đQ = dU + pdV = dH\)</span>):</p>
-<p><span class="math display">\[ Q_{1-2} = \Delta H = \int_{T_1}^{T_2} C_p dT \]</span></p>
-<p>Dla stałego <span class="math inline">\(C_p\)</span>: <span class="math display">\[ Q_{1-2} = n C_{p,m} (T_2 - T_1) \]</span></p>
-<p>Ciepło dostarczone w procesie izobarycznym jest równe zmianie <strong>entalpii</strong>.</p>
-</section>
-<section id="wykresy-izobara" class="slide level2">
-<h2>Wykresy (Izobara)</h2>
-<ul>
-<li><strong>Wykres p-V:</strong> Linia pozioma. Pole pod wykresem to prostokąt o polu <span class="math inline">\(p(V_2-V_1)\)</span>.</li>
-<li><strong>Wykres T-s:</strong> Krzywa logarytmiczna, ale <strong>mniej stroma</strong> niż izochora (ponieważ <span class="math inline">\(C_p &gt; C_V\)</span>).</li>
-</ul>
-<p>Zmiana entropii: <span class="math display">\[ \Delta S = C_p \ln\left(\frac{T_2}{T_1}\right) = C_p \ln\left(\frac{V_2}{V_1}\right) \]</span>.</p>
-</section>
-<section id="przemiana-izotermiczna" class="slide level2">
-<h2>5. Przemiana Izotermiczna</h2>
-<p><strong>Warunek:</strong> <span class="math inline">\(T = const \Rightarrow \Delta u = 0, \Delta h = 0\)</span> Przykład: Bardzo powolne sprężanie z chłodzeniem.</p>
+<section id="izobara-podsumowanie" class="slide level2">
+<h2>Izobara: Podsumowanie</h2>
+<ol type="1">
+<li><strong>Ciepło:</strong> <span class="math inline">\(Q_{1-2} = n c_p (T_2 - T_1)\)</span>.</li>
+<li><strong>Praca:</strong> Część ciepła idzie na wykonanie pracy objętościowej (rozszerzanie), reszta na podgrzanie (wzrost <span class="math inline">\(u\)</span>).</li>
+<li><strong>Wykres p-v:</strong> Linia pozioma.</li>
+<li>Standardowa zmiana entropii: <span class="math inline">\(\Delta s = c_p \ln(T_2/T_1)\)</span>.</li>
+</ol>
+
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" class="r-stretch"></section>
+<section id="przemiana-izotermiczna-tconst" class="slide level2">
+<h2>5. Przemiana Izotermiczna (<span class="math inline">\(T=const\)</span>)</h2>
+<div title="**Warunek:**">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Warunek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\Delta u = 0, \Delta h = 0\)</span> (Dla gazu doskonałego <span class="math inline">\(u, h = f(T)\)</span>)<br></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up" title="Przykład">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Przykład</strong></p>
+</div>
+<div class="callout-content">
+<p>Bardzo powolne sprężanie z chłodzeniem.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="fragment fade-left column" style="width:50%;">
 <h3 id="równanie-stanu-boyle-mariotte">Równanie Stanu (Boyle-Mariotte)</h3>
 <p><span class="math display">\[ p_1 v_1 = p_2 v_2 = const \]</span></p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<h3 id="bilans-energii-2">Bilans Energii</h3>
+</div><div class="fragment fade-right column" style="width:50%;">
+<h3 id="bilans-energii-1-kg-2">Bilans Energii (1 kg)</h3>
 <ol type="1">
-<li><strong>Praca:</strong> <span class="math inline">\(l = RT \ln(v_2/v_1)\)</span>.</li>
-<li><strong>Ciepło:</strong> <span class="math inline">\(q = w\)</span> (Całe ciepło zamienia się w pracę, bo <span class="math inline">\(\Delta u=0\)</span>).</li>
-<li><strong>Wykres:</strong> Hiperbola równoosiowa.</li>
+<li><strong>Praca:</strong> <span class="math inline">\(l = -RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = -l\)</span> (Całe ciepło zamienia się w pracę).</li>
+<li><strong>Wykres T-s:</strong> Pozioma linia prosta (<span class="math inline">\(T=const\)</span>).</li>
 </ol>
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
 </div></div>
-</section>
-<section id="bilans-energii-izoterma" class="slide level2">
-<h2>Bilans Energii (Izoterma)</h2>
-<p>Skoro <span class="math inline">\(\Delta U = 0\)</span>, to z I zasady termodynamiki: <span class="math display">\[ 0 = Q + L \Rightarrow Q = -L \]</span></p>
-<div class="callout callout-warning callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Ciepło dostarczone do układu jest w całości zamieniane na pracę wykonaną przez układ (lub odwrotnie przy sprężaniu).</p>
-</div>
-</div>
-</div>
 </section>
 <section id="obliczenia-pracy-i-entropii-izoterma" class="slide level2">
 <h2>Obliczenia Pracy i Entropii (Izoterma)</h2>
-<p><strong>Praca (wykonana na układzie):</strong></p>
-<p><span class="math display">\[ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) \]</span> <span class="math display">\[ L_{1-2} = nRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
-<p><strong>Zmiana entropii:</strong> <span class="math display">\[ \Delta S = \frac{Q}{T} = \frac{-L}{T} = nR \ln\left(\frac{V_2}{V_1}\right) \]</span></p>
+<p><strong>Praca (wykonana na układzie):</strong> <span class="math display">\[ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) = nRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
+<div class="fragment fade-right">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Zmiana entropii:</strong> <span class="math display">\[ \Delta S = \frac{Q}{T} = nR \ln\left(\frac{V_2}{V_1}\right) \]</span> Proces dostarczania ciepła w <span class="math inline">\(T=const\)</span> powoduje wzrost nieporządku (objętości).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="przemiana-adiabatyczna" class="slide level2">
-<h2>6. Przemiana Adiabatyczna</h2>
-<p><strong>Warunek:</strong> <span class="math inline">\(q = 0\)</span> (Izolacja lub szybki proces). Jeśli odwracalna <span class="math inline">\(\to\)</span> <strong>Izentropa</strong> (<span class="math inline">\(s = const\)</span>).</p>
-<h3 id="równanie-poissona">Równanie Poissona</h3>
-<p><span class="math display">\[ p v^k = const \]</span> <span class="math display">\[ T v^{k-1} = const \]</span></p>
+<section id="izoterma-podsumowanie" class="slide level2">
+<h2>Izoterma: Podsumowanie</h2>
+<ol type="1">
+<li><strong>Praca:</strong> <span class="math inline">\(l = -RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = -l\)</span> (Całe ciepło zamienia się w pracę).</li>
+<li><strong>Wykres T-s:</strong> Pozioma linia prosta (<span class="math inline">\(T=const\)</span>).</li>
+</ol>
+
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"></section>
+<section id="przemiana-adiabatyczna-q0" class="slide level2">
+<h2>6. Przemiana Adiabatyczna (<span class="math inline">\(q=0\)</span>)</h2>
+<div title="**Warunek:**">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Warunek:</strong></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(dq = 0\)</span>. (Izolacja termiczna)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up" title="Wskazówka praktyczna">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wskazówka praktyczna</strong></p>
+</div>
+<div class="callout-content">
+<p>Dla procesu odwracalnego: <strong>Izentropa</strong> (<span class="math inline">\(ds = 0, s = const\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
 <div class="columns">
-<div class="column" style="width:60%;">
-<h3 id="bilans-energii-3">Bilans Energii</h3>
+<div class="fragment fade-right column" style="width:50%;">
+<h3 id="równanie-poissona">Równanie Poissona</h3>
+<p><span class="math display">\[ p v^k = const \quad \text{oraz} \quad T v^{k-1} = const \]</span></p>
+</div><div class="fragment fade-left column" style="width:50%;">
+<h3 id="bilans-energii-1-kg-3">Bilans Energii (1 kg)</h3>
 <ol type="1">
 <li><strong>Ciepło:</strong> <span class="math inline">\(q = 0\)</span>.</li>
-<li><strong>Praca:</strong> <span class="math inline">\(l = -\Delta u = C_v(T_1 - T_2)\)</span>.
+<li><strong>Praca:</strong> <span class="math inline">\(l = -\Delta u = c_v(T_1 - T_2)\)</span>.
 <ul>
-<li>Praca kosztem energii wewnętrznej (spadek T przy rozprężaniu).</li>
+<li>Rozprężanie: <span class="math inline">\(T \downarrow\)</span> (kosztem energii wewn).</li>
 </ul></li>
-<li><strong>Wykres:</strong> Bardziej stroma niż izoterma (<span class="math inline">\(k &gt; 1\)</span>).</li>
+<li><strong>Wykres T-s:</strong> Pionowa linia prosta (<span class="math inline">\(s=const\)</span>).</li>
 </ol>
-</div><div class="column" style="width:40%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
 </div></div>
 </section>
-<section id="wykresy-adiabata" class="slide level2">
-<h2>Wykresy (Adiabata)</h2>
+<section id="wykresy-i-właściwości-adiabata" class="slide level2">
+<h2>Wykresy i Właściwości (Adiabata)</h2>
 <ul>
-<li><strong>Wykres p-V:</strong> Krzywa podobna do hiperboli, ale <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(\gamma &gt; 1\)</span>).</li>
-<li><strong>Wykres T-s:</strong> Linia pionowa (<span class="math inline">\(S = const\)</span>). Pole pod wykresem (ciepło) wynosi zero.</li>
+<li><strong>Wykres p-V:</strong> Krzywa <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(k &gt; 1\)</span>).</li>
+<li><strong>Wykres T-s:</strong> Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.</li>
+<li><strong>Praca Techniczna:</strong> <span class="math inline">\(l_t = k \cdot l = \Delta h\)</span>.</li>
 </ul>
-<p>Porównanie nachyleń na p-V:</p>
-<p><span class="math display">\[ \left(\frac{\partial p}{\partial V}\right)_S = \gamma \left(\frac{\partial p}{\partial V}\right)_T \]</span></p>
-</section>
+
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
 <section id="przemiana-politropowa-uogólnienie" class="slide level2">
 <h2>7. Przemiana Politropowa (Uogólnienie)</h2>
-<p>Równanie ogólne dla wszystkich procesów:</p>
+<div title="Równanie ogólne dla wszystkich procesów:">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Równanie ogólne dla wszystkich procesów:</strong></p>
+</div>
+<div class="callout-content">
 <p><span class="math display">\[ p v^n = const \]</span></p>
+</div>
+</div>
+</div>
+</div>
 <p>gdzie <span class="math inline">\(n\)</span> to wykładnik politropy.</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;"><span class="math inline">\(n\)</span></th>
-<th style="text-align: left;">Imię</th>
+<th style="text-align: left;">Nazwa</th>
 <th style="text-align: left;">Warunek</th>
 </tr>
 </thead>
@@ -471,13 +560,41 @@
 </tr>
 </tbody>
 </table>
+<div title="Warto wiedzieć" style="font-size: 0.6em;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warto wiedzieć</strong></p>
+</div>
+<div class="callout-content">
 <p>W sprężarkach tłokowych rzeczywiste sprężanie to politropa z <span class="math inline">\(1 &lt; n &lt; k\)</span> (chłodzenie cylindra).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="zestawienie-graficzne" class="slide level2">
 <h2>Zestawienie Graficzne</h2>
-<p>Porównanie rozprężania z tego samego punktu:</p>
+<h3 id="porównanie-rozprężania-z-tego-samego-punktu">Porównanie rozprężania z tego samego punktu:</h3>
 
-<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/polyp-sun-1.png" width="768" class="r-stretch"><p><strong>Pole pod wykresem = PRACA.</strong> Najwięcej pracy daje Izobara, najmniej Adiabata (nie licząc Izochory, gdzie L = 0).</p>
+<img data-src="08_Przemiany_Gazowe_files/figure-revealjs/polyp-sun-1.png" width="960" class="r-stretch"><div title="**Pole pod wykresem = PRACA.**">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Pole pod wykresem = PRACA.</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Najwięcej pracy daje Izobara, najmniej Adiabata (nie licząc Izochory, gdzie L = 0).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="praca-techniczna-w-przemianach" class="slide level2">
 <h2>Praca Techniczna w Przemianach</h2>
@@ -488,8 +605,22 @@
 <li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = l\)</span>.</li>
 <li>Dla adiabaty (<span class="math inline">\(n=k\)</span>): <span class="math inline">\(l_t = k \cdot l = \Delta h\)</span>.</li>
 </ul>
-<h3 id="wniosek-dla-sprężarki">Wniosek dla Sprężarki</h3>
+<p>gdzie: k (<span class="math inline">\(\kappa\)</span>) to <span class="math inline">\(c_p/c_v\)</span></p>
+<div class="fragment" title="**Wniosek dla Sprężarki:**">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Wniosek dla Sprężarki:</strong></strong></p>
+</div>
+<div class="callout-content">
 <p>Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do <strong>izotermy</strong> (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="podsumowanie-w8" class="slide level2">
 <h2>Podsumowanie W8</h2>
@@ -499,8 +630,8 @@
 <th style="text-align: left;">Przemiana</th>
 <th style="text-align: center;"><span class="math inline">\(n\)</span></th>
 <th style="text-align: center;">Ciepło <span class="math inline">\(q\)</span></th>
-<th style="text-align: center;">Praca <span class="math inline">\(w\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(w_t\)</span></th>
+<th style="text-align: center;">Praca <span class="math inline">\(l\)</span></th>
+<th style="text-align: center;">Praca tech. <span class="math inline">\(l_t\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -522,7 +653,7 @@
 <td style="text-align: left;"><strong>Izoterma</strong></td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;"><span class="math inline">\(RT \ln(v_2/v_1)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-q\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(l\)</span></td>
 </tr>
 <tr class="even">
@@ -534,7 +665,25 @@
 </tr>
 </tbody>
 </table>
-<p>To jest najważniejsza tabela w termodynamice gazów. Nasze narzędzia na kolejne wykłady o obiegach silnikowych!</p>
+<div title="**Kluczowe do Zapamiętania:**">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Kluczowe do Zapamiętania:</strong></strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">\(q\)</span> zawsze wiąże się z polem pod wykresem <strong>T-s</strong>.</li>
+<li><span class="math inline">\(l\)</span> zawsze wiąże się z polem pod wykresem <strong>p-v</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p>Nasze narzędzia na kolejne wykłady o obiegach silnikowych!</p>
 
 </section>
     </div>
