@@ -143,56 +143,116 @@ Procesy:
 ```{r}
 #| label: otto
 #| echo: false
-#| fig-width: 10
+#| layout-ncol: 2
+#| fig-width: 6
 #| fig-height: 5
+#| warning: false
+#| message: false
 
 library(ggplot2)
 
-# Otto cycle points
-v_min <- 1; v_max <- 8
-epsilon <- v_max/v_min
+# 1. PARAMETRY
 k <- 1.4
+v_min <- 1; v_max <- 8  # Stopień sprężania epsilon = 8
+epsilon <- v_max / v_min
+cv <- 0.718 # kJ/kgK (powietrze)
+R_ind <- 0.287 # kJ/kgK
 
-# 1-2 Adiabatic compression
-v12 <- seq(v_max, v_min, length.out=50)
-p1 <- 1
-p2 <- p1 * (v_max/v_min)^k
-p12 <- p1 * (v_max/v12)^k
+# Funkcje pomocnicze
+calc_T <- function(p, v) { p * v } # Proporcjonalne do T (T = pv/R)
+calc_s <- function(T, v) { cv * log(T) + R_ind * log(v) }
 
-# 2-3 Isochoric heating
-p3 <- p2 * 3 # Explosion ratio
-v23 <- rep(v_min, 50)
-p23 <- seq(p2, p3, length.out=50)
+# 2. OBLICZENIA PUNKTÓW
+# Pkt 1 (Start)
+p1 <- 1; v1 <- v_max
+T1 <- calc_T(p1, v1)
+s1 <- calc_s(T1, v1)
 
-# 3-4 Adiabatic expansion
-v34 <- seq(v_min, v_max, length.out=50)
-p34 <- p3 * (v_min/v34)^k
-p4 <- tail(p34, 1)
+# Pkt 2 (Po sprężaniu adiabatycznym 1-2)
+# p1*v1^k = p2*v2^k
+v2 <- v_min
+p2 <- p1 * (v1/v2)^k
+T2 <- calc_T(p2, v2)
+s2 <- calc_s(T2, v2)
 
-# 4-1 Isochoric cooling
-v41 <- rep(v_max, 50)
-p41 <- seq(p4, p1, length.out=50)
+# Pkt 3 (Po spalaniu izochorycznym 2-3) "Eksplozja"
+v3 <- v2
+lambda <- 3.5 # Stopień wzrostu ciśnienia
+p3 <- p2 * lambda
+T3 <- calc_T(p3, v3)
+s3 <- calc_s(T3, v3)
 
-df_otto <- data.frame(
-  v = c(v12, v23, v34, v41),
-  p = c(p12, p23, p34, p41),
-  part = rep(c("1-2", "2-3", "3-4", "4-1"), each=50)
+# Pkt 4 (Po rozprężaniu adiabatycznym 3-4)
+# p3*v3^k = p4*v4^k
+v4 <- v1
+p4 <- p3 * (v3/v4)^k
+T4 <- calc_T(p4, v4)
+s4 <- calc_s(T4, v4)
+
+# 3. GENEROWANIE KRZYWYCH
+n_points <- 50
+
+# 1-2 Adiabata
+v_12 <- seq(v1, v2, length.out=n_points)
+p_12 <- p1 * (v1/v_12)^k
+T_12 <- calc_T(p_12, v_12)
+s_12 <- calc_s(T_12, v_12)
+
+# 2-3 Izochora
+v_23 <- rep(v2, n_points)
+p_23 <- seq(p2, p3, length.out=n_points)
+T_23 <- calc_T(p_23, v_23)
+s_23 <- calc_s(T_23, v_23)
+
+# 3-4 Adiabata
+v_34 <- seq(v3, v4, length.out=n_points)
+p_34 <- p3 * (v3/v_34)^k
+T_34 <- calc_T(p_34, v_34)
+s_34 <- calc_s(T_34, v_34)
+
+# 4-1 Izochora
+v_41 <- rep(v4, n_points)
+p_41 <- seq(p4, p1, length.out=n_points)
+T_41 <- calc_T(p_41, v_41)
+s_41 <- calc_s(T_41, v_41)
+
+df <- data.frame(
+  v = c(v_12, v_23, v_34, v_41),
+  p = c(p_12, p_23, p_34, p_41),
+  T = c(T_12, T_23, T_34, T_41),
+  s = c(s_12, s_23, s_34, s_41),
+  etap = rep(c("Sprężanie (s=const)", "Spalanie (v=const)", "Praca (s=const)", "Wydech (v=const)"), each=n_points)
 )
+df$s <- df$s - min(df$s) # Normalizacja entropii do 0
 
-ggplot(df_otto, aes(x=v, y=p)) + geom_path(size=2, color="red") +
-  annotate("text", x=v_max, y=p1, label="1", vjust=2, size = 6) +
-  annotate("text", x=v_min, y=p2, label="2", hjust=2, size = 6) +
-  annotate("text", x=v_min, y=p3, label="3", hjust=2, size = 6) +
-  annotate("text", x=v_max, y=p4, label="4", vjust=-1, size = 6) +
-  annotate("text", x=1.45, y=p3/2, label = "Q['in'] ~ ' (Izochora)'", parse = TRUE, size = 6) +
-  theme_bw() + labs(title="Obieg Otto (ZI)", x="v", y="p") +
-  ylim(c(-5, p3+5))
+# 4. WYKRESY
+p_pv <- ggplot(df, aes(x=v, y=p, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), hjust=1.5, size=5) +
+  geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=5) +
+  labs(title="Wykres p-V", x="Objętość właściwa v", y="Ciśnienie p") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="Set1")
 
+p_ts <- ggplot(df, aes(x=s, y=T, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=df$s[1], y=T1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=df$s[n_points], y=T2, label="2"), vjust=-1, size=5) +
+  geom_text(aes(x=df$s[2*n_points], y=T3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=df$s[3*n_points], y=T4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres T-s", x="Entropia s", y="Temperatura T") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="Set1")
+
+p_pv
+p_ts
 ```
 :::
 
 ::: {.column width="40%"}
-$$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} $$
+$$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{\kappa-1}} $$
 
 ::: {.incremental style="font-size: 0.8em;"}
 1.  **1-2:** Sprężanie izentropowe ($s=const$).
@@ -242,47 +302,110 @@ Procesy:
 ```{r}
 #| label: diesel
 #| echo: false
-#| fig-width: 10
+#| layout-ncol: 2
+#| fig-width: 6
 #| fig-height: 5
+#| warning: false
+#| message: false
 
-# Diesel points
-v_min <- 1; v_max <- 18 # Higher compression ratio
-p1 <- 1
+# 1. PARAMETRY
 k <- 1.4
+v_min <- 1; v_max <- 18  # Wyższy stopień sprężania
+epsilon <- v_max / v_min
+cv <- 0.718; R_ind <- 0.287
 
-# 1-2
-v12 <- seq(v_max, v_min, length.out=50)
-p2 <- p1 * (v_max/v_min)^k
-p12 <- p1 * (v_max/v12)^k
+# Funkcje pomocnicze
+calc_T <- function(p, v) { p * v } 
+calc_s <- function(T, v) { cv * log(T) + R_ind * log(v) }
 
-# 2-3 Isobaric heating (Cut-off)
-v3 <- v_min * 2 # Cut-off ratio rc = 2
-v23 <- seq(v_min, v3, length.out=50)
-p23 <- rep(p2, 50)
+# 2. OBLICZENIA PUNKTÓW
+n_points <- 50
+
+# Pkt 1 (Start)
+p1 <- 1; v1 <- v_max
+T1 <- calc_T(p1, v1)
+s1 <- calc_s(T1, v1)
+
+# Pkt 2 (Po sprężaniu adiabatycznym 1-2)
+v2 <- v_min
+p2 <- p1 * (v1/v2)^k
+T2 <- calc_T(p2, v2)
+s2 <- calc_s(T2, v2)
+
+# Pkt 3 (Po spalaniu IZOBARYCZNYM 2-3)
+# p3 = p2
 p3 <- p2
+# Stopień obciążenia np. 2
+rho <- 2.5 
+v3 <- v_min * rho 
+T3 <- calc_T(p3, v3) # T rośnie bo v rośnie przy stałym p
+s3 <- calc_s(T3, v3)
 
-# 3-4 Expansion
-v34 <- seq(v3, v_max, length.out=50)
-p34 <- p3 * (v3/v34)^k
-p4 <- tail(p34, 1)
+# Pkt 4 (Po rozprężaniu adiabatycznym 3-4)
+# p3*v3^k = p4*v4^k
+v4 <- v1 # Powrót do objętości max
+p4 <- p3 * (v3/v4)^k
+T4 <- calc_T(p4, v4)
+s4 <- calc_s(T4, v4)
 
-# 4-1 Cooling
-v41 <- rep(v_max, 50)
-p41 <- seq(p4, p1, length.out=50)
+# 3. GENEROWANIE KRZYWYCH
+
+# 1-2 Adiabata
+v_12 <- seq(v1, v2, length.out=n_points)
+p_12 <- p1 * (v1/v_12)^k
+T_12 <- calc_T(p_12, v_12)
+s_12 <- calc_s(T_12, v_12)
+
+# 2-3 IZOBARA (p=const)
+v_23 <- seq(v2, v3, length.out=n_points)
+p_23 <- rep(p2, n_points)
+T_23 <- calc_T(p_23, v_23)
+s_23 <- calc_s(T_23, v_23)
+
+# 3-4 Adiabata
+v_34 <- seq(v3, v4, length.out=n_points)
+p_34 <- p3 * (v3/v_34)^k
+T_34 <- calc_T(p_34, v_34)
+s_34 <- calc_s(T_34, v_34)
+
+# 4-1 Izochora
+v_41 <- rep(v4, n_points)
+p_41 <- seq(p4, p1, length.out=n_points)
+T_41 <- calc_T(p_41, v_41)
+s_41 <- calc_s(T_41, v_41)
 
 df_diesel <- data.frame(
-  v = c(v12, v23, v34, v41),
-  p = c(p12, p23, p34, p41)
+  v = c(v_12, v_23, v_34, v_41),
+  p = c(p_12, p_23, p_34, p_41),
+  T = c(T_12, T_23, T_34, T_41),
+  s = c(s_12, s_23, s_34, s_41),
+  etap = rep(c("Sprężanie (s=const)", "Spalanie (p=const)", "Praca (s=const)", "Wydech (v=const)"), each=n_points)
 )
+df_diesel$s <- df_diesel$s - min(df_diesel$s)
 
-ggplot(df_diesel, aes(x=v, y=p)) + geom_path(size=2, color="blue") +
-  annotate("text", x=v_max, y=p1, label="1", vjust=2, size = 6) +
-  annotate("text", x=v_min, y=p2, label="2", hjust=2, size = 6) +
-  annotate("text", x=v3, y=p3, label="3", hjust=-1, size = 6) +
-  annotate("text", x=v_max, y=p4, label="4", vjust=-1, size = 6) +
-  annotate("text", x=4, y=p3, label = "Q['in'] ~ ' (Izobara)'", parse = TRUE, size = 6) +
-  theme_bw() + labs(title="Obieg Diesla (ZS)", x="v", y="p") +
-  ylim(c(-5, p3+5))
+# 4. WYKRESY
+p_pv_d <- ggplot(df_diesel, aes(x=v, y=p, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=v4, y=p4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres p-V", x="Objętość właściwa v", y="Ciśnienie p") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="Dark2")
+
+p_ts_d <- ggplot(df_diesel, aes(x=s, y=T, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=df_diesel$s[1], y=T1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=df_diesel$s[n_points], y=T2, label="2"), vjust=-1, size=5) +
+  geom_text(aes(x=df_diesel$s[2*n_points], y=T3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=df_diesel$s[3*n_points], y=T4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres T-s", x="Entropia s", y="Temperatura T") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="Dark2")
+
+p_pv_d
+p_ts_d
 ```
 
 :::
@@ -305,7 +428,7 @@ ggplot(df_diesel, aes(x=v, y=p)) + geom_path(size=2, color="blue") +
 
 Zależy od stopnia obciążenia silnika (Stopnia obciążenia $\rho = V_3/V_2$).
 
-$$ \eta_{Diesel} = 1 - \frac{1}{\kappa\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\varphi - 1} \right] $$
+$$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] $$
 gdzie: stopień obciążenia - $\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}$,<br>wykłądnik adiabaty -  $\kappa=\frac{c_p}{c_v}$
 
 ::: {.incremental}
@@ -318,8 +441,144 @@ gdzie: stopień obciążenia - $\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{
 
 ---
 
-## 5. Obieg Sabathé 
+## 5. Obieg Sabathé (Obieg Mieszany)
 
+::: {.callout-tip appearance="simple"}
+Obieg rzeczywisty silników wysokoprężnych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy $v=const$, a częściowo przy $p=const$.
+:::
+
+:::: {.columns}
+
+::: {.column width="100%"}
+
+```{r}
+#| label: sabathe
+#| echo: false
+#| layout-ncol: 2
+#| fig-width: 6
+#| fig-height: 5
+#| warning: false
+#| message: false
+
+# 1. PARAMETRY
+k <- 1.4
+v_min <- 1; v_max <- 16
+epsilon <- v_max / v_min
+cv <- 0.718; R_ind <- 0.287
+
+# Funkcje pomocnicze
+calc_T <- function(p, v) { p * v }
+calc_s <- function(T, v) { cv * log(T) + R_ind * log(v) }
+
+# 2. OBLICZENIA PUNKTÓW
+n_points <- 50
+
+# Pkt 1 (Start)
+p1 <- 1; v1 <- v_max
+T1 <- calc_T(p1, v1)
+s1 <- calc_s(T1, v1)
+
+# Pkt 2 (Po sprężaniu adiabatycznym 1-2)
+v2 <- v_min
+p2 <- p1 * (v1/v2)^k
+T2 <- calc_T(p2, v2)
+s2 <- calc_s(T2, v2)
+
+# Pkt 2a (Po spalaniu IZOCHORYCZNYM 2-2a)
+# Alfa - stopień wzrostu ciśnienia
+alfa <- 1.5 
+v2a <- v2
+p2a <- p2 * alfa
+T2a <- calc_T(p2a, v2a)
+s2a <- calc_s(T2a, v2a)
+
+# Pkt 3 (Po spalaniu IZOBARYCZNYM 2a-3)
+# Rho - stopień obciążenia (wzrostu objętości)
+rho <- 1.5
+p3 <- p2a
+v3 <- v2a * rho
+T3 <- calc_T(p3, v3)
+s3 <- calc_s(T3, v3)
+
+# Pkt 4 (Po rozprężaniu adiabatycznym 3-4)
+# p3*v3^k = p4*v4^k
+v4 <- v1
+p4 <- p3 * (v3/v4)^k
+T4 <- calc_T(p4, v4)
+s4 <- calc_s(T4, v4)
+
+# 3. GENEROWANIE KRZYWYCH
+
+# 1-2 Adiabata
+v_12 <- seq(v1, v2, length.out=n_points)
+p_12 <- p1 * (v1/v_12)^k
+T_12 <- calc_T(p_12, v_12)
+s_12 <- calc_s(T_12, v_12)
+
+# 2-2a Izochora
+v_2to2a <- rep(v2, n_points)
+p_2to2a <- seq(p2, p2a, length.out=n_points)
+T_2to2a <- calc_T(p_2to2a, v_2to2a)
+s_2to2a <- calc_s(T_2to2a, v_2to2a)
+
+# 2a-3 Izobara
+v_2ato3 <- seq(v2a, v3, length.out=n_points)
+p_2ato3 <- rep(p2a, n_points)
+T_2ato3 <- calc_T(p_2ato3, v_2ato3)
+s_2ato3 <- calc_s(T_2ato3, v_2ato3)
+
+# 3-4 Adiabata
+v_34 <- seq(v3, v4, length.out=n_points)
+p_34 <- p3 * (v3/v_34)^k
+T_34 <- calc_T(p_34, v_34)
+s_34 <- calc_s(T_34, v_34)
+
+# 4-1 Izochora
+v_41 <- rep(v4, n_points)
+p_41 <- seq(p4, p1, length.out=n_points)
+T_41 <- calc_T(p_41, v_41)
+s_41 <- calc_s(T_41, v_41)
+
+df_sab <- data.frame(
+  v = c(v_12, v_2to2a, v_2ato3, v_34, v_41),
+  p = c(p_12, p_2to2a, p_2ato3, p_34, p_41),
+  T = c(T_12, T_2to2a, T_2ato3, T_34, T_41),
+  s = c(s_12, s_2to2a, s_2ato3, s_34, s_41),
+  etap = rep(c("Sprężanie (s=C)", "Spalanie (v=C)", "Spalanie (p=C)", "Praca (s=C)", "Wydech (v=C)"), each=n_points)
+)
+df_sab$s <- df_sab$s - min(df_sab$s)
+
+# 4. WYKRESY
+p_pv_s <- ggplot(df_sab, aes(x=v, y=p, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
+  geom_text(aes(x=v2a, y=p2a, label="2a"), vjust=1.5, hjust=1.5, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=5) +
+  labs(title="Wykres p-V (Sabathé)", x="v", y="p") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="viridis")
+
+p_ts_s <- ggplot(df_sab, aes(x=s, y=T, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=df_sab$s[1], y=T1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=df_sab$s[n_points], y=T2, label="2"), vjust=-1, size=5) +
+   # 2a is at end of second segment (index 2*50)
+  geom_text(aes(x=df_sab$s[2*n_points], y=T2a, label="2a"), hjust=1.5, size=5) +
+  geom_text(aes(x=df_sab$s[3*n_points], y=T3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=df_sab$s[4*n_points], y=T4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres T-s (Sabathé)", x="s", y="T") +
+  theme_bw() + theme(legend.position = "bottom") +
+  scale_color_brewer(palette="viridis")
+
+p_pv_s
+p_ts_s
+```
+
+:::
+
+::::
 
 ---
 

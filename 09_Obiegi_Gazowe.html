@@ -171,6 +171,7 @@
 <li><strong>Parametry Geometryczne</strong> (Stopień sprężania)</li>
 <li><strong>Obieg Otto</strong> (Silnik benzynowy)</li>
 <li><strong>Obieg Diesla</strong> (Silnik wysokoprężny)</li>
+<li><strong>Obieg Sabathé</strong> (Silnik wysokoprężny)</li>
 <li><strong>Obieg Joule’a-Braytona</strong> (Turbina Gazowa)</li>
 <li><strong>Porównanie Sprawności i Ciśnienie Średnie</strong></li>
 </ol>
@@ -259,17 +260,18 @@
 <h2>Otto: Wykres i Sprawność</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/otto-1.png" width="960"></p>
-</figure>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/otto-1.png" width="576"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/otto-2.png" width="576"></p>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<p><span class="math display">\[ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} \]</span></p>
+<p><span class="math display">\[ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \]</span></p>
 <div style="font-size: 0.8em;">
 <ol type="1">
 <li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>).</li>
@@ -329,12 +331,13 @@
 <h2>Diesel: Wykres</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/diesel-1.png" width="960"></p>
-</figure>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/diesel-1.png" width="576"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/diesel-2.png" width="576"></p>
 </div>
 </div>
 </div>
@@ -352,15 +355,41 @@
 <section id="sprawność-diesla" class="slide level2">
 <h2>Sprawność Diesla</h2>
 <p>Zależy od stopnia obciążenia silnika (Stopnia obciążenia <span class="math inline">\(\rho = V_3/V_2\)</span>).</p>
-<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\kappa\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\varphi - 1} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykłądnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
+<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykłądnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
 <ul>
 <li class="fragment">Człon w nawiasie jest zawsze <span class="math inline">\(&gt; 1\)</span>.</li>
 <li class="fragment">Dla tego samego stopnia sprężania <span class="math inline">\(\varepsilon\)</span>, Otto jest sprawniejszy niż Diesel!</li>
 <li class="fragment">ALE: Diesle mogą pracować na znacznie wyższym <span class="math inline">\(\varepsilon\)</span> (brak spalania stukowego), więc w praktyce są sprawniejsze.</li>
 </ul>
 </section>
+<section id="obieg-sabathé-obieg-mieszany" class="slide level2">
+<h2>5. Obieg Sabathé (Obieg Mieszany)</h2>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Obieg rzeczywisty silników wysokoprężnych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy <span class="math inline">\(v=const\)</span>, a częściowo przy <span class="math inline">\(p=const\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:100%;">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/sabathe-1.png" width="576"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/sabathe-2.png" width="576"></p>
+</div>
+</div>
+</div>
+</div></div>
+</section>
 <section id="obieg-joulea-braytona-turbina-gazowa" class="slide level2">
-<h2>5. Obieg Joule’a-Braytona (Turbina Gazowa)</h2>
+<h2>6. Obieg Joule’a-Braytona (Turbina Gazowa)</h2>
 <p>Podstawa działania silników lotniczych i elektrowni szczytowych. Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.</p>
 <ol type="1">
 <li><strong>Sprężarka:</strong> Sprężanie adiabatyczne powietrza.</li>
@@ -378,7 +407,7 @@
 <p>Własność Turbin Gazowych (TG): Sprężarka zużywa aż <strong>50-60%</strong> mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %). Dlatego TG są bardzo czułe na sprawność komponentów.</p>
 </section>
 <section id="ciśnienie-średnie-indykowane-p_me" class="slide level2">
-<h2>6. Ciśnienie Średnie Indykowane (<span class="math inline">\(p_{me}\)</span>)</h2>
+<h2>7. Ciśnienie Średnie Indykowane (<span class="math inline">\(p_{me}\)</span>)</h2>
 <p>Jak porównać silnik od kosiarki (mały <span class="math inline">\(V_s\)</span>) z silnikiem okrętowym (duży <span class="math inline">\(V_s\)</span>)? Używamy parametru uniezależnionego od wielkości.</p>
 <p><strong>Mean Effective Pressure (<span class="math inline">\(MEP\)</span>):</strong> Stałe ciśnienie, które działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.</p>
 <p><span class="math display">\[ p_{me} = \frac{L}{V_s} \]</span></p>
