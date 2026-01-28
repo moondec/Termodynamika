@@ -188,7 +188,7 @@ Mamy dwa wzory (zależnie od znanych zmiennych):
 ::: {.column width="60%"}
 
 ::: {.fragment .fade-up .callout-warning appearance="simple"}
-**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. <br>Wzory te wtedy służą do wyprowadzenia $$pv^k=const$$
+**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. <br>Wzory te wtedy służą do wyprowadzenia $$pv^\kappa=const$$
 :::
 
 :::

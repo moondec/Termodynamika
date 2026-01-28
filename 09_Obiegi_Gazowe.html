@@ -128,11 +128,11 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("img/background_blue.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.3 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -177,55 +177,186 @@
 </section>
 <section id="standard-powietrzny" class="slide level2">
 <h2>1. Standard Powietrzny</h2>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Rzeczywisty proces spalania jest skomplikowany (zmiana składu chemicznego, tarcie). W termodynamice stosujemy model uproszczony (Air-Standard Assumptions):</p>
+</div>
+</div>
+</div>
 <ol type="1">
-<li>Czynnik roboczy to <strong>powietrze</strong> (gaz doskonały).</li>
-<li>Obieg jest <strong>zamknięty</strong> (nie ma wymiany ładunku).</li>
-<li>Spalanie zastępujemy <strong>doprowadzeniem ciepła</strong> ze źrodła zewnętrznego.</li>
-<li>Wydech zastępujemy <strong>odprowadzeniem ciepła</strong> (chłodzeniem).</li>
-<li>Wszystkie procesy są odwracalne.</li>
+<li class="fragment">Czynnik roboczy to <strong>powietrze</strong> (gaz doskonały).</li>
+<li class="fragment">Obieg jest <strong>zamknięty</strong> (nie ma wymiany ładunku).</li>
+<li class="fragment">Spalanie zastępujemy <strong>doprowadzeniem ciepła</strong> ze źrodła zewnętrznego.</li>
+<li class="fragment">Wydech zastępujemy <strong>odprowadzeniem ciepła</strong> (chłodzeniem).</li>
+<li class="fragment">Wszystkie procesy są odwracalne.</li>
 </ol>
+</section>
+<section id="definicja-procesu-cyklicznego" class="slide level2">
+<h2>Definicja Procesu Cyklicznego</h2>
+<div title="**Obieg termodynamiczny (cykl)**">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Obieg termodynamiczny (cykl)</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>to proces, w którym stan końcowy czynnika jest identyczny z początkowym.</p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Zmiana funkcji stanu (energii wewnętrznej, entropii) w pełnym cyklu wynosi zero: <span class="math display">\[ \oint dU = 0, \quad \oint dS = 0 \]</span></li>
+<li class="fragment">Z I Zasady Termodynamiki wynika, że praca netto obiegu równa jest ciepłu netto: <span class="math display">\[ L_{ob} = Q_{netto} = Q_{dop} - |Q_{wyp}| \]</span></li>
+</ul>
 </section>
 <section id="geometria-silnika" class="slide level2">
 <h2>2. Geometria Silnika</h2>
-<p>Kluczowe parametry: 1. <strong>GMP (TDC):</strong> Górny Martwy Punkt (min objętość, <span class="math inline">\(V_{min}\)</span>). 2. <strong>DMP (BDC):</strong> Dolny Martwy Punkt (max objętość, <span class="math inline">\(V_{max}\)</span>). 3. <strong>Objętość skokowa (<span class="math inline">\(V_s\)</span>):</strong> <span class="math inline">\(V_{max} - V_{min}\)</span>.</p>
+<p>Kluczowe parametry:</p>
+<ol type="1">
+<li class="fragment"><strong>GMP (TDC):</strong> Górny Martwy Punkt (min objętość, <span class="math inline">\(V_{min}\)</span>).</li>
+<li class="fragment"><strong>DMP (BDC):</strong> Dolny Martwy Punkt (max objętość, <span class="math inline">\(V_{max}\)</span>).</li>
+<li class="fragment"><strong>Objętość skokowa (<span class="math inline">\(V_s\)</span>):</strong> <span class="math inline">\(V_{max} - V_{min}\)</span>.</li>
+</ol>
+<div class="fragment">
 <h3 id="stopień-sprężania-varepsilon">Stopień Sprężania (<span class="math inline">\(\varepsilon\)</span>)</h3>
 <p>Najważniejszy parametr decydujący o sprawności!</p>
 <p><span class="math display">\[ \varepsilon = \frac{V_{max}}{V_{min}} \]</span></p>
+</div>
 <ul>
-<li>Silniki benzynowe: <span class="math inline">\(\varepsilon = 8 - 12\)</span>.</li>
-<li>Diesle: <span class="math inline">\(\varepsilon = 14 - 24\)</span>.</li>
+<li class="fragment">Silniki benzynowe: <span class="math inline">\(\varepsilon = 8 - 12\)</span>.</li>
+<li class="fragment">Diesle: <span class="math inline">\(\varepsilon = 14 - 24\)</span>.</li>
 </ul>
 </section>
 <section id="obieg-otto-zapłon-iskrowy---zi" class="slide level2">
 <h2>3. Obieg Otto (Zapłon Iskrowy - ZI)</h2>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Model silnika benzynowego. Mieszanka paliwowo-powietrzna jest sprężana, a potem zapalana iskrą.</p>
-<p>Procesy: 1. <strong>1-2:</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>). 2. <strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>) - “Eksplozja”. 3. <strong>3-4:</strong> Rozprężanie izentropowe (Praca). 4. <strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong> (Wydech).</p>
+</div>
+</div>
+</div>
+<p>Procesy:</p>
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>).</li>
+<li class="fragment"><strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>) - “Eksplozja”.</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe (Praca).</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong> (Wydech).</li>
+</ol>
 </section>
 <section id="otto-wykres-i-sprawność" class="slide level2">
 <h2>Otto: Wykres i Sprawność</h2>
-
-<img data-src="09_Obiegi_Gazowe_files/figure-revealjs/otto-1.png" width="960" class="r-stretch"><p><span class="math display">\[ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} \]</span></p>
-<p>Wniosek: Im wyższy stopień sprężania, tym wyższa sprawność. Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/otto-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><span class="math display">\[ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} \]</span></p>
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>).</li>
+<li class="fragment"><strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>) - “Eksplozja”.</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe (Praca).</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong> (Wydech).</li>
+</ol>
+</div>
+</div></div>
+<div class="fragment" title="Wniosek:">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek:</strong></p>
+</div>
+<div class="callout-content">
+<p>Im wyższy stopień sprężania, tym wyższa sprawność. Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="obieg-diesla-zapłon-samoczynny---zs" class="slide level2">
 <h2>4. Obieg Diesla (Zapłon Samoczynny - ZS)</h2>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Model silnika wysokoprężnego. Sprężamy samo powietrze (do bardzo wysokiej temperatury), a potem wtryskujemy paliwo.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Różnica: Paliwo pali się wolniej, w miarę jak tłok idzie w dół. Dlatego spalanie modelujemy jako <strong>Izobarę</strong> (<span class="math inline">\(p=const\)</span>).</p>
-<p>Procesy: 1. <strong>1-2:</strong> Sprężanie izentropowe. 2. <strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałym ciśnieniu</strong> (<span class="math inline">\(p=const\)</span>). 3. <strong>3-4:</strong> Rozprężanie izentropowe. 4. <strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong>.</p>
+</div>
+</div>
+</div>
+<p>Procesy:</p>
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe.</li>
+<li class="fragment"><strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałym ciśnieniu</strong> (<span class="math inline">\(p=const\)</span>).</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe.</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong>.</li>
+</ol>
 </section>
 <section id="diesel-wykres" class="slide level2">
 <h2>Diesel: Wykres</h2>
-
-<img data-src="09_Obiegi_Gazowe_files/figure-revealjs/diesel-1.png" width="960" class="r-stretch"></section>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/diesel-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe.</li>
+<li class="fragment"><strong>2-3:</strong> Doprowadzenie ciepła przy <strong>stałym ciśnieniu</strong> (<span class="math inline">\(p=const\)</span>).</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe.</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong>.</li>
+</ol>
+</div>
+</div></div>
+</section>
 <section id="sprawność-diesla" class="slide level2">
 <h2>Sprawność Diesla</h2>
 <p>Zależy od stopnia obciążenia silnika (Stopnia obciążenia <span class="math inline">\(\rho = V_3/V_2\)</span>).</p>
-<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{k-1}} \left[ \frac{\rho^k - 1}{k(\rho - 1)} \right] \]</span></p>
+<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\kappa\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\varphi - 1} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykłądnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
 <ul>
-<li>Człon w nawiasie jest zawsze <span class="math inline">\(&gt; 1\)</span>.</li>
-<li>Dla tego samego stopnia sprężania <span class="math inline">\(\varepsilon\)</span>, Otto jest sprawniejszy niż Diesel!</li>
-<li>ALE: Diesle mogą pracować na znacznie wyższym <span class="math inline">\(\varepsilon\)</span> (brak spalania stukowego), więc w praktyce są sprawniejsze.</li>
+<li class="fragment">Człon w nawiasie jest zawsze <span class="math inline">\(&gt; 1\)</span>.</li>
+<li class="fragment">Dla tego samego stopnia sprężania <span class="math inline">\(\varepsilon\)</span>, Otto jest sprawniejszy niż Diesel!</li>
+<li class="fragment">ALE: Diesle mogą pracować na znacznie wyższym <span class="math inline">\(\varepsilon\)</span> (brak spalania stukowego), więc w praktyce są sprawniejsze.</li>
 </ul>
 </section>
 <section id="obieg-joulea-braytona-turbina-gazowa" class="slide level2">
@@ -269,7 +400,7 @@
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Termodynamika Techniczna (W9)</p>
 </div>
 </div></div>
 
@@ -458,7 +589,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

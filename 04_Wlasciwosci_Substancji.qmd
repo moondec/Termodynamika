@@ -29,7 +29,7 @@ format:
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
-            opacity: 0.1 !important;
+            opacity: 0.2 !important;
         }
         .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
             background-image: none !important;
@@ -239,32 +239,11 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 ---
 
-## Wykładnik Adiabaty $\kappa$ (Kappa) lub $\gamma$ (Gamma)
-
-Stosunek ciepeł właściwych nazywamy wykładnikiem adiabaty:
-
-$$ \kappa = \frac{C_p}{C_v} $$
-
-Wartość $k$ zależy od budowy cząsteczki (stopni swobody):
-
-| Gaz | Atomowość | $k$ | Przykład |
-| :--- | :---: | :---: | :--- |
-| **Jednoatomowe** | 1 | $\approx 1.66$ | Hel, Argon |
-| **Dwuatomowe** | 2 | $\approx 1.40$ | $N_2, O_2$, Powietrze |
-| **Wieloatomowe** | 3+ | $\approx 1.30$ | $CO_2, H_2O, CH_4$ |
-
-*Najważniejsza liczba w inżynierii: Powietrze ma $k=1.4$.*
-
----
-
-
----
-
 ## Zasada Ekwipartycji Energii
 
 ### Teoria Ciepła Właściwego
 
-Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej [22].
+Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej.
 
 Średnia energia na jeden stopień swobody:
 $$ \langle E_i \rangle = \frac{1}{2} k T $$
@@ -292,11 +271,11 @@ $$ (Mc_v) = \frac{f}{2} (MR) $$
 
 ---
 
-## Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty
+## Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$)
 
-### Stała Boltzmanna $k$ (lub $k_B$), występuje w fizyce statystycznej (wzór na entropię $S=kln(W)$) oraz w definicji stałej gazowej <br>
-($R_u = N_A \cdot k$).
+Obie wielkości mogą się mylić, przez podobne oznaczenie
 
+::: {style="font-size: 0.9em;"}
 | Cecha | Stała Boltzmanna | Wykładnik Adiabaty |
 |:---|:---|:---|
 | **Symbol preferowany** | **$k$** (lub $k_B$) | **$\kappa$** (Kappa) lub $\gamma$ (Gamma) |
@@ -306,6 +285,8 @@ $$ (Mc_v) = \frac{f}{2} (MR) $$
 | **Rząd wielkości** | $\approx 1,38 \cdot 10^{-23}$ (Bardzo mała) | $> 1$ (Dla powietrza $\approx 1,4$) |
 | **Jednostka** | $[\text{J}/\text{K}]$ | Brak (liczba bezwymiarowa) |
 : Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty {tbl-colwidths="[25,35,40]"}
+
+:::
 
 ---
 

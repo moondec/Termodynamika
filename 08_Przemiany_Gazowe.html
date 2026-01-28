@@ -216,16 +216,26 @@
 <section id="praca-objętościowa" class="slide level2">
 <h2>Praca Objętościowa</h2>
 <p>W procesach odwracalnych praca objętościowa wyraża się wzorem:</p>
-<p><span class="math display">\[ đL = -p dV \]</span></p>
+<p><span class="math display">\[ đL = p dV \]</span></p>
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>znak “+” zgodnie z konwencją przyjętą w W3</p>
+</div>
+</div>
+</div>
 <p>Całkowita praca przy zmianie objętości od <span class="math inline">\(V_1\)</span> do <span class="math inline">\(V_2\)</span>:</p>
-<p><span class="math display">\[ L_{1-2} = -\int_{V_1}^{V_2} p(V) dV \]</span></p>
+<p><span class="math display">\[ L_{1-2} = \int_{V_1}^{V_2} p(V) dV \]</span></p>
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Konwencja znaku:</strong> Jeśli <span class="math inline">\(dV &gt; 0\)</span> (rozprężanie), to <span class="math inline">\(L &lt; 0\)</span> (układ wykonuje pracę). Jeśli <span class="math inline">\(dV &lt; 0\)</span> (sprężanie), to <span class="math inline">\(L &gt; 0\)</span> (siły zewnętrzne wykonują pracę na układzie).</p>
+<p><strong>Konwencja znaku:</strong> Jeśli <span class="math inline">\(dV &gt; 0\)</span> (rozprężanie), to <span class="math inline">\(L &gt; 0\)</span> (układ wykonuje pracę). Jeśli <span class="math inline">\(dV &lt; 0\)</span> (sprężanie), to <span class="math inline">\(L &lt; 0\)</span> (siły zewnętrzne wykonują pracę na układzie).</p>
 </div>
 </div>
 </div>
@@ -256,9 +266,9 @@
 <div class="column" style="width:60%;">
 <ol type="1">
 <li><strong>Równanie procesu:</strong> Związek między <span class="math inline">\(p\)</span> i <span class="math inline">\(v\)</span>.</li>
-<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ l = -\int p \, dv \]</span></li>
-<li><strong>Praca techniczna (<span class="math inline">\(l_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ l_t = \int v \, dp \]</span></li>
-<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u - l \quad \text{lub} \quad q = \Delta h - l_t \]</span></li>
+<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ l = \int p \, dv \]</span></li>
+<li><strong>Praca techniczna (<span class="math inline">\(l_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ l_t = -\int v \, dp \]</span></li>
+<li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t \]</span></li>
 </ol>
 </div><div class="column" style="width:40%;">
 <div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
@@ -431,7 +441,7 @@
 </section>
 <section id="obliczenia-pracy-i-entropii-izoterma" class="slide level2">
 <h2>Obliczenia Pracy i Entropii (Izoterma)</h2>
-<p><strong>Praca (wykonana na układzie):</strong> <span class="math display">\[ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) = nRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
+<p><strong>Praca (bezwzględna wykonana w układzie):</strong> <span class="math display">\[ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
 <div class="fragment fade-right">
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
@@ -439,7 +449,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Zmiana entropii:</strong> <span class="math display">\[ \Delta S = \frac{Q}{T} = nR \ln\left(\frac{V_2}{V_1}\right) \]</span> Proces dostarczania ciepła w <span class="math inline">\(T=const\)</span> powoduje wzrost nieporządku (objętości).</p>
+<p><strong>Zmiana entropii:</strong> <span class="math display">\[ \Delta S = \frac{Q}{T} = mR \ln\left(\frac{V_2}{V_1}\right) \]</span> Proces dostarczania ciepła w <span class="math inline">\(T=const\)</span> powoduje wzrost nieporządku (objętości).</p>
 </div>
 </div>
 </div>
@@ -448,8 +458,8 @@
 <section id="izoterma-podsumowanie" class="slide level2">
 <h2>Izoterma: Podsumowanie</h2>
 <ol type="1">
-<li><strong>Praca:</strong> <span class="math inline">\(l = -RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
-<li><strong>Ciepło:</strong> <span class="math inline">\(q = -l\)</span> (Całe ciepło zamienia się w pracę).</li>
+<li><strong>Praca:</strong> <span class="math inline">\(l = RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = l\)</span> (Całe ciepło zamienia się w pracę).</li>
 <li><strong>Wykres T-s:</strong> Pozioma linia prosta (<span class="math inline">\(T=const\)</span>).</li>
 </ol>
 
@@ -489,7 +499,7 @@
 <div class="columns">
 <div class="fragment fade-right column" style="width:50%;">
 <h3 id="równanie-poissona">Równanie Poissona</h3>
-<p><span class="math display">\[ p v^k = const \quad \text{oraz} \quad T v^{k-1} = const \]</span></p>
+<p><span class="math display">\[ p v^\kappa = const \quad \text{oraz} \quad T v^{\kappa-1} = const \]</span></p>
 </div><div class="fragment fade-left column" style="width:50%;">
 <h3 id="bilans-energii-1-kg-3">Bilans Energii (1 kg)</h3>
 <ol type="1">
@@ -505,9 +515,9 @@
 <section id="wykresy-i-właściwości-adiabata" class="slide level2">
 <h2>Wykresy i Właściwości (Adiabata)</h2>
 <ul>
-<li><strong>Wykres p-V:</strong> Krzywa <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(k &gt; 1\)</span>).</li>
+<li><strong>Wykres p-V:</strong> Krzywa <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(\kappa &gt; 1\)</span>).</li>
 <li><strong>Wykres T-s:</strong> Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.</li>
-<li><strong>Praca Techniczna:</strong> <span class="math inline">\(l_t = k \cdot l = \Delta h\)</span>.</li>
+<li><strong>Praca Techniczna:</strong> <span class="math inline">\(l_t = \kappa \cdot l = \Delta h\)</span>.</li>
 </ul>
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
@@ -549,7 +559,7 @@
 <td style="text-align: left;"><span class="math inline">\(T=const\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><strong>k</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(\kappa\)</span></strong></td>
 <td style="text-align: left;">Adiabata</td>
 <td style="text-align: left;"><span class="math inline">\(q=0\)</span></td>
 </tr>
@@ -570,7 +580,7 @@
 <p><strong>Warto wiedzieć</strong></p>
 </div>
 <div class="callout-content">
-<p>W sprężarkach tłokowych rzeczywiste sprężanie to politropa z <span class="math inline">\(1 &lt; n &lt; k\)</span> (chłodzenie cylindra).</p>
+<p>W sprężarkach tłokowych rzeczywiste sprężanie to politropa z <span class="math inline">\(1 &lt; n &lt; \kappa\)</span> (chłodzenie cylindra).</p>
 </div>
 </div>
 </div>
@@ -603,9 +613,9 @@
 <ul>
 <li>Dla izobary (<span class="math inline">\(n=0\)</span>): <span class="math inline">\(l_t = 0\)</span>.</li>
 <li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = l\)</span>.</li>
-<li>Dla adiabaty (<span class="math inline">\(n=k\)</span>): <span class="math inline">\(l_t = k \cdot l = \Delta h\)</span>.</li>
+<li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = \kappa \cdot l = -\Delta h\)</span>.</li>
 </ul>
-<p>gdzie: k (<span class="math inline">\(\kappa\)</span>) to <span class="math inline">\(c_p/c_v\)</span></p>
+<p>gdzie: (<span class="math inline">\(\kappa\)</span>) to <span class="math inline">\(c_p/c_v\)</span></p>
 <div class="fragment" title="**Wniosek dla Sprężarki:**">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -658,7 +668,7 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Adiabata</strong></td>
-<td style="text-align: center;">k</td>
+<td style="text-align: center;"><span class="math inline">\(\kappa\)</span></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">\(-\Delta u\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(\Delta h\)</span></td>

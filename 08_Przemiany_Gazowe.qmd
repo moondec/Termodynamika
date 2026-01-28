@@ -93,14 +93,18 @@ Gdzie:
 
 W procesach odwracalnych praca objętościowa wyraża się wzorem:
 
-$$ đL = -p dV $$
+$$ đL = p dV $$ 
+
+::: {.callout-warning appearance="simple"}
+znak "+" zgodnie z konwencją przyjętą w W3
+:::
 
 Całkowita praca przy zmianie objętości od $V_1$ do $V_2$:
 
-$$ L_{1-2} = -\int_{V_1}^{V_2} p(V) dV $$
+$$ L_{1-2} = \int_{V_1}^{V_2} p(V) dV $$
 
 ::: {.callout-note appearance="simple"}
-**Konwencja znaku:** Jeśli $dV > 0$ (rozprężanie), to $L < 0$ (układ wykonuje pracę). Jeśli $dV < 0$ (sprężanie), to $L > 0$ (siły zewnętrzne wykonują pracę na układzie).
+**Konwencja znaku:** Jeśli $dV > 0$ (rozprężanie), to $L > 0$ (układ wykonuje pracę). Jeśli $dV < 0$ (sprężanie), to $L < 0$ (siły zewnętrzne wykonują pracę na układzie).
 :::
 
 ---
@@ -129,11 +133,11 @@ Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)
 
 1.  **Równanie procesu:** Związek między $p$ i $v$.
 2.  **Praca objętościowa ($l$):** Pole pod krzywą na $p-v$.
-    $$ l = -\int p \, dv $$
+    $$ l = \int p \, dv $$
 3.  **Praca techniczna ($l_t$):** Pole do osi $p$.
-    $$ l_t = \int v \, dp $$
+    $$ l_t = -\int v \, dp $$
 4.  **Ciepło ($q$):** Z I Zasady Termodynamiki.
-    $$ q = \Delta u - l \quad \text{lub} \quad q = \Delta h - l_t $$
+    $$ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t $$
 :::
 
 ::: {.column width="40%"}
@@ -321,12 +325,12 @@ $$ p_1 v_1 = p_2 v_2 = const $$
 
 ## Obliczenia Pracy i Entropii (Izoterma)
 
-**Praca (wykonana na układzie):**
-$$ L_{1-2} = -\int_{V_1}^{V_2} \frac{nRT}{V} dV = -nRT \ln\left(\frac{V_2}{V_1}\right) = nRT \ln\left(\frac{p_2}{p_1}\right) $$
+**Praca (bezwzględna wykonana w układzie):**
+$$ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) $$
 
 ::: {.fragment .fade-right .callout-important appearance="simple"}
 **Zmiana entropii:**
-$$ \Delta S = \frac{Q}{T} = nR \ln\left(\frac{V_2}{V_1}\right) $$
+$$ \Delta S = \frac{Q}{T} = mR \ln\left(\frac{V_2}{V_1}\right) $$
 Proces dostarczania ciepła w $T=const$ powoduje wzrost nieporządku (objętości).
 
 :::
@@ -335,8 +339,8 @@ Proces dostarczania ciepła w $T=const$ powoduje wzrost nieporządku (objętośc
 
 ## Izoterma: Podsumowanie
 
-1.  **Praca:** $l = -RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
-2.  **Ciepło:** $q = -l$ (Całe ciepło zamienia się w pracę).
+1.  **Praca:** $l = RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
+2.  **Ciepło:** $q = l$ (Całe ciepło zamienia się w pracę).
 3.  **Wykres T-s:** Pozioma linia prosta ($T=const$).
 
 ```{r}
@@ -381,7 +385,7 @@ Dla procesu odwracalnego: **Izentropa** ($ds = 0, s = const$).
 ::: {.fragment .fade-right .column width="50%"}
 
 ### Równanie Poissona
-$$ p v^k = const \quad \text{oraz} \quad T v^{k-1} = const $$
+$$ p v^\kappa = const \quad \text{oraz} \quad T v^{\kappa-1} = const $$
 
 :::
 ::: {.fragment .fade-left .column width="50%"}
@@ -401,9 +405,9 @@ $$ p v^k = const \quad \text{oraz} \quad T v^{k-1} = const $$
 
 ## Wykresy i Właściwości (Adiabata)
 
-*   **Wykres p-V:** Krzywa **bardziej stroma** niż izoterma (ponieważ $k > 1$).
+*   **Wykres p-V:** Krzywa **bardziej stroma** niż izoterma (ponieważ $\kappa > 1$).
 *   **Wykres T-s:** Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.
-*   **Praca Techniczna:** $l_t = k \cdot l = \Delta h$.
+*   **Praca Techniczna:** $l_t = \kappa \cdot l = \Delta h$.
 
 ```{r}
 #| echo: false
@@ -448,11 +452,11 @@ gdzie $n$ to wykładnik politropy.
 | :---: | :--- | :--- |
 | **0** | Izobara | $p=const$ |
 | **1** | Izoterma | $T=const$ |
-| **k** | Adiabata | $q=0$ |
+| **$\kappa$** | Adiabata | $q=0$ |
 | **$\infty$** | Izochora | $v=const$ |
 
 ::: {.callout-important title="Warto wiedzieć" style="font-size: 0.6em;"}
-W sprężarkach tłokowych rzeczywiste sprężanie to politropa z $1 < n < k$ (chłodzenie cylindra).
+W sprężarkach tłokowych rzeczywiste sprężanie to politropa z $1 < n < \kappa$ (chłodzenie cylindra).
 :::
 
 ---
@@ -504,9 +508,9 @@ $$ l_t = n \cdot l $$
 
 *   Dla izobary ($n=0$): $l_t = 0$.
 *   Dla izotermy ($n=1$): $l_t = l$.
-*   Dla adiabaty ($n=k$): $l_t = k \cdot l = \Delta h$.
+*   Dla adiabaty ($n=\kappa$): $l_t = \kappa \cdot l = -\Delta h$.
 
-gdzie: k ($\kappa$) to $c_p/c_v$
+gdzie: ($\kappa$) to $c_p/c_v$
 
 ::: {.fragment .callout-tip title= "**Wniosek dla Sprężarki:**"}
 Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izotermy** (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.
@@ -521,7 +525,7 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 | **Izochora** | $\infty$ | $\Delta u$ | 0 | $-v\Delta p$|
 | **Izobara** | 0 | $\Delta h$ | $p \Delta v$ | 0 |
 | **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $-q$ | $l$ |
-| **Adiabata** | k | 0 | $-\Delta u$ | $\Delta h$ |
+| **Adiabata** | $\kappa$ | 0 | $-\Delta u$ | $\Delta h$ |
 
 ::: {.callout-important title="**Kluczowe do Zapamiętania:**"}
 

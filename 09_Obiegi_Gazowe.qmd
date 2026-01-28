@@ -18,11 +18,11 @@ format:
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
-            background-image: url("img/background_red.png") !important;
+            background-image: url("img/background_blue.png") !important;
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
-            opacity: 0.1 !important;
+            opacity: 0.3 !important;
         }
         .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
             background-image: none !important;
@@ -34,14 +34,16 @@ format:
     show-slide-number: all
     transition: slide
     chalkboard: true
+    footer: "Termodynamika Techniczna (W9)"
     width: 1600
     height: 900
-revealjs-plugins:
-  - appearance
-  - pointer
-pointer:
-  color: "#e60000"
-  pointerSize: 20
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
 editor: source
 ---
 
@@ -51,54 +53,92 @@ editor: source
 2.  **Parametry Geometryczne** (Stopień sprężania)
 3.  **Obieg Otto** (Silnik benzynowy)
 4.  **Obieg Diesla** (Silnik wysokoprężny)
-5.  **Obieg Joule'a-Braytona** (Turbina Gazowa)
-6.  **Porównanie Sprawności i Ciśnienie Średnie**
+5.  **Obieg Sabathé** (Silnik wysokoprężny)
+6.  **Obieg Joule'a-Braytona** (Turbina Gazowa)
+7.  **Porównanie Sprawności i Ciśnienie Średnie**
 
 ---
 
 ## 1. Standard Powietrzny
 
+::: {.callout-note appearance="simple"}
 Rzeczywisty proces spalania jest skomplikowany (zmiana składu chemicznego, tarcie).
 W termodynamice stosujemy model uproszczony (Air-Standard Assumptions):
+:::
 
+::: {.incremental}
 1.  Czynnik roboczy to **powietrze** (gaz doskonały).
 2.  Obieg jest **zamknięty** (nie ma wymiany ładunku).
 3.  Spalanie zastępujemy **doprowadzeniem ciepła** ze źrodła zewnętrznego.
 4.  Wydech zastępujemy **odprowadzeniem ciepła** (chłodzeniem).
 5.  Wszystkie procesy są odwracalne.
+:::
+
+___
+
+## Definicja Procesu Cyklicznego
+
+::: {.callout-important title="**Obieg termodynamiczny (cykl)**"}
+to proces, w którym stan końcowy czynnika jest identyczny z początkowym.
+:::
+
+::: {.incremental}
+*   Zmiana funkcji stanu (energii wewnętrznej, entropii) w pełnym cyklu wynosi zero:
+    $$ \oint dU = 0, \quad \oint dS = 0 $$
+*   Z I Zasady Termodynamiki wynika, że praca netto obiegu równa jest ciepłu netto:
+    $$ L_{ob} = Q_{netto} = Q_{dop} - |Q_{wyp}| $$
+    
+:::
 
 ---
 
 ## 2. Geometria Silnika
 
 Kluczowe parametry:
+
+::: {.incremental}
 1.  **GMP (TDC):** Górny Martwy Punkt (min objętość, $V_{min}$).
 2.  **DMP (BDC):** Dolny Martwy Punkt (max objętość, $V_{max}$).
 3.  **Objętość skokowa ($V_s$):** $V_{max} - V_{min}$.
+:::
 
+::: {.fragment}
 ### Stopień Sprężania ($\varepsilon$)
 Najważniejszy parametr decydujący o sprawności!
 
 $$ \varepsilon = \frac{V_{max}}{V_{min}} $$
 
+:::
+
+::: incremental
 *   Silniki benzynowe: $\varepsilon = 8 - 12$.
 *   Diesle: $\varepsilon = 14 - 24$.
+:::
 
 ---
 
 ## 3. Obieg Otto (Zapłon Iskrowy - ZI)
 
+::: {.callout-note appearance="simple"}
 Model silnika benzynowego. Mieszanka paliwowo-powietrzna jest sprężana, a potem zapalana iskrą.
+:::
 
 Procesy:
+
+::: incremental
 1.  **1-2:** Sprężanie izentropowe ($s=const$).
 2.  **2-3:** Doprowadzenie ciepła przy **stałej objętości** ($v=const$) - "Eksplozja".
 3.  **3-4:** Rozprężanie izentropowe (Praca).
 4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości** (Wydech).
+:::
 
 ---
 
 ## Otto: Wykres i Sprawność
+
+:::: {.columns}
+
+::: {.column width="60%"}
 
 ```{r}
 #| label: otto
@@ -140,37 +180,64 @@ df_otto <- data.frame(
 )
 
 ggplot(df_otto, aes(x=v, y=p)) + geom_path(size=2, color="red") +
-  annotate("text", x=v_max, y=p1, label="1", vjust=2) +
-  annotate("text", x=v_min, y=p2, label="2", hjust=2) +
-  annotate("text", x=v_min, y=p3, label="3", hjust=2) +
-  annotate("text", x=v_max, y=p4, label="4", vjust=-1) +
-  geom_text(aes(x=2, y=p3/2), label="Q_in (Izohora)") +
-  theme_minimal() + labs(title="Obieg Otto (ZI)", x="v", y="p")
-```
+  annotate("text", x=v_max, y=p1, label="1", vjust=2, size = 6) +
+  annotate("text", x=v_min, y=p2, label="2", hjust=2, size = 6) +
+  annotate("text", x=v_min, y=p3, label="3", hjust=2, size = 6) +
+  annotate("text", x=v_max, y=p4, label="4", vjust=-1, size = 6) +
+  annotate("text", x=1.45, y=p3/2, label = "Q['in'] ~ ' (Izochora)'", parse = TRUE, size = 6) +
+  theme_bw() + labs(title="Obieg Otto (ZI)", x="v", y="p") +
+  ylim(c(-5, p3+5))
 
+```
+:::
+
+::: {.column width="40%"}
 $$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{k-1}} $$
 
-Wniosek: Im wyższy stopień sprężania, tym wyższa sprawność.
+::: {.incremental style="font-size: 0.8em;"}
+1.  **1-2:** Sprężanie izentropowe ($s=const$).
+2.  **2-3:** Doprowadzenie ciepła przy **stałej objętości** ($v=const$) - "Eksplozja".
+3.  **3-4:** Rozprężanie izentropowe (Praca).
+4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości** (Wydech).
+:::
+
+:::
+
+::::
+
+::: {.fragment .callout-important title="Wniosek:"}
+Im wyższy stopień sprężania, tym wyższa sprawność.
 Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).
+:::
 
 ---
 
 ## 4. Obieg Diesla (Zapłon Samoczynny - ZS)
 
+::: {.callout-note appearance="simple"}
 Model silnika wysokoprężnego. Sprężamy samo powietrze (do bardzo wysokiej temperatury), a potem wtryskujemy paliwo.
-
+:::
+::: {.callout-tip appearance="simple"}
 Różnica: Paliwo pali się wolniej, w miarę jak tłok idzie w dół.
 Dlatego spalanie modelujemy jako **Izobarę** ($p=const$).
+:::
 
 Procesy:
+
+::: incremental
 1.  **1-2:** Sprężanie izentropowe.
 2.  **2-3:** Doprowadzenie ciepła przy **stałym ciśnieniu** ($p=const$).
 3.  **3-4:** Rozprężanie izentropowe.
 4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości**.
+:::
 
 ---
 
 ## Diesel: Wykres
+
+:::: {.columns}
+
+::: {.column width="60%"}
 
 ```{r}
 #| label: diesel
@@ -209,9 +276,28 @@ df_diesel <- data.frame(
 )
 
 ggplot(df_diesel, aes(x=v, y=p)) + geom_path(size=2, color="blue") +
-   annotate("text", x=v_max, y=p1, label="1", vjust=2) +
-  theme_minimal() + labs(title="Obieg Diesla (ZS)", x="v", y="p")
+  annotate("text", x=v_max, y=p1, label="1", vjust=2, size = 6) +
+  annotate("text", x=v_min, y=p2, label="2", hjust=2, size = 6) +
+  annotate("text", x=v3, y=p3, label="3", hjust=-1, size = 6) +
+  annotate("text", x=v_max, y=p4, label="4", vjust=-1, size = 6) +
+  annotate("text", x=4, y=p3, label = "Q['in'] ~ ' (Izobara)'", parse = TRUE, size = 6) +
+  theme_bw() + labs(title="Obieg Diesla (ZS)", x="v", y="p") +
+  ylim(c(-5, p3+5))
 ```
+
+:::
+
+::: {.column width="40%"}
+
+::: {.incremental style="font-size: 0.8em;"}
+1.  **1-2:** Sprężanie izentropowe.
+2.  **2-3:** Doprowadzenie ciepła przy **stałym ciśnieniu** ($p=const$).
+3.  **3-4:** Rozprężanie izentropowe.
+4.  **4-1:** Odprowadzanie ciepła przy **stałej objętości**.
+:::
+:::
+
+::::
 
 ---
 
@@ -219,15 +305,25 @@ ggplot(df_diesel, aes(x=v, y=p)) + geom_path(size=2, color="blue") +
 
 Zależy od stopnia obciążenia silnika (Stopnia obciążenia $\rho = V_3/V_2$).
 
-$$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{k-1}} \left[ \frac{\rho^k - 1}{k(\rho - 1)} \right] $$
+$$ \eta_{Diesel} = 1 - \frac{1}{\kappa\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\varphi - 1} \right] $$
+gdzie: stopień obciążenia - $\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}$,<br>wykłądnik adiabaty -  $\kappa=\frac{c_p}{c_v}$
+
+::: {.incremental}
 
 *   Człon w nawiasie jest zawsze $> 1$.
 *   Dla tego samego stopnia sprężania $\varepsilon$, Otto jest sprawniejszy niż Diesel!
 *   ALE: Diesle mogą pracować na znacznie wyższym $\varepsilon$ (brak spalania stukowego), więc w praktyce są sprawniejsze.
 
+:::
+
 ---
 
-## 5. Obieg Joule'a-Braytona (Turbina Gazowa)
+## 5. Obieg Sabathé 
+
+
+---
+
+## 6. Obieg Joule'a-Braytona (Turbina Gazowa)
 
 Podstawa działania silników lotniczych i elektrowni szczytowych.
 Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.
@@ -254,7 +350,7 @@ Dlatego TG są bardzo czułe na sprawność komponentów.
 
 ---
 
-## 6. Ciśnienie Średnie Indykowane ($p_{me}$)
+## 7. Ciśnienie Średnie Indykowane ($p_{me}$)
 
 Jak porównać silnik od kosiarki (mały $V_s$) z silnikiem okrętowym (duży $V_s$)?
 Używamy parametru uniezależnionego od wielkości.

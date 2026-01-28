@@ -132,7 +132,7 @@
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.2 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -339,47 +339,58 @@
 <p><strong>Zasada na Egzamin:</strong> Jeśli widzisz małe <span class="math inline">\(c\)</span> i <span class="math inline">\(R\)</span>, <strong>nie wstawiaj tam <span class="math inline">\(n\)</span></strong>! Inżynierowie w elektrowniach liczą na kilogramy (<span class="math inline">\(R\)</span>), a nie na mole (<span class="math inline">\(n \cdot R_u\)</span>).</p>
 </blockquote>
 </section>
-<section id="wykładnik-adiabaty-kappa-kappa-lub-gamma-gamma" class="slide level2">
-<h2>Wykładnik Adiabaty <span class="math inline">\(\kappa\)</span> (Kappa) lub <span class="math inline">\(\gamma\)</span> (Gamma)</h2>
-<p>Stosunek ciepeł właściwych nazywamy wykładnikiem adiabaty:</p>
-<p><span class="math display">\[ \kappa = \frac{C_p}{C_v} \]</span></p>
-<p>Wartość <span class="math inline">\(k\)</span> zależy od budowy cząsteczki (stopni swobody):</p>
+<section id="zasada-ekwipartycji-energii" class="slide level2">
+<h2>Zasada Ekwipartycji Energii</h2>
+<h3 id="teoria-ciepła-właściwego">Teoria Ciepła Właściwego</h3>
+<p>Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej.</p>
+<p>Średnia energia na jeden stopień swobody: <span class="math display">\[ \langle E_i \rangle = \frac{1}{2} k T \]</span></p>
+<ul>
+<li><strong>Ruch postępowy:</strong> 3 stopnie (<span class="math inline">\(3 \cdot \frac{1}{2} kT\)</span>).</li>
+<li><strong>Ruch obrotowy:</strong> +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).</li>
+<li><strong>Drgania (oscylacje):</strong> Wnoszą wkład energii kinetycznej i potencjalnej.</li>
+</ul>
+</section>
+<section id="ciepło-właściwe-gazów" class="slide level2">
+<h2>Ciepło Właściwe Gazów</h2>
+<h3 id="wartości-teoretyczne-c_v">Wartości Teoretyczne <span class="math inline">\(c_v\)</span></h3>
+<p>Wartość molowego ciepła właściwego zależy od liczby stopni swobody (<span class="math inline">\(f\)</span>):</p>
+<p><span class="math display">\[ (Mc_v) = \frac{f}{2} (MR) \]</span></p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Gaz</th>
-<th style="text-align: center;">Atomowość</th>
-<th style="text-align: center;"><span class="math inline">\(k\)</span></th>
+<th style="text-align: left;">Typ Gazu</th>
+<th style="text-align: left;"><span class="math inline">\(f\)</span></th>
+<th style="text-align: left;"><span class="math inline">\((Mc_v)\)</span></th>
 <th style="text-align: left;">Przykład</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Jednoatomowe</strong></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;"><span class="math inline">\(\approx 1.66\)</span></td>
-<td style="text-align: left;">Hel, Argon</td>
+<td style="text-align: left;"><strong>Jednoatomowy</strong></td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><span class="math inline">\(1.5 R\)</span></td>
+<td style="text-align: left;">Ar, He</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Dwuatomowe</strong></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"><span class="math inline">\(\approx 1.40\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(N_2, O_2\)</span>, Powietrze</td>
+<td style="text-align: left;"><strong>Dwuatomowy</strong></td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><span class="math inline">\(2.5 R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(N_2, O_2\)</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Wieloatomowe</strong></td>
-<td style="text-align: center;">3+</td>
-<td style="text-align: center;"><span class="math inline">\(\approx 1.30\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(CO_2, H_2O, CH_4\)</span></td>
+<td style="text-align: left;"><strong>Wieloatomowy</strong></td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"><span class="math inline">\(3.0 R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(H_2O, CH_4\)</span></td>
 </tr>
 </tbody>
 </table>
-<p><em>Najważniejsza liczba w inżynierii: Powietrze ma <span class="math inline">\(k=1.4\)</span>.</em></p>
+<p><em>Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)</em>.</p>
 </section>
-<section id="porównanie-stała-boltzmanna-vs-wykładnik-adiabaty" class="slide level2">
-<h2>Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty</h2>
-<h3 id="stała-boltzmanna-k-lub-k_b-występuje-w-fizyce-statystycznej-wzór-na-entropię-sklnw-oraz-w-definicji-stałej-gazowej">Stała Boltzmanna <span class="math inline">\(k\)</span> (lub <span class="math inline">\(k_B\)</span>), występuje w fizyce statystycznej (wzór na entropię <span class="math inline">\(S=kln(W)\)</span>) oraz w definicji stałej gazowej <br></h3>
-<p>(<span class="math inline">\(R_u = N_A \cdot k\)</span>).</p>
+<section id="porównanie-stała-boltzmanna-k-vs-wykładnik-adiabaty-kappa" class="slide level2">
+<h2>Porównanie: Stała Boltzmanna (<span class="math inline">\(k\)</span>) vs Wykładnik Adiabaty (<span class="math inline">\(\kappa\)</span>)</h2>
+<p>Obie wielkości mogą się mylić, przez podobne oznaczenie</p>
+<div style="font-size: 0.9em;">
 <table class="caption-top">
 <caption>Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty</caption>
 <colgroup>
@@ -427,6 +438,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="energia-i-entalpia-gazu-doskonałego" class="slide level2">
 <h2>Energia i Entalpia Gazu Doskonałego</h2>
@@ -468,6 +480,7 @@
 <ol type="1">
 <li>Cząsteczki są upakowane ciasno <span class="math inline">\(\to\)</span> ich własna objętość zaczyna mieć znaczenie.</li>
 <li>Siły przyciągania (van der Waalsa) zaczynają sklejać cząsteczki.</li>
+<li><strong>Efekt Joule’a-Thomsona:</strong> Dławienie (<span class="math inline">\(h=const\)</span>) powoduje zmianę temperatury.</li>
 </ol>
 <p>Potrzebujemy lepszego równania stanu.</p>
 </section>
@@ -539,9 +552,9 @@
 <ol type="1">
 <li><strong>Gaz Doskonały:</strong> Dobry dla niskich ciśnień. Równanie <span class="math inline">\(pv=RT\)</span>.</li>
 <li><strong>Stała <span class="math inline">\(R\)</span>:</strong> Pamiętaj o różnicy między uniwersalną (<span class="math inline">\(8314\)</span>) a indywidualną (<span class="math inline">\(R_u/M\)</span>).</li>
-<li><strong>Ciepła:</strong> <span class="math inline">\(C_p = C_v + R\)</span>. Dla powietrza wykładnik <span class="math inline">\(k=1.4\)</span>.</li>
+<li><strong>Ciepła:</strong> <span class="math inline">\(C_p = C_v + R\)</span>. Wartości zależą od stopni swobody (<span class="math inline">\(f\)</span>).</li>
 <li><strong>Mieszaniny:</strong> Ciśnienia cząstkowe sumują się (Dalton).</li>
-<li><strong>Rzeczywistość:</strong> Siły van der Waalsa i objętość cząsteczek zmieniają zachowanie gazu blisko skraplania (Izotermy Andrewsa, współczynnik <span class="math inline">\(Z\)</span>).</li>
+<li><strong>Rzeczywistość:</strong> Siły międzycząsteczkowe (Van der Waals) powodują efekty takie jak skraplanie czy zmiana temperatury przy dławieniu (Joule-Thomson).</li>
 </ol>
 <h3 id="zapowiedź-w5">Zapowiedź W5</h3>
 <p>W kolejnym wykładzie wejdziemy w obszar <strong>Pary Wodnej</strong>: wrzenie, tablice parowe, turbiny!</p>

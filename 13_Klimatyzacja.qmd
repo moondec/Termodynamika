@@ -18,11 +18,11 @@ format:
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
-            background-image: url("img/background_red.png") !important;
+            background-image: url("img/background_vi.png") !important;
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
-            opacity: 0.1 !important;
+            opacity: 0.2 !important;
         }
         .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
             background-image: none !important;
@@ -34,14 +34,16 @@ format:
     show-slide-number: all
     transition: slide
     chalkboard: true
+    footer: "Termodynamika Techniczna (W13)"
     width: 1600
     height: 900
-revealjs-plugins:
-  - appearance
-  - pointer
-pointer:
-  color: "#e60000"
-  pointerSize: 20
+    margin: 0.2
+    revealjs-plugins:
+      - appearance
+      - pointer
+    pointer:
+      color: "#e60000"
+      pointerSize: 20
 editor: source
 ---
 
