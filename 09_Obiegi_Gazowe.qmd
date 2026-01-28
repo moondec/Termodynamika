@@ -233,7 +233,8 @@ p_pv <- ggplot(df, aes(x=v, y=p, group=1)) +
   geom_text(aes(x=v3, y=p3, label="3"), hjust=1.5, size=5) +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=5) +
   labs(title="Wykres p-V", x="Objętość właściwa v", y="Ciśnienie p") +
-  theme_bw() + theme(legend.position = "bottom") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(-5,p3+5)) +
   scale_color_brewer(palette="Set1")
 
 p_ts <- ggplot(df, aes(x=s, y=T, group=1)) +
@@ -243,7 +244,8 @@ p_ts <- ggplot(df, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=df$s[2*n_points], y=T3, label="3"), vjust=-1, size=5) +
   geom_text(aes(x=df$s[3*n_points], y=T4, label="4"), vjust=1.5, size=5) +
   labs(title="Wykres T-s", x="Entropia s", y="Temperatura T") +
-  theme_bw() + theme(legend.position = "bottom") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(5,T3+5)) +
   scale_color_brewer(palette="Set1")
 
 p_pv
@@ -388,10 +390,11 @@ p_pv_d <- ggplot(df_diesel, aes(x=v, y=p, group=1)) +
   geom_path(aes(color=etap), size=2) +
   geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
   geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
-  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=5) +
-  geom_text(aes(x=v4, y=p4, label="4"), vjust=1.5, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), hjust=-1, size=5) +
+  geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=5) +
   labs(title="Wykres p-V", x="Objętość właściwa v", y="Ciśnienie p") +
-  theme_bw() + theme(legend.position = "bottom") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(-5,p3+5)) +
   scale_color_brewer(palette="Dark2")
 
 p_ts_d <- ggplot(df_diesel, aes(x=s, y=T, group=1)) +
@@ -401,7 +404,8 @@ p_ts_d <- ggplot(df_diesel, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=df_diesel$s[2*n_points], y=T3, label="3"), vjust=-1, size=5) +
   geom_text(aes(x=df_diesel$s[3*n_points], y=T4, label="4"), vjust=1.5, size=5) +
   labs(title="Wykres T-s", x="Entropia s", y="Temperatura T") +
-  theme_bw() + theme(legend.position = "bottom") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(5,T3+5)) + 
   scale_color_brewer(palette="Dark2")
 
 p_pv_d
@@ -444,12 +448,12 @@ gdzie: stopień obciążenia - $\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{
 ## 5. Obieg Sabathé (Obieg Mieszany)
 
 ::: {.callout-tip appearance="simple"}
-Obieg rzeczywisty silników wysokoprężnych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy $v=const$, a częściowo przy $p=const$.
+Obieg ogólny silników tłokowych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy $v=const$, a częściowo przy $p=const$.
 :::
 
 :::: {.columns}
 
-::: {.column width="100%"}
+::: {.column width="60%"}
 
 ```{r}
 #| label: sabathe
@@ -553,24 +557,26 @@ p_pv_s <- ggplot(df_sab, aes(x=v, y=p, group=1)) +
   geom_path(aes(color=etap), size=2) +
   geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
   geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
-  geom_text(aes(x=v2a, y=p2a, label="2a"), vjust=1.5, hjust=1.5, size=5) +
-  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=v2a, y=p2a, label="2a"), vjust=-1, hjust=1, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, hjust=-1, size=5) +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=5) +
   labs(title="Wykres p-V (Sabathé)", x="v", y="p") +
-  theme_bw() + theme(legend.position = "bottom") +
-  scale_color_brewer(palette="viridis")
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(-5,p3+5)) +
+  scale_color_brewer(palette="Dark2")
 
 p_ts_s <- ggplot(df_sab, aes(x=s, y=T, group=1)) +
   geom_path(aes(color=etap), size=2) +
   geom_text(aes(x=df_sab$s[1], y=T1, label="1"), vjust=1.5, size=5) +
   geom_text(aes(x=df_sab$s[n_points], y=T2, label="2"), vjust=-1, size=5) +
    # 2a is at end of second segment (index 2*50)
-  geom_text(aes(x=df_sab$s[2*n_points], y=T2a, label="2a"), hjust=1.5, size=5) +
+  geom_text(aes(x=df_sab$s[2*n_points], y=T2a, label="2a"), vjust=-1.5, size=5) +
   geom_text(aes(x=df_sab$s[3*n_points], y=T3, label="3"), vjust=-1, size=5) +
   geom_text(aes(x=df_sab$s[4*n_points], y=T4, label="4"), vjust=1.5, size=5) +
   labs(title="Wykres T-s (Sabathé)", x="s", y="T") +
-  theme_bw() + theme(legend.position = "bottom") +
-  scale_color_brewer(palette="viridis")
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(5,T3+5)) + 
+  scale_color_brewer(palette="Dark2")
 
 p_pv_s
 p_ts_s
@@ -578,34 +584,230 @@ p_ts_s
 
 :::
 
+::: {.column width="40%"}
+::: {.incremental style="font-size: 0.8em;"}
+1.  **1-2:** Sprężanie izentropowe. ($s=const$)
+2.  **2-2a:** Doprowadzenie ciepła przy **stałej obiętości** ($v=const$).
+3.  **2a-3:** Doprowadzenie ciepła przy **stałym ciśnieniu** ($p=const$).
+4.  **3-4:** Rozprężanie izentropowe. ($s=const$)
+5.  **4-1:** Odprowadzanie ciepła przy **stałej objętości** ($v=const$).
+:::
+:::
+::::
+
+---
+
+## Wykres Indykatorowy (rzeczywisty)
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](img/indykatorowy.png)
+
+::: {style="font-size: 0.6em; color: gray;"}
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
+:::
+
+::: {.column width="60%"}
+### Interpretacja pól na wykresie indykatorowym silnika 4-suwowego{.fragment}
+
+::: {.incremental}
+1. Pętla górna (prawobieżna) – Praca obiegu
+    * Obejmuje suwy sprężania i pracy (rozprężania)
+2. Pętla dolna (lewobieżna) – Praca wymiany ładunku (praca pompowania):
+    * Obejmuje suwy wydechu i ssania,
+    * [Reprezentuje pracę ujemną (stratę).]{.fragment .highlight-red}
+    
+:::    
+:::
 ::::
 
 ---
 
 ## 6. Obieg Joule'a-Braytona (Turbina Gazowa)
 
-Podstawa działania silników lotniczych i elektrowni szczytowych.
+Podstawa działania silników lotniczych i turbin w elektrowni.
+
 Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.
 
-1.  **Sprężarka:** Sprężanie adiabatyczne powietrza.
-2.  **Komora Spalania:** Izobaryczne doprowadzenie ciepła ($p=const$).
-3.  **Turbina:** Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).
-4.  **Otoczenie:** Izobaryczne chłodzenie (wyrzut spalin).
+::: {style="font-size: 0.8em; color: navy;"}
+1. **S - Sprężarka:** Sprężanie adiabatyczne powietrza.
+2. **K - Komora Spalania:** Izobaryczne doprowadzenie ciepła ($p=const$).
+3. **T - Turbina:** Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).
+4. **O - Wtryskiwacz**
+5. **R - Wymiennik ciepła** Odzysk ciepła ze spalin
+6. **N - Odbiornik macy**
+:::
+
+![](img/turbina.png)
+
+::: {style="font-size: 0.6em; color: gray;"}
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
+
+---
+
+## Brayton: Wykres i Procesy
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+#| label: brayton
+#| echo: false
+#| layout-ncol: 2
+#| fig-width: 6
+#| fig-height: 5
+#| warning: false
+#| message: false
+
+# 1. PARAMETRY
+k <- 1.4
+p_min <- 1; p_max <- 12 # Spręż pi = 12
+pi_comp <- p_max / p_min
+cv <- 0.718; R_ind <- 0.287; cp <- 1.005
+
+# Funkcje pomocnicze
+calc_T <- function(p, v) { p * v }
+calc_s <- function(T, v) { cp * log(T) - R_ind * log(p) } # Wzór dla procesów p=const/s=const
+
+# 2. OBLICZENIA PUNKTÓW
+n_points <- 50
+
+# Pkt 1 (Start - Wlot do sprężarki)
+p1 <- p_min; v1 <- 1
+T1 <- calc_T(p1, v1)
+# Referencja entropii w pkt 1 dla uproszczenia
+s1 <- 0 
+
+# Pkt 2 (Po sprężaniu adiabatycznym 1-2)
+# s2 = s1
+p2 <- p_max
+# Dla adiabaty: T2/T1 = (p2/p1)^((k-1)/k)
+T2 <- T1 * (pi_comp)^((k-1)/k)
+v2 <- T2 / p2  # z równania stanu (uproszczone R=1 w calc_T ale tutaj zachowujemy proporcje)
+s2 <- s1
+
+# Pkt 3 (Po spalaniu IZOBARYCZNYM 2-3)
+# p3 = p2
+p3 <- p2
+# Temperatura rośnie np. 2.5 razy (zależy od ilości paliwa)
+tau <- 2.8 
+T3 <- T1 * tau 
+v3 <- T3 / p3
+s3 <- cp * log(T3/T2) - R_ind * log(p3/p2) + s2 # p3=p2 więc log(1)=0
+
+# Pkt 4 (Po rozprężaniu adiabatycznym 3-4)
+# s4 = s3, p4 = p1
+p4 <- p1
+T4 <- T3 * (p4/p3)^((k-1)/k)
+v4 <- T4 / p4
+s4 <- s3
+
+# 3. GENEROWANIE KRZYWYCH
+
+# 1-2 Adiabata (s=const) => p*v^k = const
+v_12 <- seq(v1, v2, length.out=n_points)
+p_12 <- p1 * (v1/v_12)^k
+T_12 <- p_12 * v_12
+s_12 <- rep(s1, n_points)
+
+# 2-3 Izobara (p=const)
+v_23 <- seq(v2, v3, length.out=n_points)
+p_23 <- rep(p2, n_points)
+T_23 <- p_23 * v_23
+s_23 <- cp * log(T_23/T2) + s2
+
+# 3-4 Adiabata (s=const)
+v_34 <- seq(v3, v4, length.out=n_points)
+p_34 <- p3 * (v3/v_34)^k
+T_34 <- p_34 * v_34
+s_34 <- rep(s3, n_points)
+
+# 4-1 Izobara (p=const) - teoretyczne chłodzenie
+v_41 <- seq(v4, v1, length.out=n_points)
+p_41 <- rep(p1, n_points)
+T_41 <- p_41 * v_41
+s_41 <- cp * log(T_41/T4) + s3 # Powrót do s1
+
+df_br <- data.frame(
+  v = c(v_12, v_23, v_34, v_41),
+  p = c(p_12, p_23, p_34, p_41),
+  T = c(T_12, T_23, T_34, T_41),
+  s = c(s_12, s_23, s_34, s_41),
+  etap = rep(c("1-2 Sprężanie (s=C)", "2-3 Spalanie (p=C)", "3-4 Praca (s=C)", "4-1 Chłodzenie (p=C)"), each=n_points)
+)
+
+# 4. WYKRESY
+p_pv_b <- ggplot(df_br, aes(x=v, y=p, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=v1, y=p1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=5) +
+  geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=v4, y=p4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres p-V (Brayton)", x="Objętość v", y="Ciśnienie p") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(-1, p2+2)) +
+  scale_color_brewer(palette="Set1")
+
+p_ts_b <- ggplot(df_br, aes(x=s, y=T, group=1)) +
+  geom_path(aes(color=etap), size=2) +
+  geom_text(aes(x=s1, y=T1, label="1"), vjust=1.5, size=5) +
+  geom_text(aes(x=s2, y=T2, label="2"), vjust=-1, size=5) +
+  geom_text(aes(x=s3, y=T3, label="3"), vjust=-1, size=5) +
+  geom_text(aes(x=s4, y=T4, label="4"), vjust=1.5, size=5) +
+  labs(title="Wykres T-s (Brayton)", x="Entropia s", y="Temperatura T") +
+  theme_bw() + theme(legend.position = "none") +
+  ylim(c(T1-.2, T3+.2)) +
+  scale_color_brewer(palette="Set1")
+
+p_pv_b
+p_ts_b
+```
+
+![](img/turbina.png){style="width: 70%;"}
+
+::: {style="font-size: 0.6em; color: gray;"}
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
+
+:::
+
+::: {.column width="40%"}
+::: {.incremental style="font-size: 0.8em;"}
+1.  **1-2:** Sprężanie w sprężarce (adiabatyczne odwracalne, $s=const$).
+2.  **2-3:** Doprowadzenie ciepła w komorze spalania (izobaryczne, $p=const$).
+3.  **3-4:** Rozprężanie w turbinie (adiabatyczne odwracalne, $s=const$).
+4.  **4-1:** Odprowadzenie ciepła do otoczenia (izobaryczne, $p=const$).
+:::
+:::
+
+::::
 
 ---
 
 ## Sprawność Braytona
 
+::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Zależy od sprężu ($\pi = p_2/p_1$) a nie stopnia sprężania $\varepsilon$.
+:::
 
-$$ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{k-1}{k}}} $$
+$$ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} $$
 
+::: {.fragment .callout-note appearance="simple"}
 W przeciwieństwie do Diesla, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć $\pi = 30-40$.
 Problemem jest wytrzymałość łopatek turbiny na temperaturę ($T_3 \approx 1400-1600^\circ C$).
 
+:::
+
+::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 ### Praca Wsteczna (Back Work Ratio)
 Własność Turbin Gazowych (TG): Sprężarka zużywa aż **50-60%** mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %).
 Dlatego TG są bardzo czułe na sprawność komponentów.
+:::
 
 ---
 
@@ -633,5 +835,5 @@ Dla wolnossących: $10-12 \text{ bar}$.
 5.  Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).
 
 ### Zadanie Domowe
-Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($k=1.4$).
+Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($\kappa=1.4$).
 Wynik: $\eta = 1 - 1/10^{0.4} \approx 60\%$. (Rzeczywista to ok 30-35%).

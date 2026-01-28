@@ -370,12 +370,12 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>Obieg rzeczywisty silników wysokoprężnych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy <span class="math inline">\(v=const\)</span>, a częściowo przy <span class="math inline">\(p=const\)</span>.</p>
+<p>Obieg ogólny silników tłokowych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy <span class="math inline">\(v=const\)</span>, a częściowo przy <span class="math inline">\(p=const\)</span>.</p>
 </div>
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:100%;">
+<div class="column" style="width:60%;">
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -386,25 +386,111 @@
 </div>
 </div>
 </div>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe. (<span class="math inline">\(s=const\)</span>)</li>
+<li class="fragment"><strong>2-2a:</strong> Doprowadzenie ciepła przy <strong>stałej obiętości</strong> (<span class="math inline">\(v=const\)</span>).</li>
+<li class="fragment"><strong>2a-3:</strong> Doprowadzenie ciepła przy <strong>stałym ciśnieniu</strong> (<span class="math inline">\(p=const\)</span>).</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe. (<span class="math inline">\(s=const\)</span>)</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>).</li>
+</ol>
+</div>
+</div></div>
+</section>
+<section id="wykres-indykatorowy-rzeczywisty" class="slide level2">
+<h2>Wykres Indykatorowy (rzeczywisty)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="img/indykatorowy.png"></p>
+<div style="font-size: 0.6em; color: gray;">
+<p>Źródło: “Termodynamika Techniczna” Wiśniewski (2017)</p>
+</div>
+</div><div class="column" style="width:60%;">
+<h3 class="fragment" id="interpretacja-pól-na-wykresie-indykatorowym-silnika-4-suwowego">Interpretacja pól na wykresie indykatorowym silnika 4-suwowego</h3>
+<ol type="1">
+<li class="fragment">Pętla górna (prawobieżna) – Praca obiegu
+<ul>
+<li class="fragment">Obejmuje suwy sprężania i pracy (rozprężania)</li>
+</ul></li>
+<li class="fragment">Pętla dolna (lewobieżna) – Praca wymiany ładunku (praca pompowania):
+<ul>
+<li class="fragment">Obejmuje suwy wydechu i ssania,</li>
+<li class="fragment"><span class="fragment highlight-red">Reprezentuje pracę ujemną (stratę).</span></li>
+</ul></li>
+</ol>
 </div></div>
 </section>
 <section id="obieg-joulea-braytona-turbina-gazowa" class="slide level2">
 <h2>6. Obieg Joule’a-Braytona (Turbina Gazowa)</h2>
-<p>Podstawa działania silników lotniczych i elektrowni szczytowych. Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.</p>
+<p>Podstawa działania silników lotniczych i turbin w elektrowni.</p>
+<p>Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.</p>
+<div style="font-size: 0.8em; color: navy;">
 <ol type="1">
-<li><strong>Sprężarka:</strong> Sprężanie adiabatyczne powietrza.</li>
-<li><strong>Komora Spalania:</strong> Izobaryczne doprowadzenie ciepła (<span class="math inline">\(p=const\)</span>).</li>
-<li><strong>Turbina:</strong> Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).</li>
-<li><strong>Otoczenie:</strong> Izobaryczne chłodzenie (wyrzut spalin).</li>
+<li><strong>S - Sprężarka:</strong> Sprężanie adiabatyczne powietrza.</li>
+<li><strong>K - Komora Spalania:</strong> Izobaryczne doprowadzenie ciepła (<span class="math inline">\(p=const\)</span>).</li>
+<li><strong>T - Turbina:</strong> Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).</li>
+<li><strong>O - Wtryskiwacz</strong></li>
+<li><strong>R - Wymiennik ciepła</strong> Odzysk ciepła ze spalin</li>
+<li><strong>N - Odbiornik macy</strong></li>
 </ol>
+</div>
+
+<img data-src="img/turbina.png" class="r-stretch"><div style="font-size: 0.6em; color: gray;">
+<p>Źródło: “Termodynamika Techniczna” Wiśniewski (2017)</p>
+</div>
+</section>
+<section id="brayton-wykres-i-procesy" class="slide level2">
+<h2>Brayton: Wykres i Procesy</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/brayton-1.png" width="576"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="09_Obiegi_Gazowe_files/figure-revealjs/brayton-2.png" width="576"></p>
+</div>
+</div>
+</div>
+<p><img data-src="img/turbina.png" style="width: 70%;"></p>
+<div style="font-size: 0.6em; color: gray;">
+<p>Źródło: “Termodynamika Techniczna” Wiśniewski (2017)</p>
+</div>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 0.8em;">
+<ol type="1">
+<li class="fragment"><strong>1-2:</strong> Sprężanie w sprężarce (adiabatyczne odwracalne, <span class="math inline">\(s=const\)</span>).</li>
+<li class="fragment"><strong>2-3:</strong> Doprowadzenie ciepła w komorze spalania (izobaryczne, <span class="math inline">\(p=const\)</span>).</li>
+<li class="fragment"><strong>3-4:</strong> Rozprężanie w turbinie (adiabatyczne odwracalne, <span class="math inline">\(s=const\)</span>).</li>
+<li class="fragment"><strong>4-1:</strong> Odprowadzenie ciepła do otoczenia (izobaryczne, <span class="math inline">\(p=const\)</span>).</li>
+</ol>
+</div>
+</div></div>
 </section>
 <section id="sprawność-braytona" class="slide level2">
 <h2>Sprawność Braytona</h2>
+<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <p>Zależy od sprężu (<span class="math inline">\(\pi = p_2/p_1\)</span>) a nie stopnia sprężania <span class="math inline">\(\varepsilon\)</span>.</p>
-<p><span class="math display">\[ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{k-1}{k}}} \]</span></p>
+</div>
+<p><span class="math display">\[ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} \]</span></p>
+<div class="fragment">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>W przeciwieństwie do Diesla, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć <span class="math inline">\(\pi = 30-40\)</span>. Problemem jest wytrzymałość łopatek turbiny na temperaturę (<span class="math inline">\(T_3 \approx 1400-1600^\circ C\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <h3 id="praca-wsteczna-back-work-ratio">Praca Wsteczna (Back Work Ratio)</h3>
 <p>Własność Turbin Gazowych (TG): Sprężarka zużywa aż <strong>50-60%</strong> mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %). Dlatego TG są bardzo czułe na sprawność komponentów.</p>
+</div>
 </section>
 <section id="ciśnienie-średnie-indykowane-p_me" class="slide level2">
 <h2>7. Ciśnienie Średnie Indykowane (<span class="math inline">\(p_{me}\)</span>)</h2>
@@ -423,7 +509,7 @@
 <li>Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).</li>
 </ol>
 <h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 (<span class="math inline">\(k=1.4\)</span>). Wynik: <span class="math inline">\(\eta = 1 - 1/10^{0.4} \approx 60\%\)</span>. (Rzeczywista to ok 30-35%).</p>
+<p>Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 (<span class="math inline">\(\kappa=1.4\)</span>). Wynik: <span class="math inline">\(\eta = 1 - 1/10^{0.4} \approx 60\%\)</span>. (Rzeczywista to ok 30-35%).</p>
 
 </section>
     </div>
