@@ -1,0 +1,14 @@
+/* Plik: pulsing-warning.css */
+<style>
+/* Definicja animacji pulsowania */
+@keyframes pulse-opacity {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; } /* Przygaśnięcie do 50% */
+  100% { opacity: 1; }
+}
+
+/* Klasa, którą przypiszemy do ramki */
+.pulsing-warning {
+  animation: pulse-opacity 4s infinite ease-in-out;
+}
+</style>
