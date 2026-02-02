@@ -88,6 +88,20 @@ Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 
 ---
 
+## Obieg Carnota dla Pary Wodnej
+
+> Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.
+
+W teorii, aby osiągnąć maksymalną sprawność, para musiałaby być skraplana do cieczy nasyconej, **a następnie sprężana do ciśnienia kotła**, co jest niemożliwe do zrealizowania w praktyce.
+
+![](img/Carnot_pw.png)
+
+::: {style="font-size: 0.6em; color: gray;"}
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
+
+---
+
 ## 2. Obieg Clausiusa-Rankine'a (C-R)
 
 ::: {.callout-note appearance="simple"}
@@ -133,25 +147,25 @@ library(ggplot2)
 # --- 1. DOME CONSTRUCTION (Krzywa nasycenia) ---
 # Uproszczona parametryzacja dzwonu nasycenia dla wody
 s_crit <- 4.43 # Entropia krytyczna (przybliżona)
-T_crit <- 647  # Temperatura krytyczna [K]
+T_crit <- 647 # Temperatura krytyczna [K]
 
 # Lewa gałąź (Ciecz)
-s_liq <- seq(0, s_crit, length.out=100)
+s_liq <- seq(0, s_crit, length.out = 100)
 # Funkcja przybliżająca: T = T_crit - a*(s_crit - s)^2
 T_liq <- T_crit - 25 * (s_crit - s_liq)^2.5
 # Korekta dla niskich entropii (żeby nie spadało za nisko)
 T_liq <- pmax(T_liq, 273)
 
 # Prawa gałąź (Para)
-s_vap <- seq(s_crit, 9, length.out=100)
+s_vap <- seq(s_crit, 9, length.out = 100)
 # Funkcja przybliżająca prawą stronę
 T_vap <- T_crit - 10 * (s_vap - s_crit)^2.5
 T_vap <- pmax(T_vap, 273)
 
 dome <- data.frame(
-  s = c(s_liq, s_vap),
-  T = c(T_liq, T_vap),
-  type = c(rep("liq", 100), rep("vap", 100))
+    s = c(s_liq, s_vap),
+    T = c(T_liq, T_vap),
+    type = c(rep("liq", 100), rep("vap", 100))
 )
 # Filtrowanie zerowych temperatur (błędy aproksymacji)
 dome <- dome[dome$T > 270, ]
@@ -165,7 +179,7 @@ p_boiler <- 100 # bar (T_sat ~ 584 K)
 # Punkt 1: Wlot do pompy (Ciecz nasycona pod ciśnieniem skraplacza)
 # Znajdujemy s na lewej gałęzi dla T=320
 T1 <- 320
-s1 <- approx(dome$T[dome$type=="liq"], dome$s[dome$type=="liq"], xout=T1)$y
+s1 <- approx(dome$T[dome$type == "liq"], dome$s[dome$type == "liq"], xout = T1)$y
 # Punkt 2: Wylot z pompy (Sprężanie izentropowe) -> s2 = s1
 s2 <- s1
 # T2 nieco wyższa (zaniedbywalnie mało dla wody, ale na wykresie pokażemy przesadzone)
@@ -173,17 +187,17 @@ T2 <- T1 + 50
 
 # Punkt 2': Ciecz nasycona pod ciśnieniem kotła (Początek wrzenia)
 T_sat_boiler <- 584 # K (ok. 311 C dla 100 bar)
-s2_prim <- approx(dome$T[dome$type=="liq"], dome$s[dome$type=="liq"], xout=T_sat_boiler)$y
+s2_prim <- approx(dome$T[dome$type == "liq"], dome$s[dome$type == "liq"], xout = T_sat_boiler)$y
 
 # Punkt 3'': Para nasycona sucha (Koniec wrzenia)
-s3_dub_prim <- approx(dome$T[dome$type=="vap"], dome$s[dome$type=="vap"], xout=T_sat_boiler)$y
+s3_dub_prim <- approx(dome$T[dome$type == "vap"], dome$s[dome$type == "vap"], xout = T_sat_boiler)$y
 
 # Punkt 3: Przegrzewacz (Wylot z kotła)
 T3 <- 823 # K (550 C)
 # Izoabara w przegrzewaczu: przybliżenie s3
 # cp * ln(T3/T_sat) = s3 - s3''
 # s3 = s3'' + cp_vapor * ln(T3/T_sat)
-s3 <- s3_dub_prim + 2.1 * log(T3/T_sat_boiler) 
+s3 <- s3_dub_prim + 2.1 * log(T3 / T_sat_boiler)
 
 # Punkt 4: Wylot z turbiny (Ekspansja izentropowa) -> s4 = s3 (Idealna)
 # Jeśli s4 < s_vap(T1), to mamy parę mokrą
@@ -193,62 +207,67 @@ T4 <- T1 # Skraplacz jest izobarą i izotermą (w obszarze pary mokrej)
 # --- 3. PROCESY (GENEROWANIE LINII) ---
 
 # 1-2: Pompa (Pionowo)
-df_12 <- data.frame(s=c(s1, s2), T=c(T1, T2))
+df_12 <- data.frame(s = c(s1, s2), T = c(T1, T2))
 
 # 2-2': Podgrzewanie wody (Wzdłuż krzywej nasycenia, ale nieco w lewo - izobara cieczy)
 # Dla uproszczenia rysujemy prostą, bo lewa gałąź jest stroma
-df_22p <- data.frame(s=c(s2, s2_prim), T=c(T2, T_sat_boiler))
+df_22p <- data.frame(s = c(s2, s2_prim), T = c(T2, T_sat_boiler))
 
 # 2'-3'': Wrzenie (Poziomo)
-df_2p3dp <- data.frame(s=c(s2_prim, s3_dub_prim), T=c(T_sat_boiler, T_sat_boiler))
+df_2p3dp <- data.frame(s = c(s2_prim, s3_dub_prim), T = c(T_sat_boiler, T_sat_boiler))
 
 # 3''-3: Przegrzew (Krzywa logarytmiczna w górę)
-temps_sup <- seq(T_sat_boiler, T3, length.out=20)
-s_sup <- s3_dub_prim + 2.1 * log(temps_sup/T_sat_boiler)
-df_3dp3 <- data.frame(s=s_sup, T=temps_sup)
+temps_sup <- seq(T_sat_boiler, T3, length.out = 20)
+s_sup <- s3_dub_prim + 2.1 * log(temps_sup / T_sat_boiler)
+df_3dp3 <- data.frame(s = s_sup, T = temps_sup)
 
 # 3-4: Turbina (Pionowo w dół)
-df_34 <- data.frame(s=c(s3, s4), T=c(T3, T4))
+df_34 <- data.frame(s = c(s3, s4), T = c(T3, T4))
 
 # 4-1: Skraplacz (Poziomo w lewo)
-df_41 <- data.frame(s=c(s4, s1), T=c(T4, T1))
+df_41 <- data.frame(s = c(s4, s1), T = c(T4, T1))
 
 # --- 4. WYKRES ---
 ggplot() +
-  # Krzywa nasycenia (Dzwon)
-  geom_line(data=dome, aes(x=s, y=T), color="gray50", size=1, linetype="solid") +
-  annotate("text", x=s_crit, y=T_crit+20, label="Punkt Krytyczny", size=7, fontface="italic") +
-  
-  # Linie Obiegu
-  geom_path(data=df_12, aes(x=s, y=T), color="blue", size=1.5) + # Pompa
-  geom_path(data=df_22p, aes(x=s, y=T), color="red", size=1.5) + # Podgrzewanie
-  geom_path(data=df_2p3dp, aes(x=s, y=T), color="red", size=1.5) + # Wrzenie
-  geom_path(data=df_3dp3, aes(x=s, y=T), color="red", size=1.5) + # Przegrzew
-  geom_path(data=df_34, aes(x=s, y=T), color="orange", size=1.5, arrow=arrow(length=unit(0.3,"cm"), ends="last")) + # Turbina
-  geom_path(data=df_41, aes(x=s, y=T), color="cyan3", size=1.5, arrow=arrow(length=unit(0.3,"cm"), ends="last")) + # Skraplacz
-  
-  # Punkty węzłowe
-  annotate("point", x=c(s1, s2, s2_prim, s3_dub_prim, s3, s4), 
-           y=c(T1, T2, T_sat_boiler, T_sat_boiler, T3, T4), size=3) +
-  
-  # Opisy punktów
-  annotate("text", x=s1-0.2, y=T1, label="1", size=5, fontface="bold") +
-  annotate("text", x=s2-0.2, y=T2+15, label="2", size=5, fontface="bold") +
-  annotate("text", x=s3, y=T3+20, label="3", size=5, fontface="bold") +
-  annotate("text", x=s4+0.2, y=T4, label="4", size=5, fontface="bold") +
-  
-  # Opisy Procesów
-  annotate("text", x=(s2+s3)/2, y=T3+50, label="Kocioł (q['in'])", color="red", size=7, fontface="bold", parse=TRUE) +
-  annotate("text", x=s3+0.5, y=(T3+T4)/2, label="Turbina", color="orange", size=7, fontface="bold", angle=-90) +
-  annotate("text", x=(s1+s4)/2, y=T1-30, label="Skraplacz (q['out'])", color="cyan3", size=7, fontface="bold", parse=TRUE) +
-  
-  theme_bw() + 
-  labs(title="Rzeczywisty Obieg Rankine'a (T-s)", 
-       subtitle="Z uwzględnieniem podgrzewania, wrzenia i przegrzewania",
-       x="Entropia właściwa s [kJ/(kg·K)]", 
-       y="Temperatura T [K]") +
-  theme(plot.title = element_text(size=18, face="bold"),
-        axis.title = element_text(size=20), axis.text = element_text(size=14))
+    # Krzywa nasycenia (Dzwon)
+    geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1, linetype = "solid") +
+    annotate("text", x = s_crit, y = T_crit + 20, label = "Punkt Krytyczny", size = 7, fontface = "italic") +
+
+    # Linie Obiegu
+    geom_path(data = df_12, aes(x = s, y = T), color = "blue", size = 1.5) + # Pompa
+    geom_path(data = df_22p, aes(x = s, y = T), color = "red", size = 1.5) + # Podgrzewanie
+    geom_path(data = df_2p3dp, aes(x = s, y = T), color = "red", size = 1.5) + # Wrzenie
+    geom_path(data = df_3dp3, aes(x = s, y = T), color = "red", size = 1.5) + # Przegrzew
+    geom_path(data = df_34, aes(x = s, y = T), color = "orange", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) + # Turbina
+    geom_path(data = df_41, aes(x = s, y = T), color = "cyan3", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) + # Skraplacz
+
+    # Punkty węzłowe
+    annotate("point",
+        x = c(s1, s2, s2_prim, s3_dub_prim, s3, s4),
+        y = c(T1, T2, T_sat_boiler, T_sat_boiler, T3, T4), size = 3
+    ) +
+
+    # Opisy punktów
+    annotate("text", x = s1 - 0.2, y = T1, label = "1", size = 5, fontface = "bold") +
+    annotate("text", x = s2 - 0.2, y = T2 + 15, label = "2", size = 5, fontface = "bold") +
+    annotate("text", x = s3, y = T3 + 20, label = "3", size = 5, fontface = "bold") +
+    annotate("text", x = s4 + 0.2, y = T4, label = "4", size = 5, fontface = "bold") +
+
+    # Opisy Procesów
+    annotate("text", x = (s2 + s3) / 2, y = T3 + 50, label = "Kocioł (q['in'])", color = "red", size = 7, fontface = "bold", parse = TRUE) +
+    annotate("text", x = s3 + 0.5, y = (T3 + T4) / 2, label = "Turbina", color = "orange", size = 7, fontface = "bold", angle = -90) +
+    annotate("text", x = (s1 + s4) / 2, y = T1 - 30, label = "Skraplacz (q['out'])", color = "cyan3", size = 7, fontface = "bold", parse = TRUE) +
+    theme_bw() +
+    labs(
+        title = "Rzeczywisty Obieg Rankine'a (T-s)",
+        subtitle = "Z uwzględnieniem podgrzewania, wrzenia i przegrzewania",
+        x = "Entropia właściwa s [kJ/(kg·K)]",
+        y = "Temperatura T [K]"
+    ) +
+    theme(
+        plot.title = element_text(size = 18, face = "bold"),
+        axis.title = element_text(size = 20), axis.text = element_text(size = 14)
+    )
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga"}
@@ -293,37 +312,37 @@ library(ggplot2)
 # --- 1. DOME (REALISTIC) ---
 s_liq_real <- c(0.0, 1.3, 2.3, 3.25, 4.43)
 h_liq_real <- c(0, 419, 852, 1344, 2100)
-spline_liq <- spline(s_liq_real, h_liq_real, n=100)
+spline_liq <- spline(s_liq_real, h_liq_real, n = 100)
 
 s_vap_real <- c(4.43, 5.7, 6.4, 7.35, 9.15)
 h_vap_real <- c(2100, 2749, 2793, 2676, 2500)
-spline_vap <- spline(s_vap_real, h_vap_real, n=100)
+spline_vap <- spline(s_vap_real, h_vap_real, n = 100)
 
-dome_liq_df <- data.frame(s=spline_liq$x, h=spline_liq$y)
-dome_vap_df <- data.frame(s=spline_vap$x, h=spline_vap$y)
+dome_liq_df <- data.frame(s = spline_liq$x, h = spline_liq$y)
+dome_vap_df <- data.frame(s = spline_vap$x, h = spline_vap$y)
 
 # --- 2. POINTS & PROCESSES (VISUAL TWEAKS) ---
 
 # P1 (Condenser out): s=0.65, h=192
-p1 <- data.frame(s=0.65, h=192)
+p1 <- data.frame(s = 0.65, h = 192)
 
 # P2 (Pump out): REALITY: dh ~ 10. VISUAL: dh ~ 150 to make it visible
 # Vertical compression
-p2 <- data.frame(s=0.65, h=350) 
+p2 <- data.frame(s = 0.65, h = 350)
 
-# P2' (Boiler bubbles): On Liquid Line. 
+# P2' (Boiler bubbles): On Liquid Line.
 # Visual shift: 100 bar is slightly left/up of sat line, but ends at sat line.
 # Let's say it hits saturation at T_sat ~ 311C (s ~ 3.36, h ~ 1407)
-p2p <- data.frame(s=3.36, h=1407)
+p2p <- data.frame(s = 3.36, h = 1407)
 
 # P3'' (Boiler dry steam): On Vapor Line. T_sat ~ 311C (s ~ 5.61, h ~ 2725)
-p3pp <- data.frame(s=5.61, h=2725)
+p3pp <- data.frame(s = 5.61, h = 2725)
 
 # P3 (Superheated): s=6.75, h=3500
-p3 <- data.frame(s=6.75, h=3500)
+p3 <- data.frame(s = 6.75, h = 3500)
 
 # P4 (Turbine Out): s=6.75, h=2130 (approx)
-p4 <- data.frame(s=6.75, h=2130)
+p4 <- data.frame(s = 6.75, h = 2130)
 
 # --- 3. CURVED PROCESS LINES ---
 
@@ -333,12 +352,12 @@ df_12 <- rbind(p1, p2)
 # 2-2' (Water Heating): Isobar moves parallel-ish to liquid line
 # Generate slight curve connecting P2 to P2'
 # Simple interpolation
-s_heat <- seq(p2$s, p2p$s, length.out=20)
+s_heat <- seq(p2$s, p2p$s, length.out = 20)
 # Linear h might look too straight. Let's curve it slightly up (concave up like liquid line)
 # Using a power function relative to liquid line?
 # Simple approach: Linear interp + slight offset or just straight is fine for liquid.
 # Liquid isobar IS very close to straight on h-s visually.
-df_22p <- data.frame(s=s_heat, h=seq(p2$h, p2p$h, length.out=20))
+df_22p <- data.frame(s = s_heat, h = seq(p2$h, p2p$h, length.out = 20))
 
 # 2'-3'' (Evaporation): Straight Line (T=const -> Slope=const)
 df_2p3pp <- rbind(p2p, p3pp)
@@ -346,27 +365,27 @@ df_2p3pp <- rbind(p2p, p3pp)
 # 3''-3 (Superheat): CURVED UP
 # Isobar slope T increases. So it's convex.
 # Fit a quadratic or spline between 3'' and 3
-s_sup <- seq(p3pp$s, p3$s, length.out=30)
+s_sup <- seq(p3pp$s, p3$s, length.out = 30)
 # h(s) approx quadratic
 # We know slope at 3'' is T_sat (~584 K). Slope at 3 is T_sup (~823 K).
 # Let's just do a spline that looks nice visually (bending up)
 # Add a control point in middle
-mid_s <- (p3pp$s + p3$s)/2
-mid_h <- (p3pp$h + p3$h)/2 - 100 # LOWER the mid point to make it "sag" up? No, convex means bending UP (slope increases).
+mid_s <- (p3pp$s + p3$s) / 2
+mid_h <- (p3pp$h + p3$h) / 2 - 100 # LOWER the mid point to make it "sag" up? No, convex means bending UP (slope increases).
 # Wait, h-s slope is positive. Increasing slope means it gets STEEPER.
 # So it should look like a "bowl" opening up (u-shape left side).
 # h roughly grows with T.
 # Let's use simple x^2 curve.
 # h = a*s^2 + b*s + c
-fit <- lm(h ~ poly(s, 2), data=rbind(p3pp, p3, data.frame(s=mid_s, h=mid_h+150))) # Push mid point down to make it start flat and go steep?
+fit <- lm(h ~ poly(s, 2), data = rbind(p3pp, p3, data.frame(s = mid_s, h = mid_h + 150))) # Push mid point down to make it start flat and go steep?
 # Actually, slope at 3'' (584K) is smaller than at 3 (823K). So it gets steeper.
 # The curve should be concave UP (`U` shape).
 # So mid point should initially be LOWER than the straight line? No.
 # If I draw a line from A to B. If curve is U-shaped, the curve is BELOW the line.
 # Yes. So intermediate h should be < linear interp.
-h_linear <- approx(c(p3pp$s, p3$s), c(p3pp$h, p3$h), xout=s_sup)$y
-h_sup <- h_linear - 50 * sin(pi * seq(0,1,length.out=30)) # Sag below the line
-df_3pp3 <- data.frame(s=s_sup, h=h_sup)
+h_linear <- approx(c(p3pp$s, p3$s), c(p3pp$h, p3$h), xout = s_sup)$y
+h_sup <- h_linear - 50 * sin(pi * seq(0, 1, length.out = 30)) # Sag below the line
+df_3pp3 <- data.frame(s = s_sup, h = h_sup)
 
 # 3-4 (Turbine): Straight Vertical
 df_34 <- rbind(p3, p4)
@@ -377,46 +396,51 @@ df_34 <- rbind(p3, p4)
 df_41 <- rbind(p4, p1)
 
 ggplot() +
-  # Dome
-  geom_line(data=dome_liq_df, aes(x=s, y=h), color="gray50", size=1) +
-  geom_line(data=dome_vap_df, aes(x=s, y=h), color="gray50", size=1) +
-  annotate("text", x=8.0, y=2750, label="x=1", size=5, fontface="italic", color="gray50") +
-  annotate("text", x=4.43, y=1900, label="P.Krytyczny", size=4, fontface="italic", color="gray50") + # Adjusted label pos
-  
-  # 1-2 Pump
-  geom_path(data=df_12, aes(x=s, y=h), color="blue", size=2, arrow=arrow(length=unit(0.3,"cm"), ends="last")) +
-  
-  # 2-3 Boiler (Heating + Evap + Superheat)
-  geom_path(data=df_22p, aes(x=s, y=h), color="red", size=1.5) +
-  geom_path(data=df_2p3pp, aes(x=s, y=h), color="red", size=1.5) +
-  geom_path(data=df_3pp3, aes(x=s, y=h), color="red", size=1.5, arrow=arrow(length=unit(0.3,"cm"), ends="last")) +
-  
-  # 3-4 Turbine
-  geom_path(data=df_34, aes(x=s, y=h), color="orange", size=2, arrow=arrow(length=unit(0.5,"cm"), ends="last")) +
-  
-  # 4-1 Condenser
-  geom_path(data=df_41, aes(x=s, y=h), color="cyan3", size=1.5) + # Arrow at end usually overlaps with 1
-  
-  # Points
-  annotate("point", x=c(p1$s, p2$s, p3$s, p4$s), 
-           y=c(p1$h, p2$h, p3$h, p4$h), size=4) +
-  
-  # Labels
-  annotate("text", x=p1$s-0.2, y=p1$h, label="1", size=6, fontface="bold") +
-  annotate("text", x=p2$s-0.2, y=p2$h, label="2", size=6, fontface="bold") +
-  annotate("text", x=p3$s, y=p3$h+150, label="3", size=6, fontface="bold") +
-  annotate("text", x=p4$s, y=p4$h-150, label="4", size=6, fontface="bold") +
-  
-  # process labels
-  annotate("text", x=(p2$s+p3pp$s)/2, y=(p2$h+p3pp$h)/2 + 200, label="'q'['in']~'(Izobara)'", color="red", angle=25, parse=TRUE) +
-  annotate("text", x=(p4$s+p1$s)/2, y=(p4$h+p1$h)/2 - 100, label="'q'['out']~'(Izobara)'", color="cyan3", angle=15, parse=TRUE) +
+    # Dome
+    geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
+    geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
+    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
+    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") + # Adjusted label pos
 
-  labs(title="Obieg Rankine'a: Wykres h-s (Molliera)",
-       # subtitle="Wyraźnie widoczna praca pompy (przeskalowana) i krzywizny izobar",
-       x="Entropia s [kJ/(kg·K)]", y="Entalpia h [kJ/kg]") +
-  theme_bw() +
-  theme(plot.title = element_text(size=18, face="bold"),
-        axis.title = element_text(size=14))
+    # 1-2 Pump
+    geom_path(data = df_12, aes(x = s, y = h), color = "blue", size = 2, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+
+    # 2-3 Boiler (Heating + Evap + Superheat)
+    geom_path(data = df_22p, aes(x = s, y = h), color = "red", size = 1.5) +
+    geom_path(data = df_2p3pp, aes(x = s, y = h), color = "red", size = 1.5) +
+    geom_path(data = df_3pp3, aes(x = s, y = h), color = "red", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+
+    # 3-4 Turbine
+    geom_path(data = df_34, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.5, "cm"), ends = "last")) +
+
+    # 4-1 Condenser
+    geom_path(data = df_41, aes(x = s, y = h), color = "cyan3", size = 1.5) + # Arrow at end usually overlaps with 1
+
+    # Points
+    annotate("point",
+        x = c(p1$s, p2$s, p3$s, p4$s),
+        y = c(p1$h, p2$h, p3$h, p4$h), size = 4
+    ) +
+
+    # Labels
+    annotate("text", x = p1$s - 0.2, y = p1$h, label = "1", size = 6, fontface = "bold") +
+    annotate("text", x = p2$s - 0.2, y = p2$h, label = "2", size = 6, fontface = "bold") +
+    annotate("text", x = p3$s, y = p3$h + 150, label = "3", size = 6, fontface = "bold") +
+    annotate("text", x = p4$s, y = p4$h - 150, label = "4", size = 6, fontface = "bold") +
+
+    # process labels
+    annotate("text", x = (p2$s + p3pp$s) / 2, y = (p2$h + p3pp$h) / 2 + 200, label = "'q'['in']~'(Izobara)'", color = "red", angle = 25, parse = TRUE) +
+    annotate("text", x = (p4$s + p1$s) / 2, y = (p4$h + p1$h) / 2 - 100, label = "'q'['out']~'(Izobara)'", color = "cyan3", angle = 15, parse = TRUE) +
+    labs(
+        title = "Obieg Rankine'a: Wykres h-s (Molliera)",
+        # subtitle="Wyraźnie widoczna praca pompy (przeskalowana) i krzywizny izobar",
+        x = "Entropia s [kJ/(kg·K)]", y = "Entalpia h [kJ/kg]"
+    ) +
+    theme_bw() +
+    theme(
+        plot.title = element_text(size = 18, face = "bold"),
+        axis.title = element_text(size = 14)
+    )
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga"}
@@ -442,6 +466,16 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 :::
 :::
 ::::
+
+---
+
+## Rzeczywisty obieg Rankine'a
+
+![](img/rankine_rzeczywisty.png)
+
+::: {style="font-size: 0.6em; color: gray;"}
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
 
 ---
 
@@ -506,91 +540,94 @@ library(ggplot2)
 # --- 1. DOME (SAME AS BEFORE) ---
 s_liq_real <- c(0.0, 1.3, 2.3, 3.25, 4.43)
 h_liq_real <- c(0, 419, 852, 1344, 2100)
-spline_liq <- spline(s_liq_real, h_liq_real, n=100)
+spline_liq <- spline(s_liq_real, h_liq_real, n = 100)
 
 s_vap_real <- c(4.43, 5.7, 6.4, 7.35, 9.15)
 h_vap_real <- c(2100, 2749, 2793, 2676, 2500)
-spline_vap <- spline(s_vap_real, h_vap_real, n=100)
+spline_vap <- spline(s_vap_real, h_vap_real, n = 100)
 
-dome_liq_df <- data.frame(s=spline_liq$x, h=spline_liq$y)
-dome_vap_df <- data.frame(s=spline_vap$x, h=spline_vap$y)
+dome_liq_df <- data.frame(s = spline_liq$x, h = spline_liq$y)
+dome_vap_df <- data.frame(s = spline_vap$x, h = spline_vap$y)
 
 # --- 2. REHEAT POINTS ---
 
 # P3 (HP Inlet): 100 bar, 550C -> s=6.75, h=3500
-p3 <- data.frame(s=6.75, h=3500)
+p3 <- data.frame(s = 6.75, h = 3500)
 
 # P3a (HP Outlet): 20 bar. Isentropic s=6.75.
 # At 20 bar, s_sat_vap ~ 6.34, so it is still superheated or close.
 # Let's say h ~ 2900 (just approximate for visual)
-p3a <- data.frame(s=6.75, h=2900)
+p3a <- data.frame(s = 6.75, h = 2900)
 
 # P3b (LP Inlet / Reheat): 20 bar, reheated to 550C.
 # Pressure is lower than P3, so entropy is higher for same T.
 # s ~ 7.7, h ~ 3600 (approx)
-p3b <- data.frame(s=7.7, h=3600)
+p3b <- data.frame(s = 7.7, h = 3600)
 
 # P4 (LP Outlet): 0.1 bar. Isentropic from P3b. s=7.7.
 # s_liq=0.65, s_vap=8.15. x = (7.7-0.65)/7.5 = 0.94 (Very dry!)
 # h = 192 + 0.94*2392 ~ 2440
-p4 <- data.frame(s=7.7, h=2440)
+p4 <- data.frame(s = 7.7, h = 2440)
 
 # P4_old (No Reheat): Continued expansion from 3.
 # s=6.75. We calculated h=2130 (x=0.81).
-p4_old <- data.frame(s=6.75, h=2130)
+p4_old <- data.frame(s = 6.75, h = 2130)
 
 
 # --- 3. PROCESS LINES ---
-df_3_3a <- rbind(p3, p3a)   # HP Turbine
+df_3_3a <- rbind(p3, p3a) # HP Turbine
 df_3a_3b <- rbind(p3a, p3b) # Reheat (Isobar 20 bar) - simplified as straight/curved
 # Reheat isobar starts superheated or dry, goes to more superheated. Curve convex up.
-s_rh <- seq(p3a$s, p3b$s, length.out=20)
-h_rh_lin <- approx(c(p3a$s, p3b$s), c(p3a$h, p3b$h), xout=s_rh)$y
-h_rh <- h_rh_lin - 30 * sin(pi * seq(0,1,length.out=20)) # Convex curve
-df_3a_3b <- data.frame(s=s_rh, h=h_rh)
+s_rh <- seq(p3a$s, p3b$s, length.out = 20)
+h_rh_lin <- approx(c(p3a$s, p3b$s), c(p3a$h, p3b$h), xout = s_rh)$y
+h_rh <- h_rh_lin - 30 * sin(pi * seq(0, 1, length.out = 20)) # Convex curve
+df_3a_3b <- data.frame(s = s_rh, h = h_rh)
 
-df_3b_4 <- rbind(p3b, p4)   # LP Turbine
+df_3b_4 <- rbind(p3b, p4) # LP Turbine
 
 # Comparison line (No Reheat)
 df_no_rh <- rbind(p3a, p4_old)
 
 ggplot() +
-  # Dome
-  geom_line(data=dome_liq_df, aes(x=s, y=h), color="gray50", size=1) +
-  geom_line(data=dome_vap_df, aes(x=s, y=h), color="gray50", size=1) +
-  annotate("text", x=8.0, y=2750, label="x=1", size=5, fontface="italic", color="gray50") +
-  annotate("text", x=4.43, y=1900, label="P.Krytyczny", size=4, fontface="italic", color="gray50") +
-  
-  # HP Turbine
-  geom_path(data=df_3_3a, aes(x=s, y=h), color="orange", size=2, arrow=arrow(length=unit(0.4,"cm"), ends="last")) +
-  
-  # Reheat
-  geom_path(data=df_3a_3b, aes(x=s, y=h), color="red", size=1.5, arrow=arrow(length=unit(0.4,"cm"), ends="last")) +
-  
-  # LP Turbine
-  geom_path(data=df_3b_4, aes(x=s, y=h), color="orange", size=2, arrow=arrow(length=unit(0.4,"cm"), ends="last")) +
-  
-  # No Reheat (Comparison)
-  geom_path(data=df_no_rh, aes(x=s, y=h), color="gray60", size=1, linetype="dashed") +
-  
-  # Labels
-  annotate("point", x=c(p3$s, p3a$s, p3b$s, p4$s, p4_old$s), 
-           y=c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size=4) +
-  
-  annotate("text", x=p3$s, y=p3$h+150, label="3 (HP In)", size=5, fontface="bold") +
-  annotate("text", x=p3a$s-0.4, y=p3a$h, label="3a (HP Out)", size=5, fontface="bold") +
-  annotate("text", x=p3b$s, y=p3b$h+150, label="3b (LP In)", size=5, fontface="bold") +
-  annotate("text", x=p4$s, y=p4$h-150, label="4 (LP Out)", size=5, fontface="bold") +
-  annotate("text", x=p4_old$s-0.1, y=p4_old$h-150, label="4'", size=5, fontface="bold", color="gray60") +
-  
-  annotate("text", x=(p3a$s+p3b$s)/2, y=p3b$h-200, label="Przegrzew Wtórny", color="red", fontface="bold") +
+    # Dome
+    geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
+    geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
+    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
+    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") +
 
-  labs(title="Cykl z Przegrzewem Wtórnym",
-       subtitle="Dodatkowe ciepło q_reheat i przesunięcie punktu 4 w prawo (x rośnie)",
-       x="Entropia s [kJ/(kg·K)]", y="Entalpia h [kJ/kg]") +
-  theme_bw() +
-  theme(plot.title = element_text(size=18, face="bold"),
-        axis.title = element_text(size=14))
+    # HP Turbine
+    geom_path(data = df_3_3a, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+
+    # Reheat
+    geom_path(data = df_3a_3b, aes(x = s, y = h), color = "red", size = 1.5, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+
+    # LP Turbine
+    geom_path(data = df_3b_4, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+
+    # No Reheat (Comparison)
+    geom_path(data = df_no_rh, aes(x = s, y = h), color = "gray60", size = 1, linetype = "dashed") +
+
+    # Labels
+    annotate("point",
+        x = c(p3$s, p3a$s, p3b$s, p4$s, p4_old$s),
+        y = c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size = 4
+    ) +
+    annotate("text", x = p3$s, y = p3$h + 150, label = "3 (HP In)", size = 5, fontface = "bold") +
+    annotate("text", x = p3a$s - 0.4, y = p3a$h, label = "3a (HP Out)", size = 5, fontface = "bold") +
+    annotate("text", x = p3b$s, y = p3b$h + 150, label = "3b (LP In)", size = 5, fontface = "bold") +
+    annotate("text", x = p4$s, y = p4$h - 150, label = "4 (LP Out)", size = 5, fontface = "bold") +
+    annotate("text", x = p4_old$s - 0.1, y = p4_old$h - 150, label = "4'", size = 5, fontface = "bold", color = "gray60") +
+    annotate("text", x = (p3a$s + p3b$s) / 2, y = p3b$h - 200, label = "Przegrzew Wtórny", color = "red", fontface = "bold") +
+    labs(
+        title = "Cykl z Przegrzewem Wtórnym",
+        subtitle = "Dodatkowe ciepło q_reheat i przesunięcie punktu 4 w prawo (x rośnie)",
+        x = "Entropia s [kJ/(kg·K)]", y = "Entalpia h [kJ/kg]"
+    ) +
+    theme_bw() +
+    theme(
+        plot.title = element_text(size = 18, face = "bold"),
+        axis.title = element_text(size = 14)
+    )
 ```
 
 :::
