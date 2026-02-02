@@ -65,12 +65,12 @@ editor: source
 Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie od ciała zimniejszego do cieplejszego.
 :::
 
-::: {.callout-tip appearance="simple"}
+::: {.fragment .callout-tip appearance="simple"}
 *   **Proces wymuszony:** Aby przenieść ciepło z temperatury niższej ($T_L$) do wyższej ($T_H$), musimy dostarczyć energię z zewnątrz (pracę $L$).
 *   **Kierunek:** Obieg przebiega **odwrotnie do ruchu wskazówek zegara** na wykresie p-v.
 :::
 
-::: {.callout-important title="Cel i Koszt"}
+::: {.fragment .callout-important title="Cel i Koszt"}
 *   **Chłodziarka:** Utrzymuje $T_L < T_{otoczenia}$. Celem jest ciepło odebrane ($Q_L$).
 *   **Pompa Ciepła:** Ogrzewa pomieszczenie. Celem jest ciepło oddane ($Q_H$).
 :::
@@ -84,7 +84,7 @@ W urządzeniach chłodniczych sprawność może przekraczać 1, dlatego używamy
 :::
 
 :::{.columns}
-::: {.column width="50%"}
+::: {.fragment .column width="50%"}
 ### Chłodziarka ($\varepsilon_{ch}$)
 $$ COP_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} $$
 
@@ -111,14 +111,21 @@ $$ COP_{g} = COP_{ch} + 1 $$
 
 ## 2. Dlaczego nie Carnot?
 
+::: {.callout-note appearance="simple"}
 Odwrócony obieg Carnota ma teoretycznie najwyższe COP. Dlaczego go nie budujemy?
+:::
 
-1.  **Sprężanie pary mokrej:** Wymagałoby sprężarki, która radzi sobie z kropelkami cieczy.
-    *   *Problem:* Kropelki cieczy niszczą łopatki/tłoki ("uderzenia hydrauliczne").
-2.  **Rozprężanie w turbinie:** Mały zysk energii (ciecz ma małą objętość właściwą).
-    *   *Problem:* Koszt turbiny przewyższa zysk energetyczny.
+::: {.fragment .callout-warning title="Problem 1: Sprężanie pary mokrej"}
+Wymagałoby sprężarki, która radzi sobie z kropelkami cieczy.
+**Skutek:** Kropelki cieczy niszczą łopatki/tłoki ("uderzenia hydrauliczne").
+:::
 
-::: {.callout-tip title="Rozwiązanie Inżynierskie"}
+::: {.fragment .callout-warning title="Problem 2: Rozprężanie w turbinie"}
+Mały zysk energii (ciecz ma małą objętość właściwą).
+**Skutek:** Koszt turbiny przewyższa zysk energetyczny.
+:::
+
+::: {.fragment .callout-tip title="Rozwiązanie Inżynierskie" style="font-size: 0.9em;"}
 Zastępujemy turbinę **zaworem dławiącym**, a sprężanie realizujemy w obszarze **pary suchej**. Tak powstaje **Obieg Lindego**.
 :::
 
@@ -129,10 +136,19 @@ Zastępujemy turbinę **zaworem dławiącym**, a sprężanie realizujemy w obsza
 Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
 ### Schemat Przemian:
+
+::: {.fragment .fade-in}
 1.  **1-2 Sprężarka:** Adiabatyczne sprężanie pary suchej do ciśnienia skraplania ($s=const$).
+:::
+::: {.fragment .fade-in}
 2.  **2-3 Skraplacz:** Izobaryczne oddawanie ciepła ($p=const$). Czynnik skrapla się do cieczy.
+:::
+::: {.fragment .fade-in}
 3.  **3-4 Zawór Rozprężny:** Izentalpowe dławienie ($h=const$). Gwałtowny spadek ciśnienia i temperatury.
+:::
+::: {.fragment .fade-in}
 4.  **4-1 Parownik:** Izobaryczne wrzenie ($p=const$). Pobranie ciepła $Q_L$.
+:::
 
 ---
 
@@ -140,12 +156,22 @@ Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
 W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.
 
+::: {.fragment .callout-note appearance="minimal"}
 *   **Proces:** Przepływ bez wymiany ciepła ($Q=0$) i bez pracy ($L_t=0$).
+:::
+
+::: {.fragment .callout-important appearance="minimal"}
 *   **Bilans I Zasady:**
     $$ h_3 = h_4 \quad (\text{entalpia stała}) $$
-*   **Efekt:** Dla czynników chłodniczych spadek ciśnienia powoduje **spadek temperatury** i częściowe odparowanie cieczy (powstaje para mokra o niskiej jakości).
+:::
 
+::: {.fragment .callout-tip appearance="minimal"}
+*   **Efekt:** Dla czynników chłodniczych spadek ciśnienia powoduje **spadek temperatury** i częściowe odparowanie cieczy (powstaje para mokra o niskiej jakości).
+:::
+
+::: {.fragment}
 > To strata egzergii (proces nieodwracalny), ale zyskujemy ogromną prostotę konstrukcji.
+:::
 
 ---
 
@@ -156,9 +182,15 @@ Oś Y (log p) pozwala łatwo rysować izobary, a Oś X (h) pozwala odczytywać c
 
 **Kluczowe odległości na wykresie:**
 
+::: {.fragment .callout-note appearance="simple" icon=false}
 1.  **Praca sprężania:** $l = h_2 - h_1$ (Rzut poziomy krzywej sprężania).
+:::
+::: {.fragment .callout-tip appearance="simple" icon=false}
 2.  **Efekt chłodniczy:** $q_L = h_1 - h_4$ (Długość odcinka parowania).
+:::
+::: {.fragment .callout-important appearance="simple" icon=false}
 3.  **Ciepło skraplania:** $q_H = h_2 - h_3$ (Długość górnego odcinka).
+:::
 
 ---
 
@@ -257,14 +289,18 @@ ggplot() +
 
 W praktyce punkty 1 i 3 wychodzą poza obszar mokry:
 
-### A. Przegrzanie Par (Superheating)
+::: {.fragment .callout-warning title="A. Przegrzanie Par (Superheating)"}
 Para na ssaniu do sprężarki (pkt 1) jest **przegrzewana** powyżej temperatury nasycenia.
-*   **Cel:** Gwarancja, że do cylindra nie trafi ani kropla cieczy.
 
-### B. Dochłodzenie Cieczy (Subcooling)
+*   **Cel:** Gwarancja, że do cylindra nie trafi ani kropla cieczy.
+:::
+
+::: {.fragment .callout-tip title="B. Dochłodzenie Cieczy (Subcooling)"}
 Ciecz za skraplaczem (pkt 3) jest **dochładzana**.
+
 *   **Cel:** Zwiększenie różnicy entalpii w parowniku ($h_1 - h_4$) bez dodatkowej pracy sprężarki.
 *   **Wynik:** Wzrost COP.
+:::
 
 ---
 
@@ -272,43 +308,64 @@ Ciecz za skraplaczem (pkt 3) jest **dochładzana**.
 
 Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$) i skraplać się w wysokiej ($40^\circ C$) przy rozsądnych ciśnieniach.
 
-**Ewolucja:**
+[**Ewolucja:**]{.fragment}
+
+::: {.fragment}
 1.  **CFC (Freony, np. R12):** Niszczyły warstwę ozonową. Zakazane (Protokół Montrealski).
+:::
+::: {.fragment}
 2.  **HFC (np. R134a):** Bezpieczne dla ozonu, ale silne gazy cieplarniane (GWP=1430). Wycofywane.
+:::
+::: {.fragment}
 3.  **HFO (np. R1234yf):** Niskie GWP, ale lekko palne.
+:::
+::: {.fragment}
 4.  **Naturalne:**
     *   **Amoniak (R717):** Doskonały termodynamicznie, ale toksyczny. Przemysł.
     *   **CO2 (R744):** Wymaga b. wysokich ciśnień (>100 bar). Supermarkety.
     *   **Propan (R290):** Palny, ale świetny w małych pompach ciepła.
+:::
 
 ---
 
 ## 7. Pompy Ciepła
 
-"Lodówka włożona oknem do środka".
+"Lodówka wywrócona na lewą stronę".
 
-### Obieg Sprężarkowy
+::: {.fragment .callout-note title="Obieg Sprężarkowy"}
 To samo urządzenie co chłodziarka, tylko wykorzystujemy ciepło skraplacza ($Q_H$).
 *   **Przykład:** Pobieramy ciepło z gruntu (10°C) i grzejemy wodę C.O. (40°C).
 *   Efektywność spada drastycznie przy dużych mrozach (gdy $T_L$ spada).
+:::
 
-### Obieg Gazowy (Joule'a-Braytona)
+::: {.fragment .callout-important title="Obieg Gazowy (Joule'a-Braytona)"}
 Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza.
 *   Wymaga rozprężarki (turbiny) zamiast zaworu dławiącego.
 *   Stosowany w klimatyzacji samolotowej (bezpieczny czynnik).
+:::
 
 ---
 
 ## Podsumowanie W11
 
+::: {.incremental}
 1.  **Linde vs Carnot:** Zastąpiliśmy drogą turbinę tanim zaworem dławiącym (kosztem wzrostu entropii).
-2.  **Wykres p-h:** Kluczowe narzędzie. Pole parowania to moc chłodnicza.
-3.  **Ekologia:** Przyszłość to czynniki naturalne (Propan, CO2).
 
-### Zagadnienia do Egzaminu
+2.  **Wykres p-h:** Kluczowe narzędzie. Pole parowania to moc chłodnicza.
+
+3.  **Ekologia:** Przyszłość to czynniki naturalne (Propan, $CO_2$).
+:::
+
+### Zagadnienia do Egzaminu{.fragment}
+
+::: {.fragment .fade-in}
 1.  Obliczyć COP chłodziarki i pompy ciepła mając dane entalpie ($h_1, h_2, h_3, h_4$).
 2.  Narysować obieg Lindego na wykresie log p - h i T-s.
 3.  Wyjaśnić różnicę między dławieniem a rozprężaniem izentropowym.
+:::
 
-### Zadanie Domowe
+### Zadanie Domowe{.fragment}
+
+::: {.fragment .callout-tip title="Zadanie Domowe" style="font-size: 0.8em;"}
 Narysuj schemat domowej lodówki. Wskaż, który element jest gorący (skraplacz), a który zimny (parownik). Dlaczego kratka z tyłu lodówki musi mieć wentylację?
+:::

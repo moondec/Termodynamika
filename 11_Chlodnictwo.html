@@ -188,6 +188,7 @@
 </div>
 </div>
 </div>
+<div class="fragment">
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -201,7 +202,8 @@
 </div>
 </div>
 </div>
-<div title="Cel i Koszt">
+</div>
+<div class="fragment" title="Cel i Koszt">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -233,7 +235,7 @@
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="fragment column" style="width:50%;">
 <h3 id="chłodziarka-varepsilon_ch">Chłodziarka (<span class="math inline">\(\varepsilon_{ch}\)</span>)</h3>
 <p><span class="math display">\[ COP_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} \]</span></p>
 <div class="fragment">
@@ -261,18 +263,47 @@
 </section>
 <section id="dlaczego-nie-carnot" class="slide level2">
 <h2>2. Dlaczego nie Carnot?</h2>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Odwrócony obieg Carnota ma teoretycznie najwyższe COP. Dlaczego go nie budujemy?</p>
-<ol type="1">
-<li><strong>Sprężanie pary mokrej:</strong> Wymagałoby sprężarki, która radzi sobie z kropelkami cieczy.
-<ul>
-<li><em>Problem:</em> Kropelki cieczy niszczą łopatki/tłoki (“uderzenia hydrauliczne”).</li>
-</ul></li>
-<li><strong>Rozprężanie w turbinie:</strong> Mały zysk energii (ciecz ma małą objętość właściwą).
-<ul>
-<li><em>Problem:</em> Koszt turbiny przewyższa zysk energetyczny.</li>
-</ul></li>
-</ol>
-<div title="Rozwiązanie Inżynierskie">
+</div>
+</div>
+</div>
+<div class="fragment" title="Problem 1: Sprężanie pary mokrej">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Problem 1: Sprężanie pary mokrej</strong></p>
+</div>
+<div class="callout-content">
+<p>Wymagałoby sprężarki, która radzi sobie z kropelkami cieczy. <strong>Skutek:</strong> Kropelki cieczy niszczą łopatki/tłoki (“uderzenia hydrauliczne”).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Problem 2: Rozprężanie w turbinie">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Problem 2: Rozprężanie w turbinie</strong></p>
+</div>
+<div class="callout-content">
+<p>Mały zysk energii (ciecz ma małą objętość właściwą). <strong>Skutek:</strong> Koszt turbiny przewyższa zysk energetyczny.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Rozwiązanie Inżynierskie" style="font-size: 0.9em;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -292,34 +323,106 @@
 <h2>3. Obieg Lindego (Kompresorowy)</h2>
 <p>Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).</p>
 <h3 id="schemat-przemian">Schemat Przemian:</h3>
+<div class="fragment fade-in">
 <ol type="1">
 <li><strong>1-2 Sprężarka:</strong> Adiabatyczne sprężanie pary suchej do ciśnienia skraplania (<span class="math inline">\(s=const\)</span>).</li>
+</ol>
+</div>
+<div class="fragment fade-in">
+<ol start="2" type="1">
 <li><strong>2-3 Skraplacz:</strong> Izobaryczne oddawanie ciepła (<span class="math inline">\(p=const\)</span>). Czynnik skrapla się do cieczy.</li>
+</ol>
+</div>
+<div class="fragment fade-in">
+<ol start="3" type="1">
 <li><strong>3-4 Zawór Rozprężny:</strong> Izentalpowe dławienie (<span class="math inline">\(h=const\)</span>). Gwałtowny spadek ciśnienia i temperatury.</li>
+</ol>
+</div>
+<div class="fragment fade-in">
+<ol start="4" type="1">
 <li><strong>4-1 Parownik:</strong> Izobaryczne wrzenie (<span class="math inline">\(p=const\)</span>). Pobranie ciepła <span class="math inline">\(Q_L\)</span>.</li>
 </ol>
+</div>
 </section>
 <section id="zjawisko-dławienia-joule-thomson" class="slide level2">
 <h2>Zjawisko Dławienia (Joule-Thomson)</h2>
 <p>W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.</p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
 <ul>
 <li><strong>Proces:</strong> Przepływ bez wymiany ciepła (<span class="math inline">\(Q=0\)</span>) i bez pracy (<span class="math inline">\(L_t=0\)</span>).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
 <li><strong>Bilans I Zasady:</strong> <span class="math display">\[ h_3 = h_4 \quad (\text{entalpia stała}) \]</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
 <li><strong>Efekt:</strong> Dla czynników chłodniczych spadek ciśnienia powoduje <strong>spadek temperatury</strong> i częściowe odparowanie cieczy (powstaje para mokra o niskiej jakości).</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <blockquote>
 <p>To strata egzergii (proces nieodwracalny), ale zyskujemy ogromną prostotę konstrukcji.</p>
 </blockquote>
+</div>
 </section>
 <section id="wykres-logp-h" class="slide level2">
 <h2>4. Wykres log(p)-h</h2>
 <p>Podstawowe narzędzie inżyniera chłodnictwa i HVAC. Oś Y (log p) pozwala łatwo rysować izobary, a Oś X (h) pozwala odczytywać ciepło i pracę jako odcinki.</p>
 <p><strong>Kluczowe odległości na wykresie:</strong></p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
 <ol type="1">
 <li><strong>Praca sprężania:</strong> <span class="math inline">\(l = h_2 - h_1\)</span> (Rzut poziomy krzywej sprężania).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ol start="2" type="1">
 <li><strong>Efekt chłodniczy:</strong> <span class="math inline">\(q_L = h_1 - h_4\)</span> (Długość odcinka parowania).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ol start="3" type="1">
 <li><strong>Ciepło skraplania:</strong> <span class="math inline">\(q_H = h_2 - h_3\)</span> (Długość górnego odcinka).</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="wizualizacja-obieg-na-p-h" class="slide level2">
 <h2>Wizualizacja: Obieg na p-h</h2>
@@ -328,39 +431,139 @@
 <section id="modyfikacje-rzeczywiste" class="slide level2">
 <h2>5. Modyfikacje Rzeczywiste</h2>
 <p>W praktyce punkty 1 i 3 wychodzą poza obszar mokry:</p>
-<h3 id="a.-przegrzanie-par-superheating">A. Przegrzanie Par (Superheating)</h3>
-<p>Para na ssaniu do sprężarki (pkt 1) jest <strong>przegrzewana</strong> powyżej temperatury nasycenia. * <strong>Cel:</strong> Gwarancja, że do cylindra nie trafi ani kropla cieczy.</p>
-<h3 id="b.-dochłodzenie-cieczy-subcooling">B. Dochłodzenie Cieczy (Subcooling)</h3>
-<p>Ciecz za skraplaczem (pkt 3) jest <strong>dochładzana</strong>. * <strong>Cel:</strong> Zwiększenie różnicy entalpii w parowniku (<span class="math inline">\(h_1 - h_4\)</span>) bez dodatkowej pracy sprężarki. * <strong>Wynik:</strong> Wzrost COP.</p>
+<div class="fragment" title="A. Przegrzanie Par (Superheating)">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>A. Przegrzanie Par (Superheating)</strong></p>
+</div>
+<div class="callout-content">
+<p>Para na ssaniu do sprężarki (pkt 1) jest <strong>przegrzewana</strong> powyżej temperatury nasycenia.</p>
+<ul>
+<li><strong>Cel:</strong> Gwarancja, że do cylindra nie trafi ani kropla cieczy.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="B. Dochłodzenie Cieczy (Subcooling)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>B. Dochłodzenie Cieczy (Subcooling)</strong></p>
+</div>
+<div class="callout-content">
+<p>Ciecz za skraplaczem (pkt 3) jest <strong>dochładzana</strong>.</p>
+<ul>
+<li><strong>Cel:</strong> Zwiększenie różnicy entalpii w parowniku (<span class="math inline">\(h_1 - h_4\)</span>) bez dodatkowej pracy sprężarki.</li>
+<li><strong>Wynik:</strong> Wzrost COP.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="czynniki-chłodnicze" class="slide level2">
 <h2>6. Czynniki Chłodnicze</h2>
 <p>Substancja musi wrzeć w niskiej temperaturze (np. <span class="math inline">\(-20^\circ C\)</span>) i skraplać się w wysokiej (<span class="math inline">\(40^\circ C\)</span>) przy rozsądnych ciśnieniach.</p>
-<p><strong>Ewolucja:</strong> 1. <strong>CFC (Freony, np. R12):</strong> Niszczyły warstwę ozonową. Zakazane (Protokół Montrealski). 2. <strong>HFC (np. R134a):</strong> Bezpieczne dla ozonu, ale silne gazy cieplarniane (GWP=1430). Wycofywane. 3. <strong>HFO (np. R1234yf):</strong> Niskie GWP, ale lekko palne. 4. <strong>Naturalne:</strong> * <strong>Amoniak (R717):</strong> Doskonały termodynamicznie, ale toksyczny. Przemysł. * <strong>CO2 (R744):</strong> Wymaga b. wysokich ciśnień (&gt;100 bar). Supermarkety. * <strong>Propan (R290):</strong> Palny, ale świetny w małych pompach ciepła.</p>
+<p><span class="fragment"><strong>Ewolucja:</strong></span></p>
+<div class="fragment">
+<ol type="1">
+<li><strong>CFC (Freony, np. R12):</strong> Niszczyły warstwę ozonową. Zakazane (Protokół Montrealski).</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><strong>HFC (np. R134a):</strong> Bezpieczne dla ozonu, ale silne gazy cieplarniane (GWP=1430). Wycofywane.</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><strong>HFO (np. R1234yf):</strong> Niskie GWP, ale lekko palne.</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li><strong>Naturalne:</strong>
+<ul>
+<li><strong>Amoniak (R717):</strong> Doskonały termodynamicznie, ale toksyczny. Przemysł.</li>
+<li><strong>CO2 (R744):</strong> Wymaga b. wysokich ciśnień (&gt;100 bar). Supermarkety.</li>
+<li><strong>Propan (R290):</strong> Palny, ale świetny w małych pompach ciepła.</li>
+</ul></li>
+</ol>
+</div>
 </section>
 <section id="pompy-ciepła" class="slide level2">
 <h2>7. Pompy Ciepła</h2>
-<p>“Lodówka włożona oknem do środka”.</p>
-<h3 id="obieg-sprężarkowy">Obieg Sprężarkowy</h3>
+<p>“Lodówka wywrócona na lewą stronę”.</p>
+<div class="fragment" title="Obieg Sprężarkowy">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Obieg Sprężarkowy</strong></p>
+</div>
+<div class="callout-content">
 <p>To samo urządzenie co chłodziarka, tylko wykorzystujemy ciepło skraplacza (<span class="math inline">\(Q_H\)</span>). * <strong>Przykład:</strong> Pobieramy ciepło z gruntu (10°C) i grzejemy wodę C.O. (40°C). * Efektywność spada drastycznie przy dużych mrozach (gdy <span class="math inline">\(T_L\)</span> spada).</p>
-<h3 id="obieg-gazowy-joulea-braytona">Obieg Gazowy (Joule’a-Braytona)</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Obieg Gazowy (Joule'a-Braytona)">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Obieg Gazowy (Joule’a-Braytona)</strong></p>
+</div>
+<div class="callout-content">
 <p>Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza. * Wymaga rozprężarki (turbiny) zamiast zaworu dławiącego. * Stosowany w klimatyzacji samolotowej (bezpieczny czynnik).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="podsumowanie-w11" class="slide level2">
 <h2>Podsumowanie W11</h2>
 <ol type="1">
-<li><strong>Linde vs Carnot:</strong> Zastąpiliśmy drogą turbinę tanim zaworem dławiącym (kosztem wzrostu entropii).</li>
-<li><strong>Wykres p-h:</strong> Kluczowe narzędzie. Pole parowania to moc chłodnicza.</li>
-<li><strong>Ekologia:</strong> Przyszłość to czynniki naturalne (Propan, CO2).</li>
+<li class="fragment"><p><strong>Linde vs Carnot:</strong> Zastąpiliśmy drogą turbinę tanim zaworem dławiącym (kosztem wzrostu entropii).</p></li>
+<li class="fragment"><p><strong>Wykres p-h:</strong> Kluczowe narzędzie. Pole parowania to moc chłodnicza.</p></li>
+<li class="fragment"><p><strong>Ekologia:</strong> Przyszłość to czynniki naturalne (Propan, <span class="math inline">\(CO_2\)</span>).</p></li>
 </ol>
-<h3 id="zagadnienia-do-egzaminu">Zagadnienia do Egzaminu</h3>
+<h3 class="fragment" id="zagadnienia-do-egzaminu">Zagadnienia do Egzaminu</h3>
+<div class="fragment fade-in">
 <ol type="1">
 <li>Obliczyć COP chłodziarki i pompy ciepła mając dane entalpie (<span class="math inline">\(h_1, h_2, h_3, h_4\)</span>).</li>
 <li>Narysować obieg Lindego na wykresie log p - h i T-s.</li>
 <li>Wyjaśnić różnicę między dławieniem a rozprężaniem izentropowym.</li>
 </ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+</div>
+<h3 class="fragment" id="zadanie-domowe">Zadanie Domowe</h3>
+<div class="fragment" title="Zadanie Domowe" style="font-size: 0.8em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zadanie Domowe</strong></p>
+</div>
+<div class="callout-content">
 <p>Narysuj schemat domowej lodówki. Wskaż, który element jest gorący (skraplacz), a który zimny (parownik). Dlaczego kratka z tyłu lodówki musi mieć wentylację?</p>
+</div>
+</div>
+</div>
+</div>
 
 </section>
     </div>
