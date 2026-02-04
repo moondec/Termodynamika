@@ -59,106 +59,159 @@ editor: source
 
 ## 1. Mechanizmy Wymiany Ciepła
 
+::: {.callout-note title="Podstawowa zasada"}
 Ciepło płynie zawsze, gdy istnieje $\Delta T$.
 Jakim "autobusem"?
+:::
 
+::: {.incremental}
 1.  **Przewodzenie (Conduction):** Przekazywanie energii przez drgania sieci krystalicznej (ciała stałe). B. wydajne w metalach.
 2.  **Konwekcja (Convection):** Unoszenie energii przez ruch płynu (woda, powietrze).
 3.  **Promieniowanie (Radiation):** Fala elektromagnetyczna. Działa w próżni.
+:::
 
 ---
 
 ## 2. Przewodzenie i Prawo Fouriera
 
+::: {.callout-tip title="Prawo Fouriera"}
 Strumień ciepła jest proporcjonalny do gradientu temperatury.
 
 $$ \dot{q} = - \lambda \frac{dT}{dx} \quad [\frac{W}{m^2}] $$
+:::
 
+::: {.fragment}
 *   $\lambda$ (Lambda): Przewodność cieplna materiału.
+:::
+
+::: {.fragment .incremental}
     *   Miedź: 400 W/mK
     *   Cegła: 0.8 W/mK
     *   Styropian: 0.04 W/mK (Izolator ma niską lambdę).
+:::
 
-### Ściana Płaska
+### Ściana Płaska {.fragment}
+
+::: {.fragment}
 $$ \dot{Q} = \frac{\lambda}{\delta} A (T_1 - T_2) $$
 $\delta$: Grubość ściany.
+:::
 
 ---
 
 ## Opór Cieplny ($R$)
 
-Analogia elektryczna:
+::: {.callout-note title="Analogia elektryczna"}
 $$ \dot{Q} = \frac{\Delta T}{R_{term}} $$
 $$ R_{przewodzenia} = \frac{\delta}{\lambda A} $$
+:::
 
+::: {.fragment}
 Dla ściany wielowarstwowej (cegła + styropian + tynk):
 $$ R_{calkowite} = R_1 + R_2 + R_3 $$
+:::
 
+::: {.fragment .callout-important appearance="simple"}
 Duży opór = Dobra izolacja.
+:::
 
 ---
 
 ## 3. Konwekcja i Prawo Newtona
 
+::: {.callout-tip title="Prawo Newtona dla konwekcji"}
 Ruch płynu "zmywa" ciepło z powierzchni.
 
 $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
+:::
 
+::: {.fragment}
 *   $\alpha$ (Alfa): Współczynnik przejmowania ciepła.
+:::
+
+::: {.fragment .incremental}
     *   Konwekcja naturalna (kaloryfer): 5-20 W/m²K
     *   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
     *   Wrzenie wody: 5000+ W/m²K
+:::
 
 ---
 
 ## Przenikanie Ciepła (Współczynnik U)
 
+::: {.callout-note title="Współczynnik przenikania ciepła"}
 W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn.
 Suma oporów (R_si + R_sciany + R_se).
+:::
 
+::: {.fragment}
 $$ U = k = \frac{1}{R_{si} + \Sigma \frac{\delta}{\lambda} + R_{se}} $$
+:::
 
+::: {.fragment .callout-important appearance="simple"}
 Dla nowoczesnego domu $U < 0.2$ W/(m²K).
+:::
 
 ---
 
 ## 4. Promieniowanie
 
+::: {.callout-tip title="Prawo Stefana-Boltzmanna"}
 Każde ciało emituje światło.
 Moc emisji ciała doskonale czarnego:
 
 $$ E_b = \sigma T^4 $$
+:::
 
+::: {.fragment .incremental}
 *   $\sigma$: Stała Stefana-Boltzmanna ($5.67 \cdot 10^{-8}$).
 *   $T$: Temperatura w **Kelvinach**!
+:::
 
-### Wymiana między ciałami
+### Wymiana między ciałami {.fragment}
+
+::: {.fragment}
 $$ \dot{Q} = \varepsilon \sigma A (T_1^4 - T_2^4) $$
+:::
 
+::: {.fragment}
 Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w budownictwie też jest ważne (straty przez okna).
+:::
 
 ---
 
 ## 5. Wymienniki Ciepła
 
+::: {.callout-note title="Wymienniki ciepła"}
 Urządzenia do przekazywania ciepła z jednego płynu do drugiego bez mieszania ich.
+:::
 
+::: {.fragment .incremental}
 *   **Współprąd:** Oba płyny płyną w tym samym kierunku.
 *   **Przeciwprąd:** Płyną przeciwnie. (Najbardziej efektywny!).
+:::
 
+::: {.fragment}
 $$ \dot{Q} = U A \Delta T_{ln} $$
 
 $\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
+:::
 
 ---
 
 ## Podsumowanie W14
 
+::: {.incremental}
 1.  **Izolacja** to walka z przewodzeniem ($\lambda$).
 2.  **Radiator** to walka z konwekcją (zwiększanie $A$ i $\alpha$).
 3.  **Promieniowanie** zależy od $T^4$ - małe zmiany temperatury dają wielkie zmiany mocy.
 4.  **Współczynnik U** to klucz do energooszczędnych budynków.
+:::
 
-### Zadanie Domowe
-Oblicz współczynnik U dla ściany: Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
+### Zadanie Domowe {.fragment}
+
+::: {.fragment .callout-tip title="Oblicz współczynnik U dla ściany"}
+Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
+
 Wynik: $R_{ceg} = 0.31$, $R_{styr} = 3.75$. $R_{tot} \approx 4.06$. $U = 1/4.06 \approx 0.25$.
+:::

@@ -59,29 +59,42 @@ editor: source
 
 ## 1. Centrala Wentylacyjna (AHU)
 
+::: {.callout-note title="Centrala Wentylacyjna (AHU)"}
 Fabryka powietrza. Składa się z sekcji:
+:::
+
+::: {.incremental}
 1.  Filtr (czystość).
 2.  Nagrzewnica (zima).
 3.  Chłodnica (lato).
 4.  Nawilżacz (zima).
 5.  Odzysk ciepła (rekuperator).
+:::
 
+::: {.fragment .callout-important appearance="simple"}
 Każdy element realizuje konkretny proces termodynamiczny na wykresie i-x.
+:::
 
 ---
 
 ## 2. Ogrzewanie i Chłodzenie
 
 ### Ogrzewanie (Nagrzewnica)
+
+::: {.incremental}
 *   **Proces:** $x = const$ (nie dodajemy wody).
 *   **Kierunek:** Pionowo w górę na i-x.
 *   **Efekt:** Temperatura rośnie, ale **wilgotność względna $\varphi$ spada!**
     (Dlatego zimą w ogrzewanym domu jest sucho - $\varphi \approx 20-30\%$).
+:::
 
-### Chłodzenie Jawne (Chłodnica Sucha)
+### Chłodzenie Jawne (Chłodnica Sucha){.fragment}
+
+::: {.incremental}
 *   **Proces:** $x = const$.
 *   **Kierunek:** Pionowo w dół.
 *   **Limit:** Temperatura punktu rosy ($t_R$). Jeśli zejdziemy niżej, zacznie się wykraplanie (chłodzenie mokre).
+:::
 
 ---
 
@@ -89,20 +102,41 @@ Każdy element realizuje konkretny proces termodynamiczny na wykresie i-x.
 
 Jak dodać wodę do powietrza?
 
-### A. Nawilżanie Parowe (Lanca Parowa)
-Wtryskujemy gorącą parę ($100^\circ C$).
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### A. Nawilżanie Parowe (Lanca Parowa){.fragment}
+
+::: {.fragment .callout-tip title="Wtryskujemy gorącą parę ($100^\circ C$)."}
+
+:::
+
+::: {.incremental}
+
 *   **Proces:** $t \approx const$ (izoterma).
 *   **Kierunek:** Pionowo w prawo.
 *   **Zaleta:** Higieniczne, łatwa kontrola.
 *   **Wada:** Drogie (musimy wytworzyć parę = energia).
+:::
+:::
+::: {.column width="50%"}
 
-### B. Nawilżanie Wodne (Zraszacz/Adiabatyczne)
-Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować.
-*   **Proces:** $i = const$ (Izentpalpa).
+### B. Nawilżanie Wodne (Zraszacz/Adiabatyczne) {.fragment}
+
+::: {.fragment .callout-tip title="Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować."}
+
+:::
+
+::: {.incremental}
+
+*   **Proces:** $h = const$ (Izentpalpa).
 *   **Kierunek:** Ukośnie w dół-prawo (wzdłuż linii entalpii).
 *   **Efekt:** Wilgotność rośnie ($x \uparrow$), ale temperatura spada ($t \downarrow$)!
 *   **Zastosowanie:** Chłodzenie wyparne (tanie chłodzenie latem).
-
+:::
+:::
+::::
 ---
 
 ## 4. Mieszanie Strumieni
@@ -110,14 +144,24 @@ Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparowa�
 Mieszamy powietrze świeże (zewnętrzne Z) z powietrzem obiegowym (z sali S).
 
 **Reguła Dźwigni:**
+
+::: {.callout-tip appearance="simple"}
 Punkt mieszania M leży na prostej łączącej Z i S.
 Odległość zależy od proporcji strumieni masy.
+:::
 
+::: {.incremental}
 $$ \frac{m_Z}{m_S} = \frac{\text{odcinek } SM}{\text{odcinek } ZM} $$
+:::
 
+::: {.incremental}
 $$ h_M = g_Z h_Z + g_S h_S $$
+:::
+
+::: {.incremental}
 $$ x_M = g_Z x_Z + g_S x_S $$
 ($g$ - udział masowy).
+:::
 
 ---
 
@@ -132,17 +176,17 @@ $$ x_M = g_Z x_Z + g_S x_S $$
 library(ggplot2)
 
 df_mix <- data.frame(
-  x = c(5, 10, 20),
-  t = c(0, 18, 25),
-  label = c("Z (Zima)", "M (Mieszanina)", "S (Sala)")
+    x = c(5, 10, 20),
+    t = c(0, 18, 25),
+    label = c("Z (Zima)", "M (Mieszanina)", "S (Sala)")
 )
 
-ggplot(df_mix, aes(x=x, y=t)) +
-  geom_line(color="grey", size=1) + # Mixing line
-  geom_point(aes(color=label), size=5) +
-  geom_text(aes(label=label), vjust=-1) +
-  labs(title="Mieszanie Zimą", x="x", y="t") +
-  theme_minimal()
+ggplot(df_mix, aes(x = x, y = t)) +
+    geom_line(color = "grey", size = 1) + # Mixing line
+    geom_point(aes(color = label), size = 5) +
+    geom_text(aes(label = label), vjust = -1) +
+    labs(title = "Mieszanie Zimą", x = "x", y = "t") +
+    theme_minimal()
 ```
 
 Mieszanie pozwala zaoszczędzić ogromne ilości energii (recyrkulacja ciepłego powietrza z sali).
@@ -151,26 +195,48 @@ Mieszanie pozwala zaoszczędzić ogromne ilości energii (recyrkulacja ciepłego
 
 ## 5. Przemiany Sezonowe
 
-### ZIMA (Cel: Ogrzać i Nawilżyć)
-Punkt Zewnętrzny: -10C, 90%.
-Punkt Celowy: 22C, 50%.
+:::: {.columns}
 
-Ścieżka:
+::: {.column width="50%"}
+
+::: {.callout-note title="ZIMA (Cel: Ogrzać i Nawilżyć)"}
+
+Punkt Zewnętrzny: -10°C, 90%.
+Punkt Celowy: 22°C, 50%.
+:::
+
+
+
+::: {.fragment .callout-tip title="Ścieżka"}
+
+::: {.incremental}
 1.  Mieszanie (odzysk ciepła).
 2.  Wstępne ogrzewanie.
 3.  Nawilżanie (parowe lub wodne).
+
     *   Jeśli wodne: temperatura spadnie, więc musimy przegrzać bardziej!
 4.  Wtórne ogrzewanie (jeśli trzeba).
+:::
+:::
+:::
 
-### LATO (Cel: Ochłodzić i Osuszyć)
-Punkt Zewnętrzny: 32C, 40%.
-Punkt Celowy: 24C, 50%.
+::: {.column width="50%"}
 
-Ścieżka:
+::: {.callout-note title="LATO (Cel: Ochłodzić i Osuszyć)"}
+
+Punkt Zewnętrzny: 32°C, 40%.
+Punkt Celowy: 24°C, 50%.
+:::
+
+::: {.fragment .callout-tip title="Ścieżka"}
+::: {.incremental}
 1.  Chłodzenie aż do punktu rosy (chłodnica mokra).
 2.  Wyraplanie wilgoci (zmniejszanie $x$).
-3.  Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12C) na ludzi.
-
+3.  Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12°C) na ludzi.
+:::
+:::
+:::
+::::
 ---
 
 ## Podsumowanie W13
@@ -182,4 +248,9 @@ Punkt Celowy: 24C, 50%.
 5.  **Klimatyzacja letnia** jest najdroższa, bo wymaga usuwania ciepła utajonego (skraplanie pary).
 
 ### Zadanie Domowe
-Zaprojektuj proces zimowy: Zewn (-5C, x=2g/kg). Cel (20C, x=10g/kg). Ile wody trzeba dolać i ile ciepła dostarczyć?
+
+Zaprojektuj proces zimowy: Zewn (-5°C, x=2g/kg). 
+
+::: {.callout-tip title="Cel (20°C, x=10g/kg)"}
+Ile wody trzeba dolać i ile ciepła dostarczyć?
+:::

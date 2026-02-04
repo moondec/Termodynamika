@@ -132,7 +132,7 @@
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.2 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -169,78 +169,383 @@
 <ol type="1">
 <li><strong>Skład Powietrza Wilgotnego</strong> (Prawo Daltona)</li>
 <li><strong>Parametry Wilgotności</strong> (<span class="math inline">\(\varphi\)</span>, <span class="math inline">\(x\)</span>)</li>
-<li><strong>Entalpia Powietrza Wilgotnego</strong> (<span class="math inline">\(i\)</span>)</li>
-<li><strong>Konstrukcja Wykresu Molliera i-x</strong></li>
-<li><strong>Punkt Rosy i Temperatura Termometru Mokrego</strong></li>
+<li><strong>Entalpia Powietrza Wilgotnego</strong> (<span class="math inline">\(h\)</span>)</li>
+<li><strong>Konstrukcja Wykresu Molliera h-x</strong></li>
+<li><strong>Przemiany Charakterystyczne</strong></li>
+<li><strong>Pomiary i Aparatura</strong> (Psychrometry, Nawilżacze)</li>
+<li><strong>Bilans Masy i Energii</strong></li>
 </ol>
 </section>
-<section id="mieszanina-dwu-składnikowa" class="slide level2">
-<h2>1. Mieszanina Dwu-składnikowa</h2>
-<p>Powietrze wilgotne traktujemy jako mieszaninę: 1. <strong>Powietrze Suche (p):</strong> Gaz doskonały (<span class="math inline">\(N_2, O_2, Ar\)</span>). Masa <span class="math inline">\(m_p\)</span>. 2. <strong>Para Wodna (w):</strong> Gaz “pół-doskonały” (blisko nasycenia). Masa <span class="math inline">\(m_w\)</span>.</p>
-<p><span class="math display">\[ p_{barometryczne} = p_p + p_w \]</span></p>
-<p>W typowych warunkach <span class="math inline">\(p_w\)</span> jest bardzo małe (1-3 kPa), ale decyduje o naszym komforcie!</p>
-</section>
-<section id="parametry-wilgotności" class="slide level2">
-<h2>2. Parametry Wilgotności</h2>
-<p>Inżynierowie używają dwóch definicji:</p>
-<h3 id="wilgotność-względna-varphi-lub-rh">Wilgotność Względna (<span class="math inline">\(\varphi\)</span> lub <span class="math inline">\(RH\)</span>)</h3>
-<p>Stosunek ciśnienia cząstkowego pary do ciśnienia nasycenia w danej temperaturze. <span class="math display">\[ \varphi = \frac{p_w}{p_{sat}(T)} \cdot 100\% \]</span> Mówi nam, jak blisko jesteśmy mgły (nasycenia).</p>
-<h3 id="wilgotność-bezwzględna-x-lub-x-zawartość-wilgoci">Wilgotność Bezwzględna (<span class="math inline">\(x\)</span> lub <span class="math inline">\(X\)</span>) (Zawartość wilgoci)</h3>
-<p>Stosunek masy pary do masy powietrza suchego! <span class="math display">\[ x = \frac{m_w}{m_p} = 0.622 \frac{p_w}{p_b - p_w} \quad [\frac{kg_{H2O}}{kg_{suchego}}] \]</span></p>
-<p>Dlaczego tak? Bo w procesach (np. ogrzewania) masa powietrza suchego się nie zmienia, więc <span class="math inline">\(x=const\)</span>.</p>
-</section>
-<section id="entalpia-i-lub-h" class="slide level2">
-<h2>3. Entalpia (<span class="math inline">\(i\)</span> lub <span class="math inline">\(h\)</span>)</h2>
-<p>Entalpia powietrza wilgotnego odniesiona jest do 1 kg powietrza suchego.</p>
-<p><span class="math display">\[ i = i_{powietrza} + x \cdot i_{pary} \]</span></p>
-<p>Przyjmując <span class="math inline">\(0 C\)</span> jako punkt odniesienia: <span class="math display">\[ i = (1.005 \cdot t) + x \cdot (2501 + 1.86 \cdot t) \quad [\frac{kJ}{kg}] \]</span></p>
+<section id="skład-powietrza-wilgotnego" class="slide level2">
+<h2>1. Skład Powietrza Wilgotnego</h2>
+<div style="font-size: .9em;">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>Powietrze wilgotne</strong> to jednorodna mieszanina gazów zbliżonych do doskonałych (<span class="math inline">\(N_2, O_2, Ar\)</span>) oraz <strong>pary wodnej</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Prawo Daltona" style="font-size: .9em;">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Prawo Daltona</strong></p>
+</div>
+<div class="callout-content">
+<p>Ciśnienie całkowite (barometryczne) jest sumą ciśnień cząstkowych: <span class="math display">\[ p = p_g + p_p \]</span> Gdzie:</p>
+<p><span class="math inline">\(p_g\)</span> – ciśnienie cząstkowe powietrza suchego; <span class="math inline">\(p_p\)</span> – ciśnienie cząstkowe pary wodnej.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" style="font-size: .9em;">
+<h3 id="stan-pary-wodnej">Stan pary wodnej:</h3>
 <ul>
-<li>1.005: <span class="math inline">\(C_p\)</span> powietrza.</li>
-<li>2501: Ciepło parowania wody (<span class="math inline">\(r\)</span>) w 0C.</li>
-<li>1.86: <span class="math inline">\(C_p\)</span> pary wodnej.</li>
+<li><strong>Para przegrzana:</strong> <span class="math inline">\(p_p &lt; p_{nasycenia}\)</span> (Typowy stan w pomieszczeniu).</li>
+<li><strong>Para nasycona:</strong> <span class="math inline">\(p_p = p_{nasycenia}\)</span> (<span class="math inline">\(RH = 100\%\)</span>).</li>
+<li><strong>Mgła:</strong> Powietrze przesycone (zawiera kropelki cieczy).</li>
 </ul>
-<p>Wniosek: <strong>Para niesie ogromną energię (ciepło utajone)!</strong></p>
+</div>
 </section>
-<section id="wykres-molliera-h-x-i-x" class="slide level2">
-<h2>4. Wykres Molliera h-x (i-x)</h2>
-<p>Standard w Europie Środkowej. (Amerykanie używają Carrier Psychrometric Chart).</p>
-<p>Układ ukośnokątny: * Oś pionowa: Temperatura <span class="math inline">\(t\)</span>. * Oś pozioma: Wilgotność <span class="math inline">\(x\)</span>. * Linie izentalp (<span class="math inline">\(i=const\)</span>): Biegną ukośnie pod kątem 135 stopni (dlatego wykres jest przekoszony, żeby izotermy były prawie poziome).</p>
-<h3 id="linie-na-wykresie">Linie na wykresie:</h3>
+<section id="parametry-wilgotności" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">2. Parametry Wilgotności</h2>
+<p>Inżynierowie używają dwóch definicji wilgotności:</p>
+<div title="Wilgotność Względna (Relative Humidity)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wilgotność Względna (Relative Humidity)</strong></p>
+</div>
+<div class="callout-content">
+<p>Określa, jak blisko jesteśmy stanu nasycenia (mgły). <span class="math display">\[ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% \]</span></p>
+<ul>
+<li><span class="math inline">\(\varphi = 0\%\)</span>: Powietrze suche.</li>
+<li><span class="math inline">\(\varphi = 100\%\)</span>: Punkt rosy (powietrze nasycone).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" style="font-size: .9em;">
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>W meteoroligii wilgotność bezwzględną definiuje się jako stosunek masy pary wodnej do objętości powietrza. <span class="math display">\[ \rho_p = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] \]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="parametry-wilgotności-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-id="quarto-animate-title">2. Parametry Wilgotności</h2>
+<div title="Stopień Zawilżenia (Mixing Ratio)">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Stopień Zawilżenia (Mixing Ratio)</strong></p>
+</div>
+<div class="callout-content">
+<p>Stosunek masy pary (<span class="math inline">\(m_p\)</span>) do masy powietrza <strong>suchego</strong> (<span class="math inline">\(m_g\)</span>). <span class="math display">\[ X = \frac{m_p}{m_g} = 0.622 \frac{p_p}{p - p_p} \quad [\frac{kg_{H2O}}{kg_{suchego}}] \]</span></p>
+<ul>
+<li><strong>Kluczowe:</strong> W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc <strong><span class="math inline">\(X = const\)</span></strong> (jeśli nie nawilżamy).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="entalpia-h" class="slide level2">
+<h2>3. Entalpia (<span class="math inline">\(h\)</span>)</h2>
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Entalpia powietrza wilgotnego odniesiona jest do <strong>1 kg powietrza suchego</strong>.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[ h = h_{powietrza} + X \cdot h_{pary} \]</span></p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Przyjmując <span class="math inline">\(0^\circ C\)</span> jako punkt odniesienia: <span class="math display">\[ h = (1.005 \cdot T) + X \cdot (2501 + 1.86 \cdot T) \quad [\frac{kJ}{kg}] \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Składniki:</strong></p>
 <ol type="1">
-<li><strong>Izotermy:</strong> Lekko wznoszą się w prawo (dla tego samego <span class="math inline">\(t\)</span>, wilgotne powietrze ma wyższą entalpię).</li>
-<li><strong>Linie stałej wilgotności względnej <span class="math inline">\(\varphi\)</span>:</strong> Krzywe “bananowe”. <span class="math inline">\(\varphi=100\%\)</span> to linia graniczna (nasycenia).</li>
+<li><strong>1.005:</strong> Ciepło właściwe powietrza suchego (<span class="math inline">\(C_p\)</span>) <span class="math inline">\([kJ/(kg \cdot K)]\)</span>.</li>
+<li><strong>2501:</strong> Ciepło parowania wody (<span class="math inline">\(r\)</span>) w <span class="math inline">\(0^\circ C\)</span> <span class="math inline">\([kJ/kg]\)</span>.</li>
+<li><strong>1.86:</strong> Ciepło właściwe pary wodnej <span class="math inline">\([kJ/(kg \cdot K)]\)</span>.</li>
 </ol>
+</div>
 </section>
-<section id="wizualizacja-wykres-i-x" class="slide level2">
-<h2>Wizualizacja: Wykres i-x</h2>
+<section id="wykres-molliera-h-x" class="slide level2">
+<h2>4. Wykres Molliera h-X</h2>
+<p>Standard w Europie Środkowej. Układ <strong>ukośnokątny</strong> (rozciąga obszar nienasycony).</p>
+<div>
+<ul>
+<li><strong>Oś pionowa:</strong> Temperatura <span class="math inline">\(t\)</span> [°C].</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li><strong>Oś pozioma (ukośna):</strong> Stopień zawilżenia <span class="math inline">\(X\)</span> [g/kg].</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li><strong>Izentalpy (<span class="math inline">\(h=const\)</span>):</strong> Linie ukośne (biegną pod kątem ~135°, stąd “przekoszenie”).</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li><strong>Krzywa graniczna (<span class="math inline">\(\varphi=100\%\)</span>):</strong> Oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).</li>
+</ul>
+</div>
+<h3 class="fragment" id="interpretacja-linii">Interpretacja Linii:</h3>
+<div class="fragment">
+<ol type="1">
+<li><strong>Izotermy (<span class="math inline">\(t\)</span>):</strong> Lekko wznoszą się w prawo.</li>
+<li><strong>Krzywe <span class="math inline">\(\varphi\)</span>:</strong> Układają się “bananowo” pod krzywą graniczną.</li>
+</ol>
+</div>
+</section>
+<section id="wizualizacja-wykres-h-x" class="slide level2">
+<h2>Wizualizacja: Wykres h-X</h2>
 
 <img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-adv-1.png" width="960" class="r-stretch"></section>
-<section id="temperatury-w-psychrometrii" class="slide level2">
-<h2>5. Temperatury w Psychrometrii</h2>
-<p>Mamy aż trzy definicje temperatury!</p>
+<section id="przemiany-charakterystyczne" class="slide level2">
+<h2>5. Przemiany Charakterystyczne</h2>
+<div title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ogrzewanie Izobaryczne (X=const)</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Proces:</strong> Nagrzewnica.</li>
+<li><strong>Wykres:</strong> Pionowo do góry.</li>
+<li><strong>Efekt:</strong> Temperatura rośnie, <strong>wilgotność względna <span class="math inline">\(\varphi\)</span> maleje</strong> (powietrze “schnie”).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="2. Ochładzanie (X=const)" style="font-size: .9em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ochładzanie (X=const)</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Proces:</strong> Chłodnica (powyżej punktu rosy).</li>
+<li><strong>Wykres:</strong> Pionowo w dół.</li>
+<li><strong>Efekt:</strong> <span class="math inline">\(\varphi\)</span> rośnie aż do 100% (Punkt Rosy <span class="math inline">\(t_r\)</span>).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="3. Suszenie (h=const)" style="font-size: .9em;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Suszenie (h=const)</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Proces:</strong> Nawilżanie adiabatyczne (kontakt z wodą).</li>
+<li><strong>Wykres:</strong> Skośnie w dół (w stronę wyższego X).</li>
+<li><strong>Efekt:</strong> Powietrze się nawilża i ochładza (energia zostaje w układzie).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="pomiar-parametrów-powietrza" class="slide level2">
+<h2>6. Pomiar Parametrów Powietrza</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="psychrometr-augustaassmana">Psychrometr Augusta/Assmana</h3>
+<p>Dwa termometry:</p>
 <ol type="1">
-<li><strong>Temperatura termometru suchego (<span class="math inline">\(t\)</span>):</strong> To co widzimy na zwykłym termometrze.</li>
-<li><strong>Temperatura Punktu Rosy (<span class="math inline">\(t_R\)</span>):</strong> Temperatura, do której trzeba schłodzić powietrze (przy <span class="math inline">\(x=const\)</span>), żeby zaczęło się skraplać (<span class="math inline">\(\varphi=100\%\)</span>). Ważne w budownictwie (wilgoć na oknach).</li>
-<li><strong>Temperatura termometru mokrego (<span class="math inline">\(t_m\)</span>):</strong> Najniższa temperatura, jaką można uzyskać przez odparowanie wody (nawilżanie adiabatyczne). Mierzona termometrem owiniętym mokrą gazą.</li>
+<li><strong>Suchy (<span class="math inline">\(t\)</span>):</strong> Mierzy temp. powietrza.</li>
+<li><strong>Zwilżony (<span class="math inline">\(t_m\)</span>):</strong> Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.</li>
 </ol>
-<p>Związek: <span class="math inline">\(t \ge t_m \ge t_R\)</span>. Równe tylko dla <span class="math inline">\(\varphi=100\%\)</span>.</p>
+<ul>
+<li><strong>Zasada:</strong> Im suchsze powietrze, tym intensywniejsze parowanie i niższa <span class="math inline">\(t_m\)</span>.</li>
+<li>Różnica psychrometryczna <span class="math inline">\((t - t_m)\)</span> pozwala odczytać <span class="math inline">\(\varphi\)</span>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="higrometry">Higrometry</h3>
+<div class="fragment">
+<ul>
+<li><strong>Włosowe:</strong> (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.</li>
+<li><strong>Pojemnościowe:</strong> Zmiana stałej dielektrycznej polimeru.</li>
+<li><strong>Punktu rosy:</strong> Lusterko schładzane aż do pojawienia się rosy.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="aparaty-i-zastosowania" class="slide level2">
+<h2>Aparaty i Zastosowania</h2>
+<h3 id="urządzenia-ahu---air-handling-unit">Urządzenia (AHU - Air Handling Unit)</h3>
+<ul>
+<li><strong>Nawilżacze:</strong> Parowe (higieniczne), Zraszane (adiabatyczne - chłodzą!).</li>
+<li><strong>Osuszacze:</strong> Chłodnicze (wykraplanie), Adsorpcyjne (rotor z żelem krzemionkowym).</li>
+<li><strong>Wymienniki:</strong> Nagrzewnice i chłodnice.</li>
+</ul>
+<div class="fragment">
+<h3 id="zastosowania">Zastosowania</h3>
+<ul>
+<li><strong>Klimatyzacja komfortu:</strong> <span class="math inline">\(t \approx 20-24^\circ C\)</span>, <span class="math inline">\(\varphi \approx 40-60\%\)</span>.</li>
+<li><strong>Technologia:</strong> Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).</li>
+<li><strong>Wentylacja:</strong> Usuwanie zanieczyszczeń i wilgoci.</li>
+<li><strong>Medycyna / Ochrona zdrowia:</strong> sale operacyjne, inkubatory, sterylizacja.</li>
+</ul>
+</div>
+<div class="fragment absolute" style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;top: 0%; left: 20%; width: 70%; ">
+<p><img data-src="img/Small-Air-Handling-Units-SENV-1591216654.jpg"></p>
+</div>
+</section>
+<section id="bilans-masy-i-energii" class="slide level2">
+<h2>7. Bilans Masy i Energii</h2>
+<p>Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:</p>
+<div title="Równanie Ciągłości (Bilans Masy Wilgoci)">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Równanie Ciągłości (Bilans Masy Wilgoci)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ \dot{m}_{g1} \cdot X_1 + \dot{m}_{g2} \cdot X_2 = \dot{m}_{g3} \cdot X_3 \]</span> Masa pary wodnej w strumieniu wynikowym jest sumą mas cząstkowych.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Bilans Entalpii (Bilans Energii)">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bilans Entalpii (Bilans Energii)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ \dot{m}_{g1} \cdot h_1 + \dot{m}_{g2} \cdot h_2 = \dot{m}_{g3} \cdot h_3 \]</span> Energia całkowita układu zostaje zachowana (proces adiabatyczny).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="przykłady-obliczeniowe" class="slide level2">
+<h2>Przykłady Obliczeniowe</h2>
+<div title="Zadanie 1: Ogrzewanie Powietrza">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zadanie 1: Ogrzewanie Powietrza</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Dane:</strong> Powietrze <span class="math inline">\(t_1=25^\circ C\)</span>, <span class="math inline">\(\varphi_1=50\%\)</span> ogrzewamy do <span class="math inline">\(t_2=35^\circ C\)</span>.</p>
+<ol type="1">
+<li>Z tablic <span class="math inline">\(p_s(25) = 3.17\)</span> kPa <span class="math inline">\(\rightarrow p_p = 0.5 \cdot 3.17 = 1.585\)</span> kPa.</li>
+<li>Ponieważ <span class="math inline">\(X=const\)</span>, to <span class="math inline">\(p_p\)</span> się nie zmienia!</li>
+<li>Z tablic <span class="math inline">\(p_s(35) = 5.63\)</span> kPa.</li>
+<li>Nowa wilgotność: <span class="math inline">\(\varphi_2 = \frac{1.585}{5.63} \approx 28.2\%\)</span>. <strong>Wniosek:</strong> Ogrzewanie silnie wysusza powietrze (względnie).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Zadanie 2: Parametry Powietrza">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zadanie 2: Parametry Powietrza</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Dane:</strong> <span class="math inline">\(p=110\)</span> kPa, <span class="math inline">\(t=30^\circ C\)</span>, <span class="math inline">\(\varphi=60\%\)</span>. * <span class="math inline">\(p_s=4.24\)</span> kPa <span class="math inline">\(\rightarrow p_p = 2.54\)</span> kPa. * <span class="math inline">\(X = 0.622 \frac{2.54}{110-2.54} \approx 14.7\)</span> g/kg.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="podsumowanie-w12" class="slide level2">
 <h2>Podsumowanie W12</h2>
 <ol type="1">
-<li><strong>x vs <span class="math inline">\(\varphi\)</span>:</strong> <span class="math inline">\(x\)</span> to ilość paliwa (wody), <span class="math inline">\(\varphi\)</span> to stopień napełnienia baku (ile jeszcze zmieści).</li>
-<li><strong>Entalpia:</strong> Zależy głównie od wilgotności (ciepło utajone).</li>
-<li><strong>Punkt Rosy:</strong> Kluczowy parametr aby uniknąć grzyba na ścianie.</li>
-<li><strong>Wykres i-x:</strong> Narzędzie do śledzenia procesów (następny wykład).</li>
+<li class="fragment"><strong>Wilgotność:</strong> Rozróżniamy względną (<span class="math inline">\(\varphi\)</span>, komfort) i bezwzględną (<span class="math inline">\(X\)</span>, bilans masy).</li>
+<li class="fragment"><strong>Entalpia:</strong> Para wodna niesie ogromną energię (ciepło utajone).</li>
+<li class="fragment"><strong>Psychrometr:</strong> Różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.</li>
+<li class="fragment"><strong>Procesy:</strong> Ogrzewanie obniża <span class="math inline">\(\varphi\)</span>, nawilżanie wodne obniża <span class="math inline">\(t\)</span>.</li>
 </ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Latem (<span class="math inline">\(30^\circ C\)</span>) pijesz zimne piwo (<span class="math inline">\(4^\circ C\)</span>). Dlaczego butelka “poci się”? (Bo temperatura szkła jest niższa niż temperatura punktu rosy otaczającego powietrza).</p>
+<h3 class="fragment" id="zadanie-domowe">Zadanie Domowe</h3>
+<div class="fragment" title="Zadanie Domowe" style="font-size: 0.9em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zadanie Domowe</strong></p>
+</div>
+<div class="callout-content">
+<p>Latem (<span class="math inline">\(30^\circ C\)</span>) pijesz zimne piwo (<span class="math inline">\(4^\circ C\)</span>). Dlaczego butelka “poci się”? Wyjaśnij zjawisko używając pojęcia <strong>Punkt Rosy</strong> i <strong>Ciśnienie Cząstkowe</strong>.</p>
+</div>
+</div>
+</div>
+</div>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Termodynamika Techniczna (W12)</p>
 </div>
 </div></div>
 
@@ -429,7 +734,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

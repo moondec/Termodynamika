@@ -128,11 +128,11 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("img/background_blue.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.2 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -176,91 +176,246 @@
 </section>
 <section id="mechanizmy-wymiany-ciepła" class="slide level2">
 <h2>1. Mechanizmy Wymiany Ciepła</h2>
+<div title="Podstawowa zasada">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Podstawowa zasada</strong></p>
+</div>
+<div class="callout-content">
 <p>Ciepło płynie zawsze, gdy istnieje <span class="math inline">\(\Delta T\)</span>. Jakim “autobusem”?</p>
+</div>
+</div>
+</div>
+</div>
 <ol type="1">
-<li><strong>Przewodzenie (Conduction):</strong> Przekazywanie energii przez drgania sieci krystalicznej (ciała stałe). B. wydajne w metalach.</li>
-<li><strong>Konwekcja (Convection):</strong> Unoszenie energii przez ruch płynu (woda, powietrze).</li>
-<li><strong>Promieniowanie (Radiation):</strong> Fala elektromagnetyczna. Działa w próżni.</li>
+<li class="fragment"><strong>Przewodzenie (Conduction):</strong> Przekazywanie energii przez drgania sieci krystalicznej (ciała stałe). B. wydajne w metalach.</li>
+<li class="fragment"><strong>Konwekcja (Convection):</strong> Unoszenie energii przez ruch płynu (woda, powietrze).</li>
+<li class="fragment"><strong>Promieniowanie (Radiation):</strong> Fala elektromagnetyczna. Działa w próżni.</li>
 </ol>
 </section>
 <section id="przewodzenie-i-prawo-fouriera" class="slide level2">
 <h2>2. Przewodzenie i Prawo Fouriera</h2>
+<div title="Prawo Fouriera">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Prawo Fouriera</strong></p>
+</div>
+<div class="callout-content">
 <p>Strumień ciepła jest proporcjonalny do gradientu temperatury.</p>
 <p><span class="math display">\[ \dot{q} = - \lambda \frac{dT}{dx} \quad [\frac{W}{m^2}] \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li><span class="math inline">\(\lambda\)</span> (Lambda): Przewodność cieplna materiału.
-<ul>
-<li>Miedź: 400 W/mK</li>
-<li>Cegła: 0.8 W/mK</li>
-<li>Styropian: 0.04 W/mK (Izolator ma niską lambdę).</li>
-</ul></li>
+<li><span class="math inline">\(\lambda\)</span> (Lambda): Przewodność cieplna materiału.</li>
 </ul>
-<h3 id="ściana-płaska">Ściana Płaska</h3>
+</div>
+<div class="fragment">
+<pre><code>*   Miedź: 400 W/mK
+*   Cegła: 0.8 W/mK
+*   Styropian: 0.04 W/mK (Izolator ma niską lambdę).</code></pre>
+</div>
+<h3 class="fragment" id="ściana-płaska">Ściana Płaska</h3>
+<div class="fragment">
 <p><span class="math display">\[ \dot{Q} = \frac{\lambda}{\delta} A (T_1 - T_2) \]</span> <span class="math inline">\(\delta\)</span>: Grubość ściany.</p>
+</div>
 </section>
 <section id="opór-cieplny-r" class="slide level2">
 <h2>Opór Cieplny (<span class="math inline">\(R\)</span>)</h2>
-<p>Analogia elektryczna: <span class="math display">\[ \dot{Q} = \frac{\Delta T}{R_{term}} \]</span> <span class="math display">\[ R_{przewodzenia} = \frac{\delta}{\lambda A} \]</span></p>
+<div title="Analogia elektryczna">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Analogia elektryczna</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[ \dot{Q} = \frac{\Delta T}{R_{term}} \]</span> <span class="math display">\[ R_{przewodzenia} = \frac{\delta}{\lambda A} \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <p>Dla ściany wielowarstwowej (cegła + styropian + tynk): <span class="math display">\[ R_{calkowite} = R_1 + R_2 + R_3 \]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Duży opór = Dobra izolacja.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="konwekcja-i-prawo-newtona" class="slide level2">
 <h2>3. Konwekcja i Prawo Newtona</h2>
+<div title="Prawo Newtona dla konwekcji">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Prawo Newtona dla konwekcji</strong></p>
+</div>
+<div class="callout-content">
 <p>Ruch płynu “zmywa” ciepło z powierzchni.</p>
 <p><span class="math display">\[ \dot{Q} = \alpha A (T_{pow} - T_{pl}) \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li><span class="math inline">\(\alpha\)</span> (Alfa): Współczynnik przejmowania ciepła.
-<ul>
-<li>Konwekcja naturalna (kaloryfer): 5-20 W/m²K</li>
-<li>Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K</li>
-<li>Wrzenie wody: 5000+ W/m²K</li>
-</ul></li>
+<li><span class="math inline">\(\alpha\)</span> (Alfa): Współczynnik przejmowania ciepła.</li>
 </ul>
+</div>
+<div class="fragment">
+<pre><code>*   Konwekcja naturalna (kaloryfer): 5-20 W/m²K
+*   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
+*   Wrzenie wody: 5000+ W/m²K</code></pre>
+</div>
 </section>
 <section id="przenikanie-ciepła-współczynnik-u" class="slide level2">
 <h2>Przenikanie Ciepła (Współczynnik U)</h2>
+<div title="Współczynnik przenikania ciepła">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Współczynnik przenikania ciepła</strong></p>
+</div>
+<div class="callout-content">
 <p>W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn. Suma oporów (R_si + R_sciany + R_se).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <p><span class="math display">\[ U = k = \frac{1}{R_{si} + \Sigma \frac{\delta}{\lambda} + R_{se}} \]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Dla nowoczesnego domu <span class="math inline">\(U &lt; 0.2\)</span> W/(m²K).</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="promieniowanie" class="slide level2">
 <h2>4. Promieniowanie</h2>
+<div title="Prawo Stefana-Boltzmanna">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Prawo Stefana-Boltzmanna</strong></p>
+</div>
+<div class="callout-content">
 <p>Każde ciało emituje światło. Moc emisji ciała doskonale czarnego:</p>
 <p><span class="math display">\[ E_b = \sigma T^4 \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li><span class="math inline">\(\sigma\)</span>: Stała Stefana-Boltzmanna (<span class="math inline">\(5.67 \cdot 10^{-8}\)</span>).</li>
-<li><span class="math inline">\(T\)</span>: Temperatura w <strong>Kelvinach</strong>!</li>
+<li class="fragment"><span class="math inline">\(\sigma\)</span>: Stała Stefana-Boltzmanna (<span class="math inline">\(5.67 \cdot 10^{-8}\)</span>).</li>
+<li class="fragment"><span class="math inline">\(T\)</span>: Temperatura w <strong>Kelvinach</strong>!</li>
 </ul>
-<h3 id="wymiana-między-ciałami">Wymiana między ciałami</h3>
+</div>
+<h3 class="fragment" id="wymiana-między-ciałami">Wymiana między ciałami</h3>
+<div class="fragment">
 <p><span class="math display">\[ \dot{Q} = \varepsilon \sigma A (T_1^4 - T_2^4) \]</span></p>
+</div>
+<div class="fragment">
 <p>Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w budownictwie też jest ważne (straty przez okna).</p>
+</div>
 </section>
 <section id="wymienniki-ciepła" class="slide level2">
 <h2>5. Wymienniki Ciepła</h2>
+<div title="Wymienniki ciepła">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wymienniki ciepła</strong></p>
+</div>
+<div class="callout-content">
 <p>Urządzenia do przekazywania ciepła z jednego płynu do drugiego bez mieszania ich.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
 <ul>
-<li><strong>Współprąd:</strong> Oba płyny płyną w tym samym kierunku.</li>
-<li><strong>Przeciwprąd:</strong> Płyną przeciwnie. (Najbardziej efektywny!).</li>
+<li class="fragment"><strong>Współprąd:</strong> Oba płyny płyną w tym samym kierunku.</li>
+<li class="fragment"><strong>Przeciwprąd:</strong> Płyną przeciwnie. (Najbardziej efektywny!).</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="math display">\[ \dot{Q} = U A \Delta T_{ln} \]</span></p>
 <p><span class="math inline">\(\Delta T_{ln}\)</span> - Logarytmiczna różnica temperatur (LMTD).</p>
+</div>
 </section>
 <section id="podsumowanie-w14" class="slide level2">
 <h2>Podsumowanie W14</h2>
 <ol type="1">
-<li><strong>Izolacja</strong> to walka z przewodzeniem (<span class="math inline">\(\lambda\)</span>).</li>
-<li><strong>Radiator</strong> to walka z konwekcją (zwiększanie <span class="math inline">\(A\)</span> i <span class="math inline">\(\alpha\)</span>).</li>
-<li><strong>Promieniowanie</strong> zależy od <span class="math inline">\(T^4\)</span> - małe zmiany temperatury dają wielkie zmiany mocy.</li>
-<li><strong>Współczynnik U</strong> to klucz do energooszczędnych budynków.</li>
+<li class="fragment"><strong>Izolacja</strong> to walka z przewodzeniem (<span class="math inline">\(\lambda\)</span>).</li>
+<li class="fragment"><strong>Radiator</strong> to walka z konwekcją (zwiększanie <span class="math inline">\(A\)</span> i <span class="math inline">\(\alpha\)</span>).</li>
+<li class="fragment"><strong>Promieniowanie</strong> zależy od <span class="math inline">\(T^4\)</span> - małe zmiany temperatury dają wielkie zmiany mocy.</li>
+<li class="fragment"><strong>Współczynnik U</strong> to klucz do energooszczędnych budynków.</li>
 </ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Oblicz współczynnik U dla ściany: Cegła 25cm (<span class="math inline">\(\lambda=0.8\)</span>) + Styropian 15cm (<span class="math inline">\(\lambda=0.04\)</span>). Pomiń <span class="math inline">\(R_s\)</span>. Wynik: <span class="math inline">\(R_{ceg} = 0.31\)</span>, <span class="math inline">\(R_{styr} = 3.75\)</span>. <span class="math inline">\(R_{tot} \approx 4.06\)</span>. <span class="math inline">\(U = 1/4.06 \approx 0.25\)</span>.</p>
+<h3 class="fragment" id="zadanie-domowe">Zadanie Domowe</h3>
+<div class="fragment" title="Oblicz współczynnik U dla ściany">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Oblicz współczynnik U dla ściany</strong></p>
+</div>
+<div class="callout-content">
+<p>Cegła 25cm (<span class="math inline">\(\lambda=0.8\)</span>) + Styropian 15cm (<span class="math inline">\(\lambda=0.04\)</span>). Pomiń <span class="math inline">\(R_s\)</span>.</p>
+<p>Wynik: <span class="math inline">\(R_{ceg} = 0.31\)</span>, <span class="math inline">\(R_{styr} = 3.75\)</span>. <span class="math inline">\(R_{tot} \approx 4.06\)</span>. <span class="math inline">\(U = 1/4.06 \approx 0.25\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Termodynamika Techniczna (W14)</p>
 </div>
 </div></div>
 
@@ -449,7 +604,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

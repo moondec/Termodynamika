@@ -128,11 +128,11 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("img/background_vi.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
-      opacity: 0.1 !important;
+      opacity: 0.2 !important;
   }
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
       background-image: none !important;
@@ -176,38 +176,125 @@
 </section>
 <section id="centrala-wentylacyjna-ahu" class="slide level2">
 <h2>1. Centrala Wentylacyjna (AHU)</h2>
-<p>Fabryka powietrza. Składa się z sekcji: 1. Filtr (czystość). 2. Nagrzewnica (zima). 3. Chłodnica (lato). 4. Nawilżacz (zima). 5. Odzysk ciepła (rekuperator).</p>
+<div title="Centrala Wentylacyjna (AHU)">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Centrala Wentylacyjna (AHU)</strong></p>
+</div>
+<div class="callout-content">
+<p>Fabryka powietrza. Składa się z sekcji:</p>
+</div>
+</div>
+</div>
+</div>
+<ol type="1">
+<li class="fragment">Filtr (czystość).</li>
+<li class="fragment">Nagrzewnica (zima).</li>
+<li class="fragment">Chłodnica (lato).</li>
+<li class="fragment">Nawilżacz (zima).</li>
+<li class="fragment">Odzysk ciepła (rekuperator).</li>
+</ol>
+<div class="fragment">
+<div class="callout callout-important callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p>Każdy element realizuje konkretny proces termodynamiczny na wykresie i-x.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="ogrzewanie-i-chłodzenie" class="slide level2">
 <h2>2. Ogrzewanie i Chłodzenie</h2>
 <h3 id="ogrzewanie-nagrzewnica">Ogrzewanie (Nagrzewnica)</h3>
 <ul>
-<li><strong>Proces:</strong> <span class="math inline">\(x = const\)</span> (nie dodajemy wody).</li>
-<li><strong>Kierunek:</strong> Pionowo w górę na i-x.</li>
-<li><strong>Efekt:</strong> Temperatura rośnie, ale <strong>wilgotność względna <span class="math inline">\(\varphi\)</span> spada!</strong> (Dlatego zimą w ogrzewanym domu jest sucho - <span class="math inline">\(\varphi \approx 20-30\%\)</span>).</li>
+<li class="fragment"><strong>Proces:</strong> <span class="math inline">\(x = const\)</span> (nie dodajemy wody).</li>
+<li class="fragment"><strong>Kierunek:</strong> Pionowo w górę na i-x.</li>
+<li class="fragment"><strong>Efekt:</strong> Temperatura rośnie, ale <strong>wilgotność względna <span class="math inline">\(\varphi\)</span> spada!</strong> (Dlatego zimą w ogrzewanym domu jest sucho - <span class="math inline">\(\varphi \approx 20-30\%\)</span>).</li>
 </ul>
-<h3 id="chłodzenie-jawne-chłodnica-sucha">Chłodzenie Jawne (Chłodnica Sucha)</h3>
+<h3 class="fragment" id="chłodzenie-jawne-chłodnica-sucha">Chłodzenie Jawne (Chłodnica Sucha)</h3>
 <ul>
-<li><strong>Proces:</strong> <span class="math inline">\(x = const\)</span>.</li>
-<li><strong>Kierunek:</strong> Pionowo w dół.</li>
-<li><strong>Limit:</strong> Temperatura punktu rosy (<span class="math inline">\(t_R\)</span>). Jeśli zejdziemy niżej, zacznie się wykraplanie (chłodzenie mokre).</li>
+<li class="fragment"><strong>Proces:</strong> <span class="math inline">\(x = const\)</span>.</li>
+<li class="fragment"><strong>Kierunek:</strong> Pionowo w dół.</li>
+<li class="fragment"><strong>Limit:</strong> Temperatura punktu rosy (<span class="math inline">\(t_R\)</span>). Jeśli zejdziemy niżej, zacznie się wykraplanie (chłodzenie mokre).</li>
 </ul>
 </section>
 <section id="nawilżanie" class="slide level2">
 <h2>3. Nawilżanie</h2>
 <p>Jak dodać wodę do powietrza?</p>
-<h3 id="a.-nawilżanie-parowe-lanca-parowa">A. Nawilżanie Parowe (Lanca Parowa)</h3>
-<p>Wtryskujemy gorącą parę (<span class="math inline">\(100^\circ C\)</span>). * <strong>Proces:</strong> <span class="math inline">\(t \approx const\)</span> (izoterma). * <strong>Kierunek:</strong> Pionowo w prawo. * <strong>Zaleta:</strong> Higieniczne, łatwa kontrola. * <strong>Wada:</strong> Drogie (musimy wytworzyć parę = energia).</p>
-<h3 id="b.-nawilżanie-wodne-zraszaczadiabatyczne">B. Nawilżanie Wodne (Zraszacz/Adiabatyczne)</h3>
-<p>Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować. * <strong>Proces:</strong> <span class="math inline">\(i = const\)</span> (Izentpalpa). * <strong>Kierunek:</strong> Ukośnie w dół-prawo (wzdłuż linii entalpii). * <strong>Efekt:</strong> Wilgotność rośnie (<span class="math inline">\(x \uparrow\)</span>), ale temperatura spada (<span class="math inline">\(t \downarrow\)</span>)! * <strong>Zastosowanie:</strong> Chłodzenie wyparne (tanie chłodzenie latem).</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 class="fragment" id="a.-nawilżanie-parowe-lanca-parowa">A. Nawilżanie Parowe (Lanca Parowa)</h3>
+<div class="fragment" title="Wtryskujemy gorącą parę ($100^\circ C$).">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wtryskujemy gorącą parę (<span class="math inline">\(100^\circ C\)</span>).</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Proces:</strong> <span class="math inline">\(t \approx const\)</span> (izoterma).</li>
+<li class="fragment"><strong>Kierunek:</strong> Pionowo w prawo.</li>
+<li class="fragment"><strong>Zaleta:</strong> Higieniczne, łatwa kontrola.</li>
+<li class="fragment"><strong>Wada:</strong> Drogie (musimy wytworzyć parę = energia).</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 class="fragment" id="b.-nawilżanie-wodne-zraszaczadiabatyczne">B. Nawilżanie Wodne (Zraszacz/Adiabatyczne)</h3>
+<div class="fragment" title="Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować.">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Rozpylamy zimną wodę. Powietrze musi oddać ciepło, żeby tę wodę odparować.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Proces:</strong> <span class="math inline">\(h = const\)</span> (Izentpalpa).</li>
+<li class="fragment"><strong>Kierunek:</strong> Ukośnie w dół-prawo (wzdłuż linii entalpii).</li>
+<li class="fragment"><strong>Efekt:</strong> Wilgotność rośnie (<span class="math inline">\(x \uparrow\)</span>), ale temperatura spada (<span class="math inline">\(t \downarrow\)</span>)!</li>
+<li class="fragment"><strong>Zastosowanie:</strong> Chłodzenie wyparne (tanie chłodzenie latem).</li>
+</ul>
+</div></div>
 </section>
 <section id="mieszanie-strumieni" class="slide level2">
 <h2>4. Mieszanie Strumieni</h2>
 <p>Mieszamy powietrze świeże (zewnętrzne Z) z powietrzem obiegowym (z sali S).</p>
-<p><strong>Reguła Dźwigni:</strong> Punkt mieszania M leży na prostej łączącej Z i S. Odległość zależy od proporcji strumieni masy.</p>
+<p><strong>Reguła Dźwigni:</strong></p>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>Punkt mieszania M leży na prostej łączącej Z i S. Odległość zależy od proporcji strumieni masy.</p>
+</div>
+</div>
+</div>
 <p><span class="math display">\[ \frac{m_Z}{m_S} = \frac{\text{odcinek } SM}{\text{odcinek } ZM} \]</span></p>
-<p><span class="math display">\[ h_M = g_Z h_Z + g_S h_S \]</span> <span class="math display">\[ x_M = g_Z x_Z + g_S x_S \]</span> (<span class="math inline">\(g\)</span> - udział masowy).</p>
+<p><span class="math display">\[ h_M = g_Z h_Z + g_S h_S \]</span></p>
+<p><span class="math display">\[ x_M = g_Z x_Z + g_S x_S \]</span> (<span class="math inline">\(g\)</span> - udział masowy).</p>
 </section>
 <section id="wizualizacja-mieszanie" class="slide level2">
 <h2>Wizualizacja: Mieszanie</h2>
@@ -216,12 +303,82 @@
 </section>
 <section id="przemiany-sezonowe" class="slide level2">
 <h2>5. Przemiany Sezonowe</h2>
-<h3 id="zima-cel-ogrzać-i-nawilżyć">ZIMA (Cel: Ogrzać i Nawilżyć)</h3>
-<p>Punkt Zewnętrzny: -10C, 90%. Punkt Celowy: 22C, 50%.</p>
-<p>Ścieżka: 1. Mieszanie (odzysk ciepła). 2. Wstępne ogrzewanie. 3. Nawilżanie (parowe lub wodne). * Jeśli wodne: temperatura spadnie, więc musimy przegrzać bardziej! 4. Wtórne ogrzewanie (jeśli trzeba).</p>
-<h3 id="lato-cel-ochłodzić-i-osuszyć">LATO (Cel: Ochłodzić i Osuszyć)</h3>
-<p>Punkt Zewnętrzny: 32C, 40%. Punkt Celowy: 24C, 50%.</p>
-<p>Ścieżka: 1. Chłodzenie aż do punktu rosy (chłodnica mokra). 2. Wyraplanie wilgoci (zmniejszanie <span class="math inline">\(x\)</span>). 3. Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12C) na ludzi.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="ZIMA (Cel: Ogrzać i Nawilżyć)">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>ZIMA (Cel: Ogrzać i Nawilżyć)</strong></p>
+</div>
+<div class="callout-content">
+<p>Punkt Zewnętrzny: -10°C, 90%. Punkt Celowy: 22°C, 50%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Ścieżka">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ścieżka</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li class="fragment"><p>Mieszanie (odzysk ciepła).</p></li>
+<li class="fragment"><p>Wstępne ogrzewanie.</p></li>
+<li class="fragment"><p>Nawilżanie (parowe lub wodne).</p>
+<ul>
+<li class="fragment">Jeśli wodne: temperatura spadnie, więc musimy przegrzać bardziej!</li>
+</ul></li>
+<li class="fragment"><p>Wtórne ogrzewanie (jeśli trzeba).</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div title="LATO (Cel: Ochłodzić i Osuszyć)">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>LATO (Cel: Ochłodzić i Osuszyć)</strong></p>
+</div>
+<div class="callout-content">
+<p>Punkt Zewnętrzny: 32°C, 40%. Punkt Celowy: 24°C, 50%.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Ścieżka">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ścieżka</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li class="fragment">Chłodzenie aż do punktu rosy (chłodnica mokra).</li>
+<li class="fragment">Wyraplanie wilgoci (zmniejszanie <span class="math inline">\(x\)</span>).</li>
+<li class="fragment">Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12°C) na ludzi.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="podsumowanie-w13" class="slide level2">
 <h2>Podsumowanie W13</h2>
@@ -233,13 +390,28 @@
 <li><strong>Klimatyzacja letnia</strong> jest najdroższa, bo wymaga usuwania ciepła utajonego (skraplanie pary).</li>
 </ol>
 <h3 id="zadanie-domowe">Zadanie Domowe</h3>
-<p>Zaprojektuj proces zimowy: Zewn (-5C, x=2g/kg). Cel (20C, x=10g/kg). Ile wody trzeba dolać i ile ciepła dostarczyć?</p>
+<p>Zaprojektuj proces zimowy: Zewn (-5°C, x=2g/kg).</p>
+<div title="Cel (20°C, x=10g/kg)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Cel (20°C, x=10g/kg)</strong></p>
+</div>
+<div class="callout-content">
+<p>Ile wody trzeba dolać i ile ciepła dostarczyć?</p>
+</div>
+</div>
+</div>
+</div>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Termodynamika Techniczna (W13)</p>
 </div>
 </div></div>
 
@@ -428,7 +600,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',

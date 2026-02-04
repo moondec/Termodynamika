@@ -51,74 +51,118 @@ editor: source
 
 1.  **Skład Powietrza Wilgotnego** (Prawo Daltona)
 2.  **Parametry Wilgotności** ($\varphi$, $x$)
-3.  **Entalpia Powietrza Wilgotnego** ($i$)
-4.  **Konstrukcja Wykresu Molliera i-x**
-5.  **Punkt Rosy i Temperatura Termometru Mokrego**
+3.  **Entalpia Powietrza Wilgotnego** ($h$)
+4.  **Konstrukcja Wykresu Molliera h-x**
+5.  **Przemiany Charakterystyczne**
+6.  **Pomiary i Aparatura** (Psychrometry, Nawilżacze)
+7.  **Bilans Masy i Energii**
 
 ---
 
-## 1. Mieszanina Dwu-składnikowa
+## 1. Skład Powietrza Wilgotnego
 
-Powietrze wilgotne traktujemy jako mieszaninę:
-1.  **Powietrze Suche (p):** Gaz doskonały ($N_2, O_2, Ar$). Masa $m_p$.
-2.  **Para Wodna (w):** Gaz "pół-doskonały" (blisko nasycenia). Masa $m_w$.
+::: {.callout-note appearance="simple" style="font-size: .9em;"}
+**Powietrze wilgotne** to jednorodna mieszanina gazów zbliżonych do doskonałych ($N_2, O_2, Ar$) oraz **pary wodnej**.
+:::
 
-$$ p_{barometryczne} = p_p + p_w $$
+::: {.fragment .callout-important title="Prawo Daltona" style="font-size: .9em;"}
+Ciśnienie całkowite (barometryczne) jest sumą ciśnień cząstkowych:
+$$ p = p_g + p_p $$
+Gdzie:
 
-W typowych warunkach $p_w$ jest bardzo małe (1-3 kPa), ale decyduje o naszym komforcie!
+$p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząstkowe pary wodnej.
+:::
 
----
+::: {.fragment style="font-size: .9em;"}
+### Stan pary wodnej:
 
-## 2. Parametry Wilgotności
-
-Inżynierowie używają dwóch definicji:
-
-### Wilgotność Względna ($\varphi$ lub $RH$)
-Stosunek ciśnienia cząstkowego pary do ciśnienia nasycenia w danej temperaturze.
-$$ \varphi = \frac{p_w}{p_{sat}(T)} \cdot 100\% $$
-Mówi nam, jak blisko jesteśmy mgły (nasycenia).
-
-### Wilgotność Bezwzględna ($x$ lub $X$) (Zawartość wilgoci)
-Stosunek masy pary do masy powietrza suchego!
-$$ x = \frac{m_w}{m_p} = 0.622 \frac{p_w}{p_b - p_w} \quad [\frac{kg_{H2O}}{kg_{suchego}}] $$
-
-Dlaczego tak? Bo w procesach (np. ogrzewania) masa powietrza suchego się nie zmienia, więc $x=const$.
+*   **Para przegrzana:** $p_p < p_{nasycenia}$ (Typowy stan w pomieszczeniu).
+*   **Para nasycona:** $p_p = p_{nasycenia}$ ($RH = 100\%$).
+*   **Mgła:** Powietrze przesycone (zawiera kropelki cieczy).
+:::
 
 ---
 
-## 3. Entalpia ($i$ lub $h$)
+## 2. Parametry Wilgotności{auto-animate=true auto-animate-easing="ease-in-out"}
 
-Entalpia powietrza wilgotnego odniesiona jest do 1 kg powietrza suchego.
+Inżynierowie używają dwóch definicji wilgotności:
 
-$$ i = i_{powietrza} + x \cdot i_{pary} $$
+::: {.callout-tip title="Wilgotność Względna (Relative Humidity)"}
+Określa, jak blisko jesteśmy stanu nasycenia (mgły).
+$$ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% $$
 
-Przyjmując $0 C$ jako punkt odniesienia:
-$$ i = (1.005 \cdot t) + x \cdot (2501 + 1.86 \cdot t) \quad [\frac{kJ}{kg}] $$
+*   $\varphi = 0\%$: Powietrze suche.
+*   $\varphi = 100\%$: Punkt rosy (powietrze nasycone).
+:::
 
-*   1.005: $C_p$ powietrza.
-*   2501: Ciepło parowania wody ($r$) w 0C.
-*   1.86: $C_p$ pary wodnej.
+:::{.fragment .callout-note appearance="simple" style="font-size: .9em;"}
+W meteoroligii wilgotność bezwzględną definiuje się jako stosunek masy pary wodnej do objętości powietrza.
+$$ \rho_p = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
+:::
+---
 
-Wniosek: **Para niesie ogromną energię (ciepło utajone)!**
+## 2. Parametry Wilgotności{auto-animate=true auto-animate-easing="ease-in-out"}
+
+::: {.callout-important title="Stopień Zawilżenia (Mixing Ratio)"}
+
+Stosunek masy pary ($m_p$) do masy powietrza **suchego** ($m_g$).
+$$ X = \frac{m_p}{m_g} = 0.622 \frac{p_p}{p - p_p} \quad [\frac{kg_{H2O}}{kg_{suchego}}] $$
+
+*   **Kluczowe:** W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc **$X = const$** (jeśli nie nawilżamy).
+
+:::
 
 ---
 
-## 4. Wykres Molliera h-x (i-x)
+## 3. Entalpia ($h$)
 
-Standard w Europie Środkowej. (Amerykanie używają Carrier Psychrometric Chart).
+::: {.callout-warning appearance="simple"}
+Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
+:::
 
-Układ ukośnokątny:
-*   Oś pionowa: Temperatura $t$.
-*   Oś pozioma: Wilgotność $x$.
-*   Linie izentalp ($i=const$): Biegną ukośnie pod kątem 135 stopni (dlatego wykres jest przekoszony, żeby izotermy były prawie poziome).
+$$ h = h_{powietrza} + X \cdot h_{pary} $$
 
-### Linie na wykresie:
-1.  **Izotermy:** Lekko wznoszą się w prawo (dla tego samego $t$, wilgotne powietrze ma wyższą entalpię).
-2.  **Linie stałej wilgotności względnej $\varphi$:** Krzywe "bananowe". $\varphi=100\%$ to linia graniczna (nasycenia).
+::: {.fragment .callout-note appearance="minimal"}
+Przyjmując $0^\circ C$ jako punkt odniesienia:
+$$ h = (1.005 \cdot T) + X \cdot (2501 + 1.86 \cdot T) \quad [\frac{kJ}{kg}] $$
+:::
+
+::: {.fragment}
+**Składniki:**
+
+1.  **1.005:** Ciepło właściwe powietrza suchego ($C_p$) $[kJ/(kg \cdot K)]$.
+2.  **2501:** Ciepło parowania wody ($r$) w $0^\circ C$ $[kJ/kg]$.
+3.  **1.86:** Ciepło właściwe pary wodnej $[kJ/(kg \cdot K)]$.
+:::
 
 ---
 
-## Wizualizacja: Wykres i-x
+## 4. Wykres Molliera h-X
+
+Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienasycony).
+
+::: { }
+*   **Oś pionowa:** Temperatura $t$ [°C].
+:::
+::: {.fragment .fade-in}
+*   **Oś pozioma (ukośna):** Stopień zawilżenia $X$ [g/kg].
+:::
+::: {.fragment .fade-in}
+*   **Izentalpy ($h=const$):** Linie ukośne (biegną pod kątem ~135°, stąd "przekoszenie").
+:::
+::: {.fragment .fade-in}
+*   **Krzywa graniczna ($\varphi=100\%$):** Oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).
+:::
+
+### Interpretacja Linii:{.fragment}
+::: {.fragment}
+1.  **Izotermy ($t$):** Lekko wznoszą się w prawo.
+2.  **Krzywe $\varphi$:** Układają się "bananowo" pod krzywą graniczną.
+:::
+
+---
+
+## Wizualizacja: Wykres h-X
 
 ```{r}
 #| label: ix-diagram-adv
@@ -128,51 +172,173 @@ Układ ukośnokątny:
 
 library(ggplot2)
 
-x <- seq(0, 30, length.out=100) # g/kg
+x <- seq(0, 30, length.out = 1000) # g/kg
 # Saturation curve approx x_s = A * exp(B*t) -> t = ln(x/A)/B
-# t = 10 + (x/2)^1.3
-t_sat <- 5 + 1.2 * x + 0.05 * x^2
-sat_curve <- data.frame(x=x, t=t_sat)
+# Simple polynomial approx for Plot
+t_sat <- 0 + 1.8 * x + 0.02 * x^2
 
-# Isotherms
+sat_curve <- data.frame(x = x, t = t_sat)
+sat_curve <- sat_curve[sat_curve$t < 60, ] # Limit visible range
+
+# Isotherms (Horizontal-ish)
 df_iso <- data.frame(
-  x = rep(x, 2),
-  t = c(rep(20, 100), rep(30, 100)),
-  group = rep(c("20C", "30C"), each=100)
+    x = rep(seq(0, 30, by = 1), 2),
+    t = c(rep(20, 31), rep(35, 31)),
+    group = rep(c("20C", "35C"), each = 31)
 )
 
+# Isenthalps (Diagonal down-right in orthogonal coords, but lines in h-x are diagonal)
+# h ~ t + 2.5x. For h=const -> t = h - 2.5x
+# h = 40, h = 60, h = 80
+x_h <- seq(0, 30, 1)
+h_lines <- do.call(rbind, lapply(c(40, 60, 80), function(h_val) {
+    data.frame(x = x_h, t = (h_val - 2.5 * x_h), h = as.factor(h_val))
+}))
+
 ggplot() +
-  geom_line(data=sat_curve, aes(x=x, y=t), color="blue", size=2) +
-  geom_line(data=df_iso, aes(x=x, y=t, group=group), color="red", linetype="dashed") +
-  annotate("text", x=25, y=70, label="phi=100%", color="blue") +
-  annotate("text", x=5, y=22, label="t=20C") +
-  annotate("text", x=5, y=32, label="t=30C") +
-  labs(title="Schemat Wykresu Molliera i-x", x="x [g/kg]", y="t [C]") +
-  theme_minimal()
+    # Saturation Line
+    geom_line(data = sat_curve, aes(x = x, y = t), color = "blue", size = 2) +
+    annotate("text", x = 25, y = 58, label = "phi=100%", color = "blue", fontface = "bold") +
+
+    # Isotherms
+    geom_line(data = df_iso, aes(x = x, y = t, group = group), color = "red", linetype = "dashed") +
+    annotate("text", x = 2, y = 21, label = "t=20C", color = "red") +
+    annotate("text", x = 2, y = 36, label = "t=35C", color = "red") +
+
+    # Isenthalps
+    geom_line(data = h_lines, aes(x = x, y = t, group = h), color = "darkgreen", linetype = "dotted", size = 1) +
+    annotate("text", x = 12, y = 10, label = "h=40", color = "darkgreen") +
+    annotate("text", x = 20, y = 10, label = "h=60", color = "darkgreen") +
+    labs(
+        title = "Schemat Wykresu Molliera h-X",
+        subtitle = "Linie charakterystyczne: t (czerwone), h (zielone), phi=100% (niebieska)",
+        x = "Stopień zawilżenia X [g/kg]", y = "Temperatura t [C]"
+    ) +
+    theme_minimal() +
+    ylim(0, 60)
 ```
 
 ---
 
-## 5. Temperatury w Psychrometrii
+## 5. Przemiany Charakterystyczne
 
-Mamy aż trzy definicje temperatury!
+::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
+*   **Proces:** Nagrzewnica.
+*   **Wykres:** Pionowo do góry.
+*   **Efekt:** Temperatura rośnie, **wilgotność względna $\varphi$ maleje** (powietrze "schnie").
+:::
 
-1.  **Temperatura termometru suchego ($t$):** To co widzimy na zwykłym termometrze.
-2.  **Temperatura Punktu Rosy ($t_R$):** Temperatura, do której trzeba schłodzić powietrze (przy $x=const$), żeby zaczęło się skraplać ($\varphi=100\%$). Ważne w budownictwie (wilgoć na oknach).
-3.  **Temperatura termometru mokrego ($t_m$):** Najniższa temperatura, jaką można uzyskać przez odparowanie wody (nawilżanie adiabatyczne). Mierzona termometrem owiniętym mokrą gazą.
+::: {.fragment .callout-tip title="2. Ochładzanie (X=const)" style="font-size: .9em;"}
+*   **Proces:** Chłodnica (powyżej punktu rosy).
+*   **Wykres:** Pionowo w dół.
+*   **Efekt:** $\varphi$ rośnie aż do 100% (Punkt Rosy $t_r$).
+:::
 
-Związek: $t \ge t_m \ge t_R$.
-Równe tylko dla $\varphi=100\%$.
+::: {.fragment .callout-note title="3. Suszenie (h=const)" style="font-size: .9em;"}
+*   **Proces:** Nawilżanie adiabatyczne (kontakt z wodą).
+*   **Wykres:** Skośnie w dół (w stronę wyższego X).
+*   **Efekt:** Powietrze się nawilża i ochładza (energia zostaje w układzie).
+:::
+
+---
+
+## 6. Pomiar Parametrów Powietrza
+
+::: {.columns}
+::: {.column width="50%"}
+### Psychrometr Augusta/Assmana
+Dwa termometry:
+
+1.  **Suchy ($t$):** Mierzy temp. powietrza.
+2.  **Zwilżony ($t_m$):** Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.
+
+*   **Zasada:** Im suchsze powietrze, tym intensywniejsze parowanie i niższa $t_m$.
+*   Różnica psychrometryczna $(t - t_m)$ pozwala odczytać $\varphi$.
+:::
+
+::: {.column width="50%"}
+### Higrometry
+
+::: {.fragment}
+*   **Włosowe:** (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.
+*   **Pojemnościowe:** Zmiana stałej dielektrycznej polimeru.
+*   **Punktu rosy:** Lusterko schładzane aż do pojawienia się rosy.
+:::
+:::
+:::
+
+---
+
+## Aparaty i Zastosowania
+
+::: {}
+### Urządzenia (AHU - Air Handling Unit)
+*   **Nawilżacze:** Parowe (higieniczne), Zraszane (adiabatyczne - chłodzą!).
+*   **Osuszacze:** Chłodnicze (wykraplanie), Adsorpcyjne (rotor z żelem krzemionkowym).
+*   **Wymienniki:** Nagrzewnice i chłodnice.
+:::
+
+::: {.fragment}
+### Zastosowania
+*   **Klimatyzacja komfortu:** $t \approx 20-24^\circ C$, $\varphi \approx 40-60\%$.
+*   **Technologia:** Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
+*   **Wentylacja:** Usuwanie zanieczyszczeń i wilgoci.
+*   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
+:::
+
+::: {.fragment .absolute top=0% left=20% width=70% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
+![](img/Small-Air-Handling-Units-SENV-1591216654.jpg)
+::: 
+
+---
+
+## 7. Bilans Masy i Energii
+
+Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:
+
+::: {.callout-important title="Równanie Ciągłości (Bilans Masy Wilgoci)"}
+$$ \dot{m}_{g1} \cdot X_1 + \dot{m}_{g2} \cdot X_2 = \dot{m}_{g3} \cdot X_3 $$
+Masa pary wodnej w strumieniu wynikowym jest sumą mas cząstkowych.
+:::
+
+::: {.fragment .callout-note title="Bilans Entalpii (Bilans Energii)"}
+$$ \dot{m}_{g1} \cdot h_1 + \dot{m}_{g2} \cdot h_2 = \dot{m}_{g3} \cdot h_3 $$
+Energia całkowita układu zostaje zachowana (proces adiabatyczny).
+:::
+
+---
+
+## Przykłady Obliczeniowe
+
+::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
+**Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
+
+1.  Z tablic $p_s(25) = 3.17$ kPa $\rightarrow p_p = 0.5 \cdot 3.17 = 1.585$ kPa.
+2.  Ponieważ $X=const$, to $p_p$ się nie zmienia!
+3.  Z tablic $p_s(35) = 5.63$ kPa.
+4.  Nowa wilgotność: $\varphi_2 = \frac{1.585}{5.63} \approx 28.2\%$.
+**Wniosek:** Ogrzewanie silnie wysusza powietrze (względnie).
+:::
+
+::: {.fragment .callout-tip title="Zadanie 2: Parametry Powietrza"}
+**Dane:** $p=110$ kPa, $t=30^\circ C$, $\varphi=60\%$.
+*   $p_s=4.24$ kPa $\rightarrow p_p = 2.54$ kPa.
+*   $X = 0.622 \frac{2.54}{110-2.54} \approx 14.7$ g/kg.
+:::
 
 ---
 
 ## Podsumowanie W12
 
-1.  **x vs $\varphi$:** $x$ to ilość paliwa (wody), $\varphi$ to stopień napełnienia baku (ile jeszcze zmieści).
-2.  **Entalpia:** Zależy głównie od wilgotności (ciepło utajone).
-3.  **Punkt Rosy:** Kluczowy parametr aby uniknąć grzyba na ścianie.
-4.  **Wykres i-x:** Narzędzie do śledzenia procesów (następny wykład).
+::: {.incremental}
+1.  **Wilgotność:** Rozróżniamy względną ($\varphi$, komfort) i bezwzględną ($X$, bilans masy).
+2.  **Entalpia:** Para wodna niesie ogromną energię (ciepło utajone).
+3.  **Psychrometr:** Różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.
+4.  **Procesy:** Ogrzewanie obniża $\varphi$, nawilżanie wodne obniża $t$.
+:::
 
-### Zadanie Domowe
-Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"?
-(Bo temperatura szkła jest niższa niż temperatura punktu rosy otaczającego powietrza).
+### Zadanie Domowe {.fragment}
+
+::: {.fragment .callout-tip title="Zadanie Domowe" style="font-size: 0.9em;"}
+Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"? Wyjaśnij zjawisko używając pojęcia **Punkt Rosy** i **Ciśnienie Cząstkowe**.
+:::

@@ -269,15 +269,15 @@ To "odwrócony" silnik cieplny.
 ## Przykład Obliczeniowy: Silnik
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
-Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje $W = 30 \text{ kJ}$ pracy.
+Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje $L = 30 \text{ kJ}$ pracy.
 :::
 
 ::: incremental
 1.  **Ile ciepła oddaje do otoczenia ($Q_L$)?**
-    $$ Q_L = Q_H - W = 100 - 30 = 70 \text{ kJ} $$
+    $$ Q_L = Q_H - L = 100 - 30 = 70 \text{ kJ} $$
 
 2.  **Jaka jest sprawność termiczna ($\eta_{th}$)?**
-    $$ \eta_{th} = \frac{W}{Q_H} = \frac{30}{100} = 0.30 = 30\% $$
+    $$ \eta_{th} = \frac{L}{Q_H} = \frac{30}{100} = 0.30 = 30\% $$
 :::
 
 ::: {.fragment .callout-tip title= "**Wniosek:**"}
@@ -297,8 +297,8 @@ Czy to perpetuum mobile? [**NIE!**]{.fragment style="color: #e60000; font-weight
 
 ::: incremental
 *   Pompujemy ciepło, a nie je wytwarzamy.
-*   Płacimy pracą ($W$) tylko za przenoszenie energii.
-$$ COP_{HP} = \frac{Q_H}{W} = \frac{Q_L + W}{W} = \frac{Q_L}{W} + 1 = COP_R + 1 $$
+*   Płacimy pracą ($L$) tylko za przenoszenie energii.
+$$ COP_{HP} = \frac{Q_H}{L} = \frac{Q_L + L}{L} = \frac{Q_L}{L} + 1 = COP_R + 1 $$
 :::
 
 ::: {.fragment .callout-tip title= "**Wniosek:**"}

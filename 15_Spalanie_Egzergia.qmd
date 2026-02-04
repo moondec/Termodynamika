@@ -60,101 +60,183 @@ editor: source
 
 ## 1. Źródła Energii Chemicznej
 
-Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna).
+::: {.callout-note title="Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna)."}
+
+:::
 
 **Rodzaje Paliw:**
+
+::: {.incremental}
 1.  **Stałe:** Węgiel kamienny, Brunatny, Drewno (Biomasa).
     *   Skład: C, H, O, N, S, W (Wilgoć), A (Popiół).
 2.  **Ciekłe:** Ropa naftowa, Benzyna, Mazut.
     *   Głównie węglowodory.
 3.  **Gazowe:** Gaz ziemny (Metan $CH_4$), Wodór $H_2$.
+:::
 
-### Trójkąt Spalania (Gibbsa)
+### Trójkąt Spalania (Gibbsa) {.fragment}
+
+::: {.fragment}
 Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, tym wyższa wartość opałowa, ale trudniejsze spalanie.
+:::
 
 ---
 
 ## 2. Stechiometria Spalania
 
-Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?
+::: {.callout-tip title="Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?"}
+
+:::
+::: {style="text-align: center; font-size: 0.9em;"}
 $$ C + O_2 \rightarrow CO_2 $$
+:::
 
+::: {.fragment}
 A dla Metanu?
-$$ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O $$
 
-**Zapotrzebowanie na Powietrze:**
+::: {style="text-align: center; font-size: 0.9em;"}
+$$ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O $$
+:::
+:::
+
+### Zapotrzebowanie na Powietrze {.fragment}
+
+::: {.fragment .callout-note appearance="simple"}
 Powietrze to nie czysty tlen! To 21% $O_2$ i 79% $N_2$.
 Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4.76 $m^3$ powietrza**.
+:::
 
-### Współczynnik Nadmiaru Powietrza ($\lambda$)
+### Współczynnik Nadmiaru Powietrza ($\lambda$) {.fragment}
+
+::: {.fragment .incremental style="font-size: 0.9em;"}
 *   $\lambda = 1$: Idealnie (stechiometria).
 *   $\lambda < 1$: Za mało tlenu $\to$ Sadza i CO (Czad). Strata energii!
 *   $\lambda > 1$: Nadmiar tlenu. Pełne spalanie, ale strata kominowa (grzejemy azot).
+:::
 
 ---
 
 ## 3. Wartość Opałowa ($W_d$)
 
+::: {.callout-important title="Krytyczne rozróżnienie"}
 To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
+:::
 
-**Ciepło Spalania ($HHV$):**
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Ciepło Spalania ($HHV$) {.fragment}
+
+::: {.fragment}
 Całkowita energia uwolniona. Zakładamy, że woda ze spalin uległa **skropleniu** (odzyskujemy ciepło utajone).
+:::
+:::
 
-**Wartość Opałowa ($LHV$):**
+::: {.column width="50%"}
+
+### Wartość Opałowa ($LHV$) {.fragment}
+
+::: {.fragment}
 Energia "użyteczna" w zwykłym kotle. Woda ucieka w postaci pary kominem (tracimy ciepło parowania).
+:::
+:::
 
+::::
+
+::: {.fragment}
 $$ W_o = C_s - r \cdot m_{H2O} $$
+:::
 
+::: {.fragment .callout-tip appearance="simple"}
 Kotły kondensacyjne wykorzystują HHV, osiągając sprawność > 100% (względem LHV).
+:::
 
 ---
 
 ## 4. Egzergia: Ilość vs Jakość
 
+::: {.callout-important title="Paradoks energii"}
 Z I Zasady wynika, że energia jest niezniszczalna. Dlaczego więc "oszczędzamy energię"?
 Ponieważ tracimy jej **jakość**!
+:::
 
-**Egzergia ($B$):**
+::: {.fragment .callout-tip title="Egzergia ($B$)"}
 Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia.
+:::
 
+::: {.fragment .incremental}
 *   Prąd elektryczny: 100% egzergii (Czysta praca).
 *   Gorąca para: ~50% egzergii (Można napędzić turbinę).
 *   Letnia woda (30°C): ~0% egzergii (Bezużyteczna termodynamicznie).
+:::
 
 ---
 
 ## 5. Prawo Gouy-Stodoli
 
+::: {.callout-note title="Niszczenie egzergii"}
 Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.
 
 $$ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} $$
+:::
 
-### Wykres Sankeya
+---
+
+## 5. Prawo Gouy-Stodoli
+
+### Wykres Sankeya {.fragment}
+
+::: {.fragment}
 Wizualizacja strat w elektrowni:
+:::
+
+::: {.fragment .incremental}
 1.  Paliwo (100%) $\to$ Kocioł.
 2.  Straty kominowe (10%).
 3.  Straty w skraplaczu (50% - to największa strata!).
 4.  Praca turbiny (40%) $\to$ Prąd.
+:::
 
+::: {.fragment .callout-important appearance="simple"}
 Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło "odpadowe" ogrzewa miasta.
+:::
 
 ---
 
 ## 6. Podsumowanie Kursu
 
+::: {.callout-note title="Droga kursu"}
 Przeszliśmy drogę od:
+:::
+
+::: {.incremental}
 1.  **Podstaw:** Parametry stanu ($p, T$), gazy doskonałe.
 2.  **Zasad:** I Zasada (Bilans), II Zasada (Entropia).
 3.  **Mediów:** Para wodna, Powietrze wilgotne.
 4.  **Maszyn:** Silniki, Turbiny, Sprężarki, Lodówki.
 5.  **Aplikacji:** Wymiana ciepła, Spalanie.
+:::
+
+---
+
+## 6. Podsumowanie Kursu
 
 ### Egzamin
-Proszę przygotować się z:
+
+::: {.callout-tip title="Proszę przygotować się z:"}
+:::
+
+::: {.fragment .incremental}
 1.  Obliczeń gazowych (Clapeyron, przemiany).
 2.  Obiegów termodynamicznych (Liczenie sprawności).
 3.  Podstaw wymiany ciepła i spalania.
+:::
 
+::: {.fragment}
 > "Energia jest jedyną walutą we Wszechświecie, za którą musisz płacić podatki (entropię)."
+:::
 
+::: {.fragment}
 Dziękuję za wspólny semestr!
+:::

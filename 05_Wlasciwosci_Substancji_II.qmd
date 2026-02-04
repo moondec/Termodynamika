@@ -630,7 +630,7 @@ Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 
 2.  Odczytujemy $h_1$.
 3.  Rysujemy linię pionową w dół do przecięcia z izobarą $0.1$ bar.
 4.  Odczytujemy $h_2$.
-5.  $w_{turbiny} = h_1 - h_2$.
+5.  $l_{turbiny} = h_1 - h_2$.
 6.  Odczytujemy $x_2$ (stopień suchości na wylocie). Jeśli $x < 0.85$, erozja łopatek zniszczy turbinę!
 
 ---
