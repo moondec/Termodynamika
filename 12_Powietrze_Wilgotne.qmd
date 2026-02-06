@@ -386,16 +386,16 @@ p <- ggplot() +
     # 1. LINIE ENTALPII
     geom_line(
         data = data$h_lines, aes(x = x_g, y = t, group = h_val),
-        color = "gray50", size = 0.5
+        color = "darkgreen", size = 0.5, linetype = "dotted"
     ) +
 
     # Etykiety Entalpii (Inteligentne pozycjonowanie)
     geom_text(
         data = data$h_labels,
         aes(x = x_g, y = t, label = h_val, hjust = ifelse(label_pos == "top", 0.5, 0)),
-        vjust = -0.5, # Lekko w górę
-        nudge_x = 0.5, # Lekko w prawo dla tych z boku
-        size = 5, color = "gray40", fontface = "italic"
+        vjust = -0.5,
+        nudge_x = 0.5,
+        size = 5, color = "darkgreen", fontface = "italic"
     ) +
 
     # 2. IZOTERMY (Custom Grid)
@@ -415,14 +415,13 @@ p <- ggplot() +
         aes(x = x_g, y = t), color = "darkblue", size = 1.2
     ) +
 
-    # Etykiety RH (ZMNIEJSZONE do 4)
+    # Etykiety RH (ZMNIEJSZONE do 4, Kolor dopasowany do linii)
     geom_text(
         data = data$rh %>% filter(t > 25) %>% group_by(rh) %>% slice(round(n() / 2)),
-        aes(x = x_g, y = t, label = paste0(rh * 100, "%")),
-        color = "blue", size = 4, fontface = "bold", vjust = -0.4,
-        bg = "white"
+        aes(x = x_g, y = t, label = paste0(rh * 100, "%"), color = factor(rh)),
+        size = 4, fontface = "bold", vjust = -0.4,
+        show.legend = FALSE
     ) +
-
     # 4. STYL I KOLORY
     scale_color_viridis_d(option = "C", direction = -1) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 45), breaks = seq(0, 45, 5)) +
