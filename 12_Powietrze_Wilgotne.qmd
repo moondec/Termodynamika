@@ -209,7 +209,7 @@ generate_mollier_data <- function() {
 
     # Stała transformacji wizualnej (wznios izoterm)
     vis_slope_val <- 0.08
-    
+
     # Funkcja pomocnicza do transformacji
     transform_t <- function(t, x_g) {
         t + vis_slope_val * x_g
@@ -219,7 +219,7 @@ generate_mollier_data <- function() {
     t_seq <- seq(t_min, t_max, by = 0.5)
     # Zwiększamy zakres t_seq, bo przy transformacji t maleje w dół? Nie, t rośnie.
     # Musimy uważać na zakresy
-    
+
     rh_levels <- c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
 
     df_rh <- expand.grid(t = t_seq, rh = rh_levels) %>%
@@ -266,14 +266,14 @@ generate_mollier_data <- function() {
         # Segment 1: Przegrzana (lekko wznosząca się - cecha wykresu ukośnokątnego)
         s1_x_max <- min(x_sat_g, x_max_g)
         x_vals_s1 <- seq(0, s1_x_max, length.out = 10)
-        
+
         # Tutaj t = temp + slope * x (transformacja)
         seg1 <- data.frame(
             x_g = x_vals_s1,
-            t = transform_t(temp, x_vals_s1), 
+            t = transform_t(temp, x_vals_s1),
             group = paste0("t", temp, "_dry")
         )
-        
+
         # Jeśli saturacja jest poza wykresem, zwracamy tylko segment 1
         if (x_sat_g >= x_max_g) {
             return(seg1)
@@ -283,20 +283,20 @@ generate_mollier_data <- function() {
         # Punkt Nasycenia (fizyczny) -> t = temp, x = x_sat_g
         # Punkt Nasycenia (wizualny) -> t_vis = temp + slope * x_sat_g
         # To jest ZAPEWNIONE przez transform_t(temp, x_vals_s1) na końcu s1.
-        
+
         # Fizyczna entalpia w punkcie nasycenia
         h_sat <- CONSTANTS$cp_dry * temp + x_sat_kg * (CONSTANTS$r_0 + CONSTANTS$cp_vap * temp)
-        
+
         # Zakres x we mgle
         x_fog_g <- seq(x_sat_g, x_max_g, length.out = 10)
         x_fog_kg <- x_fog_g / 1000
-        
+
         # Fizyczna temperatura we mgle (dla h_vis = const)
         t_fog_phys <- (h_sat - x_fog_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_fog_kg * CONSTANTS$cp_vap)
-        
+
         # Wizualna temperatura we mgle (transformowana!)
         t_fog_vis <- transform_t(t_fog_phys, x_fog_g)
-        
+
         seg2 <- data.frame(
             x_g = x_fog_g,
             t = t_fog_vis,
@@ -325,83 +325,63 @@ generate_mollier_data <- function() {
     )))
 
     fan_list <- lapply(eps_values, function(eps) {
-        slope <- (eps - CONSTANTS$r_0) / CONSTANTS$cp_dry
-
-        # Równanie prostej: t - pole_y = slope * (x_kg - pole_x)
-        # t = pole_y + slope * x_kg
-
-        x1 <- 0
-        y1 <- 0
-        side <- "none"
-
-        # 1. Sprawdzamy prawą ścianę (x = x_max)
-        x_end_kg <- x_max_g / 1000
-        t_at_xmax <- pole_y + slope * x_end_kg
-
-        if (t_at_xmax <= t_max && t_at_xmax >= t_min) {
-            # Trafia w prawą krawędź
+        # Nachylenie fizyczne
+        slope_phys_kg <- (eps - CONSTANTS$r_0) / CONSTANTS$cp_dry
+        
+        # Nachylenie wizualne (uwzględnia skrzywienie wykresu)
+        # slope_vis = slope_phys + vis_slope
+        # vis_slope_val jest w [deg/g], wiec *1000 aby miec [deg/kg]
+        slope_vis_kg <- slope_phys_kg + vis_slope_val * 1000
+        
+        # Równanie linii wizualnej: y_vis = pole_y + slope_vis_kg * x_kg
+        # gdzie x_kg in [0, 0.045], y_vis in [-10, 55]
+        
+        x1 <- 0; y1 <- 0; side <- "none"
+        
+        # 1. Sprawdzamy prawą ścianę (x_max)
+        x_right_kg <- x_max_g / 1000
+        y_at_right <- pole_y + slope_vis_kg * x_right_kg
+        
+        if (y_at_right <= t_max && y_at_right >= t_min) {
+            # Trafia w prawą krawędź wizualną
             x1 <- x_max_g
-            y1_phys <- t_at_xmax
+            y1 <- y_at_right
             side <- "right"
         } else {
-             # Trafia w górę lub dół
-             if (slope > 0) {
-                 # Góra (t = 55) (tu t oznacza t_phys)
-                 # Ale uwaga: t_max na wykresie to t_vis? Nie, granice wykresu t_min/t_max są w t_phys czy t_vis?
-                 # Skoro rysujemy t_vis, to granica wykresu Y=55 jest wizualna.
-                 # t_vis = t_phys + slope_vis * x
-                 # 55 = (25 + slope_phys * x) + slope_vis * x
-                 # 55 - 25 = x * (slope_phys + slope_vis)
-                 # x = 30 / (slope_phys + slope_vis)
-                 
-                 effective_slope <- slope + vis_slope_val*1000 # vis_slope_val jest na gram, slope na kg -> uwaga na jednostki!
-                 # vis_slope_val = 0.08 [deg/g] = 80 [deg/kg]
-                 # slope [deg/kg]
-                 
-                 x_top_kg <- (t_max - pole_y) / (slope + vis_slope_val * 1000)
+            # 2. Trafia w górę lub dół
+            if (slope_vis_kg > 0) {
+                 # Góra (y_vis = 55)
+                 x_top_kg <- (t_max - pole_y) / slope_vis_kg
                  x1 <- x_top_kg * 1000
-                 y1_phys <- pole_y + slope * x_top_kg
+                 y1 <- t_max
                  side <- "top"
-             } else {
-                 # Dół (t = -10)
-                 # Analogicznie:
-                 x_bot_kg <- (t_min - pole_y) / (slope + vis_slope_val * 1000) # Tu mianownik może być różny
-                 
-                 # Wzór ogólny na przecięcie z poziomą linią Y=Y_limit w układzie wizualnym:
-                 # Y_limit = (pole_y + slope*x) + vis_skew*x
-                 # Y_limit - pole_y = x * (slope + vis_skew)
-                 
-                 denom <- slope + vis_slope_val * 1000
-                 x1 <- (t_min - pole_y) / denom * 1000
-                 y1_phys <- pole_y + slope * (x1/1000)
-                 
+            } else {
+                 # Dół (y_vis = -10)
+                 x_bot_kg <- (t_min - pole_y) / slope_vis_kg
+                 x1 <- x_bot_kg * 1000
+                 y1 <- t_min
                  side <- "bottom"
-             }
+            }
         }
         
-        # Ograniczanie do zakresu wykresu
-        if (x1 > x_max_g) {
-             x1 <- x_max_g
-             y1_phys <- pole_y + slope * (x1/1000)
-             side <- "right" # Wymuszenie right jeśli wyszło poza
-        }
-        if (x1 < 0) x1 <- 0 
+        # Zabezpieczenie zakresów
+        if (x1 > x_max_g) x1 <- x_max_g 
+        if (x1 < 0) x1 <- 0
         
-        # Transformacja wizualna Y
-        y1 <- transform_t(y1_phys, x1)
-
-        # Obliczamy kąt rotacji dla tekstu, aby biegł wzdłuż linii
-        # Uwzględniamy coord_fixed(ratio = 0.5), co "rozciąga" oś X względem Y
-        # Tangens kąta wizualnego = ratio * (dy/dx)
-        vis_slope <- 0.5 * ((y1 - pole_y) / (x1 - pole_x))
-        angle <- atan(vis_slope) * 180 / pi
-
+        # Kąt rotacji (bazujemy na wizualnym nachyleniu)
+        # Vis slope na wykresie (jednostki osi: 1 st C / 1 g)
+        # slope_vis_kg to [deg/kg]. slope_vis_g = slope_vis_kg / 1000
+        vis_slope_plot <- slope_vis_kg / 1000
+        
+        # Uwzględniamy coord_fixed(ratio = 0.5)
+        angle <- atan(0.5 * vis_slope_plot) * 180 / pi
+        
         # Pozycjonowanie etykiety
         factor <- 0.92
         lab_x <- pole_x + (x1 - pole_x) * factor
         lab_y <- pole_y + (y1 - pole_y) * factor
-
-        data.frame(x0 = pole_x, y0 = pole_y, x1 = x1, y1 = y1, eps = eps, side = side, lab_x = lab_x, lab_y = lab_y, angle = angle)
+        
+        data.frame(x0=pole_x, y0=pole_y, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y, angle=angle)
     })
     df_fan <- do.call(rbind, fan_list)
 
