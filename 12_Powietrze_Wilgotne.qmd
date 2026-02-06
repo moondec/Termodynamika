@@ -283,34 +283,56 @@ generate_mollier_data <- function() {
     # E. Pęk Linii (Wykres tła - skala h_w) - "Biegun" w (0,0)
     # Epsilon = (dh/dx) ~ cp * dt/dx + r0
     # Slope dt/dx_kg = (Epsilon - r0) / cp
-    eps_values <- c(0, 400, 800, 1200, 1600, 2000, 2500, 3500, 5000)
+    
+    # Zagęszczamy wartości, szczególnie dla pary (2500)
+    eps_values <- sort(unique(c(
+        seq(0, 1500, 500),          # Woda (<2000)
+        seq(2000, 3200, 200),       # Para (zakres roboczy) - gęsto
+        2500,                       # Dokładna wartość dla r_0
+        seq(3500, 5000, 500)        # Wysokie entalpie
+    )))
+
     fan_list <- lapply(eps_values, function(eps) {
         slope <- (eps - CONSTANTS$r_0) / CONSTANTS$cp_dry
+        
+        # Domyślne wartości
+        x1 <- 0; y1 <- 0; side <- "none"
 
-        # Równanie prostej z (0,0): t = slope * x_kg
-        # Szukamy przecięcia z ramką: x in [0, 45 g], t in [-10, 55 deg]
-
-        # Sprawdzamy potencjalne końce
-        x_end_g <- x_max_g
-        x_end_kg <- x_end_g / 1000
+        # 1. Sprawdzamy prawą ścianę (x = x_max)
+        x_end_kg <- x_max_g / 1000
         t_at_xmax <- slope * x_end_kg
-
-        # Czy trafia w prawą ścianę?
+        
         if (t_at_xmax <= t_max && t_at_xmax >= t_min) {
-            return(data.frame(x0=0, y0=0, x1=x_end_g, y1=t_at_xmax, eps=eps, side="right"))
-        }
-
-        # Jeśli nie prawa, to góra lub dół
-        if (slope > 0) {
-            # Trafia w górę (t = 55)
-            # 55 = slope * x_kg -> x_kg = 55 / slope
-            x_top_kg <- t_max / slope
-            return(data.frame(x0=0, y0=0, x1=x_top_kg*1000, y1=t_max, eps=eps, side="top"))
+            x1 <- x_max_g
+            y1 <- t_at_xmax
+            side <- "right"
         } else {
-            # Trafia w dół (t = -10)
-            x_bot_kg <- t_min / slope
-            return(data.frame(x0=0, y0=0, x1=x_bot_kg*1000, y1=t_min, eps=eps, side="bottom"))
+            # 2. Jeśli nie prawa, to góra lub dół
+            if (slope > 0) {
+                 # Góra (t = t_max)
+                 x1 <- (t_max / slope) * 1000
+                 y1 <- t_max
+                 side <- "top"
+            } else {
+                 # Dół (t = t_min)
+                 x1 <- (t_min / slope) * 1000
+                 y1 <- t_min
+                 side <- "bottom"
+            }
         }
+        
+        # Obliczamy pozycje etykiet z marginesem (w jednostkach wykresu)
+        lab_x <- x1
+        lab_y <- y1
+        
+        offset_x <- 2  # 2 g/kg w prawo
+        offset_y <- 2  # 2 stopnie w pionie
+        
+        if (side == "right") lab_x <- x1 + offset_x
+        if (side == "top")   lab_y <- y1 + offset_y
+        if (side == "bottom") lab_y <- y1 - offset_y
+
+        data.frame(x0=0, y0=0, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y)
     })
     df_fan <- do.call(rbind, fan_list)
 
@@ -331,15 +353,12 @@ p <- ggplot() +
     ) +
     geom_text(
         data = data$fan,
-        aes(x = x1, y = y1, label = eps, 
-            hjust = ifelse(side == "right", 0, 0.5),
-            vjust = ifelse(side == "top", 0, ifelse(side == "bottom", 1, 0.5))
-        ),
-        size = 3.5, color = "gray50", fontface = "bold",
-        # Przesunięcie etykiet odrobinę na zewnątrz ramki
-        nudge_x = ifelse(data$fan$side == "right", 0.5, 0),
-        nudge_y = ifelse(data$fan$side == "top", 0.5, ifelse(data$fan$side == "bottom", -0.5, 0))
+        aes(x = lab_x, y = lab_y, label = eps), 
+        hjust = 0.5, vjust = 0.5,
+        size = 3.5, color = "gray40", fontface = "bold"
     ) +
+    # Opis jednostki skali Randa
+    annotate("text", x = 40, y = 53, label = "[\u0394h/\u0394x kJ/kg]", color = "gray40", size=3.5, fontface="italic", hjust=1) +
 
     # 1. LINIE ENTALPII
     geom_line(
@@ -394,8 +413,8 @@ p <- ggplot() +
     theme_bw(base_size = 22) + # Duża czcionka bazowa
 
     theme(
-        # Marginesy: Góra, Prawa, Dół, Lewa (Zwiększone Prawa i Góra dla etykiet h)
-        plot.margin = margin(t = 1, r = 1.5, b = 0.5, l = 0.5, "cm"),
+        # Marginesy: Góra, Prawa, Dół, Lewa (Zwiększone dla etykiet skali Randa)
+        plot.margin = margin(t = 1.5, r = 2.0, b = 0.5, l = 0.5, "cm"),
 
         # Izotermy (Custom) i Oś Y (Pomarańczowe)
         panel.grid.major.y = element_blank(), # Wyłączamy standardową siatkę Y, bo mamy własne izotermy
