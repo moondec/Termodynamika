@@ -145,10 +145,10 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 *   **Oś pionowa:** Temperatura $t$ [°C].
 :::
 ::: {.fragment .fade-in}
-*   **Oś pozioma (ukośna):** Stopień zawilżenia $X$ [g/kg].
+*   **Oś pozioma:** Stopień zawilżenia $X$ [g/kg].
 :::
 ::: {.fragment .fade-in}
-*   **Izentalpy ($h=const$):** Linie ukośne (biegną pod kątem ~135°, stąd "przekoszenie").
+*   **Izentalpy ($h=const$):** Linie ukośne (biegną pod kątem ~135°, stąd "ukośność wykresu").
 :::
 ::: {.fragment .fade-in}
 *   **Krzywa graniczna ($\varphi=100\%$):** Oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).
@@ -157,7 +157,7 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 ### Interpretacja Linii:{.fragment}
 ::: {.fragment}
 1.  **Izotermy ($t$):** Lekko wznoszą się w prawo.
-2.  **Krzywe $\varphi$:** Układają się "bananowo" pod krzywą graniczną.
+2.  **Krzywe $\varphi$:** Układają się "bananowo" nad krzywą graniczną.
 :::
 
 ---
@@ -165,62 +165,163 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 ## Wizualizacja: Wykres h-X
 
 ```{r}
-#| label: ix-diagram-adv
+#| label: ix-diagram-all
 #| echo: false
-#| fig-width: 10
-#| fig-height: 6
+#| fig-align: center
+#| fig-width: 14        # Duża szerokość "źródłowa" (w calach)
+#| fig-height: 8        # Duża wysokość "źródłowa"
+#| out-width: "100%"    # Rozciągnij do granic kontenera
 
 library(ggplot2)
+library(dplyr)
 
-x <- seq(0, 30, length.out = 1000) # g/kg
-# Saturation curve approx x_s = A * exp(B*t) -> t = ln(x/A)/B
-# Simple polynomial approx for Plot
-t_sat <- 0 + 1.8 * x + 0.02 * x^2
-
-sat_curve <- data.frame(x = x, t = t_sat)
-sat_curve <- sat_curve[sat_curve$t < 60, ] # Limit visible range
-
-# Isotherms (Horizontal-ish)
-df_iso <- data.frame(
-    x = rep(seq(0, 30, by = 1), 2),
-    t = c(rep(20, 31), rep(35, 31)),
-    group = rep(c("20C", "35C"), each = 31)
+# --- 1. KONFIGURACJA I STAŁE ---
+CONSTANTS <- list(
+    p_atm = 1013.25,
+    cp_dry = 1.005,
+    cp_vap = 1.86,
+    r_0 = 2501.0
 )
 
-# Isenthalps (Diagonal down-right in orthogonal coords, but lines in h-x are diagonal)
-# h ~ t + 2.5x. For h=const -> t = h - 2.5x
-# h = 40, h = 60, h = 80
-x_h <- seq(0, 30, 1)
-h_lines <- do.call(rbind, lapply(c(40, 60, 80), function(h_val) {
-    data.frame(x = x_h, t = (h_val - 2.5 * x_h), h = as.factor(h_val))
-}))
+# --- 2. FUNKCJE FIZYCZNE ---
+get_psat <- function(t) {
+    6.112 * exp((17.62 * t) / (243.12 + t))
+}
 
-ggplot() +
-    # Saturation Line
-    geom_line(data = sat_curve, aes(x = x, y = t), color = "blue", size = 2) +
-    annotate("text", x = 25, y = 58, label = "phi=100%", color = "blue", fontface = "bold") +
+get_x_from_rh <- function(t, rh, p = CONSTANTS$p_atm) {
+    ps <- get_psat(t)
+    pv <- rh * ps
+    if (any(pv >= p)) {
+        return(NA)
+    }
+    0.622 * pv / (p - pv)
+}
 
-    # Isotherms
-    geom_line(data = df_iso, aes(x = x, y = t, group = group), color = "red", linetype = "dashed") +
-    annotate("text", x = 2, y = 21, label = "t=20C", color = "red") +
-    annotate("text", x = 2, y = 36, label = "t=35C", color = "red") +
+get_t_from_h_x <- function(h, x_kg) {
+    (h - x_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_kg * CONSTANTS$cp_vap)
+}
 
-    # Isenthalps
-    geom_line(data = h_lines, aes(x = x, y = t, group = h), color = "darkgreen", linetype = "dotted", size = 1) +
-    annotate("text", x = 12, y = 10, label = "h=40", color = "darkgreen") +
-    annotate("text", x = 20, y = 10, label = "h=60", color = "darkgreen") +
-    labs(
-        title = "Schemat Wykresu Molliera h-X",
-        subtitle = "Linie charakterystyczne: t (czerwone), h (zielone), phi=100% (niebieska)",
-        x = "Stopień zawilżenia X [g/kg]", y = "Temperatura t [C]"
+# --- 3. PRZYGOTOWANIE DANYCH ---
+generate_mollier_data <- function() {
+    x_max_g <- 45
+    t_min <- -10
+    t_max <- 55 # Górna granica wykresu
+
+    # A. Krzywe wilgotności (RH)
+    t_seq <- seq(t_min, t_max, by = 0.5)
+    rh_levels <- c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
+
+    df_rh <- expand.grid(t = t_seq, rh = rh_levels) %>%
+        mutate(
+            x_kg = get_x_from_rh(t, rh),
+            x_g = x_kg * 1000
+        ) %>%
+        filter(!is.na(x_kg), x_g <= x_max_g)
+
+    # B. Linie Entalpii (Izentalpy)
+    h_levels <- seq(0, 160, by = 10)
+    x_seq_h <- seq(0, x_max_g, length.out = 200) # Gęstsze punkty dla płynności
+
+    df_h <- expand.grid(h_val = h_levels, x_g = x_seq_h) %>%
+        mutate(
+            x_kg = x_g / 1000,
+            t = get_t_from_h_x(h_val, x_kg)
+        ) %>%
+        # Przycinamy dane do ramki wykresu
+        filter(t >= t_min, t <= t_max)
+
+    # C. Przygotowanie etykiet entalpii (żeby były na krawędziach)
+    # Znajdujemy "ostatni" punkt każdej linii w obrębie wykresu
+    h_labels <- df_h %>%
+        group_by(h_val) %>%
+        filter(x_g == max(x_g) | t == max(t)) %>% # Szukamy końca linii
+        slice(1) %>% # Bierzemy jeden punkt (preferencyjnie prawy koniec)
+        mutate(
+            # Jeśli linia kończy się na górze (blisko t_max), etykieta nad nią
+            # Jeśli linia kończy się z prawej (blisko x_max), etykieta obok niej
+            label_pos = ifelse(t >= t_max - 1, "top", "right")
+        )
+
+    list(rh = df_rh, h_lines = df_h, h_labels = h_labels)
+}
+
+data <- generate_mollier_data()
+
+# --- 4. RYSOWANIE ---
+
+p <- ggplot() +
+
+    # 1. LINIE ENTALPII
+    geom_line(
+        data = data$h_lines, aes(x = x_g, y = t, group = h_val),
+        color = "gray50", size = 0.5
     ) +
-    theme_minimal() +
-    ylim(0, 60)
+
+    # Etykiety Entalpii (Inteligentne pozycjonowanie)
+    geom_text(
+        data = data$h_labels,
+        aes(x = x_g, y = t, label = h_val, hjust = ifelse(label_pos == "top", 0.5, 0)),
+        vjust = -0.5, # Lekko w górę
+        nudge_x = 0.5, # Lekko w prawo dla tych z boku
+        size = 5, color = "gray40", fontface = "italic"
+    ) +
+
+    # 2. KRZYWE WILGOTNOŚCI
+    geom_line(
+        data = data$rh, aes(x = x_g, y = t, group = rh, color = factor(rh)),
+        size = 0.8
+    ) +
+    geom_line(
+        data = data$rh %>% filter(rh == 1.0),
+        aes(x = x_g, y = t), color = "darkblue", size = 1.2
+    ) +
+
+    # Etykiety RH (ZMNIEJSZONE do 4)
+    geom_text(
+        data = data$rh %>% filter(t > 25) %>% group_by(rh) %>% slice(round(n() / 2)),
+        aes(x = x_g, y = t, label = paste0(rh * 100, "%")),
+        color = "blue", size = 4, fontface = "bold", vjust = -0.4,
+        bg = "white"
+    ) + # Opcjonalnie background, by nie zlewały się z liniami
+
+    # 3. STYL I KOLORY
+    scale_color_viridis_d(option = "C", direction = -1) +
+    scale_x_continuous(expand = c(0, 0), limits = c(0, 45), breaks = seq(0, 45, 5)) +
+    scale_y_continuous(expand = c(0, 0), limits = c(-10, 55), breaks = seq(-10, 55, 5)) +
+    labs(
+        title = "Wykres h-X (Molliera)",
+        subtitle = NULL, # Usunąłem podtytuł, by zyskać miejsce
+        x = "Stopień zwilżenia X [g/kg]",
+        y = "Temperatura [°C]"
+    ) +
+    theme_bw(base_size = 22) + # Duża czcionka bazowa
+
+    theme(
+        # Marginesy: Góra, Prawa, Dół, Lewa (Zwiększone Prawa i Góra dla etykiet h)
+        plot.margin = margin(t = 1, r = 1.5, b = 0.5, l = 0.5, "cm"),
+
+        # Izotermy i Oś Y (Pomarańczowe)
+        panel.grid.major.y = element_line(color = "orange", size = 0.5),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_line(color = "gray90"),
+        axis.text.y = element_text(color = "orange", face = "bold"),
+        axis.title.y = element_text(color = "orange", face = "bold"),
+        axis.ticks.y = element_line(color = "orange"),
+
+        # Tytuł
+        plot.title = element_text(size = 18, face = "bold"),
+        legend.position = "none"
+    ) +
+
+    # Clip = "off" pozwala pisać po marginesach
+    coord_fixed(ratio = 0.5, clip = "off")
+
+print(p)
 ```
 
 ---
 
-## 5. Przemiany Charakterystyczne
+## 5. Przemiany Charakterystyczne{auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
 *   **Proces:** Nagrzewnica.
@@ -239,6 +340,215 @@ ggplot() +
 *   **Wykres:** Skośnie w dół (w stronę wyższego X).
 *   **Efekt:** Powietrze się nawilża i ochładza (energia zostaje w układzie).
 :::
+
+--- 
+
+## 5. Przemiany Charakterystyczne{auto-animate=true auto-animate-easing="ease-in-out"}
+
+```{r}
+#| label: ix-diagram-advanced
+#| echo: false
+#| fig-align: center
+#| fig-width: 14        # Duża szerokość "źródłowa" (w calach)
+#| fig-height: 8        # Duża wysokość "źródłowa"
+#| out-width: "100%"    # Rozciągnij do granic kontenera
+
+library(ggplot2)
+
+# ===== FUNKCJE POMOCNICZE (fizyka powietrza wilgotnego) =====
+
+# Ciśnienie nasycenia pary wodnej (Magnus formula)
+p_sat <- function(t) {
+    # t w °C, wynik w kPa
+    0.61121 * exp((18.678 - t / 234.5) * (t / (257.14 + t)))
+}
+
+# Stopień zawilżenia dla danej temp i wilgotności względnej
+x_calc <- function(t, phi, p_atm = 101.325) {
+    # phi w %, p_atm w kPa
+    p_p <- (phi / 100) * p_sat(t)
+    622 * p_p / (p_atm - p_p) # g/kg
+}
+
+# Entalpia właściwa [kJ/kg] (h = cp*t + x*(r0 + cpv*t))
+h_calc <- function(t, x) {
+    1.005 * t + (x / 1000) * (2501 + 1.86 * t)
+}
+
+# ===== GENEROWANIE SIATKI WYKRESU =====
+
+# Krzywa nasycenia (phi = 100%)
+t_range <- seq(-5, 50, 0.5)
+x_sat <- sapply(t_range, function(t) x_calc(t, 100))
+df_sat <- data.frame(t = t_range, x = x_sat)
+df_sat <- df_sat[df_sat$x < 30, ]
+
+# Linie stałej wilgotności względnej (phi = const)
+phi_levels <- c(20, 40, 60, 80)
+df_phi <- do.call(rbind, lapply(phi_levels, function(phi) {
+    t_vals <- seq(0, 45, 1)
+    x_vals <- sapply(t_vals, function(t) x_calc(t, phi))
+    data.frame(t = t_vals, x = x_vals, phi = phi)
+}))
+df_phi <- df_phi[df_phi$x < 30 & df_phi$x > 0, ]
+
+# Izotermy (t = const) - z załamaniem na linii saturacji
+temp_levels <- seq(5, 45, 5)
+df_iso_t <- do.call(rbind, lapply(temp_levels, function(temp) {
+    # Punkt saturacji dla danej temperatury
+    x_sat <- x_calc(temp, 100)
+
+    # Segment 1: Obszar pary przegrzanej (poziomy, od x=0 do x_sat)
+    segment1 <- data.frame(
+        t = temp,
+        x = seq(0, x_sat, length.out = 30),
+        temp_label = temp,
+        segment = "przegrzana"
+    )
+
+    # Segment 2: Obszar mgły (opadający w prawo/w dół)
+    # W obszarze mgły przy stałej temperaturze, wilgotność rośnie
+    # Linia opada pionowo w dół (stała temp, rosnące x)
+    x_max_fog <- min(x_sat + 5, 25) # Przedłużamy o 5 g/kg w prawo
+    segment2 <- data.frame(
+        t = seq(temp, max(temp - 10, -5), length.out = 20), # Opada w dół
+        x = seq(x_sat, x_max_fog, length.out = 20),
+        temp_label = temp,
+        segment = "mgla"
+    )
+
+    rbind(segment1, segment2)
+}))
+
+# Izentalpy (h = const)
+h_levels <- seq(20, 100, 20)
+df_isenth <- do.call(rbind, lapply(h_levels, function(h_val) {
+    # Dla danej entalpii h, mamy: t = (h - 2.5*x) / (1 + 0.00186*x) (przybliżenie)
+    x_vals <- seq(0, 25, 0.5)
+    t_vals <- (h_val - 2.5 * x_vals) / (1.005 + 0.00186 * x_vals)
+    df_temp <- data.frame(t = t_vals, x = x_vals, h = h_val)
+    # Ogranicz do obszaru fizycznego
+    df_temp <- df_temp[df_temp$t >= -10 & df_temp$t <= 50 & df_temp$x >= 0 & df_temp$x <= 25, ]
+    df_temp
+}))
+
+# ===== PRZEMIANY CHARAKTERYSTYCZNE =====
+
+# Punkt początkowy: t0=20°C, phi0=50%
+t0 <- 20
+phi0 <- 50
+x0 <- x_calc(t0, phi0)
+h0 <- h_calc(t0, x0)
+
+# 1. OGRZEWANIE (X=const, w górę)
+t1_heat <- 35 # Ogrzanie do 35°C
+x1_heat <- x0 # X stałe!
+h1_heat <- h_calc(t1_heat, x1_heat)
+heating <- data.frame(
+    t = seq(t0, t1_heat, length.out = 20),
+    x = x0
+)
+
+# 2. OCHŁADZANIE (X=const, w dół do punktu rosy)
+# Punkt rosy: temp przy której phi=100% dla danego X
+t_dew <- uniroot(function(t) x_calc(t, 100) - x0, interval = c(-10, t0))$root
+cooling <- data.frame(
+    t = seq(t0, t_dew, length.out = 20),
+    x = x0
+)
+
+# 3. NAWILŻANIE ADIABATYCZNE (h=const, ukośnie w dół-prawo)
+# Dla h=const: nawilżamy wodą, temp spada, x rośnie
+x_humid_max <- min(x0 + 6, x_calc(15, 99)) # Kończymy przy niższej temp
+df_humid_temp <- data.frame(x = seq(x0, x_humid_max, length.out = 30))
+df_humid_temp$t <- (h0 - 2.5 * df_humid_temp$x) / (1.005 + 0.00186 * df_humid_temp$x)
+humidification <- df_humid_temp[df_humid_temp$t >= 10, ]
+
+# ===== WYKRES =====
+ggplot() +
+    # Krzywa nasycenia
+    geom_line(data = df_sat, aes(x = x, y = t), color = "#0066cc", linewidth = 2) +
+    annotate("text",
+        x = max(df_sat$x) - 10, y = max(df_sat$t) + 2,
+        label = "φ = 100% (Nasycenie)", color = "#0066cc", fontface = "bold", size = 8
+    ) +
+
+    # Linie stałej wilgotności względnej
+    geom_line(
+        data = df_phi, aes(x = x, y = t, group = phi),
+        color = "#66b3ff", linetype = "dotted", linewidth = 1.6, alpha = 0.7
+    ) +
+
+    # Izotermy
+    geom_line(
+        data = df_iso_t, aes(x = x, y = t, group = temp_label),
+        color = "#cc0000", linetype = "dashed", linewidth = 0.5, alpha = 0.5
+    ) +
+
+    # Izentalpy
+    geom_line(
+        data = df_isenth, aes(x = x, y = t, group = h),
+        color = "#009900", linetype = "dotdash", linewidth = 1.6, alpha = 0.6
+    ) +
+
+    # === PRZEMIANY ===
+
+    # Ogrzewanie (czerwona strzałka w górę)
+    geom_path(
+        data = heating, aes(x = x, y = t),
+        color = "#ff3300", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+    ) +
+    annotate("text",
+        x = x0 + .5, y = (t0 + t1_heat * 1.2) / 2,
+        label = "1. Ogrzewanie\n(X=const)", color = "#ff3300", fontface = "bold", size = 8, hjust = 0
+    ) +
+
+    # Ochładzanie (niebieska strzałka w dół)
+    geom_path(
+        data = cooling, aes(x = x, y = t),
+        color = "#0033cc", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+    ) +
+    annotate("text",
+        x = x0 - 1, y = (t0 + t_dew) / 2,
+        label = "2. Ochładzanie\n(X=const)", color = "#0033cc", fontface = "bold", size = 8, hjust = 1
+    ) +
+
+    # Nawilżanie adiabatyczne (zielona strzałka ukośna)
+    geom_path(
+        data = humidification, aes(x = x, y = t),
+        color = "#00aa00", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+    ) +
+    annotate("text",
+        x = (x0 + x_humid_max + 1) / 2 + 2, y = humidification$t[10] + 5,
+        label = "3. Nawilżanie\nadiabatyczne (h=const)", color = "#00aa00", fontface = "bold", size = 8
+    ) +
+
+    # Punkt początkowy
+    geom_point(aes(x = x0, y = t0), size = 5, color = "black", shape = 21, fill = "yellow", stroke = 2) +
+    annotate("text",
+        x = x0 - .3, y = t0 + 3, label = sprintf("Start\n(%.1f°C, %.0f%%)", t0, phi0),
+        fontface = "bold", size = 8, hjust = 1
+    ) +
+
+    # Opisy
+    labs(
+        title = "Wykres Molliera h-X dla Powietrza Wilgotnego",
+        subtitle = "Z naniesionymi kluczowymi przemianami termodynamicznymi",
+        x = "Stopień zawilżenia X [g/kg suchego powietrza]",
+        y = "Temperatura t [°C]"
+    ) +
+    theme_minimal(base_size = 13) +
+    theme(
+        plot.title = element_text(face = "bold", size = 16),
+        axis.text = element_text(size = 26), # 2x większe etykiety osi (było 13)
+        axis.title = element_text(size = 28), # 2x większe tytuły osi
+        panel.grid.minor = element_line(color = "gray90", linewidth = 0.3),
+        panel.grid.major = element_line(color = "gray80", linewidth = 0.5)
+    ) +
+    coord_cartesian(xlim = c(0, 25), ylim = c(0, 50)) +
+    scale_x_continuous(breaks = seq(0, 25, 5)) +
+    scale_y_continuous(breaks = seq(0, 50, 5))
+```
 
 ---
 

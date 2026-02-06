@@ -54,7 +54,9 @@ editor: source
 3.  **Wartość Opałowa vs Ciepło Spalania**
 4.  **Egzergia** (Jakość Energii)
 5.  **Prawo Gouy-Stodoli** (Straty)
-6.  **Podsumowanie Kursu Termodynamiki**
+6.  **Kogeneracja/CHP** (Elektrociepłownie)
+7.  **Ogniwa Paliwowe** (Wodorowe)
+8.  **Podsumowanie Kursu Termodynamiki**
 
 ---
 
@@ -201,6 +203,98 @@ Wizualizacja strat w elektrowni:
 ::: {.fragment .callout-important appearance="simple"}
 Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło "odpadowe" ogrzewa miasta.
 :::
+
+---
+
+## Kogeneracja (CHP - Combined Heat and Power)
+
+::: {.callout-tip title="Idea układów skojarzonych"}
+Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Tradycyjna Elektrownia {.fragment}
+
+::: {.fragment .incremental}
+*   **Cel**: Tylko prąd (ciepło do rzeki/atmosfery)
+*   **Sprawność elektryczna**: ~40%
+*   **Straty**: ~60% (ciepło odpadowe $Q_L$)
+:::
+
+:::
+
+::: {.column width="50%"}
+
+### Elektrociepłownia (CHP) {.fragment}
+
+::: {.fragment .incremental}
+*   **Cel**: Prąd + ciepło dla miasta
+*   **Sprawność elektryczna**: ~35%
+*   **Ciepło użyteczne**: ~45%
+*   **Sprawność całkowita**: **~80%!**
+:::
+
+:::
+
+::::
+
+::: {.fragment .callout-note title="Przykład"}
+Z 100 MJ paliwa:
+- Elektrownia: 40 MJ prądu + 60 MJ strat = **40% sprawności**
+- CHP: 35 MJ prądu + 45 MJ ciepła + 20 MJ strat = **80% sprawności**
+:::
+
+---
+
+## Ogniwa Paliwowe
+
+::: {.callout-important title="Bezpośrednia zamiana energii chemicznej w elektryczną"}
+Ogniwa paliwowe to urządzenia elektrochemiczne, które przekształcają energię chemiczną paliwa (np. wodoru) bezpośrednio w prąd, **omijając spalanie** i cykl Carnota.
+:::
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+### Zasada Działania {.fragment}
+
+::: {.fragment}
+Reakcja: $H_2 + \frac{1}{2}O_2 \to H_2O + \text{Energia elektryczna}$
+:::
+
+::: {.fragment .incremental}
+1.  **Anoda**: Wodór oddaje elektrony ($H_2 \to 2H^+ + 2e^-$)
+2.  **Elektrolit**: Przepuszcza jony $H^+$
+3.  **Katoda**: Tlen reaguje z jonami i elektronami ($O_2 + 4H^+ + 4e^- \to 2H_2O$)
+4.  **Efekt**: Prąd elektryczny + ciepło + woda
+:::
+
+:::
+
+::: {.column width="40%"}
+
+### Zalety {.fragment}
+
+::: {.fragment .incremental}
+*   **Sprawność**: 50-60% (wyższa niż silnik spalinowy)
+*   **Bez części ruchomych** (cichsze)
+*   **Niskie emisje** (tylko H₂O, jeśli używamy czystego H₂)
+:::
+
+### Zastosowania {.fragment}
+
+::: {.fragment .incremental}
+*   Samochody wodorowe
+*   Zasilanie awaryjne
+*   Stacje kosmiczne
+:::
+
+:::
+
+::::
 
 ---
 
