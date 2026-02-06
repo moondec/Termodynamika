@@ -256,7 +256,9 @@ generate_mollier_data <- function() {
         )
 
         # Jeśli saturacja jest poza wykresem, zwracamy tylko segment 1
-        if (x_sat_g >= x_max_g) return(seg1)
+        if (x_sat_g >= x_max_g) {
+            return(seg1)
+        }
 
         # Segment 2: Mgła (spadek wzdłuż izentalpy)
         # Obliczamy entalpię w punkcie nasycenia (h_sat)
@@ -283,76 +285,77 @@ generate_mollier_data <- function() {
     # E. Pęk Linii (Wykres tła - skala h_w) - "Biegun" w (0, 25 st. C)
     # Epsilon = (dh/dx) ~ cp * dt/dx + r0
     # Slope dt/dx_kg = (Epsilon - r0) / cp
-    
+
     pole_x <- 0
     pole_y <- 25 # Przesunięty biegun
-    
+
     # Lista wartości ze skrajnymi zakresami
     eps_values <- sort(unique(c(
-        -1000,                      # Chłodzenie z osuszaniem
-        seq(0, 1500, 500),          
-        seq(2000, 3200, 200),       
-        2500,                       
+        -1000, # Chłodzenie z osuszaniem
+        seq(0, 1500, 500),
+        seq(2000, 3200, 200),
+        2500,
         seq(3500, 5000, 500),
-        6000                        # Czyste ogrzewanie
+        6000 # Czyste ogrzewanie
     )))
 
     fan_list <- lapply(eps_values, function(eps) {
         slope <- (eps - CONSTANTS$r_0) / CONSTANTS$cp_dry
-        
+
         # Równanie prostej: t - pole_y = slope * (x_kg - pole_x)
         # t = pole_y + slope * x_kg
-        
-        x1 <- 0; y1 <- 0; side <- "none"
-        
+
+        x1 <- 0
+        y1 <- 0
+        side <- "none"
+
         # 1. Sprawdzamy prawą ścianę (x = x_max)
         x_end_kg <- x_max_g / 1000
         t_at_xmax <- pole_y + slope * x_end_kg
-        
+
         if (t_at_xmax <= t_max && t_at_xmax >= t_min) {
             # Trafia w prawą krawędź
             x1 <- x_max_g
             y1 <- t_at_xmax
             side <- "right"
         } else {
-             # Trafia w górę lub dół
-             if (slope > 0) {
-                 # Góra (t = 55)
-                 # 55 = 25 + slope * x -> x = (30)/slope
-                 x_top_kg <- (t_max - pole_y) / slope
-                 x1 <- x_top_kg * 1000
-                 y1 <- t_max
-                 side <- "top"
-             } else {
-                 # Dół (t = -10)
-                 # -10 = 25 + slope * x -> x = (-35)/slope
-                 x_bot_kg <- (t_min - pole_y) / slope
-                 # Dodać zabezpieczenie przed x ujemnym (dla bardzo stromych)
-                 # Ale tu x rośnie w prawo, więc ok dla slope < 0
-                 x1 <- x_bot_kg * 1000
-                 y1 <- t_min
-                 side <- "bottom"
-             }
+            # Trafia w górę lub dół
+            if (slope > 0) {
+                # Góra (t = 55)
+                # 55 = 25 + slope * x -> x = (30)/slope
+                x_top_kg <- (t_max - pole_y) / slope
+                x1 <- x_top_kg * 1000
+                y1 <- t_max
+                side <- "top"
+            } else {
+                # Dół (t = -10)
+                # -10 = 25 + slope * x -> x = (-35)/slope
+                x_bot_kg <- (t_min - pole_y) / slope
+                # Dodać zabezpieczenie przed x ujemnym (dla bardzo stromych)
+                # Ale tu x rośnie w prawo, więc ok dla slope < 0
+                x1 <- x_bot_kg * 1000
+                y1 <- t_min
+                side <- "bottom"
+            }
         }
-        
+
         # Ograniczanie do zakresu wykresu (na wypadek błędów numerycznych)
-        if(x1 > x_max_g) x1 <- x_max_g
+        if (x1 > x_max_g) x1 <- x_max_g
         # Dla bardzo pionowych linii (skrajnych)
-        if(x1 < 0) x1 <- 0 # nie powinno wystąpić dla slope != Inf
-        
-        # Obliczamy kąt rotacji
-        # Vis slope = 2 * dy/dx
-        # dy = y1 - pole_y !!!
-        # dx = x1 - pole_x
-        vis_slope <- 2 * ((y1 - pole_y) / (x1 - pole_x))
+        if (x1 < 0) x1 <- 0 # nie powinno wystąpić dla slope != Inf
+
+        # Obliczamy kąt rotacji dla tekstu, aby biegł wzdłuż linii
+        # Uwzględniamy coord_fixed(ratio = 0.5), co "rozciąga" oś X względem Y
+        # Tangens kąta wizualnego = ratio * (dy/dx)
+        vis_slope <- 0.5 * ((y1 - pole_y) / (x1 - pole_x))
         angle <- atan(vis_slope) * 180 / pi
-        
+
         # Pozycjonowanie etykiety
         factor <- 0.92
         lab_x <- pole_x + (x1 - pole_x) * factor
         lab_y <- pole_y + (y1 - pole_y) * factor
-        
-        data.frame(x0=pole_x, y0=pole_y, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y, angle=angle)
+
+        data.frame(x0 = pole_x, y0 = pole_y, x1 = x1, y1 = y1, eps = eps, side = side, lab_x = lab_x, lab_y = lab_y, angle = angle)
     })
     df_fan <- do.call(rbind, fan_list)
 
@@ -373,12 +376,12 @@ p <- ggplot() +
     ) +
     geom_text(
         data = data$fan,
-        aes(x = lab_x, y = lab_y, label = eps, angle = angle), 
+        aes(x = lab_x, y = lab_y, label = eps, angle = angle),
         hjust = 0.5, vjust = -0.3,
         size = 3.2, color = "gray60", fontface = "bold"
     ) +
     # Opis jednostki skali Randa
-    annotate("text", x = 40, y = 53, label = "[\u0394h/\u0394x kJ/kg]", color = "gray60", size=3.5, fontface="italic", hjust=1) +
+    annotate("text", x = 35, y = 53, label = "[\u0394h/\u0394X kJ/kg]", color = "gray60", size = 3.5, fontface = "italic", hjust = 1) +
 
     # 1. LINIE ENTALPII
     geom_line(
