@@ -321,18 +321,19 @@ generate_mollier_data <- function() {
             }
         }
         
-        # Obliczamy pozycje etykiet z marginesem (w jednostkach wykresu)
-        lab_x <- x1
-        lab_y <- y1
+        # Obliczamy kąt rotacji dla tekstu, aby biegł wzdłuż linii
+        # Uwzględniamy coord_fixed(ratio = 0.5), co "rozciąga" oś X względem Y
+        # Tangens kąta wizualnego = 2 * (dy/dx)
+        vis_slope <- 2 * (y1 / x1)
+        angle <- atan(vis_slope) * 180 / pi
         
-        offset_x <- 2  # 2 g/kg w prawo
-        offset_y <- 2  # 2 stopnie w pionie
+        # Pozycjonowanie "wewnątrz" - cofamy się wzdłuż linii o ok. 8-10%
+        # Dzięki temu etykieta będzie na końcu linii, ale wewnątrz wykresu
+        factor <- 0.92
+        lab_x <- x1 * factor
+        lab_y <- y1 * factor
         
-        if (side == "right") lab_x <- x1 + offset_x
-        if (side == "top")   lab_y <- y1 + offset_y
-        if (side == "bottom") lab_y <- y1 - offset_y
-
-        data.frame(x0=0, y0=0, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y)
+        data.frame(x0=0, y0=0, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y, angle=angle)
     })
     df_fan <- do.call(rbind, fan_list)
 
@@ -353,11 +354,11 @@ p <- ggplot() +
     ) +
     geom_text(
         data = data$fan,
-        aes(x = lab_x, y = lab_y, label = eps), 
-        hjust = 0.5, vjust = 0.5,
-        size = 3.5, color = "gray40", fontface = "bold"
+        aes(x = lab_x, y = lab_y, label = eps, angle = angle), 
+        hjust = 0.5, vjust = -0.3,
+        size = 3.2, color = "gray30", fontface = "bold"
     ) +
-    # Opis jednostki skali Randa
+    # Opis jednostki skali Randa (dopasowany kąt ok. 45 stopni też by wyglądał dobrze, ale zostawmy poziomo)
     annotate("text", x = 40, y = 53, label = "[\u0394h/\u0394x kJ/kg]", color = "gray40", size=3.5, fontface="italic", hjust=1) +
 
     # 1. LINIE ENTALPII
@@ -413,8 +414,8 @@ p <- ggplot() +
     theme_bw(base_size = 22) + # Duża czcionka bazowa
 
     theme(
-        # Marginesy: Góra, Prawa, Dół, Lewa (Zwiększone dla etykiet skali Randa)
-        plot.margin = margin(t = 1.5, r = 2.0, b = 0.5, l = 0.5, "cm"),
+        # Marginesy: Góra, Prawa, Dół, Lewa (Zmniejszone, bo etykiety są wewnątrz)
+        plot.margin = margin(t = 0.5, r = 0.5, b = 0.5, l = 0.5, "cm"),
 
         # Izotermy (Custom) i Oś Y (Pomarańczowe)
         panel.grid.major.y = element_blank(), # Wyłączamy standardową siatkę Y, bo mamy własne izotermy
