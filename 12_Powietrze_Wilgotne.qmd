@@ -220,29 +220,69 @@ generate_mollier_data <- function() {
 
     # B. Linie Entalpii (Izentalpy)
     h_levels <- seq(0, 160, by = 10)
-    x_seq_h <- seq(0, x_max_g, length.out = 200) # Gęstsze punkty dla płynności
+    x_seq_h <- seq(0, x_max_g, length.out = 200)
 
     df_h <- expand.grid(h_val = h_levels, x_g = x_seq_h) %>%
         mutate(
             x_kg = x_g / 1000,
             t = get_t_from_h_x(h_val, x_kg)
         ) %>%
-        # Przycinamy dane do ramki wykresu
         filter(t >= t_min, t <= t_max)
 
-    # C. Przygotowanie etykiet entalpii (żeby były na krawędziach)
-    # Znajdujemy "ostatni" punkt każdej linii w obrębie wykresu
+    # C. Przygotowanie etykiet entalpii
     h_labels <- df_h %>%
         group_by(h_val) %>%
-        filter(x_g == max(x_g) | t == max(t)) %>% # Szukamy końca linii
-        slice(1) %>% # Bierzemy jeden punkt (preferencyjnie prawy koniec)
+        filter(x_g == max(x_g) | t == max(t)) %>%
+        slice(1) %>%
         mutate(
-            # Jeśli linia kończy się na górze (blisko t_max), etykieta nad nią
-            # Jeśli linia kończy się z prawej (blisko x_max), etykieta obok niej
             label_pos = ifelse(t >= t_max - 1, "top", "right")
         )
 
-    list(rh = df_rh, h_lines = df_h, h_labels = h_labels)
+    # D. Izotermy (z załamaniem w punkcie nasycenia)
+    t_iso_levels <- seq(-10, 55, by = 5)
+    df_iso_list <- lapply(t_iso_levels, function(temp) {
+        # 1. Punkt nasycenia
+        x_sat_kg <- get_x_from_rh(temp, 1.0)
+        # Jeśli NA (poza wykresem), to cała linia jest w obszarze pary przegrzanej lub mgły (teoretycznie)
+        if (is.na(x_sat_kg)) x_sat_kg <- 100 # Duża wartość
+        x_sat_g <- x_sat_kg * 1000
+
+        # Segment 1: Przegrzana (poziomy)
+        s1_x_max <- min(x_sat_g, x_max_g)
+        seg1 <- data.frame(
+            x_g = seq(0, s1_x_max, length.out = 10),
+            t = temp,
+            group = paste0("t", temp, "_dry")
+        )
+
+        # Jeśli saturacja jest poza wykresem, zwracamy tylko segment 1
+        if (x_sat_g >= x_max_g) {
+            return(seg1)
+        }
+
+        # Segment 2: Mgła (spadek wzdłuż izentalpy)
+        # Obliczamy entalpię w punkcie nasycenia (h_sat)
+        h_sat <- CONSTANTS$cp_dry * temp + x_sat_kg * (CONSTANTS$r_0 + CONSTANTS$cp_vap * temp)
+
+        # Zakres x we mgle
+        x_fog_g <- seq(x_sat_g, x_max_g, length.out = 10)
+        x_fog_kg <- x_fog_g / 1000
+
+        # Temperatura we mgle (dla h = const)
+        # h = t * (cp_dry + x * cp_vap) + x * r0  => t = (h - x*r0) / (cp_dry + x*cp_vap)
+        t_fog <- (h_sat - x_fog_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_fog_kg * CONSTANTS$cp_vap)
+
+        seg2 <- data.frame(
+            x_g = x_fog_g,
+            t = t_fog,
+            group = paste0("t", temp, "_fog")
+        )
+
+        rbind(seg1, seg2)
+    })
+    df_iso <- do.call(rbind, df_iso_list)
+
+    list(rh = df_rh, h_lines = df_h, h_labels = h_labels, isotherms = df_iso)
 }
 
 data <- generate_mollier_data()
@@ -266,7 +306,14 @@ p <- ggplot() +
         size = 5, color = "gray40", fontface = "italic"
     ) +
 
-    # 2. KRZYWE WILGOTNOŚCI
+    # 2. IZOTERMY (Custom Grid)
+    geom_line(
+        data = data$isotherms,
+        aes(x = x_g, y = t, group = group),
+        color = "orange", size = 0.4, linetype = "solid", alpha = 0.6
+    ) +
+
+    # 3. KRZYWE WILGOTNOŚCI
     geom_line(
         data = data$rh, aes(x = x_g, y = t, group = rh, color = factor(rh)),
         size = 0.8
@@ -284,7 +331,7 @@ p <- ggplot() +
         bg = "white"
     ) + # Opcjonalnie background, by nie zlewały się z liniami
 
-    # 3. STYL I KOLORY
+    # 4. STYL I KOLORY
     scale_color_viridis_d(option = "C", direction = -1) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 45), breaks = seq(0, 45, 5)) +
     scale_y_continuous(expand = c(0, 0), limits = c(-10, 55), breaks = seq(-10, 55, 5)) +
@@ -300,8 +347,8 @@ p <- ggplot() +
         # Marginesy: Góra, Prawa, Dół, Lewa (Zwiększone Prawa i Góra dla etykiet h)
         plot.margin = margin(t = 1, r = 1.5, b = 0.5, l = 0.5, "cm"),
 
-        # Izotermy i Oś Y (Pomarańczowe)
-        panel.grid.major.y = element_line(color = "orange", size = 0.5),
+        # Izotermy (Custom) i Oś Y (Pomarańczowe)
+        panel.grid.major.y = element_blank(), # Wyłączamy standardową siatkę Y, bo mamy własne izotermy
         panel.grid.minor.y = element_blank(),
         panel.grid.major.x = element_line(color = "gray90"),
         axis.text.y = element_text(color = "orange", face = "bold"),
@@ -406,13 +453,20 @@ df_iso_t <- do.call(rbind, lapply(temp_levels, function(temp) {
         segment = "przegrzana"
     )
 
-    # Segment 2: Obszar mgły (opadający w prawo/w dół)
-    # W obszarze mgły przy stałej temperaturze, wilgotność rośnie
-    # Linia opada pionowo w dół (stała temp, rosnące x)
-    x_max_fog <- min(x_sat + 5, 25) # Przedłużamy o 5 g/kg w prawo
+    # Segment 2: Obszar mgły (izotermy równoległe do izentalp)
+    # W obszarze mgły na wykresie h-X izotermy biegną niemal równolegle do izentalp.
+    # Obliczamy "entalpię nasycenia" w punkcie załamania, używając tych samych współczynników co przy rysowaniu izentalp.
+    h_sat_approx <- 1.005 * temp + x_sat * (2.5 + 0.00186 * temp)
+
+    x_max_fog <- min(x_sat + 5, 30) # Zasięg we mgle
+    x_fog <- seq(x_sat, x_max_fog, length.out = 20)
+
+    # Wyznaczamy przebieg temperatury dla stałej entalpii (pseudo-izoterma we mgle)
+    t_fog <- (h_sat_approx - 2.5 * x_fog) / (1.005 + 0.00186 * x_fog)
+
     segment2 <- data.frame(
-        t = seq(temp, max(temp - 10, -5), length.out = 20), # Opada w dół
-        x = seq(x_sat, x_max_fog, length.out = 20),
+        t = t_fog,
+        x = x_fog,
         temp_label = temp,
         segment = "mgla"
     )
