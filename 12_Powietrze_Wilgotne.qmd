@@ -247,31 +247,40 @@ generate_mollier_data <- function() {
         if (is.na(x_sat_kg)) x_sat_kg <- 100 # Duża wartość
         x_sat_g <- x_sat_kg * 1000
 
-        # Segment 1: Przegrzana (poziomy)
+        # Segment 1: Przegrzana (lekko wznosząca się - cecha wykresu ukośnokątnego)
         s1_x_max <- min(x_sat_g, x_max_g)
+        x_vals_s1 <- seq(0, s1_x_max, length.out = 10)
+        
+        # Współczynnik wzniosu (dobrany eksperymentalnie dla estetyki)
+        dry_slope <- 0.08
+        
         seg1 <- data.frame(
-            x_g = seq(0, s1_x_max, length.out = 10),
-            t = temp,
+            x_g = x_vals_s1,
+            t = temp + dry_slope * x_vals_s1,
             group = paste0("t", temp, "_dry")
         )
-
+        
         # Jeśli saturacja jest poza wykresem, zwracamy tylko segment 1
         if (x_sat_g >= x_max_g) {
             return(seg1)
         }
 
         # Segment 2: Mgła (spadek wzdłuż izentalpy)
-        # Obliczamy entalpię w punkcie nasycenia (h_sat)
-        h_sat <- CONSTANTS$cp_dry * temp + x_sat_kg * (CONSTANTS$r_0 + CONSTANTS$cp_vap * temp)
-
+        # Punkt startowy mgły musi pasować do końca odcinka suchego (z uwzględnieniem wzniosu)
+        t_sat_visual <- temp + dry_slope * x_sat_g
+        
+        # Obliczamy 'efektywną' entalpię, która przechodzi przez ten wizualny punkt nasycenia
+        # h_sat_vis = cp * t_vis + x_sat * (r0 + cp_v * t_vis)
+        # Używamy tej entalpii, aby kontynuować linię w dół w obszarze mgły
+        h_sat_visual <- CONSTANTS$cp_dry * t_sat_visual + x_sat_kg * (CONSTANTS$r_0 + CONSTANTS$cp_vap * t_sat_visual)
+        
         # Zakres x we mgle
         x_fog_g <- seq(x_sat_g, x_max_g, length.out = 10)
         x_fog_kg <- x_fog_g / 1000
-
-        # Temperatura we mgle (dla h = const)
-        # h = t * (cp_dry + x * cp_vap) + x * r0  => t = (h - x*r0) / (cp_dry + x*cp_vap)
-        t_fog <- (h_sat - x_fog_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_fog_kg * CONSTANTS$cp_vap)
-
+        
+        # Temperatura we mgle (dla h_vis = const)
+        t_fog <- (h_sat_visual - x_fog_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_fog_kg * CONSTANTS$cp_vap)
+        
         seg2 <- data.frame(
             x_g = x_fog_g,
             t = t_fog,
@@ -381,12 +390,12 @@ p <- ggplot() +
         size = 3.2, color = "gray60", fontface = "bold"
     ) +
     # Opis jednostki skali Randa
-    annotate("text", x = 35, y = 53, label = "[\u0394h/\u0394X kJ/kg]", color = "gray60", size = 3.5, fontface = "italic", hjust = 1) +
+    annotate("text", x = 35, y = 53, label = "[\u0394h/\u0394X kJ/kg]", color = "gray60", size = 5.5, fontface = "italic", hjust = 1) +
 
     # 1. LINIE ENTALPII
     geom_line(
         data = data$h_lines, aes(x = x_g, y = t, group = h_val),
-        color = "darkgreen", size = 0.5, linetype = "dotted"
+        color = "darkgreen", size = 1, linetype = "dotted"
     ) +
 
     # Etykiety Entalpii (Inteligentne pozycjonowanie)
