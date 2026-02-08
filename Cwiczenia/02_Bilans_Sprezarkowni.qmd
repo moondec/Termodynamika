@@ -1,0 +1,130 @@
+---
+title: "Ćwiczenia 2: Bilans Sprężarkowni"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap 2 - Sprężarkownia
+
+Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Musimy zweryfikować jej parametry energetyczne i dobrać system chłodzenia.
+
+::: {.columns}
+::: {.column width="60%"}
+### Założenia Projektowe:
+1.  **Powietrze ssane:** $p_1 = 1 \text{ bar}, t_1 = 20^\circ C$.
+2.  **Powietrze tłoczone:** $p_2 = 9.5 \text{ bar}$.
+3.  **Wydajność:** $\dot{V}_n = 100 \text{ m}^3/h$ (normalnych).
+4.  **Proces sprężania:** Politropa z wykładnikiem $n = 1.35$.
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1565514020125-6915a2928d11?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## ⚙️ Zadanie 2.1: Praca Techniczna Sprężania
+
+Oblicz jednostkową pracę techniczną $l_t$ potrzebną do sprężenia 1 kg powietrza.
+
+::: {.callout-note title="Wzór na pracę techniczną przemiany politropowej"}
+$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
+:::
+
+### Obliczenia:
+*   $R = 287 \text{ J}/(\text{kg K})$
+*   $T_1 = 293.15 \text{ K}$
+*   $p_2/p_1 = 9.5$
+*   $n = 1.35$
+
+::: {.fragment}
+$$ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ (9.5)^{\frac{0.35}{1.35}} - 1 \right] $$
+$$ l_t = 3.857 \cdot 84134 \cdot [ 1.795 - 1 ] $$
+$$ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 \text{ kJ/kg}} $$
+:::
+
+---
+
+## ⚡ Zadanie 2.2: Moc Silnika Napędowego
+
+Jaka jest teoretyczna moc sprężarki ($N_t$)?
+
+1.  **Strumień masy:** $\dot{m} = ?$
+    *   Warunki normalne ($p_n=101325, T_n=273.15$): $\rho_n \approx 1.29 \text{ kg/m}^3$ (lub $p=\rho RT$).
+    *   $\dot{m} = \dot{V}_n \cdot \rho_n = \frac{100}{3600} \cdot 1.29 \approx 0.0358 \text{ kg/s}$.
+
+2.  **Moc teoretyczna:**
+    $$ N_t = \dot{m} \cdot l_t $$
+    $$ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} $$
+
+::: {.callout-tip}
+Rzeczywista moc będzie wyższa przez sprawność mechaniczną ($\eta_m \approx 0.9$).
+$N_{silnika} = N_t / 0.9 \approx 10.3 \text{ kW}$.
+:::
+
+---
+
+## 🔥 Zadanie 2.3: Temperatura Tłoczenia
+
+Do jakiej temperatury nagrzeje się powietrze na wylocie?
+To kluczowe dla doboru oleju i chłodnicy!
+
+$$ T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} $$
+
+::: {.fragment}
+$$ T_2 = 293.15 \cdot (9.5)^{0.259} $$
+$$ T_2 = 293.15 \cdot 1.795 \approx \mathbf{526 \text{ K} = 253^\circ C} $$
+
+::: {.callout-error}
+**Uwaga!** $253^\circ C$ to bardzo wysoka temperatura! Grozi zapłonem par oleju. Konieczne jest **chłodzenie międzystopniowe** lub intensywne chłodzenie cylindra.
+:::
+:::
+
+---
+
+## ❄️ Zadanie 2.4: Bilans Ciepła (I Zasada)
+
+Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do $30^\circ C$ przed podaniem na halę?
+
+**I Zasada dla układu otwartego (chłodnica - ciśnienie stałe $p=const$):**
+$$ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{wyl} - t_{wl}) $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Dane:**
+*   $\dot{m} = 0.0358 \text{ kg/s}$
+*   $t_{wl} = 253^\circ C$ (z sprężarki)
+*   $t_{wyl} = 30^\circ C$ (wymagane)
+*   $c_p \approx 1005 \text{ J}/(\text{kg K})$
+:::
+::: {.column width="50%"}
+**Obliczenia:**
+$$ \dot{Q} = 0.0358 \cdot 1005 \cdot (30 - 253) $$
+$$ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
+
+(Minus oznacza ciepło odprowadzone **Z** układu).
+:::
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 2)
+
+**Temat:** Odzysk ciepła.
+
+Skoro wyrzucamy 8 kW ciepła do otoczenia, inżynier produkcji proponuje wykorzystać je do podgrzewania wody użytkowej w umywalniach.
+
+1.  Mamy strumień wody $\dot{m}_w$ o temp. wejściowej $10^\circ C$.
+2.  Chcemy ją podgrzać do $45^\circ C$.
+3.  Zakładamy, że odzyskamy 80% ciepła z chłodnicy sprężarki ($0.8 \cdot 8 \text{ kW}$).
+
+**Zadanie:** Oblicz, jaki strumień wody [l/min] możemy podgrzać?
+
+*   Ciepło właściwe wody: $c_w = 4190 \text{ J}/(\text{kg K})$.

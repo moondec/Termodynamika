@@ -1,0 +1,161 @@
+---
+title: "Ćwiczenia 1: Projekt Fabryka - Start"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Modernizacja Hali Przemysłowej
+
+::: {.columns}
+::: {.column width="60%"}
+### Twoje Zadanie:
+Zostajesz zatrudniony jako **Młodszy Inżynier Energetyk** w zakładzie produkcyjnym "Termo-Tech". 
+
+Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semestrze jest przeanalizowanie kluczowych węzłów energetycznych zakładu:
+
+1.  Sieć sprężonego powietrza (Gazy).
+2.  Siłownię parową zasilającą (Para Wodna).
+3.  Odzysk ciepła odpadowego (II Zasada).
+4.  Klimatyzację hali montażowej (Powietrze Wilgotne).
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000)
+:::
+:::
+
+::: {.fragment .callout-important}
+Wszystkie zadania na ćwiczeniach będą elementami tego dużego projektu.
+:::
+
+---
+
+## 📋 Etap 1: Inwentaryzacja Zbiorników (Parametry Stanu)
+
+Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w "dziwnych" jednostkach ze starych manometrów.
+
+::: {.callout-note title="Dane z Raportu Technicznego"}
+*   **Objętość zbiornika:** $V = 5 m^3$
+*   **Wskazanie manometru (nadciśnienie):** $p_{man} = 8.5 \text{ bar}$
+*   **Temperatura otoczenia/gazu:** $t = 25^\circ C$
+*   **Ciśnienie atmosferyczne:** $p_{atm} = 750 \text{ mmHg}$
+:::
+
+### Zadanie Projektowe 1.1:
+Kierownik pyta: **"Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?"**
+
+---
+
+## 🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne
+
+Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) **ZAWSZE** używamy ciśnienia absolutnego!
+
+$$ p_{abs} = p_{man} + p_{atm} $$
+*(Dla podciśnienia: $p_{abs} = p_{atm} - p_{vac}$)*
+
+::: {.fragment}
+### Przeliczanie jednostek (Krok 1):
+1.  **Atmosferyczne:** $750 \text{ mmHg} \rightarrow \text{Pa}$?
+    *   $1 \text{ atm} = 760 \text{ mmHg} = 101325 \text{ Pa}$
+    *   $p_{atm} = \frac{750}{760} \cdot 101325 \approx 99\,992 \text{ Pa} \approx 100 \text{ kPa}$
+2.  **Manometryczne:** $8.5 \text{ bar} \rightarrow \text{Pa}$?
+    *   $1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}$
+    *   $p_{man} = 850 \text{ kPa}$
+3.  **Absolutne:**
+    *   $p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}$
+:::
+
+---
+
+## 🧮 Obliczenia: Masa Gazu
+
+Traktując powietrze jako **Gaz Doskonały**, użyj równania stanu:
+
+$$ p \cdot V = m \cdot R \cdot T $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Dane wejściowe:**
+*   $p = 950\,000 \text{ Pa}$ (Absolutne!)
+*   $V = 5 \text{ m}^3$
+*   $T = 25 + 273.15 = 298.15 \text{ K}$
+*   $R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}$ (Indywidualna stała gazowa)
+:::
+::: {.column width="50%"}
+**Rozwiązanie:**
+$$ m = \frac{p \cdot V}{R \cdot T} $$
+
+$$ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} $$
+
+$$ m \approx 55.51 \text{ kg} $$
+:::
+:::
+
+::: {.fragment .callout-tip}
+**Odpowiedź dla Kierownika:** W zbiorniku znajduje się około **55.5 kg** powietrza.
+:::
+
+---
+
+## 💧 Zadanie Projektowe 1.2: Próba Hydrauliczna
+
+Ze względów bezpieczeństwa (UBD) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu **wody**. 
+
+**Pytanie:** O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik ($V=5m^3$) wodą w temp. $20^\circ C$?
+
+::: {.fragment}
+### Analiza:
+*   Gęstość wody $\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}$ (niezależna od ciśnienia - ciecz nieściśliwa).
+*   Masa wody: $m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}$.
+
+**Wniosek:**
+Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.
+:::
+
+---
+
+## 🌡️ Zadanie Projektowe 1.3: Skale Temperatur
+
+W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się przy $T = 250^\circ F$ (Fahrenheita).
+Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to $140^\circ C$?
+
+::: {.columns}
+::: {.column width="50%"}
+**Konwersja:**
+$$ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) $$
+
+$$ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 $$
+$$ T_{limit} \approx 121.1^\circ C $$
+:::
+
+::: {.column width="50%"}
+::: {.fragment .callout-error}
+**Decyzja:** 
+$121.1^\circ C < 140^\circ C$
+
+**ZAWÓR NIE NADAJE SIĘ!** Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.
+:::
+:::
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 1)
+
+**Temat:** Dobór sprężarki.
+
+Aby napompować nasz zbiornik ($V=5m^3$) od ciśnienia atmosferycznego do roboczego ($8.5 \text{ bar}$ nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.
+
+1.  Oblicz masę powietrza w zbiorniku "pustym" ($p_{atm}, 25^\circ C$).
+2.  Oblicz masę powietrza w zbiorniku "pełnym" ($9.5 \text{ bar abs}, 40^\circ C$ - bo sprężanie podgrzewa!).
+3.  Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w $kg/h$ oraz $m^3/h$ (dla warunków ssania).
+
+::: {.callout-tip}
+Przyjmij stałą gazową dla powietrza $R = 287 \text{ J}/(\text{kg K})$.
+:::
