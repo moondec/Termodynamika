@@ -811,7 +811,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
-## Współczynnik Kierunkowy Przemiany ($\varepsilon$)
+## Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
 
 ::: {.callout-important title="Definicja" appearance="simple"}
 **Współczynnik kierunkowy** $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
@@ -819,20 +819,22 @@ $$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg
 :::
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="55%"}
 **Interpretacja fizyczna:**
 
-$\varepsilon$ odpowiada **entalpii właściwej medium** dodawanego do powietrza ($h_w$).
+$\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
 
 ::: {.fragment}
-| Medium | $h_w$ | $\varepsilon$ | Kierunek |
-|--------|-------|---------------|----------|
-| Woda ciekła (~20°C) | ~84 kJ/kg | ≈ 0 | wzdłuż izentalpy |
-| Para nasycona | ~2500 kJ/kg | ≈ 2500 | prawie poziomo |
-| Czyste ciepło | ∞ | ∞ | pionowo |
+| Medium | $\varepsilon$ | Kierunek na wykresie |
+|--------|---------------|----------------------|
+| Lód / chłodzenie z osuszaniem | < 0 (np. -1000) | w dół-prawo ↘ |
+| Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↗ |
+| Para nasycona (100°C) | ≈ 2500 | prawie poziomo → |
+| Para przegrzana | > 2500 (np. 4500) | lekko w górę ↗ |
+| Czyste ciepło (bez wilgoci) | ∞ | pionowo ↑ |
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="45%"}
 ::: {.fragment}
 **Bilans energii:**
 $$ \dot{m}_g (h_2 - h_1) = \dot{m}_w \cdot h_w $$
@@ -842,7 +844,7 @@ $$ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = h_w $$
 :::
 
 ::: {.fragment .callout-tip title="Skala Randa" style="font-size: 0.85em;"}
-Na wykresie Molliera linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to właśnie **skala Randa** widoczna na głównym wykresie h-X.
+Linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to **skala Randa** na wykresie h-X.
 :::
 :::
 :::
