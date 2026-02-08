@@ -881,6 +881,10 @@ ggplot() +
 :::
 :::
 
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
+**Rekuperacja:** Odzysk ciepła w centralach wentylacyjnych. **Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym. **Wentylacja:** Rozcieńczanie zanieczyszczeń.
+:::
+
 ---
 
 ## Przemiana 2: Nawilżanie Parą Wodną
@@ -957,6 +961,10 @@ ggplot() +
     coord_fixed(ratio = 0.5)
 ```
 :::
+:::
+
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
+**Klimatyzacja zimowa:** Nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** Utrzymanie wilgotności włókien. **Drukarnie:** Zapobieganie elektryzowaniu papieru.
 :::
 
 ---
@@ -1042,6 +1050,10 @@ ggplot() +
 :::
 :::
 
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
+**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Pasta, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
+:::
+
 ---
 
 ## Nawilżanie Adiabatyczne (Wodą)
@@ -1121,6 +1133,10 @@ ggplot() +
     coord_fixed(ratio = 0.5)
 ```
 :::
+:::
+
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
+**Chłodnie kominowe:** Odprowadzanie ciepła z elektrowni. **Klimatyzatory ewaporacyjne:** Tanie chłodzenie w suchym klimacie. **Przemysł tekstylny:** Nawilżanie hal produkcyjnych.
 :::
 
 ---
