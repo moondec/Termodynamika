@@ -1,0 +1,120 @@
+---
+title: "Ćwiczenia 5: Entropia i Jakość Ciepła"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap 5 - Wymienniki Ciepła
+
+W zakładzie "Termo-Tech" mamy strumień spalin o temperaturze $300^\circ C$. Inżynier proponuje użyć go do podgrzewania wody zasilającej kocioł.
+Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.
+
+::: {.columns}
+::: {.column width="60%"}
+### Twoje Zadanie:
+1.  Obliczyć ilość ciepła przekazanego w wymienniku (Bilans Energii, I Zasada).
+2.  Obliczyć generację entropii w procesie wymiany ciepła (Bilans Entropii, II Zasada).
+3.  Zrozumieć, dlaczego wymiana ciepła jest nieodwracalna.
+
+**Dane:**
+*   Spaliny (gorące): $\dot{m}_s = 1 \text{ kg/s}$, $t_{in}=300, t_{out}=150^\circ C$.
+*   Woda (zimna): podgrzewana od $20$ do $80^\circ C$.
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## 🔥 Zadanie 5.1: Bilans Energii (I Zasada)
+
+Ile wody możemy podgrzać?
+
+$$ \dot{Q} = \dot{m}_s c_p (t_{in} - t_{out}) $$
+$$ \dot{Q} = \dot{m}_w c_w (t_{w,out} - t_{w,in}) $$
+
+::: {.fragment}
+**Obliczenia:**
+*   $c_p (spaliny) \approx 1000 \text{ J/kgK}$
+*   $c_w (woda) \approx 4190 \text{ J/kgK}$
+
+$$ \dot{Q} = 1 \cdot 1000 \cdot (300 - 150) = \mathbf{150 \text{ kW}} $$
+
+$$ \dot{m}_w = \frac{150\,000}{4190 \cdot (80 - 20)} = \frac{150\,000}{251\,400} \approx \mathbf{0.60 \text{ kg/s}} $$
+:::
+
+---
+
+## 🎲 Zadanie 5.2: Generacja Entropii (II Zasada)
+
+Proces wymiany ciepła przy skończonej różnicy temperatur jest **nieodwracalny**, czyli generuje entropię ($\Delta S_{gen} > 0$).
+
+$$ \Delta \dot{S}_{układu} = \Delta \dot{S}_{spaliny} + \Delta \dot{S}_{woda} $$
+$$ \Delta S = m \cdot c \cdot \ln(T_2/T_1) $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Spaliny (Chłodzenie):**
+$T_1=573K, T_2=423K$
+$$ \Delta \dot{S}_s = 1 \cdot 1000 \cdot \ln\left(\frac{423}{573}\right) $$
+$$ \Delta \dot{S}_s = 1000 \cdot (-0.303) = \mathbf{-303 \text{ W/K}} $$
+(Entropia spalin maleje, bo oddają ciepło).
+:::
+
+::: {.column width="50%"}
+**Woda (Grzanie):**
+$T_1=293K, T_2=353K$
+$$ \Delta \dot{S}_w = 0.60 \cdot 4190 \cdot \ln\left(\frac{353}{293}\right) $$
+$$ \Delta \dot{S}_w = 2514 \cdot (0.186) = \mathbf{+468 \text{ W/K}} $$
+(Entropia wody rośnie, bo pobiera ciepło).
+:::
+:::
+
+::: {.fragment .callout-warning}
+**Bilans Całkowity:**
+$$ \Delta \dot{S}_{gen} = -303 + 468 = \mathbf{+165 \text{ W/K}} > 0 $$
+Entropia całkowita wzrosła! Energia została "zdegradowana" (z wysokiej temperatury 300°C do niskiej 80°C).
+:::
+
+---
+
+## 💎 Zadanie 5.3: Jakość Energii (Egzergia)
+
+Czy to było mądre wykorzystanie ciepła?
+Mogliśmy użyć spalin 300°C do napędu silnika cieplnego, a użyliśmy ich tylko do grzania wody 80°C.
+
+**Strata Pracy (Twierdzenie Gouy-Stodoli):**
+$$ W_{stracona} = T_0 \cdot \Delta S_{gen} $$
+Przyjmijmy $T_0 = 293 K$ (temp. otoczenia).
+
+$$ W_{stracona} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW}} $$
+
+::: {.callout-error}
+W procesie prostego podgrzewania wody straciliśmy bezpowrotnie **48 kW** potencjalnej mocy mechanicznej!
+To cena za nieodwracalność procesu.
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 5)
+
+**Temat:** Optymalizacja Wymiennika.
+
+Zaproponuj zmianę parametrów, aby zmniejszyć stratę egzergii (zbliżyć proces do odwracalnego).
+
+1.  Zwiększ temperaturę wody wylotowej do $95^\circ C$ (zamiast $80^\circ C$).
+2.  Oblicz nowy strumień pary wodnej.
+3.  Oblicz nową generację entropii $\Delta S_{gen}$.
+4.  Wniosek: Czy zbliżenie temperatur czynników ($T_{spalin} \approx T_{wody}$) zmniejsza generację entropii?
+
+::: {.callout-tip}
+Im mniejsza różnica temperatur między czynnikami w wymienniku ($\Delta T$), tym mniejsza generacja entropii i wyższa sprawność egzergetyczna (II Zasady).
+:::

@@ -1,0 +1,124 @@
+---
+title: "Ćwiczenia 8: Klimatyzacja Precyzyjna Hali"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap Finalny - HVAC
+
+W hali montażu elektroniki musimy utrzymać ściśle określone warunki, aby uniknąć wyładowań elektrostatycznych (ESD) i korozji.
+
+::: {.columns}
+::: {.column width="60%"}
+### Wymagania Hali (Punkt W):
+1.  **Temperatura:** $t_w = 22^\circ C \pm 1K$.
+2.  **Wilgotność:** $\varphi_w = 50\% \pm 5\%$.
+3.  **Zyski Ciepła Jawnego:** $Q_j = 50 \text{ kW}$.
+4.  **Zyski Wilgoci:** $W = 10 \text{ kg/h}$.
+
+### Zadanie:
+Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lato).
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1581093588402-48a0d9b407e3?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## ❄️ Zadanie 8.1: Proces Zimowy (Ogrzewanie + Nawilżanie)
+
+Zimą powietrze zewnętrzne ma parametry: $t_z = -10^\circ C$, $\varphi_z = 90\%$.
+Musimy je doprowadzić do stanu nawiewu $N$, aby pokryć straty ciepła.
+
+### Krok 1: Wykres h-X
+1.  Zaznacz punkt Z ($t_z=-10, \varphi_z=90\%$). $X_z \approx 1.5 \text{ g/kg}$.
+2.  Punkt W ($t_w=22, \varphi_w=50\%$). $X_w \approx 8.4 \text{ g/kg}$.
+
+### Krok 2: Proces w Centrali
+Aby osiągnąć $X_w$ z $X_z$, musimy dodać wilgoć (nawilżanie parowe - izoterma).
+Aby osiągnąć $t_w$, musimy ogrzać powietrze.
+
+::: {.columns}
+::: {.column width="50%"}
+**Sekwencja:**
+1.  **Nagrzewnica Wstępna:** Ogrzewanie $Z \rightarrow P$ ($X=const$).
+2.  **Nawilżacz Parowy:** Nawilżanie $P \rightarrow N$ ($t \approx const$).
+3.  Stan nawiewu $N$ musi mieć $X_N = X_W$ (przyjmijmy bilans wilgoci $\approx 0$).
+:::
+::: {.column width="50%"}
+**Obliczenia:**
+Szukamy $X_P = X_Z = 1.5$.
+Szukamy $X_N = 8.4$.
+$t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
+:::
+:::
+
+---
+
+## ☀️ Zadanie 8.2: Proces Letni (Chłodzenie + Osuszanie)
+
+Latem jest gorąco i wilgotno: $t_z = 32^\circ C, \varphi_z = 45\%$.
+$X_z \approx 13.5 \text{ g/kg}$.
+Punkt W: $X_w = 8.4 \text{ g/kg}$.
+
+### Analiza:
+$X_z > X_w$ (13.5 > 8.4) $\Rightarrow$ **Musimy OSUSZAĆ!**
+
+### Proces w Chłodnicy:
+Chłodzenie przebiega do punktu rosy, a potem po linii nasycenia ($\varphi=100\%$).
+Wykraplanie wody zachodzi na powierzchni chłodnicy.
+
+1.  Oziębiamy powietrze aż do $X = 8.4 \text{ g/kg}$ (na linii nasycenia).
+    *   To wymaga temperatury punktu rosy: $t_R (8.4 g/kg) \approx 11.5^\circ C$.
+2.  Ale $11.5^\circ C$ to za zimno dla ludzi! (Przeciąg).
+3.  Musimy podgrzać powietrze (Nagrzewnica Wtórna) do np. $18^\circ C$.
+
+**Wniosek:** Latem musimy najpierw mocno chłodzić (by osuszyć), a potem lekko podgrzać! To duży koszt energetyczny.
+
+---
+
+## 🏗️ Zadanie 8.3: Bilans Centrali
+
+Oblicz moc chłodniczą i grzewczą dla strumienia $\dot{V} = 10\,000 \text{ m}^3/h$. $\rho \approx 1.2 \text{ kg/m}^3$.
+
+$$ \dot{m} = \frac{10000}{3600} \cdot 1.2 \approx \mathbf{3.33 \text{ kg/s}} $$
+
+### Chłodnica (Lato):
+$h_z (32^\circ C, 45\%) \approx 67 \text{ kJ/kg}$.
+$h_{ch} (11.5^\circ C, 100\%) \approx 33 \text{ kJ/kg}$.
+$$ \dot{Q}_{ch} = \dot{m} (h_z - h_{ch}) = 3.33 \cdot (67 - 33) = 3.33 \cdot 34 \approx \mathbf{113 \text{ kW}} $$
+
+### Nagrzewnica Wtórna (Lato):
+$h_{ch} (11.5^\circ C) \approx 33$.
+$h_{nawiew} (18^\circ C, X=8.4) \approx 40$.
+$$ \dot{Q}_{grz} = \dot{m} (40 - 33) = 3.33 \cdot 7 \approx \mathbf{23 \text{ kW}} $$
+
+::: {.callout-important}
+Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy!
+**Rozwiązanie:** Rekuperacja chłodu lub by-pass powietrza.
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 8)
+
+**Temat:** Odzysk Ciepła w Centrali.
+
+Zaprojektuj wymiennik Krzyżowy (Rekuperator) dla sezonu zimowego.
+
+1.  Powietrze wyrzucane z hali: $22^\circ C$.
+2.  Powietrze czerpane: $-10^\circ C$.
+3.  Sprawność odzysku rekuperatora: $\eta = 75\%$.
+
+**Oblicz:**
+1.  Temperaturę powietrza za rekuperatorem (przed nagrzewnicą właściwą).
+2.  Ile mocy grzewczej [kW] zaoszczędzimy dzięki temu urządzeniu?
+3.  Porównaj koszt rekuperatora (20 000 zł) z oszczędnością gazu (zakładając zimę 3000h).

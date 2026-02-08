@@ -1,0 +1,142 @@
+---
+title: "Ćwiczenia 3: Bilans Kotłowni Parowej"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap 3 - Kotłownia
+
+Fabryka "Termo-Tech" wykorzystuje parę wodną do procesów technologicznych (np. pasteryzacja, suszenie). Obecny kocioł gazowy wytwarza parę o parametrach:
+*   Ciśnienie: $p = 10 \text{ bar}$ (abs)
+*   Temperatura: $t = 250^\circ C$
+
+::: {.columns}
+::: {.column width="60%"}
+### Twoje Zadanie:
+1.  Określić stan termodynamiczny pary (nasycona czy przegrzana?).
+2.  Obliczyć entalpię pary wylotowej.
+3.  Obliczyć moc cieplną kotła dla strumienia $\dot{m} = 2 \text{ t/h}$.
+4.  Oszacować zużycie gazu ziemnego.
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1517056636735-a7b51b34e567?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## 📊 Zadanie 3.1: Stan Pary (Tablice)
+
+Sprawdźmy, czy para na wylocie z kotła jest **nasycona, mokra czy przegrzana**.
+
+::: {.callout-tip title="Jak korzystać z tablic?"}
+1.  Znajdź w tablicach nasycenia ciśnienie $p = 10 \text{ bar} = 1 \text{ MPa}$.
+2.  Odczytaj temperaturę nasycenia $t_{sat}$ (punkt wrzenia).
+3.  Porównaj $t_{rzecz}$ z $t_{sat}$.
+:::
+
+### Analiza:
+*   Dla $p = 10 \text{ bar}$, $t_{sat} \approx 179.9^\circ C$.
+*   Mamy: $t_{rzecz} = 250^\circ C$.
+
+::: {.fragment .callout-success}
+**Wniosek:** $t_{rzecz} > t_{sat}$, więc jest to **Para Przegrzana**.
+Musimy szukać entalpii w tablicach dla pary przegrzanej!
+:::
+
+---
+
+## 🔥 Zadanie 3.2: Bilans Energii Kotła
+
+Kocioł podgrzewa wodę zasilającą o temperaturze $t_{zas} = 60^\circ C$ do postaci pary przegrzanej ($10 \text{ bar}, 250^\circ C$).
+
+### Dane z Tablic:
+1.  **Woda zasilająca ($60^\circ C$, ciecz):**
+    *   $h_1 \approx c_w \cdot t = 4.19 \cdot 60 = \mathbf{251.4 \text{ kJ/kg}}$.
+2.  **Para wylotowa ($10 \text{ bar}, 250^\circ C$):**
+    *   Z tablic przegrzania: $h_2 = \mathbf{2943 \text{ kJ/kg}}$.
+
+### Moc Cieplna Kotła ($\dot{Q}$):
+$$ \dot{Q} = \dot{m} \cdot (h_2 - h_1) $$
+$$ \dot{m} = 2 \text{ t/h} = \frac{2000}{3600} \approx 0.556 \text{ kg/s} $$
+
+::: {.fragment}
+$$ \dot{Q} = 0.556 \cdot (2943 - 251.4) = 0.556 \cdot 2691.6 $$
+$$ \dot{Q} \approx 1496 \text{ kW} \approx \mathbf{1.5 \text{ MW}} $$
+:::
+
+---
+
+## ⛽ Zadanie 3.3: Zużycie Paliwa
+
+Ile gazu ziemnego zużywa kocioł, jeśli jego sprawność wynosi $\eta_k = 90\%$?
+
+*   Wartość opałowa gazu (metan): $W_d \approx 50 \text{ MJ/kg}$.
+
+### Bilans Paliwa:
+$$ \dot{Q}_{paliwa} = \frac{\dot{Q}_{uzyteczne}}{\eta_k} $$
+$$ \dot{m}_{gaz} \cdot W_d = \frac{1496 \text{ kW}}{0.90} $$
+
+::: {.columns}
+::: {.column width="50%"}
+$$ \dot{Q}_{paliwa} = 1662 \text{ kW} $$
+$$ \dot{m}_{gaz} = \frac{1662 \text{ kJ/s}}{50\,000 \text{ kJ/kg}} $$
+$$ \dot{m}_{gaz} \approx 0.0332 \text{ kg/s} $$
+:::
+::: {.column width="50%"}
+**W jednostkach handlowych ($m^3/h$):**
+Gęstość gazu $\rho_{gaz} \approx 0.7 \text{ kg/m}^3$.
+
+$$ \dot{V}_{gaz} = \frac{0.0332 \cdot 3600}{0.7} $$
+$$ \dot{V}_{gaz} \approx \mathbf{171 \text{ m}^3/h} $$
+:::
+:::
+
+---
+
+## 💧 Zadanie 3.4: Dławienie Pary (H = const)
+
+Przed wejściem do wymiennika ciepła ciśnienie pary jest redukowane zaworem redukcyjnym (dławienie) z $10 \text{ bar}$ do $2 \text{ bar}$.
+Proces dławienia jest **izentalpowy** ($h_3 \approx h_2$).
+
+**Pytanie:** Jaka będzie temperatura pary po dławieniu?
+
+1.  Stan początkowy: $h_2 = 2943 \text{ kJ/kg}$ ($10 \text{ bar}, 250^\circ C$).
+2.  Stan końcowy: $p_3 = 2 \text{ bar}$, $h_3 = 2943 \text{ kJ/kg}$.
+
+::: {.fragment}
+**Z tablic nasycenia dla 2 bar:**
+*   $h'' = 2706 \text{ kJ/kg}$ (para nasycona).
+*   $h_3 > h''$ ($2943 > 2706$) → Nadal para **przegrzana**!
+
+**Z tablic przegrzania dla 2 bar:**
+Szukamy, przy jakiej temperaturze $h \approx 2943$.
+*   Dla $200^\circ C$: $h \approx 2870$
+*   Dla $250^\circ C$: $h \approx 2970$
+*   Interpolując: $t_3 \approx 236^\circ C$.
+
+**Wniosek:** Dławienie obniżyło ciśnienie drastycznie (10→2 bar), ale temperatura spadła nieznacznie (250→236°C). Para stała się "bardziej" przegrzana (dalej od nasycenia).
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 3)
+
+**Temat:** Kocioł Kondensacyjny?
+
+Inżynier proponuje wymianę kotła na kondensacyjny. Aby to miało sens, musimy odzyskać ciepło skraplania pary wodnej ze spalin.
+
+1.  Przy spalaniu $1 \text{ m}^3$ gazu powstaje ok. $1.6 \text{ kg}$ wody w spalinach.
+2.  Ciepło parowania wody $r \approx 2500 \text{ kJ/kg}$.
+3.  Nasz kocioł zużywa $171 \text{ m}^3/h$ gazu.
+
+**Oblicz:**
+Jaki dodatkowy strumień ciepła [kW] możemy odzyskać, jeśli skroplimy całą parę wodną ze spalin?
+O ile % wzrośnie sprawność kotłowni?

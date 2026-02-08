@@ -1,0 +1,111 @@
+---
+title: "Ćwiczenia 6: Agregat Wody Lodowej (Chiller)"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap 6 - Chłodzenie Hali
+
+Hala produkcyjna o powierzchni $2000 \text{ m}^2$ generuje $300 \text{ kW}$ zysku ciepła od maszyn.
+Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło.
+
+::: {.columns}
+::: {.column width="60%"}
+### Założenia:
+1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
+2.  **Czynnik chłodniczy:** R134a.
+3.  **Temperatura parowania:** $t_o = 2^\circ C$.
+4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
+
+**Pytania Inwestora:**
+1.  Jaką moc elektryczną pobierze sprężarka? ($N_{el}$)
+2.  Ile ciepła musimy wyrzucić na dach (skraplacz)? ($Q_k$)
+3.  Czy urządzenie będzie efektywne? ($EER$)
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## 🧊 Zadanie 6.1: Obieg Lindego na Wykresie p-h
+
+Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).
+
+### Krok 1: Odczyt z Wykresu p-h (R134a)
+1.  **Punkt 1 (Sssanie):** Para nasycona sucha ($x=1$) przy $t_o = 2^\circ C$.
+    *   $h_1 \approx 400 \text{ kJ/kg}$
+2.  **Punkt 2 (Tłoczenie):** Sprężanie izentropowe ($s=const$) do ciśnienia nasycenia $t_k = 40^\circ C$.
+    *   $s_1 \approx 1.72 \rightarrow s_2 \approx 1.72$.
+    *   $h_2 \approx 425 \text{ kJ/kg}$ (ODCZYT Z WYKRESU).
+3.  **Punkt 3 (Skraplacz):** Ciecz nasycona ($x=0$) przy $t_k = 40^\circ C$.
+    *   $h_3 \approx 256 \text{ kJ/kg}$.
+4.  **Punkt 4 (Dławienie):** Izenthalpa ($h=const$).
+    *   $h_4 = h_3 = 256 \text{ kJ/kg}$.
+
+---
+
+## ⚡ Zadanie 6.2: Bilans Energetyczny
+
+### Jednostkowe Wielkości:
+$$ q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}} $$
+(Chłodzenie użyteczne)
+
+$$ l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}} $$
+(Praca sprężania)
+
+$$ q_sk = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}} $$
+(Ciepło skraplania - odpadowe)
+
+::: {.callout-note title="Weryfikacja I Zasady"}
+$$ q_o + l_k = 144 + 25 = 169 = q_sk $$
+$$ Energia_{in} = Energia_{out} \quad (OK!) $$
+:::
+
+---
+
+## 💰 Zadanie 6.3: Moc i Efektywność
+
+### Strumień Czynnika:
+Musimy odebrać 300 kW ciepła z hali ($Q_o$).
+$$ \dot{m} = \frac{Q_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} $$
+$$ \dot{m} \approx \mathbf{2.08 \text{ kg/s}} $$
+
+### Moc Sprężarki:
+$$ N_{el} = \dot{m} \cdot l_k = 2.08 \cdot 25 $$
+$$ N_{el} \approx \mathbf{52 \text{ kW}} $$
+
+### Efektywność (COP/EER):
+$$ EER = \frac{Q_o}{N_{el}} = \frac{300}{52} $$
+$$ EER \approx \mathbf{5.77} $$
+
+::: {.callout-success}
+**Wniosek:** Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.
+:::
+
+---
+
+## 🏠 Zadanie Domowe (Raport 6)
+
+**Temat:** Rzeczywisty Obieg Chłodniczy.
+
+W praktyce występują straty i dodatkowe procesy poprawiające efektywność.
+
+1.  Aby chronić sprężarkę przed cieczą, stosuje się **Przegrzanie Par** na ssaniu o $\Delta T_{sh} = 5 K$ (czyli $t_1 = 2 + 5 = 7^\circ C$).
+2.  Aby zwiększyć wydajność, stosuje się **Dochłodzenie Cieczy** przed dławieniem o $\Delta T_{sc} = 5 K$ (czyli $t_3 = 40 - 5 = 35^\circ C$).
+
+**Zadanie:**
+Narysuj nowy obieg na wykresie p-h i oblicz nowy wskaźnik EER.
+Czy dochłodzenie poprawia, czy pogarsza sprawność?
+
+::: {.callout-tip}
+Pamiętaj: Przegrzanie zwiększa pracę sprężania ($l_k$), ale Dochłodzenie zwiększa chłodzenie użyteczne ($q_o$). Jaki będzie bilans netto?
+:::

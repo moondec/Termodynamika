@@ -1,0 +1,112 @@
+---
+title: "Ćwiczenia 4: Kogeneracja (Obieg Parowy)"
+author: "Prowadzący"
+format: 
+  revealjs:
+    slide-number: true
+    theme: simple
+    width: 1600
+    height: 900
+    logo: "../img/logo.png"
+    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+---
+
+## 🏭 Projekt: Etap 4 - Mikroturbina
+
+W poprzednim zadaniu redukowaliśmy ciśnienie pary z **10 bar** do **2 bar** na zaworze dławiącym. To strata energii (egzergii)!
+Zamiast zaworu proponujemy zainstalować **Turbinę Przeciwprężną**.
+
+::: {.columns}
+::: {.column width="60%"}
+### Twoje Zadanie:
+1.  Obliczyć teoretyczną (izentropową) pracę turbiny.
+2.  Sprawdzić stan pary na wylocie (czy jest mokra?).
+3.  Obliczyć moc elektryczną generatora.
+
+**Dane wejściowe:**
+*   Wlot: $p_1=10 \text{ bar}, t_1=250^\circ C$.
+*   Wylot: $p_2=2 \text{ bar}$.
+*   Strumień: $\dot{m}=2 \text{ t/h}$.
+:::
+::: {.column width="40%"}
+![](https://images.unsplash.com/photo-1596765798083-066cb472314a?auto=format&fit=crop&q=80&w=800)
+:::
+:::
+
+---
+
+## 🌀 Zadanie 4.1: Ekspansja Izentropowa ($s=const$)
+
+Proces w idealnej turbinie jest adiabatyczny odwracalny ($s_1 = s_2$).
+
+### Krok 1: Parametry na Wlocie (10 bar, 250°C)
+Z tablic pary przegrzanej:
+*   $h_1 = 2943 \text{ kJ/kg}$
+*   $s_1 = 6.926 \text{ kJ/kgK}$
+
+### Krok 2: Parametry na Wylocie (2 bar, s = 6.926)
+Sprawdzamy stan nasycenia dla 2 bar:
+*   $s' = 1.530$ (ciecz)
+*   $s'' = 7.127$ (para nasycona)
+
+::: {.callout-note}
+Ponieważ $s' < s_2 < s''$ ($1.530 < 6.926 < 7.127$), para na wylocie jest **Mokrą Parą Nasyconą** (mieszanina cieczy i pary).
+:::
+
+---
+
+## 💧 Zadanie 4.2: Stopień Suchości ($x_2$)
+
+Jaka część pary skropliła się w turbinie?
+
+$$ s_2 = s' + x_2 (s'' - s') $$
+$$ x_2 = \frac{s_2 - s'}{s'' - s'} $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Obliczenia:**
+$$ x_2 = \frac{6.926 - 1.530}{7.127 - 1.530} $$
+$$ x_2 = \frac{5.396}{5.597} \approx \mathbf{0.964} $$
+:::
+::: {.column width="50%"}
+**Interpretacja:**
+96.4% to para sucha, a **3.6% to kropelki wody**.
+To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się $x > 0.85-0.90$).
+:::
+:::
+
+---
+
+## ⚡ Zadanie 4.3: Moc Turbiny
+
+Obliczamy entalpię na wylocie ($h_{2s}$) dla procesu izentropowego:
+$$ h_{2s} = h' + x_2 (h'' - h') $$
+Dla 2 bar: $h' = 504.7$, $h'' = 2706.7$.
+
+$$ h_{2s} = 504.7 + 0.964 \cdot (2706.7 - 504.7) $$
+$$ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4 \text{ kJ/kg}} $$
+
+### Moc Teoretyczna ($N_t$):
+$$ N_t = \dot{m} \cdot (h_1 - h_{2s}) $$
+$$ N_t = 0.556 \text{ kg/s} \cdot (2943 - 2627.4) \text{ kJ/kg} $$
+$$ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} $$
+
+---
+
+## 💰 Zadanie Domowe (Raport 4)
+
+**Temat:** Opłacalność Kogeneracji.
+
+Zainstalowanie turbiny kosztuje **150 000 PLN**.
+Generator ma sprawność $\eta_{gen} = 90\%$.
+Cena prądu dla przemysłu: **0.80 PLN/kWh**.
+Turbina pracuje **4000 h/rok**.
+
+1.  Oblicz rzeczywistą moc elektryczną ($N_{el} = N_t \cdot \eta_{gen}$).
+2.  Oblicz roczną produkcję energii [MWh].
+3.  Oblicz roczny zysk [PLN].
+4.  Oblicz czas zwrotu inwestycji (SPBT).
+
+::: {.callout-tip}
+Czy opłaca się montować turbinę? Porównaj z kosztem dławienia pary na zaworze (0 PLN zysku).
+:::
