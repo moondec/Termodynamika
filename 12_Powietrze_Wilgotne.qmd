@@ -813,28 +813,28 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ## Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
 
-::: {.callout-important title="Definicja" appearance="simple"}
-**Współczynnik kierunkowy** $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
+::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
+$\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
 $$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] $$
 :::
 
 ::: {.columns}
-::: {.column width="55%"}
+::: {.column width="60%"}
 **Interpretacja fizyczna:**
 
 $\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.85em;"}
 | Medium | $\varepsilon$ | Kierunek na wykresie |
 |--------|---------------|----------------------|
-| Lód / chłodzenie z osuszaniem | < 0 (np. -1000) | w dół-prawo ↘ |
-| Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↗ |
+| Lód / chłodzenie z osuszaniem | < 0 (np. -1000) | stromo w dół ↓↘ |
+| Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↘ |
 | Para nasycona (100°C) | ≈ 2500 | prawie poziomo → |
 | Para przegrzana | > 2500 (np. 4500) | lekko w górę ↗ |
 | Czyste ciepło (bez wilgoci) | ∞ | pionowo ↑ |
 :::
 :::
-::: {.column width="45%"}
+::: {.column width="40%"}
 ::: {.fragment}
 **Bilans energii:**
 $$ \dot{m}_g (h_2 - h_1) = \dot{m}_w \cdot h_w $$
