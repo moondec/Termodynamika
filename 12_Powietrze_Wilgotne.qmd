@@ -112,6 +112,9 @@ $$ X = \frac{m_p}{m_g} = 0.622 \frac{p_p}{p - p_p} \quad [\frac{kg_{H2O}}{kg_{su
 
 *   **Kluczowe:** W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc **$X = const$** (jeśli nie nawilżamy).
 
+0.622 to stosunek mas molowych pary wodnej do powietrza suchego:
+$$ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622$$
+
 :::
 
 ---
@@ -157,9 +160,11 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 :::
 
 ### Interpretacja Linii:{.fragment}
-::: {.fragment}
-1.  **Izotermy ($t$):** Lekko wznoszą się w prawo.
+::: {.fragment style="font-size: .8em;"}
+1.  **Izotermy ($t$):** Lekko wznoszą się w prawo, a po zetknięciu z krzywą $varphi = 100%$ opadają równolegle do izentalp.
 2.  **Krzywe $\varphi$:** Układają się "bananowo" nad krzywą graniczną.
+3.  **Izentalpy ($h$):** nachylone pod kątem ~135°.
+4.  **Linie Randa** (promienie z "bieguna") to linie nachylenie wektora przemiany względem osi X (zależne od medium nawilżającego).
 :::
 
 ---
@@ -725,92 +730,6 @@ ggplot() +
 
 ---
 
-## 6. Pomiar Parametrów Powietrza
-
-::: {.columns}
-::: {.column width="50%"}
-### Psychrometr Augusta/Assmana
-Dwa termometry:
-
-1.  **Suchy ($t$):** Mierzy temp. powietrza.
-2.  **Zwilżony ($t_m$):** Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.
-
-*   **Zasada:** Im suchsze powietrze, tym intensywniejsze parowanie i niższa $t_m$.
-*   Różnica psychrometryczna $(t - t_m)$ pozwala odczytać $\varphi$.
-:::
-
-::: {.column width="50%"}
-### Higrometry
-
-::: {.fragment}
-*   **Włosowe:** (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.
-*   **Pojemnościowe:** Zmiana stałej dielektrycznej polimeru.
-*   **Punktu rosy:** Lusterko schładzane aż do pojawienia się rosy.
-:::
-:::
-:::
-
----
-
-## Aparaty i Zastosowania
-
-::: {}
-### Urządzenia (AHU - Air Handling Unit)
-*   **Nawilżacze:** Parowe (higieniczne), Zraszane (adiabatyczne - chłodzą!).
-*   **Osuszacze:** Chłodnicze (wykraplanie), Adsorpcyjne (rotor z żelem krzemionkowym).
-*   **Wymienniki:** Nagrzewnice i chłodnice.
-:::
-
-::: {.fragment}
-### Zastosowania
-*   **Klimatyzacja komfortu:** $t \approx 20-24^\circ C$, $\varphi \approx 40-60\%$.
-*   **Technologia:** Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
-*   **Wentylacja:** Usuwanie zanieczyszczeń i wilgoci.
-*   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
-:::
-
-::: {.fragment .absolute top=0% left=20% width=70% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
-![](img/Small-Air-Handling-Units-SENV-1591216654.jpg)
-::: 
-
----
-
-## 7. Bilans Masy i Energii
-
-Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:
-
-::: {.callout-important title="Równanie Ciągłości (Bilans Masy Wilgoci)"}
-$$ \dot{m}_{g1} \cdot X_1 + \dot{m}_{g2} \cdot X_2 = \dot{m}_{g3} \cdot X_3 $$
-Masa pary wodnej w strumieniu wynikowym jest sumą mas cząstkowych.
-:::
-
-::: {.fragment .callout-note title="Bilans Entalpii (Bilans Energii)"}
-$$ \dot{m}_{g1} \cdot h_1 + \dot{m}_{g2} \cdot h_2 = \dot{m}_{g3} \cdot h_3 $$
-Energia całkowita układu zostaje zachowana (proces adiabatyczny).
-:::
-
----
-
-## Przykłady Obliczeniowe
-
-::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
-**Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
-
-1.  Z tablic $p_s(25) = 3.17$ kPa $\rightarrow p_p = 0.5 \cdot 3.17 = 1.585$ kPa.
-2.  Ponieważ $X=const$, to $p_p$ się nie zmienia!
-3.  Z tablic $p_s(35) = 5.63$ kPa.
-4.  Nowa wilgotność: $\varphi_2 = \frac{1.585}{5.63} \approx 28.2\%$.
-**Wniosek:** Ogrzewanie silnie wysusza powietrze (względnie).
-:::
-
-::: {.fragment .callout-tip title="Zadanie 2: Parametry Powietrza"}
-**Dane:** $p=110$ kPa, $t=30^\circ C$, $\varphi=60\%$.
-*   $p_s=4.24$ kPa $\rightarrow p_p = 2.54$ kPa.
-*   $X = 0.622 \frac{2.54}{110-2.54} \approx 14.7$ g/kg.
-:::
-
----
-
 ## Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
 
 ::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
@@ -1181,6 +1100,91 @@ ggplot() +
 :::
 :::
 
+---
+
+## 6. Pomiar Parametrów Powietrza
+
+::: {.columns}
+::: {.column width="50%"}
+### Psychrometr Augusta/Assmana
+Dwa termometry:
+
+1.  **Suchy ($t$):** Mierzy temp. powietrza.
+2.  **Zwilżony ($t_m$):** Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.
+
+*   **Zasada:** Im suchsze powietrze, tym intensywniejsze parowanie i niższa $t_m$.
+*   Różnica psychrometryczna $(t - t_m)$ pozwala odczytać $\varphi$.
+:::
+
+::: {.column width="50%"}
+### Higrometry
+
+::: {.fragment}
+*   **Włosowe:** (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.
+*   **Pojemnościowe:** Zmiana stałej dielektrycznej polimeru.
+*   **Punktu rosy:** Lusterko schładzane aż do pojawienia się rosy.
+:::
+:::
+:::
+
+---
+
+## Aparaty i Zastosowania
+
+::: {}
+### Urządzenia (AHU - Air Handling Unit)
+*   **Nawilżacze:** Parowe (higieniczne), Zraszane (adiabatyczne - chłodzą!).
+*   **Osuszacze:** Chłodnicze (wykraplanie), Adsorpcyjne (rotor z żelem krzemionkowym).
+*   **Wymienniki:** Nagrzewnice i chłodnice.
+:::
+
+::: {.fragment}
+### Zastosowania
+*   **Klimatyzacja komfortu:** $t \approx 20-24^\circ C$, $\varphi \approx 40-60\%$.
+*   **Technologia:** Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
+*   **Wentylacja:** Usuwanie zanieczyszczeń i wilgoci.
+*   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
+:::
+
+::: {.fragment .absolute top=0% left=20% width=70% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
+![](img/Small-Air-Handling-Units-SENV-1591216654.jpg)
+::: 
+
+---
+
+## 7. Bilans Masy i Energii
+
+Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:
+
+::: {.callout-important title="Równanie Ciągłości (Bilans Masy Wilgoci)"}
+$$ \dot{m}_{g1} \cdot X_1 + \dot{m}_{g2} \cdot X_2 = \dot{m}_{g3} \cdot X_3 $$
+Masa pary wodnej w strumieniu wynikowym jest sumą mas cząstkowych.
+:::
+
+::: {.fragment .callout-note title="Bilans Entalpii (Bilans Energii)"}
+$$ \dot{m}_{g1} \cdot h_1 + \dot{m}_{g2} \cdot h_2 = \dot{m}_{g3} \cdot h_3 $$
+Energia całkowita układu zostaje zachowana (proces adiabatyczny).
+:::
+
+---
+
+## Przykłady Obliczeniowe
+
+::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
+**Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
+
+1.  Z tablic $p_s(25) = 3.17$ kPa $\rightarrow p_p = 0.5 \cdot 3.17 = 1.585$ kPa.
+2.  Ponieważ $X=const$, to $p_p$ się nie zmienia!
+3.  Z tablic $p_s(35) = 5.63$ kPa.
+4.  Nowa wilgotność: $\varphi_2 = \frac{1.585}{5.63} \approx 28.2\%$.
+**Wniosek:** Ogrzewanie silnie wysusza powietrze (względnie).
+:::
+
+::: {.fragment .callout-tip title="Zadanie 2: Parametry Powietrza"}
+**Dane:** $p=110$ kPa, $t=30^\circ C$, $\varphi=60\%$.
+*   $p_s=4.24$ kPa $\rightarrow p_p = 2.54$ kPa.
+*   $X = 0.622 \frac{2.54}{110-2.54} \approx 14.7$ g/kg.
+:::
 
 
 ---
