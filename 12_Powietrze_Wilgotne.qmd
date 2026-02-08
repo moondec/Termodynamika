@@ -809,69 +809,73 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
-## Przemiana 1: Mieszanie Dwóch Strumieni Powietrza
+## Przemiana 1: Mieszanie Strumieni Powietrza
 
-::: {.callout-note title="Zasada" appearance="simple"}
-Przy adiabatycznym mieszaniu dwóch strumieni powietrza o różnych stanach (1 i 2), stan wynikowy (M) leży **na odcinku łączącym punkty 1 i 2** na wykresie h-X. Położenie punktu M zależy od stosunku masowego strumieni.
+::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
 :::
 
 ::: {.columns}
-::: {.column width="45%"}
-**Bilans masy powietrza suchego:**
-$$ \dot{m}_{g,M} = \dot{m}_{g,1} + \dot{m}_{g,2} $$
+::: {.column width="35%"}
+**Bilansy:**
 
-**Bilans wilgoci:**
-$$ X_M = \frac{\dot{m}_{g,1} X_1 + \dot{m}_{g,2} X_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
+$$ X_M = \frac{\dot{m}_1 X_1 + \dot{m}_2 X_2}{\dot{m}_1 + \dot{m}_2} $$
 
-**Bilans entalpii:**
-$$ h_M = \frac{\dot{m}_{g,1} h_1 + \dot{m}_{g,2} h_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
-
-::: {.fragment}
-**Reguła dźwigni:**
-$$ \frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}} $$
+$$ h_M = \frac{\dot{m}_1 h_1 + \dot{m}_2 h_2}{\dot{m}_1 + \dot{m}_2} $$
 :::
-:::
-::: {.column width="55%"}
+::: {.column width="65%"}
 ```{r}
 #| label: mix-two-streams
 #| echo: false
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 9
+#| fig-height: 7
 #| fig-align: center
 
-# Punkty stanu
-p1 <- list(x = 5, t = 15)   # Zimne powietrze zewnętrzne
-p2 <- list(x = 12, t = 35)  # Ciepłe powietrze wewnętrzne
-# Proporcja mieszania (60% strumień 1, 40% strumień 2)
-r <- 0.6
-pM <- list(x = r*p1$x + (1-r)*p2$x, t = r*p1$t + (1-r)*p2$t)
-
-# Transformacja wizualna
+# Stałe i funkcje
 vis_slope <- 0.08
 transform_vis <- function(t, x) t + vis_slope * x
+
+# Punkty stanu
+p1 <- list(x = 5, t = 15)
+p2 <- list(x = 12, t = 35)
+r <- 0.6
+pM <- list(x = r*p1$x + (1-r)*p2$x, t = r*p1$t + (1-r)*p2$t)
 
 p1v <- list(x = p1$x, t = transform_vis(p1$t, p1$x))
 p2v <- list(x = p2$x, t = transform_vis(p2$t, p2$x))
 pMv <- list(x = pM$x, t = transform_vis(pM$t, pM$x))
 
-# Wykres bazowy (uproszczony)
+# Krzywe RH
+rh_levels <- c(0.4, 0.6, 0.8, 1.0)
+t_seq <- seq(5, 45, by = 0.5)
+df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
+    x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+        filter(!is.na(x_g), x_g <= 25) %>%
+        mutate(t_vis = transform_vis(t, x_g))
+}))
+
 ggplot() +
+    # Krzywe RH
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
+    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
     # Linia mieszania
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
-                 color = "purple", size = 1.5, linetype = "dashed") +
+                 color = "purple", size = 2, linetype = "dashed") +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 5) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "red", size = 5) +
-    geom_point(aes(x = pMv$x, y = pMv$t), color = "green4", size = 6, shape = 18) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 8) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = "red", size = 8) +
+    geom_point(aes(x = pMv$x, y = pMv$t), color = "green4", size = 10, shape = 18) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 3, label = "1 (zewn.)", color = "blue", size = 5, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t + 3, label = "2 (wewn.)", color = "red", size = 5, fontface = "bold") +
-    annotate("text", x = pMv$x + 1, y = pMv$t - 2, label = "M (mieszanina)", color = "green4", size = 5, fontface = "bold") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "blue", size = 10, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = "red", size = 10, fontface = "bold") +
+    annotate("text", x = pMv$x + 2, y = pMv$t - 3, label = "M", color = "green4", size = 10, fontface = "bold") +
     # Osie
     scale_x_continuous(limits = c(0, 25), breaks = seq(0, 25, 5)) +
-    scale_y_continuous(limits = c(10, 45), breaks = seq(10, 45, 5)) +
-    labs(x = "X [g/kg]", y = "t [°C]", title = "Mieszanie adiabatyczne") +
-    theme_minimal(base_size = 16) +
+    scale_y_continuous(limits = c(10, 50), breaks = seq(10, 50, 5)) +
+    labs(x = "X [g/kg]", y = "t [°C]") +
+    theme_minimal(base_size = 22) +
+    theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
@@ -879,63 +883,77 @@ ggplot() +
 
 ---
 
-## Przemiana 2: Nawilżanie Powietrza Parą Wodną
+## Przemiana 2: Nawilżanie Parą Wodną
 
-::: {.callout-note title="Zasada" appearance="simple"}
-Przy nawilżaniu **parą nasyconą** ($h_w \approx 2500$ kJ/kg) kierunek przemiany jest niemal **poziomy** (wzdłuż izotermy). Temperatura powietrza prawie się nie zmienia, rośnie tylko zawilżenie $X$.
+::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+Przy nawilżaniu **parą** ($h_w \approx 2500$ kJ/kg) przemiana biegnie **prawie poziomo** (wzdłuż izotermy). $\varepsilon = h_w \approx 2500$ kJ/kg.
 :::
 
 ::: {.columns}
-::: {.column width="45%"}
-**Bilans masy:**
-$$ \dot{m}_{g} X_1 + \dot{m}_p = \dot{m}_{g} X_2 $$
-$$ \Delta X = X_2 - X_1 = \frac{\dot{m}_p}{\dot{m}_g} $$
+::: {.column width="35%"}
+**Bilansy:**
 
-**Bilans entalpii:**
-$$ \dot{m}_{g} h_1 + \dot{m}_p h_w = \dot{m}_{g} h_2 $$
+$$ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} $$
+
+$$ \Delta h = h_w \cdot \Delta X $$
 
 ::: {.fragment}
-**Współczynnik kierunkowy:**
-$$ \varepsilon = \frac{\Delta h}{\Delta X} = h_w \approx 2500 \text{ kJ/kg} $$
-*(Linia Randa dla pary)*
+Temperatura prawie stała!
 :::
 :::
-::: {.column width="55%"}
+::: {.column width="65%"}
 ```{r}
 #| label: steam-humidification
 #| echo: false
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 9
+#| fig-height: 7
 #| fig-align: center
 
-# Stan początkowy
+# Stan początkowy i końcowy
 p1 <- list(x = 5, t = 25)
-# Stan końcowy (nawilżone parą - prawie ta sama temperatura)
-p2 <- list(x = 15, t = 25.5) # Lekki wzrost t przez przegrzanie pary
+p2 <- list(x = 18, t = 25.8)
 
-# Transformacja wizualna
 p1v <- list(x = p1$x, t = transform_vis(p1$t, p1$x))
 p2v <- list(x = p2$x, t = transform_vis(p2$t, p2$x))
 
+# Krzywe RH
+rh_levels <- c(0.4, 0.6, 0.8, 1.0)
+t_seq <- seq(10, 45, by = 0.5)
+df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
+    x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+        filter(!is.na(x_g), x_g <= 30) %>%
+        mutate(t_vis = transform_vis(t, x_g))
+}))
+
+# Izoterma t=25
+iso_t <- 25
+iso_x <- seq(0, 25, by = 1)
+df_iso <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t, iso_x))
+
 ggplot() +
+    # Izoterma
+    geom_line(data = df_iso, aes(x = x_g, y = t_vis), color = "orange", size = 1.2, linetype = "dotted") +
+    annotate("text", x = 22, y = transform_vis(iso_t, 22) + 2, label = "t = 25°C", color = "orange", size = 6) +
+    # Krzywe RH
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
+    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
     # Strzałka przemiany
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
-                 arrow = arrow(length = unit(0.4, "cm")),
-                 color = "darkgreen", size = 1.5) +
+                 arrow = arrow(length = unit(0.5, "cm")),
+                 color = "darkgreen", size = 2) +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 5) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "green4", size = 5) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 8) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = "green4", size = 8) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 3, label = "1 (suche)", color = "blue", size = 5, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t + 3, label = "2 (nawilżone)", color = "green4", size = 5, fontface = "bold") +
-    # Informacja o kierunku
-    annotate("text", x = 10, y = p1v$t - 5, label = "ε ≈ 2500 kJ/kg\n(prawie izoterma)", 
-             color = "gray30", size = 4, fontface = "italic") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "blue", size = 10, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = "green4", size = 10, fontface = "bold") +
     # Osie
-    scale_x_continuous(limits = c(0, 25), breaks = seq(0, 25, 5)) +
-    scale_y_continuous(limits = c(15, 40), breaks = seq(15, 40, 5)) +
-    labs(x = "X [g/kg]", y = "t [°C]", title = "Nawilżanie parą wodną") +
-    theme_minimal(base_size = 16) +
+    scale_x_continuous(limits = c(0, 30), breaks = seq(0, 30, 5)) +
+    scale_y_continuous(limits = c(15, 45), breaks = seq(15, 45, 5)) +
+    labs(x = "X [g/kg]", y = "t [°C]") +
+    theme_minimal(base_size = 22) +
+    theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
@@ -945,73 +963,80 @@ ggplot() +
 
 ## Przemiana 3: Cykl Suszarniczy
 
-::: {.callout-note title="Zasada" appearance="simple"}
-**Suszenie konwekcyjne** polega na: (A) podgrzaniu powietrza (wzrost $t$, spadek $\varphi$, $X=const$), a następnie (B) przepuszczeniu go przez wilgotny materiał (spadek $t$, wzrost $X$, proces adiabatyczny - wzdłuż izentalpy).
+::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+**(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
 :::
 
 ::: {.columns}
-::: {.column width="45%"}
-**Etap A: Podgrzewanie (nagrzewnica)**
-*   $X_A = X_0$ (brak wymiany wilgoci)
-*   $t_A > t_0$ (wzrost temperatury)
-*   $\varphi_A \ll \varphi_0$ (suche powietrze)
+::: {.column width="35%"}
+**Etap A:** $X_A = X_0$, $t \uparrow$
 
-**Etap B: Suszenie (komora suszarnicza)**
-*   $h_B \approx h_A$ (izentalpa, adiabata)
-*   $X_B > X_A$ (pobranie wilgoci z materiału)
-*   $t_B < t_A$ (ochłodzenie przez odparowanie)
+**Etap B:** $h_B \approx h_A$, $X \uparrow$, $t \downarrow$
 
 ::: {.fragment}
-**Sprawność procesu** zależy od różnicy $(X_B - X_0)$.
+Sprawność: $\eta \sim (X_B - X_0)$
 :::
 :::
-::: {.column width="55%"}
+::: {.column width="65%"}
 ```{r}
 #| label: drying-cycle
 #| echo: false
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 9
+#| fig-height: 7
 #| fig-align: center
 
-# Stan 0: Powietrze atmosferyczne
+# Stany
 p0 <- list(x = 8, t = 20)
-# Stan A: Po nagrzewnicy
 pA <- list(x = 8, t = 60)
-# Stan B: Po komorze suszarniczej (wzdłuż izentalpy)
-# h = const => t spadło, X wzrosło
-# Przyjmijmy X_B = 25 g/kg
-pB <- list(x = 25, t = 30) # Uproszczenie - dokładne wartości wymagają obliczeń
+pB <- list(x = 28, t = 28)
 
-# Transformacja wizualna
 p0v <- list(x = p0$x, t = transform_vis(p0$t, p0$x))
 pAv <- list(x = pA$x, t = transform_vis(pA$t, pA$x))
 pBv <- list(x = pB$x, t = transform_vis(pB$t, pB$x))
 
+# Krzywe RH
+rh_levels <- c(0.4, 0.6, 0.8, 1.0)
+t_seq <- seq(10, 70, by = 0.5)
+df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
+    x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+        filter(!is.na(x_g), x_g <= 40) %>%
+        mutate(t_vis = transform_vis(t, x_g))
+}))
+
+# Izentalpa przez punkt A (h = const)
+h_A <- CONSTANTS$cp_dry * pA$t + (pA$x/1000) * (CONSTANTS$r_0 + CONSTANTS$cp_vap * pA$t)
+iso_x <- seq(5, 35, by = 1)
+iso_t_phys <- (h_A - (iso_x/1000) * CONSTANTS$r_0) / (CONSTANTS$cp_dry + (iso_x/1000) * CONSTANTS$cp_vap)
+df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
+
 ggplot() +
-    # Etap A: Podgrzewanie (pionowo w górę)
+    # Izentalpa
+    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
+    annotate("text", x = 32, y = df_isoH$t_vis[nrow(df_isoH)] + 2, label = "h = const", color = "darkgreen", size = 6) +
+    # Krzywe RH
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
+    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    # Etap A
     geom_segment(aes(x = p0v$x, y = p0v$t, xend = pAv$x, yend = pAv$t),
-                 arrow = arrow(length = unit(0.3, "cm")),
-                 color = "red", size = 1.5) +
-    # Etap B: Suszenie (wzdłuż izentalpy - w dół w prawo)
+                 arrow = arrow(length = unit(0.4, "cm")), color = "red", size = 2) +
+    # Etap B
     geom_segment(aes(x = pAv$x, y = pAv$t, xend = pBv$x, yend = pBv$t),
-                 arrow = arrow(length = unit(0.3, "cm")),
-                 color = "blue", size = 1.5) +
+                 arrow = arrow(length = unit(0.4, "cm")), color = "blue", size = 2) +
     # Punkty
-    geom_point(aes(x = p0v$x, y = p0v$t), color = "gray40", size = 5) +
-    geom_point(aes(x = pAv$x, y = pAv$t), color = "red", size = 5) +
-    geom_point(aes(x = pBv$x, y = pBv$t), color = "blue", size = 5) +
+    geom_point(aes(x = p0v$x, y = p0v$t), color = "gray30", size = 8) +
+    geom_point(aes(x = pAv$x, y = pAv$t), color = "red", size = 8) +
+    geom_point(aes(x = pBv$x, y = pBv$t), color = "blue", size = 8) +
     # Etykiety
-    annotate("text", x = p0v$x - 2, y = p0v$t, label = "0 (atmosf.)", color = "gray40", size = 4, fontface = "bold", hjust = 1) +
-    annotate("text", x = pAv$x - 2, y = pAv$t, label = "A (po nagrzew.)", color = "red", size = 4, fontface = "bold", hjust = 1) +
-    annotate("text", x = pBv$x + 1, y = pBv$t, label = "B (wylot suszarni)", color = "blue", size = 4, fontface = "bold", hjust = 0) +
-    # Opisy etapów
-    annotate("text", x = p0v$x + 1, y = (p0v$t + pAv$t)/2, label = "A: Ogrzewanie\n(X = const)", color = "red", size = 3.5, hjust = 0) +
-    annotate("text", x = (pAv$x + pBv$x)/2, y = pAv$t - 5, label = "B: Suszenie\n(h ≈ const)", color = "blue", size = 3.5) +
+    annotate("text", x = p0v$x - 1, y = p0v$t, label = "0", color = "gray30", size = 10, fontface = "bold", hjust = 1) +
+    annotate("text", x = pAv$x - 1, y = pAv$t, label = "A", color = "red", size = 10, fontface = "bold", hjust = 1) +
+    annotate("text", x = pBv$x + 1, y = pBv$t, label = "B", color = "blue", size = 10, fontface = "bold", hjust = 0) +
     # Osie
-    scale_x_continuous(limits = c(0, 35), breaks = seq(0, 35, 5)) +
-    scale_y_continuous(limits = c(15, 70), breaks = seq(15, 70, 5)) +
-    labs(x = "X [g/kg]", y = "t [°C]", title = "Cykl suszarniczy") +
-    theme_minimal(base_size = 16) +
+    scale_x_continuous(limits = c(0, 40), breaks = seq(0, 40, 5)) +
+    scale_y_continuous(limits = c(15, 75), breaks = seq(15, 75, 10)) +
+    labs(x = "X [g/kg]", y = "t [°C]") +
+    theme_minimal(base_size = 22) +
+    theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
@@ -1021,65 +1046,78 @@ ggplot() +
 
 ## Nawilżanie Adiabatyczne (Wodą)
 
-::: {.callout-note title="Zasada" appearance="simple"}
-Przy nawilżaniu **wodą** ($h_w \approx 0$ kJ/kg dla wody w temp. otoczenia) kierunek przemiany biegnie **wzdłuż izentalpy** (linia Randa $\varepsilon \approx 0$). Temperatura powietrza **spada**, wilgotność rośnie. Jest to podstawa działania **chłodni kominowych** i **klimatyzatorów ewaporacyjnych**.
+::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+Nawilżanie **wodą** ($h_w \approx 0$) → przemiana **wzdłuż izentalpy** ($\varepsilon \approx 0$). Temperatura spada do $t_m$ (mokry termometr).
 :::
 
 ::: {.columns}
-::: {.column width="45%"}
-**Bilans entalpii:**
-$$ \dot{m}_{g} h_1 + \dot{m}_w c_w t_w \approx \dot{m}_{g} h_2 $$
+::: {.column width="35%"}
+**Bilans:**
 
-Ponieważ $c_w t_w \ll r_0$:
 $$ h_1 \approx h_2 $$
 
 ::: {.fragment}
-**Współczynnik kierunkowy:**
-$$ \varepsilon = \frac{\Delta h}{\Delta X} \approx 0 $$
-*(Proces wzdłuż izentalpy)*
+Chłodzenie ewaporacyjne!
 :::
 
 ::: {.fragment}
-**Temperatura graniczna:** Temperatura mokrego termometru $t_m$ (najniższa możliwa do osiągnięcia).
+Zastosowania: chłodnie kominowe, klimatyzatory ewaporacyjne.
 :::
 :::
-::: {.column width="55%"}
+::: {.column width="65%"}
 ```{r}
 #| label: adiabatic-humidification
 #| echo: false
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 9
+#| fig-height: 7
 #| fig-align: center
 
-# Stan początkowy (gorące suche powietrze)
-p1 <- list(x = 8, t = 35)
-# Stan końcowy (ochłodzone nawilżone - wzdłuż izentalpy)
-# h = const, X rośnie, t spada
-p2 <- list(x = 20, t = 22) # Uproszczenie
+# Stany
+p1 <- list(x = 8, t = 40)
+p2 <- list(x = 22, t = 23)
 
-# Transformacja wizualna
 p1v <- list(x = p1$x, t = transform_vis(p1$t, p1$x))
 p2v <- list(x = p2$x, t = transform_vis(p2$t, p2$x))
 
+# Krzywe RH
+rh_levels <- c(0.4, 0.6, 0.8, 1.0)
+t_seq <- seq(10, 55, by = 0.5)
+df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
+    x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+        filter(!is.na(x_g), x_g <= 35) %>%
+        mutate(t_vis = transform_vis(t, x_g))
+}))
+
+# Izentalpa przez punkt 1
+h_1 <- CONSTANTS$cp_dry * p1$t + (p1$x/1000) * (CONSTANTS$r_0 + CONSTANTS$cp_vap * p1$t)
+iso_x <- seq(5, 30, by = 1)
+iso_t_phys <- (h_1 - (iso_x/1000) * CONSTANTS$r_0) / (CONSTANTS$cp_dry + (iso_x/1000) * CONSTANTS$cp_vap)
+df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
+
 ggplot() +
-    # Strzałka przemiany (wzdłuż izentalpy)
+    # Izentalpa
+    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
+    annotate("text", x = 27, y = df_isoH$t_vis[nrow(df_isoH)] + 2, label = "h = const", color = "darkgreen", size = 6) +
+    # Krzywe RH
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
+    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    # Strzałka przemiany
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
-                 arrow = arrow(length = unit(0.4, "cm")),
-                 color = "steelblue", size = 1.5) +
+                 arrow = arrow(length = unit(0.5, "cm")),
+                 color = "steelblue", size = 2) +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "red", size = 5) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "blue", size = 5) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = "red", size = 8) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = "blue", size = 8) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 3, label = "1 (gorące suche)", color = "red", size = 5, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t - 3, label = "2 (chłodne wilgotne)", color = "blue", size = 5, fontface = "bold") +
-    # Informacja o kierunku
-    annotate("text", x = 14, y = p1v$t + 5, label = "ε ≈ 0 kJ/kg\n(wzdłuż izentalpy)", 
-             color = "gray30", size = 4, fontface = "italic") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "red", size = 10, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t - 4, label = "2", color = "blue", size = 10, fontface = "bold") +
     # Osie
-    scale_x_continuous(limits = c(0, 30), breaks = seq(0, 30, 5)) +
-    scale_y_continuous(limits = c(15, 50), breaks = seq(15, 50, 5)) +
-    labs(x = "X [g/kg]", y = "t [°C]", title = "Nawilżanie adiabatyczne (wodą)") +
-    theme_minimal(base_size = 16) +
+    scale_x_continuous(limits = c(0, 35), breaks = seq(0, 35, 5)) +
+    scale_y_continuous(limits = c(15, 55), breaks = seq(15, 55, 5)) +
+    labs(x = "X [g/kg]", y = "t [°C]") +
+    theme_minimal(base_size = 22) +
+    theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
