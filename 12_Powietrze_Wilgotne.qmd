@@ -50,9 +50,9 @@ editor: source
 ## Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Skład Powietrza Wilgotnego** (Prawo Daltona)
-2.  **Parametry Wilgotności** ($\varphi$, $x$)
+2.  **Parametry Wilgotności** ($\varphi$, X)
 3.  **Entalpia Powietrza Wilgotnego** ($h$)
-4.  **Konstrukcja Wykresu Molliera h-x**
+4.  **Konstrukcja Wykresu Molliera h-X**
 5.  **Przemiany Charakterystyczne**
 6.  **Pomiary i Aparatura** (Psychrometry, Nawilżacze)
 7.  **Bilans Masy i Energii**
@@ -85,19 +85,21 @@ $p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząs
 
 ## 2. Parametry Wilgotności{auto-animate=true auto-animate-easing="ease-in-out"}
 
-Inżynierowie używają dwóch definicji wilgotności:
+Inżynierowie (i nie tylko) używają dwóch definicji wilgotności:
 
 ::: {.callout-tip title="Wilgotność Względna (Relative Humidity)"}
 Określa, jak blisko jesteśmy stanu nasycenia (mgły).
 $$ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% $$
 
+::: {style="font-size: .7em;"}
 *   $\varphi = 0\%$: Powietrze suche.
 *   $\varphi = 100\%$: Punkt rosy (powietrze nasycone).
 :::
+:::
 
-:::{.fragment .callout-note appearance="simple" style="font-size: .9em;"}
-W meteoroligii wilgotność bezwzględną definiuje się jako stosunek masy pary wodnej do objętości powietrza.
-$$ \rho_p = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
+:::{.fragment .callout-note title="Wilgotność Bezwzględna" style="font-size: .9em;"}
+Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza.
+$$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
 :::
 ---
 
@@ -809,6 +811,44 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
+## Współczynnik Kierunkowy Przemiany ($\varepsilon$)
+
+::: {.callout-important title="Definicja" appearance="simple"}
+**Współczynnik kierunkowy** $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
+$$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] $$
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+**Interpretacja fizyczna:**
+
+$\varepsilon$ odpowiada **entalpii właściwej medium** dodawanego do powietrza ($h_w$).
+
+::: {.fragment}
+| Medium | $h_w$ | $\varepsilon$ | Kierunek |
+|--------|-------|---------------|----------|
+| Woda ciekła (~20°C) | ~84 kJ/kg | ≈ 0 | wzdłuż izentalpy |
+| Para nasycona | ~2500 kJ/kg | ≈ 2500 | prawie poziomo |
+| Czyste ciepło | ∞ | ∞ | pionowo |
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+**Bilans energii:**
+$$ \dot{m}_g (h_2 - h_1) = \dot{m}_w \cdot h_w $$
+
+**Stąd:**
+$$ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = h_w $$
+:::
+
+::: {.fragment .callout-tip title="Skala Randa" style="font-size: 0.85em;"}
+Na wykresie Molliera linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to właśnie **skala Randa** widoczna na głównym wykresie h-X.
+:::
+:::
+:::
+
+---
+
 ## Przemiana 1: Mieszanie Strumieni Powietrza
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
@@ -822,6 +862,10 @@ Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku maso
 $$ X_M = \frac{\dot{m}_1 X_1 + \dot{m}_2 X_2}{\dot{m}_1 + \dot{m}_2} $$
 
 $$ h_M = \frac{\dot{m}_1 h_1 + \dot{m}_2 h_2}{\dot{m}_1 + \dot{m}_2} $$
+
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
+**Rekuperacja:** Odzysk ciepła w centralach wentylacyjnych. **Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym. **Wentylacja:** Rozcieńczanie zanieczyszczeń.
+:::
 :::
 ::: {.column width="65%"}
 ```{r}
@@ -881,9 +925,7 @@ ggplot() +
 :::
 :::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
-**Rekuperacja:** Odzysk ciepła w centralach wentylacyjnych. **Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym. **Wentylacja:** Rozcieńczanie zanieczyszczeń.
-:::
+
 
 ---
 
@@ -903,6 +945,9 @@ $$ \Delta h = h_w \cdot \Delta X $$
 
 ::: {.fragment}
 Temperatura prawie stała!
+:::
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
+**Klimatyzacja zimowa:** Nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** Utrzymanie wilgotności włókien. **Drukarnie:** Zapobieganie elektryzowaniu papieru.
 :::
 :::
 ::: {.column width="65%"}
@@ -963,9 +1008,7 @@ ggplot() +
 :::
 :::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
-**Klimatyzacja zimowa:** Nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** Utrzymanie wilgotności włókien. **Drukarnie:** Zapobieganie elektryzowaniu papieru.
-:::
+
 
 ---
 
@@ -983,6 +1026,9 @@ ggplot() +
 
 ::: {.fragment}
 Sprawność: $\eta \sim (X_B - X_0)$
+:::
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
+**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Pasta, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
 :::
 :::
 ::: {.column width="65%"}
@@ -1050,9 +1096,7 @@ ggplot() +
 :::
 :::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
-**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Pasta, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
-:::
+
 
 ---
 
@@ -1072,8 +1116,8 @@ $$ h_1 \approx h_2 $$
 Chłodzenie ewaporacyjne!
 :::
 
-::: {.fragment}
-Zastosowania: chłodnie kominowe, klimatyzatory ewaporacyjne.
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
+**Chłodnie kominowe:** Odprowadzanie ciepła z elektrowni. **Klimatyzatory ewaporacyjne:** Tanie chłodzenie w suchym klimacie. **Przemysł tekstylny:** Nawilżanie hal produkcyjnych.
 :::
 :::
 ::: {.column width="65%"}
@@ -1135,9 +1179,7 @@ ggplot() +
 :::
 :::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.8em;"}
-**Chłodnie kominowe:** Odprowadzanie ciepła z elektrowni. **Klimatyzatory ewaporacyjne:** Tanie chłodzenie w suchym klimacie. **Przemysł tekstylny:** Nawilżanie hal produkcyjnych.
-:::
+
 
 ---
 
