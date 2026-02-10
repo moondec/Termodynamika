@@ -160,15 +160,20 @@ Zamiast pobierać 100% powietrza zewnętrznego, stosujemy **recyrkulację**: 70%
 $$ t_M = 0.3 \cdot t_Z + 0.7 \cdot t_W = 0.3 \cdot 32 + 0.7 \cdot 22 = \mathbf{25.0^\circ C} $$
 $$ X_M = 0.3 \cdot X_Z + 0.7 \cdot X_W = 0.3 \cdot 13.5 + 0.7 \cdot 8.4 = 4.05 + 5.88 = \mathbf{9.93 \text{ g/kg}} $$
 
-::: {.fragment}
-**Oszczędność:**
+---
+
+## 🔄 Zadanie 8.6 (cd.): Analiza Oszczędności
+
+**Porównanie obciążenia osuszania:**
+
 *   Bez recyrkulacji ($X_Z = 13.5$): Musimy usunąć $13.5 - 8.4 = 5.1$ g/kg.
 *   Z recyrkulacją ($X_M = 9.93$): Musimy usunąć $9.93 - 8.4 = 1.53$ g/kg.
 
+::: {.callout-success}
 Redukcja obciążenia osuszania o **70%**! → Mniejsza chłodnica, mniejszy koszt energii.
 :::
 
-::: {.fragment .callout-tip}
+::: {.callout-tip}
 Recyrkulacja to **najskuteczniejszy** sposób zmniejszenia kosztów energetycznych centrali. Ograniczenie: wymogi higieniczne (min. 30 m³/h powietrza świeżego na osobę).
 :::
 

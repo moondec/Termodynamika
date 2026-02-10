@@ -150,12 +150,20 @@ Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprąd
 :::
 :::
 
-::: {.fragment}
-**Entropia (przeciwprądowy):**
+---
+
+## 🏗️ Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego
+
+**Obliczenie entropii dla wymiennika przeciwprądowego:**
+
 $\Delta \dot{S}_w = 0.326 \cdot 4190 \cdot \ln(403/293) = 1366 \cdot 0.318 = +434$ W/K
+
 $\Delta \dot{S}_{gen} = -303 + 434 = \mathbf{+131 \text{ W/K}}$
 
+::: {.callout-success}
 Redukcja z $165$ do $131$ W/K → **o 21% mniejsza generacja entropii!**
+
+Wymiennik przeciwprądowy jest termodynamicznie lepszy, bo utrzymuje mniejszą różnicę temperatur wzdłuż swojej długości.
 :::
 
 ---

@@ -124,6 +124,11 @@ Proces dławienia jest **izentalpowy** ($h_3 \approx h_2$).
 
 *   $h'' = 2706 \text{ kJ/kg}$ (para nasycona).
 *   $h_3 > h''$ ($2943 > 2706$) → Nadal para **przegrzana**!
+:::
+
+---
+
+## 💧 Zadanie 3.4 (cd.): Odczyt Temperatury z Tablic
 
 **Z tablic przegrzania dla 2 bar:**
 Szukamy, przy jakiej temperaturze $h \approx 2943$.
@@ -132,6 +137,7 @@ Szukamy, przy jakiej temperaturze $h \approx 2943$.
 *   Dla $250^\circ C$: $h \approx 2970$
 *   Interpolując: $t_3 \approx 236^\circ C$.
 
+::: {.callout-success}
 **Wniosek:** Dławienie obniżyło ciśnienie drastycznie (10→2 bar), ale temperatura spadła nieznacznie (250→236°C). Para stała się "bardziej" przegrzana (dalej od nasycenia).
 :::
 

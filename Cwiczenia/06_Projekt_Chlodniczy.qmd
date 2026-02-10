@@ -148,12 +148,16 @@ Rozważamy zamianę R134a (GWP=1430) na **R290 (propan, GWP=3)**. Czy warto?
 $$ q_o = 570 - 280 = \mathbf{290 \text{ kJ/kg}} \quad (\text{R134a: } 144) $$
 $$ l_k = 625 - 570 = \mathbf{55 \text{ kJ/kg}} \quad (\text{R134a: } 25) $$
 $$ EER = 290/55 = \mathbf{5.27} $$
+:::
+
+---
+
+## 🧊 Zadanie 6.6 (cd.): Wnioski
 
 **Strumień czynnika:**
 $\dot{m}_{R290} = 300/290 = \mathbf{1.03 \text{ kg/s}}$ (R134a: $2.08$ kg/s — **połowę mniej!**)
-:::
 
-::: {.fragment .callout-warning}
+::: {.callout-warning}
 R290 ma lepszą wydajność objętościową i zerowy wpływ na warstwę ozonową. **Ale jest palny!** Wymaga specjalnych zabezpieczeń (ATEX).
 :::
 
