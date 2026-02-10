@@ -1,0 +1,319 @@
+---
+title: 'Karta Projektowa -- Termodynamika Techniczna'
+subtitle: 'Projekt: Modernizacja Hali Przemyslowej Termo-Tech'
+author: "dr hab. inż. prof. UPP Marek Urbaniak"
+date: today
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=2cm
+    fontsize: 11pt
+    pdf-engine: xelatex
+    header-includes: |
+      \usepackage{booktabs}
+      \usepackage{xcolor}
+      \usepackage{fancyhdr}
+      \usepackage{lastpage}
+      \pagestyle{fancy}
+      \fancyhead[L]{\small Termodynamika Techniczna}
+      \fancyhead[R]{\small Karta Projektowa}
+      \fancyfoot[C]{\small Strona \thepage\ z \pageref{LastPage}}
+      \definecolor{answercolor}{RGB}{0,100,180}
+params:
+  zestaw_nr: 1
+  show_answers: false
+  # Ćw.1 — Gazy
+  V: 5.0
+  p_man: 8.0
+  t: 20
+  p_atm: 760
+  t_fire: 300
+  y_N2: 78
+  p_mix: 5
+  t_mix: 20
+  V_mix: 2.0
+  T_valve: 250
+  # Ćw.2 — Sprężarka
+  p2: 10
+  t1_spr: 20
+  n_poly: 1.30
+  Vn: 120
+  t_chlod: 30
+  # Ćw.3 — Kocioł
+  p_kociol: 12
+  t_para: 250
+  m_dot_kociol: 2.0
+  t_zas: 60
+  eta_k: 0.90
+  p_dlawienie: 2
+  # Ćw.4 — Turbina
+  p1_turb: 10
+  t1_turb: 250
+  p2_turb: 1.0
+  m_dot_turb: 0.5
+  eta_is: 0.80
+  # Ćw.5 — Wymiennik
+  m_spalin: 1.0
+  t_sp_in: 300
+  t_sp_out: 150
+  t_w_in: 20
+  t_w_out: 80
+  T0: 20
+  # Ćw.6 — Chłodnictwo
+  Q_o: 300
+  t_o: 0
+  t_k: 40
+  d_rura: 80
+  # Ćw.8 — HVAC
+  t_zima: -10
+  t_lato: 32
+  t_wewn: 22
+  V_dot: 20000
+  Q_jawne: 50
+  rec: 70
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+p <- params
+sa <- params$show_answers
+
+# ---- Obliczenia Ćw.1 ----
+p_atm_kPa <- p$p_atm * 0.13332
+p_abs_kPa <- p$p_man * 100 + p_atm_kPa
+T_K <- p$t + 273.15
+m_air <- (p$p_man * 1e5 + p$p_atm * 133.322) * p$V / (287 * T_K)
+m_water <- 1000 * p$V
+p_fire <- p_abs_kPa * (p$t_fire + 273.15) / T_K
+p_N2_kPa <- (p$y_N2 / 100) * p$p_mix * 100
+y_O2 <- 100 - p$y_N2
+m_N2 <- (p$y_N2/100 * p$p_mix * 1e5) * p$V_mix / (297 * (p$t_mix + 273.15))
+rho_zb <- (p$p_man * 1e5 + p$p_atm * 133.322) / (287 * T_K)
+T_valve_C <- (p$T_valve - 32) / 1.8
+
+# ---- Obliczenia Ćw.2 ----
+T1_spr <- p$t1_spr + 273.15
+lt_poly <- p$n_poly / (p$n_poly - 1) * 287 * T1_spr * ((p$p2/1)^((p$n_poly-1)/p$n_poly) - 1) / 1000
+m_dot_spr <- (101325 * p$Vn / 3600) / (287 * 273.15)
+N_silnika <- m_dot_spr * lt_poly / 0.9
+T2_spr <- T1_spr * (p$p2/1)^((p$n_poly-1)/p$n_poly) - 273.15
+Q_chlod <- m_dot_spr * 1.005 * (T2_spr - p$t_chlod)
+p_posr <- sqrt(1 * p$p2)
+T_I_out <- T1_spr * (p_posr/1)^((p$n_poly-1)/p$n_poly) - 273.15
+lt_izo <- 287 * T1_spr * log(p$p2/1) / 1000
+
+# ---- Obliczenia Ćw.3 ----
+h1_kociol <- 4.19 * p$t_zas
+Q_kociol <- p$m_dot_kociol * 1000 / 3600 * (2800 - h1_kociol)
+V_gaz <- Q_kociol / (p$eta_k * 50000 * 0.7) * 3600
+x_suchy <- (2400 - 500) / (2710 - 500) # przykładowe h_mokra ≈ 2400
+
+# ---- Obliczenia Ćw.4 ----
+h1_t <- 2800; h2s_t <- 2200
+N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
+h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
+N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
+eta_Carnot <- (1 - 303.15 / (p$t1_turb + 273.15)) * 100
+
+# ---- Obliczenia Ćw.5 ----
+Q_wym <- p$m_spalin * 1 * (p$t_sp_in - p$t_sp_out)
+m_w_wym <- Q_wym * 1000 / (4.19 * (p$t_w_out - p$t_w_in))
+dS_sp <- p$m_spalin * 1000 * log((p$t_sp_out+273.15)/(p$t_sp_in+273.15))
+dS_w <- m_w_wym/1000 * 4190 * log((p$t_w_out+273.15)/(p$t_w_in+273.15))
+dS_gen <- dS_sp + dS_w
+W_strata <- (p$T0 + 273.15) * dS_gen / 1000
+
+# ---- Obliczenia Ćw.6 ----
+h1_ch <- 395 + 1.5 * p$t_o
+h3_ch <- 240 + 0.8 * p$t_k
+h2_ch <- h1_ch + 25 + 0.4 * (p$t_k - p$t_o)
+q_o <- h1_ch - h3_ch
+l_k <- h2_ch - h1_ch
+EER <- q_o / l_k
+N_spr_ch <- p$Q_o / EER
+m_dot_ch <- p$Q_o / q_o
+COP_PC <- EER + 1
+w_rura <- m_dot_ch * 0.08 / (pi * (p$d_rura/1000)^2 / 4)
+
+# ---- Obliczenia Ćw.8 ----
+m_dot_hvac <- 1.2 * p$V_dot / 3600
+Q_nagr <- m_dot_hvac * 1.005 * (p$t_wewn - p$t_zima)
+Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
+t_mix_rec <- p$rec/100 * p$t_wewn + (1 - p$rec/100) * p$t_zima
+dQ_oszcz <- m_dot_hvac * 1.005 * (t_mix_rec - p$t_zima)
+
+# Formatter
+f <- function(x, d=2) formatC(round(x, d), format="f", digits=d)
+ans <- function(val, unit="", d=2) {
+  if (sa) paste0("**", f(val, d), " ", unit, "**") else "\\rule{3cm}{0.4pt}"
+}
+```
+
+\begin{center}
+\Large\textbf{Zestaw nr `r p$zestaw_nr`} \\[0.3em]
+`r if(sa) "\\textcolor{red}{\\Large KLUCZ ODPOWIEDZI — POUFNE}" else "\\normalsize Rola: Młodszy Inżynier Energetyk"`
+\end{center}
+
+\hrule
+\vspace{0.5em}
+
+# Twoja Hala Przemysłowa Termo-Tech
+
+Jako młodszy inżynier energetyk w firmie Termo-Tech prowadzisz modernizację hali przemysłowej. Poniżej zestawiono **indywidualne parametry** Twojego projektu, które obowiązują przez cały semestr.
+
+## Parametry Ogólne Instalacji
+
+| Element | Parametr | Wartość |
+|---------|----------|---------|
+| Zbiornik sprężonego powietrza | Objętość $V$ | `r p$V` m³ |
+| | Nadciśnienie $p_{man}$ | `r p$p_man` bar |
+| | Temperatura | `r p$t` °C |
+| | Ciśn. atmosf. | `r p$p_atm` mmHg |
+| Sprężarka | Ciśn. tłoczenia $p_2$ | `r p$p2` bar |
+| | Wykładnik $n$ | `r p$n_poly` |
+| | Wydajność $\dot{V}_n$ | `r p$Vn` m³/h |
+| Kocioł parowy | Ciśnienie | `r p$p_kociol` bar |
+| | Temperatura pary | `r p$t_para` °C |
+| | Wydajność | `r p$m_dot_kociol` t/h |
+| Turbina parowa | $p_1$ / $t_1$ | `r p$p1_turb` bar / `r p$t1_turb` °C |
+| | Sprawność $\eta_{is}$ | `r p$eta_is` |
+| Wymiennik ciepła | $\dot{m}_{spalin}$ | `r p$m_spalin` kg/s |
+| | $t_{sp,in}$ / $t_{sp,out}$ | `r p$t_sp_in` / `r p$t_sp_out` °C |
+| Chłodnia | $\dot{Q}_o$ | `r p$Q_o` kW |
+| | $t_o$ / $t_k$ | `r p$t_o` / `r p$t_k` °C |
+| Klimatyzacja | $\dot{V}$ | `r p$V_dot` m³/h |
+| | $t_{zima}$ / $t_{lato}$ | `r p$t_zima` / `r p$t_lato` °C |
+
+\newpage
+
+# Ćwiczenie 1: Parametry Stanu i Gazy Doskonałe
+
+## Zad. 1.1 — Ciśnienie absolutne i masa powietrza
+
+Ciśnienie absolutne: $p_{abs} = p_{man} + p_{atm}$ = `r ans(p_abs_kPa, "kPa")`
+
+Masa powietrza ($m = pV/RT$): `r ans(m_air, "kg")`
+
+## Zad. 1.2 — Próba hydrauliczna
+
+Masa wody ($m_w = \rho_w V$): `r ans(m_water, "kg", 0)`
+
+## Zad. 1.2b — Pożar ($t_2$ = `r p$t_fire` °C)
+
+$p_2 = p_1 \cdot T_2/T_1$ = `r ans(p_fire, "kPa")`
+
+## Zad. 1.2c — Mieszanina gazów (Dalton)
+
+Zbiornik: `r p$y_N2`% N₂ + `r y_O2`% O₂, $p$ = `r p$p_mix` bar, $V$ = `r p$V_mix` m³, $t$ = `r p$t_mix` °C.
+
+$p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`,  $m_{N_2}$ = `r ans(m_N2, "kg")`
+
+## Zad. 1.3 — Skale temperatur
+
+Zawór: `r p$T_valve` °F = `r ans(T_valve_C, "°C")`
+
+---
+
+# Ćwiczenie 2: Bilans Sprężarkowni
+
+## Zad. 2.1 — Praca techniczna ($n$ = `r p$n_poly`)
+
+$l_t$ = `r ans(lt_poly, "kJ/kg")`
+
+## Zad. 2.2 — Moc silnika ($\eta_m$ = 0.9)
+
+$N_{silnika}$ = `r ans(N_silnika, "kW")`
+
+## Zad. 2.3 — Temperatura tłoczenia
+
+$t_2$ = `r ans(T2_spr, "°C")`
+
+## Zad. 2.4 — Chłodnica (do `r p$t_chlod` °C)
+
+$\dot{Q}_{chl}$ = `r ans(Q_chlod, "kW")`
+
+## Zad. 2.5 — Sprężanie dwustopniowe
+
+$p_{pośr}$ = `r f(p_posr)` bar, $t_{I,out}$ = `r ans(T_I_out, "°C")`
+
+## Zad. 2.6 — Porównanie (izoterma)
+
+$l_{t,izo}$ = `r ans(lt_izo, "kJ/kg")`
+
+---
+
+# Ćwiczenie 3: Kocioł Parowy
+
+## Zad. 3.2 — Moc cieplna kotła
+
+$\dot{Q}$ = `r ans(Q_kociol, "kW")`
+
+## Zad. 3.3 — Zużycie gazu ($\eta_k$ = `r p$eta_k`)
+
+$\dot{V}_{gaz}$ = `r ans(V_gaz, "m³/h")`
+
+---
+
+# Ćwiczenie 4: Obieg Rankine'a
+
+## Zad. 4.3 — Moc turbiny (idealna)
+
+$N_t$ = `r ans(N_turb_ideal, "kW")`
+
+## Zad. 4.4 — Moc rzeczywista ($\eta_{is}$ = `r p$eta_is`)
+
+$h_{2r}$ = `r ans(h2r_t, "kJ/kg")`,  $N_r$ = `r ans(N_turb_real, "kW")`
+
+## Zad. 4.6 — Sprawność Carnota
+
+$\eta_C$ = `r ans(eta_Carnot, "%")`
+
+---
+
+# Ćwiczenie 5: Odzysk Ciepła
+
+## Zad. 5.1 — Moc wymiennika
+
+$\dot{Q}$ = `r ans(Q_wym, "kW")`, $\dot{m}_w$ = `r ans(m_w_wym/1000, "kg/s", 3)`
+
+## Zad. 5.2 — Generacja entropii
+
+$\Delta\dot{S}_{gen}$ = `r ans(dS_gen, "W/K")`
+
+## Zad. 5.3 — Strata egzergii
+
+$\dot{W}_{str}$ = `r ans(W_strata, "kW")`
+
+---
+
+# Ćwiczenie 6: Projekt Chłodniczy
+
+## Zad. 6.1–6.3 — EER, moc sprężarki, strumień
+
+EER = `r ans(EER, "")`, $N$ = `r ans(N_spr_ch, "kW")`, $\dot{m}$ = `r ans(m_dot_ch, "kg/s")`
+
+## Zad. 6.4 — Pompa ciepła
+
+$COP_{PC}$ = `r ans(COP_PC, "")`
+
+## Zad. 6.7 — Prędkość w rurze ($d$ = `r p$d_rura` mm)
+
+$w$ = `r ans(w_rura, "m/s")` `r if(sa) paste0("→ ", if(w_rura >= 8 && w_rura <= 15) "OK" else "POZA ZAKRESEM")`
+
+---
+
+# Ćwiczenie 8: Projekt HVAC
+
+## Zad. 8.1 — Nagrzewnica zimowa ($t_Z$ = `r p$t_zima` °C)
+
+$\dot{Q}_{nagr}$ = `r ans(Q_nagr, "kW")`
+
+## Zad. 8.2 — Chłodnica letnia ($t_Z$ = `r p$t_lato` °C)
+
+$\dot{Q}_{chl}$ = `r ans(Q_chlod8, "kW")`
+
+## Zad. 8.6 — Recyrkulacja (`r p$rec`%)
+
+$t_M$ = `r ans(t_mix_rec, "°C")`, Oszczędność = `r ans(dQ_oszcz, "kW")`
