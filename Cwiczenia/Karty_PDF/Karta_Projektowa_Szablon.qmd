@@ -153,167 +153,362 @@ ans <- function(val, unit="", d=2) {
 
 \begin{center}
 \Large\textbf{Zestaw nr `r p$zestaw_nr`} \\[0.3em]
-`r if(sa) "\\textcolor{red}{\\Large KLUCZ ODPOWIEDZI — POUFNE}" else "\\normalsize Rola: Młodszy Inżynier Energetyk"`
+`r if(sa) "\\textcolor{red}{\\Large KLUCZ ODPOWIEDZI --- POUFNE}" else "\\normalsize Rola: Młodszy Inżynier Energetyk w firmie Termo-Tech Sp. z o.o."`
 \end{center}
 
 \hrule
 \vspace{0.5em}
 
-# Twoja Hala Przemysłowa Termo-Tech
+# Wprowadzenie do Projektu
 
-Jako młodszy inżynier energetyk w firmie Termo-Tech prowadzisz modernizację hali przemysłowej. Poniżej zestawiono **indywidualne parametry** Twojego projektu, które obowiązują przez cały semestr.
+Gratulacje! Zostałeś zatrudniony jako **Młodszy Inżynier Energetyk** w firmie *Termo-Tech Sp. z o.o*., która specjalizuje się w audytach energetycznych i modernizacji instalacji przemysłowych.
 
-## Parametry Ogólne Instalacji
+Twoim pierwszym zleceniem jest **kompleksowy audyt energetyczny hali produkcyjnej** klienta. Hala zawiera kilka kluczowych systemów: sieć sprężonego powietrza, kotłownię parową z turbiną, system odzysku ciepła ze spalin, instalację chłodniczą oraz centralę klimatyzacyjną.
 
-| Element | Parametr | Wartość |
-|---------|----------|---------|
-| Zbiornik sprężonego powietrza | Objętość $V$ | `r p$V` m³ |
+**Twoje zadanie przez cały semestr:** Na podstawie poniższych danych indywidualnych, krok po kroku, zinwentaryzujesz instalację, obliczysz parametry pracy i przeanalizujesz, czy system pracuje efektywnie. Każde ćwiczenie odpowiada kolejnemu etapowi audytu.
+
+\vspace{0.3em}
+
+## Parametry Twojej Hali
+
+| System | Parametr | Twoja wartość |
+|--------|----------|:-------------:|
+| **Zbiornik sprężonego powietrza** | Objętość $V$ | `r p$V` m$^3$ |
 | | Nadciśnienie $p_{man}$ | `r p$p_man` bar |
-| | Temperatura | `r p$t` °C |
-| | Ciśn. atmosf. | `r p$p_atm` mmHg |
-| Sprężarka | Ciśn. tłoczenia $p_2$ | `r p$p2` bar |
-| | Wykładnik $n$ | `r p$n_poly` |
-| | Wydajność $\dot{V}_n$ | `r p$Vn` m³/h |
-| Kocioł parowy | Ciśnienie | `r p$p_kociol` bar |
-| | Temperatura pary | `r p$t_para` °C |
-| | Wydajność | `r p$m_dot_kociol` t/h |
-| Turbina parowa | $p_1$ / $t_1$ | `r p$p1_turb` bar / `r p$t1_turb` °C |
-| | Sprawność $\eta_{is}$ | `r p$eta_is` |
-| Wymiennik ciepła | $\dot{m}_{spalin}$ | `r p$m_spalin` kg/s |
-| | $t_{sp,in}$ / $t_{sp,out}$ | `r p$t_sp_in` / `r p$t_sp_out` °C |
-| Chłodnia | $\dot{Q}_o$ | `r p$Q_o` kW |
-| | $t_o$ / $t_k$ | `r p$t_o` / `r p$t_k` °C |
-| Klimatyzacja | $\dot{V}$ | `r p$V_dot` m³/h |
-| | $t_{zima}$ / $t_{lato}$ | `r p$t_zima` / `r p$t_lato` °C |
+| | Temperatura w hali | `r p$t` $^\circ$C |
+| | Ciśnienie atmosf. (barometr) | `r p$p_atm` mmHg |
+| **Sprężarka tłokowa** | Ciśnienie tłoczenia $p_2$ | `r p$p2` bar |
+| | Wykładnik politropy $n$ | `r p$n_poly` |
+| | Wydajność $\dot{V}_n$ | `r p$Vn` m$^3$/h |
+| **Kocioł parowy** | Ciśnienie pary | `r p$p_kociol` bar |
+| | Temperatura pary przegrzanej | `r p$t_para` $^\circ$C |
+| | Wydajność parowa | `r p$m_dot_kociol` t/h |
+| **Turbina parowa** | Ciśn./temp. wlot: $p_1$/$t_1$ | `r p$p1_turb` bar / `r p$t1_turb` $^\circ$C |
+| | Sprawność izentropowa $\eta_{is}$ | `r p$eta_is` |
+| **Wymiennik spaliny/woda** | Strumień spalin $\dot{m}_s$ | `r p$m_spalin` kg/s |
+| | Temp. wlot/wylot spalin | `r p$t_sp_in` / `r p$t_sp_out` $^\circ$C |
+| **Instalacja chłodnicza** | Wydajność chłodnicza $\dot{Q}_o$ | `r p$Q_o` kW |
+| | Temp. parowania/skraplania | `r p$t_o` / `r p$t_k` $^\circ$C |
+| **Centrala klimatyzacyjna** | Strumień powietrza $\dot{V}$ | `r p$V_dot` m$^3$/h |
+| | Temp. obliczeniowa zima/lato | `r p$t_zima` / `r p$t_lato` $^\circ$C |
 
 \newpage
 
-# Ćwiczenie 1: Parametry Stanu i Gazy Doskonałe
+# Etap 1: Inwentaryzacja Sieci Sprężonego Powietrza (Ćw. 1)
 
-## Zad. 1.1 — Ciśnienie absolutne i masa powietrza
+## Sytuacja
 
-Ciśnienie absolutne: $p_{abs} = p_{man} + p_{atm}$ = `r ans(p_abs_kPa, "kPa")`
+Pierwszym krokiem audytu jest zinwentaryzowanie istniejącej **sieci sprężonego powietrza**. Na hali znajduje się zbiornik ciśnieniowy o objętości **`r p$V` m$^3$**. Manometr na zbiorniku wskazuje nadciśnienie **`r p$p_man` bar**, a barometr w hali --- **`r p$p_atm` mmHg**. Temperatura w hali to **`r p$t` $^\circ$C**.
 
-Masa powietrza ($m = pV/RT$): `r ans(m_air, "kg")`
+Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Technicznego). Inspektor UDT wymaga podania:
 
-## Zad. 1.2 — Próba hydrauliczna
+- ciśnienia absolutnego (nie manometrycznego!),
+- masy czynnika roboczego (ile kilogramów powietrza jest w zbiorniku),
+- masy wody do próby hydraulicznej (obowiązkowy test wytrzymałości).
 
-Masa wody ($m_w = \rho_w V$): `r ans(m_water, "kg", 0)`
+**Dlaczego to ważne?** Ciśnienie absolutne jest wymagane we wszystkich obliczeniach termodynamicznych, bo prawa gazowe (Clapeyron, Gay--Lussac) operują na ciśnieniu absolutnym, nie na wskazaniu manometru.
 
-## Zad. 1.2b — Pożar ($t_2$ = `r p$t_fire` °C)
+## Zad. 1.1 --- Ciśnienie absolutne i masa powietrza
 
-$p_2 = p_1 \cdot T_2/T_1$ = `r ans(p_fire, "kPa")`
+**Cel:** Oblicz ciśnienie absolutne w zbiorniku i masę powietrza.
 
-## Zad. 1.2c — Mieszanina gazów (Dalton)
+**Metodyka:**
 
-Zbiornik: `r p$y_N2`% N₂ + `r y_O2`% O₂, $p$ = `r p$p_mix` bar, $V$ = `r p$V_mix` m³, $t$ = `r p$t_mix` °C.
+1. Przelicz ciśnienie atmosferyczne z mmHg na kPa: $p_{atm}[\text{kPa}] = p_{atm}[\text{mmHg}] \cdot 0{,}13332$
+2. Oblicz ciśnienie absolutne: $p_{abs} = p_{man} + p_{atm}$
+3. Z równania stanu Clapeyrona ($pV = mRT$) wyznacz masę: $m = \frac{p_{abs} \cdot V}{R \cdot T}$, gdzie $R_{pow} = 287$ J/(kg$\cdot$K) i $T$ w kelwinach.
 
-$p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`,  $m_{N_2}$ = `r ans(m_N2, "kg")`
+**Twoje wyniki:**
 
-## Zad. 1.3 — Skale temperatur
+- Ciśnienie absolutne $p_{abs}$ = `r ans(p_abs_kPa, "kPa")`
+- Masa powietrza $m$ = `r ans(m_air, "kg")`
 
-Zawór: `r p$T_valve` °F = `r ans(T_valve_C, "°C")`
+## Zad. 1.2 --- Próba hydrauliczna
 
----
+**Kontekst:** Inspektor UDT wymaga próby hydraulicznej --- zbiornik napełnia się wodą i sprężą do ciśnienia próbnego (1,5 $\times$ $p_{rob}$). Zanim to zrobimy, musimy wiedzieć, ile waży zbiornik pełen wody --- czy posadzka wytrzyma?
 
-# Ćwiczenie 2: Bilans Sprężarkowni
+**Metodyka:** $m_w = \rho_w \cdot V$, gdzie $\rho_w = 1000$ kg/m$^3$.
 
-## Zad. 2.1 — Praca techniczna ($n$ = `r p$n_poly`)
+- Masa wody $m_w$ = `r ans(m_water, "kg", 0)`
 
-$l_t$ = `r ans(lt_poly, "kJ/kg")`
+`r if(!sa) "*Refleksja: Porównaj masę powietrza i masę wody. Czy różnica Cię zaskakuje? Co to mówi o gęstości gazów vs cieczy?*"`
 
-## Zad. 2.2 — Moc silnika ($\eta_m$ = 0.9)
+## Zad. 1.2b --- Scenariusz awaryjny: pożar
 
-$N_{silnika}$ = `r ans(N_silnika, "kW")`
+**Kontekst:** Podczas audytu musisz ocenić, co stanie się ze zbiornikiem w razie pożaru. Jeśli hala się nagrzeje do **`r p$t_fire` $^\circ$C**, jak wzrośnie ciśnienie w zamkniętym zbiorniku? Czy zbiornik wytrzyma?
 
-## Zad. 2.3 — Temperatura tłoczenia
+**Metodyka:** Prawo Gay--Lussaca (objętość stała, masa stała): $\frac{p_1}{T_1} = \frac{p_2}{T_2}$, stąd: $p_2 = p_1 \cdot \frac{T_2}{T_1}$ (temperatury w kelwinach!).
 
-$t_2$ = `r ans(T2_spr, "°C")`
+- Ciśnienie po pożarze $p_2$ = `r ans(p_fire, "kPa")`
 
-## Zad. 2.4 — Chłodnica (do `r p$t_chlod` °C)
+`r if(!sa) "*Refleksja: Czy to ciśnienie przekracza ciśnienie próbne zbiornika? Jakie zabezpieczenia powinien mieć zbiornik?*"`
 
-$\dot{Q}_{chl}$ = `r ans(Q_chlod, "kW")`
+## Zad. 1.2c --- Kalibracja analizatora spalin (prawo Daltona)
 
-## Zad. 2.5 — Sprężanie dwustopniowe
+**Kontekst:** Na hali znajduje się butla kalibracyjna do analizatora spalin. Zawiera mieszaninę: **`r p$y_N2`% N$_2$** + **`r y_O2`% O$_2$** (ułamki molowe), pod ciśnieniem **`r p$p_mix` bar**, objętość butli **`r p$V_mix` m$^3$**, temperatura **`r p$t_mix` $^\circ$C**.
 
-$p_{pośr}$ = `r f(p_posr)` bar, $t_{I,out}$ = `r ans(T_I_out, "°C")`
+**Cel:** Oblicz ciśnienie parcjalne i masę azotu --- potrzebne do zamówienia uzupełnienia butli u dostawcy.
 
-## Zad. 2.6 — Porównanie (izoterma)
+**Metodyka:** Prawo Daltona: $p_i = y_i \cdot p$ (ciśnienie parcjalne = ułamek molowy $\times$ ciśnienie całkowite). Masa: $m_i = \frac{p_i \cdot V}{R_i \cdot T}$, gdzie $R_{N_2} = 297$ J/(kg$\cdot$K).
 
-$l_{t,izo}$ = `r ans(lt_izo, "kJ/kg")`
+- $p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`
+- $m_{N_2}$ = `r ans(m_N2, "kg")`
 
----
+## Zad. 1.3 --- Odczyt dokumentacji zagranicznej
 
-# Ćwiczenie 3: Kocioł Parowy
+**Kontekst:** Na tabliczce znamionowej importowanego zaworu bezpieczeństwa widnieje: *"Max. operating temperature: `r p$T_valve` $^\circ$F"*. Musisz to przeliczyć.
 
-## Zad. 3.2 — Moc cieplna kotła
+- `r p$T_valve` $^\circ$F = `r ans(T_valve_C, "°C")`
 
-$\dot{Q}$ = `r ans(Q_kociol, "kW")`
+\newpage
 
-## Zad. 3.3 — Zużycie gazu ($\eta_k$ = `r p$eta_k`)
+# Etap 2: Bilans Sprężarkowni (Ćw. 2)
 
-$\dot{V}_{gaz}$ = `r ans(V_gaz, "m³/h")`
+## Sytuacja
 
----
+Przechodzimy do maszynowni. Sprężarka tłokowa zasila sieć sprężonym powietrzem. Twoim zadaniem jest **bilans energetyczny sprężarkowni**: ile energii zużywa sprężarka, jak gorące jest powietrze na wyjściu i ile ciepła trzeba odprowadzić w chłodnicy.
 
-# Ćwiczenie 4: Obieg Rankine'a
+To kluczowe dane do raportu energetycznego --- sprężarki to często **największy odbiorca energii elektrycznej** w zakładzie (20--30% całkowitego zużycia!).
 
-## Zad. 4.3 — Moc turbiny (idealna)
+## Zad. 2.1 --- Praca techniczna sprężania
 
-$N_t$ = `r ans(N_turb_ideal, "kW")`
+**Cel:** Ile energii (na kg powietrza) zużywa sprężarka?
 
-## Zad. 4.4 — Moc rzeczywista ($\eta_{is}$ = `r p$eta_is`)
+**Metodyka:** Sprężanie rzeczywiste jest procesem politropowym ($n =$ `r p$n_poly`). Praca techniczna:
+$$l_t = \frac{n}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1\right]$$
+`r if(!sa) "*Uwaga: p_1 = 1 bar (ssanie z atmosfery). R = 287 J/(kgK). T_1 w kelwinach!*"`
 
-$h_{2r}$ = `r ans(h2r_t, "kJ/kg")`,  $N_r$ = `r ans(N_turb_real, "kW")`
+- $l_t$ = `r ans(lt_poly, "kJ/kg")`
 
-## Zad. 4.6 — Sprawność Carnota
+## Zad. 2.2 --- Dobór silnika elektrycznego
 
-$\eta_C$ = `r ans(eta_Carnot, "%")`
+**Cel:** Jaki silnik zamówić? Musimy znać moc na wale sprężarki.
 
----
+**Metodyka:** Strumień masy: $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273{,}15$ K). Moc: $N = \frac{\dot{m} \cdot l_t}{\eta_m}$, gdzie $\eta_m = 0{,}9$ (sprawność mechaniczna).
 
-# Ćwiczenie 5: Odzysk Ciepła
+- Moc silnika $N$ = `r ans(N_silnika, "kW")`
 
-## Zad. 5.1 — Moc wymiennika
+## Zad. 2.3 --- Temperatura tłoczenia
 
-$\dot{Q}$ = `r ans(Q_wym, "kW")`, $\dot{m}_w$ = `r ans(m_w_wym/1000, "kg/s", 3)`
+**Cel:** Jak gorące jest powietrze na wyjściu sprężarki? Od tego zależy dobór uszczelek i oleju.
 
-## Zad. 5.2 — Generacja entropii
+**Metodyka:** Dla politropy: $T_2 = T_1 \cdot (p_2/p_1)^{(n-1)/n}$.
 
-$\Delta\dot{S}_{gen}$ = `r ans(dS_gen, "W/K")`
+- $t_2$ = `r ans(T2_spr, "°C")`
 
-## Zad. 5.3 — Strata egzergii
+`r if(!sa) paste0("*Refleksja: ", if(T2_spr > 180) "Temperatura przekracza 180°C --- konieczne chłodzenie międzystopniowe! Olej sprężarkowy ulega degradacji." else "Temperatura jest w dopuszczalnym zakresie dla standardowego oleju sprężarkowego.", "*")`
 
-$\dot{W}_{str}$ = `r ans(W_strata, "kW")`
+## Zad. 2.4 --- Chłodnica za sprężarką
 
----
+**Cel:** Sprężone powietrze musi zostać schłodzone do **`r p$t_chlod` $^\circ$C** przed wejściem do sieci. Ile ciepła musi odebrać chłodnica?
 
-# Ćwiczenie 6: Projekt Chłodniczy
+- $\dot{Q}_{chl}$ = `r ans(Q_chlod, "kW")`
 
-## Zad. 6.1–6.3 — EER, moc sprężarki, strumień
+## Zad. 2.5 --- Propozycja modernizacji: sprężanie dwustopniowe
 
-EER = `r ans(EER, "")`, $N$ = `r ans(N_spr_ch, "kW")`, $\dot{m}$ = `r ans(m_dot_ch, "kg/s")`
+**Kontekst:** W raporcie audytowym rekomendujesz modernizację --- zamiast jednego stopnia, dwa stopnie z chłodzeniem międzystopniowym. Przy dwóch stopniach **optymalne ciśnienie pośrednie**: $p_{pośr} = \sqrt{p_1 \cdot p_2}$.
 
-## Zad. 6.4 — Pompa ciepła
+- $p_{pośr}$ = `r f(p_posr)` bar
+- Temperatura po I stopniu: $t_{I,out}$ = `r ans(T_I_out, "°C")`
 
-$COP_{PC}$ = `r ans(COP_PC, "")`
+`r if(!sa) paste0("*Refleksja: Porównaj t_{I,out} = ", f(T_I_out), "°C z t_2 = ", f(T2_spr), "°C z jednego stopnia. Czy modernizacja ma sens?*")`
 
-## Zad. 6.7 — Prędkość w rurze ($d$ = `r p$d_rura` mm)
+## Zad. 2.6 --- Granica termodynamiczna: sprężanie izotermiczne
 
-$w$ = `r ans(w_rura, "m/s")` `r if(sa) paste0("→ ", if(w_rura >= 8 && w_rura <= 15) "OK" else "POZA ZAKRESEM")`
+**Cel:** Jaka byłaby praca przy idealnym (izotermicznym) sprężaniu? To dolna granica --- lepiej się nie da.
 
----
+- $l_{t,izo}$ = `r ans(lt_izo, "kJ/kg")`
 
-# Ćwiczenie 8: Projekt HVAC
+`r if(!sa) paste0("*Porównanie: izoterma ", f(lt_izo), " vs politropa ", f(lt_poly), " kJ/kg --- oszczędność ", f((1 - lt_izo/lt_poly)*100), "% przy idealnym chłodzeniu.*")`
 
-## Zad. 8.1 — Nagrzewnica zimowa ($t_Z$ = `r p$t_zima` °C)
+\newpage
 
-$\dot{Q}_{nagr}$ = `r ans(Q_nagr, "kW")`
+# Etap 3: Kotłownia Parowa (Ćw. 3)
 
-## Zad. 8.2 — Chłodnica letnia ($t_Z$ = `r p$t_lato` °C)
+## Sytuacja
 
-$\dot{Q}_{chl}$ = `r ans(Q_chlod8, "kW")`
+Przechodzimy do kotłowni. Kocioł gazowy wytwarza parę przegrzaną o parametrach: $p =$ **`r p$p_kociol` bar**, $t =$ **`r p$t_para` $^\circ$C**, z wydajnością **`r p$m_dot_kociol` t/h**. Woda zasilająca ma temperaturę **`r p$t_zas` $^\circ$C**.
 
-## Zad. 8.6 — Recyrkulacja (`r p$rec`%)
+**Cel audytu:** Określ moc cieplną kotła (dla oceny, czy pokrywa zapotrzebowanie hali) i zużycie gazu ziemnego (dla kalkulacji kosztów operacyjnych).
 
-$t_M$ = `r ans(t_mix_rec, "°C")`, Oszczędność = `r ans(dQ_oszcz, "kW")`
+## Zad. 3.2 --- Moc cieplna kotła
+
+**Metodyka:** Moc to ilość ciepła dostarczanego na sekundę:
+$$\dot{Q} = \dot{m} \cdot (h_2 - h_1)$$
+gdzie $h_1 = c_w \cdot t_{zas} \approx 4{,}19 \cdot t_{zas}$ kJ/kg (entalpia wody zasilającej) i $h_2 \approx 2800$ kJ/kg (entalpia pary przegrzanej --- uproszczenie; dokładną wartość odczytujesz z tablic pary).
+
+`r if(!sa) "*Uwaga: strumień masy przelicz z t/h na kg/s (×1000/3600).*"`
+
+- Moc cieplna $\dot{Q}$ = `r ans(Q_kociol, "kW")`
+
+## Zad. 3.3 --- Kosztorys: zużycie gazu
+
+**Kontekst:** Klient pyta: *"Ile gazu spalamy miesięcznie?"*. Potrzebujesz zużycia gazu do kalkulacji kosztów.
+
+**Metodyka:** $\dot{V}_{gaz} = \frac{\dot{Q}}{\eta_k \cdot W_d \cdot \rho_{gaz}}$, gdzie sprawność kotła $\eta_k =$ `r p$eta_k`, wartość opałowa $W_d = 50$ MJ/kg, gęstość gazu $\rho = 0{,}7$ kg/m$^3$.
+
+- Zużycie gazu $\dot{V}_{gaz}$ = `r ans(V_gaz, "m³/h")`
+
+`r if(!sa) paste0("*Koszt: przy cenie gazu ~3 zł/m³, koszt godziny pracy kotła ≈ ", f(V_gaz * 3, 0), " zł.*")`
+
+\newpage
+
+# Etap 4: Turbina Parowa -- Kogeneracja (Ćw. 4)
+
+## Sytuacja
+
+W ramach modernizacji klient rozważa zainstalowanie **turbiny parowej** za kotłem --- para najpierw wytworzy prąd w turbinie, a potem (o niższym ciśnieniu) pójdzie do procesów technologicznych. To klasyczna **kogeneracja** (CHP --- *Combined Heat and Power*).
+
+Para wchodzi do turbiny: $p_1 =$ **`r p$p1_turb` bar**, $t_1 =$ **`r p$t1_turb` $^\circ$C**. Na wylocie: $p_2 =$ **`r p$p2_turb` bar**. Strumień masy: $\dot{m} =$ **`r p$m_dot_turb` kg/s**.
+
+## Zad. 4.3 --- Idealna moc turbiny
+
+**Cel:** Ile mocy produkowałaby *idealna* turbina (proces izentropowy)?
+
+**Metodyka:** $N_t = \dot{m} \cdot (h_1 - h_{2s})$, gdzie $h_1 \approx 2800$ kJ/kg, $h_{2s} \approx 2200$ kJ/kg (uproszczenie; dokładne wartości z tablic pary lub wykresu Molliera).
+
+- $N_t$ = `r ans(N_turb_ideal, "kW")`
+
+## Zad. 4.4 --- Rzeczywista moc (straty)
+
+**Kontekst:** W praktyce turbina nie jest idealna --- występują tarcie, turbulencje, straty na uszczelkach. Producent deklaruje sprawność izentropową $\eta_{is} =$ **`r p$eta_is`**.
+
+**Metodyka:** Rzeczywista entalpia na wylocie: $h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s})$.
+
+- $h_{2r}$ = `r ans(h2r_t, "kJ/kg")`
+- Rzeczywista moc $N_r$ = `r ans(N_turb_real, "kW")`
+
+`r if(!sa) paste0("*Stracona moc: ", f(N_turb_ideal - N_turb_real), " kW --- zamieniona na ciepło (ogrzewanie pary wylotowej).*")`
+
+## Zad. 4.6 --- Sprawność idealna (Carnot)
+
+**Cel:** Jaka jest maksymalna sprawność konwersji ciepła w pracę przy tych temperaturach? To **górna granica** --- żadna rzeczywista maszyna jej nie osiągnie.
+
+**Metodyka:** $\eta_C = 1 - T_L/T_H$, gdzie $T_H = t_1 + 273{,}15$ K, $T_L = 303{,}15$ K (skraplacz 30$^\circ$C).
+
+- $\eta_C$ = `r ans(eta_Carnot, "%")`
+
+`r if(!sa) "*Refleksja: Dlaczego rzeczywiste elektrownie mają sprawność ~35%, a Carnot daje więcej? Gdzie są dodatkowe straty?*"`
+
+\newpage
+
+# Etap 5: Odzysk Ciepła ze Spalin (Ćw. 5)
+
+## Sytuacja
+
+Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo energii. Proponujesz zainstalowanie **wymiennika ciepła spaliny/woda**, który podgrzeje wodę technologiczną od **`r p$t_w_in`** do **`r p$t_w_out` $^\circ$C**. Spaliny wychodzą z wymiennika o temperaturze **`r p$t_sp_out` $^\circ$C**.
+
+**Cel audytu:** Ile energii odzyskamy? Ale też --- ile energii *stracimy bezpowrotnie* w procesie wymiany ciepła? Tu wchodzi **II zasada termodynamiki** i pojęcie *egzergii*.
+
+## Zad. 5.1 --- Bilans energii wymiennika
+
+**Metodyka:** Z I zasady: $\dot{Q} = \dot{m}_s \cdot c_s \cdot (t_{in} - t_{out})$, $c_s = 1{,}0$ kJ/(kg$\cdot$K). Ze strony wody: $\dot{m}_w = \dot{Q}/(c_w \cdot \Delta t_w)$.
+
+- Odzyskana moc $\dot{Q}$ = `r ans(Q_wym, "kW")`
+- Strumien wody $\dot{m}_w$ = `r ans(m_w_wym/1000, "kg/s", 3)`
+
+## Zad. 5.2 --- Generacja entropii
+
+**Cel:** I zasada mówi, że energia się zachowuje. Ale czy wymiana ciepła jest *odwracalna*? Obliczmy generację entropii --- jeśli $\Delta\dot{S}_{gen} > 0$, proces jest nieodwracalny i traci się potencjał do wykonania pracy.
+
+**Metodyka:** Zmiana entropii każdego strumienia: $\Delta\dot{S}_i = \dot{m}_i \cdot c_i \cdot \ln(T_{out}/T_{in})$. Generacja: $\Delta\dot{S}_{gen} = \Delta\dot{S}_{spalin} + \Delta\dot{S}_{wody}$ (musi być $> 0$ z II zasady!).
+
+- $\Delta\dot{S}_{gen}$ = `r ans(dS_gen, "W/K")`
+
+## Zad. 5.3 --- Strata egzergii (twierdzenie Gouy-Stodoli)
+
+**Cel:** Przełożenie wyników entropijnych na język zrozumiały dla dyrektora finansowego --- **ile kW potencjalnej pracy tracimy** przez nieodwracalność procesu?
+
+**Metodyka:** Twierdzenie Gouy--Stodoli: $\dot{W}_{str} = T_0 \cdot \Delta\dot{S}_{gen}$, gdzie $T_0 =$ `r p$T0` $^\circ$C (otoczenie).
+
+- Strata egzergii = `r ans(W_strata, "kW")`
+
+`r if(!sa) paste0("*Interpretacja: odzyskujemy ", f(Q_wym), " kW ciepła, ale ", f(abs(W_strata)), " kW potencjalnej pracy jest bezpowrotnie utracone. Można zmniejszyć tę stratę, zmniejszając różnicę temperatur (wymiennik przeciwprądowy, większa powierzchnia).*")`
+
+\newpage
+
+# Etap 6: Instalacja Chłodnicza (Ćw. 6)
+
+## Sytuacja
+
+Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p$Q_o` kW** (tyle ciepła trzeba odebrać z komory). Czynnik chłodniczy: R134a. Temperatura parowania: $t_o =$ **`r p$t_o` $^\circ$C**, temperatura skraplania: $t_k =$ **`r p$t_k` $^\circ$C**.
+
+**Cel audytu:** Czy istniejąca sprężarka ma wystarczającą moc? Jaki jest rachunek za prąd? Czy rurociągi mają odpowiednią średnicę?
+
+## Zad. 6.1--6.3 --- Parametry obiegu chłodniczego
+
+**Metodyka:** Z wykresu $p$-$h$ dla R134a (uproszczenie liniowe):
+
+- $h_1 \approx 395 + 1{,}5 \cdot t_o$ kJ/kg (para nasycona, ssanie)
+- $h_3 = h_4 \approx 240 + 0{,}8 \cdot t_k$ kJ/kg (ciecz, dławienie)
+- $h_2 \approx h_1 + 25 + 0{,}4 \cdot (t_k - t_o)$ kJ/kg (po sprężaniu)
+- EER $= q_o / l_k = (h_1 - h_4)/(h_2 - h_1)$
+- Moc sprężarki: $N = \dot{Q}_o / \text{EER}$
+- Strumień czynnika: $\dot{m} = \dot{Q}_o / q_o$
+
+**Wyniki:**
+
+- EER = `r ans(EER, "")`
+- Moc sprężarki $N$ = `r ans(N_spr_ch, "kW")`
+- Strumień czynnika $\dot{m}$ = `r ans(m_dot_ch, "kg/s")`
+
+`r if(!sa) paste0("*Rachunek za prąd: przy cenie 0,80 zł/kWh i pracy 16h/dobę: ", f(N_spr_ch * 0.80 * 16, 0), " zł/dobę.*")`
+
+## Zad. 6.4 --- Alternatywa: pompa ciepła
+
+**Kontekst:** Klient pyta, czy tę samą instalację można zimą odwrócić i użyć jako **pompy ciepła** do ogrzewania biura. Jaką będzie miała efektywność?
+
+- $COP_{PC} = EER + 1$ = `r ans(COP_PC, "")`
+
+`r if(!sa) paste0("*Interpretacja: COP = ", f(COP_PC), " oznacza, że na każdy 1 kW prądu dostajemy ", f(COP_PC), " kW ciepła --- ", f(COP_PC), "× lepiej niż grzejnik elektryczny!*")`
+
+## Zad. 6.7 --- Weryfikacja rurociągu
+
+**Cel:** Sprawdź, czy rurociąg ssawny ($d =$ `r p$d_rura` mm) zapewnia dopuszczalną prędkość czynnika (norma: 8--15 m/s).
+
+**Metodyka:** $w = \frac{\dot{m} \cdot v_1}{\pi d^2/4}$, gdzie $v_1 \approx 0{,}08$ m$^3$/kg (objętość właściwa pary R134a na ssaniu).
+
+- Prędkość $w$ = `r ans(w_rura, "m/s")` `r if(sa) paste0(" --- ", if(w_rura >= 8 && w_rura <= 15) "OK, mieści się w normie." else "UWAGA: poza zakresem normy! Należy dobrać inną średnicę.")`
+
+\newpage
+
+# Etap 7: Centrala Klimatyzacyjna (Ćw. 8)
+
+## Sytuacja
+
+Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca halę produkcyjną. Strumień objętości powietrza: $\dot{V} =$ **`r p$V_dot` m$^3$/h**. Wymagana temperatura wewnętrzna: $t_W =$ **`r p$t_wewn` $^\circ$C** przez cały rok.
+
+**Cel audytu:** Określ moce nagrzewnicy (zima) i chłodnicy (lato). Zaproponuj oszczędność --- **recyrkulację powietrza**.
+
+## Zad. 8.1 --- Nagrzewnica zimowa
+
+**Kontekst:** W zimie temperatura obliczeniowa to $t_Z =$ **`r p$t_zima` $^\circ$C**. Powietrze z zewnątrz musi zostać podgrzane do $t_W$.
+
+**Metodyka:** $\dot{Q}_{nagr} = \dot{m} \cdot c_p \cdot (t_W - t_Z)$, gdzie $\dot{m} = \rho \cdot \dot{V}/3600$, $\rho = 1{,}2$ kg/m$^3$, $c_p = 1{,}005$ kJ/(kg$\cdot$K).
+
+- Moc nagrzewnicy $\dot{Q}_{nagr}$ = `r ans(Q_nagr, "kW")`
+
+## Zad. 8.2 --- Chłodnica letnia
+
+**Kontekst:** Latem temperatura to **`r p$t_lato` $^\circ$C** --- trzeba powietrze schłodzić.
+
+- Moc chłodnicy $\dot{Q}_{chl}$ = `r ans(Q_chlod8, "kW")`
+
+## Zad. 8.6 --- Propozycja oszczędności: recyrkulacja
+
+**Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, o $t_W$) z `r 100 - p$rec`% świeżego (o $t_Z$). Jaką temperaturę ma mieszanina i ile mocy nagrzewnicy oszczędzamy?
+
+**Metodyka:** Bilans entalpii mieszania: $t_M = \frac{r}{100} \cdot t_W + (1 - \frac{r}{100}) \cdot t_Z$.
+
+Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
+
+- Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "°C")`
+- Oszczędność mocy = `r ans(dQ_oszcz, "kW")`
+
+`r if(!sa) paste0("*Oszczędność ", f(dQ_oszcz / Q_nagr * 100, 0), "% mocy grzewczej! Ale uwaga: recyrkulacja zmniejsza ilość świeżego powietrza --- sprawdź wymagania higieniczne (norma PN-EN 16798).*")`
+
+\vspace{1em}
+\hrule
+\vspace{0.5em}
+
+`r if(!sa) "**Pamiętaj:** Każdy wynik to decyzja inżynierska. Liczby bez interpretacji nie mają wartości. W raporcie audytowym zawsze uzasadnij, CO policzyłeś, DLACZEGO i jakie WNIOSKI z tego płyną dla klienta." else "--- Koniec klucza odpowiedzi ---"`
