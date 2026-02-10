@@ -1,13 +1,13 @@
 ---
 title: "Ćwiczenia 2: Bilans Sprężarkowni"
-author: "Prowadzący"
+author: "Marek Urbaniak"
 format: 
   revealjs:
     slide-number: true
     theme: simple
     width: 1600
     height: 900
-    logo: "../img/logo.png"
+    logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
 ---
 
@@ -111,6 +111,103 @@ $$ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
 
 (Minus oznacza ciepło odprowadzone **Z** układu).
 :::
+:::
+
+---
+
+## 🔄 Zadanie 2.5: Sprężanie Dwustopniowe
+
+$253^\circ C$ to za dużo! Rozważmy **sprężanie dwustopniowe** z chłodzeniem międzystopniowym do $30^\circ C$.
+
+**Optymalna proporcja stopni** (minimalna praca): $p_{pośr} = \sqrt{p_1 \cdot p_2}$.
+
+$$ p_{pośr} = \sqrt{1 \cdot 9.5} \approx 3.08 \text{ bar} $$
+
+::: {.fragment}
+**Temperatura po I stopniu** ($1 \rightarrow 3.08$ bar, $n=1.35$):
+$$ T_{I} = 293.15 \cdot (3.08)^{0.259} \approx 293.15 \cdot 1.333 \approx \mathbf{391 K = 118^\circ C} $$
+
+**Temperatura po II stopniu** ($3.08 \rightarrow 9.5$ bar, start od $30^\circ C = 303K$):
+$$ T_{II} = 303 \cdot (9.5/3.08)^{0.259} = 303 \cdot (3.08)^{0.259} \approx 303 \cdot 1.333 \approx \mathbf{404 K = 131^\circ C} $$
+:::
+
+::: {.fragment .callout-success}
+$131^\circ C$ zamiast $253^\circ C$! Temperatura spadła prawie **dwukrotnie**. Jest to bezpieczne dla oleju i uszczelek.
+:::
+
+---
+
+## 📊 Zadanie 2.6: Porównanie Procesów Sprężania
+
+Oblicz pracę techniczną dla trzech różnych procesów sprężania ($p_1=1, p_2=9.5$ bar):
+
+::: {.columns}
+::: {.column width="33%"}
+**Izotermiczny** ($n=1$):
+$$ l_t = R T_1 \ln\frac{p_2}{p_1} $$
+$$ l_t = 287 \cdot 293 \cdot \ln(9.5) $$
+$$ l_t \approx \mathbf{189 \text{ kJ/kg}} $$
+(Minimum teoretyczne)
+:::
+::: {.column width="33%"}
+**Politropowy** ($n=1.35$):
+$$ l_t \approx \mathbf{258 \text{ kJ/kg}} $$
+(Obliczone wcześniej)
+:::
+::: {.column width="33%"}
+**Adiabatyczny** ($n=\kappa=1.4$):
+$$ l_t = \frac{1.4}{0.4} \cdot 287 \cdot 293 \cdot [(9.5)^{0.286}-1] $$
+$$ l_t \approx \mathbf{273 \text{ kJ/kg}} $$
+(Maksimum praktyczne)
+:::
+:::
+
+::: {.fragment .callout-tip}
+**Wniosek:** Sprężanie izotermiczne wymaga o **31% mniej** pracy niż adiabatyczne. Dlatego chłodzimy sprężarki!
+:::
+
+---
+
+## 💧 Zadanie 2.7: Dobór Chłodnicy Wodnej
+
+Musimy odprowadzić $\dot{Q} = 8$ kW z chłodnicy sprężarki. Dysponujemy wodą z sieci wodociągowej ($t_{w,in} = 15^\circ C$). Maksymalna dopuszczalna temperatura wody na wylocie to $40^\circ C$ (limit zrzutu do kanalizacji).
+
+**Oblicz wymagany strumień wody chłodzącej.**
+
+$$ \dot{Q} = \dot{m}_w \cdot c_w \cdot (t_{w,out} - t_{w,in}) $$
+
+::: {.fragment}
+$$ \dot{m}_w = \frac{8000}{4190 \cdot (40 - 15)} = \frac{8000}{104\,750} $$
+$$ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} $$
+:::
+
+::: {.fragment .callout-note}
+**Koszt wody:** Przy cenie $8 \text{ zł/m}^3$ i pracy sprężarki 2000 h/rok: $0.076 \cdot 3.6 \cdot 2000 \cdot 8 \approx \mathbf{4380 \text{ zł/rok}}$. Warto rozważyć obieg zamknięty z wieżą chłodniczą!
+:::
+
+---
+
+## 🔬 Zadanie 2.8: Wyznaczanie Wykładnika Politropy
+
+Serwisant zmierzył temperatury na sprężarce:
+
+*   Ssanie: $t_1 = 22^\circ C$, $p_1 = 1$ bar.
+*   Tłoczenie: $t_2 = 215^\circ C$, $p_2 = 8$ bar.
+
+**Jaki jest rzeczywisty wykładnik politropy $n$ tej sprężarki?**
+
+$$ T_2/T_1 = (p_2/p_1)^{(n-1)/n} $$
+
+::: {.fragment}
+$$ \frac{488.15}{295.15} = 8^{(n-1)/n} $$
+$$ 1.654 = 8^{(n-1)/n} $$
+$$ \ln(1.654) = \frac{n-1}{n} \cdot \ln(8) $$
+$$ 0.503 = \frac{n-1}{n} \cdot 2.079 $$
+$$ \frac{n-1}{n} = 0.242 \quad \Rightarrow \quad n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
+:::
+
+::: {.fragment .callout-tip}
+$n = 1.32 < \kappa = 1.4$ — sprężarka jest dobrze chłodzona (bliżej procesu izotermicznego niż adiabatycznego).
 :::
 
 ---

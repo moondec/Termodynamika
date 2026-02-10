@@ -1,13 +1,13 @@
 ---
 title: "Ćwiczenia 8: Klimatyzacja Precyzyjna Hali"
-author: "Prowadzący"
+author: "Marek Urbaniak"
 format: 
   revealjs:
     slide-number: true
     theme: simple
     width: 1600
     height: 900
-    logo: "../img/logo.png"
+    logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
 ---
 
@@ -104,6 +104,119 @@ $$ \dot{Q}_{grz} = \dot{m} (40 - 33) = 3.33 \cdot 7 \approx \mathbf{23 \text{ kW
 ::: {.callout-important}
 Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy!
 **Rozwiązanie:** Rekuperacja chłodu lub by-pass powietrza.
+:::
+
+---
+
+## 🔍 Zadanie 8.4: Punkt Rosy – Kontrola Kondensacji
+
+W magazynie elektroniki temperatura ściany zewnętrznej spada do $12^\circ C$ zimą. Czy przy parametrach wewnętrznych ($22^\circ C, 50\%$) dojdzie do **kondensacji na ścianie**?
+
+### Wyznacz punkt rosy z wykresu h-X:
+1.  Punkt W: $t_w = 22^\circ C, \varphi = 50\% \rightarrow X_w \approx 8.4 \text{ g/kg}$.
+2.  Punkt rosy: idź w lewo po $X = const$ (8.4 g/kg) aż do przecięcia z krzywą $\varphi = 100\%$.
+
+::: {.fragment}
+$$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
+
+Ściana ma $12^\circ C > 11.5^\circ C$ → **Na granicy!** Przy lekkim spadku temperatury pojawi się rosa.
+:::
+
+::: {.fragment .callout-error}
+**Decyzja:** Należy ocieplić ścianę (zwiększyć współczynnik U) lub obniżyć wilgotność w hali do $\varphi < 45\%$.
+:::
+
+---
+
+## 📐 Zadanie 8.5: Wymagany Strumień Powietrza
+
+Oblicz minimalny strumień powietrza nawiewanego, aby pokryć zyski ciepła jawnego ($Q_j = 50$ kW) i wilgoci ($W = 10$ kg/h).
+
+**Bilans ciepła jawnego:**
+$$ Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N) $$
+
+Przyjmijmy $t_N = 16^\circ C$ (Nawiew chłodniejszy niż hala), $t_W = 22^\circ C$.
+
+::: {.fragment}
+$$ \dot{m} = \frac{50\,000}{1005 \cdot (22 - 16)} = \frac{50\,000}{6030} \approx \mathbf{8.3 \text{ kg/s}} $$
+$$ \dot{V} = \frac{8.3}{1.2} \approx \mathbf{6.9 \text{ m}^3/\text{s} = 24\,900 \text{ m}^3/h} $$
+:::
+
+::: {.fragment}
+**Weryfikacja bilansu wilgoci:**
+$$ \Delta X = \frac{W}{\dot{m}} = \frac{10/3600}{8.3} = 0.000335 \text{ kg/kg} = 0.34 \text{ g/kg} $$
+$X_N = X_W - \Delta X = 8.4 - 0.34 = 8.06$ g/kg → Praktycznie brak zmiany. Zyski wilgoci są niewielkie.
+:::
+
+---
+
+## 🔄 Zadanie 8.6: Recyrkulacja Powietrza
+
+Zamiast pobierać 100% powietrza zewnętrznego, stosujemy **recyrkulację**: 70% powietrza wraca z hali, 30% to świeże powietrze.
+
+**Lato:** Punkt Z (zewn.): $32^\circ C, 45\%$. Punkt W (hala): $22^\circ C, 50\%$.
+
+### Punkt Mieszaniny M:
+$$ t_M = 0.3 \cdot t_Z + 0.7 \cdot t_W = 0.3 \cdot 32 + 0.7 \cdot 22 = \mathbf{25.0^\circ C} $$
+$$ X_M = 0.3 \cdot X_Z + 0.7 \cdot X_W = 0.3 \cdot 13.5 + 0.7 \cdot 8.4 = 4.05 + 5.88 = \mathbf{9.93 \text{ g/kg}} $$
+
+::: {.fragment}
+**Oszczędność:**
+*   Bez recyrkulacji ($X_Z = 13.5$): Musimy usunąć $13.5 - 8.4 = 5.1$ g/kg.
+*   Z recyrkulacją ($X_M = 9.93$): Musimy usunąć $9.93 - 8.4 = 1.53$ g/kg.
+
+Redukcja obciążenia osuszania o **70%**! → Mniejsza chłodnica, mniejszy koszt energii.
+:::
+
+::: {.fragment .callout-tip}
+Recyrkulacja to **najskuteczniejszy** sposób zmniejszenia kosztów energetycznych centrali. Ograniczenie: wymogi higieniczne (min. 30 m³/h powietrza świeżego na osobę).
+:::
+
+---
+
+## 💧 Zadanie 8.7: Ilość Skroplonej Wody
+
+W procesie letnim (chłodzenie+osuszanie) z powietrza wykrapla się woda. Ile litrów na godzinę?
+
+::: {.fragment}
+**Strumień masy powietrza:** $\dot{m} = 3.33$ kg/s (z zad. 8.3).
+
+**Zmiana zawilżenia:**
+$$ \Delta X = X_Z - X_{ch} = 13.5 - 8.4 = 5.1 \text{ g/kg} = 0.0051 \text{ kg/kg} $$
+
+**Strumień kondensatu:**
+$$ \dot{m}_w = \dot{m} \cdot \Delta X = 3.33 \cdot 0.0051 = 0.017 \text{ kg/s} $$
+$$ \dot{V}_w = 0.017 \cdot 3600 = \mathbf{61.2 \text{ l/h}} $$
+:::
+
+::: {.fragment .callout-note}
+To ponad **litr na minutę** wykroplonej wody! Musi być odprowadzona do kanalizacji przez syfon (aby nie wciągać powietrza). Tę wodę można też wykorzystać jako destylowaną do procesów technologicznych.
+:::
+
+---
+
+## 🏗️ Zadanie 8.8: Nagrzewnica Zimowa – Moc
+
+Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = 25\,000 \text{ m}^3/h$ powietrza podgrzewanego od $-10^\circ C$ do $22^\circ C$.
+
+::: {.columns}
+::: {.column width="50%"}
+$$ \dot{m} = \frac{25000}{3600} \cdot 1.2 \approx 8.33 \text{ kg/s} $$
+
+**Z wykresu h-X:**
+
+*   $h_Z (-10^\circ C, 90\%) \approx -8 \text{ kJ/kg}$
+*   $h_N (22^\circ C, X=1.5 g/kg) \approx 26 \text{ kJ/kg}$
+:::
+::: {.column width="50%"}
+$$ \dot{Q}_{nagr} = \dot{m} (h_N - h_Z) $$
+$$ \dot{Q}_{nagr} = 8.33 \cdot (26 - (-8)) $$
+$$ \dot{Q}_{nagr} = 8.33 \cdot 34 \approx \mathbf{283 \text{ kW}} $$
+:::
+:::
+
+::: {.fragment .callout-warning}
+$283 \text{ kW}$ to jak ogrzewanie **~15 domów jednorodzinnych**! Dlatego rekuperacja (odzysk ciepła) jest kluczowa — może zaoszczędzić 75% tej mocy.
 :::
 
 ---

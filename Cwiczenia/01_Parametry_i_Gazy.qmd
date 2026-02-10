@@ -1,13 +1,13 @@
 ---
 title: "Ćwiczenia 1: Projekt Fabryka - Start"
-author: "Prowadzący"
+author: "Marek Urbaniak"
 format: 
   revealjs:
     slide-number: true
     theme: simple
     width: 1600
     height: 900
-    logo: "img/logo.png"
+    logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
 ---
 
@@ -30,8 +30,8 @@ Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semest
 :::
 :::
 
-::: {.fragment .callout-important}
-Wszystkie zadania na ćwiczeniach będą elementami tego dużego projektu.
+::: {.fragment .callout-important title="Ważne"}
+Większość zadań na ćwiczeniach będzie elementami tego dużego projektu.
 :::
 
 ---
@@ -116,6 +116,102 @@ Ze względów bezpieczeństwa (UBD) należy przeprowadzić próbę ciśnieniową
 
 **Wniosek:**
 Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.
+:::
+
+---
+
+## 🔥 Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne
+
+Podczas audytu BHP pada pytanie: **Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do $300^\circ C$?**
+
+::: {.callout-note title="Dane"}
+*   Zbiornik zamknięty (zawór odcięty): $V = const$.
+*   Stan początkowy: $p_1 = 950 \text{ kPa}, T_1 = 298.15 \text{ K}$.
+*   Stan awaryjny: $T_2 = 300 + 273.15 = 573.15 \text{ K}$.
+:::
+
+::: {.fragment}
+**Prawo Gay-Lussaca** ($V = const, m = const$):
+$$ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} $$
+$$ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} $$
+:::
+
+::: {.fragment .callout-error}
+Ciśnienie prawie się **podwoi**! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego ($1.3 \cdot p_{rob}$).
+:::
+
+---
+
+## 🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)
+
+W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ (objętościowo), przy $p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3$.
+
+### Oblicz:
+1.  Ciśnienie parcjalne każdego składnika.
+2.  Masę każdego składnika.
+
+::: {.fragment}
+**Krok 1: Ciśnienia parcjalne** (Prawo Daltona: $p_i = y_i \cdot p$)
+
+*   $p_{N_2} = 0.80 \cdot 500 = \mathbf{400 \text{ kPa}}$
+*   $p_{O_2} = 0.20 \cdot 500 = \mathbf{100 \text{ kPa}}$
+
+**Krok 2: Masy** ($m_i = \frac{p_i V}{R_i T}$, gdzie $R_{N_2}=297, R_{O_2}=260$ J/kgK)
+
+*   $m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}$
+*   $m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}$
+
+Masa całkowita: $m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}$.
+:::
+
+---
+
+## 📏 Zadanie 1.2d: Gęstość i Objętość Właściwa
+
+Kierownik pyta: **"Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?"**
+
+To ważne przy doborze rurociągów (prędkość przepływu zależy od gęstości!).
+
+::: {.columns}
+::: {.column width="50%"}
+**W zbiorniku ($p = 950$ kPa, $T = 298$ K):**
+$$ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} $$
+$$ \rho \approx \mathbf{11.1 \text{ kg/m}^3} $$
+$$ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} $$
+:::
+::: {.column width="50%"}
+**Warunki normalne ($p_n = 101.3$ kPa, $T_n = 273$ K):**
+$$ \rho_n = \frac{101\,300}{287 \cdot 273.15} $$
+$$ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} $$
+$$ v_n \approx 0.775 \text{ m}^3/\text{kg} $$
+:::
+:::
+
+::: {.fragment .callout-tip}
+Gęstość w zbiorniku jest **8.6×** większa niż w warunkach normalnych. Dlatego zbiornik może pomieścić tak dużą masę gazu w małej objętości.
+:::
+
+---
+
+## ⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot
+
+Dział spawalniczy potrzebuje zbiornika na **czysty azot** ($N_2$) o masie $m = 50$ kg, przechowywany w temperaturze $15^\circ C$ i ciśnieniu $200 \text{ bar (abs)}$.
+
+**Oblicz wymaganą objętość zbiornika.**
+
+::: {.fragment}
+$$ V = \frac{m R T}{p} $$
+
+*   $R_{N_2} = 297 \text{ J/(kgK)}$ (Indywidualna stała gazowa azotu: $R_{N_2} = 8314/28 = 297$)
+*   $T = 288.15 \text{ K}$
+*   $p = 200 \cdot 10^5 = 20\,000\,000 \text{ Pa}$
+
+$$ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,000\,000} $$
+$$ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} $$
+:::
+
+::: {.fragment .callout-note}
+**Uwaga:** Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości $Z \approx 1.04$, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.
 :::
 
 ---

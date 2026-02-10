@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01_Parametry_i_Gazy_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/popper.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="02_Bilans_Sprezarkowni_files/libs/clipboard/clipboard.min.js"></script>
+<script src="02_Bilans_Sprezarkowni_files/libs/quarto-html/tabby.min.js"></script>
+<script src="02_Bilans_Sprezarkowni_files/libs/quarto-html/popper.min.js"></script>
+<script src="02_Bilans_Sprezarkowni_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="02_Bilans_Sprezarkowni_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="02_Bilans_Sprezarkowni_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="02_Bilans_Sprezarkowni_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 1: Projekt Fabryka - Start</title>
+  <title>Ćwiczenia 2: Bilans Sprężarkowni</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="02_Bilans_Sprezarkowni_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="02_Bilans_Sprezarkowni_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,11 +29,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="02_Bilans_Sprezarkowni_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -127,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 1: Projekt Fabryka - Start</h1>
+  <h1 class="title">Ćwiczenia 2: Bilans Sprężarkowni</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -138,99 +138,122 @@ Marek Urbaniak
 </div>
 
 </section>
-<section id="projekt-modernizacja-hali-przemysłowej" class="slide level2">
-<h2>🏭 Projekt: Modernizacja Hali Przemysłowej</h2>
+<section id="projekt-etap-2---sprężarkownia" class="slide level2">
+<h2>🏭 Projekt: Etap 2 - Sprężarkownia</h2>
+<p>Do napełniania naszego zbiornika (<span class="math inline">\(V=5m^3\)</span>) wybrano sprężarkę tłokową. Musimy zweryfikować jej parametry energetyczne i dobrać system chłodzenia.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<h3 id="twoje-zadanie">Twoje Zadanie:</h3>
-<p>Zostajesz zatrudniony jako <strong>Młodszy Inżynier Energetyk</strong> w zakładzie produkcyjnym “Termo-Tech”.</p>
-<p>Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semestrze jest przeanalizowanie kluczowych węzłów energetycznych zakładu:</p>
+<h3 id="założenia-projektowe">Założenia Projektowe:</h3>
 <ol type="1">
-<li>Sieć sprężonego powietrza (Gazy).</li>
-<li>Siłownię parową zasilającą (Para Wodna).</li>
-<li>Odzysk ciepła odpadowego (II Zasada).</li>
-<li>Klimatyzację hali montażowej (Powietrze Wilgotne).</li>
+<li><strong>Powietrze ssane:</strong> <span class="math inline">\(p_1 = 1 \text{ bar}, t_1 = 20^\circ C\)</span>.</li>
+<li><strong>Powietrze tłoczone:</strong> <span class="math inline">\(p_2 = 9.5 \text{ bar}\)</span>.</li>
+<li><strong>Wydajność:</strong> <span class="math inline">\(\dot{V}_n = 100 \text{ m}^3/h\)</span> (normalnych).</li>
+<li><strong>Proces sprężania:</strong> Politropa z wykładnikiem <span class="math inline">\(n = 1.35\)</span>.</li>
 </ol>
 </div><div class="column" style="width:40%;">
-<p><img data-src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;q=80&amp;w=1000.png"></p>
+<p><img data-src="https://images.unsplash.com/photo-1565514020125-6915a2928d11?auto=format&amp;fit=crop&amp;q=80&amp;w=800.png"></p>
 </div></div>
-<div class="fragment" title="Ważne">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ważne</strong></p>
-</div>
-<div class="callout-content">
-<p>Większość zadań na ćwiczeniach będzie elementami tego dużego projektu.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="etap-1-inwentaryzacja-zbiorników-parametry-stanu" class="slide level2">
-<h2>📋 Etap 1: Inwentaryzacja Zbiorników (Parametry Stanu)</h2>
-<p>Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w “dziwnych” jednostkach ze starych manometrów.</p>
-<div title="Dane z Raportu Technicznego">
+<section id="zadanie-2.1-praca-techniczna-sprężania" class="slide level2">
+<h2>⚙️ Zadanie 2.1: Praca Techniczna Sprężania</h2>
+<p>Oblicz jednostkową pracę techniczną <span class="math inline">\(l_t\)</span> potrzebną do sprężenia 1 kg powietrza.</p>
+<div title="Wzór na pracę techniczną przemiany politropowej">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Dane z Raportu Technicznego</strong></p>
+<p><strong>Wzór na pracę techniczną przemiany politropowej</strong></p>
 </div>
 <div class="callout-content">
+<p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="obliczenia">Obliczenia:</h3>
 <ul>
-<li><strong>Objętość zbiornika:</strong> <span class="math inline">\(V = 5 m^3\)</span></li>
-<li><strong>Wskazanie manometru (nadciśnienie):</strong> <span class="math inline">\(p_{man} = 8.5 \text{ bar}\)</span></li>
-<li><strong>Temperatura otoczenia/gazu:</strong> <span class="math inline">\(t = 25^\circ C\)</span></li>
-<li><strong>Ciśnienie atmosferyczne:</strong> <span class="math inline">\(p_{atm} = 750 \text{ mmHg}\)</span></li>
+<li><span class="math inline">\(R = 287 \text{ J}/(\text{kg K})\)</span></li>
+<li><span class="math inline">\(T_1 = 293.15 \text{ K}\)</span></li>
+<li><span class="math inline">\(p_2/p_1 = 9.5\)</span></li>
+<li><span class="math inline">\(n = 1.35\)</span></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<h3 id="zadanie-projektowe-1.1">Zadanie Projektowe 1.1:</h3>
-<p>Kierownik pyta: <strong>“Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?”</strong></p>
-</section>
-<section id="narzędzia-ciśnienie-absolutne-a-manometryczne" class="slide level2">
-<h2>🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne</h2>
-<p>Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) <strong>ZAWSZE</strong> używamy ciśnienia absolutnego!</p>
-<p><span class="math display">\[ p_{abs} = p_{man} + p_{atm} \]</span> <em>(Dla podciśnienia: <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span>)</em></p>
 <div class="fragment">
-<h3 id="przeliczanie-jednostek-krok-1">Przeliczanie jednostek (Krok 1):</h3>
-<ol type="1">
-<li><strong>Atmosferyczne:</strong> <span class="math inline">\(750 \text{ mmHg} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ atm} = 760 \text{ mmHg} = 101325 \text{ Pa}\)</span></li>
-<li><span class="math inline">\(p_{atm} = \frac{750}{760} \cdot 101325 \approx 99\,992 \text{ Pa} \approx 100 \text{ kPa}\)</span></li>
-</ul></li>
-<li><strong>Manometryczne:</strong> <span class="math inline">\(8.5 \text{ bar} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}\)</span></li>
-<li><span class="math inline">\(p_{man} = 850 \text{ kPa}\)</span></li>
-</ul></li>
-<li><strong>Absolutne:</strong>
-<ul>
-<li><span class="math inline">\(p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}\)</span></li>
-</ul></li>
-</ol>
+<p><span class="math display">\[ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ (9.5)^{\frac{0.35}{1.35}} - 1 \right] \]</span> <span class="math display">\[ l_t = 3.857 \cdot 84134 \cdot [ 1.795 - 1 ] \]</span> <span class="math display">\[ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 \text{ kJ/kg}} \]</span></p>
 </div>
 </section>
-<section id="obliczenia-masa-gazu" class="slide level2">
-<h2>🧮 Obliczenia: Masa Gazu</h2>
-<p>Traktując powietrze jako <strong>Gaz Doskonały</strong>, użyj równania stanu:</p>
-<p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+<section id="zadanie-2.2-moc-silnika-napędowego" class="slide level2">
+<h2>⚡ Zadanie 2.2: Moc Silnika Napędowego</h2>
+<p>Jaka jest teoretyczna moc sprężarki (<span class="math inline">\(N_t\)</span>)?</p>
+<ol type="1">
+<li><strong>Strumień masy:</strong> <span class="math inline">\(\dot{m} = ?\)</span>
+<ul>
+<li>Warunki normalne (<span class="math inline">\(p_n=101325, T_n=273.15\)</span>): <span class="math inline">\(\rho_n \approx 1.29 \text{ kg/m}^3\)</span> (lub <span class="math inline">\(p=\rho RT\)</span>).</li>
+<li><span class="math inline">\(\dot{m} = \dot{V}_n \cdot \rho_n = \frac{100}{3600} \cdot 1.29 \approx 0.0358 \text{ kg/s}\)</span>.</li>
+</ul></li>
+<li><strong>Moc teoretyczna:</strong> <span class="math display">\[ N_t = \dot{m} \cdot l_t \]</span> <span class="math display">\[ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} \]</span></li>
+</ol>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Rzeczywista moc będzie wyższa przez sprawność mechaniczną (<span class="math inline">\(\eta_m \approx 0.9\)</span>). <span class="math inline">\(N_{silnika} = N_t / 0.9 \approx 10.3 \text{ kW}\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-2.3-temperatura-tłoczenia" class="slide level2">
+<h2>🔥 Zadanie 2.3: Temperatura Tłoczenia</h2>
+<p>Do jakiej temperatury nagrzeje się powietrze na wylocie? To kluczowe dla doboru oleju i chłodnicy!</p>
+<p><span class="math display">\[ T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \]</span></p>
+<div class="fragment">
+<p><span class="math display">\[ T_2 = 293.15 \cdot (9.5)^{0.259} \]</span> <span class="math display">\[ T_2 = 293.15 \cdot 1.795 \approx \mathbf{526 \text{ K} = 253^\circ C} \]</span></p>
+<div class="callout-error">
+<p><strong>Uwaga!</strong> <span class="math inline">\(253^\circ C\)</span> to bardzo wysoka temperatura! Grozi zapłonem par oleju. Konieczne jest <strong>chłodzenie międzystopniowe</strong> lub intensywne chłodzenie cylindra.</p>
+</div>
+</div>
+</section>
+<section id="zadanie-2.4-bilans-ciepła-i-zasada" class="slide level2">
+<h2>❄️ Zadanie 2.4: Bilans Ciepła (I Zasada)</h2>
+<p>Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do <span class="math inline">\(30^\circ C\)</span> przed podaniem na halę?</p>
+<p><strong>I Zasada dla układu otwartego (chłodnica - ciśnienie stałe <span class="math inline">\(p=const\)</span>):</strong> <span class="math display">\[ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{wyl} - t_{wl}) \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Dane wejściowe:</strong> * <span class="math inline">\(p = 950\,000 \text{ Pa}\)</span> (Absolutne!) * <span class="math inline">\(V = 5 \text{ m}^3\)</span> * <span class="math inline">\(T = 25 + 273.15 = 298.15 \text{ K}\)</span> * <span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</p>
+<p><strong>Dane:</strong> * <span class="math inline">\(\dot{m} = 0.0358 \text{ kg/s}\)</span> * <span class="math inline">\(t_{wl} = 253^\circ C\)</span> (z sprężarki) * <span class="math inline">\(t_{wyl} = 30^\circ C\)</span> (wymagane) * <span class="math inline">\(c_p \approx 1005 \text{ J}/(\text{kg K})\)</span></p>
 </div><div class="column" style="width:50%;">
-<p><strong>Rozwiązanie:</strong> <span class="math display">\[ m = \frac{p \cdot V}{R \cdot T} \]</span></p>
-<p><span class="math display">\[ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} \]</span></p>
-<p><span class="math display">\[ m \approx 55.51 \text{ kg} \]</span></p>
+<p><strong>Obliczenia:</strong> <span class="math display">\[ \dot{Q} = 0.0358 \cdot 1005 \cdot (30 - 253) \]</span> <span class="math display">\[ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} \]</span></p>
+<p>(Minus oznacza ciepło odprowadzone <strong>Z</strong> układu).</p>
+</div></div>
+</section>
+<section id="zadanie-2.5-sprężanie-dwustopniowe" class="slide level2">
+<h2>🔄 Zadanie 2.5: Sprężanie Dwustopniowe</h2>
+<p><span class="math inline">\(253^\circ C\)</span> to za dużo! Rozważmy <strong>sprężanie dwustopniowe</strong> z chłodzeniem międzystopniowym do <span class="math inline">\(30^\circ C\)</span>.</p>
+<p><strong>Optymalna proporcja stopni</strong> (minimalna praca): <span class="math inline">\(p_{pośr} = \sqrt{p_1 \cdot p_2}\)</span>.</p>
+<p><span class="math display">\[ p_{pośr} = \sqrt{1 \cdot 9.5} \approx 3.08 \text{ bar} \]</span></p>
+<div class="fragment">
+<p><strong>Temperatura po I stopniu</strong> (<span class="math inline">\(1 \rightarrow 3.08\)</span> bar, <span class="math inline">\(n=1.35\)</span>): <span class="math display">\[ T_{I} = 293.15 \cdot (3.08)^{0.259} \approx 293.15 \cdot 1.333 \approx \mathbf{391 K = 118^\circ C} \]</span></p>
+<p><strong>Temperatura po II stopniu</strong> (<span class="math inline">\(3.08 \rightarrow 9.5\)</span> bar, start od <span class="math inline">\(30^\circ C = 303K\)</span>): <span class="math display">\[ T_{II} = 303 \cdot (9.5/3.08)^{0.259} = 303 \cdot (3.08)^{0.259} \approx 303 \cdot 1.333 \approx \mathbf{404 K = 131^\circ C} \]</span></p>
+</div>
+<div class="fragment callout-success">
+<p><span class="math inline">\(131^\circ C\)</span> zamiast <span class="math inline">\(253^\circ C\)</span>! Temperatura spadła prawie <strong>dwukrotnie</strong>. Jest to bezpieczne dla oleju i uszczelek.</p>
+</div>
+</section>
+<section id="zadanie-2.6-porównanie-procesów-sprężania" class="slide level2">
+<h2>📊 Zadanie 2.6: Porównanie Procesów Sprężania</h2>
+<p>Oblicz pracę techniczną dla trzech różnych procesów sprężania (<span class="math inline">\(p_1=1, p_2=9.5\)</span> bar):</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><strong>Izotermiczny</strong> (<span class="math inline">\(n=1\)</span>): <span class="math display">\[ l_t = R T_1 \ln\frac{p_2}{p_1} \]</span> <span class="math display">\[ l_t = 287 \cdot 293 \cdot \ln(9.5) \]</span> <span class="math display">\[ l_t \approx \mathbf{189 \text{ kJ/kg}} \]</span> (Minimum teoretyczne)</p>
+</div><div class="column" style="width:33%;">
+<p><strong>Politropowy</strong> (<span class="math inline">\(n=1.35\)</span>): <span class="math display">\[ l_t \approx \mathbf{258 \text{ kJ/kg}} \]</span> (Obliczone wcześniej)</p>
+</div><div class="column" style="width:33%;">
+<p><strong>Adiabatyczny</strong> (<span class="math inline">\(n=\kappa=1.4\)</span>): <span class="math display">\[ l_t = \frac{1.4}{0.4} \cdot 287 \cdot 293 \cdot [(9.5)^{0.286}-1] \]</span> <span class="math display">\[ l_t \approx \mathbf{273 \text{ kJ/kg}} \]</span> (Maksimum praktyczne)</p>
 </div></div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -242,114 +265,19 @@ Marek Urbaniak
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Odpowiedź dla Kierownika:</strong> W zbiorniku znajduje się około <strong>55.5 kg</strong> powietrza.</p>
+<p><strong>Wniosek:</strong> Sprężanie izotermiczne wymaga o <strong>31% mniej</strong> pracy niż adiabatyczne. Dlatego chłodzimy sprężarki!</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-projektowe-1.2-próba-hydrauliczna" class="slide level2">
-<h2>💧 Zadanie Projektowe 1.2: Próba Hydrauliczna</h2>
-<p>Ze względów bezpieczeństwa (UBD) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu <strong>wody</strong>.</p>
-<p><strong>Pytanie:</strong> O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik (<span class="math inline">\(V=5m^3\)</span>) wodą w temp. <span class="math inline">\(20^\circ C\)</span>?</p>
+<section id="zadanie-2.7-dobór-chłodnicy-wodnej" class="slide level2">
+<h2>💧 Zadanie 2.7: Dobór Chłodnicy Wodnej</h2>
+<p>Musimy odprowadzić <span class="math inline">\(\dot{Q} = 8\)</span> kW z chłodnicy sprężarki. Dysponujemy wodą z sieci wodociągowej (<span class="math inline">\(t_{w,in} = 15^\circ C\)</span>). Maksymalna dopuszczalna temperatura wody na wylocie to <span class="math inline">\(40^\circ C\)</span> (limit zrzutu do kanalizacji).</p>
+<p><strong>Oblicz wymagany strumień wody chłodzącej.</strong></p>
+<p><span class="math display">\[ \dot{Q} = \dot{m}_w \cdot c_w \cdot (t_{w,out} - t_{w,in}) \]</span></p>
 <div class="fragment">
-<h3 id="analiza">Analiza:</h3>
-<ul>
-<li>Gęstość wody <span class="math inline">\(\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}\)</span> (niezależna od ciśnienia - ciecz nieściśliwa).</li>
-<li>Masa wody: <span class="math inline">\(m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}\)</span>.</li>
-</ul>
-<p><strong>Wniosek:</strong> Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.</p>
-</div>
-</section>
-<section id="zadanie-1.2b-pożar-w-hali-ciśnienie-awaryjne" class="slide level2">
-<h2>🔥 Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne</h2>
-<p>Podczas audytu BHP pada pytanie: <strong>Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do <span class="math inline">\(300^\circ C\)</span>?</strong></p>
-<div title="Dane">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Dane</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Zbiornik zamknięty (zawór odcięty): <span class="math inline">\(V = const\)</span>.</li>
-<li>Stan początkowy: <span class="math inline">\(p_1 = 950 \text{ kPa}, T_1 = 298.15 \text{ K}\)</span>.</li>
-<li>Stan awaryjny: <span class="math inline">\(T_2 = 300 + 273.15 = 573.15 \text{ K}\)</span>.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>Prawo Gay-Lussaca</strong> (<span class="math inline">\(V = const, m = const\)</span>): <span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} \]</span> <span class="math display">\[ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} \]</span></p>
-</div>
-<div class="fragment callout-error">
-<p>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</p>
-</div>
-</section>
-<section id="zadanie-1.2c-mieszanina-gazów-prawo-daltona" class="slide level2">
-<h2>🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)</h2>
-<p>W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% <span class="math inline">\(N_2\)</span> + 20% <span class="math inline">\(O_2\)</span> (objętościowo), przy <span class="math inline">\(p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3\)</span>.</p>
-<h3 id="oblicz">Oblicz:</h3>
-<ol type="1">
-<li>Ciśnienie parcjalne każdego składnika.</li>
-<li>Masę każdego składnika.</li>
-</ol>
-<div class="fragment">
-<p><strong>Krok 1: Ciśnienia parcjalne</strong> (Prawo Daltona: <span class="math inline">\(p_i = y_i \cdot p\)</span>)</p>
-<ul>
-<li><span class="math inline">\(p_{N_2} = 0.80 \cdot 500 = \mathbf{400 \text{ kPa}}\)</span></li>
-<li><span class="math inline">\(p_{O_2} = 0.20 \cdot 500 = \mathbf{100 \text{ kPa}}\)</span></li>
-</ul>
-<p><strong>Krok 2: Masy</strong> (<span class="math inline">\(m_i = \frac{p_i V}{R_i T}\)</span>, gdzie <span class="math inline">\(R_{N_2}=297, R_{O_2}=260\)</span> J/kgK)</p>
-<ul>
-<li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
-<li><span class="math inline">\(m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}\)</span></li>
-</ul>
-<p>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</p>
-</div>
-</section>
-<section id="zadanie-1.2d-gęstość-i-objętość-właściwa" class="slide level2">
-<h2>📏 Zadanie 1.2d: Gęstość i Objętość Właściwa</h2>
-<p>Kierownik pyta: <strong>“Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?”</strong></p>
-<p>To ważne przy doborze rurociągów (prędkość przepływu zależy od gęstości!).</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>W zbiorniku (<span class="math inline">\(p = 950\)</span> kPa, <span class="math inline">\(T = 298\)</span> K):</strong> <span class="math display">\[ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} \]</span> <span class="math display">\[ \rho \approx \mathbf{11.1 \text{ kg/m}^3} \]</span> <span class="math display">\[ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} \]</span></p>
-</div><div class="column" style="width:50%;">
-<p><strong>Warunki normalne (<span class="math inline">\(p_n = 101.3\)</span> kPa, <span class="math inline">\(T_n = 273\)</span> K):</strong> <span class="math display">\[ \rho_n = \frac{101\,300}{287 \cdot 273.15} \]</span> <span class="math display">\[ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} \]</span> <span class="math display">\[ v_n \approx 0.775 \text{ m}^3/\text{kg} \]</span></p>
-</div></div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Gęstość w zbiorniku jest <strong>8.6×</strong> większa niż w warunkach normalnych. Dlatego zbiornik może pomieścić tak dużą masę gazu w małej objętości.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2e-dobór-zbiornika-na-azot" class="slide level2">
-<h2>⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot</h2>
-<p>Dział spawalniczy potrzebuje zbiornika na <strong>czysty azot</strong> (<span class="math inline">\(N_2\)</span>) o masie <span class="math inline">\(m = 50\)</span> kg, przechowywany w temperaturze <span class="math inline">\(15^\circ C\)</span> i ciśnieniu <span class="math inline">\(200 \text{ bar (abs)}\)</span>.</p>
-<p><strong>Oblicz wymaganą objętość zbiornika.</strong></p>
-<div class="fragment">
-<p><span class="math display">\[ V = \frac{m R T}{p} \]</span></p>
-<ul>
-<li><span class="math inline">\(R_{N_2} = 297 \text{ J/(kgK)}\)</span> (Indywidualna stała gazowa azotu: <span class="math inline">\(R_{N_2} = 8314/28 = 297\)</span>)</li>
-<li><span class="math inline">\(T = 288.15 \text{ K}\)</span></li>
-<li><span class="math inline">\(p = 200 \cdot 10^5 = 20\,000\,000 \text{ Pa}\)</span></li>
-</ul>
-<p><span class="math display">\[ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,000\,000} \]</span> <span class="math display">\[ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} \]</span></p>
+<p><span class="math display">\[ \dot{m}_w = \frac{8000}{4190 \cdot (40 - 15)} = \frac{8000}{104\,750} \]</span> <span class="math display">\[ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} \]</span></p>
 </div>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -361,35 +289,25 @@ Marek Urbaniak
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Uwaga:</strong> Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości <span class="math inline">\(Z \approx 1.04\)</span>, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.</p>
+<p><strong>Koszt wody:</strong> Przy cenie <span class="math inline">\(8 \text{ zł/m}^3\)</span> i pracy sprężarki 2000 h/rok: <span class="math inline">\(0.076 \cdot 3.6 \cdot 2000 \cdot 8 \approx \mathbf{4380 \text{ zł/rok}}\)</span>. Warto rozważyć obieg zamknięty z wieżą chłodniczą!</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-projektowe-1.3-skale-temperatur" class="slide level2">
-<h2>🌡️ Zadanie Projektowe 1.3: Skale Temperatur</h2>
-<p>W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się przy <span class="math inline">\(T = 250^\circ F\)</span> (Fahrenheita). Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to <span class="math inline">\(140^\circ C\)</span>?</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Konwersja:</strong> <span class="math display">\[ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) \]</span></p>
-<p><span class="math display">\[ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 \]</span> <span class="math display">\[ T_{limit} \approx 121.1^\circ C \]</span></p>
-</div><div class="column" style="width:50%;">
-<div class="fragment callout-error">
-<p><strong>Decyzja:</strong> <span class="math inline">\(121.1^\circ C &lt; 140^\circ C\)</span></p>
-<p><strong>ZAWÓR NIE NADAJE SIĘ!</strong> Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.</p>
+<section id="zadanie-2.8-wyznaczanie-wykładnika-politropy" class="slide level2">
+<h2>🔬 Zadanie 2.8: Wyznaczanie Wykładnika Politropy</h2>
+<p>Serwisant zmierzył temperatury na sprężarce:</p>
+<ul>
+<li>Ssanie: <span class="math inline">\(t_1 = 22^\circ C\)</span>, <span class="math inline">\(p_1 = 1\)</span> bar.</li>
+<li>Tłoczenie: <span class="math inline">\(t_2 = 215^\circ C\)</span>, <span class="math inline">\(p_2 = 8\)</span> bar.</li>
+</ul>
+<p><strong>Jaki jest rzeczywisty wykładnik politropy <span class="math inline">\(n\)</span> tej sprężarki?</strong></p>
+<p><span class="math display">\[ T_2/T_1 = (p_2/p_1)^{(n-1)/n} \]</span></p>
+<div class="fragment">
+<p><span class="math display">\[ \frac{488.15}{295.15} = 8^{(n-1)/n} \]</span> <span class="math display">\[ 1.654 = 8^{(n-1)/n} \]</span> <span class="math display">\[ \ln(1.654) = \frac{n-1}{n} \cdot \ln(8) \]</span> <span class="math display">\[ 0.503 = \frac{n-1}{n} \cdot 2.079 \]</span> <span class="math display">\[ \frac{n-1}{n} = 0.242 \quad \Rightarrow \quad n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} \]</span></p>
 </div>
-</div></div>
-</section>
-<section id="zadanie-domowe-raport-1" class="slide level2">
-<h2>🏠 Zadanie Domowe (Raport 1)</h2>
-<p><strong>Temat:</strong> Dobór sprężarki.</p>
-<p>Aby napompować nasz zbiornik (<span class="math inline">\(V=5m^3\)</span>) od ciśnienia atmosferycznego do roboczego (<span class="math inline">\(8.5 \text{ bar}\)</span> nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.</p>
-<ol type="1">
-<li>Oblicz masę powietrza w zbiorniku “pustym” (<span class="math inline">\(p_{atm}, 25^\circ C\)</span>).</li>
-<li>Oblicz masę powietrza w zbiorniku “pełnym” (<span class="math inline">\(9.5 \text{ bar abs}, 40^\circ C\)</span> - bo sprężanie podgrzewa!).</li>
-<li>Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w <span class="math inline">\(kg/h\)</span> oraz <span class="math inline">\(m^3/h\)</span> (dla warunków ssania).</li>
-</ol>
+<div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -399,10 +317,25 @@ Marek Urbaniak
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Przyjmij stałą gazową dla powietrza <span class="math inline">\(R = 287 \text{ J}/(\text{kg K})\)</span>.</p>
+<p><span class="math inline">\(n = 1.32 &lt; \kappa = 1.4\)</span> — sprężarka jest dobrze chłodzona (bliżej procesu izotermicznego niż adiabatycznego).</p>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="zadanie-domowe-raport-2" class="slide level2">
+<h2>🏠 Zadanie Domowe (Raport 2)</h2>
+<p><strong>Temat:</strong> Odzysk ciepła.</p>
+<p>Skoro wyrzucamy 8 kW ciepła do otoczenia, inżynier produkcji proponuje wykorzystać je do podgrzewania wody użytkowej w umywalniach.</p>
+<ol type="1">
+<li>Mamy strumień wody <span class="math inline">\(\dot{m}_w\)</span> o temp. wejściowej <span class="math inline">\(10^\circ C\)</span>.</li>
+<li>Chcemy ją podgrzać do <span class="math inline">\(45^\circ C\)</span>.</li>
+<li>Zakładamy, że odzyskamy 80% ciepła z chłodnicy sprężarki (<span class="math inline">\(0.8 \cdot 8 \text{ kW}\)</span>).</li>
+</ol>
+<p><strong>Zadanie:</strong> Oblicz, jaki strumień wody [l/min] możemy podgrzać?</p>
+<ul>
+<li>Ciepło właściwe wody: <span class="math inline">\(c_w = 4190 \text{ J}/(\text{kg K})\)</span>.</li>
+</ul>
 
 </section>
     </div>
@@ -414,19 +347,19 @@ Marek Urbaniak
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="02_Bilans_Sprezarkowni_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

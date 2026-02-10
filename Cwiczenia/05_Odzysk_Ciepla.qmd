@@ -1,13 +1,13 @@
 ---
 title: "Ćwiczenia 5: Entropia i Jakość Ciepła"
-author: "Prowadzący"
+author: "Marek Urbaniak"
 format: 
   revealjs:
     slide-number: true
     theme: simple
     width: 1600
     height: 900
-    logo: "../img/logo.png"
+    logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
 ---
 
@@ -100,6 +100,103 @@ $$ W_{stracona} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW
 ::: {.callout-error}
 W procesie prostego podgrzewania wody straciliśmy bezpowrotnie **48 kW** potencjalnej mocy mechanicznej!
 To cena za nieodwracalność procesu.
+:::
+
+---
+
+## 🔄 Zadanie 5.4: Sprawność Carnota Wymiennika
+
+Ile pracy moglibyśmy **teoretycznie** uzyskać z naszego strumienia spalin (zamiast tylko grzać wodę)?
+
+**Silnik Carnota** między $T_{gor} = 573K$ a $T_{zim} = 293K$:
+$$ \eta_C = 1 - \frac{T_{zim}}{T_{gor}} = 1 - \frac{293}{573} \approx \mathbf{48.9\%} $$
+
+::: {.fragment}
+**Maksymalna praca:**
+$$ W_{max} = \eta_C \cdot \dot{Q}_{spalin} = 0.489 \cdot 150 \approx \mathbf{73.4 \text{ kW}} $$
+
+Straciliśmy z tego $48 \text{ kW}$ (egzergia zniszczona w wymienniku). Odzyskaliśmy $0 \text{ kW}$ pracy (bo wymiennik nie produkuje pracy!).
+
+**Sprawność egzergetyczna wymiennika:**
+$$ \psi = 1 - \frac{W_{stracona}}{W_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} $$
+:::
+
+::: {.fragment .callout-warning}
+Tylko **35%** potencjału energetycznego spalin wykorzystujemy mądrze. Reszta jest tracona na nieodwracalność.
+:::
+
+---
+
+## 🏗️ Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy
+
+Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprądowy**. Jak to wpływa na generację entropii?
+
+::: {.columns}
+::: {.column width="50%"}
+**Współprądowy:**
+
+*   Spaliny: $300 \rightarrow 150^\circ C$
+*   Woda: $20 \rightarrow 80^\circ C$
+*   $\Delta T_{min}$ (na wylocie): $150 - 80 = 70 K$
+*   $\Delta S_{gen} = 165 \text{ W/K}$ (obliczone)
+:::
+::: {.column width="50%"}
+**Przeciwprądowy:**
+
+*   Spaliny: $300 \rightarrow 150^\circ C$
+*   Woda: $20 \rightarrow 130^\circ C$ (możliwa wyższa $t_{out}$!)
+*   $\Delta T_{min}$ (na zimnym końcu): $150 - 130 = 20 K$
+*   Strumień wody: $\dot{m}_w = \frac{150\,000}{4190 \cdot 110} \approx 0.326$ kg/s
+:::
+:::
+
+::: {.fragment}
+**Entropia (przeciwprądowy):**
+$\Delta \dot{S}_w = 0.326 \cdot 4190 \cdot \ln(403/293) = 1366 \cdot 0.318 = +434$ W/K
+$\Delta \dot{S}_{gen} = -303 + 434 = \mathbf{+131 \text{ W/K}}$
+
+Redukcja z $165$ do $131$ W/K → **o 21% mniejsza generacja entropii!**
+:::
+
+---
+
+## 📊 Zadanie 5.6: Kaskada Wymienników
+
+Zamiast jednego wymiennika, użyjmy **dwóch kolejnych** (kaskada):
+1.  **Wymiennik A:** Spaliny $300 \rightarrow 220^\circ C$ → Podgrzewanie wody kotłowej do $90^\circ C$.
+2.  **Wymiennik B:** Spaliny $220 \rightarrow 150^\circ C$ → Podgrzewanie wody użytkowej do $50^\circ C$.
+
+### Bilans Wymienmika A:
+$\dot{Q}_A = 1 \cdot 1000 \cdot (300-220) = 80 \text{ kW}$
+$\dot{m}_{w,A} = \frac{80\,000}{4190 \cdot (90-20)} = 0.273$ kg/s
+
+### Bilans Wymiennika B:
+$\dot{Q}_B = 1 \cdot 1000 \cdot (220-150) = 70 \text{ kW}$
+$\dot{m}_{w,B} = \frac{70\,000}{4190 \cdot (50-15)} = 0.477$ kg/s
+
+::: {.fragment .callout-tip}
+**Kaskada zmniejsza różnice temperatur** w każdym wymienniku → mniejsza generacja entropii → lepsze wykorzystanie egzergii spalin. To zasada stosowana w kotłach kondensacyjnych i systemach kogeneracyjnych.
+:::
+
+---
+
+## 🌍 Zadanie 5.7: Entropia a Otoczenie
+
+Na koniec: obliczmy, ile entropii "eksportuje" nasz zakład do otoczenia przez komin (spaliny $150^\circ C$ do powietrza $20^\circ C$).
+
+::: {.fragment}
+Spaliny wychodzą z wymiennika: $\dot{m}_s = 1$ kg/s, $t_{out} = 150^\circ C$.
+Chłodzą się do $t_{atm} = 20^\circ C$ w atmosferze.
+
+$$ \dot{Q}_{komin} = 1 \cdot 1000 \cdot (150 - 20) = \mathbf{130 \text{ kW}} $$
+
+Ta energia jest **bezpowrotnie tracona** (za mała różnica temperatur do praktycznego odzysku).
+
+$$ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293} \approx \mathbf{444 \text{ W/K}} $$
+:::
+
+::: {.fragment .callout-important}
+Każda sekunda pracy kotła generuje **444 W/K** entropii w otoczeniu! To termoynamiczny koszt ogrzewania. Kotły kondensacyjne redukują $t_{out}$ do ~$50^\circ C$, zmniejszając te straty o **ponad 60%**.
 :::
 
 ---

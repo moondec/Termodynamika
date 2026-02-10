@@ -137,7 +137,102 @@ Szukamy, przy jakiej temperaturze $h \approx 2943$.
 
 ---
 
-## 🏠 Zadanie Domowe (Raport 3)
+## �️ Zadanie 3.5: Para Mokra – Stopień Suchości
+
+W odbiorniku pary (wymiennik ciepła) para skrapla się częściowo. Serwisant zmierzył ciśnienie $p = 4 \text{ bar}$ i temperaturę $t = 143.6^\circ C$.
+
+**Czy para jest mokra, sucha nasycona, czy przegrzana?**
+
+::: {.fragment}
+Z tablic nasycenia dla $p = 4 \text{ bar}$: $t_{sat} = 143.6^\circ C$.
+$t_{rzecz} = t_{sat}$ → Para jest **nasycona** (na linii nasycenia).
+
+Ale jeśli ktoś zmierzy $h = 2400 \text{ kJ/kg}$ (zamiast $h'' = 2738$), to:
+$$ x = \frac{h - h'}{h'' - h'} = \frac{2400 - 605}{2738 - 605} = \frac{1795}{2133} \approx \mathbf{0.84} $$
+:::
+
+::: {.fragment .callout-warning}
+$x = 0.84$ oznacza, że **16% to kropelki wody**! To niebezpieczne dla łopatek turbiny (erozja). W wymienniku ciepła jest to normalne.
+:::
+
+---
+
+## 📋 Zadanie 3.6: Interpolacja w Tablicach
+
+Nasz kocioł produkuje parę o parametrach $p = 12 \text{ bar}, t = 275^\circ C$. Odczytaj entalpię i entropię z tablic pary przegrzanej, stosując **interpolację liniową**.
+
+::: {.callout-tip title="Dane z tablic przegrzania (12 bar)"}
+| $t$ [°C] | $h$ [kJ/kg] | $s$ [kJ/kgK] |
+|----------|------------|--------------|
+| 250 | 2935 | 6.830 |
+| 300 | 3046 | 7.015 |
+:::
+
+::: {.fragment}
+**Interpolacja** dla $t = 275^\circ C$ (w połowie przedziału):
+
+$$ h_{275} = 2935 + \frac{275 - 250}{300 - 250} \cdot (3046 - 2935) = 2935 + 0.5 \cdot 111 $$
+$$ h_{275} \approx \mathbf{2990.5 \text{ kJ/kg}} $$
+
+$$ s_{275} = 6.830 + 0.5 \cdot (7.015 - 6.830) = 6.830 + 0.0925 $$
+$$ s_{275} \approx \mathbf{6.923 \text{ kJ/kgK}} $$
+:::
+
+---
+
+## 🔄 Zadanie 3.7: Entropia w Kotle
+
+Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): woda $60^\circ C$ → para $10 \text{ bar}, 250^\circ C$.
+
+::: {.columns}
+::: {.column width="50%"}
+**Z tablic:**
+
+*   Woda zasilająca ($60^\circ C$): $s_1 \approx 0.831 \text{ kJ/kgK}$.
+*   Para wylotowa ($10 \text{ bar}, 250^\circ C$): $s_2 = 6.926 \text{ kJ/kgK}$.
+
+**Zmiana entropii (na 1 kg):**
+$$ \Delta s = s_2 - s_1 = 6.926 - 0.831 $$
+$$ \Delta s = \mathbf{6.095 \text{ kJ/kgK}} $$
+:::
+::: {.column width="50%"}
+**Strumień entropii:**
+$$ \dot{S} = \dot{m} \cdot \Delta s = 0.556 \cdot 6.095 $$
+$$ \dot{S} \approx \mathbf{3.39 \text{ kW/K}} $$
+
+::: {.fragment .callout-note}
+To ogromny wzrost entropii! Energia chemiczna paliwa (niska entropia) zamieniana jest na ciepło pary (wysoka entropia). Proces spalania jest silnie nieodwracalny.
+:::
+:::
+:::
+
+---
+
+## 💧 Zadanie 3.8: Bilans Kondensatu
+
+Wymiennik ciepła (odbiornik) skrapla parę z $2 \text{ bar}, 236^\circ C$ do **wrzątku** ($t_{sat} = 120.2^\circ C$ przy 2 bar). Kondensat wraca do kotła.
+
+### Ile ciepła oddaje 1 kg pary w wymienniku?
+
+::: {.fragment}
+**Z tablic:**
+
+*   $h_{wlot} = 2943 \text{ kJ/kg}$ (para przegrzana, 2 bar, 236°C)
+*   $h_{wylot} = h' (2 \text{ bar}) = 504.7 \text{ kJ/kg}$ (ciecz nasycona)
+
+$$ q_{wymiennik} = h_{wlot} - h_{wylot} = 2943 - 504.7 = \mathbf{2438.3 \text{ kJ/kg}} $$
+
+**Moc cieplna wymiennika** (przy $\dot{m} = 0.556$ kg/s):
+$$ \dot{Q}_{wym} = 0.556 \cdot 2438.3 \approx \mathbf{1356 \text{ kW} = 1.36 \text{ MW}} $$
+:::
+
+::: {.fragment .callout-tip}
+Prawie cała energia pary ($91\%$ z $1.5$ MW) jest oddawana w wymienniku. Reszta ($144$ kW) to energia kondensatu, którą odzyskujemy w obiegu zamkniętym.
+:::
+
+---
+
+## �🏠 Zadanie Domowe (Raport 3)
 
 **Temat:** Kocioł Kondensacyjny?
 

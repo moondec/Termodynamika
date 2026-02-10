@@ -1,13 +1,13 @@
 ---
 title: "Ćwiczenia 6: Agregat Wody Lodowej (Chiller)"
-author: "Prowadzący"
+author: "Marek Urbaniak"
 format: 
   revealjs:
     slide-number: true
     theme: simple
     width: 1600
     height: 900
-    logo: "../img/logo.png"
+    logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
 ---
 
@@ -89,6 +89,93 @@ $$ EER \approx \mathbf{5.77} $$
 
 ::: {.callout-success}
 **Wniosek:** Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.
+:::
+
+---
+
+## 🔄 Zadanie 6.4: Pompa Ciepła z Tego Samego Obiegu
+
+Skoro skraplacz wyrzuca $Q_k = 352 \text{ kW}$ ciepła na dach... Czy moglibyśmy **zimą** odwrócić logikę i wykorzystać to ciepło do ogrzewania biur?
+
+**Ten sam obieg, ale patrząc jako Pompa Ciepła:**
+$$ COP_{PC} = \frac{Q_k}{N_{el}} = \frac{352}{52} \approx \mathbf{6.77} $$
+
+::: {.fragment .callout-success}
+Na każdy 1 kW prądu dostajemy **6.77 kW ciepła** do ogrzewania!
+Porównaj z grzejnikiem elektrycznym ($COP = 1$) lub kotłem gazowym ($\eta \approx 0.95$).
+:::
+
+::: {.fragment .callout-note}
+**Ale uwaga:** Zimą $t_o$ (dolne źródło) musi być wyższe niż zamarzanie → potrzebujemy np. gruntu, ścieków, lub powietrza zewnętrznego. Zmieni to parametry obiegu!
+:::
+
+---
+
+## 🌡️ Zadanie 6.5: Wpływ Temperatury Skraplania na EER
+
+Jak zmieni się EER, jeśli latem temperatura na dachu wzrośnie i skraplacz będzie pracował przy $t_k = 50^\circ C$ zamiast $40^\circ C$?
+
+::: {.callout-tip title="Odczyt z wykresu p-h (R134a, tk=50°C)"}
+*   $h_1 = 400$ kJ/kg (bez zmian — parowanie $2^\circ C$)
+*   $h_2 \approx 440$ kJ/kg (sprężanie do wyższego ciśnienia → więcej pracy)
+*   $h_3 \approx 272$ kJ/kg (wyższe ciśnienie → wyższa entalpia cieczy)
+:::
+
+::: {.fragment}
+$$ q_o = 400 - 272 = 128 \text{ kJ/kg} \quad (\text{było } 144) $$
+$$ l_k = 440 - 400 = 40 \text{ kJ/kg} \quad (\text{było } 25) $$
+$$ EER = \frac{128}{40} = \mathbf{3.20} \quad (\text{było } 5.77) $$
+
+**Pogorszenie o 45%!** Moc sprężarki wzrasta, a wydajność chłodnicza maleje.
+:::
+
+::: {.fragment .callout-error}
+Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia $t_k$ poprawia EER!
+:::
+
+---
+
+## 🧊 Zadanie 6.6: Porównanie Czynników (R134a vs R290)
+
+Rozważamy zamianę R134a (GWP=1430) na **R290 (propan, GWP=3)**. Czy warto?
+
+::: {.callout-tip title="Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)"}
+*   $h_1 \approx 570$ kJ/kg, $h_2 \approx 625$ kJ/kg
+*   $h_3 \approx 280$ kJ/kg, $h_4 = h_3$
+:::
+
+::: {.fragment}
+$$ q_o = 570 - 280 = \mathbf{290 \text{ kJ/kg}} \quad (\text{R134a: } 144) $$
+$$ l_k = 625 - 570 = \mathbf{55 \text{ kJ/kg}} \quad (\text{R134a: } 25) $$
+$$ EER = 290/55 = \mathbf{5.27} $$
+
+**Strumień czynnika:**
+$\dot{m}_{R290} = 300/290 = \mathbf{1.03 \text{ kg/s}}$ (R134a: $2.08$ kg/s — **połowę mniej!**)
+:::
+
+::: {.fragment .callout-warning}
+R290 ma lepszą wydajność objętościową i zerowy wpływ na warstwę ozonową. **Ale jest palny!** Wymaga specjalnych zabezpieczeń (ATEX).
+:::
+
+---
+
+## 💧 Zadanie 6.7: Dobór Rurociągu Ssawnego
+
+Ile wynosi prędkość czynnika R134a w rurociągu ssawnym o średnicy $d = 80 \text{ mm}$?
+
+::: {.fragment}
+**Z wykresu p-h:** Na ssaniu ($2^\circ C$, para nasycona) objętość właściwa $v_1 \approx 0.065 \text{ m}^3/\text{kg}$.
+
+$$ \dot{V} = \dot{m} \cdot v_1 = 2.08 \cdot 0.065 = 0.135 \text{ m}^3/\text{s} $$
+
+Przekrój rury:
+$$ A = \frac{\pi d^2}{4} = \frac{\pi \cdot 0.08^2}{4} = 0.00503 \text{ m}^2 $$
+
+$$ w = \frac{\dot{V}}{A} = \frac{0.135}{0.00503} \approx \mathbf{26.8 \text{ m/s}} $$
+:::
+
+::: {.fragment .callout-tip}
+Dopuszczalna prędkość w rurociągu ssawnym: **8-15 m/s**. Nasza rura jest **za mała!** Potrzebujemy $d \approx 120 \text{ mm}$. Zbyt duża prędkość → spadki ciśnienia → spadek EER.
 :::
 
 ---
