@@ -594,6 +594,27 @@ Wnioski:
 
 ---
 
+## Interpolacja Liniowa w Tablicach
+
+Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży **między** wartościami tablicowymi, stosujemy **interpolację liniową**.
+
+### Wzór:
+$$ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) $$
+
+::: {.fragment .callout-tip title="Przykład"}
+Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ C$.
+
+Z tablic: $h(250^\circ C) = 2943$, $h(300^\circ C) = 3052$ kJ/kg.
+
+$$ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0.5 \cdot 109 \approx \mathbf{2997.5 \text{ kJ/kg}} $$
+:::
+
+::: {.fragment .callout-warning}
+Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależność). Dla dużych skoków ciśnienia lub w pobliżu punktu krytycznego dokładność maleje — wtedy lepiej użyć oprogramowania (np. CoolProp, NIST).
+:::
+
+---
+
 ## 5. Wykresy Termodynamiczne
 
 :::: {.columns}

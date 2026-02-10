@@ -479,6 +479,32 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 
 ---
 
+## Sprawność Izentropowa Turbiny ($\eta_{is}$)
+
+Rzeczywista turbina nie jest idealna — występują tarcie, straty cieplne i turbulencje. Definiujemy sprawność izentropową jako stosunek pracy rzeczywistej do idealnej:
+
+$$ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} $$
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.fragment .callout-note}
+*   $h_{2s}$ — entalpia na wylocie w procesie idealnym (izentropowym, $s=const$)
+*   $h_{2r}$ — entalpia na wylocie w procesie rzeczywistym
+*   Typowe wartości: $\eta_{is} = 0.75 - 0.90$
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment .callout-tip}
+**Rzeczywista entalpia wylotowa:**
+$$ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) $$
+
+Na wykresie h-s linia rozprężania **odchyla się w prawo** (wzrost entropii), ponieważ proces jest nieodwracalny.
+:::
+:::
+:::
+
+---
+
 ## 3. Problem Wilgotności (Erozja)
 
 ::: {.callout-caution title="Ograniczenia"}

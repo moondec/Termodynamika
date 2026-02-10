@@ -107,6 +107,10 @@ $$ COP_{g} = COP_{ch} + 1 $$
 :::
 :::
 
+::: {.fragment .callout-note title="Terminologia: EER"}
+W branży chłodniczej i HVAC zamiast $COP_{ch}$ często stosuje się termin **EER** (*Energy Efficiency Ratio*). To ta sama wielkość fizyczna — stosunek wydajności chłodniczej do mocy napędowej. W normach europejskich EER jest podawany w warunkach znormalizowanych ($t_o = 2^\circ C, t_k = 40^\circ C$).
+:::
+
 ---
 
 ## 2. Dlaczego nie Carnot?

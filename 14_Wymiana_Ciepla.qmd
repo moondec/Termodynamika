@@ -199,6 +199,39 @@ $\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
 
 ---
 
+## Współprąd vs Przeciwprąd — Porównanie
+
+::: {.columns}
+::: {.column width="50%"}
+### Współprąd
+*   Gorący: $T_{h1} \to T_{h2}$
+*   Zimny: $T_{c1} \to T_{c2}$
+*   $T_{c2}$ **nigdy** nie przekroczy $T_{h2}$!
+*   $\Delta T$ duża na wlocie, mała na wylocie.
+
+::: {.fragment .callout-warning}
+Duża $\Delta T$ na wlocie → silna nieodwracalność → **większa generacja entropii**.
+:::
+:::
+::: {.column width="50%"}
+### Przeciwprąd
+*   Gorący: $T_{h1} \to T_{h2}$
+*   Zimny: $T_{c2} \leftarrow T_{c1}$
+*   $T_{c2}$ **może przekroczyć** $T_{h2}$!
+*   $\Delta T$ bardziej równomierna wzdłuż wymiennika.
+
+::: {.fragment .callout-success}
+Mniejsza i równomierna $\Delta T$ → **mniejsza generacja entropii** → wyższa sprawność II Zasady.
+:::
+:::
+:::
+
+::: {.fragment .callout-important}
+**Wniosek praktyczny:** Przy tych samych temperaturach wlotowych, wymiennik **przeciwprądowy** ma wyższe $\Delta T_{ln}$ → potrzebuje **mniejszej powierzchni** $A$ (tańszy!) lub osiąga **większą moc** $\dot{Q}$.
+:::
+
+---
+
 ## Podsumowanie W14
 
 ::: {.incremental}

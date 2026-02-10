@@ -518,6 +518,40 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 
 ---
 
+## Sprężanie Wielostopniowe z Chłodzeniem
+
+Przy dużych stopniach sprężania ($p_2/p_1 > 4$) temperatura końcowa jest zbyt wysoka. Rozwiązanie: **sprężanie w kilku stopniach** z chłodzeniem międzystopniowym.
+
+::: {.columns}
+::: {.column width="50%"}
+### Optymalne ciśnienie pośrednie
+
+Dla **dwóch stopni** (minimalna suma prac):
+
+$$ p_{pośr} = \sqrt{p_1 \cdot p_2} $$
+
+Każdy stopień ma ten sam stosunek sprężania:
+$$ \frac{p_{pośr}}{p_1} = \frac{p_2}{p_{pośr}} = \sqrt{\frac{p_2}{p_1}} $$
+
+:::
+::: {.column width="50%"}
+### Efekty
+
+::: {.fragment .callout-success}
+1.  **Niższa temperatura** końcowa (bezpieczeństwo oleju, uszczelek).
+2.  **Mniejsza praca** całkowita (zbliżenie do izotermy).
+3.  **Wyższy stopień sprężania** bez ryzyka awarii.
+:::
+:::
+:::
+
+::: {.fragment .callout-note}
+**Uogólnienie:** Dla $k$ stopni: $p_i = p_1 \cdot (p_2/p_1)^{i/k}$.
+W praktyce: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\approx 60$ — 3 stopnie.
+:::
+
+---
+
 ## Podsumowanie W8
 
 | Przemiana | $n$ | Ciepło $q$ | Praca $l$ | Praca tech. $l_t$ |
