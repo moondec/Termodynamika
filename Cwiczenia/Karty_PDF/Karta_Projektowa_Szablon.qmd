@@ -115,7 +115,7 @@ h1_t <- 2800; h2s_t <- 2200
 N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
 h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
 N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
-eta_Carnot <- (1 - 303.15 / (p$t1_turb + 273.15)) * 100
+eta_Carnot <- (1 - 293.15 / (p$t1_turb + 273.15)) * 100  # T_L = otoczenie 20°C
 
 # ---- Obliczenia Ćw.5 ----
 Q_wym <- p$m_spalin * 1 * (p$t_sp_in - p$t_sp_out)
@@ -135,7 +135,7 @@ EER <- q_o / l_k
 N_spr_ch <- p$Q_o / EER
 m_dot_ch <- p$Q_o / q_o
 COP_PC <- EER + 1
-w_rura <- m_dot_ch * 0.08 / (pi * (p$d_rura/1000)^2 / 4)
+w_rura <- m_dot_ch * 0.065 / (pi * (p$d_rura/1000)^2 / 4)  # v1 ≈ 0.065 m³/kg (R134a, ssanie)
 
 # ---- Obliczenia Ćw.8 ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
@@ -384,7 +384,7 @@ Para wchodzi do turbiny: $p_1 =$ **`r p$p1_turb` bar**, $t_1 =$ **`r p$t1_turb` 
 
 **Cel:** Jaka jest maksymalna sprawność konwersji ciepła w pracę przy tych temperaturach? To **górna granica** --- żadna rzeczywista maszyna jej nie osiągnie.
 
-**Metodyka:** $\eta_C = 1 - T_L/T_H$, gdzie $T_H = t_1 + 273{,}15$ K, $T_L = 303{,}15$ K (skraplacz 30$^\circ$C).
+**Metodyka:** $\eta_C = 1 - T_L/T_H$, gdzie $T_H = t_1 + 273{,}15$ K, $T_L = 293{,}15$ K (otoczenie 20$^\circ$C).
 
 - $\eta_C$ = `r ans(eta_Carnot, "%")`
 
@@ -466,7 +466,7 @@ Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p
 
 **Cel:** Sprawdź, czy rurociąg ssawny ($d =$ `r p$d_rura` mm) zapewnia dopuszczalną prędkość czynnika (norma: 8--15 m/s).
 
-**Metodyka:** $w = \frac{\dot{m} \cdot v_1}{\pi d^2/4}$, gdzie $v_1 \approx 0{,}08$ m$^3$/kg (objętość właściwa pary R134a na ssaniu).
+**Metodyka:** $w = \frac{\dot{m} \cdot v_1}{\pi d^2/4}$, gdzie $v_1 \approx 0{,}065$ m$^3$/kg (objętość właściwa pary nasyconej R134a na ssaniu).
 
 - Prędkość $w$ = `r ans(w_rura, "m/s")` `r if(sa) paste0(" --- ", if(w_rura >= 8 && w_rura <= 15) "OK, mieści się w normie." else "UWAGA: poza zakresem normy! Należy dobrać inną średnicę.")`
 
