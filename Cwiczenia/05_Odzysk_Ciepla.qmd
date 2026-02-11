@@ -92,10 +92,10 @@ Czy to było mądre wykorzystanie ciepła?
 Mogliśmy użyć spalin 300°C do napędu silnika cieplnego, a użyliśmy ich tylko do grzania wody 80°C.
 
 **Strata Pracy (Twierdzenie Gouy-Stodoli):**
-$$ W_{stracona} = T_0 \cdot \Delta S_{gen} $$
+$$ \dot{B}_{str} = T_0 \cdot \Delta \dot{S}_{gen} $$
 Przyjmijmy $T_0 = 293 K$ (temp. otoczenia).
 
-$$ W_{stracona} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW}} $$
+$$ \dot{B}_{str} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW}} $$
 
 ::: {.callout-error}
 W procesie prostego podgrzewania wody straciliśmy bezpowrotnie **48 kW** potencjalnej mocy mechanicznej!
@@ -113,12 +113,12 @@ $$ \eta_C = 1 - \frac{T_{zim}}{T_{gor}} = 1 - \frac{293}{573} \approx \mathbf{48
 
 ::: {.fragment}
 **Maksymalna praca:**
-$$ W_{max} = \eta_C \cdot \dot{Q}_{spalin} = 0.489 \cdot 150 \approx \mathbf{73.4 \text{ kW}} $$
+$$ \dot{B}_{max} = \eta_C \cdot \dot{Q}_{spalin} = 0.489 \cdot 150 \approx \mathbf{73.4 \text{ kW}} $$
 
 Straciliśmy z tego $48 \text{ kW}$ (egzergia zniszczona w wymienniku). Odzyskaliśmy $0 \text{ kW}$ pracy (bo wymiennik nie produkuje pracy!).
 
 **Sprawność egzergetyczna wymiennika:**
-$$ \psi = 1 - \frac{W_{stracona}}{W_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} $$
+$$ \psi = 1 - \frac{\dot{B}_{str}}{\dot{B}_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} $$
 :::
 
 ::: {.fragment .callout-warning}

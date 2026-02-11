@@ -430,7 +430,7 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 
 **Cel:** Przełożenie wyników entropijnych na język zrozumiały dla dyrektora finansowego --- **ile kW potencjalnej pracy tracimy** przez nieodwracalność procesu?
 
-**Metodyka:** Twierdzenie Gouy--Stodoli: $\dot{W}_{str} = T_0 \cdot \Delta\dot{S}_{gen}$, gdzie $T_0 =$ `r p$T0` $^\circ$C (otoczenie).
+**Metodyka:** Twierdzenie Gouy--Stodoli: $\dot{B}_{str} = T_0 \cdot \Delta\dot{S}_{gen}$, gdzie $T_0 =$ `r p$T0` $^\circ$C (otoczenie).
 
 - Strata egzergii = `r ans(W_strata, "kW")`
 
