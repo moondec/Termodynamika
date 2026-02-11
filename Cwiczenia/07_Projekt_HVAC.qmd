@@ -1,5 +1,5 @@
 ---
-title: "Ćwiczenia 8: Klimatyzacja Precyzyjna Hali"
+title: "Ćwiczenia 7: Klimatyzacja Precyzyjna Hali"
 author: "Marek Urbaniak"
 format: 
   revealjs:
@@ -33,7 +33,7 @@ Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lat
 
 ---
 
-## ❄️ Zadanie 8.1: Proces Zimowy (Ogrzewanie + Nawilżanie)
+## ❄️ Zadanie 7.1: Proces Zimowy (Ogrzewanie + Nawilżanie)
 
 Zimą powietrze zewnętrzne ma parametry: $t_z = -10^\circ C$, $\varphi_z = 90\%$.
 Musimy je doprowadzić do stanu nawiewu $N$, aby pokryć straty ciepła.
@@ -63,7 +63,7 @@ $t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
 
 ---
 
-## ☀️ Zadanie 8.2: Proces Letni (Chłodzenie + Osuszanie)
+## ☀️ Zadanie 7.2: Proces Letni (Chłodzenie + Osuszanie)
 
 Latem jest gorąco i wilgotno: $t_z = 32^\circ C, \varphi_z = 45\%$.
 $X_z \approx 13.5 \text{ g/kg}$.
@@ -85,7 +85,7 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 
 ---
 
-## 🏗️ Zadanie 8.3: Bilans Centrali
+## 🏗️ Zadanie 7.3: Bilans Centrali
 
 Oblicz moc chłodniczą i grzewczą dla strumienia $\dot{V} = 10\,000 \text{ m}^3/h$. $\rho \approx 1.2 \text{ kg/m}^3$.
 
@@ -108,7 +108,7 @@ Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodzil
 
 ---
 
-## 🔍 Zadanie 8.4: Punkt Rosy – Kontrola Kondensacji
+## 🔍 Zadanie 7.4: Punkt Rosy – Kontrola Kondensacji
 
 W magazynie elektroniki temperatura ściany zewnętrznej spada do $12^\circ C$ zimą. Czy przy parametrach wewnętrznych ($22^\circ C, 50\%$) dojdzie do **kondensacji na ścianie**?
 
@@ -128,7 +128,7 @@ $$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
 
 ---
 
-## 📐 Zadanie 8.5: Wymagany Strumień Powietrza
+## 📐 Zadanie 7.5: Wymagany Strumień Powietrza
 
 Oblicz minimalny strumień powietrza nawiewanego, aby pokryć zyski ciepła jawnego ($Q_j = 50$ kW) i wilgoci ($W = 10$ kg/h).
 
@@ -150,7 +150,7 @@ $X_N = X_W - \Delta X = 8.4 - 0.34 = 8.06$ g/kg → Praktycznie brak zmiany. Zys
 
 ---
 
-## 🔄 Zadanie 8.6: Recyrkulacja Powietrza
+## 🔄 Zadanie 7.6: Recyrkulacja Powietrza
 
 Zamiast pobierać 100% powietrza zewnętrznego, stosujemy **recyrkulację**: 70% powietrza wraca z hali, 30% to świeże powietrze.
 
@@ -162,7 +162,7 @@ $$ X_M = 0.3 \cdot X_Z + 0.7 \cdot X_W = 0.3 \cdot 13.5 + 0.7 \cdot 8.4 = 4.05 +
 
 ---
 
-## 🔄 Zadanie 8.6 (cd.): Analiza Oszczędności
+## 🔄 Zadanie 7.6 (cd.): Analiza Oszczędności
 
 **Porównanie obciążenia osuszania:**
 
@@ -179,12 +179,12 @@ Recyrkulacja to **najskuteczniejszy** sposób zmniejszenia kosztów energetyczny
 
 ---
 
-## 💧 Zadanie 8.7: Ilość Skroplonej Wody
+## 💧 Zadanie 7.7: Ilość Skroplonej Wody
 
 W procesie letnim (chłodzenie+osuszanie) z powietrza wykrapla się woda. Ile litrów na godzinę?
 
 ::: {.fragment}
-**Strumień masy powietrza:** $\dot{m} = 3.33$ kg/s (z zad. 8.3).
+**Strumień masy powietrza:** $\dot{m} = 3.33$ kg/s (z zad. 7.3).
 
 **Zmiana zawilżenia:**
 $$ \Delta X = X_Z - X_{ch} = 13.5 - 8.4 = 5.1 \text{ g/kg} = 0.0051 \text{ kg/kg} $$
@@ -200,7 +200,7 @@ To ponad **litr na minutę** wykroplonej wody! Musi być odprowadzona do kanaliz
 
 ---
 
-## 🏗️ Zadanie 8.8: Nagrzewnica Zimowa – Moc
+## 🏗️ Zadanie 7.8: Nagrzewnica Zimowa – Moc
 
 Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = 25\,000 \text{ m}^3/h$ powietrza podgrzewanego od $-10^\circ C$ do $22^\circ C$.
 
@@ -226,7 +226,7 @@ $283 \text{ kW}$ to jak ogrzewanie **~15 domów jednorodzinnych**! Dlatego rekup
 
 ---
 
-## 🏠 Zadanie Domowe (Raport 8)
+## 🏠 Zadanie Domowe (Raport 7)
 
 **Temat:** Odzysk Ciepła w Centrali.
 

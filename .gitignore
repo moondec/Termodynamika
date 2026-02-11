@@ -38,3 +38,5 @@ agentinfo
 # Generated Outputs
 Cwiczenia/Karty_PDF/output/
 Cwiczenia/Karty_PDF/output_imienne/
+
+**/*.quarto_ipynb

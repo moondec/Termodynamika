@@ -41,7 +41,7 @@ Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło
 Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).
 
 ### Krok 1: Odczyt z Wykresu p-h (R134a)
-1.  **Punkt 1 (Sssanie):** Para nasycona sucha ($x=1$) przy $t_o = 2^\circ C$.
+1.  **Punkt 1 (Ssanie):** Para nasycona sucha ($x=1$) przy $t_o = 2^\circ C$.
     *   $h_1 \approx 400 \text{ kJ/kg}$
 2.  **Punkt 2 (Tłoczenie):** Sprężanie izentropowe ($s=const$) do ciśnienia nasycenia $t_k = 40^\circ C$.
     *   $s_1 \approx 1.72 \rightarrow s_2 \approx 1.72$.
@@ -131,6 +131,20 @@ $$ EER = \frac{128}{40} = \mathbf{3.20} \quad (\text{było } 5.77) $$
 
 ::: {.fragment .callout-error}
 Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia $t_k$ poprawia EER!
+:::
+
+---
+
+## Wizualizacja: Wpływ temperatury skraplania ($t_k$)
+
+Analiza Zadań 6.1 (Standard) i 6.5 (Podwyższone $t_k$).
+
+![](../img/cycles_comparison.png){width="75%" fig-align="center"}
+
+::: {.fragment .fade-up style="font-size: 0.7em; text-align: center;"}
+**Wniosek:** Podniesienie temperatury skraplania (Czerwony obieg 2') powoduje:
+1. Wzrost pracy sprężania ($h_{2'} > h_2$).
+2. Przestunięcie punktu dławienia w prawo ($h_{3'} > h_3$) → Mniejsza wydajność chłodnicza $q_o$.
 :::
 
 ---

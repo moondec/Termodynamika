@@ -138,7 +138,7 @@ m_dot_ch <- p$Q_o / q_o
 COP_PC <- EER + 1
 w_rura <- m_dot_ch * 0.065 / (pi * (p$d_rura/1000)^2 / 4)  # v1 ≈ 0.065 m³/kg (R134a, ssanie)
 
-# ---- Obliczenia Ćw.8 ----
+# ---- Obliczenia Ćw.7 ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
 Q_nagr <- m_dot_hvac * 1.005 * (p$t_wewn - p$t_zima)
 Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
@@ -499,7 +499,7 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 
 **Cel audytu:** Określ moce nagrzewnicy (zima) i chłodnicy (lato). Zaproponuj oszczędność --- **recyrkulację powietrza**.
 
-## Zad. 8.1 --- Nagrzewnica zimowa
+## Zad. 7.1 --- Nagrzewnica zimowa
 
 **Kontekst:** W zimie temperatura obliczeniowa to $t_Z =$ **`r p$t_zima` $^\circ$C**. Powietrze z zewnątrz musi zostać podgrzane do $t_W$.
 
@@ -507,13 +507,13 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 
 - Moc nagrzewnicy $\dot{Q}_{nagr}$ = `r ans(Q_nagr, "kW")`
 
-## Zad. 8.2 --- Chłodnica letnia
+## Zad. 7.2 --- Chłodnica letnia
 
 **Kontekst:** Latem temperatura to **`r p$t_lato` $^\circ$C** --- trzeba powietrze schłodzić.
 
 - Moc chłodnicy $\dot{Q}_{chl}$ = `r ans(Q_chlod8, "kW")`
 
-## Zad. 8.6 --- Propozycja oszczędności: recyrkulacja
+## Zad. 7.6 --- Propozycja oszczędności: recyrkulacja
 
 **Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, o $t_W$) z `r 100 - p$rec`% świeżego (o $t_Z$). Jaką temperaturę ma mieszanina i ile mocy nagrzewnicy oszczędzamy?
 
@@ -540,5 +540,41 @@ Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
 
 \begin{center}
 \includegraphics[height=0.85\textheight]{../../img/R134A-logp_h.png}
+\end{center}
+
+
+\newpage
+
+## Załącznik B: Wykres log p-h dla czynnika R290 (Propan)
+
+\begin{center}
+\includegraphics[height=0.85\textheight]{../../img/R290-logp-h.png}
+\end{center}
+
+
+\newpage
+
+## Załącznik C: Wykres log p-h dla czynnika NH3 (Amoniak)
+
+\begin{center}
+\includegraphics[height=0.85\textheight]{../../img/NH3-logp-h.png}
+\end{center}
+
+
+\newpage
+
+## Załącznik D: Wykres Molliera (h-s) dla Pary Wodnej
+
+\begin{center}
+\includegraphics[height=0.85\textheight]{../../img/mollier-chart.png}
+\end{center}
+
+
+\newpage
+
+## Załącznik E: Wykres Molliera (h-X) dla Powietrza Wilgotnego
+
+\begin{center}
+\includegraphics[height=0.85\textheight]{../../img/air_hum-h-X.png}
 \end{center}
 
