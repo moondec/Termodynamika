@@ -1,7 +1,7 @@
 ---
-title: 'Karta Projektowa -- Termodynamika Techniczna'
+title: 'Termodynamika Techniczna'
 subtitle: 'Projekt: Modernizacja Hali Przemyslowej Termo-Tech'
-author: "dr hab. inż. prof. UPP Marek Urbaniak"
+author: "Prowadzący: dr hab. inż. prof. UPP Marek Urbaniak"
 date: today
 format:
   pdf:
@@ -23,6 +23,7 @@ format:
       \definecolor{answercolor}{RGB}{0,100,180}
 params:
   zestaw_nr: 1
+  student_name: "Jan Kowalski"
   show_answers: false
   # Ćw.1 — Gazy
   V: 5.0
@@ -144,24 +145,34 @@ Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
 t_mix_rec <- p$rec/100 * p$t_wewn + (1 - p$rec/100) * p$t_zima
 dQ_oszcz <- m_dot_hvac * 1.005 * (t_mix_rec - p$t_zima)
 
-# Formatter
+# Funkcje formatujące
 f <- function(x, d=2) formatC(round(x, d), format="f", digits=d)
 ans <- function(val, unit="", d=2) {
   if (sa) paste0("**", f(val, d), " ", unit, "**") else "\\rule{3cm}{0.4pt}"
 }
+
+# Wykrywanie płci (proste: kończy się na "a" -> kobieta)
+imie_nazwisko <- params$student_name
+ostatnia_litera <- substring(imie_nazwisko, nchar(imie_nazwisko), nchar(imie_nazwisko))
+is_woman <- tolower(ostatnia_litera) == "a"
+
+txt_role <- if(is_woman) "Studentka" else "Student"
+txt_zatrudniony <- if(is_woman) "Zostałaś zatrudniona" else "Zostałeś zatrudniony"
+txt_mlodszy <- if(is_woman) "Młodsza Inżynierka Energetyk" else "Młodszy Inżynier Energetyk"
 ```
 
 \begin{center}
-\Large\textbf{Zestaw nr `r p$zestaw_nr`} \\[0.3em]
-`r if(sa) "\\textcolor{red}{\\Large KLUCZ ODPOWIEDZI --- POUFNE}" else "\\normalsize Rola: Młodszy Inżynier Energetyk w firmie Termo-Tech Sp. z o.o."`
+\Large\textbf{Indywidualna Karta Projektowa} \\[0.3em]
+\normalsize `r if(sa) "\\textcolor{red}{KLUCZ ODPOWIEDZI}" else paste(txt_role, ":", params$student_name)`
 \end{center}
 
+\vspace{0.5em}
 \hrule
 \vspace{0.5em}
 
 # Wprowadzenie do Projektu
 
-Gratulacje! Zostałeś zatrudniony jako **Młodszy Inżynier Energetyk** w firmie *Termo-Tech Sp. z o.o*., która specjalizuje się w audytach energetycznych i modernizacji instalacji przemysłowych.
+Gratulacje! `r txt_zatrudniony` jako **`r txt_mlodszy`** w firmie *Termo-Tech Sp. z o.o*., która specjalizuje się w audytach energetycznych i modernizacji instalacji przemysłowych.
 
 Twoim pierwszym zleceniem jest **kompleksowy audyt energetyczny hali produkcyjnej** klienta. Hala zawiera kilka kluczowych systemów: sieć sprężonego powietrza, kotłownię parową z turbiną, system odzysku ciepła ze spalin, instalację chłodniczą oraz centralę klimatyzacyjną.
 
@@ -431,7 +442,7 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 
 ## Sytuacja
 
-Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p$Q_o` kW** (tyle ciepła trzeba odebrać z komory). Czynnik chłodniczy: R134a. Temperatura parowania: $t_o =$ **`r p$t_o` $^\circ$C**, temperatura skraplania: $t_k =$ **`r p$t_k` $^\circ$C**.
+Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p$Q_o` kW** (tyle ciepła trzeba odebrać z komory). Czynnik chłodniczy: [R134a](https://refrigerant-euro.com/blog-pl/r134a-wszystko-co-musisz-wiedziec-pl/). Temperatura parowania: $t_o =$ **`r p$t_o` $^\circ$C**, temperatura skraplania: $t_k =$ **`r p$t_k` $^\circ$C**.
 
 **Cel audytu:** Czy istniejąca sprężarka ma wystarczającą moc? Jaki jest rachunek za prąd? Czy rurociągi mają odpowiednią średnicę?
 
@@ -461,6 +472,14 @@ Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p
 - $COP_{PC} = EER + 1$ = `r ans(COP_PC, "")`
 
 `r if(!sa) paste0("*Interpretacja: COP = ", f(COP_PC), " oznacza, że na każdy 1 kW prądu dostajemy ", f(COP_PC), " kW ciepła --- ", f(COP_PC), "× lepiej niż grzejnik elektryczny!*")`
+
+:::{.callout-tip title="COP – Coefficient of Performance, Współczynnik wydajności (lub efektywności)"}
+oznaczany w podręcznikach grecką literą $ \phi $ lub $ \varphi $.
+:::
+
+:::{.callout-tip title="EER – Energy Efficiency Ratio, Wskaźnik efektywności energetycznej (chłodzenia)"}
+oznaczany grecką literą $ \epsilon $.
+:::
 
 ## Zad. 6.7 --- Weryfikacja rurociągu
 
@@ -512,3 +531,14 @@ Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
 \vspace{0.5em}
 
 `r if(!sa) "**Pamiętaj:** Każdy wynik to decyzja inżynierska. Liczby bez interpretacji nie mają wartości. W raporcie audytowym zawsze uzasadnij, CO policzyłeś, DLACZEGO i jakie WNIOSKI z tego płyną dla klienta." else "--- Koniec klucza odpowiedzi ---"`
+
+\newpage
+
+# Załączniki
+
+## Załącznik A: Wykres log p-h dla czynnika R134a
+
+\begin{center}
+\includegraphics[height=0.85\textheight]{../img/R134A-logp_h.png}
+\end{center}
+

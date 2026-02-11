@@ -4,9 +4,24 @@
 .RData
 .Ruserdata
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+*.db
+
 # Quarto
 *_files/
 /.quarto/
+
+# IDE
+.vscode/
+.idea/
+settings.json
 
 # OS generated files
 .DS_Store
@@ -19,6 +34,12 @@ Thumbs.db
 
 # Custom excludes
 lib/
+TOOLS_GUIDE.html
+TOOLS_GUIDE_files/
+zadanie
+openapi.json
 agentnfo
-.httr-oauth
-.quarto
+
+# Generated Outputs
+Cwiczenia/Karty_PDF/output/
+Cwiczenia/Karty_PDF/output_imienne/

@@ -1,0 +1,7 @@
+project:
+  type: default
+  title: "Termodynamika Techniczna"
+
+format:
+  revealjs:
+    theme: default

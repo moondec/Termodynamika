@@ -7,18 +7,18 @@ institute: |
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
     <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
-    <img src="img/KBiG.jpg" style="height: 200px;">
+    <img src="../img/KBiG.jpg" style="height: 200px;">
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"]
+    theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
-            background-image: url("img/background_blue.png") !important;
+            background-image: url("../img/background_blue.png") !important;
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;

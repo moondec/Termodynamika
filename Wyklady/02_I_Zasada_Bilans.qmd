@@ -12,14 +12,14 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="img/KBiG.jpg" 
+    <img src="../img/KBiG.jpg" 
          style="height: 200px;">
          
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
+    theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
     include-in-header:
       text: |
         <style>
@@ -30,7 +30,7 @@ format:
 
         /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
         .reveal .slide-background-content {
-            background-image: url("img/background_vi.png") !important;
+            background-image: url("../img/background_vi.png") !important;
             
             /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
             background-size: contain !important; 
@@ -89,7 +89,7 @@ editor: source
 :::
 
 ::: {.column width="40%"}
-![](img/pierwsza.png){width="100%" fig-align="center"}
+![](../img/pierwsza.png){width="100%" fig-align="center"}
 :::
 :::
 
@@ -152,7 +152,7 @@ W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 ::: {.column width="50%"}
 
 ::: {style="text-align: center;"}
-  ![](img/box2.png){width="80%"}
+  ![](../img/box2.png){width="80%"}
 
 ::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
   
@@ -324,13 +324,13 @@ Gdzie:
 :::: {.columns}
 
 ::: {.column width="50%"}
-  <img src="img/tlok2.png" style="margin-top: 10px; width: 95%;">
+  <img src="../img/tlok2.png" style="margin-top: 10px; width: 95%;">
 
 :::
 
 ::: {.column width="50%"}
 
-  <img src="img/praca2.png" style="width: 100%;"> 
+  <img src="../img/praca2.png" style="width: 100%;"> 
 
 ::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
   Źródło: J. Szargut, *$Termodynamika \ techniczna$* PWN, (2000).

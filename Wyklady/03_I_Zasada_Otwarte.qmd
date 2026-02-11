@@ -12,14 +12,14 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="img/KBiG.jpg" 
+    <img src="../img/KBiG.jpg" 
          style="height: 200px;">
          
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
+    theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
     include-in-header:
       text: |
         <style>
@@ -30,7 +30,7 @@ format:
 
         /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
         .reveal .slide-background-content {
-            background-image: url("img/background_green.png") !important;
+            background-image: url("../img/background_green.png") !important;
             
             /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
             background-size: contain !important; 
@@ -76,7 +76,7 @@ editor: source
 ::: {.column width="50%"}
   
 ::: {style="text-align: center;"}
-  <img src="img/praca_techniczna.png" style="width: 100%;"> 
+  <img src="../img/praca_techniczna.png" style="width: 100%;"> 
   
 :::
 
@@ -140,7 +140,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
 
 
 ::: {style="text-align: center;"}
-  <img src="img/wymiennik.png" style="width: 55%;">
+  <img src="../img/wymiennik.png" style="width: 55%;">
   
 :::
 
@@ -217,6 +217,20 @@ Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnien
 
 **Bilans dla sprężarki:**
 $$ P_d = \dot{m} (h_2 - h_1) - \dot{Q} $$
+
+
+## Praca Sprężania Gazu Doskonałego
+
+W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę** ($pv^n=const$). Wzór inżynierski na pracę techniczną:
+
+$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
+
+::: {.callout-tip title="Zastosowanie w Projekcie (Ćw. 2)"}
+*   Gdy $n = \kappa \approx 1.4$ $\rightarrow$ **Adiabata** (brak chłodzenia).
+*   Gdy $n = 1$ $\rightarrow$ **Izoterma** (idealne chłodzenie).
+*   Rzeczywista sprężarka: $1 < n < \kappa$ (częściowe chłodzenie).
+:::
+
 
 
 ## Zastosowanie: Wymiennik Ciepła

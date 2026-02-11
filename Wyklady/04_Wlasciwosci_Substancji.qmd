@@ -12,20 +12,20 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="img/KBiG.jpg" 
+    <img src="../img/KBiG.jpg" 
          style="height: 200px;">
          
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"]
+    theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
-            background-image: url("img/background_red.png") !important;
+            background-image: url("../img/background_red.png") !important;
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
@@ -63,7 +63,7 @@ editor: source
 5.  **Mieszaniny Gazowe** (Prawo Daltona)
 6.  **Gazy Rzeczywiste** (Van der Waals, Andrews)
 
-![](img/substancja_vs_mieszanina.png){width="50%" fig-align="center"}
+![](../img/substancja_vs_mieszanina.png){width="50%" fig-align="center"}
 
 ---
 

@@ -7,18 +7,18 @@ institute: |
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
     <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
-    <img src="img/KBiG.jpg" style="height: 200px;">
+    <img src="../img/KBiG.jpg" style="height: 200px;">
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"]
+    theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
-            background-image: url("img/background_red.png") !important;
+            background-image: url("../img/background_red.png") !important;
             background-size: contain !important; 
             background-repeat: no-repeat !important;
             background-position: center center !important;
@@ -506,11 +506,18 @@ Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:
 $$ l_t = n \cdot l $$
 (dla politropy $pv^n=const$).
 
-*   Dla izobary ($n=0$): $l_t = 0$.
-*   Dla izotermy ($n=1$): $l_t = l$.
-*   Dla adiabaty ($n=\kappa$): $l_t = \kappa \cdot l = -\Delta h$.
+**Wzór inżynierski (dla gazu doskonałego):**
+$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
 
-gdzie: ($\kappa$) to $c_p/c_v$
+::: {.callout-note title="Uwaga o znaku" appearance="simple"}
+Powyższy wzór podaje **wartość pracy napędowej** (dodatnią przy sprężaniu $p_2 > p_1$). W ścisłej konwencji termodynamicznej praca wykonana **nad** układem jest ujemna ($l_t < 0$), stąd w bilansach często pojawia się minus.
+:::
+
+*   Dla izobary ($n=0$): $l_t = 0$.
+*   Dla izotermy ($n=1$): $l_t = RT \ln(p_1/p_2)$.
+*   Dla adiabaty ($n=\kappa$): $l_t = \Delta h = c_p(T_2 - T_1)$.
+
+gdzie: $\kappa = c_p/c_v$.
 
 ::: {.fragment .callout-tip title= "**Wniosek dla Sprężarki:**"}
 Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izotermy** (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.

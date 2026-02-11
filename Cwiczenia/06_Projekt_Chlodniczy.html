@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="pl"><head>
-<script src="03_I_Zasada_Otwarte_files/libs/clipboard/clipboard.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/tabby.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/popper.min.js"></script>
-<script src="03_I_Zasada_Otwarte_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="03_I_Zasada_Otwarte_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<html lang="en"><head>
+<script src="06_Projekt_Chlodniczy_files/libs/clipboard/clipboard.min.js"></script>
+<script src="06_Projekt_Chlodniczy_files/libs/quarto-html/tabby.min.js"></script>
+<script src="06_Projekt_Chlodniczy_files/libs/quarto-html/popper.min.js"></script>
+<script src="06_Projekt_Chlodniczy_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="06_Projekt_Chlodniczy_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="06_Projekt_Chlodniczy_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="06_Projekt_Chlodniczy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
-  <title>W3: I Zasada Termodynamiki - cz. II</title>
+  <meta name="author" content="Marek Urbaniak">
+  <title>Ćwiczenia 6: Agregat Wody Lodowej (Chiller)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="06_Projekt_Chlodniczy_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="06_Projekt_Chlodniczy_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,15 +29,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="03_I_Zasada_Otwarte_files/libs/revealjs/dist/theme/quarto-34305f86072cf02266a28ded5fc352bc.css">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/appearance/appearance.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-pointer/pointer.css" rel="stylesheet">
-  <link href="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="06_Projekt_Chlodniczy_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -125,253 +121,264 @@
       margin-right: 0; 
     }
   </style>
-  <style>
-  /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
-  body {
-      background-color: #1a1a1a; /* Ciemny grafit - wygląda profesjonalnie na rzutniku */
-  }
-
-  /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
-  .reveal .slide-background-content {
-      background-image: url("img/background_green.png") !important;
-
-      /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
-      background-size: contain !important;
-
-      background-repeat: no-repeat !important;
-      background-position: center center !important;
-      opacity: 0.3 !important;
-  }
-
-  /* 3. Wyjątek dla tytułowego */
-  .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
-      background-image: none !important;
-      background-color: white !important; /* Slajd tytułowy pozostanie biały */
-      opacity: 1 !important;
-  }
-  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">W3: I Zasada Termodynamiki - cz. II</h1>
-  <p class="subtitle">Bilans Energii w Układach Otwartych</p>
+  <h1 class="title">Ćwiczenia 6: Agregat Wody Lodowej (Chiller)</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+Marek Urbaniak 
 </div>
-        <p class="quarto-title-affiliation">
-            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
-            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
-            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
-            <p><img src="img/KBiG.jpg" style="height: 200px;"></p>
-            </div>
-          <p></p>
-    </div>
+</div>
 </div>
 
 </section>
-<section id="pojęcie-pracy-technicznej" class="slide level2">
-<h2>Pojęcie Pracy Technicznej</h2>
+<section id="projekt-etap-6---chłodzenie-hali" class="slide level2">
+<h2>🏭 Projekt: Etap 6 - Chłodzenie Hali</h2>
+<p>Hala produkcyjna o powierzchni <span class="math inline">\(2000 \text{ m}^2\)</span> generuje <span class="math inline">\(300 \text{ kW}\)</span> zysku ciepła od maszyn. Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło.</p>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div style="text-align: center;">
-<p><img src="img/praca_techniczna.png" style="width: 100%;"></p>
-</div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
-</div>
+<div class="column" style="width:60%;">
+<h3 id="założenia">Założenia:</h3>
+<ol type="1">
+<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Czynnik chłodniczy:</strong> R134a.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+</ol>
+<p><strong>Pytania Inwestora:</strong> 1. Jaką moc elektryczną pobierze sprężarka? (<span class="math inline">\(N_{el}\)</span>) 2. Ile ciepła musimy wyrzucić na dach (skraplacz)? (<span class="math inline">\(Q_k\)</span>) 3. Czy urządzenie będzie efektywne? (<span class="math inline">\(EER\)</span>)</p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&amp;fit=crop&amp;q=80&amp;w=800.png"></p>
+</div></div>
+</section>
+<section id="zadanie-6.1-obieg-lindego-na-wykresie-p-h" class="slide level2">
+<h2>🧊 Zadanie 6.1: Obieg Lindego na Wykresie p-h</h2>
+<p>Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).</p>
+<h3 id="krok-1-odczyt-z-wykresu-p-h-r134a">Krok 1: Odczyt z Wykresu p-h (R134a)</h3>
+<ol type="1">
+<li><strong>Punkt 1 (Sssanie):</strong> Para nasycona sucha (<span class="math inline">\(x=1\)</span>) przy <span class="math inline">\(t_o = 2^\circ C\)</span>.
 <ul>
-<li class="fragment"><strong>Sprężanie (<span class="math inline">\(dp &gt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
-<li class="fragment"><strong>Rozprężanie (<span class="math inline">\(dp &lt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL &gt; 0\)</span>).</li>
-<li class="fragment"><strong>Nadal nie uwzględniamy tu tarcia</strong></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><span class="math display">\[L_t = L_{1-2} + L_n + L_w = L_{1-2} + p_1 V_1 - p_2 V_2\]</span></p>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><span class="math display">\[đL_t = -V dp\]</span> <span class="math display">\[L_t = -\int_{p_1}^{p_2} V(p) dp\]</span></p>
-</div>
-<div title="Definicja">
+<li><span class="math inline">\(h_1 \approx 400 \text{ kJ/kg}\)</span></li>
+</ul></li>
+<li><strong>Punkt 2 (Tłoczenie):</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>) do ciśnienia nasycenia <span class="math inline">\(t_k = 40^\circ C\)</span>.
+<ul>
+<li><span class="math inline">\(s_1 \approx 1.72 \rightarrow s_2 \approx 1.72\)</span>.</li>
+<li><span class="math inline">\(h_2 \approx 425 \text{ kJ/kg}\)</span> (ODCZYT Z WYKRESU).</li>
+</ul></li>
+<li><strong>Punkt 3 (Skraplacz):</strong> Ciecz nasycona (<span class="math inline">\(x=0\)</span>) przy <span class="math inline">\(t_k = 40^\circ C\)</span>.
+<ul>
+<li><span class="math inline">\(h_3 \approx 256 \text{ kJ/kg}\)</span>.</li>
+</ul></li>
+<li><strong>Punkt 4 (Dławienie):</strong> Izenthalpa (<span class="math inline">\(h=const\)</span>).
+<ul>
+<li><span class="math inline">\(h_4 = h_3 = 256 \text{ kJ/kg}\)</span>.</li>
+</ul></li>
+</ol>
+</section>
+<section id="zadanie-6.2-bilans-energetyczny" class="slide level2">
+<h2>⚡ Zadanie 6.2: Bilans Energetyczny</h2>
+<h3 id="jednostkowe-wielkości">Jednostkowe Wielkości:</h3>
+<p><span class="math display">\[ q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}} \]</span> (Chłodzenie użyteczne)</p>
+<p><span class="math display">\[ l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}} \]</span> (Praca sprężania)</p>
+<p><span class="math display">\[ q_sk = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}} \]</span> (Ciepło skraplania - odpadowe)</p>
+<div title="Weryfikacja I Zasady">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definicja</strong></p>
+<p><strong>Weryfikacja I Zasady</strong></p>
 </div>
 <div class="callout-content">
-<p>W układzie <span class="math inline">\(p-V\)</span>, pracę techniczną przedstawia pole pomiędzy krzywą przemiany a osią rzędnych (<span class="math inline">\(p\)</span>).</p>
+<p><span class="math display">\[ q_o + l_k = 144 + 25 = 169 = q_sk \]</span> <span class="math display">\[ Energia_{in} = Energia_{out} \quad (OK!) \]</span></p>
 </div>
 </div>
 </div>
 </div>
-</div></div>
 </section>
-
-<section id="układy-otwarte" class="slide level2">
-<h2>Układy Otwarte</h2>
-<h3 id="kontrola-przepływu-materii">Kontrola Przepływu Materii</h3>
-<p>W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę bilansową) przepływa czynnik roboczy.</p>
-<ul>
-<li>Należy uwzględnić <strong>pracę tłoczenia</strong> (wprowadzenia i wyprowadzenia czynnika).</li>
-<li>Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.</li>
-</ul>
-<div style="text-align: center;">
-<p><img src="img/wymiennik.png" style="width: 55%;"></p>
-</div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+<section id="zadanie-6.3-moc-i-efektywność" class="slide level2">
+<h2>💰 Zadanie 6.3: Moc i Efektywność</h2>
+<h3 id="strumień-czynnika">Strumień Czynnika:</h3>
+<p>Musimy odebrać 300 kW ciepła z hali (<span class="math inline">\(Q_o\)</span>). <span class="math display">\[ \dot{m} = \frac{Q_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} \]</span> <span class="math display">\[ \dot{m} \approx \mathbf{2.08 \text{ kg/s}} \]</span></p>
+<h3 id="moc-sprężarki">Moc Sprężarki:</h3>
+<p><span class="math display">\[ N_{el} = \dot{m} \cdot l_k = 2.08 \cdot 25 \]</span> <span class="math display">\[ N_{el} \approx \mathbf{52 \text{ kW}} \]</span></p>
+<h3 id="efektywność-copeer">Efektywność (COP/EER):</h3>
+<p><span class="math display">\[ EER = \frac{Q_o}{N_{el}} = \frac{300}{52} \]</span> <span class="math display">\[ EER \approx \mathbf{5.77} \]</span></p>
+<div class="callout-success">
+<p><strong>Wniosek:</strong> Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.</p>
 </div>
 </section>
-<section id="równanie-przepływu-ustalonego-równanie-szewalskiego-dla-gazów" class="slide level2">
-<h2>Równanie Przepływu Ustalonego (Równanie Szewalskiego dla Gazów)</h2>
-<h3 id="postać-ogólna-bilansu-mocy">Postać Ogólna Bilansu Mocy</h3>
-<p>Dla maszyny działającej w sposób ustalony (strumień masy <span class="math inline">\(\dot{m} = const\)</span>):</p>
-<p><span class="math display">\[ \underbrace{\dot{Q} + \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
-=
-\dot{m}
-\left[
-  \underbrace{(h_2 - h_1)}_{\Delta \text{Entalpii}}
-  +
-  \underbrace{\frac{w_2^2 - w_1^2}{2}}_{\substack{\Delta \text{En. Kinetycznej} \\ (\text{tu } w \text{ to prędkość!})}}
-  +
-  \underbrace{g(z_2 - z_1)}_{\Delta \text{En. Potencjalnej}}
-\right] \]</span></p>
-<div style="font-size: 0.7em;">
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Gdzie:</p>
-<ul>
-<li><span class="math inline">\(\dot{Q}\)</span> – strumień ciepła (moc cieplna) [W].</li>
-<li><span class="math inline">\(\dot{L}_{t}\)</span> – moc techniczna (na wale) [W].</li>
-<li><span class="math inline">\(\dot{m}\)</span> – Strumień masy czynnika [kg/s]</li>
-<li><span class="math inline">\(h\)</span> – entalpia właściwa [J/kg].</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><span class="math inline">\(w\)</span> – prędkość przepływu [J/kg].</li>
-<li><span class="math inline">\(g \Delta z\)</span> – energia potencjalna [J/kg].</li>
-<li><span class="math inline">\(z\)</span> – wysokość [m]</li>
-</ul>
-</div></div>
+<section id="zadanie-6.4-pompa-ciepła-z-tego-samego-obiegu" class="slide level2">
+<h2>🔄 Zadanie 6.4: Pompa Ciepła z Tego Samego Obiegu</h2>
+<p>Skoro skraplacz wyrzuca <span class="math inline">\(Q_k = 352 \text{ kW}\)</span> ciepła na dach… Czy moglibyśmy <strong>zimą</strong> odwrócić logikę i wykorzystać to ciepło do ogrzewania biur?</p>
+<p><strong>Ten sam obieg, ale patrząc jako Pompa Ciepła:</strong> <span class="math display">\[ COP_{PC} = \frac{Q_k}{N_{el}} = \frac{352}{52} \approx \mathbf{6.77} \]</span></p>
+<div class="fragment callout-success">
+<p>Na każdy 1 kW prądu dostajemy <strong>6.77 kW ciepła</strong> do ogrzewania! Porównaj z grzejnikiem elektrycznym (<span class="math inline">\(COP = 1\)</span>) lub kotłem gazowym (<span class="math inline">\(\eta \approx 0.95\)</span>).</p>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Ale uwaga:</strong> Zimą <span class="math inline">\(t_o\)</span> (dolne źródło) musi być wyższe niż zamarzanie → potrzebujemy np. gruntu, ścieków, lub powietrza zewnętrznego. Zmieni to parametry obiegu!</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="zastosowanie-turbina" class="slide level2">
-<h2>Zastosowanie: Turbina</h2>
-<h3 id="ekspansja-czynnika">Ekspansja Czynnika</h3>
-<p>W turbinach (parowych lub gazowych) czynnik rozpręża się, wykonując pracę techniczną.</p>
+<section id="zadanie-6.5-wpływ-temperatury-skraplania-na-eer" class="slide level2">
+<h2>🌡️ Zadanie 6.5: Wpływ Temperatury Skraplania na EER</h2>
+<p>Jak zmieni się EER, jeśli latem temperatura na dachu wzrośnie i skraplacz będzie pracował przy <span class="math inline">\(t_k = 50^\circ C\)</span> zamiast <span class="math inline">\(40^\circ C\)</span>?</p>
+<div title="Odczyt z wykresu p-h (R134a, tk=50°C)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Odczyt z wykresu p-h (R134a, tk=50°C)</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>Zazwyczaj proces jest <strong>adiabatyczny</strong> (<span class="math inline">\(\dot{Q} \approx 0\)</span>).</li>
-<li>Zmiany energii kinetycznej i potencjalnej są często pomijalne.</li>
+<li><span class="math inline">\(h_1 = 400\)</span> kJ/kg (bez zmian — parowanie <span class="math inline">\(2^\circ C\)</span>)</li>
+<li><span class="math inline">\(h_2 \approx 440\)</span> kJ/kg (sprężanie do wyższego ciśnienia → więcej pracy)</li>
+<li><span class="math inline">\(h_3 \approx 272\)</span> kJ/kg (wyższe ciśnienie → wyższa entalpia cieczy)</li>
 </ul>
-<p><strong>Uproszczony bilans:</strong> <span class="math display">\[ P_i = \dot{m} (h_1 - h_2) \]</span> Gdzie <span class="math inline">\(P_i\)</span> to moc wewnętrzna turbiny.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ q_o = 400 - 272 = 128 \text{ kJ/kg} \quad (\text{było } 144) \]</span> <span class="math display">\[ l_k = 440 - 400 = 40 \text{ kJ/kg} \quad (\text{było } 25) \]</span> <span class="math display">\[ EER = \frac{128}{40} = \mathbf{3.20} \quad (\text{było } 5.77) \]</span></p>
+<p><strong>Pogorszenie o 45%!</strong> Moc sprężarki wzrasta, a wydajność chłodnicza maleje.</p>
+</div>
+<div class="fragment callout-error">
+<p>Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia <span class="math inline">\(t_k\)</span> poprawia EER!</p>
+</div>
 </section>
-<section id="zastosowanie-sprężarka-i-pompa" class="slide level2">
-<h2>Zastosowanie: Sprężarka i Pompa</h2>
-<h3 id="kompresja-czynnika">Kompresja Czynnika</h3>
-<p>Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnienie czynnika.</p>
+<section id="zadanie-6.6-porównanie-czynników-r134a-vs-r290" class="slide level2">
+<h2>🧊 Zadanie 6.6: Porównanie Czynników (R134a vs R290)</h2>
+<p>Rozważamy zamianę R134a (GWP=1430) na <strong>R290 (propan, GWP=3)</strong>. Czy warto?</p>
+<div title="Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>Moc napędowa sprężarki <span class="math inline">\(N &lt; 0\)</span> (według konwencji inżynierskiej).</li>
-<li>W pompach (ciecz nieściśliwa) praca techniczna wynosi: <span class="math inline">\(l_t = v \Delta p\)</span>.</li>
+<li><span class="math inline">\(h_1 \approx 570\)</span> kJ/kg, <span class="math inline">\(h_2 \approx 625\)</span> kJ/kg</li>
+<li><span class="math inline">\(h_3 \approx 280\)</span> kJ/kg, <span class="math inline">\(h_4 = h_3\)</span></li>
 </ul>
-<p><strong>Bilans dla sprężarki:</strong> <span class="math display">\[ P_d = \dot{m} (h_2 - h_1) - \dot{Q} \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ q_o = 570 - 280 = \mathbf{290 \text{ kJ/kg}} \quad (\text{R134a: } 144) \]</span> <span class="math display">\[ l_k = 625 - 570 = \mathbf{55 \text{ kJ/kg}} \quad (\text{R134a: } 25) \]</span> <span class="math display">\[ EER = 290/55 = \mathbf{5.27} \]</span></p>
+</div>
 </section>
-<section id="zastosowanie-wymiennik-ciepła" class="slide level2">
-<h2>Zastosowanie: Wymiennik Ciepła</h2>
-<h3 id="przepływ-izobaryczny">Przepływ Izobaryczny</h3>
-<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej (<span class="math inline">\(L_{tech} = 0\)</span>).</p>
-<p><strong>Bilans dla jednego czynnika:</strong> <span class="math display">\[ \dot{Q} = \dot{m} (h_2 - h_1) \]</span></p>
-<p>Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz): <span class="math display">\[ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B \]</span></p>
+<section id="zadanie-6.6-cd.-wnioski" class="slide level2">
+<h2>🧊 Zadanie 6.6 (cd.): Wnioski</h2>
+<p><strong>Strumień czynnika:</strong> <span class="math inline">\(\dot{m}_{R290} = 300/290 = \mathbf{1.03 \text{ kg/s}}\)</span> (R134a: <span class="math inline">\(2.08\)</span> kg/s — <strong>połowę mniej!</strong>)</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>R290 ma lepszą wydajność objętościową i zerowy wpływ na warstwę ozonową. <strong>Ale jest palny!</strong> Wymaga specjalnych zabezpieczeń (ATEX).</p>
+</div>
+</div>
+</div>
 </section>
-<section id="zastosowanie-dławienie" class="slide level2">
-<h2>Zastosowanie: Dławienie</h2>
-<h3 id="proces-izentalpowy">Proces Izentalpowy</h3>
-<p>Dławienie zachodzi podczas przepływu przez zawór lub zwężkę bez wymiany ciepła i pracy.</p>
-<p><span class="math display">\[ h_1 = h_2 \]</span></p>
-<ul>
-<li>Dla gazu doskonałego temperatura nie ulega zmianie.</li>
-<li>Dla gazów rzeczywistych występuje <strong>efekt Joule’a-Thomsona</strong> (zmiana temperatury).</li>
-</ul>
+<section id="zadanie-6.7-dobór-rurociągu-ssawnego" class="slide level2">
+<h2>💧 Zadanie 6.7: Dobór Rurociągu Ssawnego</h2>
+<p>Ile wynosi prędkość czynnika R134a w rurociągu ssawnym o średnicy <span class="math inline">\(d = 80 \text{ mm}\)</span>?</p>
+<div class="fragment">
+<p><strong>Z wykresu p-h:</strong> Na ssaniu (<span class="math inline">\(2^\circ C\)</span>, para nasycona) objętość właściwa <span class="math inline">\(v_1 \approx 0.065 \text{ m}^3/\text{kg}\)</span>.</p>
+<p><span class="math display">\[ \dot{V} = \dot{m} \cdot v_1 = 2.08 \cdot 0.065 = 0.135 \text{ m}^3/\text{s} \]</span></p>
+<p>Przekrój rury: <span class="math display">\[ A = \frac{\pi d^2}{4} = \frac{\pi \cdot 0.08^2}{4} = 0.00503 \text{ m}^2 \]</span></p>
+<p><span class="math display">\[ w = \frac{\dot{V}}{A} = \frac{0.135}{0.00503} \approx \mathbf{26.8 \text{ m/s}} \]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Dopuszczalna prędkość w rurociągu ssawnym: <strong>8-15 m/s</strong>. Nasza rura jest <strong>za mała!</strong> Potrzebujemy <span class="math inline">\(d \approx 120 \text{ mm}\)</span>. Zbyt duża prędkość → spadki ciśnienia → spadek EER.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="i-zasada-w-procesach-spalania" class="slide level2">
-<h2>I Zasada w Procesach Spalania</h2>
-<h3 id="energia-chemiczna">Energia Chemiczna</h3>
-<p>W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.</p>
-<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> Ciepło wydzielone przy zupełnym spaleniu jednostki paliwa, gdy woda w spalinach pozostaje w postaci pary.</p>
-<p><strong>Bilans energetyczny komory spalania:</strong> <span class="math display">\[ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
-</section>
-<section id="zjawisko-joulea-thomsona" class="slide level2">
-<h2>Zjawisko Joule’a-Thomsona</h2>
-<h3 id="dławienie-adiabatyczne">Dławienie Adiabatyczne</h3>
-<p>Współczynnik <span class="math inline">\(\mu\)</span> określa zmianę temperatury przy spadku ciśnienia w procesie izentalpowym:</p>
-<p><span class="math display">\[ \mu = \left(\frac{\partial T}{\partial p}\right)_H \]</span></p>
-<ul>
-<li><strong><span class="math inline">\(\mu &gt; 0\)</span>:</strong> Gaz ochładza się przy dławieniu (większość gazów w temp. pokojowej).</li>
-<li><strong><span class="math inline">\(\mu &lt; 0\)</span>:</strong> Gaz ogrzewa się (np. wodór, hel w temp. pokojowej).</li>
-<li><strong>Krzywa inwersji:</strong> Linia, na której <span class="math inline">\(\mu = 0\)</span>.</li>
-</ul>
-</section>
-<section id="analiza-egzergetyczna-wstęp" class="slide level2">
-<h2>Analiza Egzergetyczna (Wstęp)</h2>
-<h3 id="energia-dostępna">Energia Dostępna</h3>
-<p>Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu równowagi z otoczeniem.</p>
-<ul>
-<li>I Zasada mówi o ilości energii (konserwacja).</li>
-<li>II Zasada mówi o jakości energii (degradacja).</li>
-<li><strong>Strata egzergii (<span class="math inline">\(\delta B\)</span>):</strong> Jest proporcjonalna do przyrostu entropii (Prawo Gouya-Stodoli).</li>
-</ul>
-</section>
-<section id="podsumowanie-w3" class="slide level2">
-<h2>Podsumowanie W3</h2>
-<h3 id="kluczowe-wnioski">Kluczowe Wnioski</h3>
-<ul>
-<li><strong>Układy Otwarte:</strong> Wymagają uwzględnienia pracy technicznej (<span class="math inline">\(L_t\)</span>) i entalpii (<span class="math inline">\(H\)</span>).</li>
-<li><strong>Równanie Szewalskiego:</strong> Bilans energii dla przepływu ustalonego (turbiny, sprężarki, wymienniki).</li>
-<li><strong>Praca Techniczna:</strong> Pole do osi rzędnych (<span class="math inline">\(p\)</span>).</li>
-<li><strong>Dławienie:</strong> Proces izentalpowy (<span class="math inline">\(h=const\)</span>), któremu może towarzyszyć zmiana temperatury (J-T).</li>
-</ul>
-</section>
-<section id="przejście-do-w4" class="slide level2">
-<h2>Przejście do W4</h2>
-<h3 id="właściwości-substancji-czystych">Właściwości Substancji Czystych</h3>
-<p>W następnym module nauczymy się, jak wyznaczać parametry dla substancji zmieniających fazę:</p>
-<ul>
-<li>Korzystanie z <strong>tablic pary wodnej</strong>.</li>
-<li>Praca z wykresami <strong>h-s</strong> (Molliera) oraz <strong>p-h</strong>.</li>
-<li>Obliczanie stopnia suchości pary mokrej (<span class="math inline">\(x\)</span>).</li>
-</ul>
+<section id="zadanie-domowe-raport-6" class="slide level2">
+<h2>🏠 Zadanie Domowe (Raport 6)</h2>
+<p><strong>Temat:</strong> Rzeczywisty Obieg Chłodniczy.</p>
+<p>W praktyce występują straty i dodatkowe procesy poprawiające efektywność.</p>
+<ol type="1">
+<li>Aby chronić sprężarkę przed cieczą, stosuje się <strong>Przegrzanie Par</strong> na ssaniu o <span class="math inline">\(\Delta T_{sh} = 5 K\)</span> (czyli <span class="math inline">\(t_1 = 2 + 5 = 7^\circ C\)</span>).</li>
+<li>Aby zwiększyć wydajność, stosuje się <strong>Dochłodzenie Cieczy</strong> przed dławieniem o <span class="math inline">\(\Delta T_{sc} = 5 K\)</span> (czyli <span class="math inline">\(t_3 = 40 - 5 = 35^\circ C\)</span>).</li>
+</ol>
+<p><strong>Zadanie:</strong> Narysuj nowy obieg na wykresie p-h i oblicz nowy wskaźnik EER. Czy dochłodzenie poprawia, czy pogarsza sprawność?</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Pamiętaj: Przegrzanie zwiększa pracę sprężania (<span class="math inline">\(l_k\)</span>), ale Dochłodzenie zwiększa chłodzenie użyteczne (<span class="math inline">\(q_o\)</span>). Jaki będzie bilans netto?</p>
+</div>
+</div>
+</div>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../img/KBiG.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Termodynamika Techniczna (W3)</p>
+<p>Termodynamika Techniczna - Ćwiczenia Projektowe</p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/appearance/appearance.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/reveal-pointer/pointer.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="03_I_Zasada_Otwarte_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -386,10 +393,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
-'appearance': {"hideagain":true,"delay":300,"debug":false,"appearevent":"slidetransitionend","autoappear":false,"autoelements":false,"appearparents":false},
-'pointer': {"key":"q","color":"#e60000","pointerSize":20,"alwaysVisible":false},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -515,7 +519,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -540,7 +544,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.2,
+        margin: 0.1,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -560,7 +564,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Appearance, RevealPointer, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -591,12 +595,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Skopiowano!");
+          button.setAttribute("title", "Copied!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Skopiowano!");
+            button.setAttribute("data-bs-title", "Copied!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

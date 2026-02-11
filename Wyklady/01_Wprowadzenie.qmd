@@ -12,14 +12,14 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="img/KBiG.jpg" 
+    <img src="../img/KBiG.jpg" 
          style="height: 200px;">
          
   </div>
 lang: pl
 format:
   revealjs:
-    theme: ["theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
+    theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
     include-in-header:
       text: |
         <style>
@@ -30,7 +30,7 @@ format:
 
         /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
         .reveal .slide-background-content {
-            background-image: url("img/background_red.png") !important;
+            background-image: url("../img/background_red.png") !important;
             
             /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
             background-size: contain !important; 
@@ -77,10 +77,10 @@ editor: source
 
 ### Materiały z wykładów i ćwiczeń dostępne na platformie: [elearning](https://elearning2.up.poznan.pl){target="_blank"}
 
-![](img/barcode.gif){width="20%" fig-align="right"}
+![](../img/barcode.gif){width="20%" fig-align="right"}
 
 :::: {style="position: relative; display: inline-block;"}
-<img src="img/elearning_main.png" style="width: 100%;fig-align: center"/>
+<img src="../img/elearning_main.png" style="width: 100%;fig-align: center"/>
 
 ::: {.fragment style="
       position: absolute;
@@ -176,7 +176,7 @@ Podział ze względu na wymianę z otoczeniem:
 
 <!-- Wstaw grafikę przedstawiającą układ izolowany, np. termos -->
 
-![](img/termos.jpg){width="60%" fig-align="left"}
+![](../img/termos.jpg){width="60%" fig-align="left"}
 :::
 
 ::: {.column width="33%"}
@@ -187,7 +187,7 @@ Podział ze względu na wymianę z otoczeniem:
 
 <!-- Wstaw grafikę przedstawiającą układ zamknięty, np. zamknięty cylinder z tłokiem -->
 
-![](img/tlok.png){width="90%" fig-align="left"}
+![](../img/tlok.png){width="90%" fig-align="left"}
 :::
 
 ::: {.column width="33%"}
@@ -198,7 +198,7 @@ Podział ze względu na wymianę z otoczeniem:
 
 <!-- Wstaw grafikę przedstawiającą układ otwarty, np. turbinę parową -->
 
-![](img/turbina.jpg){width="90%" fig-align="left"}
+![](../img/turbina.jpg){width="90%" fig-align="left"}
 :::
 ::::::
 
@@ -602,7 +602,7 @@ Wyobraź sobie szklankę gorącej herbaty. Jeśli przelejesz połowę herbaty do
 ::::
 
 :::: {.column width="50%"}
-![](img/zerowa.png){width="100%" fig-align="left"} ***
+![](../img/zerowa.png){width="100%" fig-align="left"} ***
 
 ::: {style="font-size: 0.7em; color: red;" .fragment .fade-up .callout-tip title="Prostym językiem"}
 Dwa ciała znajdujące się w równowadze termicznej z trzecim ciałem są także w równowadze termicznej między sobą.
@@ -661,7 +661,7 @@ Konwersja na skalę Rankine \[°R\] ($t_R$): $$ t_R = t_F + 459,67; \space t_F =
 ::: {.column width="40%"}
 <!-- Wstaw grafikę porównującą skale Kelvina, Celsjusza i Fahrenheita. -->
 
-![](img/skale.png){width="100%" fig-align="left"}
+![](../img/skale.png){width="100%" fig-align="left"}
 :::
 :::::
 
