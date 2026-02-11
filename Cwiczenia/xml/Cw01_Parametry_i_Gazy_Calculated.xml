@@ -5055,5 +5055,49 @@ Dla porównania: gęstość powietrza w warunkach normalnych to ok. 1.29 kg/m³.
 </dataset_definitions>
   </question>
 
+  <!-- question: Cw01_Zad1_2e_Azot -->
+  <question type="numerical">
+    <name>
+      <text>Cw01_Zad1_2e_Azot</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 1 — Parametry Stanu</b></p>
+<p>Dział spawalniczy potrzebuje przechować w butli <b>50 kg</b> czystego azotu.</p>
+<p>Parametry przechowywania: ciśnienie absolutne <b>200 bar</b>, temperatura <b>15 °C</b>.</p>
+<p><b>Oblicz wymaganą objętość zbiornika [m³].</b></p>
+<p>Przyjmij stałą gazową azotu \(R_{N2} = 297\) J/(kg·K).</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>1. Przelicz ciśnienie na Pa: \(200 \text{ bar} = 20 \cdot 10^6 \text{ Pa}\)</p>
+<p>2. Przelicz temperaturę na K: \(15 + 273.15 = 288.15 \text{ K}\)</p>
+<p>3. Użyj Clapeyrona: \(V = \frac{m \cdot R \cdot T}{p}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>0.2139</text>
+      <tolerance>0.005</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>1.0000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+  </question>
+
 </quiz>
 

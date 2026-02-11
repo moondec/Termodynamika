@@ -3785,5 +3785,27 @@
 </dataset_definition>
 </dataset_definitions>
   </question>
+  <!-- question: Cw05_Zad5_5_LMTD_Przeciwprad -->
+  <question type="numerical">
+    <name>
+      <text>Cw05_Zad5_5_LMTD_Przeciwprad</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 5 — Wymienniki Ciepła</b></p>
+<p>W wymienniku typu przeciwprądowego (skraplacz/podgrzewacz) występują następujące temperatury:</p>
+<ul>
+<li>Czynnik gorący (spaliny): wlot \(t'_{in} = 300^\circ C\), wylot \(t'_{out} = 150^\circ C\).</li>
+<li>Czynnik zimny (woda): wlot \(t''_{in} = 20^\circ C\), wylot \(t''_{out} = 80^\circ C\).</li>
+</ul>
+<p><b>Oblicz średnią logarytmiczną różnicę temperatur \(LMTD\) (Log Mean Temperature Difference) dla układu przeciwprądowego.</b></p>
+<p>Wzór: \(LMTD = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1 / \Delta T_2)}\)</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+      <text>171.1</text>
+      <tolerance>1</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+  </question>
+
 </quiz>
 

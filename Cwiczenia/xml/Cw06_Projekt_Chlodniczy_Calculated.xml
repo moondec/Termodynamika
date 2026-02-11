@@ -3143,5 +3143,29 @@
 </dataset_definition>
 </dataset_definitions>
   </question>
+  <!-- question: Cw06_Zad6_5_Wrazliwosc_EER -->
+  <question type="numerical">
+    <name>
+      <text>Cw06_Zad6_5_Wrazliwosc_EER</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 6 — Instalacja Chłodnicza</b></p>
+<p>Skraplacz uległ zabrudzeniu i temperatura skraplania wzrosła do \(t_k = 55^\circ C\).</p>
+<p>Temperatura parowania \(t_o = 0^\circ C\).</p>
+<p>Oblicz nowy wskaźnik efektywności EER, korzystając z uproszczonego modelu R134a:</p>
+<ul>
+<li>\(h_1 = 395\) kJ/kg</li>
+<li>\(h_2 = 395 + 25 + 0.4 \cdot (55 - 0)\) kJ/kg</li>
+<li>\(h_3 = 240 + 0.8 \cdot 55\) kJ/kg</li>
+</ul>
+<p><b>Oblicz EER = \((h_1 - h_3) / (h_2 - h_1)\).</b></p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+      <text>2.36</text>
+      <tolerance>0.05</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+  </question>
+
 </quiz>
 

@@ -27,7 +27,7 @@ W hali montażu elektroniki musimy utrzymać ściśle określone warunki, aby un
 Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lato).
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1581093588402-48a0d9b407e3?auto=format&fit=crop&q=80&w=800)
+![](../img/ahu_schematic.png)
 :::
 :::
 
@@ -60,6 +60,19 @@ Szukamy $X_N = 8.4$.
 $t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
 :::
 :::
+
+---
+
+## 📈 Wizualizacja na Wykresie h-X
+
+Jak narysować proces zimowy?
+
+1.  Zaznacz punkt **Z** ($-10^\circ C, 90\%$). Odczytaj $X_Z$.
+2.  Zaznacz punkt **W** ($22^\circ C, 50\%$). Odczytaj $X_W$.
+3.  **Nagrzewanie:** Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
+4.  **Nawilżanie parowe:** Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
+
+![](../img/air_hum-h-X.png){width="60%" fig-align="center"}
 
 ---
 

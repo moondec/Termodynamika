@@ -36,12 +36,23 @@ params:
   t_mix: 20
   V_mix: 2.0
   T_valve: 250
+  # Zad 1.2e — Azot
+  m_N2_tank: 50
+  p_N2_tank: 200
+  t_N2_tank: 15
   # Ćw.2 — Sprężarka
   p2: 10
   t1_spr: 20
   n_poly: 1.30
   Vn: 120
   t_chlod: 30
+  # Zad 2.7/2.8 - Dodatkowe
+  t_w_in_ch: 15
+  t_w_out_ch: 40
+  t1_pom: 22
+  p1_pom: 1.0
+  t2_pom: 215
+  p2_pom: 8.0
   # Ćw.3 — Kocioł
   p_kociol: 12
   t_para: 250
@@ -92,6 +103,11 @@ p_N2_kPa <- (p$y_N2 / 100) * p$p_mix * 100
 y_O2 <- 100 - p$y_N2
 m_N2 <- (p$y_N2/100 * p$p_mix * 1e5) * p$V_mix / (297 * (p$t_mix + 273.15))
 rho_zb <- (p$p_man * 1e5 + p$p_atm * 133.322) / (287 * T_K)
+rho_norm <- 101325 / (287 * 273.15)
+m_N2_t <- p$m_N2_tank
+p_N2_t_Pa <- p$p_N2_tank * 1e5
+T_N2_t <- p$t_N2_tank + 273.15
+V_N2_tank <- m_N2_t * 297 * T_N2_t / p_N2_t_Pa
 T_valve_C <- (p$T_valve - 32) / 1.8
 
 # ---- Obliczenia Ćw.2 ----
@@ -104,6 +120,13 @@ Q_chlod <- m_dot_spr * 1.005 * (T2_spr - p$t_chlod)
 p_posr <- sqrt(1 * p$p2)
 T_I_out <- T1_spr * (p_posr/1)^((p$n_poly-1)/p$n_poly) - 273.15
 lt_izo <- 287 * T1_spr * log(p$p2/1) / 1000
+Q_ch_kW <- Q_chlod 
+m_w_chlod <- (Q_ch_kW * 1000) / (4190 * (p$t_w_out_ch - p$t_w_in_ch))
+# Zad 2.8
+T1_p <- p$t1_pom + 273.15; T2_p <- p$t2_pom + 273.15
+log_T <- log(T2_p/T1_p)
+log_p <- log(p$p2_pom/p$p1_pom)
+n_real <- 1 / (1 - log_T/log_p)
 
 # ---- Obliczenia Ćw.3 ----
 h1_kociol <- 4.19 * p$t_zas
@@ -111,8 +134,11 @@ Q_kociol <- p$m_dot_kociol * 1000 / 3600 * (2800 - h1_kociol)
 V_gaz <- Q_kociol / (p$eta_k * 50000 * 0.7) * 3600
 x_suchy <- (2400 - 500) / (2710 - 500) # przykładowe h_mokra ≈ 2400
 
-# ---- Obliczenia Ćw.4 ----
-h1_t <- 2800; h2s_t <- 2200
+# ---- Obliczenia Ćw.4 (10 bar -> 1 bar) ----
+h1_t <- 2942; s1_t <- 6.92  # 10 bar, 250C
+sf_2 <- 1.30; sg_2 <- 7.36; hf_2 <- 417; hg_2 <- 2675 # 1 bar
+x_is <- (s1_t - sf_2) / (sg_2 - sf_2)
+h2s_t <- hf_2 + x_is * (hg_2 - hf_2)
 N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
 h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
 N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
@@ -136,7 +162,12 @@ EER <- q_o / l_k
 N_spr_ch <- p$Q_o / EER
 m_dot_ch <- p$Q_o / q_o
 COP_PC <- EER + 1
-w_rura <- m_dot_ch * 0.065 / (pi * (p$d_rura/1000)^2 / 4)  # v1 ≈ 0.065 m³/kg (R134a, ssanie)
+w_rura <- m_dot_ch * 0.065 / (pi * (p$d_rura/1000)^2 / 4)
+# Zad 6.5 - Wpływ tk
+tk_high <- p$t_k + 15
+h3_high <- 240 + 0.8 * tk_high
+h2_high <- h1_ch + 25 + 0.4 * (tk_high - p$t_o)
+EER_high <- (h1_ch - h3_high)/(h2_high - h1_ch)
 
 # ---- Obliczenia Ćw.7 ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
@@ -250,20 +281,34 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 
 **Metodyka:** Prawo Gay--Lussaca (objętość stała, masa stała): $\frac{p_1}{T_1} = \frac{p_2}{T_2}$, stąd: $p_2 = p_1 \cdot \frac{T_2}{T_1}$ (temperatury w kelwinach!).
 
-- Ciśnienie po pożarze $p_2$ = `r ans(p_fire, "kPa")`
+- Ciśnienie po pożarze $p_2$ = `r ans(p_fire, "kPa")` (`r ans(p_fire/100, "bar")`)
 
 `r if(!sa) "*Refleksja: Czy to ciśnienie przekracza ciśnienie próbne zbiornika? Jakie zabezpieczenia powinien mieć zbiornik?*"`
 
-## Zad. 1.2c --- Kalibracja analizatora spalin (prawo Daltona)
+## Zad. 1.2c --- Mieszanina Gazów (Dalton)
 
 **Kontekst:** Na hali znajduje się butla kalibracyjna do analizatora spalin. Zawiera mieszaninę: **`r p$y_N2`% N$_2$** + **`r y_O2`% O$_2$** (ułamki molowe), pod ciśnieniem **`r p$p_mix` bar**, objętość butli **`r p$V_mix` m$^3$**, temperatura **`r p$t_mix` $^\circ$C**.
 
-**Cel:** Oblicz ciśnienie parcjalne i masę azotu --- potrzebne do zamówienia uzupełnienia butli u dostawcy.
+**Cel:** Oblicz ciśnienie parcjalne i masy składników.
 
-**Metodyka:** Prawo Daltona: $p_i = y_i \cdot p$ (ciśnienie parcjalne = ułamek molowy $\times$ ciśnienie całkowite). Masa: $m_i = \frac{p_i \cdot V}{R_i \cdot T}$, gdzie $R_{N_2} = 297$ J/(kg$\cdot$K).
+**Metodyka:** Prawo Daltona: $p_i = y_i \cdot p$. Masa: $m_i = \frac{p_i \cdot V}{R_i \cdot T}$. ($R_{N2}=297, R_{O2}=260$).
 
 - $p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`
 - $m_{N_2}$ = `r ans(m_N2, "kg")`
+- $m_{O_2}$ = `r ans((100-p$y_N2)/100 * p$p_mix * 1e5 * p$V_mix / (260 * (p$t_mix + 273.15)), "kg")`
+
+## Zad. 1.2d --- Gęstość i Objętość Właściwa
+
+Oblicz gęstość powietrza w głównym zbiorniku (Zad 1.1) oraz porównaj ją z gęstością w warunkach normalnych.
+
+- $\rho_{rzecz}$ = `r ans(rho_zb, "kg/m^3")`
+- $\rho_{norm}$ = `r ans(rho_norm, "kg/m^3")`
+
+## Zad. 1.2e --- Dobór butli na Azot
+
+Dział spawalniczy potrzebuje przechować **`r p$m_N2_tank` kg** azotu przy ciśnieniu **`r p$p_N2_tank` bar** i temp. **`r p$t_N2_tank` $^\circ$C**. Oblicz wymaganą objętość zbiornika.
+
+- $V_{min}$ = `r ans(V_N2_tank, "m^3", 3)` (`r ans(V_N2_tank*1000, "litrów", 0)`)
 
 ## Zad. 1.3 --- Odczyt dokumentacji zagranicznej
 
@@ -332,6 +377,18 @@ $$l_t = \frac{n}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{p_2}{p_1}\right)
 
 `r if(!sa) paste0("*Porównanie: izoterma ", f(lt_izo), " vs politropa ", f(lt_poly), " kJ/kg --- oszczędność ", f((1 - lt_izo/lt_poly)*100), "% przy idealnym chłodzeniu.*")`
 
+## Zad. 2.7 --- Dobór chłodnicy wodnej (I Zasada)
+
+**Cel:** Oblicz ilość wody potrzebnej do chłodzenia sprężarki, jeśli woda ogrzewa się od **`r p$t_w_in_ch`** do **`r p$t_w_out_ch` $^\circ$C**. Ciepło do odebrania $\dot{Q} =$ `r f(Q_chlod, 1)` kW.
+
+- Strumień wody $\dot{m}_w$ = `r ans(m_w_chlod, "kg/s", 3)` (`r ans(m_w_chlod*60/1, "l/min", 1)`)
+
+## Zad. 2.8 --- Weryfikacja stanu technicznego ($n$)
+
+**Sytuacja:** Serwisant zmierzył parametry pracy: $t_1=$`r p$t1_pom`$^\circ$C, $p_1=$`r p$p1_pom` bar oraz $t_2=$`r p$t2_pom`$^\circ$C, $p_2=$`r p$p2_pom` bar. Oblicz rzeczywisty wykładnik politropy $n$.
+
+- Wykładnik $n$ = `r ans(n_real, "", 2)`
+
 \newpage
 
 # Etap 3: Kotłownia Parowa (Ćw. 3)
@@ -341,6 +398,13 @@ $$l_t = \frac{n}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{p_2}{p_1}\right)
 Przechodzimy do kotłowni. Kocioł gazowy wytwarza parę przegrzaną o parametrach: $p =$ **`r p$p_kociol` bar**, $t =$ **`r p$t_para` $^\circ$C**, z wydajnością **`r p$m_dot_kociol` t/h**. Woda zasilająca ma temperaturę **`r p$t_zas` $^\circ$C**.
 
 **Cel audytu:** Określ moc cieplną kotła (dla oceny, czy pokrywa zapotrzebowanie hali) i zużycie gazu ziemnego (dla kalkulacji kosztów operacyjnych).
+
+## Zad. 3.1 --- Stan termodynamiczny pary
+
+**Cel:** Sprawdź w tablicach parowych, czy para o parametrach $p=$ `r p$p_kociol` bar i $t=$ `r p$t_para` $^\circ$C jest parą nasyconą czy przegrzaną.
+
+- Temperatura nasycenia $t_{sat}$ dla ciśnienia `r p$p_kociol` bar wynosi: ............ $^\circ$C.
+- Wniosek ($t > t_{sat}$?): Para jest ....................................... .
 
 ## Zad. 3.2 --- Moc cieplna kotła
 
@@ -372,9 +436,29 @@ W ramach modernizacji klient rozważa zainstalowanie **turbiny parowej** za kot�
 
 Para wchodzi do turbiny: $p_1 =$ **`r p$p1_turb` bar**, $t_1 =$ **`r p$t1_turb` $^\circ$C**. Na wylocie: $p_2 =$ **`r p$p2_turb` bar**. Strumień masy: $\dot{m} =$ **`r p$m_dot_turb` kg/s**.
 
+## Zad. 4.1 --- Proces izentropowy (s=const)
+
+**Cel:** Określ parametry pary na wylocie z idealnej turbiny ($s_1 = s_2$).
+Dla p=10 bar, t=250C: $s_1 \approx$ `r f(s1_t, 3)` kJ/kgK.
+Dla p=`r p$p2_turb` bar (nasycenie): $s' \approx$ `r f(sf_2, 3)`, $s'' \approx$ `r f(sg_2, 3)`.
+
+- Czy $s_1$ mieści się między $s'$ a $s''$? (Tak/Nie): ........
+- Stan pary na wylocie: .......................................
+
+## Zad. 4.2 --- Stopień suchości ($x_2$)
+
+Oblicz stopień suchości pary na wylocie (jaka część to para, a jaka ciecz).
+$$x_2 = \frac{s_2 - s'}{s'' - s'}$$
+
+- Stopień suchości $x_2$ = `r ans(x_is, "", 3)`
+
 ## Zad. 4.3 --- Idealna moc turbiny
 
 **Cel:** Ile mocy produkowałaby *idealna* turbina (proces izentropowy)?
+Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla 1 bar: $h' \approx 417, h'' \approx 2675$.
+
+- Entalpia $h_{2s}$ = `r ans(h2s_t, "kJ/kg", 1)`
+- Moc $N_t = \dot{m} (h_1 - h_{2s})$ = `r ans(N_turb_ideal, "kW")`
 
 **Metodyka:** $N_t = \dot{m} \cdot (h_1 - h_{2s})$, gdzie $h_1 \approx 2800$ kJ/kg, $h_{2s} \approx 2200$ kJ/kg (uproszczenie; dokładne wartości z tablic pary lub wykresu Molliera).
 
@@ -436,6 +520,13 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 
 `r if(!sa) paste0("*Interpretacja: odzyskujemy ", f(Q_wym), " kW ciepła, ale ", f(abs(W_strata)), " kW potencjalnej pracy jest bezpowrotnie utracone. Można zmniejszyć tę stratę, zmniejszając różnicę temperatur (wymiennik przeciwprądowy, większa powierzchnia).*")`
 
+## Zad. 5.5 --- Przeciwprąd vs Współprąd
+
+Jaka byłaby średnia różnica temperatur ($\Delta T_{log}$), gdybyśmy użyli wymiennika przeciwprądowego zamiast współprądowego? (Większe $\Delta T_{log}$ = mniejszy wymiennik = taniej).
+
+- $\Delta T_{log}$ (przeciwprąd) = ..........................
+- Wniosek: ....................................................
+
 \newpage
 
 # Etap 6: Instalacja Chłodnicza (Ćw. 6)
@@ -474,11 +565,19 @@ Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p
 `r if(!sa) paste0("*Interpretacja: COP = ", f(COP_PC), " oznacza, że na każdy 1 kW prądu dostajemy ", f(COP_PC), " kW ciepła --- ", f(COP_PC), "× lepiej niż grzejnik elektryczny!*")`
 
 :::{.callout-tip title="COP – Coefficient of Performance, Współczynnik wydajności (lub efektywności)"}
-oznaczany w podręcznikach grecką literą $ \phi $ lub $ \varphi $.
+oznaczany w podręcznikach grecką literą $\phi$ lub $\varphi$.
 :::
 
 :::{.callout-tip title="EER – Energy Efficiency Ratio, Wskaźnik efektywności energetycznej (chłodzenia)"}
-oznaczany grecką literą $ \epsilon $.
+oznaczany grecką literą $\epsilon$.
+:::
+
+## Zad. 6.5 --- Analiza wrażliwości
+
+Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wzrośnie o 15$^\circ$C (do `r p$t_k + 15`$^\circ$C)?
+
+- Nowy EER = `r ans(EER_high, "")`
+- Spadek efektywności: `r ans((EER - EER_high)/EER*100, "%")` less efficient.
 :::
 
 ## Zad. 6.7 --- Weryfikacja rurociągu

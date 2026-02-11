@@ -29,9 +29,19 @@ Zamiast zaworu proponujemy zainstalować **Turbinę Przeciwprężną**.
 *   Strumień: $\dot{m}=2 \text{ t/h}$.
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1596765798083-066cb472314a?auto=format&fit=crop&q=80&w=800)
+![](../img/turbina.png)
 :::
 :::
+
+---
+
+## 📈 Wizualizacja Obiegu (Wykres T-s)
+
+Proces w turbinie (1 $\to$ 2) to (w przybliżeniu) pionowa linia w dół (izentropa).
+
+![](../img/rankine_ts_chart.png){width="65%" fig-align="center"}
+
+Para sucha (Punkt 1) wchodzi do turbiny i opuszcza ją jako lekko mokra lub sucha nasycona (Punkt 2).
 
 ---
 

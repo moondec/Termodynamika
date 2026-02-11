@@ -200,6 +200,8 @@ Marek Urbaniak
 <h2>🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne</h2>
 <p>Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) <strong>ZAWSZE</strong> używamy ciśnienia absolutnego!</p>
 <p><span class="math display">\[ p_{abs} = p_{man} + p_{atm} \]</span> <em>(Dla podciśnienia: <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span>)</em></p>
+<div class="{columns}">
+<div class="column" style="width:50%;">
 <div class="fragment">
 <h3 id="przeliczanie-jednostek-krok-1">Przeliczanie jednostek (Krok 1):</h3>
 <ol type="1">
@@ -213,12 +215,18 @@ Marek Urbaniak
 <li><span class="math inline">\(1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}\)</span></li>
 <li><span class="math inline">\(p_{man} = 850 \text{ kPa}\)</span></li>
 </ul></li>
+</ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<ol start="3" type="1">
 <li><strong>Absolutne:</strong>
 <ul>
 <li><span class="math inline">\(p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}\)</span></li>
 </ul></li>
 </ol>
 </div>
+</div></div>
 </section>
 <section id="obliczenia-masa-gazu" class="slide level2">
 <h2>🧮 Obliczenia: Masa Gazu</h2>
@@ -250,7 +258,7 @@ Marek Urbaniak
 </section>
 <section id="zadanie-projektowe-1.2-próba-hydrauliczna" class="slide level2">
 <h2>💧 Zadanie Projektowe 1.2: Próba Hydrauliczna</h2>
-<p>Ze względów bezpieczeństwa (UBD) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu <strong>wody</strong>.</p>
+<p>Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu <strong>wody</strong>.</p>
 <p><strong>Pytanie:</strong> O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik (<span class="math inline">\(V=5m^3\)</span>) wodą w temp. <span class="math inline">\(20^\circ C\)</span>?</p>
 <div class="fragment">
 <h3 id="analiza">Analiza:</h3>
@@ -258,7 +266,21 @@ Marek Urbaniak
 <li>Gęstość wody <span class="math inline">\(\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}\)</span> (niezależna od ciśnienia - ciecz nieściśliwa).</li>
 <li>Masa wody: <span class="math inline">\(m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}\)</span>.</li>
 </ul>
-<p><strong>Wniosek:</strong> Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.</p>
+<div class="fragment">
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="zadanie-1.2b-pożar-w-hali-ciśnienie-awaryjne" class="slide level2">
@@ -286,11 +308,23 @@ Marek Urbaniak
 <div class="fragment">
 <p><strong>Prawo Gay-Lussaca</strong> (<span class="math inline">\(V = const, m = const\)</span>): <span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} \]</span> <span class="math display">\[ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} \]</span></p>
 </div>
-<div class="fragment callout-error">
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <p>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</p>
 </div>
+</div>
+</div>
+</div>
 </section>
-<section id="zadanie-1.2c-mieszanina-gazów-prawo-daltona" class="slide level2">
+<section id="zadanie-1.2c-mieszanina-gazów-prawo-daltona" class="slide level2 smaller">
 <h2>🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)</h2>
 <p>W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% <span class="math inline">\(N_2\)</span> + 20% <span class="math inline">\(O_2\)</span> (objętościowo), przy <span class="math inline">\(p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3\)</span>.</p>
 <h3 id="oblicz">Oblicz:</h3>
@@ -309,7 +343,19 @@ Marek Urbaniak
 <li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
 <li><span class="math inline">\(m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}\)</span></li>
 </ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wynik</strong></p>
+</div>
+<div class="callout-content">
 <p>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="zadanie-1.2d-gęstość-i-objętość-właściwa" class="slide level2">
@@ -338,7 +384,7 @@ Marek Urbaniak
 </div>
 </div>
 </section>
-<section id="zadanie-1.2e-dobór-zbiornika-na-azot" class="slide level2">
+<section id="zadanie-1.2e-dobór-zbiornika-na-azot" class="slide level2 smaller">
 <h2>⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot</h2>
 <p>Dział spawalniczy potrzebuje zbiornika na <strong>czysty azot</strong> (<span class="math inline">\(N_2\)</span>) o masie <span class="math inline">\(m = 50\)</span> kg, przechowywany w temperaturze <span class="math inline">\(15^\circ C\)</span> i ciśnieniu <span class="math inline">\(200 \text{ bar (abs)}\)</span>.</p>
 <p><strong>Oblicz wymaganą objętość zbiornika.</strong></p>

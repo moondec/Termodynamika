@@ -4935,5 +4935,46 @@ Izoterma wymaga najmniej pracy.</p>]]></text>
 </dataset_definitions>
   </question>
 
+  <!-- question: Cw02_Zad2_7_Chlodnica -->
+  <question type="numerical">
+    <name>
+      <text>Cw02_Zad2_7_Chlodnica</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 2 — Bilans Sprężarkowni</b></p>
+<p>Chłodnica sprężarki musi odebrać strumień ciepła <b>\(\dot{Q} = 8\text{ kW}\)</b>.</p>
+<p>Dysponujemy wodą wodociągową o temperaturze wejściowej <b>\(15^\circ C\)</b>.</p>
+<p>Maksymalna temperatura wody na wylocie wynosi <b>\(40^\circ C\)</b>.</p>
+<p>Oblicz wymagany strumień wody chłodzącej <b>\(\dot{m}_w\)</b> [kg/s].</p>
+<p>Przyjmij ciepło właściwe wody \(c_w = 4190\text{ J}/(\text{kg K})\).</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+      <text>0.0764</text>
+      <tolerance>0.005</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+  </question>
+
+  <!-- question: Cw02_Zad2_8_Wykladnik -->
+  <question type="numerical">
+    <name>
+      <text>Cw02_Zad2_8_Wykladnik</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 2 — Bilans Sprężarkowni</b></p>
+<p>Serwisant zmierzył parametry pracy sprężarki (powietrze):</p>
+<ul>
+<li>Ssanie: \(p_1 = 1\) bar, \(t_1 = 22^\circ C\)</li>
+<li>Tłoczenie: \(p_2 = 8\) bar, \(t_2 = 215^\circ C\)</li>
+</ul>
+<p>Oblicz rzeczywisty wykładnik politropy <b>\(n\)</b> procesu sprężania.</p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+      <text>1.32</text>
+      <tolerance>0.05</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+  </question>
+
 </quiz>
 

@@ -1814,5 +1814,34 @@
 </dataset_definition>
 </dataset_definitions>
   </question>
+  <!-- question: Cw03_Zad3_1_Stan_pary -->
+  <question type="multichoice">
+    <name>
+      <text>Cw03_Zad3_1_Stan_pary</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 3 — Kocioł Parowy</b></p>
+<p>Kocioł produkuje parę wodną o parametrach:</p>
+<p>Ciśnienie \(p=10\) bar, Temperatura \(t=250^\circ C\).</p>
+<p>Temperatura nasycenia (wrzenia) dla ciśnienia 10 bar wynosi \(t_{sat} \approx 180^\circ C\).</p>
+<p>W jakim stanie termodynamicznym znajduje się ta para?</p>]]></text>
+    </questiontext>
+    <answer fraction="100" format="html">
+      <text>Para Przegrzana</text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Para Nasycona Sucha</text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Para Nasycona Mokra</text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Ciecz (woda wrząca)</text>
+    </answer>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+  </question>
+
 </quiz>
 

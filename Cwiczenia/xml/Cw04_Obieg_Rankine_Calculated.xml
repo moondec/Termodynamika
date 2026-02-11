@@ -1157,5 +1157,27 @@
 </dataset_definition>
 </dataset_definitions>
   </question>
+  <!-- question: Cw04_Zad4_2_Stopien_suchosci -->
+  <question type="numerical">
+    <name>
+      <text>Cw04_Zad4_2_Stopien_suchosci</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><b>Ćwiczenie 4 — Obieg Rankine'a (Turbina)</b></p>
+<p>Para wodna o parametrach \(p_1=10\) bar, \(t_1=250^\circ C\) ($h_1=2943$, $s_1=6.926$) rozpręża się izentropowo (\(s_1=s_2\)) w idealnej turbinie do ciśnienia \(p_2=1\) bar.</p>
+<p>Dla ciśnienia 1 bar parametry nasycenia wynoszą:</p>
+<ul>
+<li>Entropia cieczy: \(s' = 1.303\) kJ/kgK</li>
+<li>Entropia pary suchej: \(s'' = 7.359\) kJ/kgK</li>
+</ul>
+<p><b>Oblicz stopień suchości pary na wylocie \(x_2\).</b></p>]]></text>
+    </questiontext>
+    <answer fraction="100">
+      <text>0.9285</text>
+      <tolerance>0.01</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+  </question>
+
 </quiz>
 

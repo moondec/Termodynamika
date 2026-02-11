@@ -28,7 +28,7 @@ Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.
 *   Woda (zimna): podgrzewana od $20$ do $80^\circ C$.
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800)
+![](../img/he_shell_tube.png)
 :::
 :::
 
@@ -130,6 +130,8 @@ Tylko **35%** potencjału energetycznego spalin wykorzystujemy mądrze. Reszta j
 ## 🏗️ Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy
 
 Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprądowy**. Jak to wpływa na generację entropii?
+
+![](../img/he_temp_profile.png){width="70%" fig-align="center"}
 
 ::: {.columns}
 ::: {.column width="50%"}
