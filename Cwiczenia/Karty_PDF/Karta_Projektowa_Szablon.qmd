@@ -539,6 +539,6 @@ Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
 ## Załącznik A: Wykres log p-h dla czynnika R134a
 
 \begin{center}
-\includegraphics[height=0.85\textheight]{../img/R134A-logp_h.png}
+\includegraphics[height=0.85\textheight]{../../img/R134A-logp_h.png}
 \end{center}
 
