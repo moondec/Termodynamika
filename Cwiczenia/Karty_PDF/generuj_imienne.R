@@ -115,8 +115,7 @@ for (i in 1:N) {
   
   # Użyj pełnej ścieżki do szablonu, aby działało z każdego katalogu
   # (zakładamy, że szablon jest w tym samym katalogu co skrypt)
-  script_dir <- dirname(normalizePath(commandArgs(trailingOnly = FALSE)[4])) 
-  # Powyższe to trik na Rscript, ale zawodny. Lepiej po prostu założyć CWD albo hardcode.
+  # Zostańmy przy CWD użytkownika. MUSISZ byc w katalogu Cwiczenia/Karty_PDF.
   # Zostańmy przy CWD użytkownika. MUSISZ byc w katalogu Cwiczenia/Karty_PDF.
   
   template_path <- "Karta_Projektowa_Szablon.qmd"
