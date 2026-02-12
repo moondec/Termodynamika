@@ -234,7 +234,13 @@ Marek Urbaniak
 <p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Dane wejściowe:</strong> * <span class="math inline">\(p = 950\,000 \text{ Pa}\)</span> (Absolutne!) * <span class="math inline">\(V = 5 \text{ m}^3\)</span> * <span class="math inline">\(T = 25 + 273.15 = 298.15 \text{ K}\)</span> * <span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</p>
+<p><strong>Dane wejściowe:</strong></p>
+<ul>
+<li><span class="math inline">\(p = 950\,000 \text{ Pa}\)</span> (Absolutne!)</li>
+<li><span class="math inline">\(V = 5 \text{ m}^3\)</span></li>
+<li><span class="math inline">\(T = 25 + 273.15 = 298.15 \text{ K}\)</span></li>
+<li><span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</li>
+</ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Rozwiązanie:</strong> <span class="math display">\[ m = \frac{p \cdot V}{R \cdot T} \]</span></p>
 <p><span class="math display">\[ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} \]</span></p>
@@ -308,17 +314,17 @@ Marek Urbaniak
 <div class="fragment">
 <p><strong>Prawo Gay-Lussaca</strong> (<span class="math inline">\(V = const, m = const\)</span>): <span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} \]</span> <span class="math display">\[ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} \]</span></p>
 </div>
-<div class="fragment">
+<div class="fragment" title="Ciśnienie prawie się **podwoi**! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego ($1.3 \cdot p_{rob}$).">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</strong></p>
 </div>
 <div class="callout-content">
-<p>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</p>
+
 </div>
 </div>
 </div>
@@ -343,16 +349,18 @@ Marek Urbaniak
 <li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
 <li><span class="math inline">\(m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}\)</span></li>
 </ul>
+</div>
+<div class="fragment" title="Masa całkowita: $m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}$.">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Wynik</strong></p>
+<p><strong>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</strong></p>
 </div>
 <div class="callout-content">
-<p>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</p>
+
 </div>
 </div>
 </div>
@@ -365,7 +373,7 @@ Marek Urbaniak
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>W zbiorniku (<span class="math inline">\(p = 950\)</span> kPa, <span class="math inline">\(T = 298\)</span> K):</strong> <span class="math display">\[ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} \]</span> <span class="math display">\[ \rho \approx \mathbf{11.1 \text{ kg/m}^3} \]</span> <span class="math display">\[ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} \]</span></p>
-</div><div class="column" style="width:50%;">
+</div><div class="fragment column" style="width:50%;">
 <p><strong>Warunki normalne (<span class="math inline">\(p_n = 101.3\)</span> kPa, <span class="math inline">\(T_n = 273\)</span> K):</strong> <span class="math display">\[ \rho_n = \frac{101\,300}{287 \cdot 273.15} \]</span> <span class="math display">\[ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} \]</span> <span class="math display">\[ v_n \approx 0.775 \text{ m}^3/\text{kg} \]</span></p>
 </div></div>
 <div class="fragment">
@@ -397,17 +405,17 @@ Marek Urbaniak
 </ul>
 <p><span class="math display">\[ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,000\,000} \]</span> <span class="math display">\[ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} \]</span></p>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 1.5em " title="**Uwaga:** Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości $Z \approx 1.04$, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong><strong>Uwaga:</strong> Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości <span class="math inline">\(Z \approx 1.04\)</span>, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Uwaga:</strong> Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości <span class="math inline">\(Z \approx 1.04\)</span>, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.</p>
+
 </div>
 </div>
 </div>
@@ -421,9 +429,21 @@ Marek Urbaniak
 <p><strong>Konwersja:</strong> <span class="math display">\[ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) \]</span></p>
 <p><span class="math display">\[ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 \]</span> <span class="math display">\[ T_{limit} \approx 121.1^\circ C \]</span></p>
 </div><div class="column" style="width:50%;">
-<div class="fragment callout-error">
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
 <p><strong>Decyzja:</strong> <span class="math inline">\(121.1^\circ C &lt; 140^\circ C\)</span></p>
 <p><strong>ZAWÓR NIE NADAJE SIĘ!</strong> Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.</p>
+</div>
+</div>
+</div>
 </div>
 </div></div>
 </section>

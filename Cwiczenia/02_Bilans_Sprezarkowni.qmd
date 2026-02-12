@@ -24,7 +24,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 4.  **Proces sprężania:** Politropa z wykładnikiem $n = 1.35$.
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1565514020125-6915a2928d11?auto=format&fit=crop&q=80&w=800)
+![](https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80&w=1000)
 :::
 :::
 
