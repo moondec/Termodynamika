@@ -245,6 +245,22 @@ Twoim pierwszym zleceniem jest **kompleksowy audyt energetyczny hali produkcyjne
 | **Centrala klimatyzacyjna** | Strumień powietrza $\dot{V}$ | `r p$V_dot` m$^3$/h |
 | | Temp. obliczeniowa zima/lato | `r p$t_zima` / `r p$t_lato` $^\circ$C |
 
+### Wykaz ważniejszych oznaczeń
+
+| Symbol | Wielkość fizyczna | Jednostka podstawowa |
+|:------:|-------------------|:--------------------:|
+| $p$ | Ciśnienie absolutne | Pa, bar |
+| $t$ | Temperatura | $^\circ$C |
+| $T$ | Temperatura termodynamiczna | K |
+| $V$ | Objętość | m$^3$ |
+| $\dot{V}$ | Strumień objętości | m$^3$/s, m$^3$/h |
+| $\dot{m}$ | Strumień masy | kg/s |
+| $h$ | Entalpia właściwa | kJ/kg |
+| $s$ | Entropia właściwa | kJ/(kg$\cdot$K) |
+| $u$ | Energia wewnętrzna właściwa | kJ/kg |
+| $\rho$ | Gęstość | kg/m$^3$ |
+| $v$ | Objętość właściwa | m$^3$/kg |
+
 \newpage
 
 # Etap 1: Inwentaryzacja Sieci Sprężonego Powietrza (Ćw. 1)
@@ -538,7 +554,8 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 Jaka byłaby średnia różnica temperatur ($\Delta T_{log}$), gdybyśmy użyli wymiennika przeciwprądowego zamiast współprądowego? (Większe $\Delta T_{log}$ = mniejszy wymiennik = taniej).
 
 - $\Delta T_{log}$ (przeciwprąd) = ..........................
-- Wniosek: ....................................................
+
+`r reflection("Wniosek: Porównaj uzyskane wartości $\\Delta T_{log}$ dla obu konfiguracji. Jak zmiana konfiguracji wpływa na efektywność wymiany ciepła i potencjalne oszczędności w projektowaniu wymiennika?")`
 
 \newpage
 
@@ -629,7 +646,14 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 
 **Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, o $t_W$) z `r 100 - p$rec`% świeżego (o $t_Z$). Jaką temperaturę ma mieszanina i ile mocy nagrzewnicy oszczędzamy?
 
-**Metodyka:** Bilans entalpii mieszania: $t_M = \frac{r}{100} \cdot t_W + (1 - \frac{r}{100}) \cdot t_Z$.
+**Metodyka:** Bilans entalpii mieszania:
+$$t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$$
+gdzie:
+
+- $t_M$ --- poszukiwana temperatura mieszaniny powietrza,
+- $r$ --- stopień recyrkulacji (udział powietrza powrotnego w %),
+- $t_W$ --- temperatura powietrza wewnętrznego (z hali),
+- $t_Z$ --- temperatura powietrza zewnętrznego (świeżego).
 
 Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
 
