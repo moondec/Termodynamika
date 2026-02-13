@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01_Parametry_i_Gazy_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/popper.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="04_Obieg_Rankine_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04_Obieg_Rankine_files/libs/quarto-html/tabby.min.js"></script>
+<script src="04_Obieg_Rankine_files/libs/quarto-html/popper.min.js"></script>
+<script src="04_Obieg_Rankine_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="04_Obieg_Rankine_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04_Obieg_Rankine_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="04_Obieg_Rankine_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 1: Projekt Fabryka - Start</title>
+  <title>Ćwiczenia 4: Kogeneracja (Obieg Parowy)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="04_Obieg_Rankine_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="04_Obieg_Rankine_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,13 +29,13 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="04_Obieg_Rankine_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -129,7 +129,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 1: Projekt Fabryka - Start</h1>
+  <h1 class="title">Ćwiczenia 4: Kogeneracja (Obieg Parowy)</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -140,190 +140,171 @@ Marek Urbaniak
 </div>
 
 </section>
-<section id="projekt-modernizacja-hali-przemysłowej" class="slide level2">
-<h2>🏭 Projekt: Modernizacja Hali Przemysłowej</h2>
+<section id="projekt-etap-4---mikroturbina" class="slide level2">
+<h2>🏭 Projekt: Etap 4 - Mikroturbina</h2>
+<p>W poprzednim zadaniu redukowaliśmy ciśnienie pary z <strong>10 bar</strong> do <strong>2 bar</strong> na zaworze dławiącym. To strata energii (egzergii)! Zamiast zaworu proponujemy zainstalować <strong>Turbinę Przeciwprężną</strong>.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <h3 id="twoje-zadanie">Twoje Zadanie:</h3>
-<p>Zostajesz zatrudniony jako <strong>Młodszy Inżynier Energetyk</strong> w zakładzie produkcyjnym “Termo-Tech”.</p>
-<p>Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semestrze jest przeanalizowanie kluczowych węzłów energetycznych zakładu:</p>
 <ol type="1">
-<li>Sieć sprężonego powietrza (Gazy).</li>
-<li>Siłownię parową zasilającą (Para Wodna).</li>
-<li>Odzysk ciepła odpadowego (II Zasada).</li>
-<li>Klimatyzację hali montażowej (Powietrze Wilgotne).</li>
+<li>Obliczyć teoretyczną (izentropową) pracę turbiny.</li>
+<li>Sprawdzić stan pary na wylocie (czy jest mokra?).</li>
+<li>Obliczyć moc elektryczną generatora.</li>
 </ol>
+<p><strong>Dane wejściowe:</strong> * Wlot: <span class="math inline">\(p_1=10 \text{ bar}, t_1=250^\circ C\)</span>. * Wylot: <span class="math inline">\(p_2=2 \text{ bar}\)</span>. * Strumień: <span class="math inline">\(\dot{m}=2 \text{ t/h}\)</span>.</p>
 </div><div class="column" style="width:40%;">
-<p><img data-src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;q=80&amp;w=1000.png"></p>
+<p><img data-src="../img/turbina.png"></p>
 </div></div>
-<div class="fragment" title="Ważne">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ważne</strong></p>
-</div>
-<div class="callout-content">
-<p>Większość zadań na ćwiczeniach będzie elementami tego dużego projektu.</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="etap-1-inwentaryzacja-zbiorników-parametry-stanu" class="slide level2">
-<h2>📋 Etap 1: Inwentaryzacja Zbiorników (Parametry Stanu)</h2>
-<p>Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w “dziwnych” jednostkach ze starych manometrów.</p>
-<div title="Dane z Raportu Technicznego">
+<section id="wizualizacja-obiegu-wykres-t-s" class="slide level2">
+<h2>📈 Wizualizacja Obiegu (Wykres T-s)</h2>
+<p>Proces w turbinie (1 <span class="math inline">\(\to\)</span> 2) to (w przybliżeniu) pionowa linia w dół (izentropa).</p>
+
+<img data-src="../img/rankine_ts_chart.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><p>Para sucha (Punkt 1) wchodzi do turbiny i opuszcza ją jako lekko mokra lub sucha nasycona (Punkt 2).</p>
+</section>
+<section id="zadanie-4.1-ekspansja-izentropowa-sconst" class="slide level2">
+<h2>🌀 Zadanie 4.1: Ekspansja Izentropowa (<span class="math inline">\(s=const\)</span>)</h2>
+<p>Proces w idealnej turbinie jest adiabatyczny odwracalny (<span class="math inline">\(s_1 = s_2\)</span>).</p>
+<h3 id="krok-1-parametry-na-wlocie-10-bar-250c">Krok 1: Parametry na Wlocie (10 bar, 250°C)</h3>
+<p>Z tablic pary przegrzanej:</p>
+<ul>
+<li><span class="math inline">\(h_1 = 2943 \text{ kJ/kg}\)</span></li>
+<li><span class="math inline">\(s_1 = 6.926 \text{ kJ/kgK}\)</span></li>
+</ul>
+<h3 id="krok-2-parametry-na-wylocie-2-bar-s-6.926">Krok 2: Parametry na Wylocie (2 bar, s = 6.926)</h3>
+<p>Sprawdzamy stan nasycenia dla 2 bar:</p>
+<ul>
+<li><span class="math inline">\(s' = 1.530\)</span> (ciecz)</li>
+<li><span class="math inline">\(s'' = 7.127\)</span> (para nasycona)</li>
+</ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Dane z Raportu Technicznego</strong></p>
+<p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li><strong>Objętość zbiornika:</strong> <span class="math inline">\(V = 5 m^3\)</span></li>
-<li><strong>Wskazanie manometru (nadciśnienie):</strong> <span class="math inline">\(p_{man} = 8.5 \text{ bar}\)</span></li>
-<li><strong>Temperatura otoczenia/gazu:</strong> <span class="math inline">\(t = 25^\circ C\)</span></li>
-<li><strong>Ciśnienie atmosferyczne:</strong> <span class="math inline">\(p_{atm} = 750 \text{ mmHg}\)</span></li>
-</ul>
+<p>Ponieważ <span class="math inline">\(s' &lt; s_2 &lt; s''\)</span> (<span class="math inline">\(1.530 &lt; 6.926 &lt; 7.127\)</span>), para na wylocie jest <strong>Mokrą Parą Nasyconą</strong> (mieszanina cieczy i pary).</p>
 </div>
 </div>
 </div>
-</div>
-<h3 id="zadanie-projektowe-1.1">Zadanie Projektowe 1.1:</h3>
-<p>Kierownik pyta: <strong>“Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?”</strong></p>
 </section>
-<section id="narzędzia-ciśnienie-absolutne-a-manometryczne" class="slide level2">
-<h2>🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne</h2>
-<p>Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) <strong>ZAWSZE</strong> używamy ciśnienia absolutnego!</p>
-<p><span class="math display">\[ p_{abs} = p_{man} + p_{atm} \]</span> <em>(Dla podciśnienia: <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span>)</em></p>
-<div class="{columns}">
-<div class="column" style="width:50%;">
-<div class="fragment">
-<h3 id="przeliczanie-jednostek-krok-1">Przeliczanie jednostek (Krok 1):</h3>
-<ol type="1">
-<li><strong>Atmosferyczne:</strong> <span class="math inline">\(750 \text{ mmHg} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ atm} = 760 \text{ mmHg} = 101325 \text{ Pa}\)</span></li>
-<li><span class="math inline">\(p_{atm} = \frac{750}{760} \cdot 101325 \approx 99\,992 \text{ Pa} \approx 100 \text{ kPa}\)</span></li>
-</ul></li>
-<li><strong>Manometryczne:</strong> <span class="math inline">\(8.5 \text{ bar} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}\)</span></li>
-<li><span class="math inline">\(p_{man} = 850 \text{ kPa}\)</span></li>
-</ul></li>
-</ol>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<ol start="3" type="1">
-<li><strong>Absolutne:</strong>
-<ul>
-<li><span class="math inline">\(p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}\)</span></li>
-</ul></li>
-</ol>
-</div>
-</div></div>
-</section>
-<section id="obliczenia-masa-gazu" class="slide level2">
-<h2>🧮 Obliczenia: Masa Gazu</h2>
-<p>Traktując powietrze jako <strong>Gaz Doskonały</strong>, użyj równania stanu:</p>
-<p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+<section id="zadanie-4.2-stopień-suchości-x_2" class="slide level2">
+<h2>💧 Zadanie 4.2: Stopień Suchości (<span class="math inline">\(x_2\)</span>)</h2>
+<p>Jaka część pary skropliła się w turbinie?</p>
+<p><span class="math display">\[ s_2 = s' + x_2 (s'' - s') \]</span> <span class="math display">\[ x_2 = \frac{s_2 - s'}{s'' - s'} \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Dane wejściowe:</strong></p>
-<ul>
-<li><span class="math inline">\(p = 950\,000 \text{ Pa}\)</span> (Absolutne!)</li>
-<li><span class="math inline">\(V = 5 \text{ m}^3\)</span></li>
-<li><span class="math inline">\(T = 25 + 273.15 = 298.15 \text{ K}\)</span></li>
-<li><span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</li>
-</ul>
+<p><strong>Obliczenia:</strong> <span class="math display">\[ x_2 = \frac{6.926 - 1.530}{7.127 - 1.530} \]</span> <span class="math display">\[ x_2 = \frac{5.396}{5.597} \approx \mathbf{0.964} \]</span></p>
 </div><div class="column" style="width:50%;">
-<p><strong>Rozwiązanie:</strong> <span class="math display">\[ m = \frac{p \cdot V}{R \cdot T} \]</span></p>
-<p><span class="math display">\[ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} \]</span></p>
-<p><span class="math display">\[ m \approx 55.51 \text{ kg} \]</span></p>
+<p><strong>Interpretacja:</strong> 96.4% to para sucha, a <strong>3.6% to kropelki wody</strong>. To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się <span class="math inline">\(x &gt; 0.85-0.90\)</span>).</p>
+</div></div>
+</section>
+<section id="zadanie-4.3-moc-turbiny" class="slide level2">
+<h2>⚡ Zadanie 4.3: Moc Turbiny</h2>
+<p>Obliczamy entalpię na wylocie (<span class="math inline">\(h_{2s}\)</span>) dla procesu izentropowego: <span class="math display">\[ h_{2s} = h' + x_2 (h'' - h') \]</span> Dla 2 bar: <span class="math inline">\(h' = 504.7\)</span>, <span class="math inline">\(h'' = 2706.7\)</span>.</p>
+<p><span class="math display">\[ h_{2s} = 504.7 + 0.964 \cdot (2706.7 - 504.7) \]</span> <span class="math display">\[ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4 \text{ kJ/kg}} \]</span></p>
+<h3 id="moc-teoretyczna-n_t">Moc Teoretyczna (<span class="math inline">\(N_t\)</span>):</h3>
+<p><span class="math display">\[ N_t = \dot{m} \cdot (h_1 - h_{2s}) \]</span> <span class="math display">\[ N_t = 0.556 \text{ kg/s} \cdot (2943 - 2627.4) \text{ kJ/kg} \]</span> <span class="math display">\[ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} \]</span></p>
+</section>
+<section id="zadanie-4.4-sprawność-izentropowa-turbiny" class="slide level2">
+<h2>🎯 Zadanie 4.4: Sprawność Izentropowa Turbiny</h2>
+<div title="Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową $\eta_{is} = 0.80$.">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową <span class="math inline">\(\eta_{is} = 0.80\)</span>.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" style="color: red; font-size: 0.8em;">
+<p><strong>Jaka jest rzeczywista entalpia na wylocie (<span class="math inline">\(h_{2r}\)</span>)?</strong></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} \]</span></p>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="fragment">
+<p><span class="math display">\[ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ h_{2r} = 2943 - 0.80 \cdot (2943 - 2627.4) = \newline 2943 - 252.5 \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ h_{2r} \approx \mathbf{2690.5 \text{ kJ/kg}} \]</span></p>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<p><strong>Rzeczywista moc:</strong> <span class="math display">\[ N_{r} = \dot{m} \cdot (h_1 - h_{2r}) = \newline 0.556 \cdot 252.5 \approx \mathbf{140.4 \text{ kW}} \]</span></p>
+</div>
+<div class="fragment">
+<p>(Zamiast <span class="math inline">\(175.5\)</span> kW w idealnym przypadku — strata <span class="math inline">\(35\)</span> kW).</p>
+</div>
 </div></div>
 <div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Stan pary na wylocie:</strong> Czy <span class="math inline">\(h_{2r} = 2690.5\)</span> to nadal para mokra? <span class="math inline">\(h'' (2 bar) = 2706.7 &gt; 2690.5\)</span> → Tak, ale <span class="math inline">\(x_{2r} \approx 0.99\)</span>! Praktycznie sucha.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-4.5-analiza-wariantowa-wyższe-ciśnienie" class="slide level2">
+<h2>🔧 Zadanie 4.5: Analiza Wariantowa – Wyższe Ciśnienie</h2>
+<p>Co jeśli kocioł dostarczy parę <span class="math inline">\(15 \text{ bar}, 300^\circ C\)</span> zamiast <span class="math inline">\(10 \text{ bar}, 250^\circ C\)</span>? Wylot nadal <span class="math inline">\(2 \text{ bar}\)</span>.</p>
+<div title="Dane z tablic (15 bar, 300°C)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Dane z tablic (15 bar, 300°C)</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Odpowiedź dla Kierownika:</strong> W zbiorniku znajduje się około <strong>55.5 kg</strong> powietrza.</p>
+<p><span class="math inline">\(h_1 = 3038\)</span> kJ/kg, <span class="math inline">\(s_1 = 6.918\)</span> kJ/kgK</p>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="zadanie-projektowe-1.2-próba-hydrauliczna" class="slide level2">
-<h2>💧 Zadanie Projektowe 1.2: Próba Hydrauliczna</h2>
-<p>Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu <strong>wody</strong>.</p>
-<p><strong>Pytanie:</strong> O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik (<span class="math inline">\(V=5m^3\)</span>) wodą w temp. <span class="math inline">\(20^\circ C\)</span>?</p>
 <div class="fragment">
-<h3 id="analiza">Analiza:</h3>
-<ul>
-<li>Gęstość wody <span class="math inline">\(\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}\)</span> (niezależna od ciśnienia - ciecz nieściśliwa).</li>
-<li>Masa wody: <span class="math inline">\(m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}\)</span>.</li>
-</ul>
+<p><strong>Krok 1:</strong> Sprawdzamy stan na wylocie (<span class="math inline">\(s_2 = 6.918\)</span>, <span class="math inline">\(p_2 = 2\)</span> bar). <span class="math inline">\(s'' (2 bar) = 7.127\)</span> → <span class="math inline">\(s_2 &lt; s''\)</span> → Para mokra.</p>
+</div>
 <div class="fragment">
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><span class="math display">\[ x_2 = \frac{6.918 - 1.530}{7.127 - 1.530} = \frac{5.388}{5.597} \approx 0.963 \]</span></p>
 </div>
-<p><strong>Wniosek</strong></p>
+<div class="fragment">
+<p><span class="math display">\[ h_{2s} = 504.7 + 0.963 \cdot 2202 = 504.7 + 2120.5 \approx 2625.2 \text{ kJ/kg} \]</span></p>
 </div>
-<div class="callout-content">
-<p>Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.</p>
+<div class="fragment">
+<p><strong>Moc idealna:</strong> <span class="math display">\[ N_t = 0.556 \cdot (3038 - 2625.2) = 0.556 \cdot 412.8 \approx \mathbf{229.5 \text{ kW}} \]</span></p>
 </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2b-pożar-w-hali-ciśnienie-awaryjne" class="slide level2">
-<h2>🔥 Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne</h2>
-<p>Podczas audytu BHP pada pytanie: <strong>Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do <span class="math inline">\(300^\circ C\)</span>?</strong></p>
-<div title="Dane">
+<div class="fragment" title="Wzrost ciśnienia i temperatury z ($10$ bar, $250^\circ C$) na ($15$ bar, $300^\circ C$) zwiększył moc o **31%** ($175.5 \rightarrow 229.5$ kW)!">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Dane</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Zbiornik zamknięty (zawór odcięty): <span class="math inline">\(V = const\)</span>.</li>
-<li>Stan początkowy: <span class="math inline">\(p_1 = 950 \text{ kPa}, T_1 = 298.15 \text{ K}\)</span>.</li>
-<li>Stan awaryjny: <span class="math inline">\(T_2 = 300 + 273.15 = 573.15 \text{ K}\)</span>.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>Prawo Gay-Lussaca</strong> (<span class="math inline">\(V = const, m = const\)</span>): <span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} \]</span> <span class="math display">\[ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} \]</span></p>
-</div>
-<div class="fragment" title="Ciśnienie prawie się **podwoi**! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego ($1.3 \cdot p_{rob}$).">
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</strong></p>
+<p><strong>Wzrost ciśnienia i temperatury z (<span class="math inline">\(10\)</span> bar, <span class="math inline">\(250^\circ C\)</span>) na (<span class="math inline">\(15\)</span> bar, <span class="math inline">\(300^\circ C\)</span>) zwiększył moc o <strong>31%</strong> (<span class="math inline">\(175.5 \rightarrow 229.5\)</span> kW)!</strong></p>
 </div>
 <div class="callout-content">
 
@@ -332,34 +313,16 @@ Marek Urbaniak
 </div>
 </div>
 </section>
-<section id="zadanie-1.2c-mieszanina-gazów-prawo-daltona" class="slide level2 smaller">
-<h2>🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)</h2>
-<p>W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% <span class="math inline">\(N_2\)</span> + 20% <span class="math inline">\(O_2\)</span> (objętościowo), przy <span class="math inline">\(p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3\)</span>.</p>
-<h3 id="oblicz">Oblicz:</h3>
-<ol type="1">
-<li>Ciśnienie parcjalne każdego składnika.</li>
-<li>Masę każdego składnika.</li>
-</ol>
-<div class="fragment">
-<p><strong>Krok 1: Ciśnienia parcjalne</strong> (Prawo Daltona: <span class="math inline">\(p_i = y_i \cdot p\)</span>)</p>
-<ul>
-<li><span class="math inline">\(p_{N_2} = 0.80 \cdot 500 = \mathbf{400 \text{ kPa}}\)</span></li>
-<li><span class="math inline">\(p_{O_2} = 0.20 \cdot 500 = \mathbf{100 \text{ kPa}}\)</span></li>
-</ul>
-<p><strong>Krok 2: Masy</strong> (<span class="math inline">\(m_i = \frac{p_i V}{R_i T}\)</span>, gdzie <span class="math inline">\(R_{N_2}=297, R_{O_2}=260\)</span> J/kgK)</p>
-<ul>
-<li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
-<li><span class="math inline">\(m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}\)</span></li>
-</ul>
-</div>
-<div class="fragment" title="Masa całkowita: $m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}$.">
+<section id="zadanie-4.6-sprawność-obiegu-carnota" class="slide level2">
+<h2>📐 Zadanie 4.6: Sprawność Obiegu Carnota</h2>
+<div title="Jaka byłaby **maksymalna teoretyczna** sprawność silnika cieplnego pracującego między temperaturą pary wlotowej a temperaturą otoczenia?">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</strong></p>
+<p><strong>Jaka byłaby <strong>maksymalna teoretyczna</strong> sprawność silnika cieplnego pracującego między temperaturą pary wlotowej a temperaturą otoczenia?</strong></p>
 </div>
 <div class="callout-content">
 
@@ -367,70 +330,12 @@ Marek Urbaniak
 </div>
 </div>
 </div>
-</section>
-<section id="zadanie-1.2d-gęstość-i-objętość-właściwa" class="slide level2">
-<h2>📏 Zadanie 1.2d: Gęstość i Objętość Właściwa</h2>
-<p>Kierownik pyta: <strong>“Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?”</strong></p>
-<p>To ważne przy doborze rurociągów (prędkość przepływu zależy od gęstości!).</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>W zbiorniku (<span class="math inline">\(p = 950\)</span> kPa, <span class="math inline">\(T = 298\)</span> K):</strong> <span class="math display">\[ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} \]</span> <span class="math display">\[ \rho \approx \mathbf{11.1 \text{ kg/m}^3} \]</span> <span class="math display">\[ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} \]</span></p>
-</div><div class="fragment column" style="width:50%;">
-<p><strong>Warunki normalne (<span class="math inline">\(p_n = 101.3\)</span> kPa, <span class="math inline">\(T_n = 273\)</span> K):</strong> <span class="math display">\[ \rho_n = \frac{101\,300}{287 \cdot 273.15} \]</span> <span class="math display">\[ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} \]</span> <span class="math display">\[ v_n \approx 0.775 \text{ m}^3/\text{kg} \]</span></p>
-</div></div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Gęstość w zbiorniku jest <strong>8.6×</strong> większa niż w warunkach normalnych. Dlatego zbiornik może pomieścić tak dużą masę gazu w małej objętości.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2e-dobór-zbiornika-na-azot" class="slide level2 smaller">
-<h2>⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot</h2>
-<p>Dział spawalniczy potrzebuje zbiornika na <strong>czysty azot</strong> (<span class="math inline">\(N_2\)</span>) o masie <span class="math inline">\(m = 50\)</span> kg, przechowywany w temperaturze <span class="math inline">\(15^\circ C\)</span> i ciśnieniu <span class="math inline">\(200 \text{ bar (abs)}\)</span>.</p>
-<p><strong>Oblicz wymaganą objętość zbiornika.</strong></p>
-<div class="fragment">
-<p><span class="math display">\[ V = \frac{m R T}{p} \]</span></p>
-<ul>
-<li><span class="math inline">\(R_{N_2} = 297 \text{ J/(kgK)}\)</span> (Indywidualna stała gazowa azotu: <span class="math inline">\(R_{N_2} = 8314/28 = 297\)</span>)</li>
-<li><span class="math inline">\(T = 288.15 \text{ K}\)</span></li>
-<li><span class="math inline">\(p = 200 \cdot 10^5 = 20\,000\,000 \text{ Pa}\)</span></li>
-</ul>
-<p><span class="math display">\[ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,000\,000} \]</span> <span class="math display">\[ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} \]</span></p>
-</div>
-<div class="fragment" style="font-size: 1.5em " title="**Uwaga:** Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości $Z \approx 1.04$, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Uwaga:</strong> Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości <span class="math inline">\(Z \approx 1.04\)</span>, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-projektowe-1.3-skale-temperatur" class="slide level2">
-<h2>🌡️ Zadanie Projektowe 1.3: Skale Temperatur</h2>
-<p>W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się przy <span class="math inline">\(T = 250^\circ F\)</span> (Fahrenheita). Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to <span class="math inline">\(140^\circ C\)</span>?</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Konwersja:</strong> <span class="math display">\[ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) \]</span></p>
-<p><span class="math display">\[ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 \]</span> <span class="math display">\[ T_{limit} \approx 121.1^\circ C \]</span></p>
+<p><strong>Wariant 1</strong> (<span class="math inline">\(t_1 = 250^\circ C\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{T_{zimne}}{T_{gorące}} \]</span> <span class="math display">\[ \eta_C = 1 - \frac{293}{523} \approx \mathbf{44\%} \]</span></p>
 </div><div class="column" style="width:50%;">
+<p><strong>Wariant 2</strong> (<span class="math inline">\(t_1 = 300^\circ C\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{293}{573} \approx \mathbf{49\%} \]</span></p>
+</div></div>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -441,22 +346,21 @@ Marek Urbaniak
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Decyzja:</strong> <span class="math inline">\(121.1^\circ C &lt; 140^\circ C\)</span></p>
-<p><strong>ZAWÓR NIE NADAJE SIĘ!</strong> Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.</p>
+<p>Nasza mikroturbina ma sprawność <span class="math inline">\(N_t/\dot{Q}_{kotła} = 175.5/1496 \approx 11.7\%\)</span> — daleko od Carnota! To dlatego, że turbina jest <strong>przeciwprężna</strong> (nie skrapla pary do otoczenia, ale oddaje ją do wymiennika).</p>
 </div>
 </div>
 </div>
 </div>
-</div></div>
 </section>
-<section id="zadanie-domowe-raport-1" class="slide level2">
-<h2>🏠 Zadanie Domowe (Raport 1)</h2>
-<p><strong>Temat:</strong> Dobór sprężarki.</p>
-<p>Aby napompować nasz zbiornik (<span class="math inline">\(V=5m^3\)</span>) od ciśnienia atmosferycznego do roboczego (<span class="math inline">\(8.5 \text{ bar}\)</span> nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.</p>
+<section id="zadanie-domowe-raport-4" class="slide level2">
+<h2>💰 Zadanie Domowe (Raport 4)</h2>
+<p><strong>Temat:</strong> Opłacalność Kogeneracji.</p>
+<p>Zainstalowanie turbiny kosztuje <strong>150 000 PLN</strong>. Generator ma sprawność <span class="math inline">\(\eta_{gen} = 90\%\)</span>. Cena prądu dla przemysłu: <strong>0.80 PLN/kWh</strong>. Turbina pracuje <strong>4000 h/rok</strong>.</p>
 <ol type="1">
-<li>Oblicz masę powietrza w zbiorniku “pustym” (<span class="math inline">\(p_{atm}, 25^\circ C\)</span>).</li>
-<li>Oblicz masę powietrza w zbiorniku “pełnym” (<span class="math inline">\(9.5 \text{ bar abs}, 40^\circ C\)</span> - bo sprężanie podgrzewa!).</li>
-<li>Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w <span class="math inline">\(kg/h\)</span> oraz <span class="math inline">\(m^3/h\)</span> (dla warunków ssania).</li>
+<li>Oblicz rzeczywistą moc elektryczną (<span class="math inline">\(N_{el} = N_t \cdot \eta_{gen}\)</span>).</li>
+<li>Oblicz roczną produkcję energii [MWh].</li>
+<li>Oblicz roczny zysk [PLN].</li>
+<li>Oblicz czas zwrotu inwestycji (SPBT).</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -467,7 +371,7 @@ Marek Urbaniak
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Przyjmij stałą gazową dla powietrza <span class="math inline">\(R = 287 \text{ J}/(\text{kg K})\)</span>.</p>
+<p>Czy opłaca się montować turbinę? Porównaj z kosztem dławienia pary na zaworze (0 PLN zysku).</p>
 </div>
 </div>
 </div>
@@ -482,20 +386,20 @@ Marek Urbaniak
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="04_Obieg_Rankine_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

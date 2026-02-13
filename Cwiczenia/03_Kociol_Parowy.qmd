@@ -9,18 +9,22 @@ format:
     height: 900
     logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+    chalkboard: true
 ---
 
 ## 🏭 Projekt: Etap 3 - Kotłownia
 
 Fabryka "Termo-Tech" wykorzystuje parę wodną do procesów technologicznych (np. pasteryzacja, suszenie). Obecny kocioł gazowy wytwarza parę o parametrach:
 
+::: {.columns}
+::: {.column width="40%"}
+![](../img/boiler_schematic.png)
+
 *   Ciśnienie: $p = 10 \text{ bar}$ (abs)
 *   Temperatura: $t = 250^\circ C$
+:::
 
-::: {.columns}
 ::: {.column width="60%"}
-
 ### Twoje Zadanie:
 
 1.  Określić stan termodynamiczny pary (nasycona czy przegrzana?).
@@ -29,9 +33,7 @@ Fabryka "Termo-Tech" wykorzystuje parę wodną do procesów technologicznych (np
 4.  Oszacować zużycie gazu ziemnego.
 
 :::
-::: {.column width="40%"}
-![](../img/boiler_schematic.png)
-:::
+
 :::
 
 ---
@@ -62,17 +64,24 @@ Musimy szukać entalpii w tablicach dla pary przegrzanej!
 
 Kocioł podgrzewa wodę zasilającą o temperaturze $t_{zas} = 60^\circ C$ do postaci pary przegrzanej ($10 \text{ bar}, 250^\circ C$).
 
+::: {.columns}
+::: {.column width="60%"}
 ### Dane z Tablic:
 
 1.  **Woda zasilająca ($60^\circ C$, ciecz):**
-    *   $h_1 \approx c_w \cdot t = 4.19 \cdot 60 = \mathbf{251.4 \text{ kJ/kg}}$.
+    *   $h_1 \approx c_w \cdot t_{zas} = 4.19 \cdot 60 = \mathbf{251.4 \text{ kJ/kg}}$.
 2.  **Para wylotowa ($10 \text{ bar}, 250^\circ C$):**
     *   Z tablic przegrzania: $h_2 = \mathbf{2943 \text{ kJ/kg}}$.
 
+:::
+
+::: {.column width="40%"}
 ### Moc Cieplna Kotła ($\dot{Q}$):
 
 $$ \dot{Q} = \dot{m} \cdot (h_2 - h_1) $$
 $$ \dot{m} = 2 \text{ t/h} = \frac{2000}{3600} \approx 0.556 \text{ kg/s} $$
+:::
+:::
 
 ::: {.fragment}
 $$ \dot{Q} = 0.556 \cdot (2943 - 251.4) = 0.556 \cdot 2691.6 $$
@@ -82,28 +91,51 @@ $$ \dot{Q} \approx 1496 \text{ kW} \approx \mathbf{1.5 \text{ MW}} $$
 ---
 
 ## ⛽ Zadanie 3.3: Zużycie Paliwa
-
+::: {style="font-size: 0.8em;" }
 Ile gazu ziemnego zużywa kocioł, jeśli jego sprawność wynosi $\eta_k = 90\%$?
 
 *   Wartość opałowa gazu (metan): $W_d \approx 50 \text{ MJ/kg}$.
-
-### Bilans Paliwa:
-$$ \dot{Q}_{paliwa} = \frac{\dot{Q}_{uzyteczne}}{\eta_k} $$
-$$ \dot{m}_{gaz} \cdot W_d = \frac{1496 \text{ kW}}{0.90} $$
-
-::: {.columns}
-::: {.column width="50%"}
-$$ \dot{Q}_{paliwa} = 1662 \text{ kW} $$
-$$ \dot{m}_{gaz} = \frac{1662 \text{ kJ/s}}{50\,000 \text{ kJ/kg}} $$
-$$ \dot{m}_{gaz} \approx 0.0332 \text{ kg/s} $$
 :::
 
-::: {.column width="50%"}
+::: {.columns}
+::: {.column width="65%"}
+### Bilans Paliwa:
+
+::: {.fragment}
+$$ \dot{Q}_{paliwa} = \frac{\dot{Q}_{uzyteczne}}{\eta_k} $$
+:::
+
+::: {.fragment}
+$$ \dot{Q}_{paliwa} = \dot{m}_{gaz} \cdot W_d = \frac{1496 \text{ kW}}{0.90} $$
+:::
+
+::: {.fragment}
+$$ \dot{Q}_{paliwa} = 1662 \text{ kW} $$
+:::
+
+::: {.fragment}
+$$ \dot{m}_{gaz} = \frac{1662 \text{ kJ/s}}{50\,000 \text{ kJ/kg}} $$
+:::
+
+::: {.fragment}
+$$ \dot{m}_{gaz} \approx 0.0332 \text{ kg/s} $$
+:::
+:::
+
+
+::: {.column width="35%"}
+::: {.fragment}
 **W jednostkach handlowych ($m^3/h$):**
 Gęstość gazu $\rho_{gaz} \approx 0.7 \text{ kg/m}^3$.
+:::
 
+::: {.fragment} 
 $$ \dot{V}_{gaz} = \frac{0.0332 \cdot 3600}{0.7} $$
+:::
+
+::: {.fragment}
 $$ \dot{V}_{gaz} \approx \mathbf{171 \text{ m}^3/h} $$
+::: 
 :::
 :::
 
@@ -216,11 +248,13 @@ To ogromny wzrost entropii! Energia chemiczna paliwa (niska entropia) zamieniana
 
 ## 💧 Zadanie 3.8: Bilans Kondensatu
 
+::: {style="font-size: 0.8em;"}
 Wymiennik ciepła (odbiornik) skrapla parę z $2 \text{ bar}, 236^\circ C$ do **wrzątku** ($t_{sat} = 120.2^\circ C$ przy 2 bar). Kondensat wraca do kotła.
 
 ### Ile ciepła oddaje 1 kg pary w wymienniku?
+:::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.8em;"}
 **Z tablic:**
 
 *   $h_{wlot} = 2943 \text{ kJ/kg}$ (para przegrzana, 2 bar, 236°C)

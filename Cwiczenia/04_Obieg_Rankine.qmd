@@ -9,6 +9,7 @@ format:
     height: 900
     logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+    chalkboard: true
 ---
 
 ## 🏭 Projekt: Etap 4 - Mikroturbina
@@ -51,11 +52,13 @@ Proces w idealnej turbinie jest adiabatyczny odwracalny ($s_1 = s_2$).
 
 ### Krok 1: Parametry na Wlocie (10 bar, 250°C)
 Z tablic pary przegrzanej:
+
 *   $h_1 = 2943 \text{ kJ/kg}$
 *   $s_1 = 6.926 \text{ kJ/kgK}$
 
 ### Krok 2: Parametry na Wylocie (2 bar, s = 6.926)
 Sprawdzamy stan nasycenia dla 2 bar:
+
 *   $s' = 1.530$ (ciecz)
 *   $s'' = 7.127$ (para nasycona)
 
@@ -104,23 +107,44 @@ $$ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} $$
 ---
 
 ## 🎯 Zadanie 4.4: Sprawność Izentropowa Turbiny
+::: {.callout-note title="Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową $\eta_{is} = 0.80$."}
 
-Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową $\eta_{is} = 0.80$.
+:::
 
+::: {.fragment style="color: red; font-size: 0.8em;"}
 **Jaka jest rzeczywista entalpia na wylocie ($h_{2r}$)?**
-
-$$ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} $$
+:::
 
 ::: {.fragment}
+$$ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} $$
+:::
+
+:::: {.columns}
+::: {.column width="60%"}
+::: {.fragment}
 $$ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) $$
-$$ h_{2r} = 2943 - 0.80 \cdot (2943 - 2627.4) = 2943 - 252.5 $$
+:::
+
+::: {.fragment}
+$$ h_{2r} = 2943 - 0.80 \cdot (2943 - 2627.4) = \newline 2943 - 252.5 $$
+:::
+
+::: {.fragment}
 $$ h_{2r} \approx \mathbf{2690.5 \text{ kJ/kg}} $$
+:::
+:::
 
+::: {.column width="40%"}
+::: {.fragment}
 **Rzeczywista moc:**
-$$ N_{r} = \dot{m} \cdot (h_1 - h_{2r}) = 0.556 \cdot 252.5 \approx \mathbf{140.4 \text{ kW}} $$
+$$ N_{r} = \dot{m} \cdot (h_1 - h_{2r}) = \newline 0.556 \cdot 252.5 \approx \mathbf{140.4 \text{ kW}} $$
+:::
 
+::: {.fragment}
 (Zamiast $175.5$ kW w idealnym przypadku — strata $35$ kW).
 :::
+:::
+::::
 
 ::: {.fragment .callout-note}
 **Stan pary na wylocie:** Czy $h_{2r} = 2690.5$ to nadal para mokra?
@@ -140,24 +164,32 @@ $h_1 = 3038$ kJ/kg, $s_1 = 6.918$ kJ/kgK
 ::: {.fragment}
 **Krok 1:** Sprawdzamy stan na wylocie ($s_2 = 6.918$, $p_2 = 2$ bar).
 $s'' (2 bar) = 7.127$ → $s_2 < s''$ → Para mokra.
+:::
 
+::: {.fragment} 
 $$ x_2 = \frac{6.918 - 1.530}{7.127 - 1.530} = \frac{5.388}{5.597} \approx 0.963 $$
+:::
 
+::: {.fragment}
 $$ h_{2s} = 504.7 + 0.963 \cdot 2202 = 504.7 + 2120.5 \approx 2625.2 \text{ kJ/kg} $$
+:::
 
+::: {.fragment}
 **Moc idealna:**
 $$ N_t = 0.556 \cdot (3038 - 2625.2) = 0.556 \cdot 412.8 \approx \mathbf{229.5 \text{ kW}} $$
 :::
 
-::: {.fragment .callout-success}
-Wzrost ciśnienia i temperatury z ($10$ bar, $250^\circ C$) na ($15$ bar, $300^\circ C$) zwiększył moc o **31%** ($175.5 \rightarrow 229.5$ kW)!
+::: {.fragment .callout-note title="Wzrost ciśnienia i temperatury z ($10$ bar, $250^\circ C$) na ($15$ bar, $300^\circ C$) zwiększył moc o **31%** ($175.5 \rightarrow 229.5$ kW)!" }
 :::
 
 ---
 
 ## 📐 Zadanie 4.6: Sprawność Obiegu Carnota
 
-Jaka byłaby **maksymalna teoretyczna** sprawność silnika cieplnego pracującego między temperaturą pary wlotowej a temperaturą otoczenia?
+::: {.callout-tip title="Jaka byłaby **maksymalna teoretyczna** sprawność silnika cieplnego pracującego między temperaturą pary wlotowej a temperaturą otoczenia?"}
+:::
+
+
 
 ::: {.columns}
 ::: {.column width="50%"}

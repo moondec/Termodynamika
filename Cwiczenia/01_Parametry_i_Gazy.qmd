@@ -9,6 +9,7 @@ format:
     height: 900
     logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+    chalkboard: true
 ---
 
 ## 🏭 Projekt: Modernizacja Hali Przemysłowej

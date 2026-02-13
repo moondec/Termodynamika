@@ -9,9 +9,10 @@ format:
     height: 900
     logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+    chalkboard: true
 ---
 
-## 🏭 Projekt: Etap 5 - Wymienniki Ciepła
+## 🏭 Projekt: Etap 5 - Wymienniki Ciepła{.smaller}
 
 W zakładzie "Termo-Tech" mamy strumień spalin o temperaturze $300^\circ C$. Inżynier proponuje użyć go do podgrzewania wody zasilającej kocioł.
 Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.
@@ -23,13 +24,19 @@ Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.
 2.  Obliczyć generację entropii w procesie wymiany ciepła (Bilans Entropii, II Zasada).
 3.  Zrozumieć, dlaczego wymiana ciepła jest nieodwracalna.
 
-**Dane:**
-*   Spaliny (gorące): $\dot{m}_s = 1 \text{ kg/s}$, $t_{in}=300, t_{out}=150^\circ C$.
+### Dane:
+::: {style="font-size: 1.5em;"}
+*   Spaliny (gorące): 
+    - $\dot{m}_s = 1 \text{ kg/s}$
+    - $t_{in}=300^\circ C$
+    - $t_{out}=150^\circ C$
+
 *   Woda (zimna): podgrzewana od $20$ do $80^\circ C$.
+:::
 :::
 ::: {.column width="40%"}
 ![](../img/he_shell_tube.png)
-:::
+::: 
 :::
 
 ---
@@ -38,48 +45,86 @@ Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.
 
 Ile wody możemy podgrzać?
 
+::: {.fragment}
 $$ \dot{Q} = \dot{m}_s c_p (t_{in} - t_{out}) $$
+:::
+
+::: {.fragment}
 $$ \dot{Q} = \dot{m}_w c_w (t_{w,out} - t_{w,in}) $$
+:::
 
 ::: {.fragment}
 **Obliczenia:**
+:::
+
+::: {.fragment}
 *   $c_p (spaliny) \approx 1000 \text{ J/kgK}$
 *   $c_w (woda) \approx 4190 \text{ J/kgK}$
+:::
 
+::: {.fragment}
 $$ \dot{Q} = 1 \cdot 1000 \cdot (300 - 150) = \mathbf{150 \text{ kW}} $$
+:::
 
+::: {.fragment}
 $$ \dot{m}_w = \frac{150\,000}{4190 \cdot (80 - 20)} = \frac{150\,000}{251\,400} \approx \mathbf{0.60 \text{ kg/s}} $$
 :::
 
 ---
 
-## 🎲 Zadanie 5.2: Generacja Entropii (II Zasada)
+## 🎲 Zadanie 5.2: Generacja Entropii (II Zasada){auto-animate="true"}
 
+::: {.callout-important}
 Proces wymiany ciepła przy skończonej różnicy temperatur jest **nieodwracalny**, czyli generuje entropię ($\Delta S_{gen} > 0$).
+:::
 
+::: {.fragment}
 $$ \Delta \dot{S}_{układu} = \Delta \dot{S}_{spaliny} + \Delta \dot{S}_{woda} $$
+:::
+
+::: {.fragment}
 $$ \Delta S = m \cdot c \cdot \ln(T_2/T_1) $$
+:::
 
 ::: {.columns}
 ::: {.column width="50%"}
+::: {.fragment}
 **Spaliny (Chłodzenie):**
 $T_1=573K, T_2=423K$
+:::
+
+::: {.fragment}
 $$ \Delta \dot{S}_s = 1 \cdot 1000 \cdot \ln\left(\frac{423}{573}\right) $$
+:::
+
+::: {.fragment}
 $$ \Delta \dot{S}_s = 1000 \cdot (-0.303) = \mathbf{-303 \text{ W/K}} $$
 (Entropia spalin maleje, bo oddają ciepło).
 :::
+:::
 
 ::: {.column width="50%"}
+::: {.fragment}
 **Woda (Grzanie):**
 $T_1=293K, T_2=353K$
+:::
+
+::: {.fragment}
 $$ \Delta \dot{S}_w = 0.60 \cdot 4190 \cdot \ln\left(\frac{353}{293}\right) $$
+:::
+
+::: {.fragment}
 $$ \Delta \dot{S}_w = 2514 \cdot (0.186) = \mathbf{+468 \text{ W/K}} $$
 (Entropia wody rośnie, bo pobiera ciepło).
 :::
 :::
+:::
 
-::: {.fragment .callout-warning}
-**Bilans Całkowity:**
+## 🎲 Zadanie 5.2: Generacja Entropii (II Zasada){auto-animate="true"}
+
+### Bilans Całkowity:
+
+::: {.callout-important style="font-size: 1.5em;"}
 $$ \Delta \dot{S}_{gen} = -303 + 468 = \mathbf{+165 \text{ W/K}} > 0 $$
 Entropia całkowita wzrosła! Energia została "zdegradowana" (z wysokiej temperatury 300°C do niskiej 80°C).
 :::
@@ -131,10 +176,11 @@ Tylko **35%** potencjału energetycznego spalin wykorzystujemy mądrze. Reszta j
 
 Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprądowy**. Jak to wpływa na generację entropii?
 
-![](../img/he_temp_profile.png){width="70%" fig-align="center"}
+
 
 ::: {.columns}
 ::: {.column width="50%"}
+![](../img/he_temp_profile_wsp.png){width="70%" fig-align="center"}
 **Współprądowy:**
 
 *   Spaliny: $300 \rightarrow 150^\circ C$
@@ -143,6 +189,7 @@ Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprąd
 *   $\Delta S_{gen} = 165 \text{ W/K}$ (obliczone)
 :::
 ::: {.column width="50%"}
+![](../img/he_temp_profile_pre.png){width="70%" fig-align="center"}
 **Przeciwprądowy:**
 
 *   Spaliny: $300 \rightarrow 150^\circ C$
@@ -158,11 +205,19 @@ Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprąd
 
 **Obliczenie entropii dla wymiennika przeciwprądowego:**
 
+::: {.fragment}
+$$ \Delta S = m \cdot c \cdot \ln(T_2/T_1) $$
+:::
+
+::: {.fragment}
 $\Delta \dot{S}_w = 0.326 \cdot 4190 \cdot \ln(403/293) = 1366 \cdot 0.318 = +434$ W/K
+:::
 
+::: {.fragment}
 $\Delta \dot{S}_{gen} = -303 + 434 = \mathbf{+131 \text{ W/K}}$
+:::
 
-::: {.callout-success}
+::: {.fragment .callout-important title="Wniosek"}
 Redukcja z $165$ do $131$ W/K → **o 21% mniejsza generacja entropii!**
 
 Wymiennik przeciwprądowy jest termodynamicznie lepszy, bo utrzymuje mniejszą różnicę temperatur wzdłuż swojej długości.
@@ -173,16 +228,23 @@ Wymiennik przeciwprądowy jest termodynamicznie lepszy, bo utrzymuje mniejszą r
 ## 📊 Zadanie 5.6: Kaskada Wymienników
 
 Zamiast jednego wymiennika, użyjmy **dwóch kolejnych** (kaskada):
+
+::: {.fragment .incremental}
 1.  **Wymiennik A:** Spaliny $300 \rightarrow 220^\circ C$ → Podgrzewanie wody kotłowej do $90^\circ C$.
 2.  **Wymiennik B:** Spaliny $220 \rightarrow 150^\circ C$ → Podgrzewanie wody użytkowej do $50^\circ C$.
+:::
 
-### Bilans Wymienmika A:
-$\dot{Q}_A = 1 \cdot 1000 \cdot (300-220) = 80 \text{ kW}$
+::: {.fragment .incremental}
+### Bilans Wymiennika A: 
+$\dot{Q}_A = 1 \cdot 1000 \cdot (300-220) = 80 \text{ kW}$ |
 $\dot{m}_{w,A} = \frac{80\,000}{4190 \cdot (90-20)} = 0.273$ kg/s
+:::
 
+::: {.fragment .incremental}
 ### Bilans Wymiennika B:
-$\dot{Q}_B = 1 \cdot 1000 \cdot (220-150) = 70 \text{ kW}$
+$\dot{Q}_B = 1 \cdot 1000 \cdot (220-150) = 70 \text{ kW}$ |
 $\dot{m}_{w,B} = \frac{70\,000}{4190 \cdot (50-15)} = 0.477$ kg/s
+:::
 
 ::: {.fragment .callout-tip}
 **Kaskada zmniejsza różnice temperatur** w każdym wymienniku → mniejsza generacja entropii → lepsze wykorzystanie egzergii spalin. To zasada stosowana w kotłach kondensacyjnych i systemach kogeneracyjnych.
@@ -197,11 +259,18 @@ Na koniec: obliczmy, ile entropii "eksportuje" nasz zakład do otoczenia przez k
 ::: {.fragment}
 Spaliny wychodzą z wymiennika: $\dot{m}_s = 1$ kg/s, $t_{out} = 150^\circ C$.
 Chłodzą się do $t_{atm} = 20^\circ C$ w atmosferze.
+:::
 
+::: {.fragment}
 $$ \dot{Q}_{komin} = 1 \cdot 1000 \cdot (150 - 20) = \mathbf{130 \text{ kW}} $$
 
-Ta energia jest **bezpowrotnie tracona** (za mała różnica temperatur do praktycznego odzysku).
+:::
 
+::: {.fragment}
+Ta energia jest **bezpowrotnie tracona** (za mała różnica temperatur do praktycznego odzysku).
+:::
+
+::: {.fragment}
 $$ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293} \approx \mathbf{444 \text{ W/K}} $$
 :::
 

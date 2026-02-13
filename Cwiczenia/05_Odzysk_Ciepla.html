@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01_Parametry_i_Gazy_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/popper.min.js"></script>
-<script src="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="05_Odzysk_Ciepla_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05_Odzysk_Ciepla_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05_Odzysk_Ciepla_files/libs/quarto-html/popper.min.js"></script>
+<script src="05_Odzysk_Ciepla_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05_Odzysk_Ciepla_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05_Odzysk_Ciepla_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="05_Odzysk_Ciepla_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 1: Projekt Fabryka - Start</title>
+  <title>Ćwiczenia 5: Entropia i Jakość Ciepła</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="05_Odzysk_Ciepla_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05_Odzysk_Ciepla_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,13 +29,13 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="05_Odzysk_Ciepla_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -129,7 +129,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 1: Projekt Fabryka - Start</h1>
+  <h1 class="title">Ćwiczenia 5: Entropia i Jakość Ciepła</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -140,297 +140,139 @@ Marek Urbaniak
 </div>
 
 </section>
-<section id="projekt-modernizacja-hali-przemysłowej" class="slide level2">
-<h2>🏭 Projekt: Modernizacja Hali Przemysłowej</h2>
+<section id="projekt-etap-5---wymienniki-ciepła" class="slide level2 smaller">
+<h2>🏭 Projekt: Etap 5 - Wymienniki Ciepła</h2>
+<p>W zakładzie “Termo-Tech” mamy strumień spalin o temperaturze <span class="math inline">\(300^\circ C\)</span>. Inżynier proponuje użyć go do podgrzewania wody zasilającej kocioł. Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <h3 id="twoje-zadanie">Twoje Zadanie:</h3>
-<p>Zostajesz zatrudniony jako <strong>Młodszy Inżynier Energetyk</strong> w zakładzie produkcyjnym “Termo-Tech”.</p>
-<p>Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semestrze jest przeanalizowanie kluczowych węzłów energetycznych zakładu:</p>
 <ol type="1">
-<li>Sieć sprężonego powietrza (Gazy).</li>
-<li>Siłownię parową zasilającą (Para Wodna).</li>
-<li>Odzysk ciepła odpadowego (II Zasada).</li>
-<li>Klimatyzację hali montażowej (Powietrze Wilgotne).</li>
+<li>Obliczyć ilość ciepła przekazanego w wymienniku (Bilans Energii, I Zasada).</li>
+<li>Obliczyć generację entropii w procesie wymiany ciepła (Bilans Entropii, II Zasada).</li>
+<li>Zrozumieć, dlaczego wymiana ciepła jest nieodwracalna.</li>
 </ol>
+<h3 id="dane">Dane:</h3>
+<div style="font-size: 1.5em;">
+<ul>
+<li>Spaliny (gorące):
+<ul>
+<li><span class="math inline">\(\dot{m}_s = 1 \text{ kg/s}\)</span></li>
+<li><span class="math inline">\(t_{in}=300^\circ C\)</span></li>
+<li><span class="math inline">\(t_{out}=150^\circ C\)</span></li>
+</ul></li>
+<li>Woda (zimna): podgrzewana od <span class="math inline">\(20\)</span> do <span class="math inline">\(80^\circ C\)</span>.</li>
+</ul>
+</div>
 </div><div class="column" style="width:40%;">
-<p><img data-src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;q=80&amp;w=1000.png"></p>
+<p><img data-src="../img/he_shell_tube.png"></p>
 </div></div>
-<div class="fragment" title="Ważne">
+</section>
+<section id="zadanie-5.1-bilans-energii-i-zasada" class="slide level2">
+<h2>🔥 Zadanie 5.1: Bilans Energii (I Zasada)</h2>
+<p>Ile wody możemy podgrzać?</p>
+<div class="fragment">
+<p><span class="math display">\[ \dot{Q} = \dot{m}_s c_p (t_{in} - t_{out}) \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \dot{Q} = \dot{m}_w c_w (t_{w,out} - t_{w,in}) \]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Obliczenia:</strong></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(c_p (spaliny) \approx 1000 \text{ J/kgK}\)</span></li>
+<li><span class="math inline">\(c_w (woda) \approx 4190 \text{ J/kgK}\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \dot{Q} = 1 \cdot 1000 \cdot (300 - 150) = \mathbf{150 \text{ kW}} \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \dot{m}_w = \frac{150\,000}{4190 \cdot (80 - 20)} = \frac{150\,000}{251\,400} \approx \mathbf{0.60 \text{ kg/s}} \]</span></p>
+</div>
+</section>
+<section id="zadanie-5.2-generacja-entropii-ii-zasada" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🎲 Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Ważne</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Większość zadań na ćwiczeniach będzie elementami tego dużego projektu.</p>
+<p>Proces wymiany ciepła przy skończonej różnicy temperatur jest <strong>nieodwracalny</strong>, czyli generuje entropię (<span class="math inline">\(\Delta S_{gen} &gt; 0\)</span>).</p>
 </div>
 </div>
 </div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_{układu} = \Delta \dot{S}_{spaliny} + \Delta \dot{S}_{woda} \]</span></p>
 </div>
-</section>
-<section id="etap-1-inwentaryzacja-zbiorników-parametry-stanu" class="slide level2">
-<h2>📋 Etap 1: Inwentaryzacja Zbiorników (Parametry Stanu)</h2>
-<p>Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w “dziwnych” jednostkach ze starych manometrów.</p>
-<div title="Dane z Raportu Technicznego">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="fragment">
+<p><span class="math display">\[ \Delta S = m \cdot c \cdot \ln(T_2/T_1) \]</span></p>
 </div>
-<p><strong>Dane z Raportu Technicznego</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><strong>Objętość zbiornika:</strong> <span class="math inline">\(V = 5 m^3\)</span></li>
-<li><strong>Wskazanie manometru (nadciśnienie):</strong> <span class="math inline">\(p_{man} = 8.5 \text{ bar}\)</span></li>
-<li><strong>Temperatura otoczenia/gazu:</strong> <span class="math inline">\(t = 25^\circ C\)</span></li>
-<li><strong>Ciśnienie atmosferyczne:</strong> <span class="math inline">\(p_{atm} = 750 \text{ mmHg}\)</span></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<h3 id="zadanie-projektowe-1.1">Zadanie Projektowe 1.1:</h3>
-<p>Kierownik pyta: <strong>“Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?”</strong></p>
-</section>
-<section id="narzędzia-ciśnienie-absolutne-a-manometryczne" class="slide level2">
-<h2>🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne</h2>
-<p>Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) <strong>ZAWSZE</strong> używamy ciśnienia absolutnego!</p>
-<p><span class="math display">\[ p_{abs} = p_{man} + p_{atm} \]</span> <em>(Dla podciśnienia: <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span>)</em></p>
-<div class="{columns}">
+<div class="columns">
 <div class="column" style="width:50%;">
 <div class="fragment">
-<h3 id="przeliczanie-jednostek-krok-1">Przeliczanie jednostek (Krok 1):</h3>
-<ol type="1">
-<li><strong>Atmosferyczne:</strong> <span class="math inline">\(750 \text{ mmHg} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ atm} = 760 \text{ mmHg} = 101325 \text{ Pa}\)</span></li>
-<li><span class="math inline">\(p_{atm} = \frac{750}{760} \cdot 101325 \approx 99\,992 \text{ Pa} \approx 100 \text{ kPa}\)</span></li>
-</ul></li>
-<li><strong>Manometryczne:</strong> <span class="math inline">\(8.5 \text{ bar} \rightarrow \text{Pa}\)</span>?
-<ul>
-<li><span class="math inline">\(1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}\)</span></li>
-<li><span class="math inline">\(p_{man} = 850 \text{ kPa}\)</span></li>
-</ul></li>
-</ol>
+<p><strong>Spaliny (Chłodzenie):</strong> <span class="math inline">\(T_1=573K, T_2=423K\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_s = 1 \cdot 1000 \cdot \ln\left(\frac{423}{573}\right) \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_s = 1000 \cdot (-0.303) = \mathbf{-303 \text{ W/K}} \]</span> (Entropia spalin maleje, bo oddają ciepło).</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<ol start="3" type="1">
-<li><strong>Absolutne:</strong>
-<ul>
-<li><span class="math inline">\(p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}\)</span></li>
-</ul></li>
-</ol>
+<p><strong>Woda (Grzanie):</strong> <span class="math inline">\(T_1=293K, T_2=353K\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_w = 0.60 \cdot 4190 \cdot \ln\left(\frac{353}{293}\right) \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_w = 2514 \cdot (0.186) = \mathbf{+468 \text{ W/K}} \]</span> (Entropia wody rośnie, bo pobiera ciepło).</p>
 </div>
 </div></div>
 </section>
-<section id="obliczenia-masa-gazu" class="slide level2">
-<h2>🧮 Obliczenia: Masa Gazu</h2>
-<p>Traktując powietrze jako <strong>Gaz Doskonały</strong>, użyj równania stanu:</p>
-<p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Dane wejściowe:</strong></p>
-<ul>
-<li><span class="math inline">\(p = 950\,000 \text{ Pa}\)</span> (Absolutne!)</li>
-<li><span class="math inline">\(V = 5 \text{ m}^3\)</span></li>
-<li><span class="math inline">\(T = 25 + 273.15 = 298.15 \text{ K}\)</span></li>
-<li><span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Rozwiązanie:</strong> <span class="math display">\[ m = \frac{p \cdot V}{R \cdot T} \]</span></p>
-<p><span class="math display">\[ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} \]</span></p>
-<p><span class="math display">\[ m \approx 55.51 \text{ kg} \]</span></p>
-</div></div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<section id="zadanie-5.2-generacja-entropii-ii-zasada-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🎲 Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
+<h3 id="bilans-całkowity">Bilans Całkowity:</h3>
+<div style="font-size: 1.5em;">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Odpowiedź dla Kierownika:</strong> W zbiorniku znajduje się około <strong>55.5 kg</strong> powietrza.</p>
+<p><span class="math display">\[ \Delta \dot{S}_{gen} = -303 + 468 = \mathbf{+165 \text{ W/K}} &gt; 0 \]</span> Entropia całkowita wzrosła! Energia została “zdegradowana” (z wysokiej temperatury 300°C do niskiej 80°C).</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-projektowe-1.2-próba-hydrauliczna" class="slide level2">
-<h2>💧 Zadanie Projektowe 1.2: Próba Hydrauliczna</h2>
-<p>Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu <strong>wody</strong>.</p>
-<p><strong>Pytanie:</strong> O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik (<span class="math inline">\(V=5m^3\)</span>) wodą w temp. <span class="math inline">\(20^\circ C\)</span>?</p>
-<div class="fragment">
-<h3 id="analiza">Analiza:</h3>
-<ul>
-<li>Gęstość wody <span class="math inline">\(\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}\)</span> (niezależna od ciśnienia - ciecz nieściśliwa).</li>
-<li>Masa wody: <span class="math inline">\(m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}\)</span>.</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Wniosek</strong></p>
-</div>
-<div class="callout-content">
-<p>Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.</p>
-</div>
-</div>
-</div>
-</div>
+<section id="zadanie-5.3-jakość-energii-egzergia" class="slide level2">
+<h2>💎 Zadanie 5.3: Jakość Energii (Egzergia)</h2>
+<p>Czy to było mądre wykorzystanie ciepła? Mogliśmy użyć spalin 300°C do napędu silnika cieplnego, a użyliśmy ich tylko do grzania wody 80°C.</p>
+<p><strong>Strata Pracy (Twierdzenie Gouy-Stodoli):</strong> <span class="math display">\[ \dot{B}_{str} = T_0 \cdot \Delta \dot{S}_{gen} \]</span> Przyjmijmy <span class="math inline">\(T_0 = 293 K\)</span> (temp. otoczenia).</p>
+<p><span class="math display">\[ \dot{B}_{str} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW}} \]</span></p>
+<div class="callout-error">
+<p>W procesie prostego podgrzewania wody straciliśmy bezpowrotnie <strong>48 kW</strong> potencjalnej mocy mechanicznej! To cena za nieodwracalność procesu.</p>
 </div>
 </section>
-<section id="zadanie-1.2b-pożar-w-hali-ciśnienie-awaryjne" class="slide level2">
-<h2>🔥 Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne</h2>
-<p>Podczas audytu BHP pada pytanie: <strong>Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do <span class="math inline">\(300^\circ C\)</span>?</strong></p>
-<div title="Dane">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Dane</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Zbiornik zamknięty (zawór odcięty): <span class="math inline">\(V = const\)</span>.</li>
-<li>Stan początkowy: <span class="math inline">\(p_1 = 950 \text{ kPa}, T_1 = 298.15 \text{ K}\)</span>.</li>
-<li>Stan awaryjny: <span class="math inline">\(T_2 = 300 + 273.15 = 573.15 \text{ K}\)</span>.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+<section id="zadanie-5.4-sprawność-carnota-wymiennika" class="slide level2">
+<h2>🔄 Zadanie 5.4: Sprawność Carnota Wymiennika</h2>
+<p>Ile pracy moglibyśmy <strong>teoretycznie</strong> uzyskać z naszego strumienia spalin (zamiast tylko grzać wodę)?</p>
+<p><strong>Silnik Carnota</strong> między <span class="math inline">\(T_{gor} = 573K\)</span> a <span class="math inline">\(T_{zim} = 293K\)</span>: <span class="math display">\[ \eta_C = 1 - \frac{T_{zim}}{T_{gor}} = 1 - \frac{293}{573} \approx \mathbf{48.9\%} \]</span></p>
 <div class="fragment">
-<p><strong>Prawo Gay-Lussaca</strong> (<span class="math inline">\(V = const, m = const\)</span>): <span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} \]</span> <span class="math display">\[ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} \]</span></p>
+<p><strong>Maksymalna praca:</strong> <span class="math display">\[ \dot{B}_{max} = \eta_C \cdot \dot{Q}_{spalin} = 0.489 \cdot 150 \approx \mathbf{73.4 \text{ kW}} \]</span></p>
+<p>Straciliśmy z tego <span class="math inline">\(48 \text{ kW}\)</span> (egzergia zniszczona w wymienniku). Odzyskaliśmy <span class="math inline">\(0 \text{ kW}\)</span> pracy (bo wymiennik nie produkuje pracy!).</p>
+<p><strong>Sprawność egzergetyczna wymiennika:</strong> <span class="math display">\[ \psi = 1 - \frac{\dot{B}_{str}}{\dot{B}_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} \]</span></p>
 </div>
-<div class="fragment" title="Ciśnienie prawie się **podwoi**! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego ($1.3 \cdot p_{rob}$).">
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Ciśnienie prawie się <strong>podwoi</strong>! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego (<span class="math inline">\(1.3 \cdot p_{rob}\)</span>).</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2c-mieszanina-gazów-prawo-daltona" class="slide level2 smaller">
-<h2>🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)</h2>
-<p>W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% <span class="math inline">\(N_2\)</span> + 20% <span class="math inline">\(O_2\)</span> (objętościowo), przy <span class="math inline">\(p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3\)</span>.</p>
-<h3 id="oblicz">Oblicz:</h3>
-<ol type="1">
-<li>Ciśnienie parcjalne każdego składnika.</li>
-<li>Masę każdego składnika.</li>
-</ol>
-<div class="fragment">
-<p><strong>Krok 1: Ciśnienia parcjalne</strong> (Prawo Daltona: <span class="math inline">\(p_i = y_i \cdot p\)</span>)</p>
-<ul>
-<li><span class="math inline">\(p_{N_2} = 0.80 \cdot 500 = \mathbf{400 \text{ kPa}}\)</span></li>
-<li><span class="math inline">\(p_{O_2} = 0.20 \cdot 500 = \mathbf{100 \text{ kPa}}\)</span></li>
-</ul>
-<p><strong>Krok 2: Masy</strong> (<span class="math inline">\(m_i = \frac{p_i V}{R_i T}\)</span>, gdzie <span class="math inline">\(R_{N_2}=297, R_{O_2}=260\)</span> J/kgK)</p>
-<ul>
-<li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
-<li><span class="math inline">\(m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}\)</span></li>
-</ul>
-</div>
-<div class="fragment" title="Masa całkowita: $m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}$.">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Masa całkowita: <span class="math inline">\(m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}\)</span>.</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2d-gęstość-i-objętość-właściwa" class="slide level2">
-<h2>📏 Zadanie 1.2d: Gęstość i Objętość Właściwa</h2>
-<p>Kierownik pyta: <strong>“Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?”</strong></p>
-<p>To ważne przy doborze rurociągów (prędkość przepływu zależy od gęstości!).</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>W zbiorniku (<span class="math inline">\(p = 950\)</span> kPa, <span class="math inline">\(T = 298\)</span> K):</strong> <span class="math display">\[ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} \]</span> <span class="math display">\[ \rho \approx \mathbf{11.1 \text{ kg/m}^3} \]</span> <span class="math display">\[ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} \]</span></p>
-</div><div class="fragment column" style="width:50%;">
-<p><strong>Warunki normalne (<span class="math inline">\(p_n = 101.3\)</span> kPa, <span class="math inline">\(T_n = 273\)</span> K):</strong> <span class="math display">\[ \rho_n = \frac{101\,300}{287 \cdot 273.15} \]</span> <span class="math display">\[ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} \]</span> <span class="math display">\[ v_n \approx 0.775 \text{ m}^3/\text{kg} \]</span></p>
-</div></div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Gęstość w zbiorniku jest <strong>8.6×</strong> większa niż w warunkach normalnych. Dlatego zbiornik może pomieścić tak dużą masę gazu w małej objętości.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-1.2e-dobór-zbiornika-na-azot" class="slide level2 smaller">
-<h2>⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot</h2>
-<p>Dział spawalniczy potrzebuje zbiornika na <strong>czysty azot</strong> (<span class="math inline">\(N_2\)</span>) o masie <span class="math inline">\(m = 50\)</span> kg, przechowywany w temperaturze <span class="math inline">\(15^\circ C\)</span> i ciśnieniu <span class="math inline">\(200 \text{ bar (abs)}\)</span>.</p>
-<p><strong>Oblicz wymaganą objętość zbiornika.</strong></p>
-<div class="fragment">
-<p><span class="math display">\[ V = \frac{m R T}{p} \]</span></p>
-<ul>
-<li><span class="math inline">\(R_{N_2} = 297 \text{ J/(kgK)}\)</span> (Indywidualna stała gazowa azotu: <span class="math inline">\(R_{N_2} = 8314/28 = 297\)</span>)</li>
-<li><span class="math inline">\(T = 288.15 \text{ K}\)</span></li>
-<li><span class="math inline">\(p = 200 \cdot 10^5 = 20\,000\,000 \text{ Pa}\)</span></li>
-</ul>
-<p><span class="math display">\[ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,000\,000} \]</span> <span class="math display">\[ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} \]</span></p>
-</div>
-<div class="fragment" style="font-size: 1.5em " title="**Uwaga:** Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości $Z \approx 1.04$, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Uwaga:</strong> Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości <span class="math inline">\(Z \approx 1.04\)</span>, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l.</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="zadanie-projektowe-1.3-skale-temperatur" class="slide level2">
-<h2>🌡️ Zadanie Projektowe 1.3: Skale Temperatur</h2>
-<p>W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się przy <span class="math inline">\(T = 250^\circ F\)</span> (Fahrenheita). Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to <span class="math inline">\(140^\circ C\)</span>?</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Konwersja:</strong> <span class="math display">\[ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) \]</span></p>
-<p><span class="math display">\[ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 \]</span> <span class="math display">\[ T_{limit} \approx 121.1^\circ C \]</span></p>
-</div><div class="column" style="width:50%;">
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -441,22 +283,136 @@ Marek Urbaniak
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Decyzja:</strong> <span class="math inline">\(121.1^\circ C &lt; 140^\circ C\)</span></p>
-<p><strong>ZAWÓR NIE NADAJE SIĘ!</strong> Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.</p>
+<p>Tylko <strong>35%</strong> potencjału energetycznego spalin wykorzystujemy mądrze. Reszta jest tracona na nieodwracalność.</p>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="zadanie-5.5-wymiennik-przeciwprądowy-vs-współprądowy" class="slide level2">
+<h2>🏗️ Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy</h2>
+<p>Inżynier proponuje zmianę z wymiennika <strong>współprądowego</strong> na <strong>przeciwprądowy</strong>. Jak to wpływa na generację entropii?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../img/he_temp_profile_wsp.png" class="quarto-figure quarto-figure-center" style="width:70.0%"> <strong>Współprądowy:</strong></p>
+<ul>
+<li>Spaliny: <span class="math inline">\(300 \rightarrow 150^\circ C\)</span></li>
+<li>Woda: <span class="math inline">\(20 \rightarrow 80^\circ C\)</span></li>
+<li><span class="math inline">\(\Delta T_{min}\)</span> (na wylocie): <span class="math inline">\(150 - 80 = 70 K\)</span></li>
+<li><span class="math inline">\(\Delta S_{gen} = 165 \text{ W/K}\)</span> (obliczone)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../img/he_temp_profile_pre.png" class="quarto-figure quarto-figure-center" style="width:70.0%"> <strong>Przeciwprądowy:</strong></p>
+<ul>
+<li>Spaliny: <span class="math inline">\(300 \rightarrow 150^\circ C\)</span></li>
+<li>Woda: <span class="math inline">\(20 \rightarrow 130^\circ C\)</span> (możliwa wyższa <span class="math inline">\(t_{out}\)</span>!)</li>
+<li><span class="math inline">\(\Delta T_{min}\)</span> (na zimnym końcu): <span class="math inline">\(150 - 130 = 20 K\)</span></li>
+<li>Strumień wody: <span class="math inline">\(\dot{m}_w = \frac{150\,000}{4190 \cdot 110} \approx 0.326\)</span> kg/s</li>
+</ul>
 </div></div>
 </section>
-<section id="zadanie-domowe-raport-1" class="slide level2">
-<h2>🏠 Zadanie Domowe (Raport 1)</h2>
-<p><strong>Temat:</strong> Dobór sprężarki.</p>
-<p>Aby napompować nasz zbiornik (<span class="math inline">\(V=5m^3\)</span>) od ciśnienia atmosferycznego do roboczego (<span class="math inline">\(8.5 \text{ bar}\)</span> nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.</p>
+<section id="zadanie-5.5-cd.-entropia-wymiennika-przeciwprądowego" class="slide level2">
+<h2>🏗️ Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego</h2>
+<p><strong>Obliczenie entropii dla wymiennika przeciwprądowego:</strong></p>
+<div class="fragment">
+<p><span class="math display">\[ \Delta S = m \cdot c \cdot \ln(T_2/T_1) \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\Delta \dot{S}_w = 0.326 \cdot 4190 \cdot \ln(403/293) = 1366 \cdot 0.318 = +434\)</span> W/K</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\Delta \dot{S}_{gen} = -303 + 434 = \mathbf{+131 \text{ W/K}}\)</span></p>
+</div>
+<div class="fragment" title="Wniosek">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Redukcja z <span class="math inline">\(165\)</span> do <span class="math inline">\(131\)</span> W/K → <strong>o 21% mniejsza generacja entropii!</strong></p>
+<p>Wymiennik przeciwprądowy jest termodynamicznie lepszy, bo utrzymuje mniejszą różnicę temperatur wzdłuż swojej długości.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-5.6-kaskada-wymienników" class="slide level2">
+<h2>📊 Zadanie 5.6: Kaskada Wymienników</h2>
+<p>Zamiast jednego wymiennika, użyjmy <strong>dwóch kolejnych</strong> (kaskada):</p>
+<div class="fragment">
 <ol type="1">
-<li>Oblicz masę powietrza w zbiorniku “pustym” (<span class="math inline">\(p_{atm}, 25^\circ C\)</span>).</li>
-<li>Oblicz masę powietrza w zbiorniku “pełnym” (<span class="math inline">\(9.5 \text{ bar abs}, 40^\circ C\)</span> - bo sprężanie podgrzewa!).</li>
-<li>Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w <span class="math inline">\(kg/h\)</span> oraz <span class="math inline">\(m^3/h\)</span> (dla warunków ssania).</li>
+<li class="fragment"><strong>Wymiennik A:</strong> Spaliny <span class="math inline">\(300 \rightarrow 220^\circ C\)</span> → Podgrzewanie wody kotłowej do <span class="math inline">\(90^\circ C\)</span>.</li>
+<li class="fragment"><strong>Wymiennik B:</strong> Spaliny <span class="math inline">\(220 \rightarrow 150^\circ C\)</span> → Podgrzewanie wody użytkowej do <span class="math inline">\(50^\circ C\)</span>.</li>
+</ol>
+</div>
+<div class="fragment">
+<h3 id="bilans-wymiennika-a">Bilans Wymiennika A:</h3>
+<p><span class="math inline">\(\dot{Q}_A = 1 \cdot 1000 \cdot (300-220) = 80 \text{ kW}\)</span> | <span class="math inline">\(\dot{m}_{w,A} = \frac{80\,000}{4190 \cdot (90-20)} = 0.273\)</span> kg/s</p>
+</div>
+<div class="fragment">
+<h3 id="bilans-wymiennika-b">Bilans Wymiennika B:</h3>
+<p><span class="math inline">\(\dot{Q}_B = 1 \cdot 1000 \cdot (220-150) = 70 \text{ kW}\)</span> | <span class="math inline">\(\dot{m}_{w,B} = \frac{70\,000}{4190 \cdot (50-15)} = 0.477\)</span> kg/s</p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Kaskada zmniejsza różnice temperatur</strong> w każdym wymienniku → mniejsza generacja entropii → lepsze wykorzystanie egzergii spalin. To zasada stosowana w kotłach kondensacyjnych i systemach kogeneracyjnych.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-5.7-entropia-a-otoczenie" class="slide level2">
+<h2>🌍 Zadanie 5.7: Entropia a Otoczenie</h2>
+<p>Na koniec: obliczmy, ile entropii “eksportuje” nasz zakład do otoczenia przez komin (spaliny <span class="math inline">\(150^\circ C\)</span> do powietrza <span class="math inline">\(20^\circ C\)</span>).</p>
+<div class="fragment">
+<p>Spaliny wychodzą z wymiennika: <span class="math inline">\(\dot{m}_s = 1\)</span> kg/s, <span class="math inline">\(t_{out} = 150^\circ C\)</span>. Chłodzą się do <span class="math inline">\(t_{atm} = 20^\circ C\)</span> w atmosferze.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \dot{Q}_{komin} = 1 \cdot 1000 \cdot (150 - 20) = \mathbf{130 \text{ kW}} \]</span></p>
+</div>
+<div class="fragment">
+<p>Ta energia jest <strong>bezpowrotnie tracona</strong> (za mała różnica temperatur do praktycznego odzysku).</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293} \approx \mathbf{444 \text{ W/K}} \]</span></p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Każda sekunda pracy kotła generuje <strong>444 W/K</strong> entropii w otoczeniu! To termoynamiczny koszt ogrzewania. Kotły kondensacyjne redukują <span class="math inline">\(t_{out}\)</span> do ~<span class="math inline">\(50^\circ C\)</span>, zmniejszając te straty o <strong>ponad 60%</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-domowe-raport-5" class="slide level2">
+<h2>🏠 Zadanie Domowe (Raport 5)</h2>
+<p><strong>Temat:</strong> Optymalizacja Wymiennika.</p>
+<p>Zaproponuj zmianę parametrów, aby zmniejszyć stratę egzergii (zbliżyć proces do odwracalnego).</p>
+<ol type="1">
+<li>Zwiększ temperaturę wody wylotowej do <span class="math inline">\(95^\circ C\)</span> (zamiast <span class="math inline">\(80^\circ C\)</span>).</li>
+<li>Oblicz nowy strumień pary wodnej.</li>
+<li>Oblicz nową generację entropii <span class="math inline">\(\Delta S_{gen}\)</span>.</li>
+<li>Wniosek: Czy zbliżenie temperatur czynników (<span class="math inline">\(T_{spalin} \approx T_{wody}\)</span>) zmniejsza generację entropii?</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -467,7 +423,7 @@ Marek Urbaniak
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Przyjmij stałą gazową dla powietrza <span class="math inline">\(R = 287 \text{ J}/(\text{kg K})\)</span>.</p>
+<p>Im mniejsza różnica temperatur między czynnikami w wymienniku (<span class="math inline">\(\Delta T\)</span>), tym mniejsza generacja entropii i wyższa sprawność egzergetyczna (II Zasady).</p>
 </div>
 </div>
 </div>
@@ -482,20 +438,20 @@ Marek Urbaniak
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01_Parametry_i_Gazy_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="05_Odzysk_Ciepla_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

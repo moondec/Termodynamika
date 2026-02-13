@@ -9,6 +9,7 @@ format:
     height: 900
     logo: "../img/KBiG.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
+    chalkboard: true
 ---
 
 ## 🏭 Projekt: Etap 2 - Sprężarkownia
@@ -24,7 +25,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 4.  **Proces sprężania:** Politropa z wykładnikiem $n = 1.35$.
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80&w=1000)
+![](../img/Compressor-KSeries-K2_2000x.jpg)
 :::
 :::
 
@@ -38,16 +39,22 @@ Oblicz jednostkową pracę techniczną $l_t$ potrzebną do sprężenia 1 kg powi
 $$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
 :::
 
+::: {.columns}
+::: {.column width="30%"}
 ### Obliczenia:
+
 *   $R = 287 \text{ J}/(\text{kg K})$
 *   $T_1 = 293.15 \text{ K}$
 *   $p_2/p_1 = 9.5$
 *   $n = 1.35$
-
+:::
+::: {.column width="70%"}
 ::: {.fragment}
 $$ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ (9.5)^{\frac{0.35}{1.35}} - 1 \right] $$
 $$ l_t = 3.857 \cdot 84134 \cdot [ 1.795 - 1 ] $$
 $$ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 \text{ kJ/kg}} $$
+:::
+:::
 :::
 
 ---
@@ -57,8 +64,9 @@ $$ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 
 Jaka jest teoretyczna moc sprężarki ($N_t$)?
 
 1.  **Strumień masy:** $\dot{m} = ?$
-    *   Warunki normalne ($p_n=101325, T_n=273.15$): $\rho_n \approx 1.29 \text{ kg/m}^3$ (lub $p=\rho RT$).
-    *   $\dot{m} = \dot{V}_n \cdot \rho_n = \frac{100}{3600} \cdot 1.29 \approx 0.0358 \text{ kg/s}$.
+
+    *   **Wzór:** $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273.15$ K).
+    *   $\dot{m} = \frac{101325 \cdot (100/3600)}{287 \cdot 273.15} = \frac{2814.5}{78394} \approx 0.0358 \text{ kg/s}$.
 
 2.  **Moc teoretyczna:**
     $$ N_t = \dot{m} \cdot l_t $$
@@ -99,6 +107,7 @@ $$ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{
 ::: {.columns}
 ::: {.column width="50%"}
 **Dane:**
+ 
 *   $\dot{m} = 0.0358 \text{ kg/s}$
 *   $t_{wl} = 253^\circ C$ (z sprężarki)
 *   $t_{wyl} = 30^\circ C$ (wymagane)
@@ -156,7 +165,8 @@ $$ l_t \approx \mathbf{258 \text{ kJ/kg}} $$
 :::
 ::: {.column width="33%"}
 **Adiabatyczny** ($n=\kappa=1.4$):
-$$ l_t = \frac{1.4}{0.4} \cdot 287 \cdot 293 \cdot [(9.5)^{0.286}-1] $$
+$$ l_t = \frac{1.4}{0.4} \cdot 287 \cdot 293 \cdot $$
+$$ \cdot [(9.5)^{0.286}-1] $$
 $$ l_t \approx \mathbf{273 \text{ kJ/kg}} $$
 (Maksimum praktyczne)
 :::
@@ -166,7 +176,35 @@ $$ l_t \approx \mathbf{273 \text{ kJ/kg}} $$
 **Wniosek:** Sprężanie izotermiczne wymaga o **31% mniej** pracy niż adiabatyczne. Dlatego chłodzimy sprężarki!
 :::
 
+
+## 🧠 Dlaczego n=1 "psuje" wzór?{background-gradient="linear-gradient(to bottom, #bac3f1ff, #82d9e3ff)"}
+
+**Problem:** Jeśli wstawisz $n=1$ do wzoru politropowego, otrzymasz dzielenie przez zero ($\frac{n}{n-1}$).
+Dlaczego? Bo zmienia się charakter funkcji matematycznej pod wykresem (całki):
+
+$$ l_t = \int v dp $$
+
+::: {.columns}
+::: {.column width="50%"}
+**Dla $n \neq 1$ (Politropa):**
+Funkcja potęgowa $v = C \cdot p^{-1/n}$.
+Całka z $x^a$ to $\frac{x^{a+1}}{a+1}$.
+Stąd bierze się ułamek $\frac{n}{n-1}$.
+:::
+::: {.column width="50%"}
+**Dla $n = 1$ (Izoterma):**
+Funkcja hiperboliczna $v = C/p$.
+Całka z $1/x$ to **logarytm naturalny** ($\ln x$)!
+$$ l_t = R T_1 \ln\frac{p_2}{p_1} $$
+:::
+:::
+
+::: {.callout-note title="Reguła de l'Hospitala"}
+Fizyka się nie "psuje". Granica wzoru ogólnego przy $n \to 1$ dąży właśnie do wzoru z logarytmem.
+:::
+
 ---
+
 
 ## 💧 Zadanie 2.7: Dobór Chłodnicy Wodnej
 
@@ -174,7 +212,10 @@ Musimy odprowadzić $\dot{Q} = 8$ kW z chłodnicy sprężarki. Dysponujemy wodą
 
 **Oblicz wymagany strumień wody chłodzącej.**
 
+::: {.fragment}
 $$ \dot{Q} = \dot{m}_w \cdot c_w \cdot (t_{w,out} - t_{w,in}) $$
+:::
+
 
 ::: {.fragment}
 $$ \dot{m}_w = \frac{8000}{4190 \cdot (40 - 15)} = \frac{8000}{104\,750} $$
@@ -187,7 +228,7 @@ $$ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} $$
 
 ---
 
-## 🔬 Zadanie 2.8: Wyznaczanie Wykładnika Politropy
+## 🔬 Zadanie 2.8: Wyznaczanie Wykładnika Politropy {.smaller}
 
 Serwisant zmierzył temperatury na sprężarce:
 
@@ -198,12 +239,22 @@ Serwisant zmierzył temperatury na sprężarce:
 
 $$ T_2/T_1 = (p_2/p_1)^{(n-1)/n} $$
 
-::: {.fragment}
+::: {.columns}
+::: {.column width="50%"}
+::: {.fragment .callout-note title="Krok 1: Logarytmowanie"}
 $$ \frac{488.15}{295.15} = 8^{(n-1)/n} $$
 $$ 1.654 = 8^{(n-1)/n} $$
 $$ \ln(1.654) = \frac{n-1}{n} \cdot \ln(8) $$
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment .callout-tip title="Krok 2: Wyznaczenie n"}
 $$ 0.503 = \frac{n-1}{n} \cdot 2.079 $$
-$$ \frac{n-1}{n} = 0.242 \quad \Rightarrow \quad n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
+$$ \frac{n-1}{n} = 0.242 $$
+$$ n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
+:::
+:::
 :::
 
 ::: {.fragment .callout-tip}
