@@ -33,6 +33,8 @@
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -150,9 +152,14 @@ Marek Urbaniak
 <li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
 <li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
 </ol>
-<p><strong>Pytania Inwestora:</strong> 1. Jaką moc elektryczną pobierze sprężarka? (<span class="math inline">\(N_{el}\)</span>) 2. Ile ciepła musimy wyrzucić na dach (skraplacz)? (<span class="math inline">\(Q_k\)</span>) 3. Czy urządzenie będzie efektywne? (<span class="math inline">\(EER\)</span>)</p>
+<p><strong>Pytania Inwestora:</strong></p>
+<ol type="1">
+<li>Jaką moc elektryczną pobierze sprężarka? (<span class="math inline">\(N_{el}\)</span>)</li>
+<li>Ile ciepła musimy wyrzucić na dach (skraplacz)? (<span class="math inline">\(Q_k\)</span>)</li>
+<li>Czy urządzenie będzie efektywne? (<span class="math inline">\(EER\)</span>)</li>
+</ol>
 </div><div class="column" style="width:40%;">
-<p><img data-src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&amp;fit=crop&amp;q=80&amp;w=800.png"></p>
+<p><img data-src="../img/ahu_schematic.png?auto=format&amp;fit=crop&amp;q=80&amp;w=800"></p>
 </div></div>
 </section>
 <section id="zadanie-6.1-obieg-lindego-na-wykresie-p-h" class="slide level2">
@@ -380,6 +387,7 @@ Marek Urbaniak
   <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -401,7 +409,8 @@ Marek Urbaniak
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -572,7 +581,7 @@ Marek Urbaniak
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

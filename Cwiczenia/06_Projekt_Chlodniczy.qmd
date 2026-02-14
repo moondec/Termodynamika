@@ -20,18 +20,20 @@ Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło
 ::: {.columns}
 ::: {.column width="60%"}
 ### Założenia:
+
 1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
 2.  **Czynnik chłodniczy:** R134a.
 3.  **Temperatura parowania:** $t_o = 2^\circ C$.
 4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
 
 **Pytania Inwestora:**
+
 1.  Jaką moc elektryczną pobierze sprężarka? ($N_{el}$)
 2.  Ile ciepła musimy wyrzucić na dach (skraplacz)? ($Q_k$)
 3.  Czy urządzenie będzie efektywne? ($EER$)
 :::
 ::: {.column width="40%"}
-![](https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&q=80&w=800)
+![](../img/ahu_schematic.png?auto=format&fit=crop&q=80&w=800)
 :::
 :::
 
@@ -42,6 +44,7 @@ Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło
 Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).
 
 ### Krok 1: Odczyt z Wykresu p-h (R134a)
+
 1.  **Punkt 1 (Ssanie):** Para nasycona sucha ($x=1$) przy $t_o = 2^\circ C$.
     *   $h_1 \approx 400 \text{ kJ/kg}$
 2.  **Punkt 2 (Tłoczenie):** Sprężanie izentropowe ($s=const$) do ciśnienia nasycenia $t_k = 40^\circ C$.
