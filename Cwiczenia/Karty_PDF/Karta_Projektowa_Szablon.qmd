@@ -1054,7 +1054,7 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 3.  **Nagrzewnica:** Ogrzewanie $Z \rightarrow P$ odbywa się przy $X = const$ (pionowo w górę na wykresie).
 4.  **Nawilżacz parowy:** Nawilżanie $P \rightarrow N$ odbywa się po izotermie ($t \approx const$), aż $X_N = X_W$.
 
-`r if(!sa) "\\\\vspace{4cm}"`
+`r if(!sa) "\\vspace{4cm}"`
 
 - Zawilżenie zewnętrzne $X_Z$ = `r ans(X_Z_zima, "g/kg", approx=TRUE)`
 - Zawilżenie wewnętrzne $X_W$ = `r ans(X_W, "g/kg", approx=TRUE)`
@@ -1072,7 +1072,7 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 3.  Odczytaj temperaturę punktu rosy aparatu $t_R$ i entalpię $h_R$.
 4.  Powietrze za chłodnicą ($t_R \approx 11.5^\circ$C) jest za zimne --- **nagrzewnica wtórna** podgrzewa je do $t_N \approx 18^\circ$C.
 
-`r if(!sa) "\\\\vspace{4cm}"`
+`r if(!sa) "\\vspace{4cm}"`
 
 - Entalpia $h_Z$ (lato) = `r ans(h_Z_lato, "kJ/kg", d=0, approx=TRUE)`
 - Temperatura punktu rosy $t_R$ = `r ans(t_R_lato, "$^\\circ$C", approx=TRUE)`
@@ -1085,7 +1085,7 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 
 **Metodyka:** Moc z bilansu entalpii: $\dot{Q} = \dot{m} \cdot \Delta h$.
 
-`r if(!sa) "\\\\vspace{4cm}"`
+`r if(!sa) "\\vspace{4cm}"`
 
 - Moc chłodnicy (lato): $\dot{Q}_{ch} = \dot{m} \cdot (h_Z - h_R)$ = `r ans(Q_chlod_lato, "kW", d=1)`
 - Moc nagrzewnicy wtórnej: $\dot{Q}_{grz} = \dot{m} \cdot (h_N - h_R)$ = `r ans(Q_grz_wtorna, "kW", d=1)`
@@ -1100,7 +1100,7 @@ Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które w
 
 **Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = `r X_wewn`$ g/kg --- idź w dół po $X = const$ aż do przecięcia z krzywą $\varphi = 100\%$.
 
-`r if(!sa) "\\\\vspace{2cm}"`
+`r if(!sa) "\\vspace{2cm}"`
 
 - Temperatura punktu rosy $t_R$ = `r ans(t_rosy, "$^\\circ$C", approx=TRUE)`
 - Czy wystąpi kondensacja? `r if(sa) paste0("**$t_{\\text{sciana}} = 12^\\circ$C $>$ $t_R = ", f(t_rosy, 1), "^\\circ$C --- Na granicy!**") else ".................... (Tak/Nie, uzasadnij)"`
@@ -1111,7 +1111,7 @@ Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które w
 
 **Metodyka:** Bilans ciepła jawnego: $Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N)$. Przyjmij $t_N = 16^\circ$C.
 
-`r if(!sa) "\\\\vspace{4cm}"`
+`r if(!sa) "\\vspace{4cm}"`
 
 - Strumień masowy $\dot{m}$ = `r ans(m_dot_strum, "kg/s")`
 - Strumień objętościowy $\dot{V}$ = `r ans(V_dot_strum_h, "m³/h", d=0)`
@@ -1125,7 +1125,7 @@ Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które w
 
 $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, analogicznie dla $X_M$.
 
-`r if(!sa) "\\\\vspace{4cm}"`
+`r if(!sa) "\\vspace{4cm}"`
 
 - Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "$^\\circ$C")`
 - Zawilżenie mieszaniny $X_M$ = `r ans(X_mix_rec, "g/kg")`
@@ -1140,7 +1140,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 
 **Metodyka:** $\dot{m}_w = \dot{m} \cdot (X_Z - X_W)$, $\dot{V}_w = \dot{m}_w \cdot 3600$ (przy $\rho_w \approx 1$ kg/l).
 
-`r if(!sa) "\\\\vspace{2cm}"`
+`r if(!sa) "\\vspace{2cm}"`
 
 - Zmiana zawilżenia $\Delta X$ = `r ans(dX_lato * 1000, "g/kg", d=1)`
 - Ilość kondensatu $\dot{V}_w$ = `r ans(V_cond_lh, "l/h", d=0, approx=TRUE)`
@@ -1151,7 +1151,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 
 **Metodyka:** $\dot{Q}_{\text{nagr}} = \dot{m} \cdot (h_P - h_Z)$, gdzie $h_Z$ i $h_P$ odczytano z wykresu h-X w Zad. 7.1.
 
-`r if(!sa) "\\\\vspace{3cm}"`
+`r if(!sa) "\\vspace{3cm}"`
 
 - Moc nagrzewnicy $\dot{Q}_{\text{nagr}}$ = `r ans(Q_nagr, "kW")`
 
@@ -1165,7 +1165,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 
 **Metodyka:** $t_{\text{odzysk}} = t_Z + \eta \cdot (t_W - t_Z)$. Oszczędność: $\Delta \dot{Q} = \dot{m} \cdot c_p \cdot (t_{\text{odzysk}} - t_Z)$.
 
-`r if(!sa) "\\\\vspace{3cm}"`
+`r if(!sa) "\\vspace{3cm}"`
 
 - Temp. za rekuperatorem $t_{\text{odzysk}}$ = `r ans(t_odzysk, "$^\\circ$C", approx=TRUE)`
 - Oszczędność mocy $\Delta \dot{Q}$ = `r ans(Q_rec_oszcz, "kW", approx=TRUE)`
