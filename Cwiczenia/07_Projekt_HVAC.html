@@ -179,166 +179,84 @@ Marek Urbaniak
 </div></div>
 </div>
 </section>
-<section id="wizualizacja-na-wykresie-h-x" class="slide level2 smaller">
-<h2>📈 Wizualizacja na Wykresie h-X</h2>
+<section id="wizualizacja-na-wykresie-h-x-zima" class="slide level2 smaller">
+<h2>📈 Wizualizacja na Wykresie h-X (zima)</h2>
 <div style="font-size: 0.8em">
 <p>Jak narysować proces zimowy?</p>
 </div>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1. Punkt <strong>Z</strong>.</a></li><li><a href="#tabset-1-2">2. Punkt <strong>W</strong>.</a></li><li><a href="#tabset-1-3">3. <strong>Nagrzewanie:</strong></a></li><li><a href="#tabset-1-4">4. <strong>Nawilżanie parowe:</strong></a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<p>Zaznacz punkt <strong>Z</strong> (<span class="math inline">\(-10^\circ C, 90\%\)</span>). Odczytaj <span class="math inline">\(X_Z\)</span>.</p>
-<div style="position: relative; display: block; width: 60%; margin: 0 auto;">
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="position: relative; display: block; width: 100%; margin: 0 auto;">
 <p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
-<div class="fragment" style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
+<!-- Step 1: Point Z -->
+<div class="fragment" data-fragment-index="1" style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;">
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
 
 </div>
-<!-- Linia prowadząca -->
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
 
 </div>
-<!-- Winieta (Etykieta) -->
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
 <p>Punkt Z</p>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-1-2">
-<p>Zaznacz punkt <strong>W</strong> (<span class="math inline">\(22^\circ C, 50\%\)</span>). Odczytaj <span class="math inline">\(X_W\)</span>.</p>
-<div style="position: relative; display: block; width: 60%; margin: 0 auto;">
-<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
-<div style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
+<!-- Step 2: Point W -->
+<div class="fragment" data-fragment-index="2" style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;">
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
 
 </div>
-<!-- Linia prowadząca -->
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
 
 </div>
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-<p>Punkt Z</p>
-</div>
-</div>
-<div style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
-
-</div>
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
-
-</div>
-<!-- Winieta (Etykieta) -->
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
 <p>Punkt W</p>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-1-3">
-<p>Pionowo w górę od Z (<span class="math inline">\(X = const\)</span>) do temperatury <span class="math inline">\(t_P\)</span>.</p>
-<div style="position: relative; display: block; width: 60%; margin: 0 auto;">
-<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
-<div style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
+<!-- Step 3: Heating -->
+<div class="fragment" data-fragment-index="3">
+<!-- Line stops at top: 50% (Isotherm 22C, same as Point W) -->
+<div style="position: absolute; top: 50%; left: 6%; width: 2px; height: 31%; background-color: red; z-index: 1;">
 
 </div>
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
-
-</div>
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-<p>Punkt Z</p>
-</div>
-</div>
-<div style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
-
-</div>
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
-
-</div>
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-<p>Punkt W</p>
-</div>
-</div>
-<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
-<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;">
-
-</div>
-<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">
+<div style="position: absolute; top: 50%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">
 t_P
 </div>
 </div>
-</div>
-<div id="tabset-1-4">
-<p>Po izotermie (<span class="math inline">\(t \approx const\)</span>) w prawo, aż osiągniesz <span class="math inline">\(X_W\)</span>.</p>
-<div style="position: relative; display: block; width: 60%; margin: 0 auto;">
-<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
-<div style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
-
-</div>
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
-
-</div>
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-<p>Punkt Z</p>
-</div>
-</div>
-<div style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;">
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
-
-</div>
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;">
-
-</div>
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-<p>Punkt W</p>
-</div>
-</div>
-<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
-<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;">
-
-</div>
-<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">
-t_P
-</div>
-<!-- Linia przemiany: Nawilżanie (P -> W) -->
+<!-- Step 4: Humidifying -->
+<div class="fragment" data-fragment-index="4">
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-<line x1="6%" y1="40%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2"></line>
+<!-- Horizontal line from P (6%, 50%) to W (12.4%, 50%) -->
+<line x1="6%" y1="50%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2"></line>
 </svg>
-<!-- Linia prowadząca -->
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-<line x1="10%" y1="43%" x2="18.5%" y2="30%" style="stroke:blue;stroke-width:2"></line>
+<line x1="9%" y1="49%" x2="12.5%" y2="37%" style="stroke:blue;stroke-width:2"></line>
 </svg>
-<div style="position: absolute; top: 25%; left: 19.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+<div style="position: absolute; top: 35%; left: 16.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
 izotermiczne nawilżanie
-<div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background-color: blue;">
+<div style="position: absolute; bottom: -4px; left: 30%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background-color: blue;">
 
 </div>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:30%;">
+<div class="fragment" data-fragment-index="1">
+<h3 id="punkt-z">1. Punkt Z</h3>
+<p><span class="math inline">\(-10^\circ C, 90\%\)</span> Odczytaj <span class="math inline">\(X_Z\)</span>.</p>
 </div>
+<div class="fragment" data-fragment-index="2">
+<h3 id="punkt-w">2. Punkt W</h3>
+<p><span class="math inline">\(22^\circ C, 50\%\)</span> Odczytaj <span class="math inline">\(X_W\)</span>.</p>
 </div>
+<div class="fragment" data-fragment-index="3">
+<h3 id="nagrzewanie">3. Nagrzewanie</h3>
+<p>Pionowo w górę od Z (<span class="math inline">\(X = const\)</span>) do temperatury <span class="math inline">\(t_P\)</span>.</p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<h3 id="nawilżanie">4. Nawilżanie</h3>
+<p>Po izotermie (<span class="math inline">\(t \approx const\)</span>) w prawo, aż osiągniesz <span class="math inline">\(X_W\)</span>.</p>
+</div>
+</div></div>
 </section>
 <section id="zadanie-7.2-proces-letni-chłodzenie-osuszanie" class="slide level2">
 <h2>☀️ Zadanie 7.2: Proces Letni (Chłodzenie + Osuszanie)</h2>
@@ -352,40 +270,119 @@ izotermiczne nawilżanie
 <ul>
 <li>To wymaga temperatury punktu rosy: <span class="math inline">\(t_R (8.4 g/kg) \approx 11.5^\circ C\)</span>.</li>
 </ul></li>
-<li>Ale <span class="math inline">\(11.5^\circ C\)</span> to za zimno dla ludzi! (Przeciąg).</li>
+<li>Ale <span class="math inline">\(11.5^\circ C\)</span> to za zimno dla ludzi!</li>
 <li>Musimy podgrzać powietrze (Nagrzewnica Wtórna) do np. <span class="math inline">\(18^\circ C\)</span>.</li>
 </ol>
 <p><strong>Wniosek:</strong> Latem musimy najpierw mocno chłodzić (by osuszyć), a potem lekko podgrzać! To duży koszt energetyczny.</p>
 </section>
-<section id="zadanie-7.3-bilans-centrali" class="slide level2">
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="position: relative; display: block; width: 100%; margin: 0 auto;">
+<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
+<!-- Step 1: Point Z (Summer) - Hot & Humid (Right/Top) -->
+<div class="fragment" data-fragment-index="1" style="position: absolute; top: 41.5%; left: 18%; width: 0; height: 0;">
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
+
+</div>
+<!-- Label to the RIGHT of Z to avoid cooling line -->
+<div style="position: absolute; bottom: 10px; left: 15px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+<p>Punkt Z</p>
+</div>
+</div>
+<!-- Step 2: Cooling & Dehumidification (Z -> S -> R) -->
+<div class="fragment" data-fragment-index="2">
+<!-- Point R (Dew Point) - Cold & Saturated (Left/Bottom) -->
+<div style="position: absolute; top: 60.4%; left: 12.4%; width: 8px; height: 8px; background-color: blue; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
+
+</div>
+<!-- Cooling Line 1: Sensible Cooling (Vertical Down to Saturation) -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+<line x1="18.2%" y1="41.5%" x2="18.2%" y2="52.2%" style="stroke:blue;stroke-width:2"></line>
+</svg>
+<!-- Cooling Line 2: Dehumidification (Along Saturation Curve) -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+<line x1="18.2%" y1="52.2%" x2="12.4%" y2="60.2%" style="stroke:blue;stroke-width:2"></line>
+</svg>
+<!-- Label to the RIGHT of Cooling Process -->
+<div style="position: absolute; top: 50%; left: 22%; transform: translate(0, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
+<p>Chłodzenie + Osuszanie</p>
+</div>
+</div>
+<!-- Step 3: Heating (R -> N) -->
+<div class="fragment" data-fragment-index="3">
+<!-- Point N (Supply) - Warmer -->
+<div style="position: absolute; top: 53.6%; left: 12.4%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;">
+
+</div>
+<!-- Heating Line -->
+<div style="position: absolute; top: 53.6%; left: 12.3%; width: 4px; height: 6.5%; background-color: red; z-index: 1;">
+
+</div>
+<!-- Label to the LEFT of Heating Process -->
+<div style="position: absolute; top: 60.4%; left: 10%; transform: translate(-100%, -50%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
+<p>Nagrzewanie</p>
+</div>
+</div>
+<!-- Final State: W (Reference) -->
+<div style="position: absolute; top: 50%; left: 12.4%; width: 6px; height: 6px; background-color: gray; border-radius: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0.5;">
+
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="fragment" data-fragment-index="1">
+<h3 id="punkt-z-1">1. Punkt Z</h3>
+<p><span class="math inline">\(32^\circ C, 45\%\)</span> Wilgotno i gorąco.</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<h3 id="chłodzenie-i-osuszanie">2. Chłodzenie i Osuszanie</h3>
+<p>Oziębiamy powietrze poniżej punktu rosy, aż osiągniemy <span class="math inline">\(X = 8.4 \text{ g/kg}\)</span> (na linii nasycenia). <span class="math inline">\(t_R \approx 11.5^\circ C\)</span>.</p>
+</div>
+<div class="fragment" data-fragment-index="3">
+<h3 id="nagrzewanie-wtórne">3. Nagrzewanie Wtórne</h3>
+<p><span class="math inline">\(11.5^\circ C\)</span> to za zimno! Podgrzewamy powietrze (bez zmiany wilgotności) do temperatury nawiewu (np. <span class="math inline">\(18^\circ C\)</span>).</p>
+</div>
+</div></div>
+</section>
+<section id="zadanie-7.3-bilans-centrali" class="slide level2 smaller">
 <h2>🏗️ Zadanie 7.3: Bilans Centrali</h2>
 <p>Oblicz moc chłodniczą i grzewczą dla strumienia <span class="math inline">\(\dot{V} = 10\,000 \text{ m}^3/h\)</span>. <span class="math inline">\(\rho \approx 1.2 \text{ kg/m}^3\)</span>.</p>
 <p><span class="math display">\[ \dot{m} = \frac{10000}{3600} \cdot 1.2 \approx \mathbf{3.33 \text{ kg/s}} \]</span></p>
+<div class="fragment">
 <h3 id="chłodnica-lato">Chłodnica (Lato):</h3>
 <p><span class="math inline">\(h_z (32^\circ C, 45\%) \approx 67 \text{ kJ/kg}\)</span>. <span class="math inline">\(h_{ch} (11.5^\circ C, 100\%) \approx 33 \text{ kJ/kg}\)</span>. <span class="math display">\[ \dot{Q}_{ch} = \dot{m} (h_z - h_{ch}) = 3.33 \cdot (67 - 33) = 3.33 \cdot 34 \approx \mathbf{113 \text{ kW}} \]</span></p>
+</div>
+<div class="fragment">
 <h3 id="nagrzewnica-wtórna-lato">Nagrzewnica Wtórna (Lato):</h3>
 <p><span class="math inline">\(h_{ch} (11.5^\circ C) \approx 33\)</span>. <span class="math inline">\(h_{nawiew} (18^\circ C, X=8.4) \approx 40\)</span>. <span class="math display">\[ \dot{Q}_{grz} = \dot{m} (40 - 33) = 3.33 \cdot 7 \approx \mathbf{23 \text{ kW}} \]</span></p>
+</div>
+<div class="fragment" title="Wniosek" style="font-size: 1.8em;">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Wniosek</strong></p>
 </div>
 <div class="callout-content">
 <p>Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy! <strong>Rozwiązanie:</strong> Rekuperacja chłodu lub by-pass powietrza.</p>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="zadanie-7.4-punkt-rosy-kontrola-kondensacji" class="slide level2">
 <h2>🔍 Zadanie 7.4: Punkt Rosy – Kontrola Kondensacji</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Wyznacz punkt rosy z wykresu h-X:</a></li><li><a href="#tabset-1-2">Wykres</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <p>W magazynie elektroniki temperatura ściany zewnętrznej spada do <span class="math inline">\(12^\circ C\)</span> zimą. Czy przy parametrach wewnętrznych (<span class="math inline">\(22^\circ C, 50\%\)</span>) dojdzie do <strong>kondensacji na ścianie</strong>?</p>
-<h3 id="wyznacz-punkt-rosy-z-wykresu-h-x">Wyznacz punkt rosy z wykresu h-X:</h3>
 <ol type="1">
 <li>Punkt W: <span class="math inline">\(t_w = 22^\circ C, \varphi = 50\% \rightarrow X_w \approx 8.4 \text{ g/kg}\)</span>.</li>
-<li>Punkt rosy: idź w lewo po <span class="math inline">\(X = const\)</span> (8.4 g/kg) aż do przecięcia z krzywą <span class="math inline">\(\varphi = 100\%\)</span>.</li>
+<li>Punkt rosy: idź w dół po <span class="math inline">\(X = const\)</span> (8.4 g/kg) aż do przecięcia z krzywą <span class="math inline">\(\varphi = 100\%\)</span>.</li>
 </ol>
 <div class="fragment">
 <p><span class="math display">\[ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} \]</span></p>
@@ -393,6 +390,14 @@ izotermiczne nawilżanie
 </div>
 <div class="fragment callout-error">
 <p><strong>Decyzja:</strong> Należy ocieplić ścianę (zwiększyć współczynnik U) lub obniżyć wilgotność w hali do <span class="math inline">\(\varphi &lt; 45\%\)</span>.</p>
+</div>
+</div>
+<div id="tabset-1-2">
+<div style="position: relative; display: block; width: 70%; margin: 0 auto;">
+<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="zadanie-7.5-wymagany-strumień-powietrza" class="slide level2">
@@ -464,6 +469,10 @@ izotermiczne nawilżanie
 </section>
 <section id="zadanie-7.8-nagrzewnica-zimowa-moc" class="slide level2">
 <h2>🏗️ Zadanie 7.8: Nagrzewnica Zimowa – Moc</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Obliczenia</a></li><li><a href="#tabset-2-2">Wykres</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <p>Oblicz moc nagrzewnicy zimowej dla strumienia <span class="math inline">\(\dot{V} = 25\,000 \text{ m}^3/h\)</span> powietrza podgrzewanego od <span class="math inline">\(-10^\circ C\)</span> do <span class="math inline">\(22^\circ C\)</span>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -491,6 +500,14 @@ izotermiczne nawilżanie
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-2-2">
+<div style="position: relative; display: block; width: 70%; margin: 0 auto;">
+<p><img data-src="../img/air_hum-h-X_h.png" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="zadanie-domowe-raport-7" class="slide level2">
 <h2>🏠 Zadanie Domowe (Raport 7)</h2>
@@ -501,7 +518,12 @@ izotermiczne nawilżanie
 <li>Powietrze czerpane: <span class="math inline">\(-10^\circ C\)</span>.</li>
 <li>Sprawność odzysku rekuperatora: <span class="math inline">\(\eta = 75\%\)</span>.</li>
 </ol>
-<p><strong>Oblicz:</strong> 1. Temperaturę powietrza za rekuperatorem (przed nagrzewnicą właściwą). 2. Ile mocy grzewczej [kW] zaoszczędzimy dzięki temu urządzeniu? 3. Porównaj koszt rekuperatora (20 000 zł) z oszczędnością gazu (zakładając zimę 3000h).</p>
+<p><strong>Oblicz:</strong></p>
+<ol type="1">
+<li>Temperaturę powietrza za rekuperatorem (przed nagrzewnicą właściwą).</li>
+<li>Ile mocy grzewczej [kW] zaoszczędzimy dzięki temu urządzeniu?</li>
+<li>Porównaj koszt rekuperatora (20 000 zł) z oszczędnością gazu (zakładając zimę 3000h).</li>
+</ol>
 
 </section>
     </div>

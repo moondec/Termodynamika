@@ -67,165 +67,88 @@ $t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
 
 ---
 
-## 📈 Wizualizacja na Wykresie h-X{.smaller}
+## 📈 Wizualizacja na Wykresie h-X (zima){.smaller}
 
 ::: {style="font-size: 0.8em"}
 Jak narysować proces zimowy?
 :::
 
-::: {.panel-tabset}
+:::: {.columns}
 
-### 1.  Punkt **Z**.
-Zaznacz punkt **Z** ($-10^\circ C, 90\%$). Odczytaj $X_Z$.
-
-::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
+::: {.column width="70%"}
+::: {style="position: relative; display: block; width: 100%; margin: 0 auto;"}
 ![](../img/air_hum-h-X_h.png){width="100%"}
 
-::: {.fragment style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
+<!-- Step 1: Point Z -->
+::: {.fragment fragment-index=1 style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-  Punkt Z
-</div>
-:::
-:::
-
-### 2. Punkt **W**.
-Zaznacz punkt **W** ($22^\circ C, 50\%$). Odczytaj $X_W$.
-
-::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
-![](../img/air_hum-h-X_h.png){width="100%"}
-
-::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
   Punkt Z
 </div>
 :::
 
-
-::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
+<!-- Step 2: Point W -->
+::: {.fragment fragment-index=2 style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-  Punkt W
-</div>
-:::
-:::
-
-
-### 3. **Nagrzewanie:** 
-Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
-
-::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
-![](../img/air_hum-h-X_h.png){width="100%"}
-
-::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-  Punkt Z
-</div>
-:::
-
-
-::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
   Punkt W
 </div>
 :::
 
-<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
-<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;"></div>
-<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
+<!-- Step 3: Heating -->
+::: {.fragment fragment-index=3}
+<!-- Line stops at top: 50% (Isotherm 22C, same as Point W) -->
+<div style="position: absolute; top: 50%; left: 6%; width: 2px; height: 31%; background-color: red; z-index: 1;"></div>
+<div style="position: absolute; top: 50%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
 :::
 
-
-
-### 4.  **Nawilżanie parowe:** 
-Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
-
-::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
-![](../img/air_hum-h-X_h.png){width="100%"}
-
-::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-  Punkt Z
-</div>
-:::
-
-
-::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
-<!-- Kropka (Punkt Z) -->
-<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-
-<!-- Linia prowadząca -->
-<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
-
-<!-- Winieta (Etykieta) -->
-<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-  Punkt W
-</div>
-:::
-
-<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
-<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;"></div>
-<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
-
-<!-- Linia przemiany: Nawilżanie (P -> W) -->
+<!-- Step 4: Humidifying -->
+::: {.fragment fragment-index=4}
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <line x1="6%" y1="40%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2" />
+  <!-- Horizontal line from P (6%, 50%) to W (12.4%, 50%) -->
+  <line x1="6%" y1="50%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2" />
 </svg>
-
-<!-- Linia prowadząca -->
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <line x1="10%" y1="43%" x2="18.5%" y2="30%" style="stroke:blue;stroke-width:2" />
+  <line x1="9%" y1="49%" x2="12.5%" y2="37%" style="stroke:blue;stroke-width:2" />
 </svg>
-
-<div style="position: absolute; top: 25%; left: 19.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+<div style="position: absolute; top: 35%; left: 16.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
   izotermiczne nawilżanie
-  <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background-color: blue;"></div>
-
+  <div style="position: absolute; bottom: -4px; left: 30%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background-color: blue;"></div>
 </div>
 :::
 
-
 :::
+:::
+
+::: {.column width="30%"}
+::: {.fragment fragment-index=1}
+### 1. Punkt Z
+$-10^\circ C, 90\%$
+Odczytaj $X_Z$.
+:::
+
+::: {.fragment fragment-index=2}
+### 2. Punkt W
+$22^\circ C, 50\%$
+Odczytaj $X_W$.
+:::
+
+::: {.fragment fragment-index=3}
+### 3. Nagrzewanie
+Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
+:::
+
+::: {.fragment fragment-index=4}
+### 4. Nawilżanie
+Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
+:::
+:::
+
+::::
+
+
 
 ---
 
@@ -244,30 +167,109 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 
 1.  Oziębiamy powietrze aż do $X = 8.4 \text{ g/kg}$ (na linii nasycenia).
     *   To wymaga temperatury punktu rosy: $t_R (8.4 g/kg) \approx 11.5^\circ C$.
-2.  Ale $11.5^\circ C$ to za zimno dla ludzi! (Przeciąg).
+2.  Ale $11.5^\circ C$ to za zimno dla ludzi!
 3.  Musimy podgrzać powietrze (Nagrzewnica Wtórna) do np. $18^\circ C$.
 
 **Wniosek:** Latem musimy najpierw mocno chłodzić (by osuszyć), a potem lekko podgrzać! To duży koszt energetyczny.
 
 ---
 
-## 🏗️ Zadanie 7.3: Bilans Centrali
+:::: {.columns}
+
+::: {.column width="70%"}
+::: {style="position: relative; display: block; width: 100%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+
+<!-- Step 1: Point Z (Summer) - Hot & Humid (Right/Top) -->
+::: {.fragment fragment-index=1 style="position: absolute; top: 41.5%; left: 18%; width: 0; height: 0;"}
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<!-- Label to the RIGHT of Z to avoid cooling line -->
+<div style="position: absolute; bottom: 10px; left: 15px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt Z
+</div>
+:::
+
+<!-- Step 2: Cooling & Dehumidification (Z -> S -> R) -->
+::: {.fragment fragment-index=2}
+<!-- Point R (Dew Point) - Cold & Saturated (Left/Bottom) -->
+<div style="position: absolute; top: 60.4%; left: 12.4%; width: 8px; height: 8px; background-color: blue; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<!-- Cooling Line 1: Sensible Cooling (Vertical Down to Saturation) -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+  <line x1="18.2%" y1="41.5%" x2="18.2%" y2="52.2%" style="stroke:blue;stroke-width:2" />
+</svg>
+<!-- Cooling Line 2: Dehumidification (Along Saturation Curve) -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+  <line x1="18.2%" y1="52.2%" x2="12.4%" y2="60.2%" style="stroke:blue;stroke-width:2" />
+</svg>
+<!-- Label to the RIGHT of Cooling Process -->
+<div style="position: absolute; top: 50%; left: 22%; transform: translate(0, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
+  Chłodzenie + Osuszanie
+</div>
+:::
+
+<!-- Step 3: Heating (R -> N) -->
+::: {.fragment fragment-index=3}
+<!-- Point N (Supply) - Warmer -->
+<div style="position: absolute; top: 53.6%; left: 12.4%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<!-- Heating Line -->
+<div style="position: absolute; top: 53.6%; left: 12.3%; width: 4px; height: 6.5%; background-color: red; z-index: 1;"></div>
+<!-- Label to the LEFT of Heating Process -->
+<div style="position: absolute; top: 60.4%; left: 10%; transform: translate(-100%, -50%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
+  Nagrzewanie
+</div>
+:::
+
+<!-- Final State: W (Reference) -->
+<div style="position: absolute; top: 50%; left: 12.4%; width: 6px; height: 6px; background-color: gray; border-radius: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0.5;"></div>
+
+:::
+:::
+
+::: {.column width="30%"}
+::: {.fragment fragment-index=1}
+### 1. Punkt Z
+$32^\circ C, 45\%$
+Wilgotno i gorąco.
+:::
+
+::: {.fragment fragment-index=2}
+### 2. Chłodzenie i Osuszanie
+Oziębiamy powietrze poniżej punktu rosy, aż osiągniemy $X = 8.4 \text{ g/kg}$ (na linii nasycenia).
+$t_R \approx 11.5^\circ C$.
+:::
+
+::: {.fragment fragment-index=3}
+### 3. Nagrzewanie Wtórne
+$11.5^\circ C$ to za zimno!
+Podgrzewamy powietrze (bez zmiany wilgotności) do temperatury nawiewu (np. $18^\circ C$).
+:::
+:::
+
+::::
+
+---
+
+## 🏗️ Zadanie 7.3: Bilans Centrali{.smaller}
 
 Oblicz moc chłodniczą i grzewczą dla strumienia $\dot{V} = 10\,000 \text{ m}^3/h$. $\rho \approx 1.2 \text{ kg/m}^3$.
 
 $$ \dot{m} = \frac{10000}{3600} \cdot 1.2 \approx \mathbf{3.33 \text{ kg/s}} $$
 
+::: {.fragment}
 ### Chłodnica (Lato):
 $h_z (32^\circ C, 45\%) \approx 67 \text{ kJ/kg}$.
 $h_{ch} (11.5^\circ C, 100\%) \approx 33 \text{ kJ/kg}$.
 $$ \dot{Q}_{ch} = \dot{m} (h_z - h_{ch}) = 3.33 \cdot (67 - 33) = 3.33 \cdot 34 \approx \mathbf{113 \text{ kW}} $$
+:::
 
+::: {.fragment}
 ### Nagrzewnica Wtórna (Lato):
 $h_{ch} (11.5^\circ C) \approx 33$.
 $h_{nawiew} (18^\circ C, X=8.4) \approx 40$.
 $$ \dot{Q}_{grz} = \dot{m} (40 - 33) = 3.33 \cdot 7 \approx \mathbf{23 \text{ kW}} $$
+:::
 
-::: {.callout-important}
+::: {.fragment .callout-important title="Wniosek"  style="font-size: 1.8em;"}
 Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy!
 **Rozwiązanie:** Rekuperacja chłodu lub by-pass powietrza.
 :::
@@ -276,11 +278,15 @@ Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodzil
 
 ## 🔍 Zadanie 7.4: Punkt Rosy – Kontrola Kondensacji
 
-W magazynie elektroniki temperatura ściany zewnętrznej spada do $12^\circ C$ zimą. Czy przy parametrach wewnętrznych ($22^\circ C, 50\%$) dojdzie do **kondensacji na ścianie**?
+
+::: {.panel-tabset}
 
 ### Wyznacz punkt rosy z wykresu h-X:
+
+W magazynie elektroniki temperatura ściany zewnętrznej spada do $12^\circ C$ zimą. Czy przy parametrach wewnętrznych ($22^\circ C, 50\%$) dojdzie do **kondensacji na ścianie**?
+
 1.  Punkt W: $t_w = 22^\circ C, \varphi = 50\% \rightarrow X_w \approx 8.4 \text{ g/kg}$.
-2.  Punkt rosy: idź w lewo po $X = const$ (8.4 g/kg) aż do przecięcia z krzywą $\varphi = 100\%$.
+2.  Punkt rosy: idź w dół po $X = const$ (8.4 g/kg) aż do przecięcia z krzywą $\varphi = 100\%$.
 
 ::: {.fragment}
 $$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
@@ -291,6 +297,14 @@ $$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
 ::: {.fragment .callout-error}
 **Decyzja:** Należy ocieplić ścianę (zwiększyć współczynnik U) lub obniżyć wilgotność w hali do $\varphi < 45\%$.
 :::
+
+### Wykres
+
+::: {style="position: relative; display: block; width: 70%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+:::
+:::
+
 
 ---
 
@@ -368,6 +382,10 @@ To ponad **litr na minutę** wykroplonej wody! Musi być odprowadzona do kanaliz
 
 ## 🏗️ Zadanie 7.8: Nagrzewnica Zimowa – Moc
 
+::: {.panel-tabset}
+
+### Obliczenia
+
 Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = 25\,000 \text{ m}^3/h$ powietrza podgrzewanego od $-10^\circ C$ do $22^\circ C$.
 
 ::: {.columns}
@@ -390,6 +408,12 @@ $$ \dot{Q}_{nagr} = 8.33 \cdot 34 \approx \mathbf{283 \text{ kW}} $$
 $283 \text{ kW}$ to jak ogrzewanie **~15 domów jednorodzinnych**! Dlatego rekuperacja (odzysk ciepła) jest kluczowa — może zaoszczędzić 75% tej mocy.
 :::
 
+### Wykres
+
+::: {style="position: relative; display: block; width: 70%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+:::
+:::
 ---
 
 ## 🏠 Zadanie Domowe (Raport 7)
@@ -403,6 +427,7 @@ Zaprojektuj wymiennik Krzyżowy (Rekuperator) dla sezonu zimowego.
 3.  Sprawność odzysku rekuperatora: $\eta = 75\%$.
 
 **Oblicz:**
+
 1.  Temperaturę powietrza za rekuperatorem (przed nagrzewnicą właściwą).
 2.  Ile mocy grzewczej [kW] zaoszczędzimy dzięki temu urządzeniu?
 3.  Porównaj koszt rekuperatora (20 000 zł) z oszczędnością gazu (zakładając zimę 3000h).
