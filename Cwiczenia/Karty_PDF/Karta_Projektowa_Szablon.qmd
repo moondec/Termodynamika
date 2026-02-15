@@ -106,7 +106,9 @@ ans <- function(val, unit, d = 2, approx = FALSE) {
       prefix <- "Szacunkowo: "
       res <- paste0(prefix, res)
     }
-    return(paste0("\\textbf{\\textcolor{answercolor}{", res, " ", unit, "}}"))
+    # Escape ^ in unit strings: wrap content after ^ in $^{...}$
+    unit_safe <- gsub("\\^(\\d+)", "$^{\\1}$", unit)
+    return(paste0("\\textbf{\\textcolor{answercolor}{", res, " ", unit_safe, "}}"))
   } else {
     return("....................")
   }
@@ -503,15 +505,15 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 Oblicz gęstość powietrza w głównym zbiorniku (Zad 1.1) oraz porównaj ją z gęstością w warunkach normalnych.
 
 `r if(!sa) "\\vspace{2cm}"`
-- $\rho_{\text{rzecz}}$ = `r ans(rho_zb, "kg/m^3")`
-- $\rho_{\text{norm}}$ = `r ans(rho_norm, "kg/m^3")`
+- $\rho_{\text{rzecz}}$ = `r ans(rho_zb, "kg/m$^3$")`
+- $\rho_{\text{norm}}$ = `r ans(rho_norm, "kg/m$^3$")`
 
 ## Zad. 1.2e --- Dobór butli na Azot
 
 Dział spawalniczy potrzebuje przechować **`r p$m_N2_tank` kg** azotu przy ciśnieniu **`r p$p_N2_tank` bar** i temp. **`r p$t_N2_tank` $^\circ$C**. Oblicz wymaganą objętość zbiornika.
 
 `r if(!sa) "\\vspace{2cm}"`
-- $V_{min}$ = `r ans(V_N2_tank, "m^3", 3)` (`r ans(V_N2_tank*1000, "litrów", 0)`)
+- $V_{min}$ = `r ans(V_N2_tank, "m$^3$", 3)` (`r ans(V_N2_tank*1000, "litrów", 0)`)
 
 ## Zad. 1.3 --- Odczyt dokumentacji zagranicznej
 
@@ -1112,7 +1114,7 @@ Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które w
 `r if(!sa) "\\\\vspace{4cm}"`
 
 - Strumień masowy $\dot{m}$ = `r ans(m_dot_strum, "kg/s")`
-- Strumień objętościowy $\dot{V}$ = `r ans(V_dot_strum_h, "m$^3$/h", d=0)`
+- Strumień objętościowy $\dot{V}$ = `r ans(V_dot_strum_h, "m³/h", d=0)`
 - Weryfikacja bilansu wilgoci: $\Delta X$ = `r ans(dX_strum, "g/kg")` --- `r if(sa) "**Praktycznie brak zmiany. Zyski wilgoci sa niewielkie.**" else "skomentuj wynik."`
 
 ## Zad. 7.6 --- Recyrkulacja Powietrza
