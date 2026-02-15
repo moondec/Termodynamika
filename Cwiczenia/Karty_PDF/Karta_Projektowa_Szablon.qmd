@@ -147,6 +147,11 @@ n_real <- 1 / (1 - log_T / log_p)
 
 # ---- Obliczenia Ćw.3 ----
 h1_kociol <- 4.19 * p$t_zas
+# Zad 3.1: Temperatura nasycenia z tablic pary wodnej
+# (przybliżenie Antoine/aproksymacja tabelaryczna)
+tsat_kociol <- ifelse(p$p_kociol == 10, 179.9,
+               ifelse(p$p_kociol == 12, 188.0,
+               ifelse(p$p_kociol == 15, 198.3, 185.0)))
 Q_kociol <- p$m_dot_kociol * 1000 / 3600 * (2800 - h1_kociol)
 V_gaz <- Q_kociol / (p$eta_k * 50000 * 0.7) * 3600
 x_suchy <- (2400 - 500) / (2710 - 500) # przykładowe h_mokra ≈ 2400
@@ -264,37 +269,71 @@ EER_R290 <- q_o_R290 / l_k_R290
 
 # ---- Obliczenia Ćw.7 ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
-Q_nagr <- m_dot_hvac * 1.005 * (p$t_wewn - p$t_zima)
 
-# Zad 7.3 - Punkt Rosy
-X_wewn <- 8.4 # g/kg
-t_rosy <- 11.5 # deg C (approx for 22C, 50%)
+# --- Psychrometria: Dane odczytane z wykresu h-X ---
+# ZIMA: Punkt Z = -10°C, φ=90%
+X_Z_zima  <- 1.5    # g/kg
+h_Z_zima  <- -8     # kJ/kg (entalpia powietrza wilgotnego)
+# ZIMA: P = podgrzane do ~22°C, X=const=1.5 g/kg
+h_P_zima  <- 26     # kJ/kg
+# Punkt W: 22°C, 50%
+X_W       <- 8.4    # g/kg
+h_W       <- 43     # kJ/kg
+# LATO: Z = 32°C, φ=45%
+X_Z_lato  <- 13.5   # g/kg
+h_Z_lato  <- 67     # kJ/kg
+# LATO: R = punkt rosy po osuszeniu (φ=100%, X=8.4 g/kg)
+t_R_lato  <- 11.5   # °C
+h_R_lato  <- 33     # kJ/kg
+# LATO: N = nawiew (18°C, X=8.4 g/kg)
+t_N_lato  <- 18     # °C
+h_N_lato  <- 40     # kJ/kg
 
-# Zad 7.4 - Kondensat
-X_lato_zewn <- 13.5 # g/kg (32C, 45%)
-dX_lato <- (X_lato_zewn - X_wewn) / 1000 # kg/kg
+# Zad 7.1 - Proces Zimowy
+Q_nagr_zima <- m_dot_hvac * (h_P_zima - h_Z_zima) # kW (nagrzewnica)
+
+# Zad 7.2 - Proces Letni (bilanse)
+Q_chlod_lato <- m_dot_hvac * (h_Z_lato - h_R_lato) # kW (chłodnica)
+Q_grz_wtorna <- m_dot_hvac * (h_N_lato - h_R_lato) # kW (nagrzewnica wtórna)
+
+# Zad 7.3 - Bilans Centrali (podsumowanie)
+# — użyto Q_chlod_lato, Q_grz_wtorna, Q_nagr_zima powyżej
+
+# Zad 7.4 - Punkt Rosy
+X_wewn <- X_W # 8.4 g/kg
+t_rosy <- t_R_lato # 11.5 °C
+
+# Zad 7.5 - Wymagany strumień powietrza
+t_N_nawiew <- 16 # °C (temperatura nawiewu)
+m_dot_strum <- p$Q_jawne * 1000 / (1005 * (p$t_wewn - t_N_nawiew)) # kg/s
+V_dot_strum <- m_dot_strum / 1.2 # m3/s
+V_dot_strum_h <- V_dot_strum * 3600 # m3/h
+W_wilgoc <- 10 / 3600 # kg/s (zyski wilgoci 10 kg/h)
+dX_strum <- W_wilgoc / m_dot_strum * 1000 # g/kg
+
+# Zad 7.6 - Recyrkulacja
+t_mix_rec <- p$rec / 100 * p$t_wewn + (1 - p$rec / 100) * p$t_lato
+X_mix_rec <- p$rec / 100 * X_W + (1 - p$rec / 100) * X_Z_lato
+dX_bez_rec <- X_Z_lato - X_W
+dX_z_rec <- X_mix_rec - X_W
+redukcja_prc <- (1 - dX_z_rec / dX_bez_rec) * 100
+
+# Zad 7.7 - Kondensat
+dX_lato <- (X_Z_lato - X_wewn) / 1000 # kg/kg
 mw_cond <- m_dot_hvac * dX_lato # kg/s
 V_cond_lh <- mw_cond * 3600 # l/h (approx 1kg = 1l)
 
-# Zad 7.5 - Rekuperacja
+# Zad 7.8 - Nagrzewnica Zimowa (via enthalpy)
+Q_nagr <- m_dot_hvac * (h_P_zima - h_Z_zima) # kW
+
+# Zad 7.9 - Rekuperacja
 eta_rec <- 0.75
 t_odzysk <- p$t_zima + eta_rec * (p$t_wewn - p$t_zima)
 Q_rec_oszcz <- m_dot_hvac * 1.005 * (t_odzysk - p$t_zima) # kW
 Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
-t_mix_rec <- p$rec / 100 * p$t_wewn + (1 - p$rec / 100) * p$t_zima
-dQ_oszcz <- m_dot_hvac * 1.005 * (t_mix_rec - p$t_zima)
 
-# Funkcje formatujące (zakomentowane, używamy definicji zgłobalnej z początku pliku)
-# f <- function(x, d = 2) formatC(round(x, d), format = "f", digits = d)
-# ans <- function(val, unit = "", d = 2, approx = FALSE) {
-#     if (sa) {
-#         txt <- paste0("**", f(val, d), " ", unit, "**")
-#         if (approx) txt <- paste0(txt, " (szacunkowo)")
-#         txt
-#     } else {
-#         "\\rule{3cm}{0.4pt}"
-#     }
-# }
+# Formatowanie liczb (przywrócone — używane w treści zadań)
+f <- function(x, d = 2) formatC(round(x, d), format = "f", digits = d)
 
 reflection <- function(text) {
     if (!sa) {
@@ -992,86 +1031,150 @@ Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wz
 
 \newpage
 
-# Etap 7: Centrala Klimatyzacyjna (Ćw. 8)
+# Etap 7: Centrala Klimatyzacyjna (Ćw. 7)
 
 ## Sytuacja
 
-Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca halę produkcyjną. Strumień objętości powietrza: $\dot{V} =$ **`r p$V_dot` m$^3$/h**. Wymagana temperatura wewnętrzna: $t_W =$ **`r p$t_wewn` $^\circ$C** przez cały rok.
+Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca halę produkcyjną. Strumień objętości powietrza: $\dot{V} =$ **`r p$V_dot` m$^3$/h**. Wymagana temperatura wewnętrzna: $t_W =$ **`r p$t_wewn` $^\circ$C**, wilgotność $\varphi_W = 50\%$ przez cały rok.
 
-**Cel audytu:** Określ moce nagrzewnicy (zima) i chłodnicy (lato). Zaproponuj oszczędność --- **recyrkulację powietrza**.
+**Cel audytu:** Zaprojektuj procesy przygotowania powietrza (zima/lato), określ moce urządzeń i zaproponuj oszczędności.
 
-## Zad. 7.1 --- Nagrzewnica zimowa
+**Narzędzie:** Do rozwiązania zadań wykorzystaj wykres **h-X (Molliera) dla powietrza wilgotnego**.
 
-**Kontekst:** W zimie temperatura obliczeniowa to $t_Z =$ **`r p$t_zima` $^\circ$C**. Powietrze z zewnątrz musi zostać podgrzane do $t_W$.
+## Zad. 7.1 --- Proces Zimowy (Ogrzewanie + Nawilżanie) \Tablice
 
-**Metodyka:** $\dot{Q}_{\text{nagr}} = \dot{m} \cdot c_p \cdot (t_W - t_Z)$, gdzie $\dot{m} = \rho \cdot \dot{V}/3600$, $\rho = 1{,}2$ kg/m$^3$, $c_p = 1{,}005$ kJ/(kg$\cdot$K).
+**Kontekst:** Zimą powietrze zewnętrzne ma parametry: $t_Z = `r p$t_zima`^\circ$C, $\varphi_Z = 90\%$. Musimy je doprowadzić do stanu nawiewu.
 
-`r if(!sa) "\\vspace{3cm}"`
-- Moc nagrzewnicy $\dot{Q}_{\text{nagr}}$ = `r ans(Q_nagr, "kW")`
+**Metodyka:**
 
-## Zad. 7.2 --- Chłodnica letnia
+1.  Zaznacz na wykresie h-X punkt Z ($t_Z, \varphi_Z$). Odczytaj zawilżenie $X_Z$.
+2.  Zaznacz punkt W ($t_W = `r p$t_wewn`^\circ$C, $\varphi_W = 50\%$). Odczytaj $X_W$.
+3.  **Nagrzewnica:** Ogrzewanie $Z \rightarrow P$ odbywa się przy $X = const$ (pionowo w górę na wykresie).
+4.  **Nawilżacz parowy:** Nawilżanie $P \rightarrow N$ odbywa się po izotermie ($t \approx const$), aż $X_N = X_W$.
 
-**Kontekst:** Latem temperatura to **`r p$t_lato` $^\circ$C** --- trzeba powietrze schłodzić.
+`r if(!sa) "\\\\vspace{4cm}"`
 
-`r if(!sa) "\\vspace{3cm}"`
-- Moc chłodnicy $\dot{Q}_{\text{chl}}$ = `r ans(Q_chlod8, "kW")`
+- Zawilżenie zewnętrzne $X_Z$ = `r ans(X_Z_zima, "g/kg", approx=TRUE)`
+- Zawilżenie wewnętrzne $X_W$ = `r ans(X_W, "g/kg", approx=TRUE)`
+- Entalpia $h_Z$ = `r ans(h_Z_zima, "kJ/kg", d=0, approx=TRUE)`
+- Entalpia $h_P$ (po nagrzaniu) = `r ans(h_P_zima, "kJ/kg", d=0, approx=TRUE)`
 
-## Zad. 7.3 --- Punkt Rosy (Kontrola kondensacji)
+## Zad. 7.2 --- Proces Letni (Chłodzenie + Osuszanie) \Tablice
+
+**Kontekst:** Latem: $t_Z = `r p$t_lato`^\circ$C, $\varphi_Z = 45\%$. Zawilżenie $X_Z \approx `r X_Z_lato`$ g/kg. Ponieważ $X_Z > X_W$, musimy **osuszać**!
+
+**Metodyka:**
+
+1.  Zaznacz punkt Z na wykresie h-X. Odczytaj $h_Z$.
+2.  Chłodzenie przebiega pionowo w dół ($X = const$) do krzywej nasycenia ($\varphi = 100\%$), a następnie po krzywej $\varphi = 100\%$ aż do $X = X_W$.
+3.  Odczytaj temperaturę punktu rosy aparatu $t_R$ i entalpię $h_R$.
+4.  Powietrze za chłodnicą ($t_R \approx 11.5^\circ$C) jest za zimne --- **nagrzewnica wtórna** podgrzewa je do $t_N \approx 18^\circ$C.
+
+`r if(!sa) "\\\\vspace{4cm}"`
+
+- Entalpia $h_Z$ (lato) = `r ans(h_Z_lato, "kJ/kg", d=0, approx=TRUE)`
+- Temperatura punktu rosy $t_R$ = `r ans(t_R_lato, "$^\\circ$C", approx=TRUE)`
+- Entalpia $h_R$ = `r ans(h_R_lato, "kJ/kg", d=0, approx=TRUE)`
+- Entalpia $h_N$ (nawiew $18^\circ$C) = `r ans(h_N_lato, "kJ/kg", d=0, approx=TRUE)`
+
+## Zad. 7.3 --- Bilans Centrali \Tablice
+
+**Kontekst:** Oblicz moce chłodnicy i nagrzewnicy wtórnej dla procesu letniego. $\dot{m} = \rho \cdot \dot{V}/3600 = 1{,}2 \cdot `r p$V_dot` / 3600 =$ **`r f(m_dot_hvac, 2)`** kg/s.
+
+**Metodyka:** Moc z bilansu entalpii: $\dot{Q} = \dot{m} \cdot \Delta h$.
+
+`r if(!sa) "\\\\vspace{4cm}"`
+
+- Moc chłodnicy (lato): $\dot{Q}_{ch} = \dot{m} \cdot (h_Z - h_R)$ = `r ans(Q_chlod_lato, "kW", d=1)`
+- Moc nagrzewnicy wtórnej: $\dot{Q}_{grz} = \dot{m} \cdot (h_N - h_R)$ = `r ans(Q_grz_wtorna, "kW", d=1)`
+
+::: {.callout-important appearance="simple"}
+Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy! Rozwiązanie: rekuperacja lub by-pass.
+:::
+
+## Zad. 7.4 --- Punkt Rosy (Kontrola kondensacji) \Tablice
 
 **Kontekst:** Ściana zewnętrzna hali ma temperaturę $12^\circ$C. Czy przy parametrach wewnętrznych ($t_W=$ `r p$t_wewn`$^\circ$C, $\varphi=50\%$) para wodna skropli się na ścianie?
 
-**Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = 8.4$ g/kg.
+**Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = `r X_wewn`$ g/kg --- idź w dół po $X = const$ aż do przecięcia z krzywą $\varphi = 100\%$.
 
-`r if(!sa) "\\vspace{2cm}"`
-- Temperatura punktu rosy $t_R$ = `r ans(t_rosy, "C", approx=TRUE)`
-- Czy wystąpi kondensacja? .................... (Tak/Nie, bo $t_{sciana} > t_R$)
+`r if(!sa) "\\\\vspace{2cm}"`
 
-## Zad. 7.4 --- Ilość kondensatu (Lato)
+- Temperatura punktu rosy $t_R$ = `r ans(t_rosy, "$^\\circ$C", approx=TRUE)`
+- Czy wystąpi kondensacja? `r if(sa) paste0("**$t_{\\text{sciana}} = 12^\\circ$C $>$ $t_R = ", f(t_rosy, 1), "^\\circ$C --- Na granicy!**") else ".................... (Tak/Nie, uzasadnij)"`
 
-**Kontekst:** Latem chłodnica osusza powietrze z $X_Z=13.5$ g/kg do $X_W=8.4$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
+## Zad. 7.5 --- Wymagany Strumień Powietrza
 
-**Metodyka:** $\dot{V}_w = \dot{m} \cdot (X_Z - X_W)$
+**Kontekst:** Zyski ciepła jawnego w hali: $Q_j = `r p$Q_jawne`$ kW, zyski wilgoci: $W = 10$ kg/h. Jaki minimalny strumień powietrza nawiewanego potrzebny?
 
-`r if(!sa) "\\vspace{2cm}"`
+**Metodyka:** Bilans ciepła jawnego: $Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N)$. Przyjmij $t_N = 16^\circ$C.
+
+`r if(!sa) "\\\\vspace{4cm}"`
+
+- Strumień masowy $\dot{m}$ = `r ans(m_dot_strum, "kg/s")`
+- Strumień objętościowy $\dot{V}$ = `r ans(V_dot_strum_h, "m$^3$/h", d=0)`
+- Weryfikacja bilansu wilgoci: $\Delta X$ = `r ans(dX_strum, "g/kg")` --- `r if(sa) "**Praktycznie brak zmiany. Zyski wilgoci sa niewielkie.**" else "skomentuj wynik."`
+
+## Zad. 7.6 --- Recyrkulacja Powietrza
+
+**Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, $t_W$, $X_W$) z `r 100 - p$rec`% świeżego (o $t_Z$, $X_Z$). Oblicz parametry mieszaniny i oszczędność osuszania.
+
+**Metodyka:**
+
+$t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, analogicznie dla $X_M$.
+
+`r if(!sa) "\\\\vspace{4cm}"`
+
+- Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "$^\\circ$C")`
+- Zawilżenie mieszaniny $X_M$ = `r ans(X_mix_rec, "g/kg")`
+- Bez recyrkulacji: $\Delta X = `r f(dX_bez_rec, 1)`$ g/kg, z recyrkulacją: $\Delta X = `r f(dX_z_rec, 1)`$ g/kg
+- Redukcja obciążenia osuszania: `r ans(redukcja_prc, "\\%", d=0)`
+
+`r reflection("*Dodatkowo rozważ: Ocen skale oszczednosci energii wynikajaca z recyrkulacji. Jakie ograniczenia (np. higieniczne --- min. 30 m$^3$/h powietrza swiezego na osobe) nalezy uwzglednic?*")`
+
+## Zad. 7.7 --- Ilość Kondensatu (Lato)
+
+**Kontekst:** W procesie letnim chłodnica osusza powietrze z $X_Z = `r X_Z_lato`$ g/kg do $X_W = `r X_wewn`$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
+
+**Metodyka:** $\dot{m}_w = \dot{m} \cdot (X_Z - X_W)$, $\dot{V}_w = \dot{m}_w \cdot 3600$ (przy $\rho_w \approx 1$ kg/l).
+
+`r if(!sa) "\\\\vspace{2cm}"`
+
+- Zmiana zawilżenia $\Delta X$ = `r ans(dX_lato * 1000, "g/kg", d=1)`
 - Ilość kondensatu $\dot{V}_w$ = `r ans(V_cond_lh, "l/h", d=0, approx=TRUE)`
 
-## Zad. 7.5 --- Odzysk Ciepła (Rekuperacja)
+## Zad. 7.8 --- Nagrzewnica Zimowa -- Moc \Tablice
 
-**Kontekst:** Wymiennik krzyżowy o sprawności $\eta=75\%$ odzyskuje ciepło z powietrza wywiewanego ($22^\circ$C) do ogrzania świeżego ($-10^\circ$C).
+**Kontekst:** Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = `r p$V_dot`$ m$^3$/h powietrza podgrzewanego od $`r p$t_zima`^\circ$C do $`r p$t_wewn`^\circ$C.
 
-**Metodyka:** $t_{\text{odzysk}} = t_Z + \eta \cdot (t_W - t_Z)$.
-Oszczędność mocy: $\Delta \dot{Q} = \dot{m} \cdot c_p \cdot (t_{\text{odzysk}} - t_Z)$.
+**Metodyka:** $\dot{Q}_{\text{nagr}} = \dot{m} \cdot (h_P - h_Z)$, gdzie $h_Z$ i $h_P$ odczytano z wykresu h-X w Zad. 7.1.
 
-`r if(!sa) "\\vspace{3cm}"`
-- Temp. za rekuperatorem $t_{\text{odzysk}}$ = `r ans(t_odzysk, "C", approx=TRUE)`
+`r if(!sa) "\\\\vspace{3cm}"`
+
+- Moc nagrzewnicy $\dot{Q}_{\text{nagr}}$ = `r ans(Q_nagr, "kW")`
+
+::: {.callout-important appearance="simple"}
+`r f(Q_nagr, 0)` kW to jak ogrzewanie ~`r round(Q_nagr / 20)` domów jednorodzinnych! Dlatego rekuperacja jest kluczowa.
+:::
+
+## Zad. 7.9 --- Odzysk Ciepła (Rekuperacja)
+
+**Kontekst:** Wymiennik krzyżowy o sprawności $\eta = 75\%$ odzyskuje ciepło z powietrza wywiewanego ($`r p$t_wewn`^\circ$C) do ogrzania świeżego ($`r p$t_zima`^\circ$C).
+
+**Metodyka:** $t_{\text{odzysk}} = t_Z + \eta \cdot (t_W - t_Z)$. Oszczędność: $\Delta \dot{Q} = \dot{m} \cdot c_p \cdot (t_{\text{odzysk}} - t_Z)$.
+
+`r if(!sa) "\\\\vspace{3cm}"`
+
+- Temp. za rekuperatorem $t_{\text{odzysk}}$ = `r ans(t_odzysk, "$^\\circ$C", approx=TRUE)`
 - Oszczędność mocy $\Delta \dot{Q}$ = `r ans(Q_rec_oszcz, "kW", approx=TRUE)`
 
-## Zad. 7.6 --- Propozycja oszczędności: recyrkulacja
-
-**Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, o $t_W$) z `r 100 - p$rec`% świeżego (o $t_Z$). Jaką temperaturę ma mieszanina i ile mocy nagrzewnicy oszczędzamy?
-
-**Metodyka:** Bilans entalpii mieszania:
-$$t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$$
-gdzie:
-
-- $t_M$ --- poszukiwana temperatura mieszaniny powietrza,
-- $r$ --- stopień recyrkulacji (udział powietrza powrotnego w %),
-- $t_W$ --- temperatura powietrza wewnętrznego (z hali),
-- $t_Z$ --- temperatura powietrza zewnętrznego (świeżego).
-
-Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
-
-`r if(!sa) "\\vspace{4cm}"`
-- Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "C")`
-- Oszczędność mocy = `r ans(dQ_oszcz, "kW")`
-
-`r reflection("*Dodatkowo rozważ: Oceń skalę oszczędności energii wynikającą z recyrkulacji. Jakie ograniczenia (np. higieniczne) należy uwzględnić decydując o stopniu recyrkulacji?*")`
+`r reflection("*Dodatkowo rozwaz: Porownaj koszt rekuperatora (ok. 20 000 zl) z oszczednoscia gazu przy sezonowej pracy 3000 h. Czy inwestycja sie zwroci?*")`
 
 \vspace{1em}
 \hrule
 \vspace{0.5em}
 
-`r if(!sa) "**Pamiętaj:** Każdy wynik to decyzja inżynierska. Liczby bez interpretacji nie mają wartości. W raporcie audytowym zawsze uzasadnij, CO policzyłeś, DLACZEGO i jakie WNIOSKI z tego płyną dla klienta." else "--- Koniec klucza odpowiedzi ---"`
+`r if(!sa) "**Pamietaj:** Kazdy wynik to decyzja inzynierska. Liczby bez interpretacji nie maja wartosci. W raporcie audytowym zawsze uzasadnij, CO policzyles, DLACZEGO i jakie WNIOSKI z tego plyna dla klienta." else "--- Koniec klucza odpowiedzi ---"`
 
 \newpage
 <!--
