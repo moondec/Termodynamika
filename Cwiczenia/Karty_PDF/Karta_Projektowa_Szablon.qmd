@@ -97,6 +97,21 @@ p_atm_kPa <- p$p_atm * 0.13332
 p_abs_kPa <- p$p_man * 100 + p_atm_kPa
 T_K <- p$t + 273.15
 m_air <- (p$p_man * 1e5 + p$p_atm * 133.322) * p$V / (287 * T_K)
+
+# Helper function for answers
+ans <- function(val, unit, d = 2, approx = FALSE) {
+  if (sa) {
+    res <- format(round(val, d), nsmall = d)
+    if (approx) {
+      prefix <- "Szacunkowo: "
+      res <- paste0(prefix, res)
+    }
+    return(paste0("\\textbf{\\textcolor{answercolor}{", res, " ", unit, "}}"))
+  } else {
+    return("....................")
+  }
+}
+
 m_water <- 1000 * p$V
 p_fire <- p_abs_kPa * (p$t_fire + 273.15) / T_K
 p_N2_kPa <- (p$y_N2 / 100) * p$p_mix * 100
@@ -250,21 +265,36 @@ EER_R290 <- q_o_R290 / l_k_R290
 # ---- Obliczenia Ćw.7 ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
 Q_nagr <- m_dot_hvac * 1.005 * (p$t_wewn - p$t_zima)
+
+# Zad 7.3 - Punkt Rosy
+X_wewn <- 8.4 # g/kg
+t_rosy <- 11.5 # deg C (approx for 22C, 50%)
+
+# Zad 7.4 - Kondensat
+X_lato_zewn <- 13.5 # g/kg (32C, 45%)
+dX_lato <- (X_lato_zewn - X_wewn) / 1000 # kg/kg
+mw_cond <- m_dot_hvac * dX_lato # kg/s
+V_cond_lh <- mw_cond * 3600 # l/h (approx 1kg = 1l)
+
+# Zad 7.5 - Rekuperacja
+eta_rec <- 0.75
+t_odzysk <- p$t_zima + eta_rec * (p$t_wewn - p$t_zima)
+Q_rec_oszcz <- m_dot_hvac * 1.005 * (t_odzysk - p$t_zima) # kW
 Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
 t_mix_rec <- p$rec / 100 * p$t_wewn + (1 - p$rec / 100) * p$t_zima
 dQ_oszcz <- m_dot_hvac * 1.005 * (t_mix_rec - p$t_zima)
 
-# Funkcje formatujące
-f <- function(x, d = 2) formatC(round(x, d), format = "f", digits = d)
-ans <- function(val, unit = "", d = 2, approx = FALSE) {
-    if (sa) {
-        txt <- paste0("**", f(val, d), " ", unit, "**")
-        if (approx) txt <- paste0(txt, " (szacunkowo)")
-        txt
-    } else {
-        "\\rule{3cm}{0.4pt}"
-    }
-}
+# Funkcje formatujące (zakomentowane, używamy definicji zgłobalnej z początku pliku)
+# f <- function(x, d = 2) formatC(round(x, d), format = "f", digits = d)
+# ans <- function(val, unit = "", d = 2, approx = FALSE) {
+#     if (sa) {
+#         txt <- paste0("**", f(val, d), " ", unit, "**")
+#         if (approx) txt <- paste0(txt, " (szacunkowo)")
+#         txt
+#     } else {
+#         "\\rule{3cm}{0.4pt}"
+#     }
+# }
 
 reflection <- function(text) {
     if (!sa) {
@@ -986,6 +1016,36 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 `r if(!sa) "\\vspace{3cm}"`
 - Moc chłodnicy $\dot{Q}_{\text{chl}}$ = `r ans(Q_chlod8, "kW")`
 
+## Zad. 7.3 --- Punkt Rosy (Kontrola kondensacji)
+
+**Kontekst:** Ściana zewnętrzna hali ma temperaturę $12^\circ$C. Czy przy parametrach wewnętrznych ($t_W=$ `r p$t_wewn`$^\circ$C, $\varphi=50\%$) para wodna skropli się na ścianie?
+
+**Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = 8.4$ g/kg.
+
+`r if(!sa) "\\vspace{2cm}"`
+- Temperatura punktu rosy $t_R$ = `r ans(t_rosy, "C", approx=TRUE)`
+- Czy wystąpi kondensacja? .................... (Tak/Nie, bo $t_{sciana} > t_R$)
+
+## Zad. 7.4 --- Ilość kondensatu (Lato)
+
+**Kontekst:** Latem chłodnica osusza powietrze z $X_Z=13.5$ g/kg do $X_W=8.4$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
+
+**Metodyka:** $\dot{V}_w = \dot{m} \cdot (X_Z - X_W)$
+
+`r if(!sa) "\\vspace{2cm}"`
+- Ilość kondensatu $\dot{V}_w$ = `r ans(V_cond_lh, "l/h", d=0, approx=TRUE)`
+
+## Zad. 7.5 --- Odzysk Ciepła (Rekuperacja)
+
+**Kontekst:** Wymiennik krzyżowy o sprawności $\eta=75\%$ odzyskuje ciepło z powietrza wywiewanego ($22^\circ$C) do ogrzania świeżego ($-10^\circ$C).
+
+**Metodyka:** $t_{\text{odzysk}} = t_Z + \eta \cdot (t_W - t_Z)$.
+Oszczędność mocy: $\Delta \dot{Q} = \dot{m} \cdot c_p \cdot (t_{\text{odzysk}} - t_Z)$.
+
+`r if(!sa) "\\vspace{3cm}"`
+- Temp. za rekuperatorem $t_{\text{odzysk}}$ = `r ans(t_odzysk, "C", approx=TRUE)`
+- Oszczędność mocy $\Delta \dot{Q}$ = `r ans(Q_rec_oszcz, "kW", approx=TRUE)`
+
 ## Zad. 7.6 --- Propozycja oszczędności: recyrkulacja
 
 **Kontekst:** Zamiast pobierać 100% powietrza z zewnątrz, mieszamy **`r p$rec`%** powietrza recyrkulowanego (wewnętrznego, o $t_W$) z `r 100 - p$rec`% świeżego (o $t_Z$). Jaką temperaturę ma mieszanina i ile mocy nagrzewnicy oszczędzamy?
@@ -1002,7 +1062,7 @@ gdzie:
 Oszczędność: $\Delta\dot{Q} = \dot{m} \cdot c_p \cdot (t_M - t_Z)$.
 
 `r if(!sa) "\\vspace{4cm}"`
-- Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "°C")`
+- Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "C")`
 - Oszczędność mocy = `r ans(dQ_oszcz, "kW")`
 
 `r reflection("*Dodatkowo rozważ: Oceń skalę oszczędności energii wynikającą z recyrkulacji. Jakie ograniczenia (np. higieniczne) należy uwzględnić decydując o stopniu recyrkulacji?*")`

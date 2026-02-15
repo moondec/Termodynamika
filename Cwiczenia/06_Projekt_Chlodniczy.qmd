@@ -41,9 +41,14 @@ Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło
 
 ## 🧊 Zadanie 6.1: Obieg Lindego na Wykresie p-h
 
+::: {.panel-tabset}
+
+### Zadanie 6.1
+
 Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).
 
-### Krok 1: Odczyt z Wykresu p-h (R134a)
+::: {style="font-size: 0.8em"}
+**Krok 1: Odczyt z Wykresu p-h (R134a)**
 
 1.  **Punkt 1 (Ssanie):** Para nasycona sucha ($x=1$) przy $t_o = 2^\circ C$.
     *   $h_1 \approx 400 \text{ kJ/kg}$
@@ -54,50 +59,139 @@ Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzan
     *   $h_3 \approx 256 \text{ kJ/kg}$.
 4.  **Punkt 4 (Dławienie):** Izenthalpa ($h=const$).
     *   $h_4 = h_3 = 256 \text{ kJ/kg}$.
+:::
+
+### Dane Wejściowe
+
+*   **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$
+*   **Czynnik:** R134a
+*   **Temp. parowania:** $t_o = 2^\circ C$
+*   **Temp. skraplania:** $t_k = 40^\circ C$
+
+:::
 
 ---
 
 ## ⚡ Zadanie 6.2: Bilans Energetyczny
 
-### Jednostkowe Wielkości:
-$$ q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}} $$
+::: {.panel-tabset}
+
+### Zadanie 6.2
+
+**Bilans Energetyczny (Jednostkowy):**
+
+::: {style="text-align: center"}
+$q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}}$
 (Chłodzenie użyteczne)
 
-$$ l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}} $$
+$l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}}$
 (Praca sprężania)
 
-$$ q_sk = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}} $$
+$q_{sk} = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}}$
 (Ciepło skraplania - odpadowe)
+:::
 
 ::: {.callout-note title="Weryfikacja I Zasady"}
 $$ q_o + l_k = 144 + 25 = 169 = q_sk $$
 $$ Energia_{in} = Energia_{out} \quad (OK!) $$
 :::
 
----
+### Dane (do Kroku 1)
 
-## 💰 Zadanie 6.3: Moc i Efektywność
+**Parametry wejściowe::**
 
-### Strumień Czynnika:
-Musimy odebrać 300 kW ciepła z hali ($Q_o$).
-$$ \dot{m} = \frac{Q_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} $$
-$$ \dot{m} \approx \mathbf{2.08 \text{ kg/s}} $$
+1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
+2.  **Czynnik chłodniczy:** R134a.
+3.  **Temperatura parowania:** $t_o = 2^\circ C$.
+4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
 
-### Moc Sprężarki:
-$$ N_{el} = \dot{m} \cdot l_k = 2.08 \cdot 25 $$
-$$ N_{el} \approx \mathbf{52 \text{ kW}} $$
+**Entalpie (z Wykresu):**
 
-### Efektywność (COP/EER):
-$$ EER = \frac{Q_o}{N_{el}} = \frac{300}{52} $$
-$$ EER \approx \mathbf{5.77} $$
+*   $h_1 = 400$ kJ/kg
+*   $h_2 = 425$ kJ/kg
+*   $h_3 = 256$ kJ/kg
+*   $h_4 = 256$ kJ/kg
 
-::: {.callout-success}
-**Wniosek:** Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.
 :::
 
 ---
 
+## 💰 Zadanie 6.3: Moc i Efektywność
+
+::::: {.panel-tabset}
+
+### Zadanie 6.3
+
+::: {style="font-size: 0.8em"}
+
+**Strumień Czynnika:**
+
+Musimy odebrać 300 kW ciepła z hali ($Q_o$).
+$$ \dot{m} = \frac{Q_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} $$
+$$ \dot{m} \approx \mathbf{2.08 \text{ kg/s}} $$
+
+:::
+
+:::: {columns}
+::: {.column width="50%"}
+::: {.fragment}
+**Moc Sprężarki:**
+$$ N_{el} = \dot{m} \cdot l_k = 2.08 \cdot 25 $$
+$$ N_{el} \approx \mathbf{52 \text{ kW}} $$
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+**Efektywność (COP/EER):**
+$$ EER = \frac{Q_o}{N_{el}} = \frac{300}{52} $$
+$$ EER \approx \mathbf{5.77} $$
+
+:::
+:::
+::::
+
+::: {.fragment .callout-note title="Wniosek: Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu."}
+
+:::
+
+### Dane (do Kroku 2)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Parametry wejściowe:**
+
+1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
+2.  **Czynnik chłodniczy:** R134a.
+3.  **Temperatura parowania:** $t_o = 2^\circ C$.
+4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
+:::
+
+::: {.column width="50%"}
+**Entalpie:**
+
+*   $h_1=400, h_2=425, h_3=256, h_4=256$
+
+**Wielkości Jednostkowe:**
+
+*   $q_o = 144$ kJ/kg
+*   $l_k = 25$ kJ/kg
+*   $q_{sk} = 169$ kJ/kg
+:::
+
+::::
+
+:::::
+
+---
+
 ## 🔄 Zadanie 6.4: Pompa Ciepła z Tego Samego Obiegu
+
+::::: {.panel-tabset}
+
+### Zadanie 6.4
 
 Skoro skraplacz wyrzuca $Q_k = 352 \text{ kW}$ ciepła na dach... Czy moglibyśmy **zimą** odwrócić logikę i wykorzystać to ciepło do ogrzewania biur?
 
@@ -112,6 +206,33 @@ Porównaj z grzejnikiem elektrycznym ($COP = 1$) lub kotłem gazowym ($\eta \app
 ::: {.fragment .callout-note}
 **Ale uwaga:** Zimą $t_o$ (dolne źródło) musi być wyższe niż zamarzanie → potrzebujemy np. gruntu, ścieków, lub powietrza zewnętrznego. Zmieni to parametry obiegu!
 :::
+
+### Dane (do Kroku 3)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Parametry wejściowe:**
+
+1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
+2.  **Czynnik chłodniczy:** R134a.
+3.  **Temperatura parowania:** $t_o = 2^\circ C$.
+4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
+
+:::
+
+::: {.column width="50%"}
+**Wyniki chłodnicze:**
+
+*   $q_o = 144$ kJ/kg
+*   $l_k = 25$ kJ/kg
+*   $\dot{m} = 2.08$ kg/s
+*   $N_{el} = 52$ kW
+*   $EER = 5.77$
+*   **Całkowite ciepło skraplania:** $Q_k = Q_o + N_{el} = 352$ kW
+:::
+::::
+:::::
 
 ---
 
@@ -133,8 +254,8 @@ $$ EER = \frac{128}{40} = \mathbf{3.20} \quad (\text{było } 5.77) $$
 **Pogorszenie o 45%!** Moc sprężarki wzrasta, a wydajność chłodnicza maleje.
 :::
 
-::: {.fragment .callout-error}
-Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia $t_k$ poprawia EER!
+::: {.fragment .callout-warning title="Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia $t_k$ poprawia EER!"}
+
 :::
 
 ---
@@ -147,6 +268,7 @@ Analiza Zadań 6.1 (Standard) i 6.5 (Podwyższone $t_k$).
 
 ::: {.fragment .fade-up style="font-size: 0.7em; text-align: center;"}
 **Wniosek:** Podniesienie temperatury skraplania (Czerwony obieg 2') powoduje:
+
 1. Wzrost pracy sprężania ($h_{2'} > h_2$).
 2. Przestunięcie punktu dławienia w prawo ($h_{3'} > h_3$) → Mniejsza wydajność chłodnicza $q_o$.
 :::
@@ -154,6 +276,10 @@ Analiza Zadań 6.1 (Standard) i 6.5 (Podwyższone $t_k$).
 ---
 
 ## 🧊 Zadanie 6.6: Porównanie Czynników (R134a vs R290)
+
+::::: {.panel-tabset}
+
+### Zadanie 6.6
 
 Rozważamy zamianę R134a (GWP=1430) na **R290 (propan, GWP=3)**. Czy warto?
 
@@ -168,6 +294,38 @@ $$ l_k = 625 - 570 = \mathbf{55 \text{ kJ/kg}} \quad (\text{R134a: } 25) $$
 $$ EER = 290/55 = \mathbf{5.27} $$
 :::
 
+### Dane R134a (Porównanie)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Parametry wejściowe::**
+
+1.  **Moc chłodnicza:** $Q_{o} = 300 \text{ kW}$.
+2.  **Czynnik chłodniczy:** R134a.
+3.  **Temperatura parowania:** $t_o = 2^\circ C$.
+4.  **Temperatura skraplania:** $t_k = 40^\circ C$.
+
+:::
+
+::: {.column width="50%"}
+
+**R134a (Referencja):**
+
+*   $q_o = 144$ kJ/kg
+*   $l_k = 25$ kJ/kg
+*   $EER = 5.77$
+
+**R290 (Propan):**
+
+*   $h_1 = 570$ kJ/kg
+*   $h_2 = 625$ kJ/kg
+*   $h_3 = 280$ kJ/kg
+
+:::
+::::
+:::::
+
 ---
 
 ## 🧊 Zadanie 6.6 (cd.): Wnioski
@@ -175,7 +333,7 @@ $$ EER = 290/55 = \mathbf{5.27} $$
 **Strumień czynnika:**
 $\dot{m}_{R290} = 300/290 = \mathbf{1.03 \text{ kg/s}}$ (R134a: $2.08$ kg/s — **połowę mniej!**)
 
-::: {.callout-warning}
+::: {.callout-warning style="font-size: 1.8em"}
 R290 ma lepszą wydajność objętościową i zerowy wpływ na warstwę ozonową. **Ale jest palny!** Wymaga specjalnych zabezpieczeń (ATEX).
 :::
 

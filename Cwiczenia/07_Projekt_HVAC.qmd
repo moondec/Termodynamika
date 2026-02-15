@@ -12,7 +12,7 @@ format:
     chalkboard: true
 ---
 
-## 🏭 Projekt: Etap Finalny - HVAC
+## 🏭 Projekt: Etap Finalny - HVAC (ang. heating, ventilation, air conditioning)
 
 W hali montażu elektroniki musimy utrzymać ściśle określone warunki, aby uniknąć wyładowań elektrostatycznych (ESD) i korozji.
 
@@ -39,10 +39,12 @@ Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lat
 Zimą powietrze zewnętrzne ma parametry: $t_z = -10^\circ C$, $\varphi_z = 90\%$.
 Musimy je doprowadzić do stanu nawiewu $N$, aby pokryć straty ciepła.
 
+::: {.fragment}
 ### Krok 1: Wykres h-X
 1.  Zaznacz punkt Z ($t_z=-10, \varphi_z=90\%$). $X_z \approx 1.5 \text{ g/kg}$.
 2.  Punkt W ($t_w=22, \varphi_w=50\%$). $X_w \approx 8.4 \text{ g/kg}$.
-
+:::
+::: {.fragment}
 ### Krok 2: Proces w Centrali
 Aby osiągnąć $X_w$ z $X_z$, musimy dodać wilgoć (nawilżanie parowe - izoterma).
 Aby osiągnąć $t_w$, musimy ogrzać powietrze.
@@ -61,19 +63,169 @@ Szukamy $X_N = 8.4$.
 $t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
 :::
 :::
+:::
 
 ---
 
-## 📈 Wizualizacja na Wykresie h-X
+## 📈 Wizualizacja na Wykresie h-X{.smaller}
 
+::: {style="font-size: 0.8em"}
 Jak narysować proces zimowy?
+:::
 
-1.  Zaznacz punkt **Z** ($-10^\circ C, 90\%$). Odczytaj $X_Z$.
-2.  Zaznacz punkt **W** ($22^\circ C, 50\%$). Odczytaj $X_W$.
-3.  **Nagrzewanie:** Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
-4.  **Nawilżanie parowe:** Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
+::: {.panel-tabset}
 
-![](../img/air_hum-h-X.png){width="60%" fig-align="center"}
+### 1.  Punkt **Z**.
+Zaznacz punkt **Z** ($-10^\circ C, 90\%$). Odczytaj $X_Z$.
+
+::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+
+::: {.fragment style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt Z
+</div>
+:::
+:::
+
+### 2. Punkt **W**.
+Zaznacz punkt **W** ($22^\circ C, 50\%$). Odczytaj $X_W$.
+
+::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+
+::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt Z
+</div>
+:::
+
+
+::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt W
+</div>
+:::
+:::
+
+
+### 3. **Nagrzewanie:** 
+Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
+
+::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+
+::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt Z
+</div>
+:::
+
+
+::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt W
+</div>
+:::
+
+<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
+<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;"></div>
+<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
+:::
+
+
+
+### 4.  **Nawilżanie parowe:** 
+Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
+
+::: {style="position: relative; display: block; width: 60%; margin: 0 auto;"}
+![](../img/air_hum-h-X_h.png){width="100%"}
+
+::: {style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt Z
+</div>
+:::
+
+
+::: {style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
+<!-- Kropka (Punkt Z) -->
+<div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+
+<!-- Linia prowadząca -->
+<div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
+
+<!-- Winieta (Etykieta) -->
+<div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  Punkt W
+</div>
+:::
+
+<!-- Linia przemiany: Ogrzewanie (Z -> P) -->
+<div style="position: absolute; top: 40%; left: 6%; width: 2px; height: 41%; background-color: red; z-index: 1;"></div>
+<div style="position: absolute; top: 40%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
+
+<!-- Linia przemiany: Nawilżanie (P -> W) -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+  <line x1="6%" y1="40%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2" />
+</svg>
+
+<!-- Linia prowadząca -->
+<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+  <line x1="10%" y1="43%" x2="18.5%" y2="30%" style="stroke:blue;stroke-width:2" />
+</svg>
+
+<div style="position: absolute; top: 25%; left: 19.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+  izotermiczne nawilżanie
+  <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background-color: blue;"></div>
+
+</div>
+:::
+
+
+:::
 
 ---
 
