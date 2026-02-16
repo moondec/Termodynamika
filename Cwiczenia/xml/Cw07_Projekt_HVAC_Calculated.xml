@@ -2,10 +2,10 @@
 <quiz>
     <question type="category">
         <category>
-            <text>$course$/top/Cwiczenie_08_Projekt_HVAC</text>
+            <text>$course$/top/Cwiczenie_07_Projekt_HVAC</text>
         </category>
         <info format="moodle_auto_format">
-            <text>Ćwiczenie 8 — Projekt HVAC (Calculated)</text>
+            <text>Ćwiczenie 7 — Projekt HVAC (Calculated)</text>
         </info>
         <idnumber />
     </question>
