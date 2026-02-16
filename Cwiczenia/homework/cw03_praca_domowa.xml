@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 3: Kocioł kondensacyjny ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 3 – Kocioł kondensacyjny</text></category>
+</question>
+
+<!-- Pytanie 3.1: Masa wody w spalinach na godzinę -->
+<question type="numerical">
+  <name><text>Ćw3 Zad. dom. – Masa pary wodnej w spalinach [kg/h]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Kocioł zużywa \( 171 \text{ m}^3/\text{h} \) gazu ziemnego. Przy spalaniu \( 1 \text{ m}^3 \) gazu powstaje ok. \( 1{,}6 \text{ kg} \) wody w spalinach.</p>
+<p>Oblicz masowy strumień pary wodnej w spalinach w <strong>kg/h</strong>.</p>
+<p>Wynik zaokrąglij do całości.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>274</text><tolerance>5</tolerance></answer>
+</question>
+
+<!-- Pytanie 3.2: Dodatkowy strumień ciepła z kondensacji -->
+<question type="numerical">
+  <name><text>Ćw3 Zad. dom. – Dodatkowe ciepło z kondensacji [kW]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>W spalinach kotła powstaje \( \dot{m}_w \approx 274 \text{ kg/h} \) pary wodnej. Ciepło parowania wody wynosi \( r \approx 2500 \text{ kJ/kg} \).</p>
+<p>Oblicz dodatkowy strumień ciepła \( \dot{Q}_{kond} \), który można odzyskać skraplając <strong>całą</strong> parę wodną ze spalin.</p>
+<p>Wynik podaj w <strong>kW</strong>. Zaokrąglij do całości.</p>
+<p><em>Wskazówka:</em> \( \dot{Q}_{kond} = \dot{m}_w \cdot r \). Uwaga na jednostki czasu!</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>190</text><tolerance>10</tolerance></answer>
+</question>
+
+<!-- Pytanie 3.3: Wzrost sprawności -->
+<question type="numerical">
+  <name><text>Ćw3 Zad. dom. – Wzrost sprawności [punkty procentowe]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Kocioł ma sprawność \( \eta = 91\% \) i moc cieplną \( \dot{Q}_{uż} = 2000 \text{ kW} \). Dodatkowy odzysk ciepła z kondensacji wynosi ok. \( \dot{Q}_{kond} \approx 190 \text{ kW} \).</p>
+<p>O ile <strong>punktów procentowych</strong> wzrośnie sprawność kotłowni po zainstalowaniu kondensacji spalin?</p>
+<p>\( \Delta\eta = \frac{\dot{Q}_{kond}}{\dot{Q}_{paliwa}} \cdot 100\% \), gdzie \( \dot{Q}_{paliwa} = \dot{Q}_{uż} / \eta \)</p>
+<p>Wynik zaokrąglij do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>8.6</text><tolerance>1.0</tolerance></answer>
+</question>
+
+<!-- Pytanie 3.4: Pytanie koncepcyjne -->
+<question type="multichoice">
+  <name><text>Ćw3 Zad. dom. – Temperatura punktu rosy spalin</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Aby kocioł kondensacyjny mógł odzyskiwać ciepło skraplania, temperatura spalin musi spaść poniżej pewnej wartości. Jak nazywa się ta temperatura?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Temperatura punktu rosy spalin (ok. 55°C dla gazu ziemnego)</text></answer>
+  <answer fraction="0"><text>Temperatura krytyczna wody (374°C)</text></answer>
+  <answer fraction="0"><text>Temperatura nasycenia przy ciśnieniu atmosferycznym (100°C)</text></answer>
+  <answer fraction="0"><text>Temperatura zapłonu gazu ziemnego</text></answer>
+</question>
+
+<!-- Pytanie 3.5: Pytanie otwarte -->
+<question type="essay">
+  <name><text>Ćw3 Zad. dom. – Warunki opłacalności kotła kondensacyjnego</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Wyjaśnij, dlaczego w praktyce nie zawsze udaje się odzyskać 100% ciepła kondensacji ze spalin. Podaj co najmniej 2 warunki konieczne do skutecznego działania kotła kondensacyjnego.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0</penalty>
+  <graderinfo format="html">
+    <text><![CDATA[<p>Oczekiwane odpowiedzi: (1) Niska temperatura powrotu instalacji (poniżej ~55°C); (2) Korozyjność kondensatu (wymaga odpornych materiałów); (3) W praktyce nie cała para skrapla się (sprawność wymiennika < 100%); (4) Kocioł musi mieć wymiennik ze stali nierdzewnej/aluminium.</p>]]></text>
+  </graderinfo>
+</question>
+
+</quiz>

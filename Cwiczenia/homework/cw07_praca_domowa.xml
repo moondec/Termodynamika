@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 7: Odzysk ciepła w centrali wentylacyjnej ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 7 – Odzysk ciepła w centrali wentylacyjnej</text></category>
+</question>
+
+<!-- Pytanie 7.1: Temperatura za rekuperatorem -->
+<question type="numerical">
+  <name><text>Ćw7 Zad. dom. – Temperatura za rekuperatorem [°C]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Rekuperator krzyżowy o sprawności \( \eta = 75\% \) podgrzewa powietrze czerpane z \( t_{cz} = -10°C \) ciepłem powietrza wyrzucanego z hali (\( t_{wy} = 22°C \)).</p>
+<p>Temperatura powietrza za rekuperatorem (przed nagrzewnicą):</p>
+<p>\( t_{za} = t_{cz} + \eta \cdot (t_{wy} - t_{cz}) \)</p>
+<p>Oblicz \( t_{za} \) w <strong>°C</strong>. Wynik zaokrąglij do całości.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>14</text><tolerance>1</tolerance></answer>
+</question>
+
+<!-- Pytanie 7.2: Oszczędność mocy grzewczej -->
+<question type="numerical">
+  <name><text>Ćw7 Zad. dom. – Oszczędność mocy grzewczej [kW]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Bez rekuperatora nagrzewnica musi podgrzać powietrze od \( -10°C \) do wymaganej temperatury nawiewu. Z rekuperatorem powietrze wchodzi do nagrzewnicy już podgrzane do ok. \( 14°C \).</p>
+<p>Różnica temperatur zaoszczędzona: \( \Delta T_{osz} = 14 - (-10) = 24 \text{ K} \).</p>
+<p>Przyjmij strumień powietrza \( \dot{V} = 10\,000 \text{ m}^3/\text{h} \), \( \rho = 1{,}2 \text{ kg/m}^3 \), \( c_p = 1{,}005 \text{ kJ/(kg·K)} \).</p>
+<p>Oblicz oszczędność mocy grzewczej \( \dot{Q}_{osz} \) w <strong>kW</strong>. Zaokrąglij do całości.</p>
+<p>\( \dot{Q}_{osz} = \dot{m} \cdot c_p \cdot \Delta T_{osz} \)</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>80</text><tolerance>5</tolerance></answer>
+</question>
+
+<!-- Pytanie 7.3: Roczna oszczędność energii -->
+<question type="numerical">
+  <name><text>Ćw7 Zad. dom. – Roczna oszczędność energii [MWh]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Oszczędność mocy grzewczej dzięki rekuperatorowi wynosi ok. \( \dot{Q}_{osz} = 80 \text{ kW} \). Sezon grzewczy trwa \( 3000 \text{ h/rok} \).</p>
+<p>Oblicz roczną oszczędność energii cieplnej w <strong>MWh</strong>. Zaokrąglij do całości.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>240</text><tolerance>15</tolerance></answer>
+</question>
+
+<!-- Pytanie 7.4: Oszczędność finansowa -->
+<question type="numerical">
+  <name><text>Ćw7 Zad. dom. – Roczna oszczędność gazu [PLN]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Roczna oszczędność energii: ok. \( 240 \text{ MWh} \). Sprawność kotła gazowego: \( \eta_k = 0{,}91 \). Cena gazu: ok. \( 0{,}25 \text{ PLN/kWh} \) (wartość opałowa).</p>
+<p>Roczne zużycie gazu zaoszczędzone: \( Q_{gaz} = \frac{240\,000}{0{,}91} \approx 264 \text{ MWh} \).</p>
+<p>Oblicz roczną oszczędność finansową w <strong>PLN</strong>. Zaokrąglij do tysięcy.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>66000</text><tolerance>5000</tolerance></answer>
+</question>
+
+<!-- Pytanie 7.5: SPBT rekuperatora -->
+<question type="numerical">
+  <name><text>Ćw7 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Koszt rekuperatora: \( 20\,000 \text{ PLN} \). Roczna oszczędność: ok. \( 66\,000 \text{ PLN/rok} \).</p>
+<p>Oblicz prosty czas zwrotu inwestycji SPBT w <strong>latach</strong>.</p>
+<p>Wynik podaj z dokładnością do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>0.3</text><tolerance>0.05</tolerance></answer>
+</question>
+
+<!-- Pytanie 7.6: Interpretacja -->
+<question type="multichoice">
+  <name><text>Ćw7 Zad. dom. – Opłacalność rekuperatora</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>SPBT rekuperatora wynosi ok. 0,3 roku (ok. 4 miesiące). Która interpretacja jest prawidłowa?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Inwestycja w rekuperator jest bardzo opłacalna — zwraca się w pierwszym sezonie grzewczym. Odzysk ciepła to podstawa nowoczesnej wentylacji.</text></answer>
+  <answer fraction="0"><text>Rekuperator nie jest opłacalny, bo wymaga regularnej konserwacji i wymiany filtrów.</text></answer>
+  <answer fraction="0"><text>SPBT &lt; 1 roku sugeruje błąd w obliczeniach — rekuperatory zwykle zwracają się 5–10 lat.</text></answer>
+  <answer fraction="0"><text>Rekuperator jest niepotrzebny, bo nagrzewnica i tak musi pracować w zimie.</text></answer>
+</question>
+
+</quiz>

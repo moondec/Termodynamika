@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 1: Dobór sprężarki ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 1 – Dobór sprężarki</text></category>
+</question>
+
+<!-- Pytanie 1.1: Masa powietrza w zbiorniku "pustym" -->
+<question type="numerical">
+  <name><text>Ćw1 Zad. dom. – Masa powietrza w zbiorniku pustym</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Zbiornik o objętości \( V = 5 \text{ m}^3 \) zawiera powietrze przy ciśnieniu atmosferycznym \( p_{atm} = 1{,}013 \text{ bar} \) i temperaturze \( t = 25°C \).</p>
+<p>Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{ J/(kg·K)} \).</p>
+<p>Wynik podaj w <strong>kg</strong> (zaokrąglij do 1 miejsca po przecinku).</p>
+<p><em>Wskazówka:</em> Użyj równania stanu gazu doskonałego: \( pV = mRT \).</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>5.9</text><tolerance>0.2</tolerance></answer>
+  <answer fraction="50"><text>6.0</text><tolerance>0.3</tolerance></answer>
+</question>
+
+<!-- Pytanie 1.2: Masa powietrza w zbiorniku "pełnym" -->
+<question type="numerical">
+  <name><text>Ćw1 Zad. dom. – Masa powietrza w zbiorniku pełnym</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Zbiornik o objętości \( V = 5 \text{ m}^3 \) został naładowany sprężonym powietrzem do ciśnienia \( p = 9{,}5 \text{ bar (abs)} \) i temperatury \( t = 40°C \) (sprężanie podgrzewa powietrze).</p>
+<p>Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{ J/(kg·K)} \).</p>
+<p>Wynik podaj w <strong>kg</strong> (zaokrąglij do 1 miejsca po przecinku).</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>52.9</text><tolerance>0.5</tolerance></answer>
+  <answer fraction="50"><text>53.0</text><tolerance>1.0</tolerance></answer>
+</question>
+
+<!-- Pytanie 1.3: Wydajność masowa sprężarki -->
+<question type="numerical">
+  <name><text>Ćw1 Zad. dom. – Wydajność masowa sprężarki [kg/h]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Zbiornik o objętości \( V = 5 \text{ m}^3 \) musi być napompowany od ciśnienia atmosferycznego (\( m_1 \approx 5{,}9 \text{ kg} \)) do ciśnienia roboczego (\( m_2 \approx 52{,}9 \text{ kg} \)) w czasie 1 godziny.</p>
+<p>Oblicz wymaganą wydajność masową sprężarki \( \dot{m} \) w <strong>kg/h</strong>.</p>
+<p>Wynik zaokrąglij do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>47.0</text><tolerance>1.0</tolerance></answer>
+</question>
+
+<!-- Pytanie 1.4: Wydajność objętościowa sprężarki -->
+<question type="numerical">
+  <name><text>Ćw1 Zad. dom. – Wydajność objętościowa sprężarki [m³/h]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Sprężarka musi dostarczyć \( \dot{m} \approx 47 \text{ kg/h} \) powietrza. Warunki ssania: \( p_{atm} = 101{,}325 \text{ kPa} \), \( T = 298{,}15 \text{ K} \) (\( 25°C \)).</p>
+<p>Oblicz wymaganą wydajność objętościową sprężarki w warunkach ssania \( \dot{V} \) w <strong>m³/h</strong>.</p>
+<p>Wynik zaokrąglij do całości.</p>
+<p><em>Wskazówka:</em> \( \dot{V} = \frac{\dot{m} R T}{p} \)</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>39</text><tolerance>2</tolerance></answer>
+</question>
+
+<!-- Pytanie 1.5: Pytanie koncepcyjne -->
+<question type="multichoice">
+  <name><text>Ćw1 Zad. dom. – Dlaczego temperatura rośnie?</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Dlaczego w zbiorniku po napełnieniu sprężonym powietrzem temperatura wzrosła z \( 25°C \) do \( 40°C \)?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Praca sprężania zamieniana jest na energię wewnętrzną gazu (I zasada termodynamiki).</text></answer>
+  <answer fraction="0"><text>Zbiornik jest ogrzewany przez otoczenie.</text></answer>
+  <answer fraction="0"><text>Powietrze się rozszerza i to powoduje wzrost temperatury.</text></answer>
+  <answer fraction="0"><text>Ciśnienie atmosferyczne ogrzewa powietrze w zbiorniku.</text></answer>
+</question>
+
+</quiz>

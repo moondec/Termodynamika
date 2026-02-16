@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 5: Optymalizacja wymiennika ciepła ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 5 – Optymalizacja wymiennika ciepła</text></category>
+</question>
+
+<!-- Pytanie 5.1: Nowy strumień wody -->
+<question type="numerical">
+  <name><text>Ćw5 Zad. dom. – Nowy strumień wody przy t_wyj=95°C [kg/s]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Wymiennik ciepła spaliny–woda ma moc \( \dot{Q} = 150 \text{ kW} \). Zwiększamy temperaturę wylotową wody z \( 80°C \) do \( 95°C \), przy temperaturze wlotowej \( 20°C \).</p>
+<p>Ciepło właściwe wody: \( c_w = 4{,}19 \text{ kJ/(kg·K)} \).</p>
+<p>Oblicz nowy strumień masy wody \( \dot{m}_w \) w <strong>kg/s</strong>.</p>
+<p>\( \dot{Q} = \dot{m}_w \cdot c_w \cdot (T_{wyj} - T_{wej}) \)</p>
+<p>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>0.48</text><tolerance>0.02</tolerance></answer>
+</question>
+
+<!-- Pytanie 5.2: Generacja entropii - nowa -->
+<question type="numerical">
+  <name><text>Ćw5 Zad. dom. – Nowa generacja entropii [kW/K]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Wymiennik ciepła: spaliny chłodzą się z \( T_{sp,wej} = 573 \text{ K} \) do \( T_{sp,wyj} = 423 \text{ K} \), woda grzeje się z \( T_{w,wej} = 293 \text{ K} \) do \( T_{w,wyj} = 368 \text{ K} \) (95°C).</p>
+<p>Strumień ciepła: \( \dot{Q} = 150 \text{ kW} \).</p>
+<p>Generacja entropii:</p>
+<p>\( \dot{S}_{gen} = \dot{Q} \cdot \left( \frac{1}{T_{w,śr}} - \frac{1}{T_{sp,śr}} \right) \)</p>
+<p>gdzie \( T_{śr} \) to średnia logarytmiczna temperatur wlotu/wylotu danego czynnika (lub przybliżenie średnią arytmetyczną).</p>
+<p>Oblicz \( \dot{S}_{gen} \) w <strong>kW/K</strong> przy użyciu średniej arytmetycznej temperatur. Wynik z dokładnością do 3 miejsc po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>0.153</text><tolerance>0.02</tolerance></answer>
+</question>
+
+<!-- Pytanie 5.3: Porównanie -->
+<question type="multichoice">
+  <name><text>Ćw5 Zad. dom. – Wpływ zbliżenia temperatur</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Zwiększenie temperatury wylotowej wody z 80°C do 95°C zbliża ją do temperatury spalin (300°C→150°C). Jaki jest efekt na generację entropii?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Generacja entropii maleje — zbliżenie temperatur czynników zmniejsza nieodwracalność wymiany ciepła.</text></answer>
+  <answer fraction="0"><text>Generacja entropii rośnie — większa temperatura wylotowa oznacza większy bałagan termodynamiczny.</text></answer>
+  <answer fraction="0"><text>Generacja entropii nie zmienia się — zależy tylko od mocy wymiennika, a ta jest stała (150 kW).</text></answer>
+  <answer fraction="0"><text>Nie można tego określić bez znajomości geometrii wymiennika.</text></answer>
+</question>
+
+<!-- Pytanie 5.4: Wnioski -->
+<question type="essay">
+  <name><text>Ćw5 Zad. dom. – Wnioski z optymalizacji wymiennika</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Na podstawie obliczeń odpowiedz na pytania:</p>
+<ol>
+  <li>Czy zbliżenie temperatur czynników (\( T_{spalin} \approx T_{wody} \)) zmniejsza generację entropii? Uzasadnij.</li>
+  <li>Jaki jest praktyczny kompromis między zmniejszaniem \( \Delta T \) a wielkością (i kosztem) wymiennika ciepła?</li>
+  <li>Czy istnieje teoretyczna granica, przy której generacja entropii w wymienniku wynosi zero?</li>
+</ol>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0</penalty>
+  <graderinfo format="html">
+    <text><![CDATA[<p>Oczekiwane: (1) Tak, mniejsza ΔT → mniejsza S_gen (II ZT). (2) ΔT→0 wymaga nieskończonej powierzchni wymiany ciepła (nieskończony koszt). (3) Tak — w procesie odwracalnym (ΔT=0) S_gen=0, ale to wymaga nieskończeniie wolnego procesu — nieosiągalne w praktyce.</p>]]></text>
+  </graderinfo>
+</question>
+
+</quiz>

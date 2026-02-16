@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 6: Rzeczywisty obieg chłodniczy ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 6 – Rzeczywisty obieg chłodniczy</text></category>
+</question>
+
+<!-- Pytanie 6.1: Temperatura po przegrzaniu -->
+<question type="numerical">
+  <name><text>Ćw6 Zad. dom. – Temperatura ssania po przegrzaniu [°C]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>W obiegu chłodniczym z czynnikiem R134a temperatura parowania wynosi \( t_0 = 2°C \). Stosujemy przegrzanie par na ssaniu sprężarki o \( \Delta T_{sh} = 5 \text{ K} \).</p>
+<p>Jaka jest temperatura czynnika na ssaniu sprężarki \( t_1 \) w <strong>°C</strong>?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>7</text><tolerance>0.1</tolerance></answer>
+</question>
+
+<!-- Pytanie 6.2: Temperatura po dochłodzeniu -->
+<question type="numerical">
+  <name><text>Ćw6 Zad. dom. – Temperatura cieczy po dochłodzeniu [°C]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Temperatura skraplania czynnika R134a wynosi \( t_k = 40°C \). Stosujemy dochłodzenie cieczy o \( \Delta T_{sc} = 5 \text{ K} \).</p>
+<p>Jaka jest temperatura czynnika przed dławieniem \( t_3 \) w <strong>°C</strong>?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>35</text><tolerance>0.1</tolerance></answer>
+</question>
+
+<!-- Pytanie 6.3: Wpływ dochłodzenia na efekt chłodniczy -->
+<question type="multichoice">
+  <name><text>Ćw6 Zad. dom. – Wpływ dochłodzenia na wydajność chłodniczą</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Dochłodzenie cieczy przed dławieniem o \( \Delta T_{sc} = 5 \text{ K} \) powoduje, że entalpia czynnika przed zaworem rozprężnym jest <strong>niższa</strong>. Jaki jest efekt na wydajność chłodniczą \( q_0 \)?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Wydajność chłodnicza \( q_0 \) rośnie, bo entalpia przed dławieniem jest niższa → na wykresie p-h punkt 3 przesuwa się w lewo.</text></answer>
+  <answer fraction="0"><text>Wydajność chłodnicza maleje, bo dochłodzenie wymaga dodatkowej energii.</text></answer>
+  <answer fraction="0"><text>Wydajność chłodnicza nie zmienia się, bo dławienie jest procesem izentalpowym.</text></answer>
+  <answer fraction="0"><text>Wpływ zależy od rodzaju czynnika chłodniczego i nie można go określić ogólnie.</text></answer>
+</question>
+
+<!-- Pytanie 6.4: Wpływ przegrzania na pracę sprężania -->
+<question type="multichoice">
+  <name><text>Ćw6 Zad. dom. – Wpływ przegrzania na pracę sprężarki</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Przegrzanie par na ssaniu sprężarki o \( \Delta T_{sh} = 5 \text{ K} \) powoduje, że punkt 1 na wykresie p-h przesuwa się w prawo (wyższa entalpia na ssaniu). Jaki jest efekt na pracę sprężarki \( l_k \)?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Praca sprężarki \( l_k \) rośnie, bo sprężamy z wyższej entalpii i punkt 2 też się przesuwa → większa różnica entalpii.</text></answer>
+  <answer fraction="0"><text>Praca sprężarki maleje, bo para przegrzana jest łatwiejsza do sprężenia.</text></answer>
+  <answer fraction="0"><text>Praca sprężarki nie zmienia się, bo ciśnienia skraplania i parowania są stałe.</text></answer>
+  <answer fraction="0"><text>Przegrzanie wpływa tylko na temperaturę, nie na pracę sprężarki.</text></answer>
+</question>
+
+<!-- Pytanie 6.5: Bilans netto EER -->
+<question type="essay">
+  <name><text>Ćw6 Zad. dom. – Nowy EER z przegrzaniem i dochłodzeniem</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Narysuj na wykresie log p–h obieg chłodniczy R134a z przegrzaniem (\( \Delta T_{sh} = 5 \text{ K} \)) i dochłodzeniem (\( \Delta T_{sc} = 5 \text{ K} \)).</p>
+<p>Na podstawie odczytanych entalpii oblicz:</p>
+<ol>
+  <li>Nowy efekt chłodniczy \( q_0 = h_1 - h_4 \) [kJ/kg]</li>
+  <li>Nową pracę sprężarki \( l_k = h_2 - h_1 \) [kJ/kg]</li>
+  <li>Nowy wskaźnik EER = \( q_0 / l_k \)</li>
+</ol>
+<p>Porównaj z wartością EER z ćwiczeń i odpowiedz: <strong>Czy dochłodzenie poprawia, czy pogarsza sprawność?</strong></p>
+]]></text>
+  </questiontext>
+  <defaultgrade>5</defaultgrade>
+  <penalty>0</penalty>
+  <graderinfo format="html">
+    <text><![CDATA[<p>Oczekiwanie: Student powinien odczytać entalpie z wykresu p-h dla R134a. Przegrzanie zwiększa l_k (o ~5 kJ/kg), ale dochłodzenie zwiększa q_0 (o ~8-10 kJ/kg). Bilans netto: EER rośnie nieznacznie. Dochłodzenie jest korzystne, przegrzanie jest konieczne dla ochrony sprężarki.</p>]]></text>
+  </graderinfo>
+</question>
+
+</quiz>

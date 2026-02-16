@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 2: Odzysk ciepła ze sprężarki ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 2 – Odzysk ciepła ze sprężarki</text></category>
+</question>
+
+<!-- Pytanie 2.1: Strumień masy wody -->
+<question type="numerical">
+  <name><text>Ćw2 Zad. dom. – Strumień wody [kg/s]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Z chłodnicy sprężarki odzyskujemy 80% ciepła, tj. \( \dot{Q}_{odz} = 0{,}8 \cdot 8 = 6{,}4 \text{ kW} \).</p>
+<p>Chcemy podgrzać wodę z \( 10°C \) do \( 45°C \). Ciepło właściwe wody: \( c_w = 4190 \text{ J/(kg·K)} \).</p>
+<p>Oblicz wymagany strumień masy wody \( \dot{m}_w \) w <strong>kg/s</strong>.</p>
+<p><em>Wzór:</em> \( \dot{Q} = \dot{m}_w \cdot c_w \cdot \Delta T \)</p>
+<p>Wynik podaj z dokładnością do 3 miejsc po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>0.0437</text><tolerance>0.002</tolerance></answer>
+</question>
+
+<!-- Pytanie 2.2: Strumień objętościowy wody [l/min] -->
+<question type="numerical">
+  <name><text>Ćw2 Zad. dom. – Strumień wody [l/min]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Z chłodnicy sprężarki można odzyskać \( \dot{Q}_{odz} = 6{,}4 \text{ kW} \). Woda ma być podgrzana z \( 10°C \) do \( 45°C \).</p>
+<p>\( c_w = 4190 \text{ J/(kg·K)} \), \( \rho_w = 1000 \text{ kg/m}^3 \).</p>
+<p>Oblicz strumień objętościowy wody w <strong>l/min</strong>.</p>
+<p>Wynik zaokrąglij do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>2.6</text><tolerance>0.2</tolerance></answer>
+</question>
+
+<!-- Pytanie 2.3: Czy odzysk się opłaca? -->
+<question type="multichoice">
+  <name><text>Ćw2 Zad. dom. – Interpretacja wyniku</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Obliczono, że odzyskane ciepło pozwala podgrzać ok. 2,6 l/min wody z 10°C do 45°C. Która z poniższych interpretacji jest poprawna?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>To wystarczy na zasilenie 1–2 umywalek w szatni — odzysk ciepła jest opłacalny.</text></answer>
+  <answer fraction="0"><text>To zbyt mały strumień — odzysk ciepła nie ma sensu ekonomicznego.</text></answer>
+  <answer fraction="0"><text>Strumień jest zbyt duży i spowoduje problemy z ciśnieniem wody.</text></answer>
+  <answer fraction="0"><text>Nie można podgrzewać wody ciepłem ze sprężarki ze względów bezpieczeństwa.</text></answer>
+</question>
+
+<!-- Pytanie 2.4: Pytanie o bilans energetyczny -->
+<question type="essay">
+  <name><text>Ćw2 Zad. dom. – Bilans energetyczny sprężarkowni</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Wykonaj pełny bilans energetyczny sprężarkowni z odzyskiem ciepła. Uwzględnij:</p>
+<ul>
+  <li>Moc dostarczoną do sprężarki (silnik elektryczny)</li>
+  <li>Ciepło odprowadzone w chłodnicy</li>
+  <li>Ciepło odzyskane (80% z chłodnicy)</li>
+  <li>Ciepło tracone do otoczenia (20% z chłodnicy)</li>
+</ul>
+<p>Narysuj schemat bilansowy i określ, jaka część energii jest „stracona".</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>3</defaultgrade>
+  <penalty>0</penalty>
+  <graderinfo format="html">
+    <text><![CDATA[<p>Sprawdź: moc silnika ~10,3 kW, ciepło chłodnicy ~8 kW, odzysk 6,4 kW, straty 1,6 kW. Bilans musi się zgadzać (energia do sprężarki = praca sprężania + ciepło).</p>]]></text>
+  </graderinfo>
+</question>
+
+</quiz>

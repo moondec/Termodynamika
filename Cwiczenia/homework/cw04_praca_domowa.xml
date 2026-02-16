@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- ===== Ćwiczenie 4: Opłacalność kogeneracji ===== -->
+
+<question type="category">
+  <category><text>$course$/Ćw. 4 – Opłacalność kogeneracji</text></category>
+</question>
+
+<!-- Pytanie 4.1: Moc elektryczna netto -->
+<question type="numerical">
+  <name><text>Ćw4 Zad. dom. – Moc elektryczna generatora [kW]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Turbina parowa o mocy teoretycznej \( N_t = 175{,}5 \text{ kW} \) napędza generator o sprawności \( \eta_{gen} = 90\% \).</p>
+<p>Oblicz rzeczywistą moc elektryczną \( N_{el} \) w <strong>kW</strong>.</p>
+<p>Wynik zaokrąglij do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>158.0</text><tolerance>2</tolerance></answer>
+</question>
+
+<!-- Pytanie 4.2: Roczna produkcja energii -->
+<question type="numerical">
+  <name><text>Ćw4 Zad. dom. – Roczna produkcja energii [MWh]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Generator o mocy \( N_{el} \approx 158 \text{ kW} \) pracuje \( 4000 \text{ h/rok} \).</p>
+<p>Oblicz roczną produkcję energii elektrycznej w <strong>MWh/rok</strong>.</p>
+<p>Wynik zaokrąglij do całości.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>632</text><tolerance>10</tolerance></answer>
+</question>
+
+<!-- Pytanie 4.3: Roczny zysk -->
+<question type="numerical">
+  <name><text>Ćw4 Zad. dom. – Roczny zysk [PLN]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Roczna produkcja energii wynosi ok. \( 632 \text{ MWh/rok} \). Cena prądu dla przemysłu: \( 0{,}80 \text{ PLN/kWh} \).</p>
+<p>Oblicz roczny zysk (oszczędność) w <strong>PLN</strong>.</p>
+<p>Wynik zaokrąglij do tysięcy.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>505600</text><tolerance>10000</tolerance></answer>
+  <answer fraction="50"><text>506000</text><tolerance>15000</tolerance></answer>
+</question>
+
+<!-- Pytanie 4.4: SPBT -->
+<question type="numerical">
+  <name><text>Ćw4 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>Koszt instalacji turbiny: \( 150\,000 \text{ PLN} \). Roczny zysk: ok. \( 505\,600 \text{ PLN/rok} \).</p>
+<p>Oblicz prosty czas zwrotu inwestycji SPBT (Simple Payback Period) w <strong>latach</strong>.</p>
+<p>\( SPBT = \frac{\text{Koszt inwestycji}}{\text{Roczny zysk}} \)</p>
+<p>Wynik podaj z dokładnością do 1 miejsca po przecinku.</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>2</defaultgrade>
+  <penalty>0.1</penalty>
+  <answer fraction="100"><text>0.3</text><tolerance>0.05</tolerance></answer>
+</question>
+
+<!-- Pytanie 4.5: Decyzja inwestycyjna -->
+<question type="multichoice">
+  <name><text>Ćw4 Zad. dom. – Czy inwestycja się opłaca?</text></name>
+  <questiontext format="html">
+    <text><![CDATA[
+<p>SPBT wynosi ok. 0,3 roku (ok. 4 miesiące). Która z poniższych interpretacji jest NAJLEPSZA?</p>
+]]></text>
+  </questiontext>
+  <defaultgrade>1</defaultgrade>
+  <single>true</single>
+  <shuffleanswers>true</shuffleanswers>
+  <answer fraction="100"><text>Inwestycja jest bardzo opłacalna — zwraca się w mniej niż pół roku. Kogeneracja zamiast dławienia pary to duży zysk.</text></answer>
+  <answer fraction="0"><text>Inwestycja jest ryzykowna, bo turbina może się zepsuć przed zwrotem kosztów.</text></answer>
+  <answer fraction="0"><text>SPBT &lt; 1 roku oznacza, że obliczenia muszą zawierać błąd — to nierealne.</text></answer>
+  <answer fraction="0"><text>Dławienie pary na zaworze jest lepszym rozwiązaniem, bo nie wymaga inwestycji.</text></answer>
+</question>
+
+</quiz>
