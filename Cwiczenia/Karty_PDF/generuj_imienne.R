@@ -55,6 +55,7 @@ generate_params <- function(seed_val) {
     t_zas = sample(seq(40, 80, 10), 1),
     eta_k = sample(seq(0.85, 0.95, 0.05), 1),
     p_dlawienie = sample(1:4, 1),
+    hm = sample(seq(2200, 2600, 50), 1),
     p1_turb = sample(8:14, 1),
     t1_turb = sample(seq(200, 300, 25), 1),
     p2_turb = sample(seq(0.5, 2.0, 0.5), 1),
