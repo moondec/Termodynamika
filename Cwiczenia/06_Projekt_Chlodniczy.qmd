@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 6: Agregat Wody Lodowej (Chiller)"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 6: IAgregat wody lodowej (Chiller)"
 format: 
   revealjs:
     slide-number: true
@@ -33,7 +32,7 @@ Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło
 3.  Czy urządzenie będzie efektywne? ($EER$)
 :::
 ::: {.column width="40%"}
-![](../img/ahu_schematic.png?auto=format&fit=crop&q=80&w=800)
+![](../img/Agregat-wody-lodowej-chiller-Carrier-30RBP-520-o-wydajnosci-chlodniczej-520-kW.JPEG?auto=format&fit=crop&q=80&w=800)
 :::
 :::
 

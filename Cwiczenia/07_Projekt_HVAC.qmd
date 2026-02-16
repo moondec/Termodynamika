@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 7: Klimatyzacja Precyzyjna Hali"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 7: Klimatyzacja Precyzyjna Hali"
 format: 
   revealjs:
     slide-number: true

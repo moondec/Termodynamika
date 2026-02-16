@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 3: Bilans Kotłowni Parowej"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 3: Bilans Kotłowni Parowej"
 format: 
   revealjs:
     slide-number: true
@@ -141,7 +140,7 @@ $$ \dot{V}_{gaz} \approx \mathbf{171 \text{ m}^3/h} $$
 
 ---
 
-## 💧 Zadanie 3.4: Dławienie Pary (H = const)
+## 💧 Zadanie 3.4: Dławienie Pary (h = const)
 
 Przed wejściem do wymiennika ciepła ciśnienie pary jest redukowane zaworem redukcyjnym (dławienie) z $10 \text{ bar}$ do $2 \text{ bar}$.
 Proces dławienia jest **izentalpowy** ($h_3 \approx h_2$).
@@ -189,7 +188,7 @@ Ale jeśli ktoś zmierzy $h = 2400 \text{ kJ/kg}$ (zamiast $h'' = 2738$), to:
 $$ x = \frac{h - h'}{h'' - h'} = \frac{2400 - 605}{2738 - 605} = \frac{1795}{2133} \approx \mathbf{0.84} $$
 :::
 
-::: {.fragment .callout-warning}
+::: {.fragment .callout-warning style="font-size: 1.3em;"}
 $x = 0.84$ oznacza, że **16% to kropelki wody**! To niebezpieczne dla łopatek turbiny (erozja). W wymienniku ciepła jest to normalne.
 :::
 
@@ -224,22 +223,30 @@ Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): 
 
 ::: {.columns}
 ::: {.column width="50%"}
+
+::: {.fragment}
 **Z tablic:**
 
 *   Woda zasilająca ($60^\circ C$): $s_1 \approx 0.831 \text{ kJ/kgK}$.
 *   Para wylotowa ($10 \text{ bar}, 250^\circ C$): $s_2 = 6.926 \text{ kJ/kgK}$.
+:::
 
+::: {.fragment}
 **Zmiana entropii (na 1 kg):**
 $$ \Delta s = s_2 - s_1 = 6.926 - 0.831 $$
 $$ \Delta s = \mathbf{6.095 \text{ kJ/kgK}} $$
 :::
+:::
 ::: {.column width="50%"}
+
+::: {.fragment}
 **Strumień entropii:**
 $$ \dot{S} = \dot{m} \cdot \Delta s = 0.556 \cdot 6.095 $$
 $$ \dot{S} \approx \mathbf{3.39 \text{ kW/K}} $$
+:::
 
-::: {.fragment .callout-note}
-To ogromny wzrost entropii! Energia chemiczna paliwa (niska entropia) zamieniana jest na ciepło pary (wysoka entropia). Proces spalania jest silnie nieodwracalny.
+::: {.fragment .callout-note title="To ogromny wzrost entropii!"}
+Energia chemiczna paliwa (niska entropia) zamieniana jest na ciepło pary (wysoka entropia). Proces spalania jest silnie nieodwracalny.
 :::
 :::
 :::
@@ -254,14 +261,19 @@ Wymiennik ciepła (odbiornik) skrapla parę z $2 \text{ bar}, 236^\circ C$ do **
 ### Ile ciepła oddaje 1 kg pary w wymienniku?
 :::
 
-::: {.fragment style="font-size: 0.8em;"}
+::: {.fragment style="font-size: 0.9em;"}
 **Z tablic:**
 
 *   $h_{wlot} = 2943 \text{ kJ/kg}$ (para przegrzana, 2 bar, 236°C)
 *   $h_{wylot} = h' (2 \text{ bar}) = 504.7 \text{ kJ/kg}$ (ciecz nasycona)
 
-$$ q_{wymiennik} = h_{wlot} - h_{wylot} = 2943 - 504.7 = \mathbf{2438.3 \text{ kJ/kg}} $$
+:::
 
+::: {.fragment}
+$$ q_{wymiennik} = h_{wlot} - h_{wylot} = 2943 - 504.7 = \mathbf{2438.3 \text{ kJ/kg}} $$
+:::
+ 
+::: {.fragment}
 **Moc cieplna wymiennika** (przy $\dot{m} = 0.556$ kg/s):
 $$ \dot{Q}_{wym} = 0.556 \cdot 2438.3 \approx \mathbf{1356 \text{ kW} = 1.36 \text{ MW}} $$
 :::

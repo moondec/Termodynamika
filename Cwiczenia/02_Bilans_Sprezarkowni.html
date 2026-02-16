@@ -9,8 +9,7 @@
 <link href="02_Bilans_Sprezarkowni_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 2: Bilans Sprężarkowni</title>
+  <title>Ćwiczenie 2: Bilans Sprężarkowni (kompresorowni)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -129,14 +128,9 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 2: Bilans Sprężarkowni</h1>
+  <h1 class="title">Ćwiczenie 2: Bilans Sprężarkowni (kompresorowni)</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Marek Urbaniak 
-</div>
-</div>
 </div>
 
 </section>
@@ -169,7 +163,7 @@ Marek Urbaniak
 <p><strong>Wzór na pracę techniczną przemiany politropowej</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
+<p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(1-\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}\right] \]</span></p>
 </div>
 </div>
 </div>
@@ -185,21 +179,43 @@ Marek Urbaniak
 </ul>
 </div><div class="column" style="width:70%;">
 <div class="fragment">
-<p><span class="math display">\[ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ (9.5)^{\frac{0.35}{1.35}} - 1 \right] \]</span> <span class="math display">\[ l_t = 3.857 \cdot 84134 \cdot [ 1.795 - 1 ] \]</span> <span class="math display">\[ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 \text{ kJ/kg}} \]</span></p>
+<p><span class="math display">\[ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ 1-(9.5)^{\frac{0.35}{1.35}} \right] \]</span> <span class="math display">\[ l_t = 3.857 \cdot 84134 \cdot [ 1-1.795 ] \]</span> <span class="math display">\[ l_t \approx 324\,400 \cdot (-0.795) \approx \mathbf{-258\,000 \text{ J/kg} = -258 \text{ kJ/kg}} \]</span></p>
 </div>
 </div></div>
+<div class="fragment" title="UWAGA!">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>UWAGA!</strong></p>
+</div>
+<div class="callout-content">
+<p>Ujemna <strong>praca techniczna</strong> oznacza, że sprężarka pobiera pracę z zewnątrz! Czyli napędzana jest silnikiem!</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="zadanie-2.2-moc-silnika-napędowego" class="slide level2">
 <h2>⚡ Zadanie 2.2: Moc Silnika Napędowego</h2>
 <p>Jaka jest teoretyczna moc sprężarki (<span class="math inline">\(N_t\)</span>)?</p>
+<div class="fragment">
 <ol type="1">
 <li><p><strong>Strumień masy:</strong> <span class="math inline">\(\dot{m} = ?\)</span></p>
 <ul>
 <li><strong>Wzór:</strong> <span class="math inline">\(\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}\)</span> (warunki normalne: <span class="math inline">\(p_n = 101325\)</span> Pa, <span class="math inline">\(T_n = 273.15\)</span> K).</li>
 <li><span class="math inline">\(\dot{m} = \frac{101325 \cdot (100/3600)}{287 \cdot 273.15} = \frac{2814.5}{78394} \approx 0.0358 \text{ kg/s}\)</span>.</li>
 </ul></li>
-<li><p><strong>Moc teoretyczna:</strong> <span class="math display">\[ N_t = \dot{m} \cdot l_t \]</span> <span class="math display">\[ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} \]</span></p></li>
 </ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><strong>Moc teoretyczna:</strong> <span class="math display">\[ N_t = \dot{m} \cdot l_t \]</span> <span class="math display">\[ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} \]</span></li>
+</ol>
+</div>
+<div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -210,6 +226,7 @@ Marek Urbaniak
 </div>
 <div class="callout-content">
 <p>Rzeczywista moc będzie wyższa przez sprawność mechaniczną (<span class="math inline">\(\eta_m \approx 0.9\)</span>). <span class="math inline">\(N_{silnika} = N_t / 0.9 \approx 10.3 \text{ kW}\)</span>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -228,9 +245,12 @@ Marek Urbaniak
 <section id="zadanie-2.4-bilans-ciepła-i-zasada" class="slide level2">
 <h2>❄️ Zadanie 2.4: Bilans Ciepła (I Zasada)</h2>
 <p>Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do <span class="math inline">\(30^\circ C\)</span> przed podaniem na halę?</p>
+<div class="fragment">
 <p><strong>I Zasada dla układu otwartego (chłodnica - ciśnienie stałe <span class="math inline">\(p=const\)</span>):</strong> <span class="math display">\[ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{wyl} - t_{wl}) \]</span></p>
+</div>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="fragment">
 <p><strong>Dane:</strong></p>
 <ul>
 <li><span class="math inline">\(\dot{m} = 0.0358 \text{ kg/s}\)</span></li>
@@ -238,9 +258,12 @@ Marek Urbaniak
 <li><span class="math inline">\(t_{wyl} = 30^\circ C\)</span> (wymagane)</li>
 <li><span class="math inline">\(c_p \approx 1005 \text{ J}/(\text{kg K})\)</span></li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
+<div class="fragment">
 <p><strong>Obliczenia:</strong> <span class="math display">\[ \dot{Q} = 0.0358 \cdot 1005 \cdot (30 - 253) \]</span> <span class="math display">\[ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} \]</span></p>
 <p>(Minus oznacza ciepło odprowadzone <strong>Z</strong> układu).</p>
+</div>
 </div></div>
 </section>
 <section id="zadanie-2.5-sprężanie-dwustopniowe" class="slide level2">
@@ -346,7 +369,7 @@ Marek Urbaniak
 <p><span class="math display">\[ T_2/T_1 = (p_2/p_1)^{(n-1)/n} \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="fragment" title="Krok 1: Logarytmowanie">
+<div class="fragment" title="Krok 1: Logarytmowanie" style="font-size: 1.3em;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -362,7 +385,7 @@ Marek Urbaniak
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment" title="Krok 2: Wyznaczenie n">
+<div class="fragment" title="Krok 2: Wyznaczenie n" style="font-size: 1.3em;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -378,7 +401,7 @@ Marek Urbaniak
 </div>
 </div>
 </div></div>
-<div class="fragment">
+<div class="fragment" style="font-size: 1.3em;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">

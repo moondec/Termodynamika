@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 2: Bilans Sprężarkowni"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 2: Bilans Sprężarkowni (kompresorowni)"
 format: 
   revealjs:
     slide-number: true
@@ -36,7 +35,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 Oblicz jednostkową pracę techniczną $l_t$ potrzebną do sprężenia 1 kg powietrza.
 
 ::: {.callout-note title="Wzór na pracę techniczną przemiany politropowej"}
-$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
+$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(1-\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}\right] $$
 :::
 
 ::: {.columns}
@@ -50,11 +49,15 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}
 :::
 ::: {.column width="70%"}
 ::: {.fragment}
-$$ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ (9.5)^{\frac{0.35}{1.35}} - 1 \right] $$
-$$ l_t = 3.857 \cdot 84134 \cdot [ 1.795 - 1 ] $$
-$$ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 \text{ kJ/kg}} $$
+$$ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ 1-(9.5)^{\frac{0.35}{1.35}} \right] $$
+$$ l_t = 3.857 \cdot 84134 \cdot [ 1-1.795 ] $$
+$$ l_t \approx 324\,400 \cdot (-0.795) \approx \mathbf{-258\,000 \text{ J/kg} = -258 \text{ kJ/kg}} $$
 :::
 :::
+:::
+
+::: {.fragment .callout-warning title="UWAGA!"}
+Ujemna **praca techniczna** oznacza, że sprężarka pobiera pracę z zewnątrz! Czyli napędzana jest silnikiem! 
 :::
 
 ---
@@ -63,16 +66,20 @@ $$ l_t \approx 324\,400 \cdot 0.795 \approx \mathbf{258\,000 \text{ J/kg} = 258 
 
 Jaka jest teoretyczna moc sprężarki ($N_t$)?
 
+::: {.fragment}
 1.  **Strumień masy:** $\dot{m} = ?$
 
     *   **Wzór:** $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273.15$ K).
     *   $\dot{m} = \frac{101325 \cdot (100/3600)}{287 \cdot 273.15} = \frac{2814.5}{78394} \approx 0.0358 \text{ kg/s}$.
+:::
 
+::: {.fragment}
 2.  **Moc teoretyczna:**
     $$ N_t = \dot{m} \cdot l_t $$
     $$ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} $$
+:::
 
-::: {.callout-tip}
+::: {.fragment .callout-tip}
 Rzeczywista moc będzie wyższa przez sprawność mechaniczną ($\eta_m \approx 0.9$).
 $N_{silnika} = N_t / 0.9 \approx 10.3 \text{ kW}$.
 :::
@@ -101,11 +108,14 @@ $$ T_2 = 293.15 \cdot 1.795 \approx \mathbf{526 \text{ K} = 253^\circ C} $$
 
 Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do $30^\circ C$ przed podaniem na halę?
 
+::: {.fragment}
 **I Zasada dla układu otwartego (chłodnica - ciśnienie stałe $p=const$):**
 $$ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{wyl} - t_{wl}) $$
+:::
 
 ::: {.columns}
 ::: {.column width="50%"}
+::: {.fragment}
 **Dane:**
  
 *   $\dot{m} = 0.0358 \text{ kg/s}$
@@ -113,12 +123,16 @@ $$ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{
 *   $t_{wyl} = 30^\circ C$ (wymagane)
 *   $c_p \approx 1005 \text{ J}/(\text{kg K})$
 :::
+:::
+
 ::: {.column width="50%"}
+::: {.fragment}
 **Obliczenia:**
 $$ \dot{Q} = 0.0358 \cdot 1005 \cdot (30 - 253) $$
 $$ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
 
 (Minus oznacza ciepło odprowadzone **Z** układu).
+:::
 :::
 :::
 
@@ -241,7 +255,7 @@ $$ T_2/T_1 = (p_2/p_1)^{(n-1)/n} $$
 
 ::: {.columns}
 ::: {.column width="50%"}
-::: {.fragment .callout-note title="Krok 1: Logarytmowanie"}
+::: {.fragment .callout-note title="Krok 1: Logarytmowanie" style="font-size: 1.3em;"}
 $$ \frac{488.15}{295.15} = 8^{(n-1)/n} $$
 $$ 1.654 = 8^{(n-1)/n} $$
 $$ \ln(1.654) = \frac{n-1}{n} \cdot \ln(8) $$
@@ -249,7 +263,7 @@ $$ \ln(1.654) = \frac{n-1}{n} \cdot \ln(8) $$
 :::
 
 ::: {.column width="50%"}
-::: {.fragment .callout-tip title="Krok 2: Wyznaczenie n"}
+::: {.fragment .callout-tip title="Krok 2: Wyznaczenie n" style="font-size: 1.3em;"}
 $$ 0.503 = \frac{n-1}{n} \cdot 2.079 $$
 $$ \frac{n-1}{n} = 0.242 $$
 $$ n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
@@ -257,7 +271,7 @@ $$ n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
 :::
 :::
 
-::: {.fragment .callout-tip}
+::: {.fragment .callout-tip style="font-size: 1.3em;"}
 $n = 1.32 < \kappa = 1.4$ — sprężarka jest dobrze chłodzona (bliżej procesu izotermicznego niż adiabatycznego).
 :::
 

@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 5: Entropia i Jakość Ciepła"
-author: "Marek Urbaniak"
+title: "Ćwiczenie  5: Entropia i Jakość Ciepła"
 format: 
   revealjs:
     slide-number: true
@@ -166,7 +165,7 @@ Straciliśmy z tego $48 \text{ kW}$ (egzergia zniszczona w wymienniku). Odzyskal
 $$ \psi = 1 - \frac{\dot{B}_{str}}{\dot{B}_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} $$
 :::
 
-::: {.fragment .callout-warning}
+::: {.fragment .callout-warning title="Uwaga" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; z-index: 10; background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3); font-size: 1.3em;"}
 Tylko **35%** potencjału energetycznego spalin wykorzystujemy mądrze. Reszta jest tracona na nieodwracalność.
 :::
 

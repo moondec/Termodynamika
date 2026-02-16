@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 1: Projekt Fabryka - Start"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 1: Projekt Fabryka - Wprowadzenie"
 format: 
   revealjs:
     slide-number: true
@@ -155,10 +154,12 @@ $$ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3
 
 ---
 
-## 🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona) {.smaller}
+## 🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)
 
 W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ (objętościowo), przy $p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3$.
 
+:::{cloumns}
+::: {.column width="50%"}
 ### Oblicz:
 1.  Ciśnienie parcjalne każdego składnika.
 2.  Masę każdego składnika.
@@ -168,12 +169,18 @@ W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ 
 
 *   $p_{N_2} = 0.80 \cdot 500 = \mathbf{400 \text{ kPa}}$
 *   $p_{O_2} = 0.20 \cdot 500 = \mathbf{100 \text{ kPa}}$
+:::
+:::
 
+::: {.column width="50%"}
+::: {.fragment}
 **Krok 2: Masy** ($m_i = \frac{p_i V}{R_i T}$, gdzie $R_{N_2}=297, R_{O_2}=260$ J/kgK)
 
 *   $m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}$
 *   $m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}$
 
+:::
+:::
 :::
 
 ::: {.fragment .callout-tip title="Masa całkowita: $m = 9.19 + 2.62 = \mathbf{11.81 \text{ kg}}$."}

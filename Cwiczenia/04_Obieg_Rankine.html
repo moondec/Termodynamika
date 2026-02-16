@@ -9,8 +9,7 @@
 <link href="04_Obieg_Rankine_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 4: Kogeneracja (Obieg Parowy)</title>
+  <title>Ćwiczenie 4: Kogeneracja (Obieg Parowy)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -129,14 +128,9 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 4: Kogeneracja (Obieg Parowy)</h1>
+  <h1 class="title">Ćwiczenie 4: Kogeneracja (Obieg Parowy)</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Marek Urbaniak 
-</div>
-</div>
 </div>
 
 </section>
@@ -151,7 +145,12 @@ Marek Urbaniak
 <li>Sprawdzić stan pary na wylocie (czy jest mokra?).</li>
 <li>Obliczyć moc elektryczną generatora.</li>
 </ol>
-<p><strong>Dane wejściowe:</strong> * Wlot: <span class="math inline">\(p_1=10 \text{ bar}, t_1=250^\circ C\)</span>. * Wylot: <span class="math inline">\(p_2=2 \text{ bar}\)</span>. * Strumień: <span class="math inline">\(\dot{m}=2 \text{ t/h}\)</span>.</p>
+<p><strong>Dane wejściowe:</strong></p>
+<ul>
+<li>Wlot: <span class="math inline">\(p_1=10 \text{ bar}, t_1=250^\circ C\)</span>.</li>
+<li>Wylot: <span class="math inline">\(p_2=2 \text{ bar}\)</span>.</li>
+<li>Strumień: <span class="math inline">\(\dot{m}=2 \text{ t/h}\)</span>.</li>
+</ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="../img/turbina.png"></p>
 </div></div>
@@ -196,18 +195,23 @@ Marek Urbaniak
 <p>Jaka część pary skropliła się w turbinie?</p>
 <p><span class="math display">\[ s_2 = s' + x_2 (s'' - s') \]</span> <span class="math display">\[ x_2 = \frac{s_2 - s'}{s'' - s'} \]</span></p>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="fragment column" style="width:50%;">
 <p><strong>Obliczenia:</strong> <span class="math display">\[ x_2 = \frac{6.926 - 1.530}{7.127 - 1.530} \]</span> <span class="math display">\[ x_2 = \frac{5.396}{5.597} \approx \mathbf{0.964} \]</span></p>
-</div><div class="column" style="width:50%;">
+</div><div class="fragment column" style="width:50%;">
 <p><strong>Interpretacja:</strong> 96.4% to para sucha, a <strong>3.6% to kropelki wody</strong>. To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się <span class="math inline">\(x &gt; 0.85-0.90\)</span>).</p>
 </div></div>
 </section>
 <section id="zadanie-4.3-moc-turbiny" class="slide level2">
 <h2>⚡ Zadanie 4.3: Moc Turbiny</h2>
-<p>Obliczamy entalpię na wylocie (<span class="math inline">\(h_{2s}\)</span>) dla procesu izentropowego: <span class="math display">\[ h_{2s} = h' + x_2 (h'' - h') \]</span> Dla 2 bar: <span class="math inline">\(h' = 504.7\)</span>, <span class="math inline">\(h'' = 2706.7\)</span>.</p>
+<p>Obliczamy entalpię na wylocie (<span class="math inline">\(h_{2s}\)</span>) dla procesu izentropowego: <span class="math display">\[ h_{2s} = h' + x_2 (h'' - h') \]</span></p>
+<div class="fragment">
+<p>Dla 2 bar: <span class="math inline">\(h' = 504.7\)</span>, <span class="math inline">\(h'' = 2706.7\)</span>.</p>
 <p><span class="math display">\[ h_{2s} = 504.7 + 0.964 \cdot (2706.7 - 504.7) \]</span> <span class="math display">\[ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4 \text{ kJ/kg}} \]</span></p>
+</div>
+<div class="fragment">
 <h3 id="moc-teoretyczna-n_t">Moc Teoretyczna (<span class="math inline">\(N_t\)</span>):</h3>
 <p><span class="math display">\[ N_t = \dot{m} \cdot (h_1 - h_{2s}) \]</span> <span class="math display">\[ N_t = 0.556 \text{ kg/s} \cdot (2943 - 2627.4) \text{ kJ/kg} \]</span> <span class="math display">\[ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} \]</span></p>
+</div>
 </section>
 <section id="zadanie-4.4-sprawność-izentropowa-turbiny" class="slide level2">
 <h2>🎯 Zadanie 4.4: Sprawność Izentropowa Turbiny</h2>
@@ -360,7 +364,7 @@ Marek Urbaniak
 <li>Oblicz rzeczywistą moc elektryczną (<span class="math inline">\(N_{el} = N_t \cdot \eta_{gen}\)</span>).</li>
 <li>Oblicz roczną produkcję energii [MWh].</li>
 <li>Oblicz roczny zysk [PLN].</li>
-<li>Oblicz czas zwrotu inwestycji (SPBT).</li>
+<li>Oblicz czas zwrotu inwestycji (SPBT - Simple Payback Period).</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">

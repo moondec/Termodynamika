@@ -1,6 +1,5 @@
 ---
-title: "Ćwiczenia 4: Kogeneracja (Obieg Parowy)"
-author: "Marek Urbaniak"
+title: "Ćwiczenie 4: Kogeneracja (Obieg Parowy)"
 format: 
   revealjs:
     slide-number: true
@@ -20,11 +19,13 @@ Zamiast zaworu proponujemy zainstalować **Turbinę Przeciwprężną**.
 ::: {.columns}
 ::: {.column width="60%"}
 ### Twoje Zadanie:
+
 1.  Obliczyć teoretyczną (izentropową) pracę turbiny.
 2.  Sprawdzić stan pary na wylocie (czy jest mokra?).
 3.  Obliczyć moc elektryczną generatora.
 
 **Dane wejściowe:**
+
 *   Wlot: $p_1=10 \text{ bar}, t_1=250^\circ C$.
 *   Wylot: $p_2=2 \text{ bar}$.
 *   Strumień: $\dot{m}=2 \text{ t/h}$.
@@ -76,12 +77,14 @@ $$ s_2 = s' + x_2 (s'' - s') $$
 $$ x_2 = \frac{s_2 - s'}{s'' - s'} $$
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.fragment .column width="50%"}
+
 **Obliczenia:**
 $$ x_2 = \frac{6.926 - 1.530}{7.127 - 1.530} $$
 $$ x_2 = \frac{5.396}{5.597} \approx \mathbf{0.964} $$
+
 :::
-::: {.column width="50%"}
+::: {.fragment .column width="50%"}
 **Interpretacja:**
 96.4% to para sucha, a **3.6% to kropelki wody**.
 To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się $x > 0.85-0.90$).
@@ -94,15 +97,21 @@ To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się $x > 0.8
 
 Obliczamy entalpię na wylocie ($h_{2s}$) dla procesu izentropowego:
 $$ h_{2s} = h' + x_2 (h'' - h') $$
+
+::: {.fragment}
+
 Dla 2 bar: $h' = 504.7$, $h'' = 2706.7$.
 
 $$ h_{2s} = 504.7 + 0.964 \cdot (2706.7 - 504.7) $$
 $$ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4 \text{ kJ/kg}} $$
+:::
 
+::: {.fragment}
 ### Moc Teoretyczna ($N_t$):
 $$ N_t = \dot{m} \cdot (h_1 - h_{2s}) $$
 $$ N_t = 0.556 \text{ kg/s} \cdot (2943 - 2627.4) \text{ kJ/kg} $$
 $$ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} $$
+:::
 
 ---
 
@@ -221,7 +230,7 @@ Turbina pracuje **4000 h/rok**.
 1.  Oblicz rzeczywistą moc elektryczną ($N_{el} = N_t \cdot \eta_{gen}$).
 2.  Oblicz roczną produkcję energii [MWh].
 3.  Oblicz roczny zysk [PLN].
-4.  Oblicz czas zwrotu inwestycji (SPBT).
+4.  Oblicz czas zwrotu inwestycji (SPBT - Simple Payback Period).
 
 ::: {.callout-tip}
 Czy opłaca się montować turbinę? Porównaj z kosztem dławienia pary na zaworze (0 PLN zysku).

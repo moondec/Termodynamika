@@ -9,8 +9,7 @@
 <link href="03_Kociol_Parowy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="Marek Urbaniak">
-  <title>Ćwiczenia 3: Bilans Kotłowni Parowej</title>
+  <title>Ćwiczenie 3: Bilans Kotłowni Parowej</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -129,14 +128,9 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenia 3: Bilans Kotłowni Parowej</h1>
+  <h1 class="title">Ćwiczenie 3: Bilans Kotłowni Parowej</h1>
 
 <div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Marek Urbaniak 
-</div>
-</div>
 </div>
 
 </section>
@@ -254,7 +248,7 @@ Marek Urbaniak
 </div></div>
 </section>
 <section id="zadanie-3.4-dławienie-pary-h-const" class="slide level2">
-<h2>💧 Zadanie 3.4: Dławienie Pary (H = const)</h2>
+<h2>💧 Zadanie 3.4: Dławienie Pary (h = const)</h2>
 <p>Przed wejściem do wymiennika ciepła ciśnienie pary jest redukowane zaworem redukcyjnym (dławienie) z <span class="math inline">\(10 \text{ bar}\)</span> do <span class="math inline">\(2 \text{ bar}\)</span>. Proces dławienia jest <strong>izentalpowy</strong> (<span class="math inline">\(h_3 \approx h_2\)</span>).</p>
 <p><strong>Pytanie:</strong> Jaka będzie temperatura pary po dławieniu?</p>
 <ol type="1">
@@ -289,7 +283,7 @@ Marek Urbaniak
 <p>Z tablic nasycenia dla <span class="math inline">\(p = 4 \text{ bar}\)</span>: <span class="math inline">\(t_{sat} = 143.6^\circ C\)</span>. <span class="math inline">\(t_{rzecz} = t_{sat}\)</span> → Para jest <strong>nasycona</strong> (na linii nasycenia).</p>
 <p>Ale jeśli ktoś zmierzy <span class="math inline">\(h = 2400 \text{ kJ/kg}\)</span> (zamiast <span class="math inline">\(h'' = 2738\)</span>), to: <span class="math display">\[ x = \frac{h - h'}{h'' - h'} = \frac{2400 - 605}{2738 - 605} = \frac{1795}{2133} \approx \mathbf{0.84} \]</span></p>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 1.3em;">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -354,25 +348,31 @@ Marek Urbaniak
 <p>Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): woda <span class="math inline">\(60^\circ C\)</span> → para <span class="math inline">\(10 \text{ bar}, 250^\circ C\)</span>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="fragment">
 <p><strong>Z tablic:</strong></p>
 <ul>
 <li>Woda zasilająca (<span class="math inline">\(60^\circ C\)</span>): <span class="math inline">\(s_1 \approx 0.831 \text{ kJ/kgK}\)</span>.</li>
 <li>Para wylotowa (<span class="math inline">\(10 \text{ bar}, 250^\circ C\)</span>): <span class="math inline">\(s_2 = 6.926 \text{ kJ/kgK}\)</span>.</li>
 </ul>
-<p><strong>Zmiana entropii (na 1 kg):</strong> <span class="math display">\[ \Delta s = s_2 - s_1 = 6.926 - 0.831 \]</span> <span class="math display">\[ \Delta s = \mathbf{6.095 \text{ kJ/kgK}} \]</span></p>
-</div><div class="column" style="width:50%;">
-<p><strong>Strumień entropii:</strong> <span class="math display">\[ \dot{S} = \dot{m} \cdot \Delta s = 0.556 \cdot 6.095 \]</span> <span class="math display">\[ \dot{S} \approx \mathbf{3.39 \text{ kW/K}} \]</span></p>
+</div>
 <div class="fragment">
+<p><strong>Zmiana entropii (na 1 kg):</strong> <span class="math display">\[ \Delta s = s_2 - s_1 = 6.926 - 0.831 \]</span> <span class="math display">\[ \Delta s = \mathbf{6.095 \text{ kJ/kgK}} \]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Strumień entropii:</strong> <span class="math display">\[ \dot{S} = \dot{m} \cdot \Delta s = 0.556 \cdot 6.095 \]</span> <span class="math display">\[ \dot{S} \approx \mathbf{3.39 \text{ kW/K}} \]</span></p>
+</div>
+<div class="fragment" title="To ogromny wzrost entropii!">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>To ogromny wzrost entropii!</strong></p>
 </div>
 <div class="callout-content">
-<p>To ogromny wzrost entropii! Energia chemiczna paliwa (niska entropia) zamieniana jest na ciepło pary (wysoka entropia). Proces spalania jest silnie nieodwracalny.</p>
+<p>Energia chemiczna paliwa (niska entropia) zamieniana jest na ciepło pary (wysoka entropia). Proces spalania jest silnie nieodwracalny.</p>
 </div>
 </div>
 </div>
@@ -385,13 +385,17 @@ Marek Urbaniak
 <p>Wymiennik ciepła (odbiornik) skrapla parę z <span class="math inline">\(2 \text{ bar}, 236^\circ C\)</span> do <strong>wrzątku</strong> (<span class="math inline">\(t_{sat} = 120.2^\circ C\)</span> przy 2 bar). Kondensat wraca do kotła.</p>
 <h3 id="ile-ciepła-oddaje-1-kg-pary-w-wymienniku">Ile ciepła oddaje 1 kg pary w wymienniku?</h3>
 </div>
-<div class="fragment" style="font-size: 0.8em;">
+<div class="fragment" style="font-size: 0.9em;">
 <p><strong>Z tablic:</strong></p>
 <ul>
 <li><span class="math inline">\(h_{wlot} = 2943 \text{ kJ/kg}\)</span> (para przegrzana, 2 bar, 236°C)</li>
 <li><span class="math inline">\(h_{wylot} = h' (2 \text{ bar}) = 504.7 \text{ kJ/kg}\)</span> (ciecz nasycona)</li>
 </ul>
+</div>
+<div class="fragment">
 <p><span class="math display">\[ q_{wymiennik} = h_{wlot} - h_{wylot} = 2943 - 504.7 = \mathbf{2438.3 \text{ kJ/kg}} \]</span></p>
+</div>
+<div class="fragment">
 <p><strong>Moc cieplna wymiennika</strong> (przy <span class="math inline">\(\dot{m} = 0.556\)</span> kg/s): <span class="math display">\[ \dot{Q}_{wym} = 0.556 \cdot 2438.3 \approx \mathbf{1356 \text{ kW} = 1.36 \text{ MW}} \]</span></p>
 </div>
 <div class="fragment">
