@@ -1227,7 +1227,7 @@
             <text>Cw03_Zad3_5_Stopien_suchosci</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Stopień Suchości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Pomiar w odbiorniku: \(p =\) &lt;b&gt;{pm}&lt;/b&gt; bar, zmierzona entalpia \(h =\) &lt;b&gt;{hm}&lt;/b&gt; kJ/kg.&lt;br&gt;Z tablic nasycenia przyjmij przybliżenie: \(h\prime \approx 500\) kJ/kg, \(h\prime\prime \approx 2710\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stopień suchości \(x\):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$x = \frac{h - h\prime}{h\prime\prime - h\prime}$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Stopień Suchości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Pomiar w odbiorniku: \(p =\) &lt;b&gt;{pdl}&lt;/b&gt; bar, zmierzona entalpia \(h =\) &lt;b&gt;{hm}&lt;/b&gt; kJ/kg.&lt;br&gt;Z tablic nasycenia przyjmij przybliżenie: \(h\prime \approx 500\) kJ/kg, \(h\prime\prime \approx 2710\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stopień suchości \(x\):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$x = \frac{h - h\prime}{h\prime\prime - h\prime}$$&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;\(x = (h - 500) / (2710 - 500)\). Jeśli \(x &lt; 0.85\) → ryzyko erozji łopatek turbiny.&lt;/p&gt;</text>
@@ -1269,7 +1269,7 @@
                     <text>shared</text>
                 </status>
                 <name>
-                    <text>pm</text>
+                    <text>pdl</text>
                 </name>
                 <type>calculated</type>
                 <distribution>
@@ -1285,6 +1285,7 @@
                     <text>0</text>
                 </decimals>
                 <itemcount>50</itemcount>
+                <number_of_items>50</number_of_items>
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
@@ -1292,19 +1293,19 @@
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>6</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2</value>
+                        <value>3</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2</value>
+                        <value>5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>5</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
@@ -1316,35 +1317,35 @@
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2</value>
+                        <value>4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>4</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>3</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>3</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
                         <value>6</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>14</number>
+                        <number>10</number>
                         <value>3</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>15</number>
+                        <number>11</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
                         <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
@@ -1352,11 +1353,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>5</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>6</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
@@ -1364,31 +1365,31 @@
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>6</value>
+                        <value>5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>5</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>4</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>6</value>
+                        <value>3</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>4</value>
+                        <value>6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>5</value>
+                        <value>3</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
-                        <value>3</value>
+                        <value>5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
@@ -1396,39 +1397,39 @@
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
-                        <value>2</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>3</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>3</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>3</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
                         <value>4</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>35</number>
+                        <number>29</number>
                         <value>6</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>36</number>
+                        <number>30</number>
                         <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
@@ -1436,11 +1437,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>3</value>
+                        <value>4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>39</number>
-                        <value>3</value>
+                        <value>2</value>
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
@@ -1448,7 +1449,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
-                        <value>6</value>
+                        <value>3</value>
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
@@ -1456,27 +1457,27 @@
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
-                        <value>3</value>
+                        <value>5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
-                        <value>2</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>2</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
                         <value>3</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>45</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>48</number>
-                        <value>5</value>
+                        <value>6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
@@ -1487,7 +1488,6 @@
                         <value>2</value>
                     </dataset_item>
                 </dataset_items>
-                <number_of_items>50</number_of_items>
             </dataset_definition>
             <dataset_definition>
                 <status>
