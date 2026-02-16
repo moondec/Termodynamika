@@ -60,6 +60,7 @@ params:
   t_zas: 60
   eta_k: 0.90
   p_dlawienie: 2
+  hm: 2400
   # Ćw.4 — Turbina
   p1_turb: 10
   t1_turb: 250
@@ -91,6 +92,24 @@ params:
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 p <- params
 sa <- params$show_answers
+
+# ---- CoolProp via reticulate ----
+library(reticulate)
+use_virtualenv("termo", required = TRUE)
+cp <- import("CoolProp.CoolProp")
+
+# Wrapper: Water/Steam properties
+PropW <- function(prop, input1, val1, input2, val2) {
+  cp$PropsSI(prop, input1, val1, input2, val2, "Water")
+}
+# Wrapper: Refrigerant properties
+PropR <- function(prop, input1, val1, input2, val2, fluid = "R134a") {
+  cp$PropsSI(prop, input1, val1, input2, val2, fluid)
+}
+# Wrapper: Humid air properties
+HAP <- function(prop, in1, v1, in2, v2, in3, v3) {
+  cp$HAPropsSI(prop, in1, v1, in2, v2, in3, v3)
+}
 
 # ---- Obliczenia Ćw.1 ----
 p_atm_kPa <- p$p_atm * 0.13332
@@ -147,57 +166,78 @@ log_T <- log(T2_p / T1_p)
 log_p <- log(p$p2_pom / p$p1_pom)
 n_real <- 1 / (1 - log_T / log_p)
 
-# ---- Obliczenia Ćw.3 ----
-h1_kociol <- 4.19 * p$t_zas
-# Zad 3.1: Temperatura nasycenia z tablic pary wodnej
-# (przybliżenie Antoine/aproksymacja tabelaryczna)
-tsat_kociol <- ifelse(p$p_kociol == 10, 179.9,
-               ifelse(p$p_kociol == 12, 188.0,
-               ifelse(p$p_kociol == 15, 198.3, 185.0)))
-Q_kociol <- p$m_dot_kociol * 1000 / 3600 * (2800 - h1_kociol)
+# ---- Obliczenia Ćw.3 (CoolProp) ----
+p_k_Pa <- p$p_kociol * 1e5  # ciśnienie kotła [Pa]
+T_para_K <- p$t_para + 273.15
+T_zas_K <- p$t_zas + 273.15
+p_dlaw_Pa <- p$p_dlawienie * 1e5
+
+# Zad 3.1: Temperatura nasycenia (CoolProp)
+tsat_kociol <- PropW("T", "P", p_k_Pa, "Q", 0) - 273.15
+
+# Zad 3.2: Entalpia wody zasilającej i pary
+h1_kociol <- PropW("H", "T", T_zas_K, "Q", 0) / 1000  # ciecz nasycona [kJ/kg]
+h2_kociol <- PropW("H", "P", p_k_Pa, "T", T_para_K) / 1000  # para przegrzana [kJ/kg]
+Q_kociol <- p$m_dot_kociol * 1000 / 3600 * (h2_kociol - h1_kociol)
+
+# Zad 3.3: Zużycie gazu
 V_gaz <- Q_kociol / (p$eta_k * 50000 * 0.7) * 3600
-x_suchy <- (2400 - 500) / (2710 - 500) # przykładowe h_mokra ≈ 2400
 
-# Zad 3.4 - Dławienie
+# Zad 3.4: Dławienie (h=const → T po dławieniu)
 p_dlaw <- p$p_dlawienie
-t_3_dlaw <- 236 # Wartość z tablic dla 2 bar, h=2943
+h_before_dlaw <- PropW("H", "P", p_k_Pa, "T", T_para_K)  # [J/kg]
+t_3_dlaw <- PropW("T", "H", h_before_dlaw, "P", p_dlaw_Pa) - 273.15  # [°C]
 
-# Zad 3.5 - Para Mokra
-p_mokra <- 4
-t_mokra <- 143.6
-x_mokra <- 0.84 # Dla h=2400
+# Zad 3.5: Para Mokra — stopień suchości
+# hm podane jako parametr (z zakresu 2200-2600 kJ/kg)
+hf_mokra <- PropW("H", "P", p_dlaw_Pa, "Q", 0) / 1000   # h' [kJ/kg]
+hg_mokra <- PropW("H", "P", p_dlaw_Pa, "Q", 1) / 1000   # h'' [kJ/kg]
+t_mokra <- PropW("T", "P", p_dlaw_Pa, "Q", 0) - 273.15  # Tsat [°C]
+x_mokra <- (p$hm - hf_mokra) / (hg_mokra - hf_mokra)
+# Zabezpieczenie zakresu x
+if (x_mokra > 1) x_mokra <- 1
+if (x_mokra < 0) x_mokra <- 0
 
-# Zad 3.6 - Interpolacja
-p_interp <- 12
-t_interp <- 275
-h_interp <- 2990.5
-s_interp <- 6.923
+# Zad 3.6: Interpolacja — dokładne wartości z CoolProp
+p_interp <- p$p_kociol
+t_interp <- p$t_para
+h_interp <- PropW("H", "P", p_k_Pa, "T", T_para_K) / 1000
+s_interp <- PropW("S", "P", p_k_Pa, "T", T_para_K) / 1000
 
-# Zad 3.7 - Entropia
-s1_kociol <- 0.831 # Woda 60C
-s2_kociol <- 6.926 # Para 10 bar, 250C (wzięte z przykładu, gdyż brak funkcji s(p,t))
+# Zad 3.7: Entropia
+s1_kociol <- PropW("S", "T", T_zas_K, "Q", 0) / 1000    # s wody zasilającej
+s2_kociol <- PropW("S", "P", p_k_Pa, "T", T_para_K) / 1000  # s pary
 dS_kociol <- s2_kociol - s1_kociol
 S_dot_kociol <- p$m_dot_kociol * 1000 / 3600 * dS_kociol
 
-# Zad 3.8 - Kondensat
-h_wlot_wym <- 2943
-h_wylot_wym <- 504.7 # Ciecz nasycona 2 bar
+# Zad 3.8: Kondensat (wymiennik ciepła)
+h_wlot_wym <- h2_kociol  # entalpia pary wlotowej [kJ/kg]
+h_wylot_wym <- PropW("H", "P", p_dlaw_Pa, "Q", 0) / 1000  # ciecz nasycona [kJ/kg]
 q_wym_jedn <- h_wlot_wym - h_wylot_wym
 Q_wym_total <- p$m_dot_kociol * 1000 / 3600 * q_wym_jedn
 
-# ---- Obliczenia Ćw.4 (10 bar -> 1 bar) ----
-h1_t <- 2942
-s1_t <- 6.92 # 10 bar, 250C
-sf_2 <- 1.30
-sg_2 <- 7.36
-hf_2 <- 417
-hg_2 <- 2675 # 1 bar
+# ---- Obliczenia Ćw.4 (CoolProp) ----
+p1t_Pa <- p$p1_turb * 1e5
+p2t_Pa <- p$p2_turb * 1e5
+T1t_K <- p$t1_turb + 273.15
+
+# Punkt 1: para przegrzana na wlocie turbiny
+h1_t <- PropW("H", "P", p1t_Pa, "T", T1t_K) / 1000   # [kJ/kg]
+s1_t <- PropW("S", "P", p1t_Pa, "T", T1t_K) / 1000   # [kJ/(kgK)]
+
+# Punkt 2: nasycenie przy p2 (wylot)
+sf_2 <- PropW("S", "P", p2t_Pa, "Q", 0) / 1000  # s'
+sg_2 <- PropW("S", "P", p2t_Pa, "Q", 1) / 1000  # s''
+hf_2 <- PropW("H", "P", p2t_Pa, "Q", 0) / 1000  # h'
+hg_2 <- PropW("H", "P", p2t_Pa, "Q", 1) / 1000  # h''
+
+# Rozprężanie izentropowe
 x_is <- (s1_t - sf_2) / (sg_2 - sf_2)
 h2s_t <- hf_2 + x_is * (hg_2 - hf_2)
 N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
 h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
 N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
-eta_Carnot <- (1 - 293.15 / (p$t1_turb + 273.15)) * 100 # T_L = otoczenie 20°C
+eta_Carnot <- (1 - 293.15 / T1t_K) * 100  # T_L = otoczenie 20°C
 
 # ---- Obliczenia Ćw.5 ----
 Q_wym <- p$m_spalin * 1 * (p$t_sp_in - p$t_sp_out)
@@ -243,10 +283,23 @@ dt1_pre <- p$t_sp_in - t_w_out_pre # Gorący (Spalin) - Gorący (Wody)
 dt2_pre <- p$t_sp_out - p$t_w_in   # Zimny (Spalin) - Zimny (Wody)
 LMTD_pre <- (dt1_pre - dt2_pre) / log(dt1_pre / dt2_pre)
 
-# ---- Obliczenia Ćw.6 ----
-h1_ch <- 395 + 1.5 * p$t_o
-h3_ch <- 240 + 0.8 * p$t_k
-h2_ch <- h1_ch + 25 + 0.4 * (p$t_k - p$t_o)
+# ---- Obliczenia Ćw.6 (CoolProp — R134a) ----
+To_K <- p$t_o + 273.15   # temp. parowania [K]
+Tk_K <- p$t_k + 273.15   # temp. skraplania [K]
+Po_Pa <- PropR("P", "T", To_K, "Q", 1)  # ciśn. parowania
+Pk_Pa <- PropR("P", "T", Tk_K, "Q", 0)  # ciśn. skraplania
+
+# Punkt 1: para nasycona sucha (wylot parownika)
+h1_ch <- PropR("H", "T", To_K, "Q", 1) / 1000   # [kJ/kg]
+s1_ch <- PropR("S", "T", To_K, "Q", 1)           # [J/(kgK)]
+
+# Punkt 3: ciecz nasycona (wylot skraplacza)
+h3_ch <- PropR("H", "T", Tk_K, "Q", 0) / 1000   # [kJ/kg]
+
+# Punkt 2: sprężanie izentropowe (s=const)
+h2s_ch <- PropR("H", "P", Pk_Pa, "S", s1_ch) / 1000  # [kJ/kg]
+h2_ch <- h2s_ch  # sprężanie idealne (η_is = 1)
+
 q_o <- h1_ch - h3_ch
 l_k <- h2_ch - h1_ch
 EER <- q_o / l_k
@@ -254,42 +307,63 @@ N_spr_ch <- p$Q_o / EER
 m_dot_ch <- p$Q_o / q_o
 Q_k <- N_spr_ch + p$Q_o
 COP_PC <- EER + 1
-w_rura <- m_dot_ch * 0.065 / (pi * (p$d_rura / 1000)^2 / 4)
+rho_ss <- PropR("D", "T", To_K, "Q", 1)  # gęstość pary na ssaniu [kg/m³]
+v_ss <- 1 / rho_ss  # objętość właściwa [m³/kg]
+w_rura <- m_dot_ch * v_ss / (pi * (p$d_rura / 1000)^2 / 4)
+
 # Zad 6.5 - Wpływ tk
 tk_high <- p$t_k + 15
-h3_high <- 240 + 0.8 * tk_high
-h2_high <- h1_ch + 25 + 0.4 * (tk_high - p$t_o)
+Tk_high_K <- tk_high + 273.15
+Pk_high_Pa <- PropR("P", "T", Tk_high_K, "Q", 0)
+h3_high <- PropR("H", "T", Tk_high_K, "Q", 0) / 1000
+h2_high <- PropR("H", "P", Pk_high_Pa, "S", s1_ch) / 1000
 EER_high <- (h1_ch - h3_high) / (h2_high - h1_ch)
 
-# Zad 6.6 - Porównanie z R290 (Propan)
-h1_R290 <- 570
-h2_R290 <- 625
-h3_R290 <- 280
+# Zad 6.6 - Porównanie z R290 (Propan) — CoolProp
+h1_R290 <- PropR("H", "T", To_K, "Q", 1, "R290") / 1000
+s1_R290 <- PropR("S", "T", To_K, "Q", 1, "R290")
+Pk_R290 <- PropR("P", "T", Tk_K, "Q", 0, "R290")
+h2_R290 <- PropR("H", "P", Pk_R290, "S", s1_R290, "R290") / 1000
+h3_R290 <- PropR("H", "T", Tk_K, "Q", 0, "R290") / 1000
 q_o_R290 <- h1_R290 - h3_R290
 l_k_R290 <- h2_R290 - h1_R290
 EER_R290 <- q_o_R290 / l_k_R290
 
-# ---- Obliczenia Ćw.7 ----
+# ---- Obliczenia Ćw.7 (CoolProp — HAPropsSI) ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
+P_atm <- 101325  # ciśnienie atmosferyczne [Pa]
 
-# --- Psychrometria: Dane odczytane z wykresu h-X ---
-# ZIMA: Punkt Z = -10°C, φ=90%
-X_Z_zima  <- 1.5    # g/kg
-h_Z_zima  <- -8     # kJ/kg (entalpia powietrza wilgotnego)
-# ZIMA: P = podgrzane do ~22°C, X=const=1.5 g/kg
-h_P_zima  <- 26     # kJ/kg
-# Punkt W: 22°C, 50%
-X_W       <- 8.4    # g/kg
-h_W       <- 43     # kJ/kg
-# LATO: Z = 32°C, φ=45%
-X_Z_lato  <- 13.5   # g/kg
-h_Z_lato  <- 67     # kJ/kg
-# LATO: R = punkt rosy po osuszeniu (φ=100%, X=8.4 g/kg)
-t_R_lato  <- 11.5   # °C
-h_R_lato  <- 33     # kJ/kg
-# LATO: N = nawiew (18°C, X=8.4 g/kg)
-t_N_lato  <- 18     # °C
-h_N_lato  <- 40     # kJ/kg
+# --- Psychrometria z CoolProp HAPropsSI ---
+# ZIMA: Punkt Z (powietrze zewn., φ=90%)
+T_Z_zima_K <- p$t_zima + 273.15
+X_Z_zima  <- HAP("W", "T", T_Z_zima_K, "R", 0.90, "P", P_atm) * 1000  # g/kg
+h_Z_zima  <- HAP("H", "T", T_Z_zima_K, "R", 0.90, "P", P_atm) / 1000  # kJ/kg
+
+# ZIMA: P = podgrzane do t_wewn, X=const
+T_P_zima_K <- p$t_wewn + 273.15
+h_P_zima  <- HAP("H", "T", T_P_zima_K, "W", X_Z_zima / 1000, "P", P_atm) / 1000
+
+# Punkt W: wewnętrzny (t_wewn, 50%)
+X_W <- HAP("W", "T", T_P_zima_K, "R", 0.50, "P", P_atm) * 1000  # g/kg
+h_W <- HAP("H", "T", T_P_zima_K, "R", 0.50, "P", P_atm) / 1000  # kJ/kg
+
+# LATO: Z (powietrze zewn., φ=45%)
+T_Z_lato_K <- p$t_lato + 273.15
+X_Z_lato  <- HAP("W", "T", T_Z_lato_K, "R", 0.45, "P", P_atm) * 1000  # g/kg
+h_Z_lato  <- HAP("H", "T", T_Z_lato_K, "R", 0.45, "P", P_atm) / 1000  # kJ/kg
+
+# LATO: R = punkt rosy / po osuszeniu (φ=100%, X = X_W)
+# Temp. punktu rosy: HAP("D",...) = dew point temperature
+t_R_lato  <- HAP("D", "T", T_P_zima_K, "R", 0.50, "P", P_atm) - 273.15  # °C
+# Entalpia w punkcie rosy (T=t_R, φ=100%)
+T_R_K <- t_R_lato + 273.15
+h_R_lato  <- HAP("H", "T", T_R_K, "R", 1.0, "P", P_atm) / 1000   # kJ/kg
+
+# LATO: N = nawiew (t_nawiewu, X = X_W)
+t_N_nawiew <- p$t_wewn - 4  # °C (temperatura nawiewu, ~4K poniżej t_wewn)
+t_N_lato  <- t_N_nawiew
+T_N_K <- t_N_lato + 273.15
+h_N_lato  <- HAP("H", "T", T_N_K, "W", X_W / 1000, "P", P_atm) / 1000
 
 # Zad 7.1 - Proces Zimowy
 Q_nagr_zima <- m_dot_hvac * (h_P_zima - h_Z_zima) # kW (nagrzewnica)
@@ -302,11 +376,10 @@ Q_grz_wtorna <- m_dot_hvac * (h_N_lato - h_R_lato) # kW (nagrzewnica wtórna)
 # — użyto Q_chlod_lato, Q_grz_wtorna, Q_nagr_zima powyżej
 
 # Zad 7.4 - Punkt Rosy
-X_wewn <- X_W # 8.4 g/kg
-t_rosy <- t_R_lato # 11.5 °C
+X_wewn <- X_W
+t_rosy <- t_R_lato
 
 # Zad 7.5 - Wymagany strumień powietrza
-t_N_nawiew <- 16 # °C (temperatura nawiewu)
 m_dot_strum <- p$Q_jawne * 1000 / (1005 * (p$t_wewn - t_N_nawiew)) # kg/s
 V_dot_strum <- m_dot_strum / 1.2 # m3/s
 V_dot_strum_h <- V_dot_strum * 3600 # m3/h
