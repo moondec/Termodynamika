@@ -773,7 +773,7 @@ Nasz kocioł produkuje parę o parametrach $p =$ **`r p_interp` bar**, $t =$ **`
 - Entalpia $h$ = `r ans(h_interp, "kJ/kg", d=0, approx=TRUE)`
 - Entropia $s$ = `r ans(s_interp, "kJ/kgK", d=3, approx=TRUE)`
 
-## Zad. 3.7 --- Entropia w Kotle
+## Zad. 3.7 --- Entropia w Kotle \Tablice
 
 Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): woda **`r p$t_zas` $^\circ$C** $\rightarrow$ para **`r p$p_kociol` bar, `r p$t_para` $^\circ$C**.
 
@@ -783,7 +783,7 @@ Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): 
 
 `r reflection("*Dodatkowo rozważ: Skomentuj wzrost entropii. Czy proces spalania i przekazywania ciepła jest odwracalny?*")`
 
-## Zad. 3.8 --- Bilans Kondensatu
+## Zad. 3.8 --- Bilans Kondensatu \Tablice
 
 Wymiennik ciepła skrapla parę z **`r p$p_dlawienie` bar** do postaci cieczy nasyconej (wrzątku) przy tym samym ciśnieniu.
 
@@ -816,7 +816,7 @@ Dla p=`r p$p2_turb` bar (nasycenie): $s' \approx$ `r f(sf_2, 3)`, $s'' \approx$ 
 - Czy $s_1$ mieści się między $s'$ a $s''$? (Tak/Nie): ........
 - Stan pary na wylocie: .......................................
 
-## Zad. 4.2 --- Stopień suchości ($x_2$)
+## Zad. 4.2 --- Stopień suchości ($x_2$) \Tablice
 
 Oblicz stopień suchości pary na wylocie (jaka część to para, a jaka ciecz).
 $$x_2 = \frac{s_2 - s'}{s'' - s'}$$
@@ -837,7 +837,7 @@ Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla 1 bar: $h' \approx 417, h'' \approx 2
 `r if(!sa) "\\vspace{2cm}"`
 - $N_t$ = `r ans(N_turb_ideal, "kW", approx=TRUE)`
 
-## Zad. 4.4 --- Rzeczywista moc (straty)
+## Zad. 4.4 --- Rzeczywista moc (straty) \Tablice
 
 **Kontekst:** W praktyce turbina nie jest idealna --- występują tarcie, turbulencje, straty na uszczelkach. Producent deklaruje sprawność izentropową $\eta_{is} =$ **`r p$eta_is`**.
 
@@ -1068,7 +1068,7 @@ oznaczany w podręcznikach grecką literą $\phi$ lub $\varphi$.
 oznaczany grecką literą $\epsilon$.
 :::
 
-## Zad. 6.5 --- Analiza wrażliwości
+## Zad. 6.5 --- Analiza wrażliwości \Tablice
 
 Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wzrośnie o 15$^\circ$C (do `r p$t_k + 15`$^\circ$C)?
 
@@ -1095,7 +1095,7 @@ Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wz
 
 `r reflection("*Dodatkowo rozważ: R290 to propan - gaz wybuchowy. Jakie dodatkowe środki bezpieczeństwa są wymagane w maszynowni przy takiej zmianie czynnika?*")`
 
-## Zad. 6.7 --- Weryfikacja rurociągu
+## Zad. 6.7 --- Weryfikacja rurociągu \Tablice
 
 **Cel:** Sprawdź, czy rurociąg ssawny ($d =$ `r p$d_rura` mm) zapewnia dopuszczalną prędkość czynnika (norma: 8--15 m/s).
 
@@ -1207,7 +1207,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 
 `r reflection("*Dodatkowo rozważ: Ocen skale oszczednosci energii wynikajaca z recyrkulacji. Jakie ograniczenia (np. higieniczne --- min. 30 m$^3$/h powietrza swiezego na osobe) nalezy uwzglednic?*")`
 
-## Zad. 7.7 --- Ilość Kondensatu (Lato)
+## Zad. 7.7 --- Ilość Kondensatu (Lato) \Tablice
 
 **Kontekst:** W procesie letnim chłodnica osusza powietrze z $X_Z = `r X_Z_lato`$ g/kg do $X_W = `r X_wewn`$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
 
