@@ -752,13 +752,13 @@ gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg
 
 ## Zad. 3.5 --- Para Mokra – Stopień Suchości \Tablice
 
-W odbiorniku pary (wymiennik ciepła) para skrapla się częściowo. Serwisant zmierzył ciśnienie $p =$ **`r p_mokra` bar** i temperaturę $t =$ **`r t_mokra` $^\circ$C**.
+W odbiorniku pary (wymiennik ciepła) para skrapla się częściowo. Serwisant zmierzył ciśnienie $p =$ **`r p_dlaw` bar** i temperaturę $t =$ **`r round(t_mokra, 1)` $^\circ$C**.
 
 **Czy para jest mokra, sucha nasycona, czy przegrzana?**
 
 `r if(!sa) "\\vspace{2cm}"`
 - Wniosek: ..............................................................
-- Jeśli mokra, oblicz stopień suchości $x$ (zakładając $h_{pomiar} = 2400 \text{ kJ/kg}$):
+- Jeśli mokra, oblicz stopień suchości $x$ (zakładając $h_{pomiar} =$ `r p$hm` kJ/kg):
 - $x$ = `r ans(x_mokra, "", approx=TRUE)`
 
 `r if(!sa) "*Uwaga: Odczytaj h' i h'' dla podanego ciśnienia.*"`
