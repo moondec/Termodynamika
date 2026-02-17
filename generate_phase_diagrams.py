@@ -120,7 +120,7 @@ def plot_he4():
     
     # Plotting
     plt.plot(T_sat, P_sat, 'b-', linewidth=2, label='Wrzenie He I')
-    plt.plot(T_sat_II, P_sat_II, 'c-', linewidth=2, label='Wrzenie He II')
+    plt.plot(T_sat_II, P_sat_II, color='darkcyan', linestyle='-', linewidth=2, label='Wrzenie He II')
     plt.plot(T_melt, P_melt, 'k-', linewidth=2, label='Topnienie (Crystal)')
     plt.plot(T_lambda_line, P_lambda_line, 'r--', linewidth=2, label='Linia Lambda')
     
@@ -132,10 +132,11 @@ def plot_he4():
     plt.plot(2.17, 5040, 'mo', markersize=8)
     plt.text(2.2, 6000, 'Punkt Lambda', verticalalignment='bottom')
 
-    plt.text(4, 1e4, 'GAZ', fontsize=14, color='blue', alpha=0.6)
+    # Move GAZ label up and changing color of He II
+    plt.text(4, 1e5, 'GAZ', fontsize=14, color='blue', alpha=0.6)
     plt.text(3, 1e5, 'CIECZ (He I)\nNormalna', fontsize=12, color='blue', alpha=0.6)
-    plt.text(1.2, 1e5, 'CIECZ (He II)\nNadciekła', fontsize=12, color='cyan', alpha=0.6)
-    plt.text(1.5, 40e5, 'CIAŁO STAŁE', fontsize=14, color='blue', alpha=0.6)
+    plt.text(1.2, 1e5, 'CIECZ (He II)\nNadciekła', fontsize=12, color='darkcyan', alpha=0.8)
+    plt.text(1.5, 40e5, 'CIAŁO STAŁE', fontsize=14, color='black', alpha=0.6)
     
     plt.yscale('log')
     plt.xlabel('Temperatura [K]')
