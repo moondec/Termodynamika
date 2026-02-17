@@ -457,6 +457,7 @@ ggplot() +
 
 ```{mermaid}
 %%| fig-align: center
+%%| fig-width: 14
 flowchart LR
     subgraph Rownowaga [Pełna Równowaga<br>Termodynamiczna]
         direction TB
