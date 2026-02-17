@@ -836,7 +836,9 @@ Równanie van der Waalsa może dawać **trzy różne objętości** ($V_1, V_2, V
 -   $V_3$: Rozwiązanie bez znaczenia fizycznego.
 :::
 
+::: {.fragment}
 **Punkt Krytyczny (**$T_k$): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, $V_1 = V_2 = V_k$.
+:::
 
 ## Stany Metastabilne
 
@@ -854,7 +856,9 @@ Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistośc
 :::
 :::::
 
-*Te stany są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)*
+::: {.callout-note}
+Te stany są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)*
+:::
 
 ## Przemiany Fazowe
 
@@ -865,6 +869,10 @@ Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistośc
 Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja istnieje w danej fazie (stałej, ciekłej, gazowej lub ich równowadze).
 
 **Przykłady wykresów fazowych:** - Woda (posiadająca punkt potrójny). - Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
+:::
+::: {.column width="50%"}
+![](../img/phase_diagram_h2o.png){width="90%"}
+![](../img/phase_diagram_he4.png){width="90%"}
 :::
 :::::
 
