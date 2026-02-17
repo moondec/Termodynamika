@@ -22,6 +22,7 @@ format:
     theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
         body {
@@ -68,7 +69,7 @@ format:
 editor: source
 ---
 
-## Wstęp do I Zasady Termodynamiki
+## <i class="bi bi-file-earmark-text"></i> Wstęp do I Zasady Termodynamiki
 
 ### Zasada Zachowania Energii
 
