@@ -864,14 +864,16 @@ Te stany są nietrwałe. Małe zaburzenie może spowodować gwałtowne skropleni
 
 ### Wykresy $p-T$
 
-::::: columns
-::: {.column width="50%"}
+
 Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja istnieje w danej fazie (stałej, ciekłej, gazowej lub ich równowadze).
 
 **Przykłady wykresów fazowych:** - Woda (posiadająca punkt potrójny). - Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
-:::
+
+::::: columns
 ::: {.column width="50%"}
 ![](../img/phase_diagram_h2o.png){width="90%"}
+:::
+::: {.column width="50%"}
 ![](../img/phase_diagram_he4.png){width="90%"}
 :::
 :::::

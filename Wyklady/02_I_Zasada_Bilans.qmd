@@ -428,7 +428,7 @@ Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest więk
 
 ## Pojemność Cieplna
 
-| Cecha | Przemiana Izochoryczna ($V=const$) | Przemiana Izobaryczna ($p=const$) |
+| Cecha | Przemiana Izochoryczna<br>($V=const$) | Przemiana Izobaryczna<br>($p=const$) |
 |:---|:---|:---|
 | **Analogia** | "Szczelny garnek" (Szybkowar) | "Cylinder z ruchomym tłokiem" |
 | **Warunek** | $dV = 0$ | $dp = 0$ |
