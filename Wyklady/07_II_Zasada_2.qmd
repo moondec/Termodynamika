@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Nierówność Clausiusa** (Wyprowadzenie)
 2.  **Entropia ($S$)** - Definicja Termodynamiczna
@@ -57,7 +66,7 @@ editor: source
 
 ---
 
-## 1. Nierówność Clausiusa
+## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa 
 
 Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:
 
@@ -74,7 +83,7 @@ $$ \oint \frac{đ Q}{T} \le 0 $$
 
 ---
 
-## 2. Entropia ($S$)
+## <i class="bi bi-shuffle"></i> 2. Entropia ($S$) 
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Skoro dla procesu odwracalnego $\oint \frac{đ Q_{rev}}{T} = 0$, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
@@ -100,7 +109,7 @@ Entropia jest miarą **nieuporządkowania** układu (statystycznie) oraz miarą 
 
 ---
 
-## Entropia a Kierunek Przekazu Ciepła
+## <i class="bi bi-shuffle"></i> Entropia a Kierunek Przekazu Ciepła 
 
 Dlaczego ciepło płynie od gorącego do zimnego?
 
@@ -132,7 +141,7 @@ Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! P
 
 ---
 
-## 3. Zasada Wzrostu Entropii
+## <i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii 
 
 Dla układu izolowanego (adiabatycznego):
 
@@ -151,7 +160,7 @@ Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie
 
 ---
 
-## Generacja Entropii ($S_{gen}$)
+## <i class="bi bi-bookmark"></i> Generacja Entropii ($S_{gen}$) 
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Możemy zapisać bilans entropii dla dowolnego procesu:
@@ -166,7 +175,7 @@ $$ \Delta S_{ukladu} = \int \frac{đ Q}{T_{granicy}} + S_{gen} $$
 
 ---
 
-## 4. Obliczanie Zmian Entropii
+## <i class="bi bi-bookmark"></i> 4. Obliczanie Zmian Entropii 
 
 ### Dla ciał nieściśliwych (Ciecze, Ciała stałe)
 
@@ -196,7 +205,7 @@ Mamy dwa wzory (zależnie od znanych zmiennych):
 
 ---
 
-## Wykres T-s i Ciepło
+## <i class="bi bi-fire"></i> Wykres T-s i Ciepło 
 
 Dla procesu odwracalnego:
 $$ Q_{rev} = \int_{1}^{2} T \, dS $$
@@ -283,7 +292,7 @@ ggplot(df_carnot, aes(x=s, y=T)) +
 
 ---
 
-## 5. III Zasada Termodynamiki
+## <i class="bi bi-1-circle"></i> 5. III Zasada Termodynamiki 
 
 Sformułowana przez Nernsta:
 
@@ -298,7 +307,7 @@ $$ \lim_{T \to 0} S = 0 $$
 
 ---
 
-## Podsumowanie W7
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W7 
 
 1.  **Nierówność Clausiusa:** Podstawa matematyczna II Zasady.
 2.  **Entropia:** Funkcja stanu. Rośnie w procesach nieodwracalnych, stała w odwracalnych (izentropowych).
@@ -307,5 +316,5 @@ $$ \lim_{T \to 0} S = 0 $$
     $$ \Delta s = C_p \ln(T_2/T_1) - R \ln(p_2/p_1) $$
 5.  **III Zasada:** W $0 K$ entropia wynosi 0 (stan idealnego porządku).
 
-## Zapowiedź W8
+## <i class="bi bi-bookmark"></i> Zapowiedź W8 
 Ubrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie **Przemiany Gazowe** (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.

@@ -68,8 +68,17 @@ format:
 editor: source
 ---
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
 
-## Pojęcie Pracy Technicznej
+
+
+## <i class="bi bi-bookmark"></i> Pojęcie Pracy Technicznej 
 
 :::: {.columns}
 
@@ -114,7 +123,7 @@ W układzie $p-V$, pracę techniczną przedstawia pole pomiędzy krzywą przemia
 ::::
 
 
-## Praca Techniczna ($L_t$) {visibility="hidden"}
+## <i class="bi bi-gear-wide-connected"></i> Praca Techniczna ($L_t$) {visibility="hidden"}
 
 ### Praca w Układach Przepływowych
 
@@ -129,7 +138,7 @@ $L_F$ to praca tarcia, która jest stratą i **równa jest** ciepłu $Q_F$, w po
 :::
 
 
-## Układy Otwarte
+## <i class="bi bi-bookmark"></i> Układy Otwarte 
 
 ### Kontrola Przepływu Materii
 
@@ -150,7 +159,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
   
 :::
 
-## Równanie Przepływu Ustalonego (ojednej drodze przepływu)
+## <i class="bi bi-bookmark"></i> Równanie Przepływu Ustalonego (ojednej drodze przepływu) 
 
 ### Postać Ogólna Bilansu Mocy
 
@@ -192,7 +201,7 @@ Gdzie:
 
 :::
 
-## Zastosowanie: Turbina
+## <i class="bi bi-fan"></i> Zastosowanie: Turbina 
 
 ### Ekspansja Czynnika
 
@@ -206,7 +215,7 @@ $$ P_i = \dot{m} (h_1 - h_2) $$
 Gdzie $P_i$ to moc wewnętrzna turbiny.
 
 
-## Zastosowanie: Sprężarka i Pompa
+## <i class="bi bi-fan"></i> Zastosowanie: Sprężarka i Pompa 
 
 ### Kompresja Czynnika
 
@@ -219,7 +228,7 @@ Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnien
 $$ P_d = \dot{m} (h_2 - h_1) - \dot{Q} $$
 
 
-## Praca Sprężania Gazu Doskonałego
+## <i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego 
 
 W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę** ($pv^n=const$). Wzór inżynierski na pracę techniczną:
 
@@ -233,7 +242,7 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}
 
 
 
-## Zastosowanie: Wymiennik Ciepła
+## <i class="bi bi-bookmark"></i> Zastosowanie: Wymiennik Ciepła 
 
 ### Przepływ Izobaryczny
 
@@ -246,7 +255,7 @@ Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz):
 $$ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B $$
 
 
-## Zastosowanie: Dławienie
+## <i class="bi bi-bookmark"></i> Zastosowanie: Dławienie 
 
 ### Proces Izentalpowy
 
@@ -261,7 +270,7 @@ $$ h_1 = h_2 $$
 
 
 
-## I Zasada w Procesach Spalania
+## <i class="bi bi-1-circle"></i> I Zasada w Procesach Spalania 
 
 ### Energia Chemiczna
 
@@ -273,7 +282,7 @@ W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.
 $$ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} $$
 
 
-## Zjawisko Joule'a-Thomsona
+## <i class="bi bi-bookmark"></i> Zjawisko Joule'a-Thomsona 
 
 ### Dławienie Adiabatyczne
 
@@ -286,7 +295,7 @@ $$ \mu = \left(\frac{\partial T}{\partial p}\right)_H $$
 *   **Krzywa inwersji:** Linia, na której $\mu = 0$.
 
 
-## Analiza Egzergetyczna (Wstęp)
+## <i class="bi bi-door-open"></i> Analiza Egzergetyczna (Wstęp) 
 
 ### Energia Dostępna
 
@@ -297,7 +306,7 @@ Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu 
 *   **Strata egzergii ($\delta B$):** Jest proporcjonalna do przyrostu entropii (Prawo Gouya-Stodoli).
 
 
-## Podsumowanie W3
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W3 
 
 ### Kluczowe Wnioski
 
@@ -307,7 +316,7 @@ Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu 
 *   **Dławienie:** Proces izentalpowy ($h=const$), któremu może towarzyszyć zmiana temperatury (J-T).
 
 
-## Przejście do W4
+## <i class="bi bi-bookmark"></i> Przejście do W4 
 
 ### Właściwości Substancji Czystych
 

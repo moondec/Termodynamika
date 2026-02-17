@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Skład Powietrza Wilgotnego** (Prawo Daltona)
 2.  **Parametry Wilgotności** ($\varphi$, X)
@@ -59,7 +68,7 @@ editor: source
 
 ---
 
-## 1. Skład Powietrza Wilgotnego
+## <i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego 
 
 ::: {.callout-note appearance="simple" style="font-size: .9em;"}
 **Powietrze wilgotne** to jednorodna mieszanina gazów zbliżonych do doskonałych ($N_2, O_2, Ar$) oraz **pary wodnej**.
@@ -83,7 +92,7 @@ $p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząs
 
 ---
 
-## 2. Parametry Wilgotności{auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out"}
 
 Inżynierowie (i nie tylko) używają dwóch definicji wilgotności:
 
@@ -103,7 +112,7 @@ $$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
 :::
 ---
 
-## 2. Parametry Wilgotności{auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.callout-important title="Stopień Zawilżenia (Mixing Ratio)"}
 
@@ -119,7 +128,7 @@ $$ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622$$
 
 ---
 
-## 3. Entalpia ($h$)
+## <i class="bi bi-bookmark"></i> 3. Entalpia ($h$) 
 
 ::: {.callout-warning appearance="simple"}
 Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
@@ -142,7 +151,7 @@ $$ h = (1.005 \cdot T) + X \cdot (2501 + 1.86 \cdot T) \quad [\frac{kJ}{kg}] $$
 
 ---
 
-## 4. Wykres Molliera h-X
+## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X 
 
 Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienasycony).
 
@@ -169,7 +178,7 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 
 ---
 
-## Wizualizacja: Wykres h-X
+## <i class="bi bi-graph-up"></i> Wizualizacja: Wykres h-X 
 
 ```{r}
 #| label: ix-diagram-all
@@ -492,7 +501,7 @@ print(p)
 
 ---
 
-## 5. Przemiany Charakterystyczne{auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-bookmark"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
 *   **Proces:** Nagrzewnica.
@@ -514,7 +523,7 @@ print(p)
 
 --- 
 
-## 5. Przemiany Charakterystyczne{auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-bookmark"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ```{r}
 #| label: ix-diagram-advanced
@@ -730,7 +739,7 @@ ggplot() +
 
 ---
 
-## Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
+## <i class="bi bi-bookmark"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
 
 ::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
 $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
@@ -770,7 +779,7 @@ Linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to **ska
 
 ---
 
-## Przemiana 1: Mieszanie Strumieni Powietrza
+## <i class="bi bi-bookmark"></i> Przemiana 1: Mieszanie Strumieni Powietrza 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
@@ -850,7 +859,7 @@ ggplot() +
 
 ---
 
-## Przemiana 2: Nawilżanie Parą Wodną
+## <i class="bi bi-bookmark"></i> Przemiana 2: Nawilżanie Parą Wodną 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Przy nawilżaniu **parą** ($h_w \approx 2500$ kJ/kg) przemiana biegnie **prawie poziomo** (wzdłuż izotermy). $\varepsilon = h_w \approx 2500$ kJ/kg.
@@ -933,7 +942,7 @@ ggplot() +
 
 ---
 
-## Przemiana 3: Cykl Suszarniczy
+## <i class="bi bi-arrow-repeat"></i> Przemiana 3: Cykl Suszarniczy 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 **(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
@@ -1021,7 +1030,7 @@ ggplot() +
 
 ---
 
-## Nawilżanie Adiabatyczne (Wodą)
+## <i class="bi bi-bookmark"></i> Nawilżanie Adiabatyczne (Wodą) 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Nawilżanie **wodą** ($h_w \approx 0$) → przemiana **wzdłuż izentalpy** ($\varepsilon \approx 0$). Temperatura spada do $t_m$ (mokry termometr).
@@ -1102,7 +1111,7 @@ ggplot() +
 
 ---
 
-## 6. Pomiar Parametrów Powietrza
+## <i class="bi bi-cloud-fog"></i> 6. Pomiar Parametrów Powietrza 
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -1129,7 +1138,7 @@ Dwa termometry:
 
 ---
 
-## Aparaty i Zastosowania
+## <i class="bi bi-cloud-fog"></i> Aparaty i Zastosowania 
 
 ::: {}
 ### Urządzenia (AHU - Air Handling Unit)
@@ -1152,7 +1161,7 @@ Dwa termometry:
 
 ---
 
-## 7. Bilans Masy i Energii
+## <i class="bi bi-scale"></i> 7. Bilans Masy i Energii 
 
 Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:
 
@@ -1168,7 +1177,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
-## Przykłady Obliczeniowe
+## <i class="bi bi-calculator"></i> Przykłady Obliczeniowe 
 
 ::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
 **Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
@@ -1189,7 +1198,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
-## Podsumowanie W12
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W12 
 
 ::: {.incremental}
 1.  **Wilgotność:** Rozróżniamy względną ($\varphi$, komfort) i bezwzględną ($X$, bilans masy).

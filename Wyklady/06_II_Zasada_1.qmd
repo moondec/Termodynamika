@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Ograniczenia I Zasady** (Kierunek Procesów)
 2.  **Silniki Cieplne i Pompy Ciepła** (Zasada Działania)
@@ -59,7 +68,7 @@ editor: source
 
 ---
 
-## 1. Dlaczego I Zasada to za mało?
+## <i class="bi bi-1-circle"></i> 1. Dlaczego I Zasada to za mało? 
 
 ### Kierunek Procesów
 
@@ -85,7 +94,7 @@ I Zasada nie zabrania procesom biec "wstecz", o ile energia się zgadza. Jednak 
 
 ---
 
-## Przykłady Procesów Nieodwracalnych
+## <i class="bi bi-calculator"></i> Przykłady Procesów Nieodwracalnych 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Dlaczego film puszczony od tyłu wygląda nienaturalnie?
@@ -104,7 +113,7 @@ Wszystkie te procesy generują **Entropię** (miarę nieporządku), o czym powie
 
 ---
 
-## 2. Źródła Ciepła (Rezerwuary)
+## <i class="bi bi-bookmark"></i> 2. Źródła Ciepła (Rezerwuary) 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):
@@ -221,7 +230,7 @@ ggplot() +
 
 ---
 
-## Silnik Cieplny
+## <i class="bi bi-bookmark"></i> Silnik Cieplny 
 
 [Urządzenie cykliczne, które zamienia ciepło na pracę.]{style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 
@@ -240,7 +249,7 @@ $$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \fr
 
 ---
 
-## Chłodziarka i Pompa Ciepła 
+## <i class="bi bi-water"></i> Chłodziarka i Pompa Ciepła 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 To "odwrócony" silnik cieplny.
@@ -266,7 +275,7 @@ To "odwrócony" silnik cieplny.
 
 ---
 
-## Przykład Obliczeniowy: Silnik
+## <i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje $L = 30 \text{ kJ}$ pracy.
@@ -286,7 +295,7 @@ Większość energii (70%) jest marnowana jako ciepło odpadowe! To typowa warto
 
 ---
 
-## Analiza COP (Współczynnik Wydajności)
+## <i class="bi bi-bookmark"></i> Analiza COP (Współczynnik Wydajności) 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 
@@ -307,7 +316,7 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 
 ---
 
-## 3. Sformułowania II Zasady
+## <i class="bi bi-bookmark"></i> 3. Sformułowania II Zasady 
 
 ### Sformułowanie Kelvina-Plancka{style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;"}
 
@@ -333,7 +342,7 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 
 ---
 
-## Równoważność Sformułowań
+## <i class="bi bi-bookmark"></i> Równoważność Sformułowań 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Te dwa twierdzenia brzmią różnie, ale są równoważne.
@@ -349,7 +358,7 @@ Złamanie jednego, oznacza złamanie też drugiego.
 
 ---
 
-## Perpetuum Mobile II Rodzaju
+## <i class="bi bi-bookmark"></i> Perpetuum Mobile II Rodzaju 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).
@@ -482,7 +491,7 @@ Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.
 
 ---
 
-## 4. Procesy Odwracalne i Nieodwracalne
+## <i class="bi bi-bookmark"></i> 4. Procesy Odwracalne i Nieodwracalne 
 
 ### Proces Odwracalny (Idealny)
 
@@ -511,7 +520,7 @@ Cofnięcie wymaga nakładu pracy z zewnątrz.
 
 ---
 
-## Źródła Nieodwracalności
+## <i class="bi bi-bookmark"></i> Źródła Nieodwracalności 
 
 ::: {style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;"}
 Co sprawia, że procesu nie da się cofnąć bez strat?
@@ -527,7 +536,7 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 
 ---
 
-## Proces Kwazistatyczny (Wewnętrznie Odwracalny)
+## <i class="bi bi-bookmark"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny) 
 
 ::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
 Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi.
@@ -547,7 +556,7 @@ Taki proces to **idelizacja** (jak punkt materialny w mechanice). Służy do wyz
 
 ---
 
-## 5. Obieg Carnota: Wzorzec Doskonałości
+## <i class="bi bi-arrow-repeat"></i> 5. Obieg Carnota: Wzorzec Doskonałości 
 
 Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami $T_H$ i $T_L$.
 
@@ -589,7 +598,7 @@ Składa się z 4 procesów **odwracalnych**:
 
 ---
 
-## Obieg Carnota: Krok po Kroku (1-2)
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (1-2) 
 
 ::: {.panel-tabset}
 
@@ -608,7 +617,7 @@ Składa się z 4 procesów **odwracalnych**:
 
 ---
 
-## Obieg Carnota: Krok po Kroku (3-4)
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (3-4) 
 
 ::: {.panel-tabset}
 
@@ -627,7 +636,7 @@ Składa się z 4 procesów **odwracalnych**:
 
 ---
 
-## Wizualizacja Obiegu Carnota (T-s)
+## <i class="bi bi-arrow-repeat"></i> Wizualizacja Obiegu Carnota (T-s) 
 
 :::: {.columns}
 
@@ -708,7 +717,7 @@ ggplot(df_carnot, aes(x=s, y=T)) +
 
 ---
 
-## Wnioski z Carnota
+## <i class="bi bi-lightbulb"></i> Wnioski z Carnota 
 
 ::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;"}
 
@@ -724,7 +733,7 @@ $$ \eta = 1 - \frac{T_L}{T_H} $$
 
 ---
 
-## Potrzeba Niezależnej Skali Temperatury
+## <i class="bi bi-bookmark"></i> Potrzeba Niezależnej Skali Temperatury 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.
@@ -743,7 +752,7 @@ Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.
 
 ---
 
-## Termodynamiczna Skala Temperatury (Kelvina)
+## <i class="bi bi-bookmark"></i> Termodynamiczna Skala Temperatury (Kelvina) 
 
 ::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
 Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:
@@ -766,7 +775,7 @@ Jednostka Kelvina jest podstawową jednostką w układzie SI. $T(K) = t(^\circ C
 
 ---
 
-## Podsumowanie W6
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W6 
 
 1.  **II Zasada:** Energia ma jakość. Procesy rzeczywiste są nieodwracalne (tarcie, $\Delta T$).
 2.  **Silniki:** Nie ma silnika o sprawności 100% (Kelvin-Planck).

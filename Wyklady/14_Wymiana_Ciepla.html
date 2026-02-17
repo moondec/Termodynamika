@@ -165,7 +165,7 @@
 
 </section>
 <section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
-<h2>Agenda Wykładu</h2>
+<h2><i class="bi bi-list-ol"></i> Agenda Wykładu</h2>
 <ol type="1">
 <li><strong>Trzy Mechanizmy Wymiany Ciepła</strong></li>
 <li><strong>Przewodzenie</strong> (Prawo Fouriera, Ściana)</li>
@@ -175,7 +175,7 @@
 </ol>
 </section>
 <section id="mechanizmy-wymiany-ciepła" class="slide level2">
-<h2>1. Mechanizmy Wymiany Ciepła</h2>
+<h2><i class="bi bi-bookmark"></i> 1. Mechanizmy Wymiany Ciepła</h2>
 <div title="Podstawowa zasada">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -198,7 +198,7 @@
 </ol>
 </section>
 <section id="przewodzenie-i-prawo-fouriera" class="slide level2">
-<h2>2. Przewodzenie i Prawo Fouriera</h2>
+<h2><i class="bi bi-bookmark"></i> 2. Przewodzenie i Prawo Fouriera</h2>
 <div title="Prawo Fouriera">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -231,7 +231,7 @@
 </div>
 </section>
 <section id="opór-cieplny-r" class="slide level2">
-<h2>Opór Cieplny (<span class="math inline">\(R\)</span>)</h2>
+<h2><i class="bi bi-bookmark"></i> Opór Cieplny (<span class="math inline">\(R\)</span>)</h2>
 <div title="Analogia elektryczna">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -264,7 +264,7 @@
 </div>
 </section>
 <section id="konwekcja-i-prawo-newtona" class="slide level2">
-<h2>3. Konwekcja i Prawo Newtona</h2>
+<h2><i class="bi bi-bookmark"></i> 3. Konwekcja i Prawo Newtona</h2>
 <div title="Prawo Newtona dla konwekcji">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -293,7 +293,7 @@
 </div>
 </section>
 <section id="przenikanie-ciepła-współczynnik-u" class="slide level2">
-<h2>Przenikanie Ciepła (Współczynnik U)</h2>
+<h2><i class="bi bi-bookmark"></i> Przenikanie Ciepła (Współczynnik U)</h2>
 <div title="Współczynnik przenikania ciepła">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -326,7 +326,7 @@
 </div>
 </section>
 <section id="promieniowanie" class="slide level2">
-<h2>4. Promieniowanie</h2>
+<h2><i class="bi bi-bookmark"></i> 4. Promieniowanie</h2>
 <div title="Prawo Stefana-Boltzmanna">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -358,7 +358,7 @@
 </div>
 </section>
 <section id="wymienniki-ciepła" class="slide level2">
-<h2>5. Wymienniki Ciepła</h2>
+<h2><i class="bi bi-bookmark"></i> 5. Wymienniki Ciepła</h2>
 <div title="Wymienniki ciepła">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -386,7 +386,7 @@
 </div>
 </section>
 <section id="współprąd-vs-przeciwprąd-porównanie" class="slide level2">
-<h2>Współprąd vs Przeciwprąd — Porównanie</h2>
+<h2><i class="bi bi-bookmark"></i> Współprąd vs Przeciwprąd — Porównanie</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="współprąd">Współprąd</h3>
@@ -440,7 +440,7 @@
 </div>
 </section>
 <section id="podsumowanie-w14" class="slide level2">
-<h2>Podsumowanie W14</h2>
+<h2><i class="bi bi-clipboard-check"></i> Podsumowanie W14</h2>
 <ol type="1">
 <li class="fragment"><strong>Izolacja</strong> to walka z przewodzeniem (<span class="math inline">\(\lambda\)</span>).</li>
 <li class="fragment"><strong>Radiator</strong> to walka z konwekcją (zwiększanie <span class="math inline">\(A\)</span> i <span class="math inline">\(\alpha\)</span>).</li>
@@ -687,6 +687,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

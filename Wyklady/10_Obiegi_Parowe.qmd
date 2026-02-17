@@ -58,7 +58,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Fundament Energetyki** (Dlaczego para?)
 2.  **Obieg Clausiusa-Rankine'a** (Schemat i T-s)
@@ -69,7 +78,7 @@ editor: source
 
 ---
 
-## 1. Dlaczego Para Wodna?
+## <i class="bi bi-cloud-fog"></i> 1. Dlaczego Para Wodna? 
 
 ::: {.callout-note appearance="simple"}
 Siłownie parowe produkują >70% elektryczności na świecie (węgiel, atom, biomasa).
@@ -88,7 +97,7 @@ Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 
 ---
 
-## Obieg Carnota dla Pary Wodnej
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota dla Pary Wodnej 
 
 > Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.
 
@@ -102,7 +111,7 @@ W teorii, aby osiągnąć maksymalną sprawność, para musiałaby być skraplan
 
 ---
 
-## 2. Obieg Clausiusa-Rankine'a (C-R)
+## <i class="bi bi-arrow-repeat"></i> 2. Obieg Clausiusa-Rankine'a (C-R) 
 
 ::: {.callout-note appearance="simple"}
 Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieństwie do Otto/Diesla, zachodzi tu **zmiana fazy** czynnika.
@@ -128,7 +137,7 @@ Praca pompy jest zwykle pomijalnie mała.
 
 ---
 
-## Wykres T-s dla C-R
+## <i class="bi bi-graph-up"></i> Wykres T-s dla C-R 
 
 :::: {.columns}
 
@@ -293,7 +302,7 @@ $$ \eta_{C-R} = \frac{l_{turbiny} - l_{pompy}}{q_{dostarczone}} \approx \frac{h_
 
 ---
 
-## Wykres h-s (Molliera) dla C-R
+## <i class="bi bi-graph-up"></i> Wykres h-s (Molliera) dla C-R 
 
 :::: {.columns}
 
@@ -469,7 +478,7 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 
 ---
 
-## Rzeczywisty obieg Rankine'a
+## <i class="bi bi-arrow-repeat"></i> Rzeczywisty obieg Rankine'a 
 
 ![](../img/rankine_rzeczywisty.png)
 
@@ -479,7 +488,7 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 
 ---
 
-## Sprawność Izentropowa Turbiny ($\eta_{is}$)
+## <i class="bi bi-percent"></i> Sprawność Izentropowa Turbiny ($\eta_{is}$) 
 
 Rzeczywista turbina nie jest idealna — występują tarcie, straty cieplne i turbulencje. Definiujemy sprawność izentropową jako stosunek pracy rzeczywistej do idealnej:
 
@@ -505,7 +514,7 @@ Na wykresie h-s linia rozprężania **odchyla się w prawo** (wzrost entropii), 
 
 ---
 
-## 3. Problem Wilgotności (Erozja)
+## <i class="bi bi-bookmark"></i> 3. Problem Wilgotności (Erozja) 
 
 ::: {.callout-caution title="Ograniczenia"}
 Zauważ, że punkt 4 (wylot z turbiny) leży "pod kopułą".
@@ -529,7 +538,7 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 
 ---
 
-## 4. Przegrzew Wtórny (Reheat)
+## <i class="bi bi-bookmark"></i> 4. Przegrzew Wtórny (Reheat) 
 
 
 ::: {.callout-tip title="Proces:"}
@@ -547,7 +556,7 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 
 ---
 
-## Wykres h-s: Przegrzew Wtórny
+## <i class="bi bi-graph-up"></i> Wykres h-s: Przegrzew Wtórny 
 
 :::: {.columns}
 
@@ -680,7 +689,7 @@ Suchość pary $x_4 > x_{4'}$ (np. 0.94 vs 0.81).
 ---
 
 
-## 5. Regeneracja (Podgrzewanie Wody)
+## <i class="bi bi-bookmark"></i> 5. Regeneracja (Podgrzewanie Wody) 
 
 ::: {.callout-note appearance="simple"}
 W zwykłym Rankine'ie do kotła trafia zimna woda ze skraplacza (np. 30°C).
@@ -699,7 +708,7 @@ Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej 
 
 ---
 
-## 6. Układy Gazowo-Parowe (CCGT)
+## <i class="bi bi-bookmark"></i> 6. Układy Gazowo-Parowe (CCGT) 
 
 ##### Combined-cycle power plant
 
@@ -737,7 +746,7 @@ Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Kondensator, 4-Pompa, 5-K
 
 ---
 
-## Podsumowanie W10
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W10 
 
 1.  **Obieg Rankine'a** rządzi światową energetyką.
 2.  **Klucz do sprawności:**
@@ -757,7 +766,7 @@ Dlaczego nie stosujemy wprost obiegu Carnota dla pary wodnej? (Dlaczego nie spr�
   
 ---
 
-## W następnym odcinku (W11)...
+## <i class="bi bi-bookmark"></i> W następnym odcinku (W11)... 
 
 ### <span style="color: #2a9d8f;">Chłodnictwo i Pompy Ciepła</span>
 

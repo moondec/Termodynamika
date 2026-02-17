@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Termodynamika Przemian Fazowych** (Clapeyron-Clausius)
 2.  **Para Nasycona** (Sucha vs Mokra)
@@ -58,7 +67,7 @@ editor: source
 
 ---
 
-## 1. Termodynamika Przemian Fazowych
+## <i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych 
 
 ### Rodzaje Przemian
 
@@ -84,7 +93,7 @@ editor: source
 
 ---
 
-## Równanie Clapeyrona-Clausiusa
+## <i class="bi bi-bookmark"></i> Równanie Clapeyrona-Clausiusa 
 
 Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:
 
@@ -101,7 +110,7 @@ Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze 
 
 ---
 
-## Wyjątek Wody: Topnienie
+## <i class="bi bi-bookmark"></i> Wyjątek Wody: Topnienie 
 
 Woda (lód) ma unikalną cechę: $v_{Lód} > v_{Woda}$ (lód pływa!).
 Zatem $v'' - v' < 0$ (dla topnienia).
@@ -116,7 +125,7 @@ Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
 
 ---
 
-## Wykres stanów faz wody we współrzędnych $p-T$.{.center}
+## <i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych $p-T$. {.center}
 
 ```{r}
 #| echo: false
@@ -194,7 +203,7 @@ ggplot() +
 
 ---
 
-## 4. Tablice Pary Wodnej
+## <i class="bi bi-table"></i> 4. Tablice Pary Wodnej 
 
 Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
 
@@ -219,7 +228,7 @@ Rodzaje tablic:
 
 ---
 
-## 2. Para Nasycona - Struktura
+## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura 
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
@@ -238,7 +247,7 @@ Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
 ---
 
-## 2. Para Nasycona - jak to działa w maszynie
+## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - jak to działa w maszynie 
 
 ```{r}
 #| fig-align: center
@@ -329,7 +338,7 @@ ggplot() +
 
 ---
 
-## Wykres T-s dla Wody (Kopuła)
+## <i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła) 
 
 Obszar pod dzwonem to mieszanina (Para Mokra).
 
@@ -546,7 +555,7 @@ ggplot() +
 
 ---
 
-## 3. Stopień Suchości ($x$)
+## <i class="bi bi-bookmark"></i> 3. Stopień Suchości ($x$) 
 
 Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.
 
@@ -558,7 +567,7 @@ $$ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} $$
 
 ---
 
-## Obliczanie Właściwości Pary Mokrej
+## <i class="bi bi-list-check"></i> Obliczanie Właściwości Pary Mokrej 
 
 Jeśli znamy $x$, możemy obliczyć dowolny parametr właściwy ($y$), znając wartości graniczne z tablic:
 
@@ -577,7 +586,7 @@ Zastosowanie:
 
 ---
 
-## Przykład Odczytu (Nasycenie)
+## <i class="bi bi-calculator"></i> Przykład Odczytu (Nasycenie) 
 
 Mamy wodę wrzącą pod ciśnieniem atmosferycznym ($p=1$ bar $\approx 0.1$ MPa).
 Szukamy w Tablicy Nasycenia (wg ciśnienia):
@@ -594,7 +603,7 @@ Wnioski:
 
 ---
 
-## Interpolacja Liniowa w Tablicach
+## <i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach 
 
 Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży **między** wartościami tablicowymi, stosujemy **interpolację liniową**.
 
@@ -615,7 +624,7 @@ Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależn
 
 ---
 
-## 5. Wykresy Termodynamiczne
+## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne 
 
 :::: {.columns}
 
@@ -643,7 +652,7 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 
 ---
 
-## Mollier w Praktyce
+## <i class="bi bi-bookmark"></i> Mollier w Praktyce 
 
 Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
 
@@ -656,7 +665,7 @@ Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 
 
 ---
 
-## 5. Wykresy Termodynamiczne
+## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne 
 
 :::: {.columns}
 
@@ -692,7 +701,7 @@ Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. ef
 
 ---
 
-## Para Przegrzana
+## <i class="bi bi-cloud-fog"></i> Para Przegrzana 
 
 ### Powyżej Linii Nasycenia
 
@@ -711,7 +720,7 @@ Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu*
 
 ---
 
-## Podsumowanie W5
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W5 
 
 1.  **Przemiany fazowe:** I rodzaju (z $r$) i II rodzaju.
 2.  **Clapeyron-Clausius:** $dp/dT$ zależy od różnicy objętości faz.

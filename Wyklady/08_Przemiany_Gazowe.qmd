@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Proces termodynamiczny** (przemiana)
 2.  **Metodyka Analizy** (Co liczymy?)
@@ -59,7 +68,7 @@ editor: source
 
 ---
 
-## 1. Definicja Procesu Termodynamicznego
+## <i class="bi bi-book"></i> 1. Definicja Procesu Termodynamicznego 
 
 ::: {.callout-note appearance="simple"}
 **Proces termodynamiczny (przemiana)** to zmiana stanu układu, w której zmienia się wartość co najmniej jednego z parametrów termodynamicznych ($p, V, T$).
@@ -73,7 +82,7 @@ editor: source
 
 ---
 
-## I Zasada Termodynamiki - Kontekst
+## <i class="bi bi-1-circle"></i> I Zasada Termodynamiki - Kontekst 
 
 ::: {.callout-note appearance="simple"}
 Dla układu zamkniętego w procesie kwazistatycznym I zasada przyjmuje postać:
@@ -89,7 +98,7 @@ Gdzie:
 
 ---
 
-## Praca Objętościowa
+## <i class="bi bi-gear-wide-connected"></i> Praca Objętościowa 
 
 W procesach odwracalnych praca objętościowa wyraża się wzorem:
 
@@ -109,7 +118,7 @@ $$ L_{1-2} = \int_{V_1}^{V_2} p(V) dV $$
 
 ---
 
-## Właściwości Gazu Doskonałego (Przypomnienie)
+## <i class="bi bi-list-check"></i> Właściwości Gazu Doskonałego (Przypomnienie) 
 
 Podstawowe wzory i zależności:
 
@@ -120,7 +129,7 @@ Podstawowe wzory i zależności:
 
 ---
 
-## 2. Metodyka Analizy
+## <i class="bi bi-bookmark"></i> 2. Metodyka Analizy 
 
 ::: {.callout-note appearance="simple"}
 Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br>
@@ -152,7 +161,7 @@ Pamiętamy zawsze: $$\Delta u = c_v \Delta T$$ oraz $$\Delta h = c_p \Delta T$$
 
 ---
 
-## 3. Przemiana Izochoryczna ($v=const$)
+## <i class="bi bi-bookmark"></i> 3. Przemiana Izochoryczna ($v=const$) 
 
 ::: {.callout-note title="**Warunek:**"}
 $dv = 0 \Rightarrow l = 0$
@@ -179,7 +188,7 @@ $$ \frac{p_1}{T_1} = \frac{p_2}{T_2} \Rightarrow \frac{p}{T} = const $$
 
 ---
 
-## Izochora: Podsumowanie
+## <i class="bi bi-clipboard-check"></i> Izochora: Podsumowanie 
 
 *   **Ogrzewanie ($T \uparrow$):** Ciśnienie rośnie ($p \uparrow$). Entropia rośnie ($s \uparrow$).
 *   **Chłodzenie ($T \downarrow$):** Ciśnienie spada ($p \downarrow$). Entropia maleje ($s \downarrow$).
@@ -223,7 +232,7 @@ p1_plot + p2_plot
 ```
 ---
 
-## 4. Przemiana Izobaryczna ($p=const$)
+## <i class="bi bi-bookmark"></i> 4. Przemiana Izobaryczna ($p=const$) 
 
 ::: {.callout-note title="**Warunek:**"}
 $dp = 0 \Rightarrow l_t = 0$
@@ -251,7 +260,7 @@ W izobarze ciepło jest równe zmianie entalpii ($q = \Delta h$).
 
 ---
 
-## Izobara: Podsumowanie
+## <i class="bi bi-clipboard-check"></i> Izobara: Podsumowanie 
 
 1.  **Ciepło:** $Q_{1-2} = n c_p (T_2 - T_1)$.
 2.  **Praca:** Część ciepła idzie na wykonanie pracy objętościowej (rozszerzanie), reszta na podgrzanie (wzrost $u$).
@@ -297,7 +306,7 @@ p1_plot + p2_plot
 
 ---
 
-## 5. Przemiana Izotermiczna ($T=const$)
+## <i class="bi bi-bookmark"></i> 5. Przemiana Izotermiczna ($T=const$) 
 
 ::: {.callout-note title="**Warunek:**"}
 $\Delta u = 0, \Delta h = 0$ (Dla gazu doskonałego $u, h = f(T)$)<br>
@@ -323,7 +332,7 @@ $$ p_1 v_1 = p_2 v_2 = const $$
 
 ---
 
-## Obliczenia Pracy i Entropii (Izoterma)
+## <i class="bi bi-bookmark"></i> Obliczenia Pracy i Entropii (Izoterma) 
 
 **Praca (bezwzględna wykonana w układzie):**
 $$ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) $$
@@ -337,7 +346,7 @@ Proces dostarczania ciepła w $T=const$ powoduje wzrost nieporządku (objętośc
 
 ---
 
-## Izoterma: Podsumowanie
+## <i class="bi bi-clipboard-check"></i> Izoterma: Podsumowanie 
 
 1.  **Praca:** $l = RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
 2.  **Ciepło:** $q = l$ (Całe ciepło zamienia się w pracę).
@@ -373,7 +382,7 @@ p1_plot + p2_plot
 
 ---
 
-## 6. Przemiana Adiabatyczna ($q=0$)
+## <i class="bi bi-bookmark"></i> 6. Przemiana Adiabatyczna ($q=0$) 
 ::: {.callout-note title="**Warunek:**"}
 $dq = 0$. (Izolacja termiczna)
 :::
@@ -403,7 +412,7 @@ $$ p v^\kappa = const \quad \text{oraz} \quad T v^{\kappa-1} = const $$
 
 ---
 
-## Wykresy i Właściwości (Adiabata)
+## <i class="bi bi-list-check"></i> Wykresy i Właściwości (Adiabata) 
 
 *   **Wykres p-V:** Krzywa **bardziej stroma** niż izoterma (ponieważ $\kappa > 1$).
 *   **Wykres T-s:** Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.
@@ -439,7 +448,7 @@ p1_plot + p2_plot
 
 ---
 
-## 7. Przemiana Politropowa (Uogólnienie)
+## <i class="bi bi-bookmark"></i> 7. Przemiana Politropowa (Uogólnienie) 
 
 ::: {.callout-important title="Równanie ogólne dla wszystkich procesów:"}
 $$ p v^n = const $$
@@ -461,7 +470,7 @@ W sprężarkach tłokowych rzeczywiste sprężanie to politropa z $1 < n < \kapp
 
 ---
 
-## Zestawienie Graficzne
+## <i class="bi bi-bookmark"></i> Zestawienie Graficzne 
 
 ### Porównanie rozprężania z tego samego punktu:
 
@@ -499,7 +508,7 @@ Najwięcej pracy daje Izobara, najmniej Adiabata (nie licząc Izochory, gdzie L 
 
 ---
 
-## Praca Techniczna w Przemianach
+## <i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach 
 
 Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:
 
@@ -525,7 +534,7 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 
 ---
 
-## Sprężanie Wielostopniowe z Chłodzeniem
+## <i class="bi bi-bookmark"></i> Sprężanie Wielostopniowe z Chłodzeniem 
 
 Przy dużych stopniach sprężania ($p_2/p_1 > 4$) temperatura końcowa jest zbyt wysoka. Rozwiązanie: **sprężanie w kilku stopniach** z chłodzeniem międzystopniowym.
 
@@ -559,7 +568,7 @@ W praktyce: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\appr
 
 ---
 
-## Podsumowanie W8
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W8 
 
 | Przemiana | $n$ | Ciepło $q$ | Praca $l$ | Praca tech. $l_t$ |
 | :--- | :---: | :---: | :---: | :---: |

@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Paliwa i Źródła Energii**
 2.  **Stechiometria Spalania** ($C+O_2$)
@@ -60,7 +69,7 @@ editor: source
 
 ---
 
-## 1. Źródła Energii Chemicznej
+## <i class="bi bi-bookmark"></i> 1. Źródła Energii Chemicznej 
 
 ::: {.callout-note title="Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna)."}
 
@@ -84,7 +93,7 @@ Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, t
 
 ---
 
-## 2. Stechiometria Spalania
+## <i class="bi bi-bookmark"></i> 2. Stechiometria Spalania 
 
 ::: {.callout-tip title="Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?"}
 
@@ -118,7 +127,7 @@ Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4.76 $m^3$ powietrza**.
 
 ---
 
-## 3. Wartość Opałowa ($W_d$)
+## <i class="bi bi-bookmark"></i> 3. Wartość Opałowa ($W_d$) 
 
 ::: {.callout-important title="Krytyczne rozróżnienie"}
 To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
@@ -156,7 +165,7 @@ Kotły kondensacyjne wykorzystują HHV, osiągając sprawność > 100% (względe
 
 ---
 
-## 4. Egzergia: Ilość vs Jakość
+## <i class="bi bi-battery-half"></i> 4. Egzergia: Ilość vs Jakość 
 
 ::: {.callout-important title="Paradoks energii"}
 Z I Zasady wynika, że energia jest niezniszczalna. Dlaczego więc "oszczędzamy energię"?
@@ -175,7 +184,7 @@ Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia
 
 ---
 
-## 5. Prawo Gouy-Stodoli
+## <i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli 
 
 ::: {.callout-note title="Niszczenie egzergii"}
 Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.
@@ -185,7 +194,7 @@ $$ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} $$
 
 ---
 
-## 5. Prawo Gouy-Stodoli
+## <i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli 
 
 ### Wykres Sankeya {.fragment}
 
@@ -206,7 +215,7 @@ Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłości�
 
 ---
 
-## Kogeneracja (CHP - Combined Heat and Power)
+## <i class="bi bi-bookmark"></i> Kogeneracja (CHP - Combined Heat and Power) 
 
 ::: {.callout-tip title="Idea układów skojarzonych"}
 Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.
@@ -249,7 +258,7 @@ Z 100 MJ paliwa:
 
 ---
 
-## Ogniwa Paliwowe
+## <i class="bi bi-bookmark"></i> Ogniwa Paliwowe 
 
 ::: {.callout-important title="Bezpośrednia zamiana energii chemicznej w elektryczną"}
 Ogniwa paliwowe to urządzenia elektrochemiczne, które przekształcają energię chemiczną paliwa (np. wodoru) bezpośrednio w prąd, **omijając spalanie** i cykl Carnota.
@@ -298,7 +307,7 @@ Reakcja: $H_2 + \frac{1}{2}O_2 \to H_2O + \text{Energia elektryczna}$
 
 ---
 
-## 6. Podsumowanie Kursu
+## <i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu 
 
 ::: {.callout-note title="Droga kursu"}
 Przeszliśmy drogę od:
@@ -314,7 +323,7 @@ Przeszliśmy drogę od:
 
 ---
 
-## 6. Podsumowanie Kursu
+## <i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu 
 
 ### Egzamin
 

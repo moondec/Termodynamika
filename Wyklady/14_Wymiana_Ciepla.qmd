@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Trzy Mechanizmy Wymiany Ciepła**
 2.  **Przewodzenie** (Prawo Fouriera, Ściana)
@@ -57,7 +66,7 @@ editor: source
 
 ---
 
-## 1. Mechanizmy Wymiany Ciepła
+## <i class="bi bi-bookmark"></i> 1. Mechanizmy Wymiany Ciepła 
 
 ::: {.callout-note title="Podstawowa zasada"}
 Ciepło płynie zawsze, gdy istnieje $\Delta T$.
@@ -72,7 +81,7 @@ Jakim "autobusem"?
 
 ---
 
-## 2. Przewodzenie i Prawo Fouriera
+## <i class="bi bi-bookmark"></i> 2. Przewodzenie i Prawo Fouriera 
 
 ::: {.callout-tip title="Prawo Fouriera"}
 Strumień ciepła jest proporcjonalny do gradientu temperatury.
@@ -99,7 +108,7 @@ $\delta$: Grubość ściany.
 
 ---
 
-## Opór Cieplny ($R$)
+## <i class="bi bi-bookmark"></i> Opór Cieplny ($R$) 
 
 ::: {.callout-note title="Analogia elektryczna"}
 $$ \dot{Q} = \frac{\Delta T}{R_{term}} $$
@@ -117,7 +126,7 @@ Duży opór = Dobra izolacja.
 
 ---
 
-## 3. Konwekcja i Prawo Newtona
+## <i class="bi bi-bookmark"></i> 3. Konwekcja i Prawo Newtona 
 
 ::: {.callout-tip title="Prawo Newtona dla konwekcji"}
 Ruch płynu "zmywa" ciepło z powierzchni.
@@ -137,7 +146,7 @@ $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
 
 ---
 
-## Przenikanie Ciepła (Współczynnik U)
+## <i class="bi bi-bookmark"></i> Przenikanie Ciepła (Współczynnik U) 
 
 ::: {.callout-note title="Współczynnik przenikania ciepła"}
 W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn.
@@ -154,7 +163,7 @@ Dla nowoczesnego domu $U < 0.2$ W/(m²K).
 
 ---
 
-## 4. Promieniowanie
+## <i class="bi bi-bookmark"></i> 4. Promieniowanie 
 
 ::: {.callout-tip title="Prawo Stefana-Boltzmanna"}
 Każde ciało emituje światło.
@@ -180,7 +189,7 @@ Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w bu
 
 ---
 
-## 5. Wymienniki Ciepła
+## <i class="bi bi-bookmark"></i> 5. Wymienniki Ciepła 
 
 ::: {.callout-note title="Wymienniki ciepła"}
 Urządzenia do przekazywania ciepła z jednego płynu do drugiego bez mieszania ich.
@@ -199,7 +208,7 @@ $\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
 
 ---
 
-## Współprąd vs Przeciwprąd — Porównanie
+## <i class="bi bi-bookmark"></i> Współprąd vs Przeciwprąd — Porównanie 
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -232,7 +241,7 @@ Mniejsza i równomierna $\Delta T$ → **mniejsza generacja entropii** → wyżs
 
 ---
 
-## Podsumowanie W14
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W14 
 
 ::: {.incremental}
 1.  **Izolacja** to walka z przewodzeniem ($\lambda$).

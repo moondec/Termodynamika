@@ -54,7 +54,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Substancje Czyste** (Definicje, Fazy)
 2.  **Gaz Doskonały** (Założenia modelu)
@@ -67,7 +76,7 @@ editor: source
 
 ---
 
-## 1. Wprowadzenie do Substancji Czystych
+## <i class="bi bi-bookmark"></i> 1. Wprowadzenie do Substancji Czystych 
 
 ### Definicja
 
@@ -80,7 +89,7 @@ editor: source
 
 ---
 
-## Fazy Materii
+## <i class="bi bi-bookmark"></i> Fazy Materii 
 
 Substancja czysta może występować w różnych fazach (stanach skupienia):
 
@@ -90,7 +99,7 @@ Substancja czysta może występować w różnych fazach (stanach skupienia):
 
 ---
 
-## Równowaga Fazowa
+## <i class="bi bi-bookmark"></i> Równowaga Fazowa 
 
 ::: incremental
 *   Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w $0^\circ C$).
@@ -103,7 +112,7 @@ Substancja czysta może występować w różnych fazach (stanach skupienia):
 
 ---
 
-## 2. Model Gazu Doskonałego
+## <i class="bi bi-bookmark"></i> 2. Model Gazu Doskonałego 
 
 ### Abstarakcja vs Rzeczywistość
 
@@ -117,7 +126,7 @@ Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia
 
 ---
 
-## Kiedy stosować Gaz Doskonały?
+## <i class="bi bi-bookmark"></i> Kiedy stosować Gaz Doskonały? 
 
 Model ten jest zadziwiająco dokładny dla większości gazów rzeczywistych, JEŚLI:
 
@@ -130,7 +139,7 @@ Dla powietrza w warunkach otoczenia ($p \approx 1$ bar, $T \approx 20^\circ C$),
 
 ---
 
-## 3. Równanie Stanu (Clapeyron)
+## <i class="bi bi-bookmark"></i> 3. Równanie Stanu (Clapeyron) 
 
 Wiązanie między ciśnieniem ($p$), temperaturą ($T$) i objętością ($v$) dla gazu doskonałego:
 
@@ -148,7 +157,7 @@ $$ p \cdot V = m \cdot R \cdot T $$
 
 ---
 
-## Stała Gazowa Uniwersalna czy Indywidualna?
+## <i class="bi bi-bookmark"></i> Stała Gazowa Uniwersalna czy Indywidualna? 
 
 Tu studenci najczęściej robią błędy!
 
@@ -164,7 +173,7 @@ Używana w technice w równaniu dla masy: $pV = m R T$.
 
 ---
 
-## Przykłady Stałej Gazowej $R$
+## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ 
 
 $$ R = \frac{8314}{M} $$
 
@@ -179,7 +188,7 @@ $$ R = \frac{8314}{M} $$
 
 ---
 
-## 4. Ciepła Właściwe
+## <i class="bi bi-bookmark"></i> 4. Ciepła Właściwe 
 
 Ilość ciepła potrzebna do podgrzania 1 kg substancji o 1 K.
 Dla gazów zależy to od sposobu ogrzewania!
@@ -192,7 +201,7 @@ Dla gazów zależy to od sposobu ogrzewania!
 
 ---
 
-## Relacja Mayera (Wyprowadzenie)
+## <i class="bi bi-bookmark"></i> Relacja Mayera (Wyprowadzenie) 
 
 Dla gazu doskonałego entalpia $h$ zależy tylko od temperatury.
 Definicja entalpii:
@@ -210,7 +219,7 @@ $$ C_p = C_v + R $$
 
 ---
 
-## Co wynika z Relacji Mayera?
+## <i class="bi bi-bookmark"></i> Co wynika z Relacji Mayera? 
 
 $$ C_p > C_v $$
 
@@ -224,7 +233,7 @@ Przy $V=const$, praca wynosi zero, więc całe ciepło idzie w temperaturę.
 
 ---
 
-## Uwaga na oznaczenia!
+## <i class="bi bi-bookmark"></i> Uwaga na oznaczenia! 
 Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
@@ -239,7 +248,7 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 ---
 
-## Zasada Ekwipartycji Energii
+## <i class="bi bi-bookmark"></i> Zasada Ekwipartycji Energii 
 
 ### Teoria Ciepła Właściwego
 
@@ -253,7 +262,7 @@ $$ \langle E_i \rangle = \frac{1}{2} k T $$
 *   **Drgania (oscylacje):** Wnoszą wkład energii kinetycznej i potencjalnej.
 
 
-## Ciepło Właściwe Gazów
+## <i class="bi bi-fire"></i> Ciepło Właściwe Gazów 
 
 ### Wartości Teoretyczne $c_v$
 
@@ -271,7 +280,7 @@ $$ (Mc_v) = \frac{f}{2} (MR) $$
 
 ---
 
-## Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$)
+## <i class="bi bi-bookmark"></i> Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$) 
 
 Obie wielkości mogą się mylić, przez podobne oznaczenie
 
@@ -290,7 +299,7 @@ Obie wielkości mogą się mylić, przez podobne oznaczenie
 
 ---
 
-## Energia i Entalpia Gazu Doskonałego
+## <i class="bi bi-lightning-charge"></i> Energia i Entalpia Gazu Doskonałego 
 
 Pamiętamy z I Zasady, że dla g.d. te parametry zależą **tylko** od temperatury (Eksperyment Joule'a).
 
@@ -304,7 +313,7 @@ To potężne uproszczenie w obliczeniach inżynierskich.
 
 ---
 
-## 5. Mieszaniny Gazowe
+## <i class="bi bi-bookmark"></i> 5. Mieszaniny Gazowe 
 
 W technice rzadko pracujemy z czystym tlenem czy azotem. Zazwyczaj mamy mieszaninę (np. spaliny w silniku, powietrze w wentylacji).
 
@@ -314,7 +323,7 @@ Potrzebujemy tylko obliczyć zastępczą stałą gazową $R_{miesz}$ i zastępcz
 
 ---
 
-## Prawo Daltona (Ciśnienia)
+## <i class="bi bi-bookmark"></i> Prawo Daltona (Ciśnienia) 
 
 ::: {style="border: 2px solid blue; padding: 20px;"}
 Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.
@@ -326,7 +335,7 @@ $$ p_{calk} = p_1 + p_2 + ... + p_n = \sum p_i $$
 
 ---
 
-## Wizualizacja Prawa Daltona
+## <i class="bi bi-bookmark"></i> Wizualizacja Prawa Daltona 
 
 ```{r}
 #| label: dalton-viz
@@ -366,7 +375,7 @@ p1 + p2 + p3
 
 ---
 
-## Udziały Molowe ($y_i$) i Obliczanie $p_i$
+## <i class="bi bi-bookmark"></i> Udziały Molowe ($y_i$) i Obliczanie $p_i$ 
 
 W g.d ciśnienie wynika z liczby uderzeń cząsteczek. Zatem ciśnienie cząstkowe zależy wprost od ilości moli danego gazu:
 
@@ -381,7 +390,7 @@ Bo tlen stanowi 21% cząsteczek powietrza ($y_{O2} = 0.21$).
 
 ---
 
-## 6. Gazy Rzeczywiste - Granice Modelu
+## <i class="bi bi-cloud"></i> 6. Gazy Rzeczywiste - Granice Modelu 
 
 Gdy ciśnienie jest bardzo wysokie (np. w butli z tlenem 200 bar) lub temperatura niska (skraplanie), założenia g.d. przestają działać.
 
@@ -393,7 +402,7 @@ Potrzebujemy lepszego równania stanu.
 
 ---
 
-## Równanie Van der Waalsa
+## <i class="bi bi-bookmark"></i> Równanie Van der Waalsa 
 
 $$ \left( p + \frac{a}{v^2} \right) (v - b) = R T $$
 
@@ -404,7 +413,7 @@ Dwie poprawki względem Clapeyrona ($pv=RT$):
 
 ---
 
-## Izotermy Andrewsa (Gaz Rzeczywisty)
+## <i class="bi bi-bookmark"></i> Izotermy Andrewsa (Gaz Rzeczywisty) 
 
 Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu doskonałego ($p \sim 1/v$).
 
@@ -500,7 +509,7 @@ ggplot() +
 
 ---
 
-## Zasada Stanów Odpowiednich
+## <i class="bi bi-bookmark"></i> Zasada Stanów Odpowiednich 
 
 Inżynierowie poradzili sobie z różnorodnością gazów wprowadzając **Współczynnik Ściśliwości $Z$**:
 
@@ -511,7 +520,7 @@ $$ Z = \frac{pv}{RT} $$
 
 ---
 
-## Parametry Zredukowane
+## <i class="bi bi-cloud-fog"></i> Parametry Zredukowane 
 Sprowadzamy różne gazy do "wspólnego mianownika", dzieląc ich parametry przez parametry w punkcie krytycznym:
 
 $$ p_r = \frac{p}{p_{kryt}}, \quad v_r = \frac{v}{v_{kryt}}, \quad T_r = \frac{T}{T_{kryt}} $$
@@ -526,7 +535,7 @@ Zasadę tę można porównać do przeliczania wieku psa na "ludzkie lata".
 
 ---
 
-## Podsumowanie Wykładu 4
+## <i class="bi bi-clipboard-check"></i> Podsumowanie Wykładu 4 
 
 1.  **Gaz Doskonały:** Dobry dla niskich ciśnień. Równanie $pv=RT$.
 2.  **Stała $R$:** Pamiętaj o różnicy między uniwersalną ($8314$) a indywidualną ($R_u/M$).

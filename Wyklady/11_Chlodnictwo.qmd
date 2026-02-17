@@ -47,7 +47,16 @@ format:
 editor: source
 ---
 
-## Agenda Wykładu {data-menu-title="Agenda"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(ggplot2)
+theme_set(theme_minimal(base_size = 18))
+```
+
+
+## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
 1.  **Termodynamika Chłodzenia** (Transport "pod górę", COP)
 2.  **Idealny Obieg Chłodniczy** (Odwrócony Carnot)
@@ -59,7 +68,7 @@ editor: source
 
 ---
 
-## 1. Idea Chłodzenia (Obieg Lewobieżny)
+## <i class="bi bi-arrow-repeat"></i> 1. Idea Chłodzenia (Obieg Lewobieżny) 
 
 ::: {.callout-important appearance="simple"}
 Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie od ciała zimniejszego do cieplejszego.
@@ -77,7 +86,7 @@ Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie o
 
 ---
 
-## Mierniki Efektywności (COP)
+## <i class="bi bi-bookmark"></i> Mierniki Efektywności (COP) 
 
 ::: {.callout-important appearance="simple"}
 W urządzeniach chłodniczych sprawność może przekraczać 1, dlatego używamy **COP** (Coefficient of Performance).
@@ -113,7 +122,7 @@ W branży chłodniczej i HVAC zamiast $COP_{ch}$ często stosuje się termin **E
 
 ---
 
-## 2. Dlaczego nie Carnot?
+## <i class="bi bi-bookmark"></i> 2. Dlaczego nie Carnot? 
 
 ::: {.callout-note appearance="simple"}
 Odwrócony obieg Carnota ma teoretycznie najwyższe COP. Dlaczego go nie budujemy?
@@ -135,7 +144,7 @@ Zastępujemy turbinę **zaworem dławiącym**, a sprężanie realizujemy w obsza
 
 ---
 
-## 3. Obieg Lindego (Kompresorowy)
+## <i class="bi bi-arrow-repeat"></i> 3. Obieg Lindego (Kompresorowy) 
 
 Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
@@ -156,7 +165,7 @@ Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
 ---
 
-## Zjawisko Dławienia (Joule-Thomson)
+## <i class="bi bi-bookmark"></i> Zjawisko Dławienia (Joule-Thomson) 
 
 W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.
 
@@ -179,7 +188,7 @@ W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona
 
 ---
 
-## 4. Wykres log(p)-h
+## <i class="bi bi-graph-up"></i> 4. Wykres log(p)-h 
 
 Podstawowe narzędzie inżyniera chłodnictwa i HVAC.
 Oś Y (log p) pozwala łatwo rysować izobary, a Oś X (h) pozwala odczytywać ciepło i pracę jako odcinki.
@@ -198,7 +207,7 @@ Oś Y (log p) pozwala łatwo rysować izobary, a Oś X (h) pozwala odczytywać c
 
 ---
 
-## Wizualizacja: Obieg na p-h
+## <i class="bi bi-arrow-repeat"></i> Wizualizacja: Obieg na p-h 
 
 ```{r}
 #| label: ph-cycle
@@ -289,7 +298,7 @@ ggplot() +
 
 ---
 
-## 5. Modyfikacje Rzeczywiste
+## <i class="bi bi-bookmark"></i> 5. Modyfikacje Rzeczywiste 
 
 W praktyce punkty 1 i 3 wychodzą poza obszar mokry:
 
@@ -308,7 +317,7 @@ Ciecz za skraplaczem (pkt 3) jest **dochładzana**.
 
 ---
 
-## 6. Czynniki Chłodnicze
+## <i class="bi bi-bookmark"></i> 6. Czynniki Chłodnicze 
 
 Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$) i skraplać się w wysokiej ($40^\circ C$) przy rozsądnych ciśnieniach.
 
@@ -332,7 +341,7 @@ Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$) i skraplać si
 
 ---
 
-## 7. Pompy Ciepła
+## <i class="bi bi-bookmark"></i> 7. Pompy Ciepła 
 
 "Lodówka wywrócona na lewą stronę".
 
@@ -350,7 +359,7 @@ Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powi
 
 ---
 
-## Podsumowanie W11
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W11 
 
 ::: {.incremental}
 1.  **Linde vs Carnot:** Zastąpiliśmy drogą turbinę tanim zaworem dławiącym (kosztem wzrostu entropii).

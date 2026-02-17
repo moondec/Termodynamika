@@ -165,7 +165,7 @@
 
 </section>
 <section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
-<h2>Agenda Wykładu</h2>
+<h2><i class="bi bi-list-ol"></i> Agenda Wykładu</h2>
 <ol type="1">
 <li><strong>Paliwa i Źródła Energii</strong></li>
 <li><strong>Stechiometria Spalania</strong> (<span class="math inline">\(C+O_2\)</span>)</li>
@@ -178,7 +178,7 @@
 </ol>
 </section>
 <section id="źródła-energii-chemicznej" class="slide level2">
-<h2>1. Źródła Energii Chemicznej</h2>
+<h2><i class="bi bi-bookmark"></i> 1. Źródła Energii Chemicznej</h2>
 <div title="Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna).">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -212,7 +212,7 @@
 </div>
 </section>
 <section id="stechiometria-spalania" class="slide level2">
-<h2>2. Stechiometria Spalania</h2>
+<h2><i class="bi bi-bookmark"></i> 2. Stechiometria Spalania</h2>
 <div title="Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -260,7 +260,7 @@
 </div>
 </section>
 <section id="wartość-opałowa-w_d" class="slide level2">
-<h2>3. Wartość Opałowa (<span class="math inline">\(W_d\)</span>)</h2>
+<h2><i class="bi bi-bookmark"></i> 3. Wartość Opałowa (<span class="math inline">\(W_d\)</span>)</h2>
 <div title="Krytyczne rozróżnienie">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -305,7 +305,7 @@
 </div>
 </section>
 <section id="egzergia-ilość-vs-jakość" class="slide level2">
-<h2>4. Egzergia: Ilość vs Jakość</h2>
+<h2><i class="bi bi-battery-half"></i> 4. Egzergia: Ilość vs Jakość</h2>
 <div title="Paradoks energii">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -345,7 +345,7 @@
 </div>
 </section>
 <section id="prawo-gouy-stodoli" class="slide level2">
-<h2>5. Prawo Gouy-Stodoli</h2>
+<h2><i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli</h2>
 <div title="Niszczenie egzergii">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -364,7 +364,7 @@
 </div>
 </section>
 <section id="prawo-gouy-stodoli-1" class="slide level2">
-<h2>5. Prawo Gouy-Stodoli</h2>
+<h2><i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli</h2>
 <h3 class="fragment" id="wykres-sankeya">Wykres Sankeya</h3>
 <div class="fragment">
 <p>Wizualizacja strat w elektrowni:</p>
@@ -391,7 +391,7 @@
 </div>
 </section>
 <section id="kogeneracja-chp---combined-heat-and-power" class="slide level2">
-<h2>Kogeneracja (CHP - Combined Heat and Power)</h2>
+<h2><i class="bi bi-bookmark"></i> Kogeneracja (CHP - Combined Heat and Power)</h2>
 <div title="Idea układów skojarzonych">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -445,7 +445,7 @@
 </div>
 </section>
 <section id="ogniwa-paliwowe" class="slide level2">
-<h2>Ogniwa Paliwowe</h2>
+<h2><i class="bi bi-bookmark"></i> Ogniwa Paliwowe</h2>
 <div title="Bezpośrednia zamiana energii chemicznej w elektryczną">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -495,7 +495,7 @@
 </div></div>
 </section>
 <section id="podsumowanie-kursu" class="slide level2">
-<h2>6. Podsumowanie Kursu</h2>
+<h2><i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu</h2>
 <div title="Droga kursu">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -520,7 +520,7 @@
 </ol>
 </section>
 <section id="podsumowanie-kursu-1" class="slide level2">
-<h2>6. Podsumowanie Kursu</h2>
+<h2><i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu</h2>
 <h3 id="egzamin">Egzamin</h3>
 <div title="Proszę przygotować się z:">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -775,6 +775,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
