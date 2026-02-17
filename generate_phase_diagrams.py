@@ -141,7 +141,7 @@ def plot_he4():
     plt.yscale('log')
     plt.xlabel('Temperatura [K]')
     plt.ylabel('Ciśnienie [Pa]')
-    plt.title('Diagram Fazowy Helu-4 (p-T)')
+    plt.title('Diagram Fazowy Hel-4 (p-T)')
     plt.grid(True, which="both", ls="-", alpha=0.2)
     plt.legend(loc='lower right')
     
