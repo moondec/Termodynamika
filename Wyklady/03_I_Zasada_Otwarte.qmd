@@ -159,7 +159,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
   
 :::
 
-## <i class="bi bi-bookmark"></i> Równanie Przepływu Ustalonego (ojednej drodze przepływu) 
+## <i class="bi bi-bookmark"></i> Równanie Przepływu Ustalonego 
 
 ### Postać Ogólna Bilansu Mocy
 
