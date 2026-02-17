@@ -12,7 +12,7 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="../img/KBiG.jpg" 
+    <img src="../img/kbig.jpg" 
          style="height: 200px;">
          
   </div>
@@ -172,30 +172,8 @@ Możemy patrzeć na układ z dwóch perspektyw:
 Makrostan o największej liczbie odpowiadających mu mikrostanów (największym $\Omega$) jest **najbardziej prawdopodobny** i odpowiada stanowi równowagi
 :::
 
-## <i class="bi bi-boxes"></i> Klasyfikacja Układów {auto-animate="true"}
 
-### Typy Układów
-
-```{mermaid}
-%%| fig-align: center
-graph TD
-    System[Układ Termodynamiczny]
-    System --> Isolated[Izolowany]
-    System --> Closed[Zamknięty]
-    System --> Open[Otwarty]
-    
-    Isolated -.->|Brak Wymiany| Env
-    Closed -->|Tylko Energia| Env
-    Open -->|Materia + Energia| Env[Otoczenie]
-    
-    style System fill:#2c3e50,stroke:#ecf0f1,color:#ecf0f1
-    style Open fill:#3498db,stroke:#ecf0f1,color:#fff
-    style Closed fill:#e67e22,stroke:#ecf0f1,color:#fff
-    style Isolated fill:#e74c3c,stroke:#ecf0f1,color:#fff
-    style Env fill:#95a5a6,stroke:#ecf0f1,color:#fff
-```
-
-## <i class="bi bi-boxes"></i> Klasyfikacja Układów {auto-animate="true"}
+## <i class="bi bi-boxes"></i> Klasyfikacja Układów
 
 Podział ze względu na wymianę z otoczeniem:
 
@@ -236,26 +214,6 @@ Podział ze względu na wymianę z otoczeniem:
 
 Dla **układu izolowanego** zmiana energii wewnętrznej jest zerowa: $\Delta U = 0$
 
-````{=html}
-<!--
-## Fluktuacje drgań
-
-```{r}
-#| echo: true
-#| code-fold: true
-#| fig-align: center
-library(ggplot2)
-x <- seq(0, 10, by=0.1)
-y <- sin(x) * exp(-0.2 * x)
-data <- data.frame(x, y)
-
-ggplot(data, aes(x, y)) +
-  geom_line(color = "darkblue", size = 1.2) +
-  theme_minimal(base_size = 16) +
-  labs(title = "Tłumienie drgań (Symulacja)", x = "Czas [s]", y = "Amplituda")
-```
--->
-````
 
 ## <i class="bi bi-arrow-repeat"></i> Proces i Równowaga
 
@@ -656,12 +614,13 @@ Energia jest funkcją stanu, co oznacza, że jej zmiana nie zależy od drogi prz
 
 W przeciwieństwie do energii, praca ($L$) i ciepło ($Q$) **nie są postaciami energii** ani funkcjami stanu.
 
-::: {.fragment .fade-up .callout-note title="Spostrzeżenie"}
-"Praca i ciepło przestają istnieć z chwilą zakończenia zjawiska ich wykonywania lub przepływu. Pozostaje tylko skutek — zmieniona wartość energii ciał."
-:::
 
 * **Praca ($L$):** Oddziaływanie, którego jedynym skutkiem zewnętrznym mogłoby być podniesienie ciężaru.
 * **Ciepło ($Q$):** Przekazywanie energii wynikające wyłącznie z różnicy temperatur między układami.
+
+::: {.fragment .fade-up .callout-note title="Spostrzeżenie"}
+"Praca i ciepło przestają istnieć z chwilą zakończenia zjawiska ich wykonywania lub przepływu. Pozostaje tylko skutek — zmieniona wartość energii ciał."
+:::
 
 ## Jednostki miary
 

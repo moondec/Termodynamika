@@ -1569,7 +1569,7 @@ $t$ & $p$ & $h'$ & $h''$ & $s'$ & $s''$ & $r$ \\
 ## Załącznik F: Wykres log p-h dla czynnika R134a
 
 \begin{center}
-\includegraphics[height=0.85\textheight]{../../img/R134A-logp_h.png}
+\includegraphics[height=0.85\textheight]{../../img/r134a-logp_h.png}
 \end{center}
 
 \newpage
@@ -1577,7 +1577,7 @@ $t$ & $p$ & $h'$ & $h''$ & $s'$ & $s''$ & $r$ \\
 ## Załącznik G: Wykres log p-h dla czynnika R290 (Propan)
 
 \begin{center}
-\includegraphics[height=0.85\textheight]{../../img/R290-logp-h.png}
+\includegraphics[height=0.85\textheight]{../../img/r290-logp-h.png}
 \end{center}
 
 \newpage
@@ -1585,7 +1585,7 @@ $t$ & $p$ & $h'$ & $h''$ & $s'$ & $s''$ & $r$ \\
 ## Załącznik H: Wykres log p-h dla czynnika NH$_3$ (Amoniak)
 
 \begin{center}
-\includegraphics[height=0.85\textheight]{../../img/NH3-logp-h.png}
+\includegraphics[height=0.85\textheight]{../../img/nh3-logp-h.png}
 \end{center}
 
 \newpage
@@ -1601,7 +1601,7 @@ $t$ & $p$ & $h'$ & $h''$ & $s'$ & $s''$ & $r$ \\
 ## Załącznik J: Wykres Molliera (h-X) dla Powietrza Wilgotnego
 
 \begin{center}
-\includegraphics[height=0.85\textheight]{../../img/air_hum-h-X.png}
+\includegraphics[height=0.85\textheight]{../../img/air_hum-h-x.png}
 \end{center}
 
 

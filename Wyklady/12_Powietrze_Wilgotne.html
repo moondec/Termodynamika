@@ -128,7 +128,7 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("../img/background_red.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
@@ -157,7 +157,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -168,9 +168,9 @@
 <h2>Agenda Wykładu</h2>
 <ol type="1">
 <li><strong>Skład Powietrza Wilgotnego</strong> (Prawo Daltona)</li>
-<li><strong>Parametry Wilgotności</strong> (<span class="math inline">\(\varphi\)</span>, <span class="math inline">\(x\)</span>)</li>
+<li><strong>Parametry Wilgotności</strong> (<span class="math inline">\(\varphi\)</span>, X)</li>
 <li><strong>Entalpia Powietrza Wilgotnego</strong> (<span class="math inline">\(h\)</span>)</li>
-<li><strong>Konstrukcja Wykresu Molliera h-x</strong></li>
+<li><strong>Konstrukcja Wykresu Molliera h-X</strong></li>
 <li><strong>Przemiany Charakterystyczne</strong></li>
 <li><strong>Pomiary i Aparatura</strong> (Psychrometry, Nawilżacze)</li>
 <li><strong>Bilans Masy i Energii</strong></li>
@@ -217,7 +217,7 @@
 </section>
 <section id="parametry-wilgotności" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
 <h2 data-id="quarto-animate-title">2. Parametry Wilgotności</h2>
-<p>Inżynierowie używają dwóch definicji wilgotności:</p>
+<p>Inżynierowie (i nie tylko) używają dwóch definicji wilgotności:</p>
 <div title="Wilgotność Względna (Relative Humidity)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -229,6 +229,7 @@
 </div>
 <div class="callout-content">
 <p>Określa, jak blisko jesteśmy stanu nasycenia (mgły). <span class="math display">\[ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% \]</span></p>
+<div style="font-size: .7em;">
 <ul>
 <li><span class="math inline">\(\varphi = 0\%\)</span>: Powietrze suche.</li>
 <li><span class="math inline">\(\varphi = 100\%\)</span>: Punkt rosy (powietrze nasycone).</li>
@@ -237,14 +238,18 @@
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: .9em;">
-<div class="callout callout-note callout-style-simple">
+</div>
+<div class="fragment" title="Wilgotność Bezwzględna" style="font-size: .9em;">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
+<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
+<p><strong>Wilgotność Bezwzględna</strong></p>
+</div>
 <div class="callout-content">
-<p>W meteoroligii wilgotność bezwzględną definiuje się jako stosunek masy pary wodnej do objętości powietrza. <span class="math display">\[ \rho_p = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] \]</span></p>
+<p>Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza. <span class="math display">\[ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] \]</span></p>
 </div>
 </div>
 </div>
@@ -266,6 +271,7 @@
 <ul>
 <li><strong>Kluczowe:</strong> W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc <strong><span class="math inline">\(X = const\)</span></strong> (jeśli nie nawilżamy).</li>
 </ul>
+<p>0.622 to stosunek mas molowych pary wodnej do powietrza suchego: <span class="math display">\[ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622\]</span></p>
 </div>
 </div>
 </div>
@@ -326,10 +332,12 @@
 </ul>
 </div>
 <h3 class="fragment" id="interpretacja-linii">Interpretacja Linii:</h3>
-<div class="fragment">
+<div class="fragment" style="font-size: .8em;">
 <ol type="1">
-<li><strong>Izotermy (<span class="math inline">\(t\)</span>):</strong> Lekko wznoszą się w prawo.</li>
+<li><strong>Izotermy (<span class="math inline">\(t\)</span>):</strong> Lekko wznoszą się w prawo, a po zetknięciu z krzywą <span class="math inline">\(varphi = 100%\)</span> opadają równolegle do izentalp.</li>
 <li><strong>Krzywe <span class="math inline">\(\varphi\)</span>:</strong> Układają się “bananowo” nad krzywą graniczną.</li>
+<li><strong>Izentalpy (<span class="math inline">\(h\)</span>):</strong> nachylone pod kątem ~135°.</li>
+<li><strong>Linie Randa</strong> (promienie z “bieguna”) to linie nachylenie wektora przemiany względem osi X (zależne od medium nawilżającego).</li>
 </ol>
 </div>
 </section>
@@ -401,6 +409,290 @@
 <h2 data-id="quarto-animate-title">5. Przemiany Charakterystyczne</h2>
 
 <img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-advanced-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="współczynnik-kierunkowy-przemiany-varepsilon" class="slide level2" style="font-size: 0.85em;">
+<h2>Współczynnik Kierunkowy Przemiany (<span class="math inline">\(\varepsilon\)</span>)</h2>
+<div title="Współczynnik kierunkowy $\varepsilon$">
+<div class="callout callout-important callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Współczynnik kierunkowy <span class="math inline">\(\varepsilon\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\varepsilon\)</span> określa nachylenie wektora przemiany na wykresie h-X: <span class="math display">\[ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Interpretacja fizyczna:</strong></p>
+<p><span class="math inline">\(\varepsilon\)</span> = entalpia właściwa medium dodawanego do powietrza (<span class="math inline">\(h_w\)</span>).</p>
+<div class="fragment" style="font-size: 0.85em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Medium</th>
+<th><span class="math inline">\(\varepsilon\)</span></th>
+<th>Kierunek na wykresie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lód / chłodzenie z osuszaniem</td>
+<td>&lt; 0 (np. -1000)</td>
+<td>stromo w dół ↓↘</td>
+</tr>
+<tr class="even">
+<td>Woda ciekła (~20°C)</td>
+<td>≈ 0–100</td>
+<td>wzdłuż izentalpy ↘</td>
+</tr>
+<tr class="odd">
+<td>Para nasycona (100°C)</td>
+<td>≈ 2500</td>
+<td>prawie poziomo →</td>
+</tr>
+<tr class="even">
+<td>Para przegrzana</td>
+<td>&gt; 2500 (np. 4500)</td>
+<td>lekko w górę ↗</td>
+</tr>
+<tr class="odd">
+<td>Czyste ciepło (bez wilgoci)</td>
+<td>∞</td>
+<td>pionowo ↑</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="fragment">
+<p><strong>Bilans energii:</strong> <span class="math display">\[ \dot{m}_g (h_2 - h_1) = \dot{m}_w \cdot h_w \]</span></p>
+<p><strong>Stąd:</strong> <span class="math display">\[ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = h_w \]</span></p>
+</div>
+<div class="fragment" title="Skala Randa" style="font-size: 0.85em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Skala Randa</strong></p>
+</div>
+<div class="callout-content">
+<p>Linie o stałym <span class="math inline">\(\varepsilon\)</span> tworzą <strong>pęk promieni</strong> z “bieguna” — to <strong>skala Randa</strong> na wykresie h-X.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="przemiana-1-mieszanie-strumieni-powietrza" class="slide level2">
+<h2>Przemiana 1: Mieszanie Strumieni Powietrza</h2>
+<div title="Zasada" style="font-size: 0.85em;">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zasada</strong></p>
+</div>
+<div class="callout-content">
+<p>Stan wynikowy (M) leży <strong>na odcinku 1-2</strong>. Położenie zależy od stosunku masowego: <span class="math inline">\(\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}\)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><strong>Bilansy:</strong></p>
+<p><span class="math display">\[ X_M = \frac{\dot{m}_1 X_1 + \dot{m}_2 X_2}{\dot{m}_1 + \dot{m}_2} \]</span></p>
+<p><span class="math display">\[ h_M = \frac{\dot{m}_1 h_1 + \dot{m}_2 h_2}{\dot{m}_1 + \dot{m}_2} \]</span></p>
+<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zastosowania</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rekuperacja:</strong> Odzysk ciepła w centralach wentylacyjnych. <strong>Klimatyzacja:</strong> Mieszanie powietrza świeżego z recyrkulowanym. <strong>Wentylacja:</strong> Rozcieńczanie zanieczyszczeń.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/mix-two-streams-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="przemiana-2-nawilżanie-parą-wodną" class="slide level2">
+<h2>Przemiana 2: Nawilżanie Parą Wodną</h2>
+<div title="Zasada" style="font-size: 0.85em;">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zasada</strong></p>
+</div>
+<div class="callout-content">
+<p>Przy nawilżaniu <strong>parą</strong> (<span class="math inline">\(h_w \approx 2500\)</span> kJ/kg) przemiana biegnie <strong>prawie poziomo</strong> (wzdłuż izotermy). <span class="math inline">\(\varepsilon = h_w \approx 2500\)</span> kJ/kg.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><strong>Bilansy:</strong></p>
+<p><span class="math display">\[ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} \]</span></p>
+<p><span class="math display">\[ \Delta h = h_w \cdot \Delta X \]</span></p>
+<div class="fragment">
+<p>Temperatura prawie stała!</p>
+</div>
+<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zastosowania</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Klimatyzacja zimowa:</strong> Nawilżanie pomieszczeń ogrzewanych. <strong>Przemysł tekstylny:</strong> Utrzymanie wilgotności włókien. <strong>Drukarnie:</strong> Zapobieganie elektryzowaniu papieru.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/steam-humidification-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="przemiana-3-cykl-suszarniczy" class="slide level2">
+<h2>Przemiana 3: Cykl Suszarniczy</h2>
+<div title="Zasada" style="font-size: 0.85em;">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zasada</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>(A)</strong> Podgrzanie powietrza (<span class="math inline">\(X=const\)</span>, pionowo). <strong>(B)</strong> Suszenie materiału (<span class="math inline">\(h \approx const\)</span>, wzdłuż izentalpy).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><strong>Etap A:</strong> <span class="math inline">\(X_A = X_0\)</span>, <span class="math inline">\(t \uparrow\)</span></p>
+<p><strong>Etap B:</strong> <span class="math inline">\(h_B \approx h_A\)</span>, <span class="math inline">\(X \uparrow\)</span>, <span class="math inline">\(t \downarrow\)</span></p>
+<div class="fragment">
+<p>Sprawność: <span class="math inline">\(\eta \sim (X_B - X_0)\)</span></p>
+</div>
+<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zastosowania</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Suszarnie przemysłowe:</strong> Drewno, zboże, owoce. <strong>Przemysł spożywczy:</strong> Pasta, mąka, mleko w proszku. <strong>Budownictwo:</strong> Suszenie tynków i wylewek.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/drying-cycle-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="nawilżanie-adiabatyczne-wodą" class="slide level2">
+<h2>Nawilżanie Adiabatyczne (Wodą)</h2>
+<div title="Zasada" style="font-size: 0.85em;">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zasada</strong></p>
+</div>
+<div class="callout-content">
+<p>Nawilżanie <strong>wodą</strong> (<span class="math inline">\(h_w \approx 0\)</span>) → przemiana <strong>wzdłuż izentalpy</strong> (<span class="math inline">\(\varepsilon \approx 0\)</span>). Temperatura spada do <span class="math inline">\(t_m\)</span> (mokry termometr).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><strong>Bilans:</strong></p>
+<p><span class="math display">\[ h_1 \approx h_2 \]</span></p>
+<div class="fragment">
+<p>Chłodzenie ewaporacyjne!</p>
+</div>
+<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zastosowania</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Chłodnie kominowe:</strong> Odprowadzanie ciepła z elektrowni. <strong>Klimatyzatory ewaporacyjne:</strong> Tanie chłodzenie w suchym klimacie. <strong>Przemysł tekstylny:</strong> Nawilżanie hal produkcyjnych.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/adiabatic-humidification-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
 <section id="pomiar-parametrów-powietrza" class="slide level2">
 <h2>6. Pomiar Parametrów Powietrza</h2>
 <div class="columns">
@@ -444,7 +736,7 @@
 </ul>
 </div>
 <div class="fragment absolute" style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;top: 0%; left: 20%; width: 70%; ">
-<p><img data-src="img/Small-Air-Handling-Units-SENV-1591216654.jpg"></p>
+<p><img data-src="../img/small-air-handling-units-senv-1591216654.jpg"></p>
 </div>
 </section>
 <section id="bilans-masy-i-energii" class="slide level2">

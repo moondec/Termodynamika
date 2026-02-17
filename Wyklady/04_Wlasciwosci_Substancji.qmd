@@ -12,7 +12,7 @@ institute: |
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
          style="height: 200px;">
          
-    <img src="../img/KBiG.jpg" 
+    <img src="../img/kbig.jpg" 
          style="height: 200px;">
          
   </div>

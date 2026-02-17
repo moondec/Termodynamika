@@ -128,7 +128,7 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_blue.png") !important;
+      background-image: url("../img/background_blue.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
@@ -168,7 +168,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -205,6 +205,17 @@
 <li class="fragment"><strong>Turbina:</strong> Para rozpręża się, napędzając generator.</li>
 <li class="fragment"><strong>Skraplacz:</strong> Para skrapla się do wody (oddając ciepło do rzeki/chłodni).</li>
 </ol>
+</section>
+<section id="obieg-carnota-dla-pary-wodnej" class="slide level2">
+<h2>Obieg Carnota dla Pary Wodnej</h2>
+<blockquote>
+<p>Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.</p>
+</blockquote>
+<p>W teorii, aby osiągnąć maksymalną sprawność, para musiałaby być skraplana do cieczy nasyconej, <strong>a następnie sprężana do ciśnienia kotła</strong>, co jest niemożliwe do zrealizowania w praktyce.</p>
+
+<img data-src="../img/carnot_pw.png" class="r-stretch"><div style="font-size: 0.6em; color: gray;">
+<p>Źródło: “Termodynamika Techniczna” Wiśniewski (2017)</p>
+</div>
 </section>
 <section id="obieg-clausiusa-rankinea-c-r" class="slide level2">
 <h2>2. Obieg Clausiusa-Rankine’a (C-R)</h2>
@@ -323,6 +334,57 @@
 <li class="fragment"><p><strong>Turbina to pionowa linia:</strong> Dla idealnej turbiny (<span class="math inline">\(s=const\)</span>), proces jest pionową kreską w dół.</p></li>
 <li class="fragment"><p><strong>Łatwy odczyt spadku entalpii:</strong> <span class="math display">\[ l_t = h_3 - h_4 \]</span> To jest kluczowa wielkość dla projektanta turbiny.</p></li>
 </ol>
+</div></div>
+</section>
+<section id="rzeczywisty-obieg-rankinea" class="slide level2">
+<h2>Rzeczywisty obieg Rankine’a</h2>
+
+<img data-src="../img/rankine_rzeczywisty.png" class="r-stretch"><div style="font-size: 0.6em; color: gray;">
+<p>Źródło: “Termodynamika Techniczna” Wiśniewski (2017)</p>
+</div>
+</section>
+<section id="sprawność-izentropowa-turbiny-eta_is" class="slide level2">
+<h2>Sprawność Izentropowa Turbiny (<span class="math inline">\(\eta_{is}\)</span>)</h2>
+<p>Rzeczywista turbina nie jest idealna — występują tarcie, straty cieplne i turbulencje. Definiujemy sprawność izentropową jako stosunek pracy rzeczywistej do idealnej:</p>
+<p><span class="math display">\[ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} \]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adnotacja</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">\(h_{2s}\)</span> — entalpia na wylocie w procesie idealnym (izentropowym, <span class="math inline">\(s=const\)</span>)</li>
+<li><span class="math inline">\(h_{2r}\)</span> — entalpia na wylocie w procesie rzeczywistym</li>
+<li>Typowe wartości: <span class="math inline">\(\eta_{is} = 0.75 - 0.90\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wskazówka</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Rzeczywista entalpia wylotowa:</strong> <span class="math display">\[ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) \]</span></p>
+<p>Na wykresie h-s linia rozprężania <strong>odchyla się w prawo</strong> (wzrost entropii), ponieważ proces jest nieodwracalny.</p>
+</div>
+</div>
+</div>
+</div>
 </div></div>
 </section>
 <section id="problem-wilgotności-erozja" class="slide level2">
@@ -511,7 +573,7 @@
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<p><img data-src="img/COGES_diagram.svg.png" style="background: white; top;;width:150.0%"></p>
+<p><img data-src="../img/coges_diagram.svg.png" style="background: white; top;;width:150.0%"></p>
 <div style="font-size: 0.6em; color: gray;">
 <p>Źródło: <a href="https://commons.wikimedia.org/wiki/File:COGES-diagram.png">COGES-diagram</a>, <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>, via Wikimedia Commons</p>
 </div>
@@ -557,7 +619,7 @@
 <li class="fragment">Nowe narzędzie inżyniera: <strong>Wykres log p-h</strong>.</li>
 </ul>
 
-<img data-src="img/Pump_v5.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:30.0%"><div style="font-size: 0.6em; color: gray;">
+<img data-src="../img/pump_v5.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:30.0%"><div style="font-size: 0.6em; color: gray;">
 <p>Źródło: <a href="https://commons.wikimedia.org/wiki/File:Pump_v5.gif">Timpet</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</p>
 </div>
 

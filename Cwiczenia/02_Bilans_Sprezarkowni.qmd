@@ -6,7 +6,7 @@ format:
     theme: simple
     width: 1600
     height: 900
-    logo: "../img/KBiG.jpg"
+    logo: "../img/kbig.jpg"
     footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
     chalkboard: true
 ---
@@ -24,7 +24,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 4.  **Proces sprężania:** Politropa z wykładnikiem $n = 1.35$.
 :::
 ::: {.column width="40%"}
-![](../img/Compressor-KSeries-K2_2000x.jpg)
+![](../img/compressor-kseries-k2_2000x.jpg)
 :::
 :::
 

@@ -128,7 +128,7 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("../img/background_red.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
@@ -157,7 +157,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -316,7 +316,7 @@
 </div>
 <p><span style="font-size: 0.6em; color: gray;">źródło:<a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
 </div><div class="column" style="width:40%;">
-<p><img data-src="img/kopula.png"></p>
+<p><img data-src="../img/kopula.png"></p>
 </div></div>
 </section>
 <section id="stopień-suchości-x" class="slide level2">
@@ -385,6 +385,44 @@
 <li>Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</li>
 </ol>
 </section>
+<section id="interpolacja-liniowa-w-tablicach" class="slide level2">
+<h2>Interpolacja Liniowa w Tablicach</h2>
+<p>Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży <strong>między</strong> wartościami tablicowymi, stosujemy <strong>interpolację liniową</strong>.</p>
+<h3 id="wzór">Wzór:</h3>
+<p><span class="math display">\[ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) \]</span></p>
+<div class="fragment" title="Przykład">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Przykład</strong></p>
+</div>
+<div class="callout-content">
+<p>Szukamy entalpii pary przegrzanej przy <span class="math inline">\(p = 10\)</span> bar i <span class="math inline">\(t = 275^\circ C\)</span>.</p>
+<p>Z tablic: <span class="math inline">\(h(250^\circ C) = 2943\)</span>, <span class="math inline">\(h(300^\circ C) = 3052\)</span> kJ/kg.</p>
+<p><span class="math display">\[ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0.5 \cdot 109 \approx \mathbf{2997.5 \text{ kJ/kg}} \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ostrzeżenie</strong></p>
+</div>
+<div class="callout-content">
+<p>Interpolacja działa dobrze tylko dla <strong>małych przedziałów</strong> (liniowa zależność). Dla dużych skoków ciśnienia lub w pobliżu punktu krytycznego dokładność maleje — wtedy lepiej użyć oprogramowania (np. CoolProp, NIST).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="wykresy-termodynamiczne" class="slide level2">
 <h2>5. Wykresy Termodynamiczne</h2>
 <div class="columns">
@@ -401,7 +439,7 @@
 <p>Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T−s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz <strong>praca techniczna</strong> są na nim przedstawiane <strong>jako odcinki</strong>, a nie pola powierzchni</p>
 </div>
 </div><div class="column" style="width:40%;">
-<p><img data-src="img/mollier-chart.png" style="width:100.0%"></p>
+<p><img data-src="../img/mollier-chart.png" style="width:100.0%"></p>
 </div></div>
 </section>
 <section id="mollier-w-praktyce" class="slide level2">
@@ -428,7 +466,7 @@
 <li>“Kopuła” jest mocno przechylona w prawo.</li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img data-src="img/p_h_diagram.png" style="width:100.0%"></p>
+<p><img data-src="../img/p_h_diagram.png" style="width:100.0%"></p>
 </div></div>
 <div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.6em; position: absolute; top: 60%;">
 <p>Analiza typowego obiegu chłodniczego:</p>

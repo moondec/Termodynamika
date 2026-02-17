@@ -128,7 +128,7 @@
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
-      background-image: url("img/background_red.png") !important;
+      background-image: url("../img/background_red.png") !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
@@ -157,7 +157,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="img/KBiG.jpg" style="height: 200px;"></p>
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -610,12 +610,28 @@
 <h2>Praca Techniczna w Przemianach</h2>
 <p>Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:</p>
 <p><span class="math display">\[ l_t = n \cdot l \]</span> (dla politropy <span class="math inline">\(pv^n=const\)</span>).</p>
+<p><strong>Wzór inżynierski (dla gazu doskonałego):</strong> <span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
+<div title="Uwaga o znaku">
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Uwaga o znaku</strong></p>
+</div>
+<div class="callout-content">
+<p>Powyższy wzór podaje <strong>wartość pracy napędowej</strong> (dodatnią przy sprężaniu <span class="math inline">\(p_2 &gt; p_1\)</span>). W ścisłej konwencji termodynamicznej praca wykonana <strong>nad</strong> układem jest ujemna (<span class="math inline">\(l_t &lt; 0\)</span>), stąd w bilansach często pojawia się minus.</p>
+</div>
+</div>
+</div>
+</div>
 <ul>
 <li>Dla izobary (<span class="math inline">\(n=0\)</span>): <span class="math inline">\(l_t = 0\)</span>.</li>
-<li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = l\)</span>.</li>
-<li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = \kappa \cdot l = -\Delta h\)</span>.</li>
+<li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = RT \ln(p_1/p_2)\)</span>.</li>
+<li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = \Delta h = c_p(T_2 - T_1)\)</span>.</li>
 </ul>
-<p>gdzie: (<span class="math inline">\(\kappa\)</span>) to <span class="math inline">\(c_p/c_v\)</span></p>
+<p>gdzie: <span class="math inline">\(\kappa = c_p/c_v\)</span>.</p>
 <div class="fragment" title="**Wniosek dla Sprężarki:**">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -627,6 +643,41 @@
 </div>
 <div class="callout-content">
 <p>Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do <strong>izotermy</strong> (chłodzić!). Adiabata (brak chłodzenia) wymaga największej pracy technicznej.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sprężanie-wielostopniowe-z-chłodzeniem" class="slide level2">
+<h2>Sprężanie Wielostopniowe z Chłodzeniem</h2>
+<p>Przy dużych stopniach sprężania (<span class="math inline">\(p_2/p_1 &gt; 4\)</span>) temperatura końcowa jest zbyt wysoka. Rozwiązanie: <strong>sprężanie w kilku stopniach</strong> z chłodzeniem międzystopniowym.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="optymalne-ciśnienie-pośrednie">Optymalne ciśnienie pośrednie</h3>
+<p>Dla <strong>dwóch stopni</strong> (minimalna suma prac):</p>
+<p><span class="math display">\[ p_{pośr} = \sqrt{p_1 \cdot p_2} \]</span></p>
+<p>Każdy stopień ma ten sam stosunek sprężania: <span class="math display">\[ \frac{p_{pośr}}{p_1} = \frac{p_2}{p_{pośr}} = \sqrt{\frac{p_2}{p_1}} \]</span></p>
+</div><div class="column" style="width:50%;">
+<h3 id="efekty">Efekty</h3>
+<div class="fragment callout-success">
+<ol type="1">
+<li><strong>Niższa temperatura</strong> końcowa (bezpieczeństwo oleju, uszczelek).</li>
+<li><strong>Mniejsza praca</strong> całkowita (zbliżenie do izotermy).</li>
+<li><strong>Wyższy stopień sprężania</strong> bez ryzyka awarii.</li>
+</ol>
+</div>
+</div></div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Adnotacja</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Uogólnienie:</strong> Dla <span class="math inline">\(k\)</span> stopni: <span class="math inline">\(p_i = p_1 \cdot (p_2/p_1)^{i/k}\)</span>. W praktyce: powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span> stosuje się 2 stopnie, powyżej <span class="math inline">\(\approx 60\)</span> — 3 stopnie.</p>
 </div>
 </div>
 </div>

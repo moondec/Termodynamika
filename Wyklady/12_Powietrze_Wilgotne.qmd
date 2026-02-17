@@ -7,7 +7,7 @@ institute: |
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
     <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
     <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
-    <img src="../img/KBiG.jpg" style="height: 200px;">
+    <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
 format:
@@ -1147,7 +1147,7 @@ Dwa termometry:
 :::
 
 ::: {.fragment .absolute top=0% left=20% width=70% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
-![](../img/Small-Air-Handling-Units-SENV-1591216654.jpg)
+![](../img/small-air-handling-units-senv-1591216654.jpg)
 ::: 
 
 ---
