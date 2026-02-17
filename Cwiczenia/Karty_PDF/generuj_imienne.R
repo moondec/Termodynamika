@@ -34,11 +34,11 @@ dir.create("output_imienne/Klucze", showWarnings = FALSE)
 generate_params <- function(seed_val) {
   set.seed(seed_val)
   list(
-    V = sample(seq(3, 8, 0.5), 1),
-    p_man = sample(seq(6, 12, 0.5), 1),
+    V = sample(seq(3, 8, 0.1), 1),
+    p_man = sample(seq(6, 12, 0.1), 1),
     t = sample(15:35, 1),
     p_atm = sample(seq(740, 770, 5), 1),
-    t_fire = sample(seq(200, 400, 50), 1),
+    t_fire = sample(seq(200, 400, 10), 1),
     y_N2 = sample(seq(70, 85, 5), 1),
     p_mix = sample(3:8, 1),
     t_mix = sample(seq(15, 30, 5), 1),

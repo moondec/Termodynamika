@@ -72,203 +72,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>163</value>
+                        <value>111</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>129</value>
+                        <value>221</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>209</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>4</number>
-                        <value>205</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>5</number>
-                        <value>209</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>6</number>
-                        <value>112</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>7</number>
-                        <value>170</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>8</number>
-                        <value>246</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>9</number>
-                        <value>110</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>224</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>242</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>169</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>129</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>162</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
-                        <value>142</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>16</number>
-                        <value>155</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>17</number>
-                        <value>185</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>18</number>
-                        <value>179</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>19</number>
-                        <value>156</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
-                        <value>162</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>21</number>
-                        <value>154</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
                         <value>125</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>23</number>
-                        <value>136</value>
+                        <number>4</number>
+                        <value>222</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>24</number>
-                        <value>174</value>
+                        <number>5</number>
+                        <value>120</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>25</number>
-                        <value>183</value>
+                        <number>6</number>
+                        <value>214</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>26</number>
+                        <number>7</number>
+                        <value>237</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>242</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>246</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>163</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
                         <value>131</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>27</number>
-                        <value>192</value>
+                        <number>12</number>
+                        <value>231</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>28</number>
-                        <value>113</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>205</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>128</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>248</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>137</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>139</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>209</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>118</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>153</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>168</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>218</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>160</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>160</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>195</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>191</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>164</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
-                        <value>211</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>169</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>112</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
+                        <number>13</number>
                         <value>227</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
+                        <number>14</number>
+                        <value>121</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>117</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>148</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>183</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>236</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>127</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>107</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>137</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>173</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>153</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>104</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>154</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>220</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>238</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>119</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>220</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>211</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>155</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>166</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>190</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
                         <value>141</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>43</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>228</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>189</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>160</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>140</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>133</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>49</number>
-                        <value>244</value>
+                        <value>108</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>233</value>
+                        <value>126</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -297,19 +297,19 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>1.8</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>1.4</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
@@ -321,87 +321,87 @@
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>1.4</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>1.6</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>1.5</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>1.8</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>1.4</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>1.8</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>1.7</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>1.7</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>1.5</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>1.6</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>1.6</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>1.4</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>1.4</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
                         <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>22</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>24</number>
-                        <value>1.4</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>1.7</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
-                        <value>1.7</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
@@ -409,11 +409,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>1.6</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
-                        <value>1.5</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
@@ -425,11 +425,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>1.6</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>1.6</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
@@ -437,63 +437,63 @@
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>1.5</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>1.7</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
                         <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>44</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
+                        <number>38</number>
                         <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
+                        <number>39</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
                         <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>42</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>49</number>
-                        <value>1.5</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -522,203 +522,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2408</value>
+                        <value>2499</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2418</value>
+                        <value>2546</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2432</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2451</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2487</value>
+                        <value>2460</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2521</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>7</number>
-                        <value>2514</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>8</number>
-                        <value>2452</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>9</number>
-                        <value>2507</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>2456</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>2411</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>2482</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>2550</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>2457</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
-                        <value>2507</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>16</number>
-                        <value>2454</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>17</number>
-                        <value>2429</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>18</number>
-                        <value>2413</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>19</number>
-                        <value>2469</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
-                        <value>2474</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>21</number>
-                        <value>2436</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>2522</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>2465</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>2511</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>2429</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2509</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2402</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2484</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2422</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2487</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
                         <value>2480</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>32</number>
-                        <value>2465</value>
+                        <number>7</number>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>33</number>
-                        <value>2447</value>
+                        <number>8</number>
+                        <value>2417</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>34</number>
-                        <value>2532</value>
+                        <number>9</number>
+                        <value>2437</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>35</number>
-                        <value>2411</value>
+                        <number>10</number>
+                        <value>2407</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>36</number>
-                        <value>2543</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2475</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2494</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2498</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
+                        <number>11</number>
                         <value>2520</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>41</number>
-                        <value>2484</value>
+                        <number>12</number>
+                        <value>2465</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>42</number>
-                        <value>2523</value>
+                        <number>13</number>
+                        <value>2544</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>43</number>
-                        <value>2442</value>
+                        <number>14</number>
+                        <value>2547</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>44</number>
-                        <value>2534</value>
+                        <number>15</number>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>45</number>
+                        <number>16</number>
+                        <value>2410</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>2408</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>2493</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
                         <value>2476</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>46</number>
+                        <number>20</number>
+                        <value>2428</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>2518</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
                         <value>2459</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>47</number>
-                        <value>2419</value>
+                        <number>23</number>
+                        <value>2531</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
+                        <number>24</number>
+                        <value>2438</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>2479</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>2538</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2490</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2425</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2500</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2512</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
                         <value>2492</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>35</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2445</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2505</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2516</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2438</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2424</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2517</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2471</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2466</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2422</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>2545</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>2494</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>2509</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>2496</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>49</number>
-                        <value>2412</value>
+                        <value>2469</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2509</value>
+                        <value>2517</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -747,7 +747,7 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>91</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
@@ -759,7 +759,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>94</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
@@ -767,23 +767,23 @@
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>7</number>
                         <value>89</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>7</number>
+                        <value>90</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>8</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>88</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
@@ -791,15 +791,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>94</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
@@ -811,67 +811,67 @@
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>93</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>88</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>88</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>92</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>92</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>89</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>88</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
                         <value>89</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>27</number>
+                        <number>26</number>
                         <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
-                        <value>88</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
                         <value>92</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>30</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>32</number>
-                        <value>94</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
@@ -879,7 +879,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>92</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
@@ -887,47 +887,47 @@
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
-                        <value>90</value>
+                        <value>88</value>
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>89</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
                         <value>91</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>45</number>
+                        <number>39</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
                         <value>92</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>46</number>
+                        <number>43</number>
+                        <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>90</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
                         <value>93</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
@@ -935,15 +935,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>90</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>88</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>91</value>
+                        <value>94</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -972,203 +972,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>1817</value>
+                        <value>2376</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2036</value>
+                        <value>1782</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>1705</value>
+                        <value>1665</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>1951</value>
+                        <value>2406</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>1732</value>
+                        <value>2375</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2374</value>
+                        <value>2488</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2498</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>1588</value>
+                        <value>2477</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2154</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>1979</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>2141</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>2471</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>1996</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>2068</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
-                        <value>2207</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>16</number>
-                        <value>1717</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>17</number>
-                        <value>1744</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>18</number>
-                        <value>1514</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>19</number>
-                        <value>1964</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
-                        <value>1909</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>21</number>
-                        <value>1748</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>1543</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>2137</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>2176</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>1649</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2387</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>1951</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2234</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2191</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>1895</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>2254</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2382</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>1839</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>1927</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>1581</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2051</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2108</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>1924</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2078</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
                         <value>2209</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>41</number>
-                        <value>2036</value>
+                        <number>10</number>
+                        <value>1837</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>42</number>
-                        <value>1958</value>
+                        <number>11</number>
+                        <value>2118</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>43</number>
-                        <value>2256</value>
+                        <number>12</number>
+                        <value>2215</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>44</number>
-                        <value>1635</value>
+                        <number>13</number>
+                        <value>2034</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>45</number>
-                        <value>2172</value>
+                        <number>14</number>
+                        <value>1908</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>46</number>
-                        <value>2003</value>
+                        <number>15</number>
+                        <value>1644</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>47</number>
-                        <value>2335</value>
+                        <number>16</number>
+                        <value>2491</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
+                        <number>17</number>
                         <value>1649</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>18</number>
+                        <value>2228</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>1706</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>1996</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>1787</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>1571</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>2454</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>1662</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>1500</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>2221</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>1827</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>1672</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2242</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>1544</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2127</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2219</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2233</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2067</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>1539</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2138</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2015</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>1622</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>1504</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2381</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>1672</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>1977</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>1627</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>1626</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>1711</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>1925</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>1737</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>1866</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>49</number>
-                        <value>2478</value>
+                        <value>1695</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>1562</value>
+                        <value>1616</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -1179,7 +1179,7 @@
             <text>Ćw3 Zad. dom. – Dodatkowe ciepło z kondensacji [kW]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;W spalinach kotła powstaje \( \dot{{m}}_w = \) &lt;b&gt;{Vgas}&lt;/b&gt; × &lt;b&gt;{kgH2O}&lt;/b&gt; kg/h pary wodnej. Ciepło parowania wody wynosi \( r = \) &lt;b&gt;{r_w}&lt;/b&gt; kJ/kg.&lt;/p&gt;&lt;p&gt;Oblicz dodatkowy strumień ciepła \( \dot{{Q}}_{{kond}} \), który można odzyskać skraplając &lt;strong&gt;całą&lt;/strong&gt; parę wodną ze spalin.&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kW&lt;/strong&gt;. Zaokrąglij do całości.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wskazówka:&lt;/em&gt; Uwaga na jednostki czasu!&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;W spalinach kotła powstaje \( \dot{{m}}_w = \) &lt;b&gt;{Vgas}&lt;/b&gt; × &lt;b&gt;{kgH2O}&lt;/b&gt; kg/h pary wodnej. Ciepło parowania wody wynosi \( r = \) &lt;b&gt;{r_w}&lt;/b&gt; kJ/kg.&lt;/p&gt;&lt;p&gt;Oblicz dodatkowy strumień ciepła \( \dot{{Q}}_{{kond}} \), który można odzyskać skraplając &lt;strong&gt;całą&lt;/strong&gt; parę wodną ze spalin.&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kW&lt;/strong&gt;. Zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1241,203 +1241,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>146</value>
+                        <value>111</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>146</value>
+                        <value>221</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>234</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>4</number>
-                        <value>226</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>5</number>
-                        <value>157</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>6</number>
-                        <value>217</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>7</number>
-                        <value>138</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>8</number>
-                        <value>171</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>9</number>
-                        <value>108</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>217</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>189</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>234</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
                         <value>125</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>14</number>
-                        <value>220</value>
+                        <number>4</number>
+                        <value>222</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>15</number>
-                        <value>232</value>
+                        <number>5</number>
+                        <value>120</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>16</number>
-                        <value>136</value>
+                        <number>6</number>
+                        <value>214</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>17</number>
-                        <value>154</value>
+                        <number>7</number>
+                        <value>237</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>18</number>
+                        <number>8</number>
                         <value>242</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>19</number>
-                        <value>230</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
-                        <value>131</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>21</number>
-                        <value>118</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>176</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>212</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>193</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>239</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>241</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>203</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>219</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>226</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
+                        <number>9</number>
                         <value>246</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>31</number>
-                        <value>119</value>
+                        <number>10</number>
+                        <value>163</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>32</number>
-                        <value>188</value>
+                        <number>11</number>
+                        <value>131</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>33</number>
-                        <value>242</value>
+                        <number>12</number>
+                        <value>231</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>34</number>
-                        <value>243</value>
+                        <number>13</number>
+                        <value>227</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>35</number>
-                        <value>196</value>
+                        <number>14</number>
+                        <value>121</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>36</number>
-                        <value>150</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>140</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>124</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
+                        <number>15</number>
                         <value>118</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>40</number>
+                        <number>16</number>
+                        <value>117</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>148</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>183</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>236</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>127</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>107</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>137</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>173</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>153</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>104</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>154</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>220</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
                         <value>238</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>36</number>
+                        <value>119</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>220</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>211</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>155</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>166</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>41</number>
-                        <value>172</value>
+                        <value>190</value>
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>241</value>
+                        <value>141</value>
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
-                        <value>232</value>
+                        <value>118</value>
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
-                        <value>249</value>
+                        <value>228</value>
                     </dataset_item>
                     <dataset_item>
                         <number>45</number>
-                        <value>201</value>
+                        <value>189</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>112</value>
+                        <value>160</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>200</value>
+                        <value>140</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>193</value>
+                        <value>133</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>139</value>
+                        <value>108</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>135</value>
+                        <value>126</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -1466,11 +1466,11 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
@@ -1478,7 +1478,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>1.8</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
@@ -1486,11 +1486,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
@@ -1498,15 +1498,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
                         <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>10</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>11</number>
-                        <value>1.8</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
@@ -1514,31 +1514,31 @@
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>1.4</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>1.7</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>1.6</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>1.7</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>1.6</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>1.6</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>1.7</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
@@ -1550,11 +1550,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>1.6</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>1.7</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
@@ -1562,15 +1562,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>1.6</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
-                        <value>1.6</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
@@ -1578,91 +1578,91 @@
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>1.4</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
-                        <value>1.8</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>32</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>1.7</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
-                        <value>1.8</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
-                        <value>1.6</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>1.8</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>1.8</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>1.4</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>1.4</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>48</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>49</number>
                         <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>50</number>
+                        <number>39</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
                         <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>1.4</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -1691,31 +1691,31 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2550</value>
+                        <value>2499</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2453</value>
+                        <value>2546</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2539</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2434</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2461</value>
+                        <value>2460</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2466</value>
+                        <value>2480</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2493</value>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
@@ -1723,171 +1723,171 @@
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2541</value>
+                        <value>2437</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>2486</value>
+                        <value>2407</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
-                        <value>2479</value>
+                        <value>2520</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>2541</value>
+                        <value>2465</value>
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>2534</value>
+                        <value>2544</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>2488</value>
+                        <value>2547</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>2531</value>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>2422</value>
+                        <value>2410</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2424</value>
+                        <value>2408</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>2464</value>
+                        <value>2493</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>2456</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
                         <value>2476</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>21</number>
-                        <value>2534</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>2490</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>2540</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>2518</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>2514</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
+                        <number>20</number>
                         <value>2428</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>27</number>
-                        <value>2466</value>
+                        <number>21</number>
+                        <value>2518</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>28</number>
-                        <value>2513</value>
+                        <number>22</number>
+                        <value>2459</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>29</number>
-                        <value>2522</value>
+                        <number>23</number>
+                        <value>2531</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>30</number>
-                        <value>2435</value>
+                        <number>24</number>
+                        <value>2438</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>31</number>
-                        <value>2424</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2463</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
+                        <number>25</number>
                         <value>2479</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>34</number>
-                        <value>2548</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>2452</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2535</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2420</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2536</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2413</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>2530</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>2525</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>2532</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>2436</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
-                        <value>2484</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>2443</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>2480</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
-                        <value>2494</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>48</number>
+                        <number>26</number>
                         <value>2538</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>27</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2490</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2425</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2500</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2512</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2492</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2445</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2505</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2516</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2438</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2424</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2517</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2471</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2466</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2422</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>2545</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>2494</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>2509</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>2496</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>49</number>
-                        <value>2495</value>
+                        <value>2469</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2446</value>
+                        <value>2517</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -1916,7 +1916,7 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>88</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
@@ -1928,11 +1928,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>90</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
@@ -1940,31 +1940,31 @@
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>93</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>91</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>94</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>89</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
                         <value>91</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>11</number>
+                        <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>90</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>13</number>
-                        <value>88</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
@@ -1976,27 +1976,27 @@
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>94</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>93</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>90</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>90</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>92</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
@@ -2004,23 +2004,23 @@
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>94</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>91</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>92</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
                         <value>89</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>26</number>
+                        <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>27</number>
-                        <value>94</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
@@ -2028,15 +2028,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>93</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
-                        <value>93</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
-                        <value>93</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>32</number>
@@ -2044,23 +2044,23 @@
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>93</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>94</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
-                        <value>90</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
                         <value>93</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>36</number>
+                        <value>90</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>37</number>
-                        <value>89</value>
+                        <value>88</value>
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
@@ -2072,7 +2072,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
-                        <value>92</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
@@ -2080,11 +2080,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
-                        <value>91</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
@@ -2092,27 +2092,27 @@
                     </dataset_item>
                     <dataset_item>
                         <number>45</number>
-                        <value>90</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>92</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>90</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>91</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>89</value>
+                        <value>94</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -2141,203 +2141,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>1571</value>
+                        <value>2376</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2406</value>
+                        <value>1782</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>1977</value>
+                        <value>1665</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>1834</value>
+                        <value>2406</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>1829</value>
+                        <value>2375</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2413</value>
+                        <value>2488</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2458</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>1753</value>
+                        <value>2477</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2356</value>
+                        <value>2209</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>1972</value>
+                        <value>1837</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
-                        <value>2117</value>
+                        <value>2118</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>1860</value>
+                        <value>2215</value>
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>2498</value>
+                        <value>2034</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>2029</value>
+                        <value>1908</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>1716</value>
+                        <value>1644</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>1994</value>
+                        <value>2491</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2236</value>
+                        <value>1649</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>1630</value>
+                        <value>2228</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>1517</value>
+                        <value>1706</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>2438</value>
+                        <value>1996</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>2160</value>
+                        <value>1787</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>2331</value>
+                        <value>1571</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>2198</value>
+                        <value>2454</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>1862</value>
+                        <value>1662</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>1992</value>
+                        <value>1500</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
-                        <value>2292</value>
+                        <value>2221</value>
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
-                        <value>1862</value>
+                        <value>1827</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
-                        <value>1854</value>
+                        <value>1672</value>
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>1628</value>
+                        <value>2242</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
-                        <value>1619</value>
+                        <value>1544</value>
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
-                        <value>1992</value>
+                        <value>2127</value>
                     </dataset_item>
                     <dataset_item>
                         <number>32</number>
-                        <value>1611</value>
+                        <value>2219</value>
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>2331</value>
+                        <value>2233</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>1838</value>
+                        <value>2067</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
-                        <value>1653</value>
+                        <value>1539</value>
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>1586</value>
+                        <value>2138</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
-                        <value>2218</value>
+                        <value>2015</value>
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>2483</value>
+                        <value>1622</value>
                     </dataset_item>
                     <dataset_item>
                         <number>39</number>
-                        <value>1960</value>
+                        <value>1504</value>
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
-                        <value>1959</value>
+                        <value>2381</value>
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
-                        <value>1976</value>
+                        <value>1672</value>
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>2314</value>
+                        <value>1977</value>
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
-                        <value>2036</value>
+                        <value>1627</value>
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
-                        <value>1999</value>
+                        <value>1626</value>
                     </dataset_item>
                     <dataset_item>
                         <number>45</number>
-                        <value>1713</value>
+                        <value>1711</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>2211</value>
+                        <value>1925</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>1761</value>
+                        <value>1737</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>1888</value>
+                        <value>1866</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>1533</value>
+                        <value>1695</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2097</value>
+                        <value>1616</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -2410,203 +2410,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>139</value>
+                        <value>111</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>224</value>
+                        <value>221</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>209</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>4</number>
-                        <value>191</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>5</number>
-                        <value>118</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>6</number>
-                        <value>109</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>7</number>
-                        <value>236</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>8</number>
-                        <value>121</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>9</number>
-                        <value>236</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>101</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>133</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>237</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>119</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>147</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
-                        <value>239</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>16</number>
-                        <value>246</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>17</number>
-                        <value>171</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>18</number>
-                        <value>127</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>19</number>
-                        <value>104</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
                         <value>125</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>21</number>
-                        <value>113</value>
+                        <number>4</number>
+                        <value>222</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>22</number>
-                        <value>183</value>
+                        <number>5</number>
+                        <value>120</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>23</number>
-                        <value>106</value>
+                        <number>6</number>
+                        <value>214</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>24</number>
-                        <value>161</value>
+                        <number>7</number>
+                        <value>237</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>25</number>
-                        <value>106</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>121</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>227</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>108</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>127</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>205</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>158</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>227</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>102</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>188</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>153</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>212</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>195</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>185</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
+                        <number>8</number>
                         <value>242</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>40</number>
-                        <value>202</value>
+                        <number>9</number>
+                        <value>246</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>41</number>
-                        <value>213</value>
+                        <number>10</number>
+                        <value>163</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>42</number>
-                        <value>212</value>
+                        <number>11</number>
+                        <value>131</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>43</number>
-                        <value>171</value>
+                        <number>12</number>
+                        <value>231</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>44</number>
-                        <value>209</value>
+                        <number>13</number>
+                        <value>227</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>45</number>
-                        <value>168</value>
+                        <number>14</number>
+                        <value>121</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>46</number>
-                        <value>150</value>
+                        <number>15</number>
+                        <value>118</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>47</number>
-                        <value>108</value>
+                        <number>16</number>
+                        <value>117</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
-                        <value>124</value>
+                        <number>17</number>
+                        <value>148</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>49</number>
+                        <number>18</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>183</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>236</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>127</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>107</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>137</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>173</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>153</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>104</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>154</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
                         <value>220</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>32</number>
+                        <value>132</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>165</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>116</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>238</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>119</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>220</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>211</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>155</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>166</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>190</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>141</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>118</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>228</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>189</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>160</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>140</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>133</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>108</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>50</number>
-                        <value>216</value>
+                        <value>126</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -2635,7 +2635,7 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
@@ -2651,39 +2651,39 @@
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>1.8</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>1.7</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>1.7</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>1.8</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
                         <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>10</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>13</number>
-                        <value>1.7</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
@@ -2691,35 +2691,35 @@
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>1.7</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>1.6</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>1.7</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>1.7</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>1.5</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
@@ -2727,11 +2727,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>1.8</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>1.7</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
@@ -2739,15 +2739,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
-                        <value>1.7</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
                         <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>28</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>29</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
@@ -2755,27 +2755,27 @@
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>32</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>1.6</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
-                        <value>1.5</value>
+                        <value>1.4</value>
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>1.4</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
@@ -2783,55 +2783,55 @@
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>1.5</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>39</number>
-                        <value>1.8</value>
+                        <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
-                        <value>1.6</value>
+                        <value>1.5</value>
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
-                        <value>1.7</value>
+                        <value>1.6</value>
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>1.6</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>1.8</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>46</number>
-                        <value>1.5</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>47</number>
                         <value>1.7</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>48</number>
+                        <number>43</number>
+                        <value>1.7</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>1.8</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
                         <value>1.6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>1.4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>1.6</value>
+                        <value>1.8</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>1.8</value>
+                        <value>1.4</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -2860,83 +2860,83 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2445</value>
+                        <value>2499</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2456</value>
+                        <value>2546</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2516</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2445</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2478</value>
+                        <value>2460</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2498</value>
+                        <value>2480</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2512</value>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2431</value>
+                        <value>2417</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2451</value>
+                        <value>2437</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>2420</value>
+                        <value>2407</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
-                        <value>2416</value>
+                        <value>2520</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>2505</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
                         <value>2465</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>13</number>
+                        <value>2544</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>14</number>
-                        <value>2484</value>
+                        <value>2547</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>2431</value>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>2545</value>
+                        <value>2410</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2445</value>
+                        <value>2408</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>2534</value>
+                        <value>2493</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>2475</value>
+                        <value>2476</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>2455</value>
+                        <value>2428</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
@@ -2944,119 +2944,119 @@
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>2419</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>2497</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>2464</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>2505</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2458</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2521</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2402</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2443</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2508</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>2542</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2447</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
                         <value>2459</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>34</number>
-                        <value>2514</value>
+                        <number>23</number>
+                        <value>2531</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>35</number>
-                        <value>2540</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2523</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2439</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2446</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2447</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>2400</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>2417</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>2435</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>2470</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
-                        <value>2436</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>45</number>
+                        <number>24</number>
                         <value>2438</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>25</number>
+                        <value>2479</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>2538</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2432</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2490</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2425</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2500</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2512</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2492</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2489</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2445</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2505</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2516</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2438</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2424</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2517</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2471</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2466</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2422</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>2545</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>46</number>
-                        <value>2453</value>
+                        <value>2494</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>2536</value>
+                        <value>2509</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>2514</value>
+                        <value>2496</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>2548</value>
+                        <value>2469</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2522</value>
+                        <value>2517</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -3085,11 +3085,11 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>94</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>91</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
@@ -3097,15 +3097,15 @@
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>92</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>5</number>
                         <value>91</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>5</number>
+                        <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>6</number>
-                        <value>90</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
@@ -3113,27 +3113,27 @@
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>91</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>89</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>89</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
                         <value>91</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>11</number>
+                        <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>90</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>13</number>
-                        <value>89</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
@@ -3141,91 +3141,91 @@
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>91</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>89</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>90</value>
+                        <value>93</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>89</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>94</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>90</value>
+                        <value>91</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>91</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>93</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>89</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>92</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>91</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>91</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>94</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
                         <value>90</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>33</number>
-                        <value>94</value>
+                        <number>24</number>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>34</number>
+                        <number>25</number>
                         <value>89</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>35</number>
+                        <number>26</number>
                         <value>92</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>36</number>
+                        <number>27</number>
+                        <value>91</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>91</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
                         <value>92</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>89</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>91</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>91</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>93</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
@@ -3237,11 +3237,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>39</number>
-                        <value>88</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
-                        <value>92</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
@@ -3249,7 +3249,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>90</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
@@ -3257,7 +3257,7 @@
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
-                        <value>92</value>
+                        <value>90</value>
                     </dataset_item>
                     <dataset_item>
                         <number>45</number>
@@ -3265,11 +3265,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>92</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>89</value>
+                        <value>92</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
@@ -3277,11 +3277,11 @@
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>91</value>
+                        <value>89</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>90</value>
+                        <value>94</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -3310,203 +3310,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2406</value>
+                        <value>2376</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2484</value>
+                        <value>1782</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2068</value>
+                        <value>1665</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>1765</value>
+                        <value>2406</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2438</value>
+                        <value>2375</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>1593</value>
+                        <value>2488</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2467</value>
+                        <value>2473</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2486</value>
+                        <value>2477</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2007</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>2107</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>1537</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>1895</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>2120</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>1635</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
-                        <value>1983</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>16</number>
-                        <value>2013</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>17</number>
-                        <value>1979</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>18</number>
-                        <value>2304</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>19</number>
-                        <value>1823</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>20</number>
-                        <value>1898</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>21</number>
-                        <value>1783</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>22</number>
-                        <value>2484</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>23</number>
-                        <value>1809</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>24</number>
-                        <value>1538</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>25</number>
-                        <value>2468</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2414</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2258</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2050</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>1771</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2275</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>1759</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>1981</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>1648</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>2358</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>2403</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>1718</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2042</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
                         <value>2209</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>39</number>
-                        <value>1708</value>
+                        <number>10</number>
+                        <value>1837</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>40</number>
-                        <value>1788</value>
+                        <number>11</number>
+                        <value>2118</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>41</number>
-                        <value>1811</value>
+                        <number>12</number>
+                        <value>2215</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>42</number>
-                        <value>1686</value>
+                        <number>13</number>
+                        <value>2034</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>43</number>
-                        <value>1568</value>
+                        <number>14</number>
+                        <value>1908</value>
                     </dataset_item>
                     <dataset_item>
-                        <number>44</number>
+                        <number>15</number>
+                        <value>1644</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>2491</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>1649</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>2228</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>1706</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>1996</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>1787</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>1571</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>2454</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>1662</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>1500</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>2221</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>1827</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
                         <value>1672</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>29</number>
+                        <value>2242</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>1544</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2127</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2219</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2233</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2067</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>1539</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2138</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2015</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>1622</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>1504</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2381</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>1672</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>1977</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>1627</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>1626</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>45</number>
-                        <value>2009</value>
+                        <value>1711</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>2489</value>
+                        <value>1925</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>2187</value>
+                        <value>1737</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>1509</value>
+                        <value>1866</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>2427</value>
+                        <value>1695</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2424</value>
+                        <value>1616</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -3540,12 +3540,12 @@
             <text>Ćw3 Zad. dom. – Warunki opłacalności kotła kondensacyjnego</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Wyjaśnij, dlaczego w praktyce nie zawsze udaje się odzyskać 100% ciepła kondensacji ze spalin. Podaj co najmniej 2 warunki konieczne do skutecznego działania kotła kondensacyjnego.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Wyjaśnij, dlaczego w praktyce nie zawsze udaje się odzyskać 100% ciepła kondensacji ze spalin.&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <defaultgrade>2</defaultgrade>
         <penalty>0</penalty>
         <graderinfo format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Oczekiwane odpowiedzi: (1) Niska temperatura powrotu instalacji (poniżej ~55°C); (2) Korozyjność kondensatu (wymaga odpornych materiałów); (3) W praktyce nie cała para skrapla się (sprawność wymiennika &lt; 100%); (4) Kocioł musi mieć wymiennik ze stali nierdzewnej/aluminium.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Oczekiwane odpowiedzi: Niska tw powrotu, korozyjność.&lt;/p&gt;]]&gt;</text>
         </graderinfo>
     </question>
 </quiz>

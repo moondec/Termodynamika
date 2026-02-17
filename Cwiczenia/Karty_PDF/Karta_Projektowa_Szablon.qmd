@@ -1,6 +1,6 @@
 ---
 title: 'Termodynamika Techniczna'
-subtitle: 'Projekt: Modernizacja Hali Przemyslowej Termo-Tech'
+subtitle: 'Projekt: Modernizacja Hali Przemysłowej Termo-Tech'
 author: "Prowadzący: dr hab. inż. prof. UPP Marek Urbaniak"
 date: today
 format:

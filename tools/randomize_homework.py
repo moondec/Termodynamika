@@ -7,6 +7,9 @@ Each numerical question is converted from static 'numerical' type to
 a Moodle 'calculated' type with {variable} placeholders and
 pre-generated dataset items.
 
+This version uses a GLOBAL DATASET MATRIX so that all quizzes share
+the same random values for shared variables (e.g. tw_in).
+
 Usage:
     python tools/randomize_homework.py
 """
@@ -25,7 +28,64 @@ N_ITEMS = 50  # number of pre-generated dataset values
 
 
 # ─────────────────────────────────────────────
-# Helpers
+# 1. Global Configuration (Schema)
+# ─────────────────────────────────────────────
+
+VARIABLES_SCHEMA = {
+    # --- Shared / Global ---
+    "tw_in":          {"min": 8, "max": 25, "dec": 0},   # Shared: Cw02, Cw05
+    "eta_kotla":      {"min": 88, "max": 94, "dec": 0},  # Shared: Cw03, Cw07
+    
+    # --- Cw01 (Sprężarka) ---
+    "cw01_V":           {"min": 3, "max": 8, "dec": 0},
+    "patm_mmHg":        {"min": 740, "max": 780, "dec": 0},
+    "cw01_t_otoczenia": {"min": 15, "max": 30, "dec": 0}, # Dawniej t1
+    "p_full":           {"min": 8.0, "max": 12.0, "dec": 1},
+    "t_full":           {"min": 35, "max": 50, "dec": 0},
+
+    # --- Cw02 (Odzysk ciepła) ---
+    "Qch":              {"min": 6, "max": 12, "dec": 1},
+    "eta_odz":          {"min": 70, "max": 90, "dec": 0},
+    "tw_out_cw02":      {"min": 40, "max": 55, "dec": 0},
+
+    # --- Cw03 (Kocioł) ---
+    "Vgas":             {"min": 100, "max": 250, "dec": 0},
+    "kgH2O":            {"min": 1.4, "max": 1.8, "dec": 1},
+    "r_w":              {"min": 2400, "max": 2550, "dec": 0},
+    "Quz":              {"min": 1500, "max": 2500, "dec": 0},
+
+    # --- Cw04 (Kogeneracja) ---
+    "Nt":               {"min": 100, "max": 250, "dec": 1},
+    "eta_gen":          {"min": 85, "max": 95, "dec": 0},
+    "h_rok":            {"min": 3000, "max": 5000, "dec": 0},
+    "cena_kWh":         {"min": 0.60, "max": 1.00, "dec": 2},
+    "koszt_inv":        {"min": 100000, "max": 300000, "dec": 0},
+
+    # --- Cw05 (Wymiennik) ---
+    "Qwym":             {"min": 100, "max": 250, "dec": 0},
+    "tw_out_cw05":      {"min": 85, "max": 100, "dec": 0},
+    "Tsp_in":           {"min": 523, "max": 623, "dec": 0},
+    "Tsp_out":          {"min": 393, "max": 473, "dec": 0},
+
+    # --- Cw06 (Chłodnictwo) ---
+    "cw06_t_parowania": {"min": -5, "max": 5, "dec": 0}, # Dawniej t0
+    "dTsh":             {"min": 3, "max": 8, "dec": 0},
+    "tk":               {"min": 35, "max": 45, "dec": 0},
+    "dTsc":             {"min": 3, "max": 8, "dec": 0},
+
+    # --- Cw07 (Rekuperacja) ---
+    "eta_rek":          {"min": 60, "max": 85, "dec": 0},
+    "t_cz":             {"min": -20, "max": -5, "dec": 0},
+    "t_wy":             {"min": 20, "max": 24, "dec": 0},
+    "Vdot_air":         {"min": 5000, "max": 15000, "dec": 0},
+    "h_sezon":          {"min": 2500, "max": 4000, "dec": 0},
+    "cena_gaz":         {"min": 0.20, "max": 0.35, "dec": 2},
+    "koszt_rek":        {"min": 15000, "max": 40000, "dec": 0},
+}
+
+
+# ─────────────────────────────────────────────
+# 2. Helpers
 # ─────────────────────────────────────────────
 
 def gen_items(vmin, vmax, decimals, n=N_ITEMS):
@@ -43,6 +103,19 @@ def fmt_val(val, decimals):
     if decimals == 0:
         return str(int(round(val)))
     return f"{val:.{decimals}f}"
+
+
+def generate_global_data():
+    """Generate the master dataset matrix for all variables."""
+    data = {}
+    for key, conf in VARIABLES_SCHEMA.items():
+        data[key] = {
+            "items": gen_items(conf["min"], conf["max"], conf["dec"]),
+            "min": conf["min"],
+            "max": conf["max"],
+            "dec": conf["dec"]
+        }
+    return data
 
 
 def add_dataset_def(parent, name, vmin, vmax, decimals, items):
@@ -81,11 +154,15 @@ def add_dataset_def(parent, name, vmin, vmax, decimals, items):
 
 def build_calculated_question(
     name, question_html, formula, tolerance, tolerance_type,
-    variables, defaultgrade, penalty="0.1000000",
+    variables_map, global_data, defaultgrade, penalty="0.1000000",
     general_feedback_html=None, correct_answer_format=1,
     correct_answer_length=4
 ):
-    """Build a full <question type='calculated'> element."""
+    """Build a full <question type='calculated'> element.
+    
+    variables_map: dict mapping local XML placeholder name -> global data key
+                   e.g. {"t1": "cw01_t_otoczenia"}
+    """
     q = ET.Element("question", type="calculated")
 
     # Name
@@ -131,18 +208,21 @@ def build_calculated_question(
 
     # Dataset definitions
     dds = ET.SubElement(q, "dataset_definitions")
-    for var_name, var_def in variables.items():
-        items = gen_items(var_def["min"], var_def["max"], var_def["dec"])
-        add_dataset_def(dds, var_name, var_def["min"], var_def["max"],
-                        var_def["dec"], items)
+    
+    # Iterate over required variables for this question
+    for local_name, global_key in variables_map.items():
+        if global_key not in global_data:
+            raise KeyError(f"Missing global key: {global_key} for local var: {local_name}")
+        
+        g_var = global_data[global_key]
+        add_dataset_def(dds, local_name, g_var["min"], g_var["max"],
+                        g_var["dec"], g_var["items"])
 
     return q
 
 
 def build_multichoice_question(name, question_html, answers, defaultgrade=1, single=True):
-    """Build a <question type='multichoice'> element.
-    answers: list of (text, fraction)
-    """
+    """Build a <question type='multichoice'> element."""
     q = ET.Element("question", type="multichoice")
     n = ET.SubElement(q, "name")
     ET.SubElement(n, "text").text = name
@@ -194,7 +274,6 @@ def prettify_xml(root):
     rough = '<?xml version="1.0" encoding="UTF-8"?>\n' + rough
     dom = minidom.parseString(rough)
     pretty = dom.toprettyxml(indent="    ", encoding=None)
-    # Remove extra xml declaration from minidom
     lines = pretty.split("\n")
     if lines[0].startswith("<?xml"):
         lines[0] = '<?xml version="1.0" encoding="UTF-8"?>'
@@ -215,23 +294,23 @@ def write_quiz(filename, questions):
 
 
 # ─────────────────────────────────────────────
-# Quiz Definitions
+# 3. Quiz Generators
 # ─────────────────────────────────────────────
 
-def generate_cw01():
+def generate_cw01(global_data):
     """Ćw. 1 — Dobór sprężarki"""
-    variables = {
-        "V":          {"min": 3, "max": 8, "dec": 0},
-        "patm_mmHg":  {"min": 740, "max": 780, "dec": 0},
-        "t1":         {"min": 15, "max": 30, "dec": 0},
-        "p_full":     {"min": 8.0, "max": 12.0, "dec": 1},
-        "t_full":     {"min": 35, "max": 50, "dec": 0},
+    # Mapping local variable names to global keys
+    var_map = {
+        "V": "cw01_V",
+        "patm_mmHg": "patm_mmHg",
+        "t1": "cw01_t_otoczenia",
+        "p_full": "p_full",
+        "t_full": "t_full",
     }
 
     questions = [
         build_category("$course$/Ćw. 1 – Dobór sprężarki (Praca domowa)"),
 
-        # Q1.1: Masa powietrza w zbiorniku "pustym"
         build_calculated_question(
             name="Ćw1 Zad. dom. – Masa powietrza w zbiorniku pustym [kg]",
             question_html=(
@@ -247,15 +326,9 @@ def generate_cw01():
             ),
             formula="({patm_mmHg} * 133.322) * {V} / (287 * ({t1} + 273.15))",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2,
-            general_feedback_html=(
-                '<![CDATA[<p><b>Wyjaśnienie:</b><br>'
-                '1. Przelicz p_atm: p [Pa] = p [mmHg] × 133.322<br>'
-                '2. m = pV/(RT), T [K] = t [°C] + 273.15</p>]]>'
-            )
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q1.2: Masa powietrza w zbiorniku "pełnym"
         build_calculated_question(
             name="Ćw1 Zad. dom. – Masa powietrza w zbiorniku pełnym [kg]",
             question_html=(
@@ -270,10 +343,9 @@ def generate_cw01():
             ),
             formula="{p_full} * 100000 * {V} / (287 * ({t_full} + 273.15))",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q1.3: Wydajność masowa sprężarki
         build_calculated_question(
             name="Ćw1 Zad. dom. – Wydajność masowa sprężarki [kg/h]",
             question_html=(
@@ -294,10 +366,9 @@ def generate_cw01():
                 "- ({patm_mmHg} * 133.322) * {V} / (287 * ({t1} + 273.15))"
             ),
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q1.4: Wydajność objętościowa sprężarki
         build_calculated_question(
             name="Ćw1 Zad. dom. – Wydajność objętościowa sprężarki [m³/h]",
             question_html=(
@@ -307,8 +378,7 @@ def generate_cw01():
                 '\\( T = \\) <b>{t1}</b>°C.</p>'
                 '<p>Oblicz wymaganą wydajność objętościową sprężarki '
                 'w warunkach ssania \\( \\dot{{V}} \\) w <strong>m³/h</strong>.</p>'
-                '<p>Wynik zaokrąglij do całości.</p>'
-                '<p><em>Wskazówka:</em> \\( \\dot{{V}} = \\dot{{m}} R T / p \\)</p>]]>'
+                '<p>Wynik zaokrąglij do całości.</p>]]>'
             ),
             formula=(
                 "({p_full} * 100000 * {V} / (287 * ({t_full} + 273.15)) "
@@ -316,10 +386,9 @@ def generate_cw01():
                 "* 287 * ({t1} + 273.15) / ({patm_mmHg} * 133.322)"
             ),
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q1.5: Pytanie koncepcyjne (multichoice — bez zmian)
         build_multichoice_question(
             name="Ćw1 Zad. dom. – Dlaczego temperatura rośnie?",
             question_html=(
@@ -327,8 +396,7 @@ def generate_cw01():
                 'powietrzem temperatura wzrosła?</p>]]>'
             ),
             answers=[
-                ("Praca sprężania zamieniana jest na energię wewnętrzną gazu "
-                 "(I zasada termodynamiki).", 100),
+                ("Praca sprężania zamieniana jest na energię wewnętrzną gazu (I zasada termodynamiki).", 100),
                 ("Zbiornik jest ogrzewany przez otoczenie.", 0),
                 ("Powietrze się rozszerza i to powoduje wzrost temperatury.", 0),
                 ("Ciśnienie atmosferyczne ogrzewa powietrze w zbiorniku.", 0),
@@ -340,19 +408,18 @@ def generate_cw01():
     write_quiz("cw01_praca_domowa.xml", questions)
 
 
-def generate_cw02():
+def generate_cw02(global_data):
     """Ćw. 2 — Odzysk ciepła ze sprężarki"""
-    variables = {
-        "Qch":     {"min": 6, "max": 12, "dec": 1},
-        "eta_odz": {"min": 70, "max": 90, "dec": 0},
-        "tw_in":   {"min": 8, "max": 15, "dec": 0},
-        "tw_out":  {"min": 40, "max": 55, "dec": 0},
+    var_map = {
+        "Qch": "Qch",
+        "eta_odz": "eta_odz",
+        "tw_in": "tw_in",       # Shared
+        "tw_out": "tw_out_cw02", # Specific
     }
 
     questions = [
         build_category("$course$/Ćw. 2 – Odzysk ciepła ze sprężarki (Praca domowa)"),
 
-        # Q2.1: Strumień masy wody [kg/s]
         build_calculated_question(
             name="Ćw2 Zad. dom. – Strumień wody [kg/s]",
             question_html=(
@@ -370,11 +437,10 @@ def generate_cw02():
             ),
             formula="{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in}))",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2,
+            variables_map=var_map, global_data=global_data, defaultgrade=2,
             correct_answer_length=4
         ),
 
-        # Q2.2: Strumień objętościowy wody [l/min]
         build_calculated_question(
             name="Ćw2 Zad. dom. – Strumień wody [l/min]",
             question_html=(
@@ -390,10 +456,9 @@ def generate_cw02():
             ),
             formula="{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 60 * 1000",
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=3
+            variables_map=var_map, global_data=global_data, defaultgrade=3
         ),
 
-        # Q2.3: Interpretacja (multichoice)
         build_multichoice_question(
             name="Ćw2 Zad. dom. – Interpretacja wyniku",
             question_html=(
@@ -401,19 +466,14 @@ def generate_cw02():
                 'ze sprężarki. Która z poniższych interpretacji jest poprawna?</p>]]>'
             ),
             answers=[
-                ("To wystarczy na zasilenie 1–2 umywalek w szatni — "
-                 "odzysk ciepła jest opłacalny.", 100),
-                ("To zbyt mały strumień — odzysk ciepła nie ma sensu "
-                 "ekonomicznego.", 0),
-                ("Strumień jest zbyt duży i spowoduje problemy z ciśnieniem "
-                 "wody.", 0),
-                ("Nie można podgrzewać wody ciepłem ze sprężarki ze względów "
-                 "bezpieczeństwa.", 0),
+                ("To wystarczy na zasilenie 1–2 umywalek w szatni — odzysk ciepła jest opłacalny.", 100),
+                ("To zbyt mały strumień — odzysk ciepła nie ma sensu ekonomicznego.", 0),
+                ("Strumień jest zbyt duży i spowoduje problemy z ciśnieniem wody.", 0),
+                ("Nie można podgrzewać wody ciepłem ze sprężarki ze względów bezpieczeństwa.", 0),
             ],
             defaultgrade=1
         ),
 
-        # Q2.4: Bilans energetyczny (essay)
         build_essay_question(
             name="Ćw2 Zad. dom. – Bilans energetyczny sprężarkowni",
             question_html=(
@@ -430,10 +490,7 @@ def generate_cw02():
             ),
             defaultgrade=3,
             graderinfo_html=(
-                '<![CDATA[<p>Sprawdź: bilans musi się zgadzać '
-                '(energia do sprężarki = praca sprężania + ciepło). '
-                'Ciepło odzyskane = Qch × eta_odz/100. '
-                'Straty = Qch × (1 - eta_odz/100).</p>]]>'
+                '<![CDATA[<p>Sprawdź: bilans musi się zgadzać. Ciepło odzyskane = Qch × eta_odz/100.</p>]]>'
             )
         ),
     ]
@@ -441,20 +498,19 @@ def generate_cw02():
     write_quiz("cw02_praca_domowa.xml", questions)
 
 
-def generate_cw03():
+def generate_cw03(global_data):
     """Ćw. 3 — Kocioł kondensacyjny"""
-    variables = {
-        "Vgas":      {"min": 100, "max": 250, "dec": 0},
-        "kgH2O":     {"min": 1.4, "max": 1.8, "dec": 1},
-        "r_w":       {"min": 2400, "max": 2550, "dec": 0},
-        "eta_kotla": {"min": 88, "max": 94, "dec": 0},
-        "Quz":       {"min": 1500, "max": 2500, "dec": 0},
+    var_map = {
+        "Vgas": "Vgas",
+        "kgH2O": "kgH2O",
+        "r_w": "r_w",
+        "eta_kotla": "eta_kotla", # Shared
+        "Quz": "Quz",
     }
 
     questions = [
         build_category("$course$/Ćw. 3 – Kocioł kondensacyjny (Praca domowa)"),
 
-        # Q3.1: Masa pary wodnej w spalinach
         build_calculated_question(
             name="Ćw3 Zad. dom. – Masa pary wodnej w spalinach [kg/h]",
             question_html=(
@@ -467,10 +523,9 @@ def generate_cw03():
             ),
             formula="{Vgas} * {kgH2O}",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q3.2: Dodatkowe ciepło z kondensacji
         build_calculated_question(
             name="Ćw3 Zad. dom. – Dodatkowe ciepło z kondensacji [kW]",
             question_html=(
@@ -482,15 +537,13 @@ def generate_cw03():
                 '\\( \\dot{{Q}}_{{kond}} \\), który można odzyskać '
                 'skraplając <strong>całą</strong> parę wodną ze spalin.</p>'
                 '<p>Wynik podaj w <strong>kW</strong>. '
-                'Zaokrąglij do całości.</p>'
-                '<p><em>Wskazówka:</em> Uwaga na jednostki czasu!</p>]]>'
+                'Zaokrąglij do całości.</p>]]>'
             ),
             formula="{Vgas} * {kgH2O} * {r_w} / 3600",
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=3
+            variables_map=var_map, global_data=global_data, defaultgrade=3
         ),
 
-        # Q3.3: Wzrost sprawności
         build_calculated_question(
             name="Ćw3 Zad. dom. – Wzrost sprawności [punkty procentowe]",
             question_html=(
@@ -512,10 +565,9 @@ def generate_cw03():
                 "({Quz} / ({eta_kotla} / 100)) * 100"
             ),
             tolerance=5, tolerance_type=2,
-            variables=variables, defaultgrade=3
+            variables_map=var_map, global_data=global_data, defaultgrade=3
         ),
 
-        # Q3.4: Pytanie koncepcyjne (multichoice)
         build_multichoice_question(
             name="Ćw3 Zad. dom. – Temperatura punktu rosy spalin",
             question_html=(
@@ -524,34 +576,23 @@ def generate_cw03():
                 'wartości. Jak nazywa się ta temperatura?</p>]]>'
             ),
             answers=[
-                ("Temperatura punktu rosy spalin (ok. 55°C dla gazu "
-                 "ziemnego)", 100),
+                ("Temperatura punktu rosy spalin (ok. 55°C dla gazu ziemnego)", 100),
                 ("Temperatura krytyczna wody (374°C)", 0),
-                ("Temperatura nasycenia przy ciśnieniu atmosferycznym "
-                 "(100°C)", 0),
+                ("Temperatura nasycenia przy ciśnieniu atmosferycznym (100°C)", 0),
                 ("Temperatura zapłonu gazu ziemnego", 0),
             ],
             defaultgrade=1
         ),
 
-        # Q3.5: Pytanie otwarte (essay)
         build_essay_question(
             name="Ćw3 Zad. dom. – Warunki opłacalności kotła kondensacyjnego",
             question_html=(
                 '<![CDATA[<p>Wyjaśnij, dlaczego w praktyce nie zawsze udaje '
-                'się odzyskać 100% ciepła kondensacji ze spalin. Podaj co '
-                'najmniej 2 warunki konieczne do skutecznego działania kotła '
-                'kondensacyjnego.</p>]]>'
+                'się odzyskać 100% ciepła kondensacji ze spalin.</p>]]>'
             ),
             defaultgrade=2,
             graderinfo_html=(
-                '<![CDATA[<p>Oczekiwane odpowiedzi: '
-                '(1) Niska temperatura powrotu instalacji (poniżej ~55°C); '
-                '(2) Korozyjność kondensatu (wymaga odpornych materiałów); '
-                '(3) W praktyce nie cała para skrapla się (sprawność '
-                'wymiennika < 100%); '
-                '(4) Kocioł musi mieć wymiennik ze stali nierdzewnej/'
-                'aluminium.</p>]]>'
+                '<![CDATA[<p>Oczekiwane odpowiedzi: Niska tw powrotu, korozyjność.</p>]]>'
             )
         ),
     ]
@@ -559,20 +600,19 @@ def generate_cw03():
     write_quiz("cw03_praca_domowa.xml", questions)
 
 
-def generate_cw04():
+def generate_cw04(global_data):
     """Ćw. 4 — Opłacalność kogeneracji"""
-    variables = {
-        "Nt":        {"min": 100, "max": 250, "dec": 1},
-        "eta_gen":   {"min": 85, "max": 95, "dec": 0},
-        "h_rok":     {"min": 3000, "max": 5000, "dec": 0},
-        "cena_kWh":  {"min": 0.60, "max": 1.00, "dec": 2},
-        "koszt_inv": {"min": 100000, "max": 300000, "dec": 0},
+    var_map = {
+        "Nt": "Nt",
+        "eta_gen": "eta_gen",
+        "h_rok": "h_rok",
+        "cena_kWh": "cena_kWh",
+        "koszt_inv": "koszt_inv",
     }
 
     questions = [
         build_category("$course$/Ćw. 4 – Opłacalność kogeneracji (Praca domowa)"),
 
-        # Q4.1: Moc elektryczna netto
         build_calculated_question(
             name="Ćw4 Zad. dom. – Moc elektryczna generatora [kW]",
             question_html=(
@@ -585,10 +625,9 @@ def generate_cw04():
             ),
             formula="{Nt} * {eta_gen} / 100",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q4.2: Roczna produkcja energii
         build_calculated_question(
             name="Ćw4 Zad. dom. – Roczna produkcja energii [MWh]",
             question_html=(
@@ -601,10 +640,9 @@ def generate_cw04():
             ),
             formula="{Nt} * {eta_gen} / 100 * {h_rok} / 1000",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q4.3: Roczny zysk
         build_calculated_question(
             name="Ćw4 Zad. dom. – Roczny zysk [PLN]",
             question_html=(
@@ -615,10 +653,9 @@ def generate_cw04():
             ),
             formula="{Nt} * {eta_gen} / 100 * {h_rok} * {cena_kWh}",
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q4.4: SPBT
         build_calculated_question(
             name="Ćw4 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]",
             question_html=(
@@ -631,11 +668,10 @@ def generate_cw04():
             ),
             formula="{koszt_inv} / ({Nt} * {eta_gen} / 100 * {h_rok} * {cena_kWh})",
             tolerance=5, tolerance_type=2,
-            variables=variables, defaultgrade=2,
+            variables_map=var_map, global_data=global_data, defaultgrade=2,
             correct_answer_length=2
         ),
 
-        # Q4.5: Decyzja inwestycyjna (multichoice)
         build_multichoice_question(
             name="Ćw4 Zad. dom. – Czy inwestycja się opłaca?",
             question_html=(
@@ -643,14 +679,10 @@ def generate_cw04():
                 'która z poniższych interpretacji jest NAJLEPSZA?</p>]]>'
             ),
             answers=[
-                ("Inwestycja jest bardzo opłacalna — kogeneracja zamiast "
-                 "dławienia pary to duży zysk.", 100),
-                ("Inwestycja jest ryzykowna, bo turbina może się zepsuć.",
-                 0),
-                ("SPBT < 1 roku oznacza, że obliczenia muszą zawierać "
-                 "błąd.", 0),
-                ("Dławienie pary na zaworze jest lepszym rozwiązaniem, "
-                 "bo nie wymaga inwestycji.", 0),
+                ("Inwestycja jest bardzo opłacalna — kogeneracja zamiast dławienia pary to duży zysk.", 100),
+                ("Inwestycja jest ryzykowna, bo turbina może się zepsuć.", 0),
+                ("SPBT < 1 roku oznacza, że obliczenia muszą zawierać błąd.", 0),
+                ("Dławienie pary na zaworze jest lepszym rozwiązaniem.", 0),
             ],
             defaultgrade=1
         ),
@@ -659,20 +691,19 @@ def generate_cw04():
     write_quiz("cw04_praca_domowa.xml", questions)
 
 
-def generate_cw05():
+def generate_cw05(global_data):
     """Ćw. 5 — Optymalizacja wymiennika ciepła"""
-    variables = {
-        "Qwym":       {"min": 100, "max": 250, "dec": 0},
-        "tw_out_new": {"min": 85, "max": 100, "dec": 0},
-        "tw_in":      {"min": 15, "max": 25, "dec": 0},
-        "Tsp_in":     {"min": 523, "max": 623, "dec": 0},
-        "Tsp_out":    {"min": 393, "max": 473, "dec": 0},
+    var_map = {
+        "Qwym": "Qwym",
+        "tw_out_new": "tw_out_cw05", # Specific
+        "tw_in": "tw_in",           # Shared
+        "Tsp_in": "Tsp_in",
+        "Tsp_out": "Tsp_out",
     }
 
     questions = [
         build_category("$course$/Ćw. 5 – Optymalizacja wymiennika ciepła (Praca domowa)"),
 
-        # Q5.1: Nowy strumień wody
         build_calculated_question(
             name="Ćw5 Zad. dom. – Nowy strumień wody [kg/s]",
             question_html=(
@@ -690,11 +721,10 @@ def generate_cw05():
             ),
             formula="{Qwym} / (4.19 * ({tw_out_new} - {tw_in}))",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2,
+            variables_map=var_map, global_data=global_data, defaultgrade=2,
             correct_answer_length=4
         ),
 
-        # Q5.2: Generacja entropii
         build_calculated_question(
             name="Ćw5 Zad. dom. – Generacja entropii [kW/K]",
             question_html=(
@@ -716,11 +746,10 @@ def generate_cw05():
                 "- 1 / (({Tsp_in} + {Tsp_out}) / 2))"
             ),
             tolerance=5, tolerance_type=2,
-            variables=variables, defaultgrade=3,
+            variables_map=var_map, global_data=global_data, defaultgrade=3,
             correct_answer_length=4
         ),
 
-        # Q5.3: Porównanie (multichoice)
         build_multichoice_question(
             name="Ćw5 Zad. dom. – Wpływ zbliżenia temperatur",
             question_html=(
@@ -729,38 +758,27 @@ def generate_cw05():
                 'entropii?</p>]]>'
             ),
             answers=[
-                ("Generacja entropii maleje — zbliżenie temperatur czynników "
-                 "zmniejsza nieodwracalność wymiany ciepła.", 100),
-                ("Generacja entropii rośnie — większa temperatura wylotowa "
-                 "oznacza większy bałagan termodynamiczny.", 0),
-                ("Generacja entropii nie zmienia się — zależy tylko od mocy "
-                 "wymiennika, a ta jest stała.", 0),
-                ("Nie można tego określić bez znajomości geometrii "
-                 "wymiennika.", 0),
+                ("Generacja entropii maleje — zbliżenie temperatur czynników zmniejsza nieodwracalność wymiany ciepła.", 100),
+                ("Generacja entropii rośnie.", 0),
+                ("Generacja entropii nie zmienia się.", 0),
+                ("Nie można tego określić bez znajomości geometrii.", 0),
             ],
             defaultgrade=1
         ),
 
-        # Q5.4: Wnioski (essay)
         build_essay_question(
             name="Ćw5 Zad. dom. – Wnioski z optymalizacji wymiennika",
             question_html=(
                 '<![CDATA[<p>Na podstawie obliczeń odpowiedz na pytania:</p>'
                 '<ol>'
-                '<li>Czy zbliżenie temperatur czynników zmniejsza generację '
-                'entropii? Uzasadnij.</li>'
-                '<li>Jaki jest praktyczny kompromis między zmniejszaniem '
-                'ΔT a wielkością (i kosztem) wymiennika ciepła?</li>'
-                '<li>Czy istnieje teoretyczna granica, przy której generacja '
-                'entropii w wymienniku wynosi zero?</li>'
+                '<li>Czy zbliżenie temperatur czynników zmniejsza generację entropii?</li>'
+                '<li>Jaki jest praktyczny kompromis między zmniejszaniem ΔT a wielkością wymiennika?</li>'
+                '<li>Czy istnieje teoretyczna granica, przy której generacja entropii wynosi zero?</li>'
                 '</ol>]]>'
             ),
             defaultgrade=3,
             graderinfo_html=(
-                '<![CDATA[<p>Oczekiwane: (1) Tak, mniejsza ΔT → mniejsza '
-                'S_gen (II ZT). (2) ΔT→0 wymaga nieskończonej powierzchni '
-                'wymiany ciepła. (3) Tak — w procesie odwracalnym S_gen=0, '
-                'ale to nieosiągalne w praktyce.</p>]]>'
+                '<![CDATA[<p>1. Tak. 2. Mała ΔT = duży wymiennik (koszt). 3. Tak, ale wymaga nieskończonej powierzchni.</p>]]>'
             )
         ),
     ]
@@ -768,19 +786,18 @@ def generate_cw05():
     write_quiz("cw05_praca_domowa.xml", questions)
 
 
-def generate_cw06():
+def generate_cw06(global_data):
     """Ćw. 6 — Rzeczywisty obieg chłodniczy"""
-    variables = {
-        "t0":   {"min": -5, "max": 5, "dec": 0},
-        "dTsh": {"min": 3, "max": 8, "dec": 0},
-        "tk":   {"min": 35, "max": 45, "dec": 0},
-        "dTsc": {"min": 3, "max": 8, "dec": 0},
+    var_map = {
+        "t0": "cw06_t_parowania", # Specific
+        "dTsh": "dTsh",
+        "tk": "tk",
+        "dTsc": "dTsc",
     }
 
     questions = [
         build_category("$course$/Ćw. 6 – Rzeczywisty obieg chłodniczy (Praca domowa)"),
 
-        # Q6.1: Temperatura po przegrzaniu
         build_calculated_question(
             name="Ćw6 Zad. dom. – Temperatura ssania po przegrzaniu [°C]",
             question_html=(
@@ -794,10 +811,9 @@ def generate_cw06():
             ),
             formula="{t0} + {dTsh}",
             tolerance=0.1, tolerance_type=1,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q6.2: Temperatura po dochłodzeniu
         build_calculated_question(
             name="Ćw6 Zad. dom. – Temperatura cieczy po dochłodzeniu [°C]",
             question_html=(
@@ -810,10 +826,9 @@ def generate_cw06():
             ),
             formula="{tk} - {dTsc}",
             tolerance=0.1, tolerance_type=1,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q6.3: Wpływ dochłodzenia (multichoice)
         build_multichoice_question(
             name="Ćw6 Zad. dom. – Wpływ dochłodzenia na wydajność chłodniczą",
             question_html=(
@@ -823,20 +838,14 @@ def generate_cw06():
                 'chłodniczą \\( q_0 \\)?</p>]]>'
             ),
             answers=[
-                ("Wydajność chłodnicza \\( q_0 \\) rośnie, bo entalpia "
-                 "przed dławieniem jest niższa → na wykresie p-h punkt 3 "
-                 "przesuwa się w lewo.", 100),
-                ("Wydajność chłodnicza maleje, bo dochłodzenie wymaga "
-                 "dodatkowej energii.", 0),
-                ("Wydajność chłodnicza nie zmienia się, bo dławienie jest "
-                 "procesem izentalpowym.", 0),
-                ("Wpływ zależy od rodzaju czynnika chłodniczego i nie "
-                 "można go określić ogólnie.", 0),
+                ("Wydajność chłodnicza \\( q_0 \\) rośnie, bo entalpia przed dławieniem jest niższa.", 100),
+                ("Wydajność chłodnicza maleje, bo dochłodzenie wymaga dodatkowej energii.", 0),
+                ("Wydajność chłodnicza nie zmienia się.", 0),
+                ("Wpływ zależy od rodzaju czynnika chłodniczego.", 0),
             ],
             defaultgrade=2
         ),
 
-        # Q6.4: Wpływ przegrzania (multichoice)
         build_multichoice_question(
             name="Ćw6 Zad. dom. – Wpływ przegrzania na pracę sprężarki",
             question_html=(
@@ -846,20 +855,14 @@ def generate_cw06():
                 'sprężarki \\( l_k \\)?</p>]]>'
             ),
             answers=[
-                ("Praca sprężarki \\( l_k \\) rośnie, bo sprężamy z wyższej "
-                 "entalpii i punkt 2 też się przesuwa → większa różnica "
-                 "entalpii.", 100),
-                ("Praca sprężarki maleje, bo para przegrzana jest łatwiejsza "
-                 "do sprężenia.", 0),
-                ("Praca sprężarki nie zmienia się, bo ciśnienia skraplania "
-                 "i parowania są stałe.", 0),
-                ("Przegrzanie wpływa tylko na temperaturę, nie na pracę "
-                 "sprężarki.", 0),
+                ("Praca sprężarki \\( l_k \\) rośnie, bo sprężamy z wyższej entalpii.", 100),
+                ("Praca sprężarki maleje.", 0),
+                ("Praca sprężarki nie zmienia się.", 0),
+                ("Przegrzanie wpływa tylko na temperaturę.", 0),
             ],
             defaultgrade=2
         ),
 
-        # Q6.5: Bilans netto EER (essay)
         build_essay_question(
             name="Ćw6 Zad. dom. – Nowy EER z przegrzaniem i dochłodzeniem",
             question_html=(
@@ -875,11 +878,7 @@ def generate_cw06():
             ),
             defaultgrade=5,
             graderinfo_html=(
-                '<![CDATA[<p>Przegrzanie zwiększa l_k (o ~5 kJ/kg), '
-                'ale dochłodzenie zwiększa q_0 (o ~8-10 kJ/kg). '
-                'Bilans netto: EER rośnie nieznacznie. '
-                'Dochłodzenie jest korzystne, przegrzanie jest konieczne '
-                'dla ochrony sprężarki.</p>]]>'
+                '<![CDATA[<p>Przegrzanie zwiększa l_k, dochłodzenie zwiększa q_0. Bilans netto: EER rośnie nieznacznie.</p>]]>'
             )
         ),
     ]
@@ -887,23 +886,22 @@ def generate_cw06():
     write_quiz("cw06_praca_domowa.xml", questions)
 
 
-def generate_cw07():
+def generate_cw07(global_data):
     """Ćw. 7 — Odzysk ciepła w centrali wentylacyjnej"""
-    variables = {
-        "eta_rek":   {"min": 60, "max": 85, "dec": 0},
-        "t_cz":      {"min": -20, "max": -5, "dec": 0},
-        "t_wy":      {"min": 20, "max": 24, "dec": 0},
-        "Vdot_air":  {"min": 5000, "max": 15000, "dec": 0},
-        "h_sezon":   {"min": 2500, "max": 4000, "dec": 0},
-        "cena_gaz":  {"min": 0.20, "max": 0.35, "dec": 2},
-        "eta_kotla": {"min": 88, "max": 94, "dec": 0},
-        "koszt_rek": {"min": 15000, "max": 40000, "dec": 0},
+    var_map = {
+        "eta_rek": "eta_rek",
+        "t_cz": "t_cz",
+        "t_wy": "t_wy",
+        "Vdot_air": "Vdot_air",
+        "h_sezon": "h_sezon",
+        "cena_gaz": "cena_gaz",
+        "eta_kotla": "eta_kotla", # Shared
+        "koszt_rek": "koszt_rek",
     }
 
     questions = [
         build_category("$course$/Ćw. 7 – Odzysk ciepła w centrali wentylacyjnej (Praca domowa)"),
 
-        # Q7.1: Temperatura za rekuperatorem
         build_calculated_question(
             name="Ćw7 Zad. dom. – Temperatura za rekuperatorem [°C]",
             question_html=(
@@ -919,10 +917,9 @@ def generate_cw07():
             ),
             formula="{t_cz} + {eta_rek} / 100 * ({t_wy} - {t_cz})",
             tolerance=2, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q7.2: Oszczędność mocy grzewczej
         build_calculated_question(
             name="Ćw7 Zad. dom. – Oszczędność mocy grzewczej [kW]",
             question_html=(
@@ -944,10 +941,9 @@ def generate_cw07():
                 "{eta_rek} / 100 * ({t_wy} - {t_cz})"
             ),
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=3
+            variables_map=var_map, global_data=global_data, defaultgrade=3
         ),
 
-        # Q7.3: Roczna oszczędność energii
         build_calculated_question(
             name="Ćw7 Zad. dom. – Roczna oszczędność energii [MWh]",
             question_html=(
@@ -963,10 +959,9 @@ def generate_cw07():
                 "{h_sezon} / 1000"
             ),
             tolerance=3, tolerance_type=2,
-            variables=variables, defaultgrade=1
+            variables_map=var_map, global_data=global_data, defaultgrade=1
         ),
 
-        # Q7.4: Oszczędność finansowa
         build_calculated_question(
             name="Ćw7 Zad. dom. – Roczna oszczędność gazu [PLN]",
             question_html=(
@@ -983,10 +978,9 @@ def generate_cw07():
                 "{h_sezon} / ({eta_kotla} / 100) * {cena_gaz}"
             ),
             tolerance=5, tolerance_type=2,
-            variables=variables, defaultgrade=2
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
-        # Q7.5: SPBT rekuperatora
         build_calculated_question(
             name="Ćw7 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]",
             question_html=(
@@ -1003,11 +997,10 @@ def generate_cw07():
                 "{h_sezon} / ({eta_kotla} / 100) * {cena_gaz})"
             ),
             tolerance=5, tolerance_type=2,
-            variables=variables, defaultgrade=1,
+            variables_map=var_map, global_data=global_data, defaultgrade=1,
             correct_answer_length=2
         ),
 
-        # Q7.6: Interpretacja (multichoice)
         build_multichoice_question(
             name="Ćw7 Zad. dom. – Opłacalność rekuperatora",
             question_html=(
@@ -1015,14 +1008,10 @@ def generate_cw07():
                 'która interpretacja jest prawidłowa?</p>]]>'
             ),
             answers=[
-                ("Inwestycja w rekuperator jest bardzo opłacalna — "
-                 "odzysk ciepła to podstawa nowoczesnej wentylacji.", 100),
-                ("Rekuperator nie jest opłacalny, bo wymaga regularnej "
-                 "konserwacji i wymiany filtrów.", 0),
-                ("SPBT < 1 roku sugeruje błąd w obliczeniach — "
-                 "rekuperatory zwykle zwracają się 5–10 lat.", 0),
-                ("Rekuperator jest niepotrzebny, bo nagrzewnica i tak "
-                 "musi pracować w zimie.", 0),
+                ("Inwestycja w rekuperator jest bardzo opłacalna.", 100),
+                ("Rekuperator nie jest opłacalny.", 0),
+                ("SPBT < 1 roku sugeruje błąd w obliczeniach.", 0),
+                ("Rekuperator jest niepotrzebny.", 0),
             ],
             defaultgrade=1
         ),
@@ -1036,16 +1025,21 @@ def generate_cw07():
 # ─────────────────────────────────────────────
 
 def main():
-    print("Generowanie quizów domowych z losowanymi zmiennymi...")
+    print("Generowanie quizów domowych z GLOBALNYMI zmiennymi (v2)...")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    generate_cw01()
-    generate_cw02()
-    generate_cw03()
-    generate_cw04()
-    generate_cw05()
-    generate_cw06()
-    generate_cw07()
+    # 1. Generate master dataset
+    global_data = generate_global_data()
+    print(f"Wygenerowano macierz danych dla {len(global_data)} zmiennych.")
+
+    # 2. Generate quizzes using this master data
+    generate_cw01(global_data)
+    generate_cw02(global_data)
+    generate_cw03(global_data)
+    generate_cw04(global_data)
+    generate_cw05(global_data)
+    generate_cw06(global_data)
+    generate_cw07(global_data)
 
     print(f"\nGotowe! Wygenerowano 7 plików w {OUTPUT_DIR}")
 
