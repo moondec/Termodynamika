@@ -51,7 +51,7 @@ format:
     show-slide-number: all
     transition: slide       # Animacja przejścia
     chalkboard: true        # WŁĄCZA PISANIE PO EKRANIE (ikona ołówka)
-    footer: "Termodynamika Techniczna (W3)" # Stopka na każdym slajdzie
+    footer: "Termodynamika Techniczna (W3) " # Stopka na każdym slajdzie
     center: false           # Tekst od góry (nie wyśrodkowany pionowo)
     code-overflow: wrap
     highlight-style: a11y
