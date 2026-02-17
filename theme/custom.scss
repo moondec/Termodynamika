@@ -1,0 +1,99 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Fira+Mono&display=swap');
+
+// --- 1. Colors (Dark Graphite & Engineering Red) ---
+$body-bg: #1a1a1a !default;
+$body-color: #ecf0f1 !default;
+$link-color: #3498db !default;
+$light-bg: #2c3e50 !default; // For code blocks or panels
+
+$primary: #3498db !default; // Blue (Work, Cool)
+$danger: #e60000 !default;  // Red (Heat, Important)
+$success: #2ecc71 !default; // Green (Efficiency)
+$warning: #f1c40f !default; // Yellow (Alert)
+
+// --- 2. Typography ---
+$font-family-sans-serif: "Lato", sans-serif !default;
+$font-family-monospace: "Fira Mono", monospace !default;
+$presentation-heading-font: "Lato", sans-serif !default;
+
+$presentation-heading-color: #ffffff !default;
+$presentation-font-size-root: 40px !default;
+
+// --- 3. Code Blocks ---
+$code-block-bg: #0d0d0d !default; // Darker than body
+$code-color: #e60000 !default;    // Inline code accent
+
+/*-- scss:rules --*/
+
+// Global resets/tweaks
+.reveal .slide-background-content {
+  background-color: $body-bg;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  text-transform: none; // Modern look, not all caps
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  border-bottom: 2px solid $danger;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+// --- Glassmorphism Box ---
+.box-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+// --- Text Utilities ---
+.text-accent { color: $danger !important; }
+.text-blue { color: $primary !important; }
+.text-green { color: $success !important; }
+.text-subtle { color: #95a5a6 !important; font-size: 0.8em; }
+
+// --- Callout Overrides (Dark Mode Adaptation) ---
+// Note: Quarto generates specific classes for callouts. We'll target generic properties where possible.
+
+div.callout-note {
+  border-left-color: $primary !important;
+  background-color: rgba($primary, 0.1) !important;
+}
+
+div.callout-important {
+  border-left-color: $danger !important;
+  background-color: rgba($danger, 0.1) !important;
+}
+
+div.callout-tip {
+  border-left-color: $success !important;
+  background-color: rgba($success, 0.1) !important;
+}
+
+div.callout-warning {
+  border-left-color: $warning !important;
+  background-color: rgba($warning, 0.1) !important;
+}
+
+// --- Images ---
+img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+// --- Icons (Adjustment for inline SVG/i tags) ---
+i.bi {
+  margin-right: 0.3em;
+  vertical-align: middle;
+}

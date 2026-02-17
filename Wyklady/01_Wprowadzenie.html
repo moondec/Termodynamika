@@ -128,6 +128,7 @@
   <script src="01_Wprowadzenie_files/libs/quarto-diagram/mermaid.min.js"></script>
   <script src="01_Wprowadzenie_files/libs/quarto-diagram/mermaid-init.js"></script>
   <link href="01_Wprowadzenie_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
   body {
@@ -198,7 +199,7 @@
 <p>::::</p>
 </section>
 <section id="czym-jest-termodynamika" class="slide level2">
-<h2>Czym jest Termodynamika?</h2>
+<h2><i class="bi bi-fire"></i> Czym jest Termodynamika?</h2>
 <h3 id="definicja-i-zakres">Definicja i Zakres</h3>
 <p>Termodynamika to <strong>dział fizyki</strong> zajmujący się badaniem <strong>termicznych właściwości układów makroskopowych</strong>.</p>
 <p>Bada ona przemiany pomiędzy różnymi formami energii, <em>przede wszystkim</em> między:</p>
@@ -272,13 +273,42 @@
 </div>
 </div>
 </section>
-<section id="klasyfikacja-układów" class="slide level2">
-<h2>Klasyfikacja Układów</h2>
+<section id="klasyfikacja-układów" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-boxes"></i> Klasyfikacja Układów</h2>
 <h3 id="typy-układów">Typy Układów</h3>
+<div class="cell" data-reveal="true" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    System[Układ Termodynamiczny]
+    System --&gt; Isolated[Izolowany]
+    System --&gt; Closed[Zamknięty]
+    System --&gt; Open[Otwarty]
+    
+    Isolated -.-&gt;|Brak Wymiany| Env
+    Closed --&gt;|Tylko Energia| Env
+    Open --&gt;|Materia + Energia| Env[Otoczenie]
+    
+    style System fill:#2c3e50,stroke:#ecf0f1,color:#ecf0f1
+    style Open fill:#3498db,stroke:#ecf0f1,color:#fff
+    style Closed fill:#e67e22,stroke:#ecf0f1,color:#fff
+    style Isolated fill:#e74c3c,stroke:#ecf0f1,color:#fff
+    style Env fill:#95a5a6,stroke:#ecf0f1,color:#fff
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="klasyfikacja-układów-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-boxes"></i> Klasyfikacja Układów</h2>
 <p>Podział ze względu na wymianę z otoczeniem:</p>
 <div class="columns">
 <div class="column" style="width:33%;">
-<h3 id="izolowany">Izolowany</h3>
+<h3 id="izolowany"><i class="bi bi-box-seam"></i> Izolowany</h3>
 <ul>
 <li><strong>Energia:</strong> ❌</li>
 <li><strong>Materia:</strong> ❌</li>
@@ -290,7 +320,7 @@
 </figure>
 </div>
 </div><div class="column" style="width:33%;">
-<h3 id="zamknięty">Zamknięty</h3>
+<h3 id="zamknięty"><i class="bi bi-box-seam-fill"></i> Zamknięty</h3>
 <ul>
 <li><strong>Energia:</strong> ✅</li>
 <li><strong>Materia:</strong> ❌</li>
@@ -302,7 +332,7 @@
 </figure>
 </div>
 </div><div class="column" style="width:33%;">
-<h3 id="otwarty">Otwarty</h3>
+<h3 id="otwarty"><i class="bi bi-box-arrow-right"></i> Otwarty</h3>
 <ul>
 <li><strong>Energia:</strong> ✅</li>
 <li><strong>Materia:</strong> ✅</li>
@@ -334,14 +364,14 @@ ggplot(data, aes(x, y)) +
 ```
 
 ::: {.cell-output-display}
-![](01_Wprowadzenie_files/figure-revealjs/unnamed-chunk-1-1.png){fig-align='center' width=960}
+![](01_Wprowadzenie_files/figure-revealjs/unnamed-chunk-2-1.png){fig-align='center' width=960}
 :::
 :::
 
 -->
 </section>
 <section id="proces-i-równowaga" class="slide level2">
-<h2>Proces i Równowaga</h2>
+<h2><i class="bi bi-arrow-repeat"></i> Proces i Równowaga</h2>
 <h3 id="definicje-procesów">Definicje Procesów</h3>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -463,7 +493,7 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </ul>
 </section>
 <section id="parametry-stanu" class="slide level2">
-<h2>Parametry Stanu</h2>
+<h2><i class="bi bi-speedometer2"></i> Parametry Stanu</h2>
 <h3 id="podstawowe-wielkości-makroskopowe">Podstawowe Wielkości Makroskopowe</h3>
 <p><strong>Parametry Stanu:</strong> Wielkości, które opisują stan układu i są funkcjami stanu (ich zmiana zależy tylko od stanu początkowego i końcowego).</p>
 <p><strong>Ciśnienie (</strong><span class="math inline">\(p\)</span>), <strong>Temperatura (</strong><span class="math inline">\(T\)</span>), <strong>Objętość (</strong><span class="math inline">\(V\)</span>) lub <strong>Objętość właściwa (</strong><span class="math inline">\(v\)</span>).</p>
@@ -488,7 +518,7 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </div>
 </section>
 <section id="zasada-zerowa-termodynamiki" class="slide level2">
-<h2>Zasada Zerowa Termodynamiki</h2>
+<h2><i class="bi bi-thermometer-half"></i> Zasada Zerowa Termodynamiki</h2>
 <h3 id="definicja-temperatury">Definicja Temperatury</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -520,7 +550,7 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </div></div>
 </section>
 <section id="energia-układu-jako-funkcja-stanu" class="slide level2">
-<h2>Energia układu jako <strong><em>funkcja stanu</em></strong></h2>
+<h2><i class="bi bi-lightning-charge"></i> Energia układu jako <strong><em>funkcja stanu</em></strong></h2>
 <p>Energia wewnętrzna układu jest jego immanentną cechą, zależną wyłącznie od parametrów określających aktualny stan systemu.</p>
 <ul>
 <li>Spadek energii układu adiabatycznego jest równy pracy wykonanej przez ten układ: <span class="math inline">\(E_{u1} - E_{u2} = L_{1-2}\)</span></li>
@@ -541,8 +571,8 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </div>
 </div>
 </section>
-<section id="praca-i-ciepło-formy-przekazu-energii-to-funkcje-procesu" class="slide level2">
-<h2>Praca i Ciepło: Formy przekazu energii, to <strong><em>funkcje procesu</em></strong></h2>
+<section id="praca-i-ciepło-formy-przekazu-energii" class="slide level2">
+<h2><i class="bi bi-gear-wide-connected"></i> Praca i Ciepło: Formy przekazu energii</h2>
 <p>W przeciwieństwie do energii, praca (<span class="math inline">\(L\)</span>) i ciepło (<span class="math inline">\(Q\)</span>) <strong>nie są postaciami energii</strong> ani funkcjami stanu.</p>
 <div class="fragment fade-up" title="Spostrzeżenie">
 <div class="callout callout-note callout-titled callout-style-default">
