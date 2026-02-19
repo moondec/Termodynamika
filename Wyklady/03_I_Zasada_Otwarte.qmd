@@ -391,7 +391,7 @@ Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu 
 ### Kluczowe Wnioski
 
 *   **Układy Otwarte:** Wymagają uwzględnienia pracy technicznej ($L_t$) i entalpii ($H$).
-*   **Równanie Szewalskiego:** Bilans energii dla przepływu ustalonego (turbiny, sprężarki, wymienniki).
+*   **Równanie Bilansu energii** dla przepływu ustalonego (turbiny, sprężarki, wymienniki).
 *   **Praca Techniczna:** Pole do osi rzędnych ($p$).
 *   **Dławienie:** Proces izentalpowy ($h=const$), któremu może towarzyszyć zmiana temperatury (J-T).
 
