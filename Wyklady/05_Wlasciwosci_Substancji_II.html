@@ -9,7 +9,7 @@
 <link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W5: Właściwości Substancji Czystych - II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
@@ -152,7 +153,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -178,6 +179,7 @@
 <section id="termodynamika-przemian-fazowych" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych</h2>
 <h3 id="rodzaje-przemian">Rodzaje Przemian</h3>
+<div class="fragment">
 <ul>
 <li class="fragment"><strong>I Rodzaju:</strong> Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała (<span class="math inline">\(T=const\)</span>).
 <ul>
@@ -189,9 +191,14 @@
 <li class="fragment">Przejście w nadciekłość (Hel).</li>
 </ul></li>
 </ul>
-<h3 class="fragment" id="ciepło-utajone-latent-heat">Ciepło Utajone (Latent Heat)</h3>
-<h4 class="fragment" id="energia-potrzebna-do-zerwania-wiązań-międzycząsteczkowych-bez-zmiany-temperatury.">Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.</h4>
-<h4 class="fragment" id="dla-wody">Dla wody:</h4>
+</div>
+<div class="fragment fade-up">
+<h3 id="ciepło-utajone-latent-heat">Ciepło Utajone (Latent Heat)</h3>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;">
+<p><strong>Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.</strong></p>
+</div>
+</div>
+<h4 class="fragment fade-up" style="font-size: 0.8em;" id="dla-wody">Dla wody:</h4>
 <ul>
 <li class="fragment">Ciepło parowania (<span class="math inline">\(r\)</span>): <span class="math inline">\(2257 \text{ kJ/kg}\)</span> (ogromne!)</li>
 <li class="fragment">Ciepło topnienia: <span class="math inline">\(333 \text{ kJ/kg}\)</span></li>
@@ -271,27 +278,27 @@
 <section id="para-nasycona---struktura" class="slide level2">
 <h2><i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura</h2>
 <p>Gdy podgrzewamy wodę pod stałym ciśnieniem:</p>
-<div class="increament">
+<div class="fragment" style="font-size: 0.98em;">
 <ol type="1">
-<li><strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>.
+<li class="fragment"><strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>.
 <ul>
-<li>💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
+<li class="fragment">💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
 </ul></li>
-<li><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary.
+<li class="fragment"><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary.
 <ul>
-<li>💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
+<li class="fragment">💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
 </ul></li>
-<li><strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu!
+<li class="fragment"><strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu!
 <ul>
-<li>☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań).</li>
+<li class="fragment">☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań).</li>
 </ul></li>
-<li><strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała.
+<li class="fragment"><strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała.
 <ul>
-<li>☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
+<li class="fragment">☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
 </ul></li>
-<li><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.
+<li class="fragment"><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.
 <ul>
-<li>💨🔥 Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
+<li class="fragment">💨🔥 Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
 </ul></li>
 </ol>
 </div>
@@ -302,27 +309,28 @@
 <img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="wykres-t-s-dla-wody-kopuła" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła)</h2>
-<p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:30%;">
+<p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
+</div><div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="768"></p>
+<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="1152"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span style="font-size: 0.6em; color: gray;">źródło:<a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
-</div><div class="column" style="width:40%;">
-<p><img data-src="../img/kopula.png"></p>
+<p><span style="font-size: 0.6em; color: gray;">źródło: <a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
 </div></div>
 </section>
 <section id="stopień-suchości-x" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> 3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.</p>
 <p><span class="math display">\[ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} \]</span></p>
+</div>
 <ul>
 <li><span class="math inline">\(x = 0\)</span>: <span class="math inline">\(100\%\)</span> cieczy (linia lewa).</li>
 <li><span class="math inline">\(x = 1\)</span>: <span class="math inline">\(100\%\)</span> pary (linia prawa).</li>
@@ -390,7 +398,7 @@
 <p>Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży <strong>między</strong> wartościami tablicowymi, stosujemy <strong>interpolację liniową</strong>.</p>
 <h3 id="wzór">Wzór:</h3>
 <p><span class="math display">\[ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) \]</span></p>
-<div class="fragment" title="Przykład">
+<div class="fragment" title="Przykład" style="font-size: 0.7em;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -407,7 +415,7 @@
 </div>
 </div>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 0.8em;">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -445,14 +453,20 @@
 <section id="mollier-w-praktyce" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Mollier w Praktyce</h2>
 <p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ C\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0.1\)</span> bar.</p>
-<ol type="1">
-<li>Znajdujemy punkt przecięcia izobary <span class="math inline">\(100\)</span> bar i izotermy <span class="math inline">\(500^\circ C\)</span>.</li>
-<li>Odczytujemy <span class="math inline">\(h_1\)</span>.</li>
-<li>Rysujemy linię pionową w dół do przecięcia z izobarą <span class="math inline">\(0.1\)</span> bar.</li>
-<li>Odczytujemy <span class="math inline">\(h_2\)</span>.</li>
-<li><span class="math inline">\(l_{turbiny} = h_1 - h_2\)</span>.</li>
-<li>Odczytujemy <span class="math inline">\(x_2\)</span> (stopień suchości na wylocie). Jeśli <span class="math inline">\(x &lt; 0.85\)</span>, erozja łopatek zniszczy turbinę!</li>
-</ol>
+<p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ C\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0.1\)</span> bar.</p>
+<div style="width: 100%; margin: 0 auto;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/mermaid-figure-1.png" style="width:20.38in;height:4.07in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="wykresy-termodynamiczne-1" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne</h2>
@@ -503,7 +517,7 @@
 <li><strong>Tablice:</strong> Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.</li>
 <li><strong>Mollier (h-s):</strong> Niezastąpiony do szybkiej analizy procesów w turbinach.</li>
 </ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+<h3 id="zadanie-do-samodzielnego-wykonania">Zadanie Do Samodzielnego Wykonania</h3>
 <p>Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: <span class="math inline">\(p=1\)</span> bar, <span class="math inline">\(x=0.9\)</span>. Odczytaj entalpię.</p>
 
 </section>

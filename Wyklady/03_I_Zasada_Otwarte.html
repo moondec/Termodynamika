@@ -9,7 +9,7 @@
 <link href="03_I_Zasada_Otwarte_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W3: I Zasada Termodynamiki - cz. II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
   body {
@@ -162,7 +163,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -180,11 +181,14 @@
 <h2><i class="bi bi-bookmark"></i> Pojęcie Pracy Technicznej</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div style="text-align: center;">
-<p><img src="../img/praca_techniczna.png" style="width: 100%;"></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/unnamed-chunk-2-1.png" width="864"></p>
+</figure>
 </div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+</div>
 </div>
 <ul>
 <li class="fragment"><strong>Sprężanie (<span class="math inline">\(dp &gt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
@@ -222,15 +226,22 @@
 <li>Należy uwzględnić <strong>pracę tłoczenia</strong> (wprowadzenia i wyprowadzenia czynnika).</li>
 <li>Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.</li>
 </ul>
-<div style="text-align: center;">
-<p><img src="../img/wymiennik.png" style="width: 55%;"></p>
+<div style="width: 100%; margin: 0 auto; text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-1.png" style="width:7.25in;height:3.95in"></p>
 </div>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="równanie-przepływu-ustalonego" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Równanie Przepływu Ustalonego</h2>
+<h2><i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego</h2>
 <h3 id="postać-ogólna-bilansu-mocy">Postać Ogólna Bilansu Mocy</h3>
 <p>Dla maszyny działającej w sposób ustalony (strumień masy <span class="math inline">\(\dot{m} = const\)</span>):</p>
 <p><span class="math display">\[ \underbrace{\dot{Q} + \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
@@ -271,6 +282,21 @@
 <li>Zmiany energii kinetycznej i potencjalnej są często pomijalne.</li>
 </ul>
 <p><strong>Uproszczony bilans:</strong> <span class="math display">\[ P_i = \dot{m} (h_1 - h_2) \]</span> Gdzie <span class="math inline">\(P_i\)</span> to moc wewnętrzna turbiny.</p>
+<div class="fragment fade-up" title="Wniosek">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Zmniejszenie entalpii czynnika (<span class="math inline">\(h_1 &gt; h_2\)</span>) zamienia się na pracę na wale.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="zastosowanie-sprężarka-i-pompa" class="slide level2">
 <h2><i class="bi bi-fan"></i> Zastosowanie: Sprężarka i Pompa</h2>
@@ -281,10 +307,25 @@
 <li>W pompach (ciecz nieściśliwa) praca techniczna wynosi: <span class="math inline">\(l_t = v \Delta p\)</span>.</li>
 </ul>
 <p><strong>Bilans dla sprężarki:</strong> <span class="math display">\[ P_d = \dot{m} (h_2 - h_1) - \dot{Q} \]</span></p>
+<div class="fragment fade-up" title="Wniosek">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Musimy dostarczyć pracę (<span class="math inline">\(h_2 &gt; h_1\)</span>), aby zwiększyć entalpię (i ciśnienie) czynnika.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="praca-sprężania-gazu-doskonałego" class="slide level2">
 <h2><i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego</h2>
-<p>W przypadku <strong>powietrza</strong> (gaz dosk.) często modelujemy sprężanie jako <strong>politropę</strong> (<span class="math inline">\(pv^n=const\)</span>). Wzór inżynierski na pracę techniczną:</p>
+<p>W przypadku <strong>powietrza</strong> (gaz dosk.) często modelujemy sprężanie jako <strong>politropę</strong><br>(<span class="math inline">\(pv^n=const\)</span>). Wzór inżynierski na pracę techniczną:</p>
 <p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
 <div title="Zastosowanie w Projekcie (Ćw. 2)">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -309,12 +350,12 @@
 <section id="zastosowanie-wymiennik-ciepła" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Zastosowanie: Wymiennik Ciepła</h2>
 <h3 id="przepływ-izobaryczny">Przepływ Izobaryczny</h3>
-<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej (<span class="math inline">\(L_{tech} = 0\)</span>).</p>
+<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej<br>(<span class="math inline">\(L_{tech} = 0\)</span>).</p>
 <p><strong>Bilans dla jednego czynnika:</strong> <span class="math display">\[ \dot{Q} = \dot{m} (h_2 - h_1) \]</span></p>
 <p>Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz): <span class="math display">\[ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B \]</span></p>
 </section>
 <section id="zastosowanie-dławienie" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Zastosowanie: Dławienie</h2>
+<h2><i class="bi bi-wind"></i> Zastosowanie: Dławienie</h2>
 <h3 id="proces-izentalpowy">Proces Izentalpowy</h3>
 <p>Dławienie zachodzi podczas przepływu przez zawór lub zwężkę bez wymiany ciepła i pracy.</p>
 <p><span class="math display">\[ h_1 = h_2 \]</span></p>
@@ -324,14 +365,14 @@
 </ul>
 </section>
 <section id="i-zasada-w-procesach-spalania" class="slide level2">
-<h2><i class="bi bi-1-circle"></i> I Zasada w Procesach Spalania</h2>
+<h2><i class="bi bi-droplet-half"></i> I Zasada w Procesach Spalania</h2>
 <h3 id="energia-chemiczna">Energia Chemiczna</h3>
 <p>W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.</p>
 <p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> Ciepło wydzielone przy zupełnym spaleniu jednostki paliwa, gdy woda w spalinach pozostaje w postaci pary.</p>
 <p><strong>Bilans energetyczny komory spalania:</strong> <span class="math display">\[ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
 </section>
 <section id="zjawisko-joulea-thomsona" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Zjawisko Joule’a-Thomsona</h2>
+<h2><i class="bi bi-thermometer-snow"></i> Zjawisko Joule’a-Thomsona</h2>
 <h3 id="dławienie-adiabatyczne">Dławienie Adiabatyczne</h3>
 <p>Współczynnik <span class="math inline">\(\mu\)</span> określa zmianę temperatury przy spadku ciśnienia w procesie izentalpowym:</p>
 <p><span class="math display">\[ \mu = \left(\frac{\partial T}{\partial p}\right)_H \]</span></p>

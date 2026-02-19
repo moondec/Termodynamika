@@ -1,7 +1,7 @@
 ---
 title: "W12: Powietrze Wilgotne"
 subtitle: "Psychrometria i Wykres Molliera"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -128,7 +130,7 @@ $$ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622$$
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Entalpia ($h$) 
+## <i class="bi bi-thermometer-half"></i> 3. Entalpia ($h$) 
 
 ::: {.callout-warning appearance="simple"}
 Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
@@ -501,7 +503,7 @@ print(p)
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
 *   **Proces:** Nagrzewnica.
@@ -523,7 +525,7 @@ print(p)
 
 --- 
 
-## <i class="bi bi-bookmark"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ```{r}
 #| label: ix-diagram-advanced
@@ -739,7 +741,7 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-bookmark"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
+## <i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
 
 ::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
 $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
@@ -779,7 +781,7 @@ Linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to **ska
 
 ---
 
-## <i class="bi bi-bookmark"></i> Przemiana 1: Mieszanie Strumieni Powietrza 
+## <i class="bi bi-shuffle"></i> Przemiana 1: Mieszanie Strumieni Powietrza 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
@@ -859,14 +861,14 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-bookmark"></i> Przemiana 2: Nawilżanie Parą Wodną 
+## <i class="bi bi-moisture"></i> Przemiana 2: Nawilżanie Parą Wodną 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Przy nawilżaniu **parą** ($h_w \approx 2500$ kJ/kg) przemiana biegnie **prawie poziomo** (wzdłuż izotermy). $\varepsilon = h_w \approx 2500$ kJ/kg.
 :::
 
 ::: {.columns}
-::: {.column width="35%"}
+::: {.column width="38%"}
 **Bilansy:**
 
 $$ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} $$
@@ -876,17 +878,18 @@ $$ \Delta h = h_w \cdot \Delta X $$
 ::: {.fragment}
 Temperatura prawie stała!
 :::
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
+::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.65em;"}
 **Klimatyzacja zimowa:** Nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** Utrzymanie wilgotności włókien. **Drukarnie:** Zapobieganie elektryzowaniu papieru.
 :::
 :::
-::: {.column width="65%"}
+::: {.column width="62%"}
 ```{r}
 #| label: steam-humidification
 #| echo: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 5
 #| fig-align: center
+#| out-width: "95%"
 
 # Stan początkowy i końcowy
 p1 <- list(x = 5, t = 25)
@@ -948,6 +951,22 @@ ggplot() +
 **(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
 :::
 
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 10
+%%| fig-height: 1
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    P0["<b>Powietrze 0</b><br>t=20°C, φ=50%"] -->|"Nagrzewnica<br>X=const ↑t"| PA["<b>Punkt A</b><br>t=60°C, φ↓"]
+    PA -->|"Suszarnia<br>h≈const ↑X"| PB["<b>Punkt B</b><br>t=28°C, φ↑"]
+    
+    style P0 fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    style PA fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style PB fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+
 ::: {.columns}
 ::: {.column width="35%"}
 **Etap A:** $X_A = X_0$, $t \uparrow$
@@ -966,7 +985,7 @@ Sprawność: $\eta \sim (X_B - X_0)$
 #| label: drying-cycle
 #| echo: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 5
 #| fig-align: center
 
 # Stany
@@ -1030,7 +1049,7 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-bookmark"></i> Nawilżanie Adiabatyczne (Wodą) 
+## <i class="bi bi-droplet-half"></i> Nawilżanie Adiabatyczne (Wodą) 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Nawilżanie **wodą** ($h_w \approx 0$) → przemiana **wzdłuż izentalpy** ($\varepsilon \approx 0$). Temperatura spada do $t_m$ (mokry termometr).
@@ -1055,7 +1074,7 @@ Chłodzenie ewaporacyjne!
 #| label: adiabatic-humidification
 #| echo: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 6
 #| fig-align: center
 
 # Stany
@@ -1070,15 +1089,15 @@ rh_levels <- c(0.4, 0.6, 0.8, 1.0)
 t_seq <- seq(10, 55, by = 0.5)
 df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
     x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
-    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>%
         filter(!is.na(x_g), x_g <= 35) %>%
         mutate(t_vis = transform_vis(t, x_g))
 }))
 
 # Izentalpa przez punkt 1
-h_1 <- CONSTANTS$cp_dry * p1$t + (p1$x/1000) * (CONSTANTS$r_0 + CONSTANTS$cp_vap * p1$t)
+h_1 <- CONSTANTS$cp_dry * p1$t + (p1$x / 1000) * (CONSTANTS$r_0 + CONSTANTS$cp_vap * p1$t)
 iso_x <- seq(5, 30, by = 1)
-iso_t_phys <- (h_1 - (iso_x/1000) * CONSTANTS$r_0) / (CONSTANTS$cp_dry + (iso_x/1000) * CONSTANTS$cp_vap)
+iso_t_phys <- (h_1 - (iso_x / 1000) * CONSTANTS$r_0) / (CONSTANTS$cp_dry + (iso_x / 1000) * CONSTANTS$cp_vap)
 df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
 
 ggplot() +
@@ -1090,8 +1109,9 @@ ggplot() +
     scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
     # Strzałka przemiany
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
-                 arrow = arrow(length = unit(0.5, "cm")),
-                 color = "steelblue", size = 2) +
+        arrow = arrow(length = unit(0.5, "cm")),
+        color = "steelblue", size = 2
+    ) +
     # Punkty
     geom_point(aes(x = p1v$x, y = p1v$t), color = "red", size = 8) +
     geom_point(aes(x = p2v$x, y = p2v$t), color = "blue", size = 8) +
@@ -1140,12 +1160,34 @@ Dwa termometry:
 
 ## <i class="bi bi-cloud-fog"></i> Aparaty i Zastosowania 
 
-::: {}
-### Urządzenia (AHU - Air Handling Unit)
-*   **Nawilżacze:** Parowe (higieniczne), Zraszane (adiabatyczne - chłodzą!).
-*   **Osuszacze:** Chłodnicze (wykraplanie), Adsorpcyjne (rotor z żelem krzemionkowym).
-*   **Wymienniki:** Nagrzewnice i chłodnice.
-:::
+
+### Urządzenia (AHU — Air Handling Unit)
+
+<div style="text-align: center; transform: scale(1.4); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 14
+%%| fig-height: 1
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    IN["🌬️ Powietrze<br>zewnętrzne"] --> F["<b>Filtr</b>"]
+    F --> N["<b>Nagrzewnica</b><br>↑t (zima)"]
+    N --> CH["<b>Chłodnica</b><br>↓t (lato)"]
+    CH --> NAW["<b>Nawilżacz</b><br>↑X (zima)"]
+    NAW --> W["<b>Wentylator</b>"]
+    W --> OUT["🏢 Kanał<br>nawiewny"]
+    
+    style IN fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style F fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
+    style N fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style CH fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style NAW fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style W fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style OUT fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
 
 ::: {.fragment}
 ### Zastosowania
@@ -1155,7 +1197,7 @@ Dwa termometry:
 *   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
 :::
 
-::: {.fragment .absolute top=0% left=20% width=70% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
+::: {.fragment .absolute top=0% left=22% width=56% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
 ![](../img/small-air-handling-units-senv-1591216654.jpg)
 ::: 
 
@@ -1207,8 +1249,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 4.  **Procesy:** Ogrzewanie obniża $\varphi$, nawilżanie wodne obniża $t$.
 :::
 
-### Zadanie Domowe {.fragment}
 
-::: {.fragment .callout-tip title="Zadanie Domowe" style="font-size: 0.9em;"}
+::: {.fragment .callout-tip title="Zadanie dla chętnych" style="font-size: 0.9em;"}
 Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"? Wyjaśnij zjawisko używając pojęcia **Punkt Rosy** i **Ciśnienie Cząstkowe**.
 :::

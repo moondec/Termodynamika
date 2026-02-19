@@ -9,7 +9,7 @@
 <link href="09_Obiegi_Gazowe_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W9: Obiegi Gazowe (Silnikowe)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
@@ -152,7 +153,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -177,16 +178,9 @@
 </ol>
 </section>
 <section id="standard-powietrzny" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 1. Standard Powietrzny</h2>
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Rzeczywisty proces spalania jest skomplikowany (zmiana składu chemicznego, tarcie). W termodynamice stosujemy model uproszczony (Air-Standard Assumptions):</p>
-</div>
-</div>
+<h2><i class="bi bi-bookmark-star"></i> 1. Standard Powietrzny</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Rzeczywisty proces spalania</strong> jest skomplikowany (zmiana składu chemicznego, tarcie). W termodynamice stosujemy model uproszczony (<strong>Air-Standard Assumptions</strong>):</p>
 </div>
 <ol type="1">
 <li class="fragment">Czynnik roboczy to <strong>powietrze</strong> (gaz doskonały).</li>
@@ -197,21 +191,9 @@
 </ol>
 </section>
 <section id="definicja-procesu-cyklicznego" class="slide level2">
-<h2><i class="bi bi-book"></i> Definicja Procesu Cyklicznego</h2>
-<div title="**Obieg termodynamiczny (cykl)**">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Obieg termodynamiczny (cykl)</strong></strong></p>
-</div>
-<div class="callout-content">
-<p>to proces, w którym stan końcowy czynnika jest identyczny z początkowym.</p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-recycle"></i> Definicja Procesu Cyklicznego</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Obieg termodynamiczny (cykl)</strong> to proces, w którym stan końcowy czynnika jest identyczny z początkowym.</p>
 </div>
 <ul>
 <li class="fragment">Zmiana funkcji stanu (energii wewnętrznej, entropii) w pełnym cyklu wynosi zero: <span class="math display">\[ \oint dU = 0, \quad \oint dS = 0 \]</span></li>
@@ -219,7 +201,7 @@
 </ul>
 </section>
 <section id="geometria-silnika" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 2. Geometria Silnika</h2>
+<h2><i class="bi bi-gear"></i> 2. Geometria Silnika</h2>
 <p>Kluczowe parametry:</p>
 <ol type="1">
 <li class="fragment"><strong>GMP (TDC):</strong> Górny Martwy Punkt (min objętość, <span class="math inline">\(V_{min}\)</span>).</li>
@@ -237,16 +219,9 @@
 </ul>
 </section>
 <section id="obieg-otto-zapłon-iskrowy---zi" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> 3. Obieg Otto (Zapłon Iskrowy - ZI)</h2>
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Model silnika benzynowego. Mieszanka paliwowo-powietrzna jest sprężana, a potem zapalana iskrą.</p>
-</div>
-</div>
+<h2><i class="bi bi-speedometer2"></i> 3. Obieg Otto (Zapłon Iskrowy - ZI)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Model silnika benzynowego.</strong> Mieszanka paliwowo-powietrzna jest sprężana, a potem zapalana iskrą.</p>
 </div>
 <p>Procesy:</p>
 <ol type="1">
@@ -298,16 +273,9 @@
 </div>
 </section>
 <section id="obieg-diesla-zapłon-samoczynny---zs" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> 4. Obieg Diesla (Zapłon Samoczynny - ZS)</h2>
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Model silnika wysokoprężnego. Sprężamy samo powietrze (do bardzo wysokiej temperatury), a potem wtryskujemy paliwo.</p>
-</div>
-</div>
+<h2><i class="bi bi-truck"></i> 4. Obieg Diesla (Zapłon Samoczynny - ZS)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Model silnika wysokoprężnego.</strong> Sprężamy samo powietrze (do bardzo wysokiej temperatury), a potem wtryskujemy paliwo.</p>
 </div>
 <div class="callout callout-tip callout-style-simple">
 <div class="callout-body">
@@ -355,7 +323,7 @@
 <section id="sprawność-diesla" class="slide level2">
 <h2><i class="bi bi-percent"></i> Sprawność Diesla</h2>
 <p>Zależy od stopnia obciążenia silnika (Stopnia obciążenia <span class="math inline">\(\rho = V_3/V_2\)</span>).</p>
-<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykłądnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
+<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykładnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
 <ul>
 <li class="fragment">Człon w nawiasie jest zawsze <span class="math inline">\(&gt; 1\)</span>.</li>
 <li class="fragment">Dla tego samego stopnia sprężania <span class="math inline">\(\varepsilon\)</span>, Otto jest sprawniejszy niż Diesel!</li>
@@ -363,16 +331,9 @@
 </ul>
 </section>
 <section id="obieg-sabathé-obieg-mieszany" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> 5. Obieg Sabathé (Obieg Mieszany)</h2>
-<div class="callout callout-tip callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p>Obieg ogólny silników tłokowych. Ciepło doprowadzone jest w dwóch etapach: częściowo przy <span class="math inline">\(v=const\)</span>, a częściowo przy <span class="math inline">\(p=const\)</span>.</p>
-</div>
-</div>
+<h2><i class="bi bi-bezier2"></i> 5. Obieg Sabathé (Obieg Mieszany)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Obieg ogólny silników tłokowych.</strong> Ciepło doprowadzone jest w dwóch etapach: częściowo przy <span class="math inline">\(v=const\)</span>, a częściowo przy <span class="math inline">\(p=const\)</span>.</p>
 </div>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -422,7 +383,7 @@
 </div></div>
 </section>
 <section id="obieg-joulea-braytona-turbina-gazowa" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> 6. Obieg Joule’a-Braytona (Turbina Gazowa)</h2>
+<h2><i class="bi bi-fan"></i> 6. Obieg Joule’a-Braytona (Turbina Gazowa)</h2>
 <p>Podstawa działania silników lotniczych i turbin w elektrowni.</p>
 <p>Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.</p>
 <div style="font-size: 0.8em; color: navy;">
@@ -508,7 +469,7 @@
 <li><strong>Brayton:</strong> Maszyny przepływowe. Obieg otwarty pracy ciągłej.</li>
 <li>Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).</li>
 </ol>
-<h3 id="zadanie-domowe">Zadanie Domowe</h3>
+<h3 id="zadanie-do-samodzielnego-rozwiązania">Zadanie Do Samodzielnego Rozwiązania</h3>
 <p>Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 (<span class="math inline">\(\kappa=1.4\)</span>). Wynik: <span class="math inline">\(\eta = 1 - 1/10^{0.4} \approx 60\%\)</span>. (Rzeczywista to ok 30-35%).</p>
 
 </section>

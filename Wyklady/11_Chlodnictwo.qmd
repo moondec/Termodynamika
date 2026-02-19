@@ -1,7 +1,7 @@
 ---
 title: "W11: Chłodnictwo i Pompy Ciepła"
 subtitle: "Obiegi Lewobieżne w Praktyce Inżynierskiej"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -75,8 +77,8 @@ Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie o
 :::
 
 ::: {.fragment .callout-tip appearance="simple"}
-*   **Proces wymuszony:** Aby przenieść ciepło z temperatury niższej ($T_L$) do wyższej ($T_H$), musimy dostarczyć energię z zewnątrz (pracę $L$).
-*   **Kierunek:** Obieg przebiega **odwrotnie do ruchu wskazówek zegara** na wykresie p-v.
+*   **Proces wymuszony:** Aby przenieść ciepło z temperatury niższej ($T_L$) do wyższej <br>($T_H$), musimy dostarczyć energię z zewnątrz (pracę $L$).
+*   **Kierunek:** Obieg przebiega **odwrotnie do ruchu wskazówek zegara** <br>na wykresie p-v.
 :::
 
 ::: {.fragment .callout-important title="Cel i Koszt"}
@@ -98,14 +100,14 @@ W urządzeniach chłodniczych sprawność może przekraczać 1, dlatego używamy
 $$ COP_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} $$
 
 ::: {.fragment .callout-note appearance="minimal"}
-Dla domowej lodówki $COP \approx 2-3$.
+Dla domowej lodówki <br>$COP \approx 2-3$.
 (1 kW prądu "przepompowuje" 3 kW ciepła).
 :::
 :::
 
 ::: {.column width="50%"}
 ### Pompa Ciepła ($\varepsilon_{g}$)
-$$ COP_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|} $$
+$COP_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|}$
 
 ::: {.fragment .callout-tip appearance="minimal"}
 
@@ -116,7 +118,7 @@ $$ COP_{g} = COP_{ch} + 1 $$
 :::
 :::
 
-::: {.fragment .callout-note title="Terminologia: EER"}
+::: {.fragment .callout-note title="Terminologia: EER" style="font-size: 0.85em;"}
 W branży chłodniczej i HVAC zamiast $COP_{ch}$ często stosuje się termin **EER** (*Energy Efficiency Ratio*). To ta sama wielkość fizyczna — stosunek wydajności chłodniczej do mocy napędowej. W normach europejskich EER jest podawany w warunkach znormalizowanych ($t_o = 2^\circ C, t_k = 40^\circ C$).
 :::
 
@@ -148,20 +150,51 @@ Zastępujemy turbinę **zaworem dławiącym**, a sprężanie realizujemy w obsza
 
 Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
+:::: {.columns}
+
+::: {.column width="55%"}
+
 ### Schemat Przemian:
 
 ::: {.fragment .fade-in}
-1.  **1-2 Sprężarka:** Adiabatyczne sprężanie pary suchej do ciśnienia skraplania ($s=const$).
+1.  **1-2 Sprężarka:** Adiabatyczne sprężanie pary suchej ($s=const$).
 :::
 ::: {.fragment .fade-in}
-2.  **2-3 Skraplacz:** Izobaryczne oddawanie ciepła ($p=const$). Czynnik skrapla się do cieczy.
+2.  **2-3 Skraplacz:** Izobaryczne oddawanie ciepła ($p=const$). Czynnik skrapla się.
 :::
 ::: {.fragment .fade-in}
-3.  **3-4 Zawór Rozprężny:** Izentalpowe dławienie ($h=const$). Gwałtowny spadek ciśnienia i temperatury.
+3.  **3-4 Zawór Rozprężny:** Izentalpowe dławienie ($h=const$).
 :::
 ::: {.fragment .fade-in}
 4.  **4-1 Parownik:** Izobaryczne wrzenie ($p=const$). Pobranie ciepła $Q_L$.
 :::
+:::
+
+::: {.column width="45%"}
+
+<div style="text-align: center; transform: scale(1.5); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 6
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30 }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    S["<b>Sprężarka</b><br>Praca <em style='font-style: italic'>l<sub>sp</sub></em>"] --> SK["<b>Skraplacz</b><br>Oddaje ciepło <em style='font-style: italic'>q<sub>H</sub></em>"]
+    SK --> Z["<b>Zawór Rozprężny</b><br><em style='font-style: italic'>h=const</em>"]
+    Z --> P["<b>Parownik</b><br>Pobiera ciepło <em style='font-style: italic'>q<sub>L</sub></em>"]
+    P --> S
+    
+    style S fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style SK fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style Z fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style P fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
+
+:::
+::::
 
 ---
 
@@ -321,40 +354,88 @@ Ciecz za skraplaczem (pkt 3) jest **dochładzana**.
 
 Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$) i skraplać się w wysokiej ($40^\circ C$) przy rozsądnych ciśnieniach.
 
-[**Ewolucja:**]{.fragment}
+::: {.fragment style="font-size: 0.75em;"}
 
-::: {.fragment}
-1.  **CFC (Freony, np. R12):** Niszczyły warstwę ozonową. Zakazane (Protokół Montrealski).
+| Generacja | Czynnik | ODP | GWP | Status | Zastosowanie |
+|-----------|---------|:---:|----:|--------|-------------|
+| CFC | R12 | 1.0 | 10 900 | ⛔ Zakazany | — |
+| HCFC | R22 | 0.05 | 1 810 | ⚠️ Wycofywany | Stare klimat. |
+| HFC | R134a | 0 | 1 430 | ⚠️ Wycofywany | Klimatyzacja |
+| HFO | R1234yf | 0 | 4 | ✅ Aktualny | Motoryzacja |
+| Naturalny | R717 (NH₃) | 0 | 0 | ✅ | Przemysł |
+| Naturalny | R744 (CO₂) | 0 | 1 | ✅ | Supermarkety |
+| Naturalny | R290 (Propan) | 0 | 3 | ✅ | Pompy ciepła |
+
 :::
-::: {.fragment}
-2.  **HFC (np. R134a):** Bezpieczne dla ozonu, ale silne gazy cieplarniane (GWP=1430). Wycofywane.
-:::
-::: {.fragment}
-3.  **HFO (np. R1234yf):** Niskie GWP, ale lekko palne.
-:::
-::: {.fragment}
-4.  **Naturalne:**
-    *   **Amoniak (R717):** Doskonały termodynamicznie, ale toksyczny. Przemysł.
-    *   **CO2 (R744):** Wymaga b. wysokich ciśnień (>100 bar). Supermarkety.
-    *   **Propan (R290):** Palny, ale świetny w małych pompach ciepła.
+
+::: {.fragment .callout-tip title="Trend" style="font-size: 0.9em;"}
+Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozporządzenie EU F-Gas wymusza wycofanie HFC do 2030.
 :::
 
 ---
 
 ## <i class="bi bi-bookmark"></i> 7. Pompy Ciepła 
 
-"Lodówka wywrócona na lewą stronę".
+"Lodówka wywrócona na lewą stronę" — to samo urządzenie, inny **cel**.
 
-::: {.fragment .callout-note title="Obieg Sprężarkowy"}
-To samo urządzenie co chłodziarka, tylko wykorzystujemy ciepło skraplacza ($Q_H$).
-*   **Przykład:** Pobieramy ciepło z gruntu (10°C) i grzejemy wodę C.O. (40°C).
-*   Efektywność spada drastycznie przy dużych mrozach (gdy $T_L$ spada).
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### <i class="bi bi-snow"></i> Chłodziarka {.fragment}
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 5
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    TH["☀️ <b>Otoczenie</b> T<sub>H</sub>"] 
+    TL["❄️ <b>Wnętrze lodówki</b> T<sub>L</sub>"]
+    M["⚙️ Sprężarka<br>Praca <em>L</em>"]
+    TL -->|"Q<sub>L</sub> ← CEL"| M
+    M -->|"Q<sub>H</sub>"| TH
+    
+    style TH fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style TL fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
+    style M fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+```
+
+::: {.fragment .callout-note appearance="minimal" style="font-size: 0.85em;"}
+$COP_{ch} = \frac{Q_L}{L}$ (typowo 2–3)
+:::
 :::
 
-::: {.fragment .callout-important title="Obieg Gazowy (Joule'a-Braytona)"}
-Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza.
-*   Wymaga rozprężarki (turbiny) zamiast zaworu dławiącego.
-*   Stosowany w klimatyzacji samolotowej (bezpieczny czynnik).
+::: {.column width="50%"}
+
+### <i class="bi bi-fire"></i> Pompa Ciepła {.fragment}
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 5
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    TH["🏠 <b>Pomieszczenie</b> T<sub>H</sub>"]
+    TL["🌍 <b>Grunt / Powietrze</b> T<sub>L</sub>"]
+    M["⚙️ Sprężarka<br>Praca <em>L</em>"]
+    TL -->|"Q<sub>L</sub>"| M
+    M -->|"Q<sub>H</sub> ← CEL"| TH
+    
+    style TH fill:#ffebee,stroke:#e74c3c,stroke-width:3px
+    style TL fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style M fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+```
+
+::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
+$COP_{g} = \frac{Q_H}{L} = COP_{ch} + 1$ (typowo 3–5)
+:::
+:::
+
+::::
+
+::: {.fragment .callout-important title="Obieg Gazowy (Joule'a-Braytona)|Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza. Stosowany w klimatyzacji samolotowej." style="font-size: 0.65em;"}
+
 :::
 
 ---
@@ -379,6 +460,6 @@ Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powi
 
 ### Zadanie Domowe{.fragment}
 
-::: {.fragment .callout-tip title="Zadanie Domowe" style="font-size: 0.8em;"}
+::: {.fragment .callout-tip title="Zadanie Dla Chętnych" style="font-size: 0.8em;"}
 Narysuj schemat domowej lodówki. Wskaż, który element jest gorący (skraplacz), a który zimny (parownik). Dlaczego kratka z tyłu lodówki musi mieć wentylację?
 :::

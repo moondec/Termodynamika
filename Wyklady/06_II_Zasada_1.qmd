@@ -1,7 +1,7 @@
 ---
 title: "W6: II Zasada Termodynamiki - I"
 subtitle: "Silniki Cieplne, Obieg Carnota i Nieodwracalność"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: png
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -113,7 +115,7 @@ Wszystkie te procesy generują **Entropię** (miarę nieporządku), o czym powie
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Źródła Ciepła (Rezerwuary) 
+## <i class="bi bi-fire"></i> 2. Źródła Ciepła (Rezerwuary) 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):
@@ -230,9 +232,11 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-bookmark"></i> Silnik Cieplny 
+## <i class="bi bi-gear-wide-connected"></i> Silnik Cieplny 
 
-[Urządzenie cykliczne, które zamienia ciepło na pracę.]{style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+Urządzenie cykliczne, które zamienia ciepło na pracę.
+:::
 
 ::: incremental
 1.  Pobiera ciepło $Q_H$ ze źródła o wysokiej temperaturze ($T_H$).
@@ -249,9 +253,9 @@ $$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \fr
 
 ---
 
-## <i class="bi bi-water"></i> Chłodziarka i Pompa Ciepła 
+## <i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła 
 
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 To "odwrócony" silnik cieplny.
 :::
 
@@ -295,7 +299,7 @@ Większość energii (70%) jest marnowana jako ciepło odpadowe! To typowa warto
 
 ---
 
-## <i class="bi bi-bookmark"></i> Analiza COP (Współczynnik Wydajności) 
+## <i class="bi bi-speedometer2"></i> Analiza COP (Współczynnik Wydajności) 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 
@@ -316,9 +320,9 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Sformułowania II Zasady 
+## <i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady 
 
-### Sformułowanie Kelvina-Plancka{style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;"}
+### Sformułowanie Kelvina-Plancka{style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
 
 ::: {.fragment style="font-size: .8em;"}
 > Nie jest możliwy proces cykliczny, którego **jedynym** wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.
@@ -330,7 +334,7 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 
 [Musimy oddać część ciepła $Q_L$ do chłodnicy. $Q_L \neq 0$.]{.fragment style="color: #65210d; font-weight: bold;"}
 
-### Sformułowanie Clausiusa{.fragment style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;"}
+### Sformułowanie Clausiusa{.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
 
 ::: {.fragment style="font-size: .8em;"}
 > Nie jest możliwe zbudowanie urządzenia, którego **jedynym** skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.
@@ -342,7 +346,7 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 
 ---
 
-## <i class="bi bi-bookmark"></i> Równoważność Sformułowań 
+## <i class="bi bi-arrow-left-right"></i> Równoważność Sformułowań 
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Te dwa twierdzenia brzmią różnie, ale są równoważne.
@@ -358,9 +362,9 @@ Złamanie jednego, oznacza złamanie też drugiego.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Perpetuum Mobile II Rodzaju 
+## <i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju 
 
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).
 :::
 
@@ -374,7 +378,7 @@ Wyobraźmy sobie statek, który pobiera ciepło z oceanu ($T \approx 15^\circ C$
 
 ::: {style="border: 2px solid red; padding: 10px; text-align: center;"}
 **NIEMOŻLIWE**
-$$ Q_H \to [SILNIK] \to W $$
+$$ Q_H \to [SILNIK] \to L $$
 (Brak strzałki $Q_L$)
 :::
 :::
@@ -396,7 +400,7 @@ ocean <- data.frame(xmin = 0, xmax = 12, ymin = 0, ymax = 3.5)
 
 # Statek
 ship_hull <- data.frame(
-  x = c(2, 10, 11, 1),
+  x = c(1, 11, 10, 2),
   y = c(3.5, 3.5, 1.5, 1.5)
 )
 ship_cabin <- data.frame(xmin = 3, xmax = 6, ymin = 3.5, ymax = 5.5)
@@ -481,7 +485,7 @@ ggplot() +
   theme(plot.background = element_rect(fill = "white", color = NA))
 ```
 
-::: {.fragment .callout-warning appearance="simple"}
+::: {.fragment .callout-caution appearance="simple" style="font-size: 0.8em;"}
 Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.
 :::
 
@@ -491,36 +495,55 @@ Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.
 
 ---
 
-## <i class="bi bi-bookmark"></i> 4. Procesy Odwracalne i Nieodwracalne 
+## <i class="bi bi-recycle"></i> 4. Procesy Odwracalne i Nieodwracalne 
 
-### Proces Odwracalny (Idealny)
+:::: {.columns}
 
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
-Można go cofnąć wzdłuż tej samej ścieżki, nie zostawiając żadnego śladu w otoczeniu.
+::: {.column width="50%"}
+### Proces Odwracalny
+::: {style="border: 2px solid #27ae60; padding: 15px; border-radius: 10px; background-color: #eafaf1; font-size: 0.8em; text-align: center; margin-bottom: 20px;"}
+Można go cofnąć bez śladu w otoczeniu.
 :::
 
-::: {.fragment}
+<div style="text-align: center; zoom: 1.5;">
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': { 'htmlLabels': false, 'curve': 'basis' }, 'themeVariables': { 'fontSize': '40px', 'fontFamily': 'Lato', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+flowchart LR
+    A((Stan 1)) <==> B((Stan 2))
 
->Wymogi: Brak tarcia, kwazistatyczność (nieskończenie powolny), nieskończenie małe różnice temperatur $\Delta T \to 0$.
-
+    style A fill:#eafaf1,stroke:#27ae60,stroke-width:4px
+    style B fill:#eafaf1,stroke:#27ae60,stroke-width:4px
+    linkStyle 0 stroke:#27ae60,stroke-width:4px
+```
+</div>
 :::
 
-
-### Proces Nieodwracalny (Rzeczywisty){.fragment}
-
-::: {.fragment style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
-Cofnięcie wymaga nakładu pracy z zewnątrz.
+::: {.column width="50%"}
+### Proces Nieodwracalny
+::: {style="border: 2px solid #e60000; padding: 15px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em; text-align: center; margin-bottom: 20px;"}
+Cofnięcie wymaga pracy z zewnątrz.
 :::
 
-::: {.fragment}
+<div style="text-align: center; zoom: 1.5;">
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': { 'htmlLabels': false, 'curve': 'basis' }, 'themeVariables': { 'fontSize': '40px', 'fontFamily': 'Lato', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+flowchart LR
+    C((Stan 1)) ==> D((Stan 2))
+    D -.-> |Praca| C
 
->Źródła nieodwracalności: Tarcie, mieszanie płynów, opór elektryczny, reakcje chemiczne, przepływ ciepła przy skończonej $\Delta T$.
-
+    style C fill:#fff0f0,stroke:#e60000,stroke-width:4px
+    style D fill:#fff0f0,stroke:#e60000,stroke-width:4px
+    linkStyle 0 stroke:#e60000,stroke-width:4px
+    linkStyle 1 stroke:#e60000,stroke-width:3px
+```
+</div>
 :::
+
+::::
 
 ---
 
-## <i class="bi bi-bookmark"></i> Źródła Nieodwracalności 
+## <i class="bi bi-exclamation-triangle"></i> Źródła Nieodwracalności 
 
 ::: {style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;"}
 Co sprawia, że procesu nie da się cofnąć bez strat?
@@ -536,7 +559,7 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 
 ---
 
-## <i class="bi bi-bookmark"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny) 
+## <i class="bi bi-clock-history"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny) 
 
 ::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
 Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi.
@@ -560,9 +583,9 @@ Taki proces to **idelizacja** (jak punkt materialny w mechanice). Służy do wyz
 
 Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami $T_H$ i $T_L$.
 
-:::: {.columns}
+::::: {.columns}
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 
 Składa się z 4 procesów **odwracalnych**:
 
@@ -573,9 +596,9 @@ Składa się z 4 procesów **odwracalnych**:
 2.  **Adiabatyczne rozprężanie:** Temperatura spada z $T_H$ do $T_L$. Praca wykonana kosztem energii wewn.
 
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ::: {.fragment .highlight-red style="font-size: 0.6em;"}
 
 3.  **Izotermiczne sprężanie** (w $T_L$): Oddanie ciepła $Q_L$.
@@ -584,8 +607,8 @@ Składa się z 4 procesów **odwracalnych**:
 4.  **Adiabatyczne sprężanie:** Temperatura rośnie z $T_L$ do $T_H$.
 
 :::
-:::
 ::::
+:::::
 
 ::: {style="text-align: center;"}
 ![](../img/carnot_p_v.png){fig-align="center" width="70%"}
@@ -636,7 +659,7 @@ Składa się z 4 procesów **odwracalnych**:
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> Wizualizacja Obiegu Carnota (T-s) 
+## <i class="bi bi-graph-up"></i> Wizualizacja Obiegu Carnota (T-s) 
 
 :::: {.columns}
 
@@ -733,7 +756,7 @@ $$ \eta = 1 - \frac{T_L}{T_H} $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Potrzeba Niezależnej Skali Temperatury 
+## <i class="bi bi-thermometer-sun"></i> Potrzeba Niezależnej Skali Temperatury 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.
@@ -752,13 +775,13 @@ Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Termodynamiczna Skala Temperatury (Kelvina) 
+## <i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina) 
 
-::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:
 :::
 
-::: {style="border: 3px solid #d58e01; background-color: #e9d795; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;"}
+::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;"}
 $$ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} $$
 :::
 

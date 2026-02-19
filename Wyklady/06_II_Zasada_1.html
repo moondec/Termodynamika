@@ -9,7 +9,7 @@
 <link href="06_II_Zasada_1_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W6: II Zasada Termodynamiki - I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
@@ -152,7 +153,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -232,7 +233,7 @@
 </div>
 </section>
 <section id="źródła-ciepła-rezerwuary" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 2. Źródła Ciepła (Rezerwuary)</h2>
+<h2><i class="bi bi-fire"></i> 2. Źródła Ciepła (Rezerwuary)</h2>
 <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <p>Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):</p>
 </div>
@@ -258,8 +259,10 @@
 </div></div>
 </section>
 <section id="silnik-cieplny" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Silnik Cieplny</h2>
-<p><span style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">Urządzenie cykliczne, które zamienia ciepło na pracę.</span></p>
+<h2><i class="bi bi-gear-wide-connected"></i> Silnik Cieplny</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p>Urządzenie cykliczne, które zamienia ciepło na pracę.</p>
+</div>
 <ol type="1">
 <li class="fragment">Pobiera ciepło <span class="math inline">\(Q_H\)</span> ze źródła o wysokiej temperaturze (<span class="math inline">\(T_H\)</span>).</li>
 <li class="fragment">Zamienia część tego ciepła na pracę użyteczną <span class="math inline">\(L\)</span>.</li>
@@ -271,8 +274,8 @@
 </div>
 </section>
 <section id="chłodziarka-i-pompa-ciepła" class="slide level2">
-<h2><i class="bi bi-water"></i> Chłodziarka i Pompa Ciepła</h2>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<h2><i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>To “odwrócony” silnik cieplny.</p>
 </div>
 <ol type="1">
@@ -314,7 +317,7 @@
 </div>
 </section>
 <section id="analiza-cop-współczynnik-wydajności" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Analiza COP (Współczynnik Wydajności)</h2>
+<h2><i class="bi bi-speedometer2"></i> Analiza COP (Współczynnik Wydajności)</h2>
 <div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
 <p>Dlaczego <span class="math inline">\(COP\)</span> może być większe od 1 (np. 3 lub 4)? Czy to perpetuum mobile? <span class="fragment" style="color: #e60000; font-weight: bold;"><strong>NIE!</strong></span></p>
 </div>
@@ -339,8 +342,8 @@
 </div>
 </section>
 <section id="sformułowania-ii-zasady" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 3. Sformułowania II Zasady</h2>
-<h3 style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;" id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
+<h2><i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady</h2>
+<h3 style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;" id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
 <div class="fragment" style="font-size: .8em;">
 <blockquote>
 <p>Nie jest możliwy proces cykliczny, którego <strong>jedynym</strong> wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.</p>
@@ -362,7 +365,7 @@
 </div>
 </div>
 <p><span class="fragment" style="color: #65210d; font-weight: bold;">Musimy oddać część ciepła <span class="math inline">\(Q_L\)</span> do chłodnicy. <span class="math inline">\(Q_L \neq 0\)</span>.</span></p>
-<h3 class="fragment" style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81; font-size: .8em;" id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
+<h3 class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;" id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
 <div class="fragment" style="font-size: .8em;">
 <blockquote>
 <p>Nie jest możliwe zbudowanie urządzenia, którego <strong>jedynym</strong> skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.</p>
@@ -385,7 +388,7 @@
 </div>
 </section>
 <section id="równoważność-sformułowań" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Równoważność Sformułowań</h2>
+<h2><i class="bi bi-arrow-left-right"></i> Równoważność Sformułowań</h2>
 <div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
 <p>Te dwa twierdzenia brzmią różnie, ale są równoważne.</p>
 <p>Złamanie jednego, oznacza złamanie też drugiego.</p>
@@ -395,8 +398,8 @@
 </ul>
 </section>
 <section id="perpetuum-mobile-ii-rodzaju" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Perpetuum Mobile II Rodzaju</h2>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<h2><i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).</p>
 </div>
 <div class="columns">
@@ -407,7 +410,7 @@
 <li>II Zasada? <strong>Złamana</strong> (Brak <span class="math inline">\(Q_L\)</span>, <span class="math inline">\(\eta = 100\%\)</span>).</li>
 </ul>
 <div style="border: 2px solid red; padding: 10px; text-align: center;">
-<p><strong>NIEMOŻLIWE</strong> <span class="math display">\[ Q_H \to [SILNIK] \to W \]</span> (Brak strzałki <span class="math inline">\(Q_L\)</span>)</p>
+<p><strong>NIEMOŻLIWE</strong> <span class="math display">\[ Q_H \to [SILNIK] \to L \]</span> (Brak strzałki <span class="math inline">\(Q_L\)</span>)</p>
 </div>
 </div><div class="column" style="width:60%;">
 <div class="cell">
@@ -419,8 +422,8 @@
 </div>
 </div>
 </div>
-<div class="fragment">
-<div class="callout callout-warning callout-style-simple">
+<div class="fragment" style="font-size: 0.8em;">
+<div class="callout callout-caution callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -434,28 +437,48 @@
 </div></div>
 </section>
 <section id="procesy-odwracalne-i-nieodwracalne" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 4. Procesy Odwracalne i Nieodwracalne</h2>
-<h3 id="proces-odwracalny-idealny">Proces Odwracalny (Idealny)</h3>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
-<p>Można go cofnąć wzdłuż tej samej ścieżki, nie zostawiając żadnego śladu w otoczeniu.</p>
+<h2><i class="bi bi-recycle"></i> 4. Procesy Odwracalne i Nieodwracalne</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="proces-odwracalny">Proces Odwracalny</h3>
+<div style="border: 2px solid #27ae60; padding: 15px; border-radius: 10px; background-color: #eafaf1; font-size: 0.8em; text-align: center; margin-bottom: 20px;">
+<p>Można go cofnąć bez śladu w otoczeniu.</p>
 </div>
-<div class="fragment">
-<blockquote>
-<p>Wymogi: Brak tarcia, kwazistatyczność (nieskończenie powolny), nieskończenie małe różnice temperatur <span class="math inline">\(\Delta T \to 0\)</span>.</p>
-</blockquote>
+<div style="text-align: center; zoom: 1.5;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/mermaid-figure-1.png" style="width:3.11in;height:1.38in"></p>
 </div>
-<h3 class="fragment" id="proces-nieodwracalny-rzeczywisty">Proces Nieodwracalny (Rzeczywisty)</h3>
-<div class="fragment" style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
-<p>Cofnięcie wymaga nakładu pracy z zewnątrz.</p>
+<p></p></figure><p></p>
 </div>
-<div class="fragment">
-<blockquote>
-<p>Źródła nieodwracalności: Tarcie, mieszanie płynów, opór elektryczny, reakcje chemiczne, przepływ ciepła przy skończonej <span class="math inline">\(\Delta T\)</span>.</p>
-</blockquote>
 </div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<h3 id="proces-nieodwracalny">Proces Nieodwracalny</h3>
+<div style="border: 2px solid #e60000; padding: 15px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em; text-align: center; margin-bottom: 20px;">
+<p>Cofnięcie wymaga pracy z zewnątrz.</p>
+</div>
+<div style="text-align: center; zoom: 1.5;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/mermaid-figure-2.png" style="width:4.07in;height:1.38in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="źródła-nieodwracalności" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Źródła Nieodwracalności</h2>
+<h2><i class="bi bi-exclamation-triangle"></i> Źródła Nieodwracalności</h2>
 <div style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;">
 <p>Co sprawia, że procesu nie da się cofnąć bez strat?</p>
 </div>
@@ -468,7 +491,7 @@
 </ol>
 </section>
 <section id="proces-kwazistatyczny-wewnętrznie-odwracalny" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny)</h2>
+<h2><i class="bi bi-clock-history"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny)</h2>
 <div style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;">
 <p>Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi.</p>
 </div>
@@ -569,7 +592,7 @@
 </div>
 </section>
 <section id="wizualizacja-obiegu-carnota-t-s" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> Wizualizacja Obiegu Carnota (T-s)</h2>
+<h2><i class="bi bi-graph-up"></i> Wizualizacja Obiegu Carnota (T-s)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Na wykresie T-s (Temperatura-Entropia) obieg Carnota to idealny <strong>prostokąt</strong>.</p>
@@ -606,7 +629,7 @@
 </ol>
 </section>
 <section id="potrzeba-niezależnej-skali-temperatury" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Potrzeba Niezależnej Skali Temperatury</h2>
+<h2><i class="bi bi-thermometer-sun"></i> Potrzeba Niezależnej Skali Temperatury</h2>
 <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
 <p>Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.</p>
 </div>
@@ -619,11 +642,11 @@
 </div>
 </section>
 <section id="termodynamiczna-skala-temperatury-kelvina" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Termodynamiczna Skala Temperatury (Kelvina)</h2>
-<div style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;">
+<h2><i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:</p>
 </div>
-<div style="border: 3px solid #d58e01; background-color: #e9d795; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;">
+<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;">
 <p><span class="math display">\[ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} \]</span></p>
 </div>
 <ul>

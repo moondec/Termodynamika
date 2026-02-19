@@ -9,7 +9,7 @@
 <link href="07_II_Zasada_2_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W7: II Zasada Termodynamiki - II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,8 @@
       margin-right: 0; 
     }
   </style>
+  <script src="07_II_Zasada_2_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
@@ -152,7 +154,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -174,13 +176,15 @@
 <li><strong>III Zasada Termodynamiki</strong> (Zero Bezwzględne)</li>
 </ol>
 </section>
-<section id="nierówność-clausiusa" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa</h2>
+<section id="nierówność-clausiusa" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:</p>
 <p><span class="math display">\[ \oint \frac{đ Q}{T} \le 0 \]</span></p>
 <blockquote>
 <p>Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.</p>
 </blockquote>
+</div>
 <div class="fragment" title="Interpretacja">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -196,6 +200,93 @@
 <li><strong><span class="math inline">\(&lt; 0\)</span></strong>: Cykl jest <strong>nieodwracalny</strong> (rzeczywisty, straty).</li>
 <li><strong><span class="math inline">\(&gt; 0\)</span></strong>: Cykl jest <strong>niemożliwy</strong> (łamie II Zasadę).</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nierówność-clausiusa-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa</h2>
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 804.4375 715.578125" height="480" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" style="; display: block; margin: auto auto auto auto">
+<style>#mermaid-figure-1{font-size:30px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:30px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff0f0;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:#ffffff;padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771528107247_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771528107247_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771528107247_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771528107247_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771528107247_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771528107247_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1771528107247_flowchart-v2-pointEnd_black)" style="stroke-width:4px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M403.969,128L403.969,132.167C403.969,136.333,403.969,144.667,404.039,152.417C404.109,160.167,404.25,167.334,404.32,170.917L404.39,174.501"></path><path marker-end="url(#mermaid-1771528107247_flowchart-v2-pointEnd_black)" style="stroke-width:4px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_0" d="M322.003,365.612L287.78,387.19C253.557,408.767,185.11,451.923,150.887,480.75C116.664,509.578,116.664,524.078,116.664,531.328L116.664,538.578"></path><path marker-end="url(#mermaid-1771528107247_flowchart-v2-pointEnd_black)" style="stroke-width:4px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_D_0" d="M404.469,448.078L404.385,455.911C404.302,463.745,404.135,479.411,404.052,494.495C403.969,509.578,403.969,524.078,403.969,531.328L403.969,538.578"></path><path marker-end="url(#mermaid-1771528107247_flowchart-v2-pointEnd_black)" style="stroke-width:4px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_E_0" d="M486.739,365.808L520.536,387.353C554.334,408.898,621.929,451.988,655.726,484.533C689.523,517.078,689.523,539.078,689.523,550.078L689.523,561.078"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 4px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:4px;color:none;stroke:black"></span>
+</div>
+</foreignobject></g></g><g transform="translate(116.6640625, 495.078125)" class="edgeLabel"><g transform="translate(-56.1015625, -22.5)" class="label"><foreignobject height="45" width="112.203125">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 4px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:4px;color:none;stroke:black">
+<p>
+Rowne 0
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(403.96875, 495.078125)" class="edgeLabel"><g transform="translate(-91.484375, -22.5)" class="label"><foreignobject height="45" width="182.96875">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 4px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:4px;color:none;stroke:black">
+<p>
+Mniejsze od 0
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(689.5234375, 495.078125)" class="edgeLabel"><g transform="translate(-87.2890625, -22.5)" class="label"><foreignobject height="45" width="174.578125">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 4px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:4px;color:none;stroke:black">
+<p>
+Wieksze od 0
+</p>
+</span>
+</div>
+</foreignobject></g></g></g><g class="nodes"><g transform="translate(403.96875, 68)" id="flowchart-A-0" class="node default"><rect height="120" width="213.640625" y="-60" x="-106.8203125" style="fill:#e3f2fd !important;stroke:#2196f3 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(-76.8203125, -45)" style="" class="label"><rect></rect><foreignobject height="90" width="153.640625">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Nierowność<br>Clausiusa
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(403.96875, 312.7890625)" id="flowchart-B-1" class="node default"><polygon transform="translate(-134.7890625,134.7890625)" class="label-container" points="134.7890625,0 269.578125,-134.7890625 134.7890625,-269.578125 0,-134.7890625"></polygon><g transform="translate(-74.7890625, -45)" style="" class="label"><rect></rect><foreignobject height="90" width="149.578125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Wynik<br>całkowania
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(116.6640625, 625.078125)" id="flowchart-C-3" class="node default"><rect height="165" width="217.328125" y="-82.5" x="-108.6640625" style="fill:#eafaf1 !important;stroke:#27ae60 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(-78.6640625, -67.5)" style="" class="label"><rect></rect><foreignobject height="135" width="157.328125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Proces<br>Odwracalny<br>Idealny
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(403.96875, 625.078125)" id="flowchart-D-5" class="node default"><rect height="165" width="257.28125" y="-82.5" x="-128.640625" style="fill:#fff3e0 !important;stroke:#f57c00 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(-98.640625, -67.5)" style="" class="label"><rect></rect><foreignobject height="135" width="197.28125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Proces<br>Nieodwracalny<br>Rzeczywisty
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(689.5234375, 625.078125)" id="flowchart-E-7" class="node default"><rect height="120" width="213.828125" y="-60" x="-106.9140625" style="fill:#ffebee !important;stroke:#c62828 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(-76.9140625, -45)" style="" class="label"><rect></rect><foreignobject height="90" width="153.828125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Proces<br>Niemozliwy
+</p>
+</span>
+</div>
+</foreignobject></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771528107247_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+</svg>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -234,7 +325,16 @@
 <p><span class="fragment highlight-red">(Wzrost entropii)</span></p></li>
 </ol>
 </div><div class="column" style="width:60%;">
-<div class="fragment" title="Suma zmian:">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="07_II_Zasada_2_files/figure-revealjs/heat-entropy-flow-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment" title="Suma zmian:" style="font-size: 0.9em;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -253,8 +353,10 @@
 </section>
 <section id="zasada-wzrostu-entropii" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Dla układu izolowanego (adiabatycznego):</p>
 <p><span class="math display">\[ \Delta S_{izol} \ge 0 \]</span></p>
+</div>
 <ul>
 <li class="fragment">W procesach odwracalnych entropia układu izolowanego jest stała (<span class="math inline">\(\Delta S = 0\)</span>).</li>
 <li class="fragment">W procesach rzeczywistych (nieodwracalnych) entropia układu izolowanego <strong>ZAWSZE ROŚNIE</strong>.</li>

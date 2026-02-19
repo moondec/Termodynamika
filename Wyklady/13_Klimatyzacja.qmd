@@ -1,7 +1,7 @@
 ---
 title: "W13: Procesy Klimatyzacyjne"
-subtitle: "Projektowanie procesów na wykresie i-x"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+subtitle: "Projektowanie procesów na wykresie h-X"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -66,48 +68,71 @@ theme_set(theme_minimal(base_size = 18))
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Centrala Wentylacyjna (AHU) 
+## <i class="bi bi-building-gear"></i> 1. Centrala Wentylacyjna (AHU) 
 
 ::: {.callout-note title="Centrala Wentylacyjna (AHU)"}
-Fabryka powietrza. Składa się z sekcji:
+Fabryka powietrza. Każdy element realizuje konkretny proces termodynamiczny na wykresie h-X.
 :::
+<div style="text-align: center; transform: scale(1.5); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 12
+%%| fig-height: 1
 
-::: {.incremental}
-1.  Filtr (czystość).
-2.  Nagrzewnica (zima).
-3.  Chłodnica (lato).
-4.  Nawilżacz (zima).
-5.  Odzysk ciepła (rekuperator).
-:::
-
-::: {.fragment .callout-important appearance="simple"}
-Każdy element realizuje konkretny proces termodynamiczny na wykresie i-x.
-:::
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    IN["🌬️ <b>Pow. zewn.</b>"] --> F["<b>Filtr</b><br>Czystość"]
+    F --> N["<b>Nagrzewnica</b><br>↑t (zima)"]
+    N --> CH["<b>Chłodnica</b><br>↓t (lato)"]
+    CH --> NAW["<b>Nawilżacz</b><br>↑X (zima)"]
+    NAW --> REC["<b>Rekuperator</b><br>Odzysk ciepła"]
+    REC --> W["🏢 <b>Kanał</b>"]
+    
+    style IN fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style F fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
+    style N fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style CH fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style NAW fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style REC fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style W fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Ogrzewanie i Chłodzenie 
+## <i class="bi bi-thermometer-half"></i> 2. Ogrzewanie i Chłodzenie 
 
-### Ogrzewanie (Nagrzewnica)
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### <i class="bi bi-thermometer-sun"></i> Ogrzewanie (Nagrzewnica)
 
 ::: {.incremental}
 *   **Proces:** $x = const$ (nie dodajemy wody).
 *   **Kierunek:** Pionowo w górę na i-x.
 *   **Efekt:** Temperatura rośnie, ale **wilgotność względna $\varphi$ spada!**
-    (Dlatego zimą w ogrzewanym domu jest sucho - $\varphi \approx 20-30\%$).
+    (Dlatego zimą w ogrzewanym domu jest sucho — $\varphi \approx 20-30\%$).
+:::
 :::
 
-### Chłodzenie Jawne (Chłodnica Sucha){.fragment}
+::: {.column width="50%"}
+
+### <i class="bi bi-thermometer-snow"></i> Chłodzenie Jawne (Chłodnica Sucha){.fragment}
 
 ::: {.incremental}
 *   **Proces:** $x = const$.
 *   **Kierunek:** Pionowo w dół.
-*   **Limit:** Temperatura punktu rosy ($t_R$). Jeśli zejdziemy niżej, zacznie się wykraplanie (chłodzenie mokre).
+*   **Limit:** Temperatura punktu rosy ($t_R$). Jeśli zejdziemy niżej, zacznie się wykraplanie.
 :::
+:::
+
+::::
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Nawilżanie 
+## <i class="bi bi-moisture"></i> 3. Nawilżanie 
 
 Jak dodać wodę do powietrza?
 
@@ -148,7 +173,7 @@ Jak dodać wodę do powietrza?
 ::::
 ---
 
-## <i class="bi bi-bookmark"></i> 4. Mieszanie Strumieni 
+## <i class="bi bi-shuffle"></i> 4. Mieszanie Strumieni 
 
 Mieszamy powietrze świeże (zewnętrzne Z) z powietrzem obiegowym (z sali S).
 
@@ -174,75 +199,183 @@ $$ x_M = g_Z x_Z + g_S x_S $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Wizualizacja: Mieszanie 
+## <i class="bi bi-graph-up"></i> Wizualizacja: Mieszanie 
 
 ```{r}
 #| label: mixing
 #| echo: false
-#| fig-width: 8
+#| fig-width: 14
 #| fig-height: 6
+#| fig-align: center
+#| out-width: "100%"
 
 library(ggplot2)
 
-df_mix <- data.frame(
-    x = c(5, 10, 20),
-    t = c(0, 18, 25),
-    label = c("Z (Zima)", "M (Mieszanina)", "S (Sala)")
+# Funkcje pomocnicze dla wykresu h-X
+vis_slope <- 0.2
+transform_vis <- function(t, x) t + vis_slope * x
+
+p_sat <- function(t) { 0.61121 * exp((18.678 - t / 234.5) * (t / (257.14 + t))) }
+get_x_from_rh <- function(t, rh) {
+    pp <- rh * p_sat(t)
+    622 * pp / (101.325 - pp)
+}
+
+# Punkty stanu - typowa zima
+Z <- list(t = -5, rh = 0.8)   # Powietrze zewnętrzne (Zima)
+S <- list(t = 22, rh = 0.5)   # Powietrze wywiewane z sali (Sala)
+Z$x <- get_x_from_rh(Z$t, Z$rh)
+S$x <- get_x_from_rh(S$t, S$rh)
+
+# Mieszanie (Reguła dźwigni): 30% świeżego zewnętrznego (Z), 70% recyrkulowanego (S)
+gZ <- 0.3
+gS <- 0.7
+M <- list(
+    x = gZ * Z$x + gS * S$x,
+    t = gZ * Z$t + gS * S$t
 )
 
-ggplot(df_mix, aes(x = x, y = t)) +
-    geom_line(color = "grey", size = 1) + # Mixing line
-    geom_point(aes(color = label), size = 5) +
-    geom_text(aes(label = label), vjust = -1) +
-    labs(title = "Mieszanie Zimą", x = "x", y = "t") +
-    theme_minimal()
+# Transformacja wizualna
+Zv <- list(x = Z$x, t = transform_vis(Z$t, Z$x))
+Sv <- list(x = S$x, t = transform_vis(S$t, S$x))
+Mv <- list(x = M$x, t = transform_vis(M$t, M$x))
+
+# Krzywe stałej wilgotności (RH)
+rh_levels <- c(0.2, 0.4, 0.6, 0.8, 1.0)
+t_seq <- seq(-10, 35, by = 0.5)
+df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
+    x_val <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
+    df <- data.frame(t = t_seq, x = x_val, rh = rh)
+    df <- df[df$x <= 15 & !is.na(df$x), ]
+    df$t_vis <- transform_vis(df$t, df$x)
+    df
+}))
+
+# Izotermy do tła
+t_iso <- seq(-10, 30, by = 10)
+df_iso <- data.frame(
+    x_start = 0, x_end = 15,
+    t_vis_start = sapply(t_iso, function(t) transform_vis(t, 0)),
+    t_vis_end = sapply(t_iso, function(t) transform_vis(t, 15)),
+    t_label = t_iso
+)
+
+ggplot() +
+    # Izotermy
+    geom_segment(data = df_iso, aes(x = x_start, y = t_vis_start, xend = x_end, yend = t_vis_end), color = "orange", linetype = "dotted", linewidth = 0.8) +
+    geom_text(data = df_iso, aes(x = 13.5, y = t_vis_end + 1.2, label = paste0(t_label, "°C")), color = "orange", size = 5) +
+    
+    # Krzywe RH
+    geom_line(data = df_rh, aes(x = x, y = t_vis, group = rh, color = factor(rh)), linewidth = 1) +
+    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    
+    # Odcinek Z - M i M - S
+    geom_segment(aes(x = Zv$x, y = Zv$t, xend = Mv$x, yend = Mv$t), color = "blue", linewidth = 1.5, linetype = "longdash") +
+    geom_segment(aes(x = Mv$x, y = Mv$t, xend = Sv$x, yend = Sv$t), color = "red", linewidth = 1.5, linetype = "longdash") +
+    
+    # Reguła dźwigni etykiety
+    annotate("text", x = (Zv$x + Mv$x) / 2 - 1.5, y = (Zv$t + Mv$t) / 2 + 2, 
+             label = paste0("Odcinek~ZM %~~% g[S] == ", gS*100, "*'%'"), 
+             color = "darkblue", size = 6, parse = TRUE) +
+    annotate("text", x = (Mv$x + Sv$x) / 2 + 1.5, y = (Mv$t + Sv$t) / 2 - 2, 
+             label = paste0("Odcinek~MS %~~% g[Z] == ", gZ*100, "*'%'"), 
+             color = "darkred", size = 6, parse = TRUE) +
+
+    # Punkty
+    geom_point(aes(x = Zv$x, y = Zv$t), color = "blue", size = 6) +
+    geom_point(aes(x = Sv$x, y = Sv$t), color = "red", size = 6) +
+    geom_point(aes(x = Mv$x, y = Mv$t), color = "forestgreen", size = 8, shape = 18) +
+    
+    # Etykiety punktów
+    annotate("text", x = Zv$x - 0.5, y = Zv$t + 1, label = "Z", color = "blue", size = 8, fontface = "bold", hjust=1) +
+    annotate("text", x = Sv$x + 1, y = Sv$t, label = "S", color = "red", size = 8, fontface = "bold", hjust=0) +
+    annotate("text", x = Mv$x - 0.5, y = Mv$t + 2, label = "M", color = "forestgreen", size = 8, fontface = "bold", hjust=1) +
+    
+    # Osie i motyw
+    scale_x_continuous(limits = c(0, 15), breaks = seq(0, 15, 5), expand = expansion(mult = 0.02)) +
+    scale_y_continuous(limits = c(-12, 35), breaks = seq(-10, 35, 5), expand = expansion(mult = 0.05)) +
+    labs(x = "Stopień zawilżenia X [g/kg]", y = "Temperatura t [°C]", title = "Mieszanie powietrza zewnętrznego (Z) i z sali (S)") +
+    theme_minimal(base_size = 18) +
+    theme(
+        legend.position = "right",
+        plot.title = element_text(face = "bold", hjust = 0.5),
+        plot.margin = margin(10, 10, 10, 10) # redukcja bazowego marginesu w ggplot
+    )
 ```
 
 Mieszanie pozwala zaoszczędzić ogromne ilości energii (recyrkulacja ciepłego powietrza z sali).
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Przemiany Sezonowe 
+## <i class="bi bi-snow2"></i> 5. Przemiany Sezonowe 
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-::: {.callout-note title="ZIMA (Cel: Ogrzać i Nawilżyć)"}
+::: {.callout-note title="ZIMA (Cel: Ogrzać i Nawilżyć)" style="font-size: 0.7em;"}
 
 Punkt Zewnętrzny: -10°C, 90%.
 Punkt Celowy: 22°C, 50%.
 :::
 
+::: {.fragment}
+<div style="text-align: center; transform: scale(1.5); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 6
 
-
-::: {.fragment .callout-tip title="Ścieżka"}
-
-::: {.incremental}
-1.  Mieszanie (odzysk ciepła).
-2.  Wstępne ogrzewanie.
-3.  Nawilżanie (parowe lub wodne).
-
-    *   Jeśli wodne: temperatura spadnie, więc musimy przegrzać bardziej!
-4.  Wtórne ogrzewanie (jeśli trzeba).
-:::
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    Z["❄️ -10°C, 90%"] -->|"Mieszanie"| MIX["Mieszalnik"]
+    MIX -->|"X=const"| N1["Nagrzewnica I"]
+    N1 -->|"Nawilżanie"| NAW["Nawilżacz"]
+    NAW -->|"X=const"| N2["Nagrzewnica II"]
+    N2 --> CEL["✅ 22°C, 50%"]
+    
+    style Z fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style MIX fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style N1 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style NAW fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style N2 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style CEL fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
 :::
 :::
 
 ::: {.column width="50%"}
 
-::: {.callout-note title="LATO (Cel: Ochłodzić i Osuszyć)"}
+::: {.callout-note title="LATO (Cel: Ochłodzić i Osuszyć)" style="font-size: 0.7em;"}
 
 Punkt Zewnętrzny: 32°C, 40%.
 Punkt Celowy: 24°C, 50%.
 :::
 
-::: {.fragment .callout-tip title="Ścieżka"}
-::: {.incremental}
-1.  Chłodzenie aż do punktu rosy (chłodnica mokra).
-2.  Wyraplanie wilgoci (zmniejszanie $x$).
-3.  Podgrzewanie (Reheating) - żeby nie wiać lodowatym powietrzem (12°C) na ludzi.
-:::
+::: {.fragment}
+
+<div style="text-align: center; transform: scale(1.5); transform-origin: top center;">
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 6
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    Z["☀️ 32°C, 40%"] -->|"Chłodzenie"| CH["Chłodnica Mokra"]
+    CH -->|"Wykraplanie"| WY["↓X (osuszanie)"]
+    WY -->|"Reheat"| RH["Podgrzewanie"]
+    RH --> CEL["✅ 24°C, 50%"]
+    
+    style Z fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style CH fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style WY fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style RH fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style CEL fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
 :::
 :::
 ::::
@@ -256,10 +389,44 @@ Punkt Celowy: 24°C, 50%.
 4.  **Mieszanie** to prosta średnia ważona na wykresie.
 5.  **Klimatyzacja letnia** jest najdroższa, bo wymaga usuwania ciepła utajonego (skraplanie pary).
 
-### Zadanie Domowe
+### Zadanie Dla Chętnych
 
 Zaprojektuj proces zimowy: Zewn (-5°C, x=2g/kg). 
 
 ::: {.callout-tip title="Cel (20°C, x=10g/kg)"}
 Ile wody trzeba dolać i ile ciepła dostarczyć?
+:::
+
+---
+
+## <i class="bi bi-lightbulb"></i> Rozwiązanie Zadania 
+
+::: {.callout-note appearance="simple" icon="false"}
+**Dane:** Stan początkowy (1): $t_1 = -5^\circ C$, $X_1 = 2$ g/kg | Stan końcowy (2): $t_2 = 20^\circ C$, $X_2 = 10$ g/kg
+:::
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.fragment}
+### 1. Bilans Wilgoci
+Ile wody trzeba dolać na każdy kg "suchej" masy powietrza?
+
+$$ \Delta X = X_2 - X_1 $$
+$$ \Delta X = 10 - 2 = \mathbf{8 \, \frac{\text{g}}{\text{kg}_{s.p.}}} $$
+:::
+:::
+::: {.column width="55%"}
+::: {.fragment}
+### 2. Bilans Energii (ciepło)
+Wzór na entalpię: $h \approx 1.005 t + \frac{X}{1000} (2501 + 1.86 t)$
+
+*   **Początek ($h_1$):** $1.005(-5) + 0.002(2501 - 9.3) \approx \mathbf{0 \text{ kJ/kg}}$
+*   **Koniec ($h_2$):** $1.005(20) + 0.010(2501 + 37.2) \approx \mathbf{45.5 \text{ kJ/kg}}$
+
+:::
+
+::: {.fragment .callout-important title="Zapotrzebowanie na ciepło"}
+$$ \Delta h = h_2 - h_1 = 45.5 - 0 = \mathbf{45.5 \, \text{kJ/kg}_{s.p.}} $$
+:::
+:::
 :::

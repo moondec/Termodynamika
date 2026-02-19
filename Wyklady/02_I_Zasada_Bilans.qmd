@@ -1,7 +1,7 @@
 ---
 title: "W2: I Zasada Termodynamiki"
 subtitle: "Bilans Energii w Układach Zamkniętych"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -94,7 +94,7 @@ editor: source
 :::
 :::
 
-## Energia Wewnętrzna ($U$)
+## <i class="bi bi-battery-charging"></i> Energia Wewnętrzna ($U$)
 
 ### Definicja i Charakterystyka
 
@@ -109,7 +109,7 @@ editor: source
 
 :::
 
-## Różniczki Zupełne i Niezupełne
+## <i class="bi bi-calculator"></i> Różniczki Zupełne i Niezupełne
 
 ### d vs. đ
 
@@ -128,7 +128,7 @@ W termodynamice kluczowe jest rozróżnienie matematyczne:
 W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 :::
 
-## Ciepło ($Q$)
+## <i class="bi bi-fire"></i> Ciepło ($Q$)
 
 :::: {.columns}
 
@@ -153,13 +153,57 @@ W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 ::: {.column width="50%"}
 
 ::: {style="text-align: center;"}
-  ![](../img/box2.png){width="80%"}
 
-::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
+```{r}
+#| label: fig-sign-convention
+#| fig-cap: "Konwencja znaków dla ciepła (Q) i pracy (L)"
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+
+library(ggplot2)
+
+ggplot() +
+  # 1. System (Central Box)
+  geom_rect(aes(xmin = -2, xmax = 2, ymin = -1.5, ymax = 1.5), 
+            fill = "white", color = "black", size = 1.5) +
+  annotate("text", x = 0, y = 0, label = "UKŁAD", size = 8, fontface = "bold") +
   
-  Źródło: J. Szargut, *$Termodynamika \ techniczna$* PWN, (2000).
+  # 2. Boundary (Dashed Box) - Osłona Bilansowa
+  # Używamy geom_rect z linią przerywaną (symulacja osłony)
+  geom_rect(aes(xmin = -3, xmax = 3, ymin = -2.5, ymax = 2.5), 
+            fill = NA, color = "black", linetype = "dashed", size = 1) +
   
-:::
+  # 3. Arrows (Green)
+  # Q > 0 (Doprowadzone od góry)
+  geom_segment(aes(x = 0, xend = 0, y = 3.5, yend = 1.6), 
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+               color = "#27ae60", size = 2) +
+  annotate("text", x = 0, y = 3.9, label = "Q > 0", color = "#27ae60", size = 6, fontface = "bold") +
+  
+  # Q < 0 (Odprowadzone do dołu)
+  geom_segment(aes(x = 0, xend = 0, y = -1.6, yend = -3.5), 
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+               color = "#27ae60", size = 2) +
+  annotate("text", x = 0, y = -3.9, label = "Q < 0", color = "#27ae60", size = 6, fontface = "bold") +
+  
+  # L < 0 (Doprowadzona z lewej - Praca nad układem)
+  geom_segment(aes(x = -4.5, xend = -2.1, y = 0, yend = 0), 
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+               color = "#27ae60", size = 2) +
+  annotate("text", x = -5.0, y = 0, label = "L < 0", color = "#27ae60", size = 6, fontface = "bold", hjust=1) +
+
+  # L > 0 (Wykonana w prawo - Praca przez układ)
+  geom_segment(aes(x = 2.1, xend = 4.5, y = 0, yend = 0), 
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
+               color = "#27ae60", size = 2) +
+  annotate("text", x = 5.0, y = 0, label = "L > 0", color = "#27ae60", size = 6, fontface = "bold", hjust=0) +
+  
+  # Formatting
+  coord_fixed() +
+  theme_void() +
+  xlim(-6.5, 6.5) + ylim(-4.5, 4.5)
+```
   
 :::
 :::
@@ -171,7 +215,7 @@ W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 $$ dU = đQ - đL $$
 :::
 
-## Praca ($L$)
+## <i class="bi bi-gear-wide-connected"></i> Praca ($L$)
 
 ### Praca Objętościowa
 
@@ -190,13 +234,16 @@ Praca makroskopowa jest określona przez zmianę parametrów układu pod wpływe
 $$ đL = p \cdot dV $$
 *(Gdzie $p$ to ciśnienie, a $dV$ to zmiana objętości)*.
 
+::: {.fragment .fade-up}
 *   **Sprężanie ($dV < 0$):** praca jest wykonywana nad układem ($đL < 0$).
 *   **Rozprężanie ($dV > 0$):** praca jest wykonywana przez układ ($đL > 0$).
 *   **Nie uwzględniamy tu tarcia**
-
+:::
 :::
 
 ::: {.column width="50%"}
+
+::: {.fragment .fade-up}
 
 ```{r}
 #| fig-height: 8
@@ -296,11 +343,12 @@ ggplot() +
 ```
 
 :::
-
+:::
 ::::
 
+---
 
-## I Zasada dla Układów Zamkniętych
+## <i class="bi bi-box-seam"></i> I Zasada dla Układów Zamkniętych
 
 ### Bilans Energii
 
@@ -308,19 +356,20 @@ Dla procesów kwazistatycznych w układach zamkniętych (bez wymiany masy), przy
 
 $$ dU = đQ - p \cdot dV $$
 
-### Postać całkowa:
+### Po scałkowaniu:
 $$ \Delta U = Q - L $$
 
 ::: {style="text-align: left; margin-left: 150px;"}
-
+::: {.fragment .fade-up}
 Gdzie:
 
 *   $\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)$.
 *   $L = \int_{V_1}^{V_2} p(V) dV$.
 
 :::
+:::
 
-::: {.r-stack .fragment .fade-up style="position: absolute; top: 0.1%; right: 10%; width: 100%;"}
+::::: {.r-stack .fragment .fade-up style="position: absolute; top: 0.1%; right: 10%; width: 100%;"}
 
 :::: {.columns}
 
@@ -342,12 +391,12 @@ Gdzie:
 
 ::::
 
-:::
+:::::
 
 
 # A co jeśli mamy układ otwarty - przepływowy {style="text-align: center;"}
 
-## Entalpia ($H$)
+## <i class="bi bi-speedometer2"></i> Entalpia ($H$)
 
 ### Definicja i Znaczenie
 
@@ -364,11 +413,11 @@ $$ H = U + p \cdot V $$
 
 :::
 
-::: {.fragment .fade-up .callout-note title="Znaczenie" style="font-size: 0.9em;"}
+::: {.fragment .fade-up .callout-note title="Znaczenie" style="font-size: 0.8em;"}
 Człon $p \cdot V$ można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce "rozepchać" przeciwko ciśnieniu otoczenia ($p$) zajmując objętość ($V$).
 :::
 
-## Analogia dla ___entalpii___ z życia: "Impreza w Klubie"
+## <i class="bi bi-music-note-beamed"></i> Analogia dla ___entalpii___ z życia: "Impreza w Klubie"
 Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnieniem).
 
 1.  **Twoja energia ($U$):** To jak dobrze tańczysz.
@@ -378,7 +427,7 @@ Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnienie
 
 **Entalpia ($H$)** to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.
 
-## Kiedy używamy $U$, a kiedy $H$?
+## <i class="bi bi-signpost-split"></i> Kiedy używamy $U$, a kiedy $H$?
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 To jest najważniejszy slajd dla inżyniera!
@@ -389,7 +438,7 @@ To jest najważniejszy slajd dla inżyniera!
 | **Układ Zamknięty**<br>(Garnek, Tłok) | **$U$** | Gaz nigdzie nie idzie. "Siedzi" w miejscu. Nie musi się wpychać do rury. |
 | **Układ Otwarty**<br>(Turbina, Kocioł) | **$H$** | Gaz płynie. Musi wykonać pracę przetłaczania ($pV$), żeby wpłynąć i wypłynąć. |
 
-## Entalpia w Technice
+## <i class="bi bi-buildings"></i> Entalpia w Technice
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 W nawiązaniu do **I zasady termodynamiki**, zmiana energii wewnętrznej wynosi: $dU=đQ − p dV$.
@@ -409,7 +458,7 @@ To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie p
 
 [A co się dzieje z energią dostarczaną przy stałej obiętości?]{.fragment style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;"}
 
-## Entalpia (E) a Energia Wewnętrzna (U)
+## <i class="bi bi-arrow-left-right"></i> Entalpia (E) a Energia Wewnętrzna (U)
 
 ### Ponieważ: [$Q = \Delta U + L$]{style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"} - I zasada termodynamiki, z której wynika, że jeżeli:
 
@@ -426,7 +475,7 @@ Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest więk
 
 :::
 
-## Pojemność Cieplna
+## <i class="bi bi-thermometer-half"></i> Pojemność Cieplna
 
 | Cecha | Przemiana Izochoryczna<br>($V=const$) | Przemiana Izobaryczna<br>($p=const$) |
 |:---|:---|:---|
@@ -437,7 +486,7 @@ Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest więk
 | **Ciepło właściwe** | **$c_v = \frac{\Delta u}{\Delta T}$** | **$c_p = \frac{\Delta h}{\Delta T}$** |
 : Porównanie przemian charakterystycznych gazu doskonałego {tbl-colwidths="[20,40,40]"}
 
-## $C_p$ > $C_v$ (Zastosowanie praktyczne)
+## <i class="bi bi-graph-up-arrow"></i> $C_p$ > $C_v$ (Zastosowanie praktyczne)
 
 * Przy $v=const \ (c_v)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz TYLKO się ogrzewa.]{.fragment .highlight-blue}
 * Przy $p=const \ (c_p)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.]{.fragment .highlight-blue} 
@@ -448,7 +497,7 @@ $$ C_p - C_v = n \cdot R_u $$
 
 :::
 
-## $C_v$ oraz $C_p$ {visibility="hidden"}
+## <i class="bi bi-eye-slash"></i> $C_v$ oraz $C_p$ {visibility="hidden"}
 
 **Pojemność cieplna w stałej objętości ($C_v$):**
 $$ c_v = \left(\frac{\partial u}{\partial T}\right)_V $$
@@ -460,7 +509,7 @@ Dla gazów doskonałych zachodzi **Równanie Mayera**:
 $$ C_p - C_v = n \cdot R_u $$, lub
 $$ c_p - c_v = R $$
 
-## Uwaga na oznaczenia!
+## <i class="bi bi-exclamation-triangle"></i> Uwaga na oznaczenia!
 Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
@@ -474,7 +523,7 @@ Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 > Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
 
 
-## Podsumowanie W2
+## <i class="bi bi-card-checklist"></i> Podsumowanie W2
 
 ### Kluczowe Wnioski
 

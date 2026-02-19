@@ -1,7 +1,7 @@
 ---
 title: "W15: Spalanie i Egzergia"
 subtitle: "Paliwa, Chemia i Zrównoważony Rozwój"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -34,7 +36,7 @@ format:
     show-slide-number: all
     transition: slide
     chalkboard: true
-    footer: "Termodynamika Techniczna (W9)"
+    footer: "Termodynamika Techniczna (W15)"
     width: 1600
     height: 900
     margin: 0.2
@@ -69,7 +71,7 @@ theme_set(theme_minimal(base_size = 18))
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Źródła Energii Chemicznej 
+## <i class="bi bi-fuel-pump"></i> 1. Źródła Energii Chemicznej 
 
 ::: {.callout-note title="Proces spalania to gwałtowna reakcja utleniania, wydzielająca ciepło (egzotermiczna)."}
 
@@ -93,10 +95,28 @@ Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, t
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Stechiometria Spalania 
+## <i class="bi bi-fire"></i> 2. Stechiometria Spalania 
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 10
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    P["💧 <b>Paliwo</b><br>C, H, S"] --> K["🔥 <b>Komora<br>Spalania</b>"]
+    POW["🌬️ <b>Powietrze</b><br>λ·L₀"] --> K
+    K --> SP["🌫️ <b>Spaliny</b><br>CO₂, H₂O, N₂"]
+    K --> Q["⚡ <b>Ciepło</b> Q"]
+    
+    style P fill:#efebe9,stroke:#795548,stroke-width:2px
+    style POW fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style K fill:#ffebee,stroke:#e74c3c,stroke-width:3px
+    style SP fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
+    style Q fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
 
 ::: {.callout-tip title="Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?"}
-
 :::
 ::: {style="text-align: center; font-size: 0.9em;"}
 $$ C + O_2 \rightarrow CO_2 $$
@@ -110,7 +130,9 @@ $$ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O $$
 :::
 :::
 
-### Zapotrzebowanie na Powietrze {.fragment}
+---
+
+## Zapotrzebowanie na Powietrze
 
 ::: {.fragment .callout-note appearance="simple"}
 Powietrze to nie czysty tlen! To 21% $O_2$ i 79% $N_2$.
@@ -127,7 +149,7 @@ Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4.76 $m^3$ powietrza**.
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Wartość Opałowa ($W_d$) 
+## <i class="bi bi-thermometer-high"></i> 3. Wartość Opałowa ($W_d$) 
 
 ::: {.callout-important title="Krytyczne rozróżnienie"}
 To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
@@ -184,7 +206,7 @@ Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli 
+## <i class="bi bi-graph-down-arrow"></i> 5. Prawo Gouy-Stodoli 
 
 ::: {.callout-note title="Niszczenie egzergii"}
 Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.
@@ -194,20 +216,30 @@ $$ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Prawo Gouy-Stodoli 
+## <i class="bi bi-bar-chart-line"></i> 5. Prawo Gouy-Stodoli 
 
-### Wykres Sankeya {.fragment}
+### Wykres Strat Energii w Elektrowni {.fragment}
 
-::: {.fragment}
-Wizualizacja strat w elektrowni:
-:::
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 12
 
-::: {.fragment .incremental}
-1.  Paliwo (100%) $\to$ Kocioł.
-2.  Straty kominowe (10%).
-3.  Straty w skraplaczu (50% - to największa strata!).
-4.  Praca turbiny (40%) $\to$ Prąd.
-:::
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    F["💧 <b>Paliwo</b><br>100%"] --> K["🔥 <b>Kocioł</b>"]
+    K -->|"10%"| KOM["🌫️ Straty<br>kominowe"]
+    K -->|"90%"| T["⚙️ <b>Turbina</b>"]
+    T -->|"50%"| SKR["❄️ Straty<br>skraplacza"]
+    T -->|"40%"| GEN["⚡ <b>Prąd</b><br>elektryczny"]
+    
+    style F fill:#efebe9,stroke:#795548,stroke-width:2px
+    style K fill:#ffebee,stroke:#e74c3c,stroke-width:3px
+    style KOM fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
+    style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style SKR fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style GEN fill:#e8f5e9,stroke:#4caf50,stroke-width:3px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
 
 ::: {.fragment .callout-important appearance="simple"}
 Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło "odpadowe" ogrzewa miasta.
@@ -215,7 +247,7 @@ Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłości�
 
 ---
 
-## <i class="bi bi-bookmark"></i> Kogeneracja (CHP - Combined Heat and Power) 
+## <i class="bi bi-lightning-charge"></i> Kogeneracja (CHP - Combined Heat and Power) 
 
 ::: {.callout-tip title="Idea układów skojarzonych"}
 Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.
@@ -227,75 +259,125 @@ Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego
 
 ### Tradycyjna Elektrownia {.fragment}
 
-::: {.fragment .incremental}
-*   **Cel**: Tylko prąd (ciepło do rzeki/atmosfery)
-*   **Sprawność elektryczna**: ~40%
-*   **Straty**: ~60% (ciepło odpadowe $Q_L$)
+::: {.fragment}
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 5
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    F["100 MJ Paliwo"] --> T["⚙️ Turbina"]
+    T -->|"40 MJ"| E["⚡ Prąd"]
+    T -->|"60 MJ"| S["❌ Straty<br>(do rzeki)"]
+    
+    style F fill:#efebe9,stroke:#795548,stroke-width:2px
+    style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style E fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style S fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
 :::
 
+::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.85em;"}
+Sprawność: **~40%**
+:::
 :::
 
 ::: {.column width="50%"}
 
 ### Elektrociepłownia (CHP) {.fragment}
 
-::: {.fragment .incremental}
-*   **Cel**: Prąd + ciepło dla miasta
-*   **Sprawność elektryczna**: ~35%
-*   **Ciepło użyteczne**: ~45%
-*   **Sprawność całkowita**: **~80%!**
-:::
 
+::: {.fragment}
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 5
+%%| fig-height: 3
+
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    F["100 MJ Paliwo"] --> T["⚙️ Turbina"]
+    T -->|"35 MJ"| E["⚡ Prąd"]
+    T -->|"45 MJ"| C["🏠 Ciepło<br>dla miasta"]
+    T -->|"20 MJ"| S["❌ Straty"]
+    
+    style F fill:#efebe9,stroke:#795548,stroke-width:2px
+    style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style E fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style C fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style S fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
+:::
+<div style="margin-top: 200px;"></div>
+::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
+Sprawność całkowita: **~80%!**
+:::
 :::
 
 ::::
 
-::: {.fragment .callout-note title="Przykład"}
-Z 100 MJ paliwa:
-- Elektrownia: 40 MJ prądu + 60 MJ strat = **40% sprawności**
-- CHP: 35 MJ prądu + 45 MJ ciepła + 20 MJ strat = **80% sprawności**
-:::
-
 ---
 
-## <i class="bi bi-bookmark"></i> Ogniwa Paliwowe 
+## <i class="bi bi-ev-station"></i> Ogniwa Paliwowe 
 
-::: {.callout-important title="Bezpośrednia zamiana energii chemicznej w elektryczną"}
+::: {.callout-important title="Bezpośrednia zamiana energii chemicznej w elektryczną" style="font-size: 0.7em;"}
 Ogniwa paliwowe to urządzenia elektrochemiczne, które przekształcają energię chemiczną paliwa (np. wodoru) bezpośrednio w prąd, **omijając spalanie** i cykl Carnota.
 :::
 
+::: {.fragment}
+<div style="text-align: center; transform: scale(1.9); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 7
+%%| fig-height: 2
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    H2["💧 H₂"] --> A["<b>Anoda</b><br>H₂→2H⁺+2e⁻"]
+    A -.->|"⚡ e⁻ (prąd)"| LOAD["Obciążenie"]
+    A -->|"H⁺"| E["<b>Elektrolit</b><br>PEM"]
+    E --> C["<b>Katoda</b><br>O₂+4H⁺+4e⁻→2H₂O"]
+    O2["🌬️ O₂"] --> C
+    LOAD -.-> C
+    C --> W["💧 H₂O"]
+    
+    style H2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style A fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style E fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style O2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style LOAD fill:#ffebee,stroke:#e74c3c,stroke-width:3px
+    style W fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
+
+:::
+
+<div style="margin-top: 200px;"></div>
+
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="55%"}
 
-### Zasada Działania {.fragment}
+### Zalety {.fragment style="font-size: 0.7em;"}
 
-::: {.fragment}
-Reakcja: $H_2 + \frac{1}{2}O_2 \to H_2O + \text{Energia elektryczna}$
-:::
-
-::: {.fragment .incremental}
-1.  **Anoda**: Wodór oddaje elektrony ($H_2 \to 2H^+ + 2e^-$)
-2.  **Elektrolit**: Przepuszcza jony $H^+$
-3.  **Katoda**: Tlen reaguje z jonami i elektronami ($O_2 + 4H^+ + 4e^- \to 2H_2O$)
-4.  **Efekt**: Prąd elektryczny + ciepło + woda
-:::
-
-:::
-
-::: {.column width="40%"}
-
-### Zalety {.fragment}
-
-::: {.fragment .incremental}
+::: {.fragment .incremental style="font-size: 0.7em;"}
 *   **Sprawność**: 50-60% (wyższa niż silnik spalinowy)
 *   **Bez części ruchomych** (cichsze)
 *   **Niskie emisje** (tylko H₂O, jeśli używamy czystego H₂)
 :::
+:::
 
-### Zastosowania {.fragment}
+::: {.column width="45%"}
 
-::: {.fragment .incremental}
+### Zastosowania {.fragment style="font-size: 0.7em;"}
+
+::: {.fragment .incremental style="font-size: 0.7em;"}
 *   Samochody wodorowe
 *   Zasilanie awaryjne
 *   Stacje kosmiczne
@@ -313,13 +395,26 @@ Reakcja: $H_2 + \frac{1}{2}O_2 \to H_2O + \text{Energia elektryczna}$
 Przeszliśmy drogę od:
 :::
 
-::: {.incremental}
-1.  **Podstaw:** Parametry stanu ($p, T$), gazy doskonałe.
-2.  **Zasad:** I Zasada (Bilans), II Zasada (Entropia).
-3.  **Mediów:** Para wodna, Powietrze wilgotne.
-4.  **Maszyn:** Silniki, Turbiny, Sprężarki, Lodówki.
-5.  **Aplikacji:** Wymiana ciepła, Spalanie.
-:::
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 14
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    A["<b>W1–3</b><br>Podstawy<br>p, T, I Zasada"] --> B["<b>W4–5</b><br>Substancje<br>Para, Tablice"]
+    B --> C["<b>W6–7</b><br>II Zasada<br>Entropia"]
+    C --> D["<b>W8–10</b><br>Maszyny<br>Obiegi"]
+    D --> E["<b>W11–13</b><br>Zastosowania<br>Chłodnictwo, Klimat."]
+    E --> F["<b>W14–15</b><br>Transfer<br>Ciepło, Spalanie"]
+    
+    style A fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    style B fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style C fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style D fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style E fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style F fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
 
 ---
 
@@ -330,10 +425,15 @@ Przeszliśmy drogę od:
 ::: {.callout-tip title="Proszę przygotować się z:"}
 :::
 
-::: {.fragment .incremental}
-1.  Obliczeń gazowych (Clapeyron, przemiany).
-2.  Obiegów termodynamicznych (Liczenie sprawności).
-3.  Podstaw wymiany ciepła i spalania.
+::: {.fragment .incremental style="font-size: 0.75em;"}
+1. **I i II Zasada Termodynamiki** (Bilanse energii, entropia, odwracalność).
+2. **Właściwości substancji** (Gazy doskonałe, prawo Clapeyrona, tablice i wykresy parowe).
+3. **Przemiany gazowe** (Izoprocesy, politropy, praca objętościowa).
+4. **Obiegi gazowe** (Silniki cieplne: Otto, Diesel, Sabathe, Brayton).
+5. **Obiegi parowe** (Siłownie parowe: obieg Rankine'a).
+6. **Obiegi lewobieżne** (Chłodnictwo, pompy ciepła, obieg Lindego).
+7. **Powietrze wilgotne i klimatyzacja** (Wykres h-X Molliera, procesy obróbki powietrza).
+8. **Wymiana ciepła** (Przewodzenie, przenikanie, wymienniki).
 :::
 
 ::: {.fragment}

@@ -1,7 +1,7 @@
 ---
 title: "W10: Obiegi Parowe (Siłownie)"
 subtitle: "Obieg Rankine'a i Układy Parowo-Gazowe"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -63,7 +65,21 @@ editor: source
 #| warning: false
 #| message: false
 library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
+library(ggplot2)
+library(patchwork)
+library(reticulate)
+use_virtualenv("~/.virtualenvs/termo", required = TRUE)
+
+# --- GLOBAL STYLING FOR PLOTS ---
+theme_thermo <- function() {
+  theme_minimal(base_size = 18) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 20),
+    axis.title = element_text(face = "italic", size = 16),
+    panel.grid.minor = element_blank()
+  )
+}
+theme_set(theme_thermo())
 ```
 
 
@@ -79,20 +95,49 @@ theme_set(theme_minimal(base_size = 18))
 ---
 
 ## <i class="bi bi-cloud-fog"></i> 1. Dlaczego Para Wodna? 
-
-::: {.callout-note appearance="simple"}
+ 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Siłownie parowe produkują >70% elektryczności na świecie (węgiel, atom, biomasa).
 Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 :::
 
 ### Komponenty Siłowni:
 
+::: {.columns}
+
+::: {.column width="60%"}
 
 ::: {.incremental}
 1.  **Pompa wodna:** Spręża ciecz (mała praca, bo ciecz nieściśliwa).
 2.  **Kocioł (Generator Pary):** Dostarcza ciepło, zamienia wodę w parę.
 3.  **Turbina:** Para rozpręża się, napędzając generator.
 4.  **Skraplacz:** Para skrapla się do wody (oddając ciepło do rzeki/chłodni).
+:::
+:::
+
+::: {.column width="40%"}
+
+ 
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 6
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30 }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart TD
+    P["<b>Pompa</b><br>Pobiera pracę <em style='font-style: italic'>l<sub>p</sub></em>"] --> K["<b>Kocioł</b><br>Dostarcza ciepło <em style='font-style: italic'>q<sub>in</sub></em>"]
+    K --> T["<b>Turbina</b><br>Generuje pracę <em style='font-style: italic'>l<sub>t</sub></em>"]
+    T --> S["<b>Skraplacz</b><br>Oddaje ciepło <em style='font-style: italic'>q<sub>out</sub></em>"]
+    S --> P
+    
+    style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style S fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style P fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+
+:::
 :::
 
 ---
@@ -103,17 +148,19 @@ Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 
 W teorii, aby osiągnąć maksymalną sprawność, para musiałaby być skraplana do cieczy nasyconej, **a następnie sprężana do ciśnienia kotła**, co jest niemożliwe do zrealizowania w praktyce.
 
-![](../img/carnot_pw.png)
+::: {style="text-align: center;"}
+![](../img/carnot_pw.png){width=25%}
 
 ::: {style="font-size: 0.6em; color: gray;"}
 Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+:::
 :::
 
 ---
 
 ## <i class="bi bi-arrow-repeat"></i> 2. Obieg Clausiusa-Rankine'a (C-R) 
 
-::: {.callout-note appearance="simple"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieństwie do Otto/Diesla, zachodzi tu **zmiana fazy** czynnika.
 :::
 
@@ -143,6 +190,168 @@ Praca pompy jest zwykle pomijalnie mała.
 
 ::: {.column width="60%"}
 
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+import numpy as np
+import pandas as pd
+import CoolProp.CoolProp as CP
+
+# --- 1. DOME CALCULATION ---
+# Generate saturation curve for Water
+fluid = 'Water' # "Water"
+T_crit = CP.PropsSI('Tcrit', fluid)
+P_crit = CP.PropsSI('Pcrit', fluid)
+s_crit = CP.PropsSI('S', 'T', T_crit, 'Q', 1, fluid) / 1000 # kJ/kgK
+
+# Scan temperatures from Triple Point to Critical Point
+T_tri = CP.PropsSI('Tmin', fluid)
+# Avoid exactly critical point due to singularities, stop slightly below
+T_range = np.linspace(T_tri + 0.1, T_crit - 0.1, 200)
+
+s_liq = []
+T_dome = []
+type_dome = []
+
+# Liquid side (Q=0)
+for T in T_range:
+    try:
+        s = CP.PropsSI('S', 'T', T, 'Q', 0, fluid) / 1000
+        s_liq.append(s)
+        T_dome.append(T)
+        type_dome.append("liq")
+    except:
+        pass
+
+# Vapor side (Q=1)
+s_vap = []
+T_vap_list = []
+# Reverse T_range to go down from crit
+for T in reversed(T_range):
+    try:
+        s = CP.PropsSI('S', 'T', T, 'Q', 1, fluid) / 1000
+        s_vap.append(s)
+        T_vap_list.append(T)
+        type_dome.append("vap")
+    except:
+        pass
+
+# Combine into DataFrame
+dome_df = pd.DataFrame({
+    's': s_liq + s_vap,
+    'T': T_dome + T_vap_list,
+    'type': type_dome
+})
+
+# --- 2. RANKINE CYCLE CALCULATION ---
+p_cond = 0.1 * 1e5   # 0.1 bar in Pa (Condenser)
+p_boiler = 50 * 1e5  # 50 bar in Pa (Boiler)
+T_max = 500 + 273.15 # 500 C (Turbine Inlet)
+eta_t = 0.85         # Turbine Efficiency
+eta_p = 0.85         # Pump Efficiency (though water is incompressible mostly)
+
+# Point 1: Turbine Inlet (Superheated info calculated later if needed, but start here)
+# Actually, standard numbering usually starts at Turbine Inlet as 3 or 1 depending on convention.
+# Slide text says: 
+# 1-2 Pump
+# 2-3 Boiler
+# 3-4 Turbine
+# 4-1 Condenser
+# So:
+# 1 = Pump Inlet (Sat Liquid at p_cond)
+# 2 = Pump Outlet (Compressed Liquid at p_boiler)
+# 3 = Turbine Inlet (Superheated Steam at p_boiler, T_max)
+# 4 = Turbine Outlet (Wet Steam at p_cond)
+
+# Point 1: Pump Inlet (Sat Liq, p_cond)
+T1 = CP.PropsSI('T', 'P', p_cond, 'Q', 0, fluid)
+s1 = CP.PropsSI('S', 'P', p_cond, 'Q', 0, fluid) / 1000
+h1 = CP.PropsSI('H', 'P', p_cond, 'Q', 0, fluid) / 1000
+
+# Point 2: Pump Outlet (Real Compression)
+# Ideal: s2s = s1. P2 = p_boiler
+s2s = s1
+h2s = CP.PropsSI('H', 'P', p_boiler, 'S', s2s * 1000, fluid) / 1000
+# Real: h2 = h1 + (h2s - h1) / eta_p
+h2 = h1 + (h2s - h1) / eta_p
+# State 2 is defined by (P_boiler, h2)
+T2 = CP.PropsSI('T', 'P', p_boiler, 'H', h2 * 1000, fluid)
+s2 = CP.PropsSI('S', 'P', p_boiler, 'H', h2 * 1000, fluid) / 1000
+
+# Point 3: Turbine Inlet (Superheated, p_boiler, T_max)
+P3 = p_boiler
+T3 = T_max
+s3 = CP.PropsSI('S', 'P', P3, 'T', T3, fluid) / 1000
+h3 = CP.PropsSI('H', 'P', P3, 'T', T3, fluid) / 1000
+
+# Point 4: Turbine Outlet (Real Expansion)
+# Ideal: s4s = s3. P4 = p_cond
+s4s = s3
+h4s = CP.PropsSI('H', 'P', p_cond, 'S', s4s * 1000, fluid) / 1000 # Might be in Two-Phase
+# Real: h4 = h3 - eta_t * (h3 - h4s)
+h4 = h3 - eta_t * (h3 - h4s)
+P4 = p_cond
+T4 = CP.PropsSI('T', 'P', P4, 'H', h4 * 1000, fluid)
+s4 = CP.PropsSI('S', 'P', P4, 'H', h4 * 1000, fluid) / 1000
+
+# Points for plotting
+points_df = pd.DataFrame({
+    'point': ['1', '2', '3', '4'],
+    's': [s1, s2, s3, s4],
+    'T': [T1, T2, T3, T4]
+})
+
+# --- 3. PROCESS LINES ---
+
+# Process 1-2 (Pump): Assume almost vertical (isentropic-ish)
+# Simply straight line 1->2 is fine for T-s
+proc_12 = pd.DataFrame({'s': [s1, s2], 'T': [T1, T2]})
+
+# Process 2-3 (Boiler): Isobaric Heating at P_boiler
+# Path: 2 -> Sat Liq (2') -> Critical/Boiling -> Sat Vap (3'') -> 3
+# We scan Enthalpy from h2 to h3 at P_boiler
+h_range_23 = np.linspace(h2, h3, 100)
+s_23 = []
+T_23 = []
+for h_val in h_range_23:
+    s_val = CP.PropsSI('S', 'P', p_boiler, 'H', h_val * 1000, fluid) / 1000
+    T_val = CP.PropsSI('T', 'P', p_boiler, 'H', h_val * 1000, fluid)
+    s_23.append(s_val)
+    T_23.append(T_val)
+
+proc_23 = pd.DataFrame({'s': s_23, 'T': T_23})
+
+# Process 3-4 (Turbine): Expansion
+# Straight line 3->4
+proc_34 = pd.DataFrame({'s': [s3, s4], 'T': [T3, T4]})
+
+# Process 4-1 (Condenser): Isobaric Cooling at P_cond
+# Path: 4 -> Sat Vap (if superheated) -> Sat Liq -> 1
+# Since 4 is likely wet steam, it's just horizontal line at T_sat(P_cond)
+# But let's calculate properly scanning enthalpy
+h_range_41 = np.linspace(h4, h1, 50)
+s_41 = []
+T_41 = []
+for h_val in h_range_41:
+    s_val = CP.PropsSI('S', 'P', p_cond, 'H', h_val * 1000, fluid) / 1000
+    T_val = CP.PropsSI('T', 'P', p_cond, 'H', h_val * 1000, fluid)
+    s_41.append(s_val)
+    T_41.append(T_val)
+
+proc_41 = pd.DataFrame({'s': s_41, 'T': T_41})
+
+# Combine processes for easy plotting in R
+# ID variable to separate lines
+proc_12['id'] = '1-2'
+proc_23['id'] = '2-3'
+proc_34['id'] = '3-4'
+proc_41['id'] = '4-1'
+
+cycle_lines = pd.concat([proc_12, proc_23, proc_34, proc_41])
+
+```
+
 ```{r}
 #| label: rankine-ts
 #| echo: false
@@ -151,136 +360,64 @@ Praca pompy jest zwykle pomijalnie mała.
 #| warning: false
 #| message: false
 
-library(ggplot2)
+# Retrieve data from Python
+dome <- py$dome_df
+points <- py$points_df
+cycle <- py$cycle_lines
 
-# --- 1. DOME CONSTRUCTION (Krzywa nasycenia) ---
-# Uproszczona parametryzacja dzwonu nasycenia dla wody
-s_crit <- 4.43 # Entropia krytyczna (przybliżona)
-T_crit <- 647 # Temperatura krytyczna [K]
+# Extract points for labels
+p1 <- points[points$point == "1", ]
+p2 <- points[points$point == "2", ]
+p3 <- points[points$point == "3", ]
+p4 <- points[points$point == "4", ]
 
-# Lewa gałąź (Ciecz)
-s_liq <- seq(0, s_crit, length.out = 100)
-# Funkcja przybliżająca: T = T_crit - a*(s_crit - s)^2
-T_liq <- T_crit - 25 * (s_crit - s_liq)^2.5
-# Korekta dla niskich entropii (żeby nie spadało za nisko)
-T_liq <- pmax(T_liq, 273)
-
-# Prawa gałąź (Para)
-s_vap <- seq(s_crit, 9, length.out = 100)
-# Funkcja przybliżająca prawą stronę
-T_vap <- T_crit - 10 * (s_vap - s_crit)^2.5
-T_vap <- pmax(T_vap, 273)
-
-dome <- data.frame(
-    s = c(s_liq, s_vap),
-    T = c(T_liq, T_vap),
-    type = c(rep("liq", 100), rep("vap", 100))
-)
-# Filtrowanie zerowych temperatur (błędy aproksymacji)
-dome <- dome[dome$T > 270, ]
-
-
-# --- 2. CYCLE POINTS (Obieg C-R) ---
-# Założenia:
-p_cond <- 0.1 # bar (T_sat ~ 320 K)
-p_boiler <- 100 # bar (T_sat ~ 584 K)
-
-# Punkt 1: Wlot do pompy (Ciecz nasycona pod ciśnieniem skraplacza)
-# Znajdujemy s na lewej gałęzi dla T=320
-T1 <- 320
-s1 <- approx(dome$T[dome$type == "liq"], dome$s[dome$type == "liq"], xout = T1)$y
-# Punkt 2: Wylot z pompy (Sprężanie izentropowe) -> s2 = s1
-s2 <- s1
-# T2 nieco wyższa (zaniedbywalnie mało dla wody, ale na wykresie pokażemy przesadzone)
-T2 <- T1 + 50
-
-# Punkt 2': Ciecz nasycona pod ciśnieniem kotła (Początek wrzenia)
-T_sat_boiler <- 584 # K (ok. 311 C dla 100 bar)
-s2_prim <- approx(dome$T[dome$type == "liq"], dome$s[dome$type == "liq"], xout = T_sat_boiler)$y
-
-# Punkt 3'': Para nasycona sucha (Koniec wrzenia)
-s3_dub_prim <- approx(dome$T[dome$type == "vap"], dome$s[dome$type == "vap"], xout = T_sat_boiler)$y
-
-# Punkt 3: Przegrzewacz (Wylot z kotła)
-T3 <- 823 # K (550 C)
-# Izoabara w przegrzewaczu: przybliżenie s3
-# cp * ln(T3/T_sat) = s3 - s3''
-# s3 = s3'' + cp_vapor * ln(T3/T_sat)
-s3 <- s3_dub_prim + 2.1 * log(T3 / T_sat_boiler)
-
-# Punkt 4: Wylot z turbiny (Ekspansja izentropowa) -> s4 = s3 (Idealna)
-# Jeśli s4 < s_vap(T1), to mamy parę mokrą
-s4 <- s3
-T4 <- T1 # Skraplacz jest izobarą i izotermą (w obszarze pary mokrej)
-
-# --- 3. PROCESY (GENEROWANIE LINII) ---
-
-# 1-2: Pompa (Pionowo)
-df_12 <- data.frame(s = c(s1, s2), T = c(T1, T2))
-
-# 2-2': Podgrzewanie wody (Wzdłuż krzywej nasycenia, ale nieco w lewo - izobara cieczy)
-# Dla uproszczenia rysujemy prostą, bo lewa gałąź jest stroma
-df_22p <- data.frame(s = c(s2, s2_prim), T = c(T2, T_sat_boiler))
-
-# 2'-3'': Wrzenie (Poziomo)
-df_2p3dp <- data.frame(s = c(s2_prim, s3_dub_prim), T = c(T_sat_boiler, T_sat_boiler))
-
-# 3''-3: Przegrzew (Krzywa logarytmiczna w górę)
-temps_sup <- seq(T_sat_boiler, T3, length.out = 20)
-s_sup <- s3_dub_prim + 2.1 * log(temps_sup / T_sat_boiler)
-df_3dp3 <- data.frame(s = s_sup, T = temps_sup)
-
-# 3-4: Turbina (Pionowo w dół)
-df_34 <- data.frame(s = c(s3, s4), T = c(T3, T4))
-
-# 4-1: Skraplacz (Poziomo w lewo)
-df_41 <- data.frame(s = c(s4, s1), T = c(T4, T1))
-
-# --- 4. WYKRES ---
 ggplot() +
     # Krzywa nasycenia (Dzwon)
     geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1, linetype = "solid") +
-    annotate("text", x = s_crit, y = T_crit + 20, label = "Punkt Krytyczny", size = 7, fontface = "italic") +
+    annotate("text", x = 4.43, y = 647 + 20, label = "Punkt Krytyczny", size = 6, fontface = "italic") +
 
     # Linie Obiegu
-    geom_path(data = df_12, aes(x = s, y = T), color = "blue", size = 1.5) + # Pompa
-    geom_path(data = df_22p, aes(x = s, y = T), color = "red", size = 1.5) + # Podgrzewanie
-    geom_path(data = df_2p3dp, aes(x = s, y = T), color = "red", size = 1.5) + # Wrzenie
-    geom_path(data = df_3dp3, aes(x = s, y = T), color = "red", size = 1.5) + # Przegrzew
-    geom_path(data = df_34, aes(x = s, y = T), color = "orange", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) + # Turbina
-    geom_path(data = df_41, aes(x = s, y = T), color = "cyan3", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) + # Skraplacz
+    geom_path(data = cycle, aes(x = s, y = T, color = id, group = id), size = 1.5) +
+    
+    # Strzałki (ręcznie dla kluczowych procesów)
+    # Turbina
+    annotate("segment", x = p3$s, y = p3$T, xend = p4$s, yend = p4$T, 
+             color = "orange", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+    # Skraplacz
+    annotate("segment", x = p4$s, y = p4$T, xend = p1$s, yend = p1$T, 
+             color = "cyan3", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
 
     # Punkty węzłowe
-    annotate("point",
-        x = c(s1, s2, s2_prim, s3_dub_prim, s3, s4),
-        y = c(T1, T2, T_sat_boiler, T_sat_boiler, T3, T4), size = 3
-    ) +
+    geom_point(data = points, aes(x = s, y = T), size = 4) +
 
     # Opisy punktów
-    annotate("text", x = s1 - 0.2, y = T1, label = "1", size = 5, fontface = "bold") +
-    annotate("text", x = s2 - 0.2, y = T2 + 15, label = "2", size = 5, fontface = "bold") +
-    annotate("text", x = s3, y = T3 + 20, label = "3", size = 5, fontface = "bold") +
-    annotate("text", x = s4 + 0.2, y = T4, label = "4", size = 5, fontface = "bold") +
+    annotate("text", x = p1$s - 0.2, y = p1$T - 10, label = "1", size = 5, fontface = "bold") +
+    annotate("text", x = p2$s - 0.2, y = p2$T + 15, label = "2", size = 5, fontface = "bold") +
+    annotate("text", x = p3$s, y = p3$T + 20, label = "3", size = 5, fontface = "bold") +
+    annotate("text", x = p4$s + 0.2, y = p4$T, label = "4", size = 5, fontface = "bold") +
 
     # Opisy Procesów
-    annotate("text", x = (s2 + s3) / 2, y = T3 + 50, label = "Kocioł (q['in'])", color = "red", size = 7, fontface = "bold", parse = TRUE) +
-    annotate("text", x = s3 + 0.5, y = (T3 + T4) / 2, label = "Turbina", color = "orange", size = 7, fontface = "bold", angle = -90) +
-    annotate("text", x = (s1 + s4) / 2, y = T1 - 30, label = "Skraplacz (q['out'])", color = "cyan3", size = 7, fontface = "bold", parse = TRUE) +
-    theme_bw() +
+    annotate("text", x = 3.5, y = 600, label = "Kocioł (q['in'])", color = "red", size = 6, fontface = "bold", parse = TRUE) +
+    annotate("text", x = (p3$s + p4$s)/2 + 0.3, y = (p3$T + p4$T)/2, label = "Turbina", color = "orange", size = 6, fontface = "bold", angle = -90) +
+    annotate("text", x = (p1$s + p4$s)/2, y = p1$T - 40, label = "Skraplacz (q['out'])", color = "cyan3", size = 6, fontface = "bold", parse = TRUE) +
+
+    scale_color_manual(values = c("1-2" = "blue", "2-3" = "red", "3-4" = "orange", "4-1" = "cyan3")) +
+    guides(color = "none") +
+    
+    theme_thermo() +
     labs(
         title = "Rzeczywisty Obieg Rankine'a (T-s)",
-        subtitle = "Z uwzględnieniem podgrzewania, wrzenia i przegrzewania",
-        x = "Entropia właściwa s [kJ/(kg·K)]",
-        y = "Temperatura T [K]"
+        subtitle = "Z uwzględnieniem podgrzewania, wrzenia i przegrzewania (CoolProp)",
+        x = expression(s ~ "[kJ/(kg·K)]"),
+        y = expression(T ~ "[K]")
     ) +
     theme(
-        plot.title = element_text(size = 18, face = "bold"),
         axis.title = element_text(size = 20), axis.text = element_text(size = 14)
     )
 ```
 
-::: {.fragment .callout-warning .pulsing-warning title="Uwaga"}
-Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzeczywistości woda jest w zasadzie nieściśliwa.
+::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
+Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
 :::
 :::
 
@@ -443,17 +580,13 @@ ggplot() +
     labs(
         title = "Obieg Rankine'a: Wykres h-s (Molliera)",
         # subtitle="Wyraźnie widoczna praca pompy (przeskalowana) i krzywizny izobar",
-        x = "Entropia s [kJ/(kg·K)]", y = "Entalpia h [kJ/kg]"
+        x = expression(s ~ "[kJ/(kg·K)]"), y = expression(h ~ "[kJ/kg]")
     ) +
-    theme_bw() +
-    theme(
-        plot.title = element_text(size = 18, face = "bold"),
-        axis.title = element_text(size = 14)
-    )
+    theme_thermo()
 ```
 
-::: {.fragment .callout-warning .pulsing-warning title="Uwaga"}
-Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzeczywistości woda jest w zasadzie nieściśliwa.
+::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
+Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
 :::
 :::
 
@@ -465,8 +598,8 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 1.  **Entalpia na osi Y:**
     Wszystkie wielkości energetyczne (Praca, Ciepło) są pionowymi odcinkami. Nie trzeba liczyć pól powierzchni (jak w T-s).
 
-2.  **Turbina to pionowa linia:**
-    Dla idealnej turbiny ($s=const$), proces jest pionową kreską w dół.
+2.  **Rozprężanie (Ekspansja) w turbinie:**
+    W przypadku idealnym ($s=const$), proces w turbinie jest linią pionową skierowaną w dół.
     
 3.  **Łatwy odczyt spadku entalpii:**
     $$ l_t = h_3 - h_4 $$
@@ -480,12 +613,44 @@ Odcinek **1-2** został sztucznie powiększony, dla lepszego poglądu<br>W rzecz
 
 ## <i class="bi bi-arrow-repeat"></i> Rzeczywisty obieg Rankine'a 
 
+::: {.columns}
+
+::: {.column width="50%"}
 ![](../img/rankine_rzeczywisty.png)
 
 ::: {style="font-size: 0.6em; color: gray;"}
 Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
 :::
+:::
 
+::: {.column width="50%"}
+::: {.fragment}
+
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': true, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '10px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+
+%%| fig-width: 1
+%%| fig-height: 8
+%%| fig-align: center
+flowchart TD
+    A["<b>Stan 1 (Wlot)</b><br>p = 100 bar<br>h = 3375 kJ/kg"] 
+    B["<b>Stan 2s (Idealny)</b><br>p = 0.1 bar<br>h = 2100 kJ/kg"]
+    C["<b>Stan 2 (Rzeczywisty)</b><br>p = 0.1 bar<br>h = 2291 kJ/kg"]
+    
+    A -->|"Rozprężanie<br>Idealne<br>(pionowo)"| B
+    A -->|"Rozprężanie<br>Rzeczywiste<br>(w prawo)"| C
+    B -.->|"Strata pracy<br>(wzrost Δs)"| C
+    
+    style A fill:#ffcccc,stroke:#e74c3c,stroke-width:2px
+    style B fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,stroke-dasharray: 5 5
+    style C fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+```
+</div>
+
+:::
+:::
+:::
 ---
 
 ## <i class="bi bi-percent"></i> Sprawność Izentropowa Turbiny ($\eta_{is}$) 
@@ -538,16 +703,40 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 
 ---
 
-## <i class="bi bi-bookmark"></i> 4. Przegrzew Wtórny (Reheat) 
-
-
-::: {.callout-tip title="Proces:"}
+## <i class="bi bi-arrow-repeat"></i> 4. Przegrzew Wtórny (Reheat) 
+ 
+ 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 1.  Para rozpręża się w turbinie Wysokoprężnej (HP) tylko częściowo (nie wchodzi głęboko pod kopułę).
 2.  Wracamy z parą do kotła i podgrzewamy ją ponownie do $T_{max}$.
 3.  Para wraca do turbiny Niskoprężnej (LP) i rozpręża się do ciśnienia skraplacza.
 :::
 
-::: {.fragment .callout-tip title="**Zalety:**"}
+
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 12
+%%| fig-height: 3
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '20px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    K["<b>Kocioł</b><br>Dostarcza ciepło <em style='font-style: italic'>q<sub>in</sub></em>"] --> HP["<b>Turbina HP</b><br>Praca <em style='font-style: italic'>l<sub>HP</sub></em>"]
+    HP --> K2["<b>Przegrzewacz</b><br>Ciepło <em style='font-style: italic'>q<sub>rh</sub></em>"]
+    K2 --> LP["<b>Turbina LP</b><br>Praca <em style='font-style: italic'>l<sub>LP</sub></em>"]
+    LP --> S["<b>Skraplacz</b><br>Ciepło <em style='font-style: italic'>q<sub>out</sub></em>"]
+    S --> P["<b>Pompa</b><br>Praca <em style='font-style: italic'>l<sub>p</sub></em>"]
+    P --> K
+    
+    style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style K2 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style HP fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style LP fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style S fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
+    style P fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+
+::: {.fragment .callout-tip title="**Zalety:**" style="font-size: 0.6em; color: navy;"}
 *   Punkt końcowy przesuwa się w prawo (para suchsza).
 *   Zwiększa się średnia temperatura dostarczania ciepła ($\eta \uparrow$).
 *   Większa praca z 1 kg pary (dwa etapy ekspansji).
@@ -628,6 +817,8 @@ ggplot() +
     geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
     geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
     annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
+    annotate("point", x = 4.43, y = 2100, size = 3, color = "gray50") +
+    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") +
     annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") +
 
     # HP Turbine
@@ -648,21 +839,19 @@ ggplot() +
         y = c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size = 4
     ) +
     annotate("text", x = p3$s, y = p3$h + 150, label = "3 (HP In)", size = 5, fontface = "bold") +
-    annotate("text", x = p3a$s - 0.4, y = p3a$h, label = "3a (HP Out)", size = 5, fontface = "bold") +
+    annotate("text", x = p3a$s - 0.6, y = p3a$h, label = "3a (HP Out)", size = 5, fontface = "bold") +
     annotate("text", x = p3b$s, y = p3b$h + 150, label = "3b (LP In)", size = 5, fontface = "bold") +
     annotate("text", x = p4$s, y = p4$h - 150, label = "4 (LP Out)", size = 5, fontface = "bold") +
     annotate("text", x = p4_old$s - 0.1, y = p4_old$h - 150, label = "4'", size = 5, fontface = "bold", color = "gray60") +
-    annotate("text", x = (p3a$s + p3b$s) / 2, y = p3b$h - 200, label = "Przegrzew Wtórny", color = "red", fontface = "bold") +
+    annotate("text", x = 4.8, y = p3b$h - 200, label = "Przegrzew Wtórny", color = "red", fontface = "bold") +
+    annotate("segment", x = 6.1, y = p3b$h - 200, xend = (p3a$s + p3b$s) / 2 - 0.1, yend = (p3a$h + p3b$h) / 2 - 50, color = "red", size = 1) +
+    annotate("text", x = 1.5, y = 3500, label = "HP = High Pressure\nLP = Low Pressure", hjust = 0, size = 4, color = "gray30", fontface = "italic") +
     labs(
         title = "Cykl z Przegrzewem Wtórnym",
-        subtitle = "Dodatkowe ciepło q_reheat i przesunięcie punktu 4 w prawo (x rośnie)",
-        x = "Entropia s [kJ/(kg·K)]", y = "Entalpia h [kJ/kg]"
+        subtitle = expression("Dodatkowe ciepło" ~ q[rh] ~ "i przesunięcie punktu 4 w prawo (" * chi %up% "" * ")"),
+        x = expression(s ~ "[kJ/(kg·K)]"), y = expression(h ~ "[kJ/kg]")
     ) +
-    theme_bw() +
-    theme(
-        plot.title = element_text(size = 18, face = "bold"),
-        axis.title = element_text(size = 14)
-    )
+    theme_thermo()
 ```
 
 :::
@@ -689,14 +878,14 @@ Suchość pary $x_4 > x_{4'}$ (np. 0.94 vs 0.81).
 ---
 
 
-## <i class="bi bi-bookmark"></i> 5. Regeneracja (Podgrzewanie Wody) 
+## <i class="bi bi-recycle"></i> 5. Regeneracja (Podgrzewanie Wody) 
 
 ::: {.callout-note appearance="simple"}
 W zwykłym Rankine'ie do kotła trafia zimna woda ze skraplacza (np. 30°C).
 To marnotrawstwo spalać węgiel, żeby podgrzać wodę z 30 do 100°C.
 :::
-::: {.fragment .callout-tip title="**Rozwiązanie:**"}
-Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+**Rozwiązanie:** Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.
 :::
 
 ::: {.incremental}
@@ -706,9 +895,227 @@ Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej 
 
 :::
 
+## <i class="bi bi-graph-up"></i> Regeneracja na wykresie T-s
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Sawtooth Regeneration V2 (Double Sawtooth)
+# Concept: Feedwater (left, liq) is heated (Staircase) by Steam (Staircase)
+# Green Arrows point DOWN from Steam Steps to Water Steps.
+
+p_cond = 0.1 * 1e5    # 0.1 bar
+p_boiler = 50 * 1e5   # 50 bar
+T_max = 500 + 273.15  # 500C
+
+# 1. Main Expansion Line (1 -> 2)
+# 1: Superheated Steam
+h1 = CP.PropsSI('H', 'P', p_boiler, 'T', T_max, fluid)
+s1 = CP.PropsSI('S', 'P', p_boiler, 'T', T_max, fluid) / 1000
+T1 = T_max
+
+# 2. Bleed logic (3 bleeds)
+def find_T_sat_vap(s_target, T_high, T_low):
+    for i in range(50):
+        T_mid = (T_high + T_low) / 2
+        try:
+            s_mid = CP.PropsSI('S', 'T', T_mid, 'Q', 1, fluid)/1000
+            if abs(s_mid - s_target) < 0.001:
+                return T_mid
+            elif s_mid > s_target:
+                T_low = T_mid
+            else:
+                T_high = T_mid
+        except:
+            return T_high
+    return (T_high + T_low) / 2
+
+T_crit = CP.PropsSI('Tcrit', fluid)
+T_tri = CP.PropsSI('Tmin', fluid)
+T_bleed1 = find_T_sat_vap(s1, T_crit-1, T_tri+1)
+
+T_cond = CP.PropsSI('T', 'P', p_cond, 'Q', 0, fluid)
+
+# Bleed Temperatures
+T_steps = np.linspace(T_bleed1, T_cond, 4) 
+Ts = T_steps[0:3]
+
+# ---- STEAM PATH (ORANGE) ----
+steam_path = []
+steam_arrows = [] 
+
+curr_s = s1
+curr_T = T1
+
+# Expansion to first bleed
+steam_path.append({'x': curr_s, 'y': curr_T, 'xend': curr_s, 'yend': Ts[0], 'color': 'orange', 'type': 'exp'})
+curr_T = Ts[0]
+
+for i, T_lev in enumerate(Ts):
+    dS = 0.5
+    next_s = curr_s - dS
+    
+    # Horizontal
+    steam_path.append({'x': curr_s, 'y': T_lev, 'xend': next_s, 'yend': T_lev, 'color': 'orange', 'type': 'extr'})
+    
+    # Arrow: Pointing DOWN, shifted DOWN by 10 (gap)
+    mid_s = (curr_s + next_s)/2
+    # Start at T_lev - 10, End at T_lev - 50 (Length 40)
+    steam_arrows.append({'x': mid_s, 'y': T_lev - 10, 'xend': mid_s, 'yend': T_lev - 50, 'label': "q[r]"})
+    
+    curr_s = next_s
+    
+    # Vertical
+    if i < 2:
+        next_T_lev = Ts[i+1]
+        steam_path.append({'x': curr_s, 'y': T_lev, 'xend': curr_s, 'yend': next_T_lev, 'color': 'orange', 'type': 'exp'})
+        curr_T = next_T_lev
+    else:
+        steam_path.append({'x': curr_s, 'y': T_lev, 'xend': curr_s, 'yend': T_cond, 'color': 'orange', 'type': 'exp'})
+        curr_T = T_cond
+
+# Condenser Line
+s3_liq = CP.PropsSI('S', 'P', p_cond, 'Q', 0, fluid) / 1000
+steam_path.append({'x': curr_s, 'y': T_cond, 'xend': s3_liq, 'yend': T_cond, 'color': 'cyan3', 'type': 'cond'})
+
+# ---- WATER PATH (RED) ----
+water_path = []
+water_arrows = [] 
+
+T_w_levels = [T_cond, Ts[2], Ts[1], Ts[0], CP.PropsSI('T', 'P', p_boiler, 'Q', 0, fluid)] 
+
+for i in range(len(T_w_levels)-1):
+    T_curr = T_w_levels[i]
+    T_next = T_w_levels[i+1]
+    
+    s_curr = CP.PropsSI('S', 'T', T_curr, 'Q', 0, fluid)/1000
+    s_next = CP.PropsSI('S', 'T', T_next, 'Q', 0, fluid)/1000
+    
+    water_path.append({'x': s_curr, 'y': T_curr, 'xend': s_next, 'yend': T_next, 'color': 'red', 'type': 'heat'})
+    
+    mid_s = (s_curr + s_next)/2
+    mid_T = (T_curr + T_next)/2
+    
+    if i < 3: 
+        # Arrow: Pointing DOWN, shifted UP by 25 (gap from line)
+        # End at mid_T + 25. Start at mid_T + 65. (Length 40)
+        water_arrows.append({'x': mid_s, 'y': mid_T + 65, 'xend': mid_s, 'yend': mid_T + 25, 'label': "q[r]"})
+
+# Boiler Path
+s_sat_boil = CP.PropsSI('S', 'P', p_boiler, 'Q', 0, fluid)/1000
+s_sat_vap = CP.PropsSI('S', 'P', p_boiler, 'Q', 1, fluid)/1000
+water_path.append({'x': s_sat_boil, 'y': T_w_levels[-1], 'xend': s_sat_vap, 'yend': T_w_levels[-1], 'color': 'red', 'type': 'evap'})
+water_path.append({'x': s_sat_vap, 'y': T_w_levels[-1], 'xend': s1, 'yend': T1, 'color': 'red', 'type': 'sup'})
+
+df_steam = pd.DataFrame(steam_path)
+df_s_arr = pd.DataFrame(steam_arrows)
+df_water = pd.DataFrame(water_path)
+df_w_arr = pd.DataFrame(water_arrows)
+
+# Points Renumbered
+# s1 (Main Steam) -> 3
+# s1 at chi=1 intersection -> 4
+# s3_liq (Cond Out) -> 1
+# s_sat_boil (Boiler In) -> 2
+pts = pd.DataFrame({
+    'label': ['3', '4', '1', '2'],
+    's': [s1, s1 + 0.3, s3_liq, s_sat_boil],
+    'T': [T1, T_bleed1 + 20, T_cond, T_w_levels[-1]]
+})
+```
+
+
+
+```{r}
+#| label: regen-ts
+#| echo: false
+#| fig-width: 10
+#| fig-height: 7
+#| warning: false
+#| message: false
+
+# Reuse Python Data
+dst <- py$df_steam
+dwa <- py$df_water
+sar <- py$df_s_arr
+war <- py$df_w_arr
+p <- py$pts
+
+ggplot() +
+    # Dome
+    geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1) +
+
+    # Dome Labels (chi=0, chi=1)
+    annotate("text", x = 3.4, y = 620, label = "chi == 0", parse = TRUE, color = "gray50", size = 5, angle = 45) +
+    annotate("text", x = 8.5, y = 320, label = "chi == 1", parse = TRUE, color = "gray50", size = 5, angle = -25) +
+
+    # Critical Point
+    annotate("point", x = 4.43, y = 647.1, size = 3, color = "red") +
+    annotate("text", x = 4.43, y = 670, label = "P. Krytyczny", size = 5, fontface = "bold") +
+
+    # Steam Segments (Orange Sawtooth) - No Arrowheads
+    geom_segment(data = dst, aes(x = x, y = y, xend = xend, yend = yend, color = color), size = 1.5, linetype = "solid") +
+
+    # Water Segments (Red Line) - No Arrowheads
+    geom_segment(data = dwa, aes(x = x, y = y, xend = xend, yend = yend, color = color), size = 2, linetype = "solid") +
+    scale_color_identity() +
+
+    # Green Arrows (Steam Side) - Pointing Down
+    geom_segment(
+        data = sar, aes(x = x, y = y, xend = xend, yend = yend),
+        color = "chartreuse4", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
+    ) +
+
+    # Green Arrows (Water Side) - Pointing Down onto line
+    geom_segment(
+        data = war, aes(x = x, y = y, xend = xend, yend = yend),
+        color = "chartreuse4", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
+    ) +
+
+    # Points Labels
+    geom_text(data = p, aes(x = s, y = T + c(20, -20, -20, 20), label = label), size = 6, fontface = "bold") +
+
+    # q_r Labels (Steam Side) - Next to arrows
+    geom_text(data = sar, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = "chartreuse4", size = 6, fontface = "bold") +
+
+    # q_r Labels (Water Side) - Next to arrows
+    geom_text(data = war, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = "chartreuse4", size = 6, fontface = "bold") +
+    theme_thermo() +
+    labs(
+        title = "Obieg z Regeneracją (Ideowy)",
+        subtitle = expression(atop("Schodkowa ekspansja z oddawaniem ciepła (" * q[r] * ") przez", "skraplającą się parę do wody zasilającej (wzrost entropii).")),
+        x = expression(s ~ "[kJ/(kg·K)]"), y = expression(T ~ "[K]")
+    )
+```
+
+
+:::
+
+::: {.column width="40%"}
+
+### Analiza
+
+::: {style="font-size: 0.9em;"}
+*   **1 $\to$ 2:** Podgrzewanie wody zasilającej wzdłuż krzywej cieczy nasyconej (czerwona linia). Ciepło $q_r$ pochodzi ze skraplającej się pary z upustów turbiny.
+*   **2 $\to$ 3:** Kocioł — wrzenie i przegrzewanie pary do $T_{max}$. **Oszczędzamy paliwo**, bo woda w punkcie 2 jest już gorąca!
+*   **3 $\to$ 4:** Ekspansja pary w turbinie z upustami. Na każdym stopniu para oddaje ciepło $q_r$ do wody zasilającej.
+*   **4 $\to$ 1:** Skraplanie reszty pary w skraplaczu.
+:::
+:::
+::::
+
+
+
 ---
 
-## <i class="bi bi-bookmark"></i> 6. Układy Gazowo-Parowe (CCGT) 
+## <i class="bi bi-fire"></i> 6. Układy Gazowo-Parowe (CCGT) 
 
 ##### Combined-cycle power plant
 
@@ -723,7 +1130,7 @@ Połączenie Braytona (W9) i Rankine'a (W10).
 3.  **Dół (Bottom Cycle):** Turbina Parowa zasilana z HRSG.
 :::
 
-::: {.fragment .callout-tip title="**Wynik:**"}
+::: {.fragment .callout-tip title="**Wynik:**" style="font-size: 0.9em;"}
 Z tego samego paliwa (gazu) mamy prąd z dwóch turbin!
 Sprawność: **> 60%** (Klasyczna węglowa ma max 46%).
 To obecnie najczystsza technologia spalania paliw kopalnych.
@@ -738,7 +1145,7 @@ To obecnie najczystsza technologia spalania paliw kopalnych.
 
 :::
 
-::: {style="border: 2px solid #1596ea; padding: 5px; border-radius: 10px; background-color: #30b1e6; font-size: 0.6em;"}
+::: {style="border: 2px solid #1596ea; padding: 5px; border-radius: 10px; background-color: #30b1e6; font-size: 0.55em;"}
 Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Kondensator, 4-Pompa, 5-Kocioł/wymiennik ciepła, 6-Turbina gazowa
 :::
 :::
@@ -755,7 +1162,7 @@ Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Kondensator, 4-Pompa, 5-K
     *   Regeneracja i Przegrzew.
 3.  **Skraplacz** to konieczność (zamknięcie obiegu), ale i największa strata energii (ciepło odpadowe).
 
-### Zadanie Domowe
+### Pytanie na koniec
 ::: {.callout-caution appearance="simple"}
 Dlaczego nie stosujemy wprost obiegu Carnota dla pary wodnej? (Dlaczego nie sprężamy pary mokrej w pompie?).
 :::

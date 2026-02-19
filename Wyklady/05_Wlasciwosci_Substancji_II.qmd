@@ -1,7 +1,7 @@
 ---
 title: "W5: Właściwości Substancji Czystych - II"
 subtitle: "Para Wodna, Przemiany Fazowe i Tablice"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: png
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -71,7 +73,7 @@ theme_set(theme_minimal(base_size = 18))
 
 ### Rodzaje Przemian
 
-::: incremental
+::: {.fragment .incremental}
 *   **I Rodzaju:** Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała ($T=const$).
     *   Wrzenie (Ciecz $\to$ Gaz)
     *   Topnienie (Ciało stałe $\to$ Ciecz)
@@ -79,12 +81,16 @@ theme_set(theme_minimal(base_size = 18))
     *   Przejście w nadciekłość (Hel).
 :::
 
-### Ciepło Utajone (Latent Heat){.fragment}
+::: {.fragment .fade-up}
+### Ciepło Utajone (Latent Heat)
 
 
-####  Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.{.fragment}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
+**Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.**
+:::
+:::
 
-#### Dla wody:{.fragment}
+#### Dla wody:{.fragment .fade-up style="font-size: 0.8em;"}
 
 ::: incremental
 *   Ciepło parowania ($r$): $2257 \text{ kJ/kg}$ (ogromne!)
@@ -232,7 +238,7 @@ Rodzaje tablic:
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
-::: increament
+::: {.fragment .incremental style="font-size: 0.98em;"}
 1.  **Ciecz Dochłodzona:** $T < T_{wrzenia}$. 
     - 💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, "tłok" jest nisko.
 2.  **Ciecz Nasycona ($x=0$):** $T = T_{wrzenia}$. Pierwszy bąbel pary.
@@ -340,105 +346,115 @@ ggplot() +
 
 ## <i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła) 
 
-Obszar pod dzwonem to mieszanina (Para Mokra).
+
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="30%"}
+Obszar pod dzwonem to mieszanina (Para Mokra).
+:::
+
+::: {.column width="70%"}
 
 ```{r}
 #| label: steam-dome
 #| echo: false
-#| fig-width: 8
-#| fig-height: 6
+#| fig-width: 12
+#| fig-height: 9
 
 library(ggplot2)
 
 # Poprawne dane NIST (T [K], s_l, s_v)
 # Tc = 647.1 K, sc = 4.412 kJ/kgK
 nist_dense <- data.frame(
-  T = c(0.01, 10.01, 20.01, 30.01, 40.01, 50.01, 60.01, 70.01, 80.01, 90.01, 100.01, 110.01,
-120.01, 130.01, 140.01, 150.01, 160.01, 170.01, 180.01, 190.01, 200.01, 210.01, 220.01,
-230.01, 240.01, 250.01, 260.01, 270.01, 280.01, 290.01, 300.01, 310.01, 320.01, 330.01,
-340.01, 350.01, 360.01, 370.01, 373.946)+273.15,
-  s_l = c(-2.95E-13,
-0.15123,
-0.29663,
-0.43689,
-0.57254,
-0.70394,
-0.83142,
-0.95525,
-1.0757,
-1.193,
-1.3073,
-1.4189,
-1.528,
-1.6348,
-1.7393,
-1.8419,
-1.9427,
-2.0418,
-2.1393,
-2.2356,
-2.3306,
-2.4246,
-2.5178,
-2.6102,
-2.7021,
-2.7936,
-2.885,
-2.9766,
-3.0686,
-3.1613,
-3.2553,
-3.3511,
-3.4495,
-3.5519,
-3.6602,
-3.7785,
-3.9168,
-4.1114,
-4.407), 
-  s_v = c(9.1555,
-8.8995,
-8.6658,
-8.4518,
-8.2554,
-8.0747,
-7.908,
-7.7539,
-7.6109,
-7.478,
-7.354,
-7.238,
-7.129,
-7.0263,
-6.9292,
-6.837,
-6.749,
-6.6649,
-6.584,
-6.5058,
-6.4301,
-6.3562,
-6.2839,
-6.2127,
-6.1422,
-6.072,
-6.0015,
-5.9303,
-5.8578,
-5.7833,
-5.7058,
-5.6243,
-5.5371,
-5.4421,
-5.3355,
-5.2109,
-5.0534,
-4.8008,
-4.407) 
+    T = c(
+        0.01, 10.01, 20.01, 30.01, 40.01, 50.01, 60.01, 70.01, 80.01, 90.01, 100.01, 110.01,
+        120.01, 130.01, 140.01, 150.01, 160.01, 170.01, 180.01, 190.01, 200.01, 210.01, 220.01,
+        230.01, 240.01, 250.01, 260.01, 270.01, 280.01, 290.01, 300.01, 310.01, 320.01, 330.01,
+        340.01, 350.01, 360.01, 370.01, 373.946
+    ) + 273.15,
+    s_l = c(
+        -2.95E-13,
+        0.15123,
+        0.29663,
+        0.43689,
+        0.57254,
+        0.70394,
+        0.83142,
+        0.95525,
+        1.0757,
+        1.193,
+        1.3073,
+        1.4189,
+        1.528,
+        1.6348,
+        1.7393,
+        1.8419,
+        1.9427,
+        2.0418,
+        2.1393,
+        2.2356,
+        2.3306,
+        2.4246,
+        2.5178,
+        2.6102,
+        2.7021,
+        2.7936,
+        2.885,
+        2.9766,
+        3.0686,
+        3.1613,
+        3.2553,
+        3.3511,
+        3.4495,
+        3.5519,
+        3.6602,
+        3.7785,
+        3.9168,
+        4.1114,
+        4.407
+    ),
+    s_v = c(
+        9.1555,
+        8.8995,
+        8.6658,
+        8.4518,
+        8.2554,
+        8.0747,
+        7.908,
+        7.7539,
+        7.6109,
+        7.478,
+        7.354,
+        7.238,
+        7.129,
+        7.0263,
+        6.9292,
+        6.837,
+        6.749,
+        6.6649,
+        6.584,
+        6.5058,
+        6.4301,
+        6.3562,
+        6.2839,
+        6.2127,
+        6.1422,
+        6.072,
+        6.0015,
+        5.9303,
+        5.8578,
+        5.7833,
+        5.7058,
+        5.6243,
+        5.5371,
+        5.4421,
+        5.3355,
+        5.2109,
+        5.0534,
+        4.8008,
+        4.407
+    )
 )
 
 # Punkt Krytyczny
@@ -447,13 +463,13 @@ sc <- 4.407
 
 # --- KOREKTA "UGIĘCIA" WIERZCHOŁKA ---
 df_all <- data.frame(
-  s = c(nist_dense$s_l, rev(nist_dense$s_v)), 
-  T = c(nist_dense$T, rev(nist_dense$T))
+    s = c(nist_dense$s_l, rev(nist_dense$s_v)),
+    T = c(nist_dense$T, rev(nist_dense$T))
 )
-df_all <- df_all[order(df_all$s),]
+df_all <- df_all[order(df_all$s), ]
 
 # Interpolacja splajnem T(s)
-spline_dome <- spline(df_all$s, df_all$T, n=1000)
+spline_dome <- spline(df_all$s, df_all$T, n = 1000)
 df_dome <- data.frame(s = spline_dome$x, T = spline_dome$y)
 df_dome$T[df_dome$T > Tc] <- Tc
 
@@ -462,92 +478,86 @@ qualities <- c(0.2, 0.4, 0.6, 0.8)
 df_quality_lines <- data.frame()
 df_quality_labels <- data.frame()
 
-for(x_val in qualities) {
-  # Obliczamy s_x dla każdej temperatury z danych nist_dense
-  s_x_vals <- nist_dense$s_l + x_val * (nist_dense$s_v - nist_dense$s_l)
-  
-  # Interpolacja gładka dla linii x
-  spline_x <- spline(nist_dense$T, s_x_vals, xout=seq(min(nist_dense$T), Tc, length.out=200))
-  
-  tmp_df <- data.frame(
-    T = spline_x$x,
-    s = spline_x$y,
-    label = paste0("x=", x_val)
-  )
-  df_quality_lines <- rbind(df_quality_lines, tmp_df)
-  
-  # Pozycja etykiety (tuż nad osią s, np. T=290K)
-  T_lbl <- 290
-  s_lbl <- approx(nist_dense$T, s_x_vals, xout=T_lbl)$y
-  
-  df_quality_labels <- rbind(df_quality_labels, data.frame(
-    x = s_lbl, 
-    y = T_lbl + 10, # Lekko nad punktem
-    label = paste0("x=", x_val)
-  ))
+for (x_val in qualities) {
+    # Obliczamy s_x dla każdej temperatury z danych nist_dense
+    s_x_vals <- nist_dense$s_l + x_val * (nist_dense$s_v - nist_dense$s_l)
+
+    # Interpolacja gładka dla linii x
+    spline_x <- spline(nist_dense$T, s_x_vals, xout = seq(min(nist_dense$T), Tc, length.out = 200))
+
+    tmp_df <- data.frame(
+        T = spline_x$x,
+        s = spline_x$y,
+        label = paste0("x=", x_val)
+    )
+    df_quality_lines <- rbind(df_quality_lines, tmp_df)
+
+    # Pozycja etykiety (tuż nad osią s, np. T=290K)
+    T_lbl <- 290
+    s_lbl <- approx(nist_dense$T, s_x_vals, xout = T_lbl)$y
+
+    df_quality_labels <- rbind(df_quality_labels, data.frame(
+        x = s_lbl,
+        y = T_lbl + 10, # Lekko nad punktem
+        label = paste0("x=", x_val)
+    ))
 }
 
 
 # --- Izobara 1 bar ---
-spline_liq_T <- spline(nist_dense$T, nist_dense$s_l, xout=seq(300, 373.15, length.out=50))
-iso_1_liq <- data.frame(T=spline_liq_T$x, s=spline_liq_T$y)
-iso_1_sat <- data.frame(T=c(373.15, 373.15), s=c(1.307, 7.354))
-T_sup <- seq(373.15, 750, length.out=50)
-iso_1_sup <- data.frame(T=T_sup, s=7.354 + 2.05*log(T_sup/373.15))
+spline_liq_T <- spline(nist_dense$T, nist_dense$s_l, xout = seq(300, 373.15, length.out = 50))
+iso_1_liq <- data.frame(T = spline_liq_T$x, s = spline_liq_T$y)
+iso_1_sat <- data.frame(T = c(373.15, 373.15), s = c(1.307, 7.354))
+T_sup <- seq(373.15, 750, length.out = 50)
+iso_1_sup <- data.frame(T = T_sup, s = 7.354 + 2.05 * log(T_sup / 373.15))
 df_iso_1 <- rbind(iso_1_liq, iso_1_sat, iso_1_sup)
 
 # --- Izobara 100 bar ---
 T_sat_100 <- 584.15
-sl_100 <- approx(nist_dense$T, nist_dense$s_l, xout=T_sat_100)$y
-sv_100 <- approx(nist_dense$T, nist_dense$s_v, xout=T_sat_100)$y
+sl_100 <- approx(nist_dense$T, nist_dense$s_l, xout = T_sat_100)$y
+sv_100 <- approx(nist_dense$T, nist_dense$s_v, xout = T_sat_100)$y
 
-iso_100_liq <- data.frame(T=seq(300, T_sat_100, length.out=100))
-iso_100_liq$s <- approx(df_all$T[df_all$s < sc], df_all$s[df_all$s < sc], xout=iso_100_liq$T)$y
+iso_100_liq <- data.frame(T = seq(300, T_sat_100, length.out = 100))
+iso_100_liq$s <- approx(df_all$T[df_all$s < sc], df_all$s[df_all$s < sc], xout = iso_100_liq$T)$y
 
-iso_100_sat <- data.frame(T=c(T_sat_100, T_sat_100), s=c(sl_100, sv_100))
-T_sup_100 <- seq(T_sat_100, 750, length.out=50)
-iso_100_sup <- data.frame(T=T_sup_100, s=sv_100 + 2.6*log(T_sup_100/T_sat_100))
+iso_100_sat <- data.frame(T = c(T_sat_100, T_sat_100), s = c(sl_100, sv_100))
+T_sup_100 <- seq(T_sat_100, 750, length.out = 50)
+iso_100_sup <- data.frame(T = T_sup_100, s = sv_100 + 2.6 * log(T_sup_100 / T_sat_100))
 df_iso_100 <- rbind(iso_100_liq, iso_100_sat, iso_100_sup)
 
 ggplot() +
-  # Wielokąt Kopuły
-  geom_polygon(data=df_dome, aes(x=s, y=T), fill="lightblue", alpha=0.3, color="blue", size=1.5) +
-  
-  # Linie suchości
-  geom_line(data=df_quality_lines, aes(x=s, y=T, group=label), color="blue", linetype="dotted", size=0.8) +
-  # Etykiety x (przy osi)
-  geom_text(data=df_quality_labels, aes(x=x-0.5, y=y, label=label), color="blue", size=4, fontface="bold") +
+    # Wielokąt Kopuły
+    geom_polygon(data = df_dome, aes(x = s, y = T), fill = "lightblue", alpha = 0.3, color = "blue", size = 1.5) +
 
-  # Izobary
-  geom_line(data=df_iso_1, aes(x=s, y=T), color="red", size=1.5) +
-  annotate("text", x=4.5, y=410, label="p = 1 atm", color="red", fontface="italic") +
+    # Linie suchości
+    geom_line(data = df_quality_lines, aes(x = s, y = T, group = label), color = "blue", linetype = "dotted", size = 0.8) +
+    # Etykiety x (przy osi)
+    geom_text(data = df_quality_labels, aes(x = x - 0.5, y = y, label = label), color = "blue", size = 4, fontface = "bold") +
 
-  geom_line(data=df_iso_100, aes(x=s, y=T), color="darkred", size=1.2, linetype="longdash") +
-  annotate("text", x=5.6, y=700, label="p = 100 atm", color="darkred", fontface="italic", angle=76) +
+    # Izobary
+    geom_line(data = df_iso_1, aes(x = s, y = T), color = "red", size = 1.5) +
+    annotate("text", x = 4.5, y = 410, label = "p = 1 atm", color = "red", fontface = "italic") +
+    geom_line(data = df_iso_100, aes(x = s, y = T), color = "darkred", size = 1.2, linetype = "longdash") +
+    annotate("text", x = 5.6, y = 700, label = "p = 100 atm", color = "darkred", fontface = "italic", angle = 76) +
 
-  # Punkt Krytyczny
-  annotate("point", x=sc, y=Tc, color="black", size=4) +
-  annotate("text", x=sc, y=690, label=paste0("PK\n(s=", round(sc,3), ")"), fontface="bold") +
-  
-  # x=0 / x=1
-  annotate("text", x=0.3, y=320, label="x=0", color="blue", fontface="bold", angle=46) +
-  annotate("text", x=8.6, y=320, label="x=1", color="blue", fontface="bold", angle=-40) +
+    # Punkt Krytyczny
+    annotate("point", x = sc, y = Tc, color = "black", size = 4) +
+    annotate("text", x = sc, y = 690, label = paste0("PK\n(s=", round(sc, 3), ")"), fontface = "bold") +
 
-  scale_x_continuous(limits=c(0, 10), breaks=seq(0,10,1)) +
-  scale_y_continuous(limits=c(273, 750), breaks=seq(273, 750, 50)) +
-  
-  theme_minimal(base_size = 16) +
-  labs(x="Entropia właściwa s [kJ/(kg·K)]", y="Temperatura T [K]", 
-       title="Wykres T-s dla Wody (Dane NIST + IAPWS-95)",
-       subtitle="Linie stałego stopnia suchości x")
+    # x=0 / x=1
+    annotate("text", x = 0.3, y = 320, label = "x=0", color = "blue", fontface = "bold", angle = 46) +
+    annotate("text", x = 8.6, y = 320, label = "x=1", color = "blue", fontface = "bold", angle = -40) +
+    scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, 1)) +
+    scale_y_continuous(limits = c(273, 750), breaks = seq(273, 750, 50)) +
+    theme_minimal(base_size = 16) +
+    labs(
+        x = "Entropia właściwa s [kJ/(kg·K)]", y = "Temperatura T [K]",
+        title = "Wykres T-s dla Wody (Dane NIST + IAPWS-95)",
+        subtitle = "Linie stałego stopnia suchości x"
+    )
 ```
 
-[źródło:[NIST Chemistry WebBook, SRD 69](https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&THigh=373.946&TInc=50&Digits=5&ID=C7732185&Action=Load&Type=SatP&TUnit=C&PUnit=atm&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=DEF){target="_blank"}]{style="font-size: 0.6em; color: gray;"}
-
-:::
-
-::: {.column width="40%"}
-![](../img/kopula.png)
+[źródło: [NIST Chemistry WebBook, SRD 69](https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&THigh=373.946&TInc=50&Digits=5&ID=C7732185&Action=Load&Type=SatP&TUnit=C&PUnit=atm&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=DEF){target="_blank"}]{style="font-size: 0.6em; color: gray;"}
 
 :::
 
@@ -557,9 +567,11 @@ ggplot() +
 
 ## <i class="bi bi-bookmark"></i> 3. Stopień Suchości ($x$) 
 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.
 
 $$ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} $$
+:::
 
 *   $x = 0$: $100\%$ cieczy (linia lewa).
 *   $x = 1$: $100\%$ pary (linia prawa).
@@ -610,7 +622,7 @@ Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub
 ### Wzór:
 $$ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) $$
 
-::: {.fragment .callout-tip title="Przykład"}
+::: {.fragment .callout-tip title="Przykład" style="font-size: 0.7em;"}
 Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ C$.
 
 Z tablic: $h(250^\circ C) = 2943$, $h(300^\circ C) = 3052$ kJ/kg.
@@ -618,7 +630,7 @@ Z tablic: $h(250^\circ C) = 2943$, $h(300^\circ C) = 3052$ kJ/kg.
 $$ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0.5 \cdot 109 \approx \mathbf{2997.5 \text{ kJ/kg}} $$
 :::
 
-::: {.fragment .callout-warning}
+::: {.fragment .callout-warning style="font-size: 0.8em;"}
 Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależność). Dla dużych skoków ciśnienia lub w pobliżu punktu krytycznego dokładność maleje — wtedy lepiej użyć oprogramowania (np. CoolProp, NIST).
 :::
 
@@ -656,12 +668,27 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 
 Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
 
-1.  Znajdujemy punkt przecięcia izobary $100$ bar i izotermy $500^\circ C$.
-2.  Odczytujemy $h_1$.
-3.  Rysujemy linię pionową w dół do przecięcia z izobarą $0.1$ bar.
-4.  Odczytujemy $h_2$.
-5.  $l_{turbiny} = h_1 - h_2$.
-6.  Odczytujemy $x_2$ (stopień suchości na wylocie). Jeśli $x < 0.85$, erozja łopatek zniszczy turbinę!
+Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
+
+<div style="width: 100%; margin: 0 auto;">
+```{mermaid}
+%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Lato'}}}%%
+flowchart LR
+    A[Start: Znajdź <br>punkt 1] --> B{Odczytaj h1}
+    B --> C[Rysuj linię <br>pionową w dół<br>s = const]
+    C --> D{Przecięcie z p2}
+    D --> E[Odczytaj h2]
+    E --> F[Oblicz Pracę: <br>L = h1 - h2]
+    E --> G[Sprawdź <br>x2 > 0.85?]
+    G -- Tak --> H[OK: Turbina <br>bezpieczna]
+    G -- Nie --> I[BŁĄD: Erozja <br>łopatek!]
+
+    style A fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px
+    style F fill:#2ecc71,stroke:#27ae60,stroke-width:2px
+    style I fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+```
+</div>
+
 
 ---
 
@@ -728,6 +755,6 @@ Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu*
 4.  **Tablice:** Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.
 5.  **Mollier (h-s):** Niezastąpiony do szybkiej analizy procesów w turbinach.
 
-### Zadanie Domowe
+### Zadanie Do Samodzielnego Wykonania
 
 Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: $p=1$ bar, $x=0.9$. Odczytaj entalpię.

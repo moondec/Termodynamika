@@ -9,7 +9,7 @@
 <link href="08_Przemiany_Gazowe_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W8: Przemiany Gazów Doskonałych</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,6 +125,8 @@
       margin-right: 0; 
     }
   </style>
+  <script src="08_Przemiany_Gazowe_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   body { background-color: #1a1a1a; }
   .reveal .slide-background-content {
@@ -152,7 +154,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -178,15 +180,8 @@
 </section>
 <section id="definicja-procesu-termodynamicznego" class="slide level2">
 <h2><i class="bi bi-book"></i> 1. Definicja Procesu Termodynamicznego</h2>
-<div class="callout callout-note callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p><strong>Proces termodynamiczny (przemiana)</strong> to zmiana stanu układu, w której zmienia się wartość co najmniej jednego z parametrów termodynamicznych (<span class="math inline">\(p, V, T\)</span>).</p>
-</div>
-</div>
 </div>
 <ul>
 <li class="fragment"><strong>Proces kwazistatyczny:</strong> Przebiega nieskończenie powoli, układ w każdej chwili jest w stanie równowagi.</li>
@@ -277,21 +272,9 @@
 </div></div>
 </section>
 <section id="przemiana-izochoryczna-vconst" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 3. Przemiana Izochoryczna (<span class="math inline">\(v=const\)</span>)</h2>
-<div title="**Warunek:**">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Warunek:</strong></strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(dv = 0 \Rightarrow l = 0\)</span></p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-box-seam"></i> 3. Przemiana Izochoryczna (<span class="math inline">\(v=const\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Warunek:</strong> <span class="math inline">\(dv = 0 \Rightarrow l = 0\)</span></p>
 </div>
 <div class="fragment fade-up" title="Przykład">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -331,21 +314,9 @@
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" class="r-stretch"></section>
 <section id="przemiana-izobaryczna-pconst" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 4. Przemiana Izobaryczna (<span class="math inline">\(p=const\)</span>)</h2>
-<div title="**Warunek:**">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Warunek:</strong></strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(dp = 0 \Rightarrow l_t = 0\)</span></p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-arrows-expand"></i> 4. Przemiana Izobaryczna (<span class="math inline">\(p=const\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Warunek:</strong> <span class="math inline">\(dp = 0 \Rightarrow l_t = 0\)</span></p>
 </div>
 <div class="fragment fade-up" title="Przykład">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -395,21 +366,9 @@
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"></section>
 <section id="przemiana-izotermiczna-tconst" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 5. Przemiana Izotermiczna (<span class="math inline">\(T=const\)</span>)</h2>
-<div title="**Warunek:**">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Warunek:</strong></strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(\Delta u = 0, \Delta h = 0\)</span> (Dla gazu doskonałego <span class="math inline">\(u, h = f(T)\)</span>)<br></p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-thermometer-sun"></i> 5. Przemiana Izotermiczna (<span class="math inline">\(T=const\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Warunek:</strong> <span class="math inline">\(\Delta u = 0, \Delta h = 0\)</span> (Dla gazu doskonałego <span class="math inline">\(u, h = f(T)\)</span>)<br></p>
 </div>
 <div class="fragment fade-up" title="Przykład">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -465,21 +424,9 @@
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
 <section id="przemiana-adiabatyczna-q0" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 6. Przemiana Adiabatyczna (<span class="math inline">\(q=0\)</span>)</h2>
-<div title="**Warunek:**">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong><strong>Warunek:</strong></strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(dq = 0\)</span>. (Izolacja termiczna)</p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-wind"></i> 6. Przemiana Adiabatyczna (<span class="math inline">\(q=0\)</span>)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Warunek:</strong> <span class="math inline">\(dq = 0\)</span>. (Izolacja termiczna)</p>
 </div>
 <div class="fragment fade-up" title="Wskazówka praktyczna">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -521,22 +468,113 @@
 </ul>
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-5-1.png" width="768" class="r-stretch"></section>
+<section id="klasyfikacja-procesów-politropowych" class="slide level2">
+<h2><i class="bi bi-diagram-3"></i> Klasyfikacja Procesów Politropowych</h2>
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 732.25 613.171875" height="480" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" style="; display: block; margin: auto auto auto auto">
+<style>#mermaid-figure-1{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:20px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff0f0;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:#ffffff;padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771529338018_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771529338018_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M367.176,131.656L367.176,135.823C367.176,139.99,367.176,148.323,367.246,156.073C367.316,163.823,367.457,170.99,367.527,174.574L367.597,178.157"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_0" d="M287.345,355.341L252.561,375.313C217.777,395.285,148.209,435.228,113.425,461.2C78.641,487.172,78.641,499.172,78.641,505.172L78.641,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_D_0" d="M321.284,389.28L312.889,403.595C304.494,417.911,287.704,446.541,279.309,466.857C270.914,487.172,270.914,499.172,270.914,505.172L270.914,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_E_0" d="M414.067,389.28L422.296,403.595C430.524,417.911,446.981,446.541,455.209,466.857C463.438,487.172,463.438,499.172,463.438,505.172L463.438,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_F_0" d="M447.861,355.486L482.266,375.434C516.67,395.382,585.48,435.277,619.884,461.224C654.289,487.172,654.289,499.172,654.289,505.172L654.289,511.172"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black"></span>
+</div>
+</foreignobject></g></g><g transform="translate(78.640625, 475.171875)" class="edgeLabel"><g transform="translate(-21.984375, -15)" class="label"><foreignobject height="30" width="43.96875">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black">
+<p>
+n = 0
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(270.9140625, 475.171875)" class="edgeLabel"><g transform="translate(-21.984375, -15)" class="label"><foreignobject height="30" width="43.96875">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black">
+<p>
+n = 1
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(463.4375, 475.171875)" class="edgeLabel"><g transform="translate(-58.828125, -15)" class="label"><foreignobject height="30" width="117.65625">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black">
+<p>
+n = k (kappa)
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(654.2890625, 475.171875)" class="edgeLabel"><g transform="translate(-26.734375, -15)" class="label"><foreignobject height="30" width="53.46875">
+<div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+<span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black">
+<p>
+n → ∞
+</p>
+</span>
+</div>
+</foreignobject></g></g></g><g class="nodes"><g transform="translate(367.17578125, 69.828125)" id="flowchart-A-0" class="node default"><rect height="123.65625" width="167.53125" y="-61.828125" x="-83.765625" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(-53.765625, -46.828125)" style="" class="label"><rect></rect><foreignobject height="93.65625" width="107.53125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Przemiana<br>Politropowa<br>p·v<sup>n</sup> = const
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(367.17578125, 308.4140625)" id="flowchart-B-1" class="node default"><polygon transform="translate(-126.7578125,126.7578125)" class="label-container" points="126.7578125,0 253.515625,-126.7578125 126.7578125,-253.515625 0,-126.7578125"></polygon><g transform="translate(-96.7578125, -15)" style="" class="label"><rect></rect><foreignobject height="30" width="193.515625">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Wartość wykładnika n
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(78.640625, 560.171875)" id="flowchart-C-3" class="node default"><rect height="90" width="141.28125" y="-45" x="-70.640625" style="fill:#eafaf1 !important;stroke:#2ecc71 !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(-40.640625, -30)" style="" class="label"><rect></rect><foreignobject height="60" width="81.28125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+<b>Izobara</b><br>p = const
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(270.9140625, 560.171875)" id="flowchart-D-5" class="node default"><rect height="90" width="143.265625" y="-45" x="-71.6328125" style="fill:#f3e5f5 !important;stroke:#9b59b6 !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(-41.6328125, -30)" style="" class="label"><rect></rect><foreignobject height="60" width="83.265625">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+<b>Izoterma</b><br>T = const
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(463.4375, 560.171875)" id="flowchart-E-7" class="node default"><rect height="90" width="141.78125" y="-45" x="-70.890625" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(-40.890625, -30)" style="" class="label"><rect></rect><foreignobject height="60" width="81.78125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+<b>Adiabata</b><br>q = 0
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(654.2890625, 560.171875)" id="flowchart-F-9" class="node default"><rect height="90" width="139.921875" y="-45" x="-69.9609375" style="fill:#e3f2fd !important;stroke:#3498db !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(-39.9609375, -30)" style="" class="label"><rect></rect><foreignobject height="60" width="79.921875">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+<b>Izochora</b><br>v = const
+</p>
+</span>
+</div>
+</foreignobject></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="przemiana-politropowa-uogólnienie" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 7. Przemiana Politropowa (Uogólnienie)</h2>
-<div title="Równanie ogólne dla wszystkich procesów:">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Równanie ogólne dla wszystkich procesów:</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math display">\[ p v^n = const \]</span></p>
-</div>
-</div>
-</div>
+<h2><i class="bi bi-bezier2"></i> 7. Przemiana Politropowa (Uogólnienie)</h2>
+<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<p><strong>Równanie ogólne dla wszystkich procesów:</strong> <span class="math display">\[ p v^n = const \]</span></p>
 </div>
 <p>gdzie <span class="math inline">\(n\)</span> to wykładnik politropy.</p>
 <table class="caption-top">
@@ -570,7 +608,7 @@
 </tr>
 </tbody>
 </table>
-<div title="Warto wiedzieć" style="font-size: 0.6em;">
+<div title="Warto wiedzieć" style="font-size: 0.9em;">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -606,8 +644,8 @@
 </div>
 </div>
 </section>
-<section id="praca-techniczna-w-przemianach" class="slide level2">
-<h2><i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach</h2>
+<section id="praca-techniczna-w-przemianach" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach</h2>
 <p>Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:</p>
 <p><span class="math display">\[ l_t = n \cdot l \]</span> (dla politropy <span class="math inline">\(pv^n=const\)</span>).</p>
 <p><strong>Wzór inżynierski (dla gazu doskonałego):</strong> <span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
@@ -621,18 +659,30 @@
 <p><strong>Uwaga o znaku</strong></p>
 </div>
 <div class="callout-content">
-<p>Powyższy wzór podaje <strong>wartość pracy napędowej</strong> (dodatnią przy sprężaniu <span class="math inline">\(p_2 &gt; p_1\)</span>). W ścisłej konwencji termodynamicznej praca wykonana <strong>nad</strong> układem jest ujemna (<span class="math inline">\(l_t &lt; 0\)</span>), stąd w bilansach często pojawia się minus.</p>
+<p>Powyższy wzór podaje <strong>wartość pracy napędowej</strong> (dodatnią przy sprężaniu <span class="math inline">\(p_2 &gt; p_1\)</span>). W ścisłej konwencji termodynamicznej praca wykonana <strong>nad</strong> układem jest ujemna (<span class="math inline">\(l_t &lt; 0\)</span>). <strong>Przyjmując tę konwencję, wzór przyjmuje postać:</strong></p>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="praca-techniczna-w-przemianach-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach</h2>
+<p>Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:</p>
+<p><span class="math display">\[ l_t = n \cdot l \]</span> (dla politropy <span class="math inline">\(pv^n=const\)</span>).</p>
+<p><strong>Wzór inżynierski (dla gazu doskonałego):</strong> <span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] \]</span></p>
 <ul>
 <li>Dla izobary (<span class="math inline">\(n=0\)</span>): <span class="math inline">\(l_t = 0\)</span>.</li>
 <li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = RT \ln(p_1/p_2)\)</span>.</li>
 <li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = \Delta h = c_p(T_2 - T_1)\)</span>.</li>
 </ul>
 <p>gdzie: <span class="math inline">\(\kappa = c_p/c_v\)</span>.</p>
-<div class="fragment" title="**Wniosek dla Sprężarki:**">
+</section>
+<section id="praca-techniczna-w-przemianach-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach</h2>
+<p>Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:</p>
+<p><span class="math display">\[ l_t = n \cdot l \]</span> (dla politropy <span class="math inline">\(pv^n=const\)</span>).</p>
+<p><strong>Wzór inżynierski (dla gazu doskonałego):</strong> <span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] \]</span></p>
+<div title="**Wniosek dla Sprężarki:**" style="font-size: 1.1em;">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -667,17 +717,17 @@
 </ol>
 </div>
 </div></div>
-<div class="fragment">
+<div class="fragment" title="Uogólnienie" style="font-size: 0.8em;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Adnotacja</strong></p>
+<p><strong>Uogólnienie</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Uogólnienie:</strong> Dla <span class="math inline">\(k\)</span> stopni: <span class="math inline">\(p_i = p_1 \cdot (p_2/p_1)^{i/k}\)</span>. W praktyce: powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span> stosuje się 2 stopnie, powyżej <span class="math inline">\(\approx 60\)</span> — 3 stopnie.</p>
+<p>Dla <span class="math inline">\(k\)</span> stopni: <span class="math inline">\(p_i = p_1 \cdot (p_2/p_1)^{i/k}\)</span>. W praktyce: powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span> stosuje się 2 stopnie, powyżej <span class="math inline">\(\approx 60\)</span> — 3 stopnie.</p>
 </div>
 </div>
 </div>

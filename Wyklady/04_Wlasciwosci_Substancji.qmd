@@ -1,7 +1,7 @@
 ---
 title: "W4: Właściwości Substancji Czystych - I"
 subtitle: "Gazy Doskonałe, Mieszaniny i Rzeczywiste"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -17,11 +17,13 @@ institute: |
          
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -80,7 +82,7 @@ theme_set(theme_minimal(base_size = 18))
 
 ### Definicja
 
-::: {style="border-left: 10px solid #e60000; padding: 20px; background-color: #f0f0f0;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 **Substancja czysta** to substancja, która ma stały i jednorodny skład chemiczny w całej swojej objętości.
 :::
 
@@ -93,9 +95,9 @@ theme_set(theme_minimal(base_size = 18))
 
 Substancja czysta może występować w różnych fazach (stanach skupienia):
 
-1.  **Ciało Stałe (Solid):** Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.
-2.  **Ciecz (Liquid):** Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).
-3.  **Gaz (Gas/Vapor):** Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.
+1.  <i class="bi bi-box-seam"></i> **Ciało Stałe (Solid):** Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.
+2.  <i class="bi bi-cup-hot"></i> **Ciecz (Liquid):** Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).
+3.  <i class="bi bi-cloud"></i> **Gaz (Gas/Vapor):** Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.
 
 ---
 
@@ -103,30 +105,54 @@ Substancja czysta może występować w różnych fazach (stanach skupienia):
 
 ::: incremental
 *   Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w $0^\circ C$).
-*   **Przemiany fazowe:**
-    *   Topnienie / Krzepnięcie (Stałe $\leftrightarrow$ Ciecz)
-    *   Parowanie / Skraplanie (Ciecz $\leftrightarrow$ Gaz)
-    *   Sublimacja / Resublimacja (Stałe $\leftrightarrow$ Gaz)
 *   Podczas przemiany fazowej (dla substancji czystej), przy stałym ciśnieniu, temperatura pozostaje **STAŁA**.
+:::
+
+::: {style="text-align: center;"}
+```{mermaid}
+%%| fig-width: 15
+flowchart LR
+    S[Ciało Stałe] <-->|Topnienie / Krzepnięcie| L[Ciecz]
+    L <-->|Parowanie / Skraplanie| G[Gaz]
+    S <-->|Sublimacja / Resublimacja| G
+
+    style S fill:#dfe6e9,stroke:#636e72,stroke-width:2px
+    style L fill:#74b9ff,stroke:#0984e3,stroke-width:2px
+    style G fill:#dfe6e9,stroke:#636e72,stroke-width:2px,stroke-dasharray: 5 5
+```
 :::
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Model Gazu Doskonałego 
+## <i class="bi bi-box-seam"></i> 2. Model Gazu Doskonałego 
 
 ### Abstarakcja vs Rzeczywistość
 
 Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia (Kinetyczna Teoria Gazów):
 
-::: incremental
-1.  **Objętość cząsteczek = 0:** Cząsteczki traktujemy jako punkty materialne. W rzeczywistości mają skończoną średnicę.
-2.  **Brak oddziaływań:** Między cząsteczkami nie działają żadne siły przyciągania ani odpychania (poza momentem zderzenia).
-3.  **Zderzenia doskonale sprężyste:** Nie ma straty energii kinetycznej podczas zderzeń.
+::::: {.columns}
+
+::: {.column width="50%" .incremental}
+**Założenia:**
+
+1.  **Objętość cząsteczek = 0**
+2.  **Brak oddziaływań**
+3.  **Zderzenia sprężyste**
 :::
+
+::: {.column width="50%" .incremental}
+**Rzeczywistość:**
+
+1.   **Cząsteczki mają średnicę.**
+2.   **Przyciągają się (van der Waals).**
+3.   **Tracą energię przy zderzeniach nieidealnych.**
+:::
+
+:::::
 
 ---
 
-## <i class="bi bi-bookmark"></i> Kiedy stosować Gaz Doskonały? 
+## <i class="bi bi-question-circle"></i> Kiedy stosować Gaz Doskonały? 
 
 Model ten jest zadziwiająco dokładny dla większości gazów rzeczywistych, JEŚLI:
 
@@ -139,7 +165,7 @@ Dla powietrza w warunkach otoczenia ($p \approx 1$ bar, $T \approx 20^\circ C$),
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Równanie Stanu (Clapeyron) 
+## <i class="bi bi-calculator"></i> 3. Równanie Stanu (Clapeyron) 
 
 Wiązanie między ciśnieniem ($p$), temperaturą ($T$) i objętością ($v$) dla gazu doskonałego:
 
@@ -157,7 +183,7 @@ $$ p \cdot V = m \cdot R \cdot T $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Stała Gazowa Uniwersalna czy Indywidualna? 
+## <i class="bi bi-exclamation-triangle"></i> Stała Gazowa Uniwersalna czy Indywidualna? 
 
 Tu studenci najczęściej robią błędy!
 
@@ -166,14 +192,16 @@ Stała fizyczna, niezależna od rodzaju gazu:
 $$ R_u \approx 8314.46 \quad \frac{J}{kmol \cdot K} $$
 Używana w chemii w równaniu dla moli: $pV = n R_u T$.
 
+::: {.fragment}
 ### Indywidualna Stała Gazowa ($R$)
 Zależy od masy molowej ($M$) konkretnego gazu:
 $$ R = \frac{R_u}{M} $$
 Używana w technice w równaniu dla masy: $pV = m R T$.
+:::
 
 ---
 
-## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ 
+## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ { .smaller }
 
 $$ R = \frac{8314}{M} $$
 
@@ -188,7 +216,7 @@ $$ R = \frac{8314}{M} $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> 4. Ciepła Właściwe 
+## <i class="bi bi-thermometer-half"></i> 4. Ciepła Właściwe 
 
 Ilość ciepła potrzebna do podgrzania 1 kg substancji o 1 K.
 Dla gazów zależy to od sposobu ogrzewania!
@@ -201,7 +229,7 @@ Dla gazów zależy to od sposobu ogrzewania!
 
 ---
 
-## <i class="bi bi-bookmark"></i> Relacja Mayera (Wyprowadzenie) 
+## <i class="bi bi-pencil-square"></i> Relacja Mayera (Wyprowadzenie) 
 
 Dla gazu doskonałego entalpia $h$ zależy tylko od temperatury.
 Definicja entalpii:
@@ -219,7 +247,7 @@ $$ C_p = C_v + R $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Co wynika z Relacji Mayera? 
+## <i class="bi bi-lightbulb"></i> Co wynika z Relacji Mayera? 
 
 $$ C_p > C_v $$
 
@@ -233,7 +261,7 @@ Przy $V=const$, praca wynosi zero, więc całe ciepło idzie w temperaturę.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Uwaga na oznaczenia! 
+## <i class="bi bi-exclamation-octagon"></i> Uwaga na oznaczenia! 
 Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
@@ -248,7 +276,7 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Zasada Ekwipartycji Energii 
+## <i class="bi bi-share"></i> Zasada Ekwipartycji Energii 
 
 ### Teoria Ciepła Właściwego
 
@@ -280,7 +308,7 @@ $$ (Mc_v) = \frac{f}{2} (MR) $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$) 
+## <i class="bi bi-arrow-left-right"></i> Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$) 
 
 Obie wielkości mogą się mylić, przez podobne oznaczenie
 
@@ -313,7 +341,7 @@ To potężne uproszczenie w obliczeniach inżynierskich.
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Mieszaniny Gazowe 
+## <i class="bi bi-collection"></i> 5. Mieszaniny Gazowe 
 
 W technice rzadko pracujemy z czystym tlenem czy azotem. Zazwyczaj mamy mieszaninę (np. spaliny w silniku, powietrze w wentylacji).
 
@@ -323,9 +351,9 @@ Potrzebujemy tylko obliczyć zastępczą stałą gazową $R_{miesz}$ i zastępcz
 
 ---
 
-## <i class="bi bi-bookmark"></i> Prawo Daltona (Ciśnienia) 
+## <i class="bi bi-layers"></i> Prawo Daltona (Ciśnienia) 
 
-::: {style="border: 2px solid blue; padding: 20px;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.
 :::
 
@@ -335,7 +363,7 @@ $$ p_{calk} = p_1 + p_2 + ... + p_n = \sum p_i $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Wizualizacja Prawa Daltona 
+## <i class="bi bi-bar-chart-steps"></i> Wizualizacja Prawa Daltona 
 
 ```{r}
 #| label: dalton-viz
@@ -375,7 +403,7 @@ p1 + p2 + p3
 
 ---
 
-## <i class="bi bi-bookmark"></i> Udziały Molowe ($y_i$) i Obliczanie $p_i$ 
+## <i class="bi bi-pie-chart"></i> Udziały Molowe ($y_i$) i Obliczanie $p_i$ 
 
 W g.d ciśnienie wynika z liczby uderzeń cząsteczek. Zatem ciśnienie cząstkowe zależy wprost od ilości moli danego gazu:
 
@@ -402,7 +430,7 @@ Potrzebujemy lepszego równania stanu.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Równanie Van der Waalsa 
+## <i class="bi bi-bricks"></i> Równanie Van der Waalsa 
 
 $$ \left( p + \frac{a}{v^2} \right) (v - b) = R T $$
 
@@ -413,11 +441,11 @@ Dwie poprawki względem Clapeyrona ($pv=RT$):
 
 ---
 
-## <i class="bi bi-bookmark"></i> Izotermy Andrewsa (Gaz Rzeczywisty) 
+## <i class="bi bi-graph-up"></i> Izotermy Andrewsa (Gaz Rzeczywisty) 
 
 Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu doskonałego ($p \sim 1/v$).
 
-:::: {.columns}
+::::: {.columns}
 
 ::: {.column width="60%"}
 ```{r}
@@ -505,11 +533,11 @@ ggplot() +
 *   Gdybyśmy użyli tu modelu $pV=mRT$, dostalibyśmy błąd rzędu 100%!
 :::
 
-::::
+:::::
 
 ---
 
-## <i class="bi bi-bookmark"></i> Zasada Stanów Odpowiednich 
+## <i class="bi bi-aspect-ratio"></i> Zasada Stanów Odpowiednich 
 
 Inżynierowie poradzili sobie z różnorodnością gazów wprowadzając **Współczynnik Ściśliwości $Z$**:
 

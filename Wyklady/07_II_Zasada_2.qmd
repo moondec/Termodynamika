@@ -1,7 +1,7 @@
 ---
 title: "W7: II Zasada Termodynamiki - II"
 subtitle: "Entropia i III Zasada Termodynamiki"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -66,20 +68,44 @@ theme_set(theme_minimal(base_size = 18))
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa 
+## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa{auto-animate="true"}
 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:
 
 $$ \oint \frac{đ Q}{T} \le 0 $$
 
 >Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.
-
+:::
 
 ::: {.fragment .callout-note title="Interpretacja"}
 1.  **$= 0$**: Cykl jest **odwracalny** (idealny, brak tarcia).
 2.  **$< 0$**: Cykl jest **nieodwracalny** (rzeczywisty, straty).
 3.  **$> 0$**: Cykl jest **niemożliwy** (łamie II Zasadę).
 :::
+
+---
+
+## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa{auto-animate="true"}
+
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+graph TD
+    A[Nierowność<br>Clausiusa] --> B{Wynik<br>całkowania}
+    B -- "Rowne 0" --> C[Proces<br>Odwracalny<br>Idealny]
+    B -- "Mniejsze od 0" --> D[Proces<br>Nieodwracalny<br>Rzeczywisty]
+    B -- "Wieksze od 0" --> E[Proces<br>Niemozliwy]
+
+    style A fill:#e3f2fd,stroke:#2196f3,stroke-width:4px
+    style C fill:#eafaf1,stroke:#27ae60,stroke-width:4px
+    style D fill:#fff3e0,stroke:#f57c00,stroke-width:4px
+    style E fill:#ffebee,stroke:#c62828,stroke-width:4px
+    
+    linkStyle 0,1,2,3 stroke-width:4px,fill:none,stroke:black
+```
+</div>
+
 
 ---
 
@@ -132,7 +158,47 @@ Dlaczego ciepło płynie od gorącego do zimnego?
 
 ::: {.column width="60%"}
 
-::: {.fragment .callout-note title="Suma zmian:"}
+```{r}
+#| label: heat-entropy-flow
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4
+
+# Dane do wykresu przypływu ciepła
+flow_data <- data.frame(
+  x = c(0, 5, 10),
+  y = c(5, 5, 5),
+  label = c("Ciało Gorące\n(Th)", "Przepływ Q", "Ciało Zimne\n(Tl)")
+)
+
+ggplot() +
+  # Blok A (Gorący)
+  geom_rect(aes(xmin=0, xmax=3, ymin=3, ymax=7), fill="#e74c3c", color="black", size=1) +
+  annotate("text", x=1.5, y=5, label="Th", size=8, fontface="bold", color="white") +
+  
+  # Blok B (Zimny)
+  geom_rect(aes(xmin=7, xmax=10, ymin=3, ymax=7), fill="#3498db", color="black", size=1) +
+  annotate("text", x=8.5, y=5, label="Tl", size=8, fontface="bold", color="white") +
+  
+  # Strzałka Q
+  geom_segment(aes(x=3.1, xend=6.9, y=5, yend=5), arrow=arrow(length=unit(0.5,"cm")), color="#d35400", size=3) +
+  annotate("text", x=5, y=5.5, label="Q", size=6, fontface="bold", color="#d35400") +
+  
+  # Strzałki Entropii (Zmiany)
+  # A: Spadek
+  annotate("text", x=1.5, y=2.5, label="dS = -Q/Th", size=5, color="#c0392b", fontface="bold") +
+  
+  # B: Wzrost
+  annotate("text", x=8.5, y=2.5, label="dS = +Q/Tl", size=5, color="#2980b9", fontface="bold") +
+  
+  # Suma
+  annotate("text", x=5, y=1.5, label="Suma dS > 0", size=6, color="#27ae60", fontface="bold") +
+
+  xlim(-1, 11) + ylim(0, 8) +
+  theme_void()
+```
+
+::: {.fragment .callout-note title="Suma zmian:" style="font-size: 0.9em;"}
 $$\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})$$
 Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! Proces spontaniczny.
 :::
@@ -143,9 +209,11 @@ Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! P
 
 ## <i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii 
 
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Dla układu izolowanego (adiabatycznego):
 
 $$ \Delta S_{izol} \ge 0 $$
+:::
 
 ::: incremental
 

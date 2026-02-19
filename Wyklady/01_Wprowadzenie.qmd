@@ -1,7 +1,7 @@
 ---
 title: "W1: Wprowadzenie do Termodynamiki Technicznej"
 subtitle: "Podstawowe Pojęcia, Układy, Równowaga i Procesy"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -17,6 +17,7 @@ institute: |
          
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
@@ -93,17 +94,8 @@ theme_set(theme_minimal(base_size = 18))
 :::: {style="position: relative; display: inline-block;"}
 <img src="../img/elearning_main.png" style="width: 100%;fig-align: center"/>
 
-::: {.fragment style="
-      position: absolute;
-      top: 0%;        /* Odległość od góry obrazka */
-      left: 89%;       /* Odległość od lewej */
-      width: 150px;    /* Szerokość ramki */
-      height: 100px;   /* Wysokość ramki */
-      border: 10px solid #e60000;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Opcjonalny cień dla lepszej widoczności */
-      z-index: 10;
-  "}
-:::
+<div class="fragment" style="position: absolute; top: 0%; left: 89%; width: 150px; height: 100px; border: 10px solid #e60000; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 10;">
+</div>
 ::::
 
 ## <i class="bi bi-fire"></i> Czym jest Termodynamika?
@@ -115,22 +107,22 @@ Termodynamika to **dział fizyki** zajmujący się badaniem **termicznych właś
 
 Bada ona przemiany pomiędzy różnymi formami energii, *przede wszystkim* między:
 
-:::{style="text-align: left; margin-left: 150px;"}
+::: {style="text-align: left; margin-left: 150px;"}
 -   **Ciepłem** ($Q$)
 -   **Pracą** ($L$)
 :::
 
 ### Termodynamika Techniczna w Inżynierii {.fragment .fade-up}
 
-::: incremental 
+:::: incremental 
 
 ::: {.r-stack} 
 
-::: {style="text-align: left; margin-left: 150px;"}
+<div style="text-align: left; margin-left: 150px;">
 -   **Obliczanie właściwości par:** Np. para wodna w turbinach.
 -   **Analiza obiegów:** Silniki spalinowe, elektrownie.
 -   **Urządzenia:** Sprężarki, pompy ciepła, chłodnictwo.
-:::
+</div>
 
 ::: {.fragment .fade-up .callout-note title="Innymi słowy..." style="font-size: 1.3em; color: red; background-color: #e3f2fd;"}
 To nauka o tym, jak zamienić chaos (ciepło) w użyteczne działanie (pracę).
@@ -138,7 +130,7 @@ To nauka o tym, jak zamienić chaos (ciepło) w użyteczne działanie (pracę).
 
 :::
 
-:::
+::::
 
 ## Poziomy Opisu Układu
 
@@ -146,9 +138,8 @@ To nauka o tym, jak zamienić chaos (ciepło) w użyteczne działanie (pracę).
 
 Możemy patrzeć na układ z dwóch perspektyw:
 
-:::::: columns
-::::: incremental
-::: {.column width="50%"}
+::::: columns
+::: {.column width="50%" .incremental}
 ### 📊 Makrostan
 
 -   Opis za pomocą wielkości **mierzalnych** i uśrednionych.
@@ -157,7 +148,7 @@ Możemy patrzeć na układ z dwóch perspektyw:
 -   **To tzw. metoda** $fenomenologiczna$
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .incremental}
 ### 🔬 Mikrostan
 
 -   Opis stanu każdej pojedynczej cząstki.
@@ -166,7 +157,6 @@ Możemy patrzeć na układ z dwóch perspektyw:
 -   **To tzw. metoda** $statystyczna$
 :::
 :::::
-::::::
 
 ::: {.fragment .fade-up .callout-note title="Wniosek"}
 Makrostan o największej liczbie odpowiadających mu mikrostanów (największym $\Omega$) jest **najbardziej prawdopodobny** i odpowiada stanowi równowagi
@@ -457,7 +447,8 @@ ggplot() +
 
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 14
+%%| fig-width: 8
+%%| fig-height: 3
 flowchart LR
     subgraph Rownowaga [Pełna Równowaga<br>Termodynamiczna]
         direction TB
@@ -579,7 +570,7 @@ Wyobraź sobie szklankę gorącej herbaty. Jeśli przelejesz połowę herbaty do
 
 ### Definicja Temperatury
 
-::::::: columns
+::::: columns
 :::: {.column width="50%"}
 **Sformułowanie:** Jeśli system A jest w **równowadze termicznej** z systemem B, a system A jest w równowadze termicznej z systemem C, to systemy B i C są w równowadze termicznej między sobą.
 
@@ -598,7 +589,7 @@ Wyobraź sobie szklankę gorącej herbaty. Jeśli przelejesz połowę herbaty do
 Dwa ciała znajdujące się w równowadze termicznej z trzecim ciałem są także w równowadze termicznej między sobą.
 :::
 ::::
-:::::::
+:::::
 
 ## <i class="bi bi-lightning-charge"></i> Energia układu jako ___funkcja stanu___
 
@@ -634,12 +625,13 @@ W układzie SI podstawową jednostką pracy, ciepła i energii jest **dżul (J)*
     * Koniogodzina: $1 \text{ KMh}$ (praca silnika o mocy 1 KM w ciągu 1 h).
 
 
-## Temperatura i Skale
+## <i class="bi bi-thermometer"></i> Temperatura i Skale
 
 ### Konwersje Skal
 
 ::::: columns
 ::: {.column width="60%"}
+::: {style="font-size: 0.9em;"}
 W Termodynamice Technicznej i obliczeniach preferowana jest **skala bezwzględna (Kelvina)**.
 
 $$ T[K] = t[°C] + 273.15 $$
@@ -647,6 +639,7 @@ $$ T[K] = t[°C] + 273.15 $$
 Konwersja na skalę Fahrenheita ($t_F$): $$ t_F = \frac{9}{5} t + 32; \space t = \frac{5}{9} (t_F - 32) $$
 
 Konwersja na skalę Rankine \[°R\] ($t_R$): $$ t_R = t_F + 459,67; \space t_F = t_R - 459,67 $$ $$ t_R = \frac{9}{5} T; \space T = \frac{5}{9} t_R $$
+:::
 :::
 
 ::: {.column width="40%"}
@@ -656,21 +649,38 @@ Konwersja na skalę Rankine \[°R\] ($t_R$): $$ t_R = t_F + 459,67; \space t_F =
 :::
 :::::
 
-## Ciśnienie i Energia Cząstek
+## <i class="bi bi-speedometer"></i>Ciśnienie i Energia Cząstek
+
 
 ### Makroskopowe $p$ a Mikroskopowe $v$
 
 Ciśnienie makroskopowe ($p$) jest bezpośrednio związane z **ruchami cząstek** w mikroskali.
 
+<br>
+
 ::::: columns
-::: {.column width="50%"}
-**Równanie kinetyczne gazów:** Ciśnienie zależy od liczby cząstek $N$, masy $m$ i średniej kwadratu prędkości $\overline{v^2}$.
+::: {.column width="48%"}
+::: { style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
+**Równanie kinetyczne gazów:**
+
+Ciśnienie zależy od liczby cząstek $N$, masy pojedynczej cząsteczki $m$ i średniej kwadratu prędkości $\overline{v^2}$.
 
 $$ p V = \frac{1}{3} N m \overline{v^2} $$
 :::
+:::
 
-::: {.column width="50%"}
-**Właściwości ciśnienia:** - W gazie jako całości rozkład prędkości jest **izotropowy**. - Ciśnienie to siła $dF$ wywierana przez cząstki na pole powierzchni $A$: $p = dF/A$.
+::: {.column width="4%"}
+<!-- Spacer -->
+:::
+
+::: {.column width="48%"}
+::: { style="background-color: #fff3e0; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
+**Właściwości ciśnienia:**
+
+*   W gazie jako całości rozkład prędkości jest **izotropowy** (taki sam w każdym kierunku).
+*   Ciśnienie to siła $dF$ wywierana przez cząstki na pole powierzchni $A$:
+    $$ p = \frac{dF}{dA} $$
+:::
 :::
 :::::
 
@@ -762,20 +772,26 @@ $$ \Delta p = \rho_{cieczy} \cdot g \cdot h $$
 
 ::::: columns
 ::: {.column width="33%"}
-**1. Współczynnik Objętościowej Rozszerzalności Cieplnej (**$\alpha$): Mierzy względną zmianę objętości przy stałym ciśnieniu. $$ \alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p $$
+::: {style="background-color: #c7f76dff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
+**1. Współczynnik Objętościowej Rozszerzalności Cieplnej <br>(**$\alpha$): Mierzy względną zmianę objętości przy stałym ciśnieniu. $$ \alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p $$
+:::
 :::
 
 ::: {.column width="33%"}
+::: {style="background-color: #f6ce94ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 **2. Współczynnik rozprężliwości (**$\beta$): Mierzy względną zmianę ciśnienia przy stałej objętości. $$ \beta = \frac{1}{p} \left(\frac{\partial p}{\partial T}\right)_v $$
 :::
-
-::: {.column width="33%"}
-**3. Współczynnik Ściśliwości Izotermicznej (**$\gamma$): Mierzy względną zmianę objętości przy stałej temperaturze. $$ \gamma = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T $$
 :::
-
+::: {.column width="33%"}
+::: {style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
+**3. Współczynnik Ściśliwości Izotermicznej <br>(**$\gamma$): Mierzy względną zmianę objętości przy stałej temperaturze. $$ \gamma = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T $$
+:::
+:::
 :::::
 
-**Korelacja:** Istnienie równania stanu implikuje, że wszystkie te trzy wielkości ($\alpha, \beta, \gamma$) są ze sobą powiązane.
+::: {.callout-note title="Korelacja" style="font-size: 70%;"}
+Istnienie równania stanu implikuje, że wszystkie te trzy wielkości ($\alpha, \beta, \gamma$) są ze sobą powiązane.
+:::
 
 ## Równanie Stanu
 
@@ -785,15 +801,19 @@ Równanie stanu to związek funkcyjny między parametrami stanu ($p, V, T$) dla 
 
 $$ f(p, V, T) = 0 $$
 
-**Cel:** Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to punkt wyjścia dla analizy gazów.
+::: {.callout-note title="Cel"}
+Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to punkt wyjścia dla analizy gazów.
+:::
 
-## Modele Gazu: Idealny vs. Rzeczywisty
+## Modele Gazu: Idealny vs. Rzeczywisty{style="color: #7f2d2dff"}
 
 ::::: columns
-::: {.column width="50%"}
-### Model Idealny: Gaz Doskonały
+:::: {.column width="50%"}
+### [Model Idealny: Gaz Doskonały]{style="color: #422ef4ff"}
 
-### Równanie Clapeyrona
+### [Równanie Clapeyrona]{style="color: #5865c6ff"}
+
+::: {style="background-color: #b3b9f4ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 
 Równanie stanu dla 1 mola gazu doskonałego: $$ \frac{pV}{RT} = 1 $$
 
@@ -801,27 +821,29 @@ Równanie stanu dla 1 mola gazu doskonałego: $$ \frac{pV}{RT} = 1 $$
 
 **Ograniczenia:** - Gazy rzeczywiste (He, N$_2$, CH$_4$, Ar) odbiegają od tego idealnego zachowania, szczególnie przy **dużych ciśnieniach** i **niskich temperaturach**.
 :::
+::::
 
-::: {.column width="50%"}
-### Model Rzeczywisty: Gaz Rzeczywisty
+:::: {.column width="50%" style="font-size: 0.95em;"}
+### [Model Rzeczywisty: Gaz Rzeczywisty]{style="color: #25560dff"}
 
-### Równanie Van der Waalsa
+### [Równanie Van der Waalsa]{style="color: #468826ff"}
 
+::: {style="background-color: #47a542ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 Równanie van der Waalsa koryguje model idealny, uwzględniając:
 
 $$ \left(p + \frac{a}{V^2}\right) (V - b) = RT $$
 
 **Poprawki Fizyczne:** 
 
-::: {style="font-size: 70%;"}
+::: {style="font-size: 0.7em;"}
 1. **Objętość cząsteczek**
 $b$: Odejmujemy objętość własną cząsteczek od objętości $V$ zbiornika. Wpływa to na ograniczenie dostępnej przestrzeni dla ruchu cząstek.
 
 2. **Oddziaływania**
 $a/V^2$: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania między cząsteczkami. Poprawka ta uwzględnia fakt, że cząstki gazu rzeczywistego wzajemnie się przyciągają, co redukuje parcie na ścianki naczynia.
 :::
-
 :::
+::::
 :::::
 
 ## Implikacje Stanu Rzeczywistego
@@ -836,8 +858,8 @@ Równanie van der Waalsa może dawać **trzy różne objętości** ($V_1, V_2, V
 -   $V_3$: Rozwiązanie bez znaczenia fizycznego.
 :::
 
-::: {.fragment}
-**Punkt Krytyczny (**$T_k$): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, $V_1 = V_2 = V_k$.
+::: {.fragment .callout-note title="Punkt Krytyczny"}
+(**$T_k$**): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, $V_1 = V_2 = V_k$.
 :::
 
 ## Stany Metastabilne
@@ -847,19 +869,19 @@ Równanie van der Waalsa może dawać **trzy różne objętości** ($V_1, V_2, V
 Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistości można osiągnąć w specyficznych warunkach:
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="50%" .callout-warning appearance="simple"}
 **1. Para Przesycona:** Izotermiczne sprężanie pary niezawierającej ośrodków kondensacji (pyłków, jonów).
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .callout-warning appearance="simple"}
 **2. Ciecz Przegrzana:** Izotermiczne rozprężanie cieczy pozbawionej zanieczyszczeń.
 :::
 :::::
 
-::: {.callout-note}
-Te stany są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)*
+::: {.fragment .callout-note title="Stany Metastabilne:"}
+Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)
 :::
-
+ 
 ## Przemiany Fazowe
 
 ### Wykresy $p-T$
@@ -885,6 +907,7 @@ Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja i
 1.  Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?
 2.  Czy temperatura w $^\circ C$ jest parametrem intensywnym czy ekstensywnym?
 3.  Jeśli manometr na oponie pokazuje 2.2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?
-    *   Odp: $2.2 + 1.0 = 3.2$ bara.
+
+    [Odp: $2.2 + 1.0 = 3.2$ bara.]{.fragment style="color: #7f2d2dff"}
 
 Dziękuję za uwagę!

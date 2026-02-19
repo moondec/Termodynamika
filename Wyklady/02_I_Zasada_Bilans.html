@@ -9,7 +9,7 @@
 <link href="02_I_Zasada_Bilans_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W2: I Zasada Termodynamiki</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -163,7 +163,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -199,7 +199,7 @@
 </div></div>
 </section>
 <section id="energia-wewnętrzna-u" class="slide level2">
-<h2>Energia Wewnętrzna (<span class="math inline">\(U\)</span>)</h2>
+<h2><i class="bi bi-battery-charging"></i> Energia Wewnętrzna (<span class="math inline">\(U\)</span>)</h2>
 <h3 id="definicja-i-charakterystyka">Definicja i Charakterystyka</h3>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p><strong>Energia wewnętrzna (<span class="math inline">\(U\)</span>)</strong> to suma całkowitej energii kinetycznej składników układu i energii potencjalnej ich wzajemnego oddziaływania.</p>
@@ -211,7 +211,7 @@
 </ul>
 </section>
 <section id="różniczki-zupełne-i-niezupełne" class="slide level2">
-<h2>Różniczki Zupełne i Niezupełne</h2>
+<h2><i class="bi bi-calculator"></i> Różniczki Zupełne i Niezupełne</h2>
 <h3 id="d-vs.-đ">d vs.&nbsp;đ</h3>
 <p>W termodynamice kluczowe jest rozróżnienie matematyczne:</p>
 <ol type="1">
@@ -250,7 +250,7 @@
 </div>
 </section>
 <section id="ciepło-q" class="slide level2">
-<h2>Ciepło (<span class="math inline">\(Q\)</span>)</h2>
+<h2><i class="bi bi-fire"></i> Ciepło (<span class="math inline">\(Q\)</span>)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="definicja-i-konwencja-znaków">Definicja i Konwencja Znaków</h3>
@@ -264,9 +264,19 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <div style="text-align: center;">
-<p><img data-src="../img/box2.png" style="width:80.0%"></p>
-<div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sign-convention" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-sign-convention-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="02_I_Zasada_Bilans_files/figure-revealjs/fig-sign-convention-1.png" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sign-convention-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 </div>
 </div></div>
@@ -275,7 +285,7 @@
 </div>
 </section>
 <section id="praca-l" class="slide level2">
-<h2>Praca (<span class="math inline">\(L\)</span>)</h2>
+<h2><i class="bi bi-gear-wide-connected"></i> Praca (<span class="math inline">\(L\)</span>)</h2>
 <h3 id="praca-objętościowa">Praca Objętościowa</h3>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.7em;">
 <p>Praca makroskopowa jest określona przez zmianę parametrów układu pod wpływem sił uogólnionych.</p>
@@ -284,12 +294,15 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Elementarna praca objętościowa (bezwzględna):</strong> <span class="math display">\[ đL = p \cdot dV \]</span> <em>(Gdzie <span class="math inline">\(p\)</span> to ciśnienie, a <span class="math inline">\(dV\)</span> to zmiana objętości)</em>.</p>
+<div class="fragment fade-up">
 <ul>
 <li><strong>Sprężanie (<span class="math inline">\(dV &lt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
 <li><strong>Rozprężanie (<span class="math inline">\(dV &gt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL &gt; 0\)</span>).</li>
 <li><strong>Nie uwzględniamy tu tarcia</strong></li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
+<div class="fragment fade-up">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -299,21 +312,24 @@
 </div>
 </div>
 </div>
+</div>
 </div></div>
 </section>
 <section id="i-zasada-dla-układów-zamkniętych" class="slide level2">
-<h2>I Zasada dla Układów Zamkniętych</h2>
+<h2><i class="bi bi-box-seam"></i> I Zasada dla Układów Zamkniętych</h2>
 <h3 id="bilans-energii">Bilans Energii</h3>
 <p>Dla procesów kwazistatycznych w układach zamkniętych (bez wymiany masy), przy braku pracy nieobjętościowej:</p>
 <p><span class="math display">\[ dU = đQ - p \cdot dV \]</span></p>
-<h3 id="postać-całkowa">Postać całkowa:</h3>
+<h3 id="po-scałkowaniu">Po scałkowaniu:</h3>
 <p><span class="math display">\[ \Delta U = Q - L \]</span></p>
 <div style="text-align: left; margin-left: 150px;">
+<div class="fragment fade-up">
 <p>Gdzie:</p>
 <ul>
 <li><span class="math inline">\(\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)\)</span>.</li>
 <li><span class="math inline">\(L = \int_{V_1}^{V_2} p(V) dV\)</span>.</li>
 </ul>
+</div>
 </div>
 <div class="r-stack fragment fade-up" style="position: absolute; top: 0.1%; right: 10%; width: 100%;">
 <div class="columns">
@@ -333,7 +349,7 @@
 
 </section>
 <section id="entalpia-h" class="slide level2">
-<h2>Entalpia (<span class="math inline">\(H\)</span>)</h2>
+<h2><i class="bi bi-speedometer2"></i> Entalpia (<span class="math inline">\(H\)</span>)</h2>
 <h3 id="definicja-i-znaczenie">Definicja i Znaczenie</h3>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p><strong>Entalpia (<span class="math inline">\(H\)</span> lub <span class="math inline">\(I\)</span>)</strong> jest funkcją stanu zdefiniowaną jako suma energii wewnętrznej i iloczynu ciśnienia oraz objętości.</p>
@@ -344,7 +360,7 @@
 <li class="fragment">Dla gazów doskonałych zależy tylko od temperatury.</li>
 <li class="fragment">Różniczka entalpii: <span class="math inline">\(dH = dU + p dV + V dp\)</span></li>
 </ul>
-<div class="fragment fade-up" title="Znaczenie" style="font-size: 0.9em;">
+<div class="fragment fade-up" title="Znaczenie" style="font-size: 0.8em;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -361,7 +377,7 @@
 </div>
 </section>
 <section id="analogia-dla-entalpii-z-życia-impreza-w-klubie" class="slide level2">
-<h2>Analogia dla <strong><em>entalpii</em></strong> z życia: “Impreza w Klubie”</h2>
+<h2><i class="bi bi-music-note-beamed"></i> Analogia dla <strong><em>entalpii</em></strong> z życia: “Impreza w Klubie”</h2>
 <p>Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnieniem).</p>
 <ol type="1">
 <li><strong>Twoja energia (<span class="math inline">\(U\)</span>):</strong> To jak dobrze tańczysz.</li>
@@ -374,7 +390,7 @@
 <p><strong>Entalpia (<span class="math inline">\(H\)</span>)</strong> to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.</p>
 </section>
 <section id="kiedy-używamy-u-a-kiedy-h" class="slide level2">
-<h2>Kiedy używamy <span class="math inline">\(U\)</span>, a kiedy <span class="math inline">\(H\)</span>?</h2>
+<h2><i class="bi bi-signpost-split"></i> Kiedy używamy <span class="math inline">\(U\)</span>, a kiedy <span class="math inline">\(H\)</span>?</h2>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>To jest najważniejszy slajd dla inżyniera!</p>
 </div>
@@ -406,7 +422,7 @@
 </table>
 </section>
 <section id="entalpia-w-technice" class="slide level2">
-<h2>Entalpia w Technice</h2>
+<h2><i class="bi bi-buildings"></i> Entalpia w Technice</h2>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>W nawiązaniu do <strong>I zasady termodynamiki</strong>, zmiana energii wewnętrznej wynosi: <span class="math inline">\(dU=đQ − p dV\)</span>. Zatem: <span class="math inline">\(đQ = dU + p dV\)</span>, a w procesach <strong>izobarycznych<br>(<span class="math inline">\(p = const, dp = 0\)</span>)</strong>, dlatego:</p>
 </div>
@@ -430,7 +446,7 @@
 <p><span class="fragment" style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;">A co się dzieje z energią dostarczaną przy stałej obiętości?</span></p>
 </section>
 <section id="entalpia-e-a-energia-wewnętrzna-u" class="slide level2">
-<h2>Entalpia (E) a Energia Wewnętrzna (U)</h2>
+<h2><i class="bi bi-arrow-left-right"></i> Entalpia (E) a Energia Wewnętrzna (U)</h2>
 <h3 id="ponieważ-q-delta-u-l---i-zasada-termodynamiki-z-której-wynika-że-jeżeli">Ponieważ: <span style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"><span class="math inline">\(Q = \Delta U + L\)</span></span> - I zasada termodynamiki, z której wynika, że jeżeli:</h3>
 <ol type="1">
 <li>Zachodzi przemiana izochoryczna: <strong>V=const</strong>.</li>
@@ -443,7 +459,7 @@
 </div>
 </section>
 <section id="pojemność-cieplna" class="slide level2">
-<h2>Pojemność Cieplna</h2>
+<h2><i class="bi bi-thermometer-half"></i> Pojemność Cieplna</h2>
 <table class="caption-top">
 <caption>Porównanie przemian charakterystycznych gazu doskonałego</caption>
 <colgroup>
@@ -488,7 +504,7 @@
 </table>
 </section>
 <section id="c_p-c_v-zastosowanie-praktyczne" class="slide level2">
-<h2><span class="math inline">\(C_p\)</span> &gt; <span class="math inline">\(C_v\)</span> (Zastosowanie praktyczne)</h2>
+<h2><i class="bi bi-graph-up-arrow"></i> <span class="math inline">\(C_p\)</span> &gt; <span class="math inline">\(C_v\)</span> (Zastosowanie praktyczne)</h2>
 <ul>
 <li>Przy <span class="math inline">\(v=const \ (c_v)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz TYLKO się ogrzewa.</span></li>
 <li>Przy <span class="math inline">\(p=const \ (c_p)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.</span></li>
@@ -499,7 +515,7 @@
 </section>
 
 <section id="uwaga-na-oznaczenia" class="slide level2">
-<h2>Uwaga na oznaczenia!</h2>
+<h2><i class="bi bi-exclamation-triangle"></i> Uwaga na oznaczenia!</h2>
 <p>Wzory <span class="math inline">\(c_p - c_v = ...\)</span> ma różne postacie w zależności od jednostek.</p>
 <table class="caption-top">
 <colgroup>
@@ -542,7 +558,7 @@
 </blockquote>
 </section>
 <section id="podsumowanie-w2" class="slide level2">
-<h2>Podsumowanie W2</h2>
+<h2><i class="bi bi-card-checklist"></i> Podsumowanie W2</h2>
 <h3 id="kluczowe-wnioski">Kluczowe Wnioski</h3>
 <ol type="1">
 <li><strong>Energia Wewnętrzna (<span class="math inline">\(U\)</span>):</strong> Funkcja stanu, zależy od temperatury (dla g.d.).</li>

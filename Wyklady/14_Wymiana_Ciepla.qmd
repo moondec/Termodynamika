@@ -1,7 +1,7 @@
 ---
 title: "W14: Wymiana Ciepła"
 subtitle: "Mechanizmy Transportu Energii"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -10,11 +10,13 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
@@ -66,25 +68,48 @@ theme_set(theme_minimal(base_size = 18))
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Mechanizmy Wymiany Ciepła 
+## <i class="bi bi-arrows-expand"></i> 1. Mechanizmy Wymiany Ciepła 
 
 ::: {.callout-note title="Podstawowa zasada"}
 Ciepło płynie zawsze, gdy istnieje $\Delta T$.
 Jakim "autobusem"?
 :::
+<div style="text-align: center; transform: scale(2.7); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 10
+%%| fig-height: 1
 
-::: {.incremental}
-1.  **Przewodzenie (Conduction):** Przekazywanie energii przez drgania sieci krystalicznej (ciała stałe). B. wydajne w metalach.
-2.  **Konwekcja (Convection):** Unoszenie energii przez ruch płynu (woda, powietrze).
-3.  **Promieniowanie (Radiation):** Fala elektromagnetyczna. Działa w próżni.
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    subgraph "Transport Ciepła"
+    A["<b>Przewodzenie</b><br>λ·ΔT/δ<br><em>Drgania sieci</em>"]
+    B["<b>Konwekcja</b><br>α·ΔT<br><em>Ruch płynu</em>"]
+    C["<b>Promieniowanie</b><br>σ·T⁴<br><em>Fala EM</em>"]
+    end
+    
+    style A fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style B fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+```
+</div>
+
+<div style="margin-top: 200px;"></div>
+
+::: {.fragment style="font-size: 0.85em;"}
+| Mechanizm | Medium | Przykład | Intensywność |
+|-----------|--------|---------|------------|
+| Przewodzenie | Ciała stałe | Ściana, rura | λ = 0.04–400 W/mK |
+| Konwekcja | Płyny | Kaloryfer, wiatr | α = 5–5000 W/m²K |
+| Promieniowanie | Próżnia/gaz | Słońce, ogień | ∼ T⁴ |
 :::
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Przewodzenie i Prawo Fouriera 
+## <i class="bi bi-bricks"></i> 2. Przewodzenie i Prawo Fouriera 
 
-::: {.callout-tip title="Prawo Fouriera"}
-Strumień ciepła jest proporcjonalny do gradientu temperatury.
+::: {.callout-tip title="Prawo Fouriera: Strumień ciepła jest proporcjonalny do gradientu temperatury."}
+
 
 $$ \dot{q} = - \lambda \frac{dT}{dx} \quad [\frac{W}{m^2}] $$
 :::
@@ -108,12 +133,38 @@ $\delta$: Grubość ściany.
 
 ---
 
-## <i class="bi bi-bookmark"></i> Opór Cieplny ($R$) 
+## <i class="bi bi-plug"></i> Opór Cieplny ($R$). Analogia elektryczna 
 
-::: {.callout-note title="Analogia elektryczna"}
+::: {.callout-note appearance="minimal"}
 $$ \dot{Q} = \frac{\Delta T}{R_{term}} $$
 $$ R_{przewodzenia} = \frac{\delta}{\lambda A} $$
 :::
+
+::: {.fragment}
+<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+```{mermaid}
+%%| fig-align: center
+%%| fig-width: 10
+%%| fig-height: 1
+
+%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+flowchart LR
+    T1["<b>T<sub>wewn</sub></b><br>20°C"] -->|"R<sub>si</sub>"| A["Pow. wewn."]
+    A -->|"R<sub>ceg</sub> = δ/λ"| B["Cegła"]
+    B -->|"R<sub>styr</sub> = δ/λ"| C["Styropian"]
+    C -->|"R<sub>se</sub>"| T2["<b>T<sub>zewn</sub></b><br>-10°C"]
+    
+    style T1 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style A fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+    style B fill:#efebe9,stroke:#795548,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style T2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:black
+```
+</div>
+:::
+
+<br>
 
 ::: {.fragment}
 Dla ściany wielowarstwowej (cegła + styropian + tynk):
@@ -126,7 +177,7 @@ Duży opór = Dobra izolacja.
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Konwekcja i Prawo Newtona 
+## <i class="bi bi-wind"></i> 3. Konwekcja i Prawo Newtona 
 
 ::: {.callout-tip title="Prawo Newtona dla konwekcji"}
 Ruch płynu "zmywa" ciepło z powierzchni.
@@ -146,7 +197,7 @@ $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> Przenikanie Ciepła (Współczynnik U) 
+## <i class="bi bi-building"></i> Przenikanie Ciepła (Współczynnik U) 
 
 ::: {.callout-note title="Współczynnik przenikania ciepła"}
 W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn.
@@ -163,7 +214,7 @@ Dla nowoczesnego domu $U < 0.2$ W/(m²K).
 
 ---
 
-## <i class="bi bi-bookmark"></i> 4. Promieniowanie 
+## <i class="bi bi-sun"></i> 4. Promieniowanie 
 
 ::: {.callout-tip title="Prawo Stefana-Boltzmanna"}
 Każde ciało emituje światło.
@@ -189,7 +240,7 @@ Promieniowanie dominuje przy wysokich temperaturach (ogień, słońce), ale w bu
 
 ---
 
-## <i class="bi bi-bookmark"></i> 5. Wymienniki Ciepła 
+## <i class="bi bi-arrow-left-right"></i> 5. Wymienniki Ciepła 
 
 ::: {.callout-note title="Wymienniki ciepła"}
 Urządzenia do przekazywania ciepła z jednego płynu do drugiego bez mieszania ich.
@@ -208,32 +259,66 @@ $\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
 
 ---
 
-## <i class="bi bi-bookmark"></i> Współprąd vs Przeciwprąd — Porównanie 
+## <i class="bi bi-arrow-left-right"></i> Współprąd vs Przeciwprąd — Porównanie 
 
-::: {.columns}
-::: {.column width="50%"}
-### Współprąd
-*   Gorący: $T_{h1} \to T_{h2}$
-*   Zimny: $T_{c1} \to T_{c2}$
-*   $T_{c2}$ **nigdy** nie przekroczy $T_{h2}$!
-*   $\Delta T$ duża na wlocie, mała na wylocie.
+```{r}
+#| label: heat-exchangers
+#| echo: false
+#| fig-width: 14
+#| fig-height: 5
+#| warning: false
+#| message: false
 
-::: {.fragment .callout-warning}
-Duża $\Delta T$ na wlocie → silna nieodwracalność → **większa generacja entropii**.
-:::
-:::
-::: {.column width="50%"}
-### Przeciwprąd
-*   Gorący: $T_{h1} \to T_{h2}$
-*   Zimny: $T_{c2} \leftarrow T_{c1}$
-*   $T_{c2}$ **może przekroczyć** $T_{h2}$!
-*   $\Delta T$ bardziej równomierna wzdłuż wymiennika.
+library(ggplot2)
+library(patchwork)
 
-::: {.fragment .callout-success}
-Mniejsza i równomierna $\Delta T$ → **mniejsza generacja entropii** → wyższa sprawność II Zasady.
-:::
-:::
-:::
+# Współprąd (Parallel Flow)
+x <- seq(0, 1, length.out = 50)
+Th_par <- 90 * exp(-1.5 * x) + 30
+Tc_par <- 70 * (1 - exp(-1.8 * x)) + 10
+
+df_par <- data.frame(
+    x = rep(x, 2),
+    T = c(Th_par, Tc_par),
+    medium = rep(c("Gorący", "Zimny"), each = 50)
+)
+
+p1 <- ggplot(df_par, aes(x = x, y = T, color = medium)) +
+    geom_line(size = 2) +
+    scale_color_manual(values = c("Gorący" = "#e74c3c", "Zimny" = "#1565c0")) +
+    annotate("segment", x = 0.5, xend = 0.5, y = Th_par[25], yend = Tc_par[25],
+             color = "gray40", size = 1, linetype = "dashed",
+             arrow = arrow(length = unit(0.2, "cm"), ends = "both")) +
+    annotate("text", x = 0.55, y = (Th_par[25] + Tc_par[25])/2, label = "ΔT", size = 6, fontface = "bold") +
+    labs(title = "Współprąd", x = "Długość wymiennika", y = "T [°C]", color = "") +
+    theme_minimal(base_size = 18) +
+    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold")) +
+    scale_y_continuous(limits = c(0, 100))
+
+# Przeciwprąd (Counter Flow)
+Th_cnt <- 90 * exp(-1.0 * x) + 20
+Tc_cnt <- rev(80 * (1 - exp(-1.2 * x)) + 15)
+
+df_cnt <- data.frame(
+    x = rep(x, 2),
+    T = c(Th_cnt, Tc_cnt),
+    medium = rep(c("Gorący", "Zimny"), each = 50)
+)
+
+p2 <- ggplot(df_cnt, aes(x = x, y = T, color = medium)) +
+    geom_line(size = 2) +
+    scale_color_manual(values = c("Gorący" = "#e74c3c", "Zimny" = "#1565c0")) +
+    annotate("segment", x = 0.5, xend = 0.5, y = Th_cnt[25], yend = Tc_cnt[25],
+             color = "gray40", size = 1, linetype = "dashed",
+             arrow = arrow(length = unit(0.2, "cm"), ends = "both")) +
+    annotate("text", x = 0.55, y = (Th_cnt[25] + Tc_cnt[25])/2, label = "ΔT", size = 6, fontface = "bold") +
+    labs(title = "Przeciwprąd", x = "Długość wymiennika", y = "T [°C]", color = "") +
+    theme_minimal(base_size = 18) +
+    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold")) +
+    scale_y_continuous(limits = c(0, 100))
+
+p1 + p2
+```
 
 ::: {.fragment .callout-important}
 **Wniosek praktyczny:** Przy tych samych temperaturach wlotowych, wymiennik **przeciwprądowy** ma wyższe $\Delta T_{ln}$ → potrzebuje **mniejszej powierzchni** $A$ (tańszy!) lub osiąga **większą moc** $\dot{Q}$.
@@ -250,10 +335,44 @@ Mniejsza i równomierna $\Delta T$ → **mniejsza generacja entropii** → wyżs
 4.  **Współczynnik U** to klucz do energooszczędnych budynków.
 :::
 
-### Zadanie Domowe {.fragment}
+### Zadanie Dla Chętnych {.fragment}
 
 ::: {.fragment .callout-tip title="Oblicz współczynnik U dla ściany"}
 Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
-
-Wynik: $R_{ceg} = 0.31$, $R_{styr} = 3.75$. $R_{tot} \approx 4.06$. $U = 1/4.06 \approx 0.25$.
 :::
+
+---
+
+## <i class="bi bi-lightbulb"></i> Rozwiązanie Zadania
+
+::: {.callout-note appearance="simple" icon="false" style="font-size: 0.7em;"}
+**Dane:**
+Cegła: $\delta_{ceg} = 0.25$ m, $\lambda_{ceg} = 0.8$ W/(m$\cdot$K) 
+Styropian: $\delta_{styr} = 0.15$ m, $\lambda_{styr} = 0.04$ W/(m$\cdot$K)
+Pomijamy opory zjawisk konwekcyjnych na powierzchniach ($R_{si}$ i $R_{se}$).
+:::
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.fragment}
+### 1. Opory cieplne warstw
+Wzór na opór przewodzenia: $R = \frac{\delta}{\lambda}$
+$$ R_{ceg} = \frac{0.25}{0.8} = \mathbf{0.3125 \, \text{m}^2\text{K/W}} $$
+$$ R_{styr} = \frac{0.15}{0.04} = \mathbf{3.75 \, \text{m}^2\text{K/W}} $$
+:::
+:::
+::: {.column width="55%"}
+::: {.fragment}
+### 2. Opór całkowity i U
+Suma oporów warstw (opór termiczny dla szeregowego przepływu): 
+$$ R_{tot} = 0.3125 + 3.75 \approx \mathbf{4.06 \, \text{m}^2\text{K/W}} $$
+
+Współczynnik przenikania ciepła $U$:
+$$ U = \frac{1}{R_{tot}} = \frac{1}{4.06} \approx \mathbf{0.246 \, \text{W/(m}^2\text{K)}} $$
+:::
+:::
+:::
+::: {.fragment .callout-important title="Wniosek" style="font-size: 0.7em;"}
+Styropian stawia **ponad 10 razy większy** opór cieplny ($3.75$) niż grubsza cegła ($0.31$)! Izolator "wykonuje całą robotę" blokując przepływ.
+:::
+

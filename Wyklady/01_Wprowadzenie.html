@@ -9,7 +9,7 @@
 <link href="01_Wprowadzenie_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <meta name="author" content="dr hab. inż. prof. UPP Marek Urbaniak">
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W1: Wprowadzenie do Termodynamiki Technicznej</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,9 +125,7 @@
       margin-right: 0; 
     }
   </style>
-  <script src="01_Wprowadzenie_files/libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="01_Wprowadzenie_files/libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="01_Wprowadzenie_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <script src="01_Wprowadzenie_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
   /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
@@ -166,7 +164,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<span style="font-size: 1.5em;"><strong>dr hab. inż. prof. UPP Marek Urbaniak</strong></span> 
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
 </div>
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
@@ -194,9 +192,10 @@
 </div>
 <div style="position: relative; display: inline-block;">
 <p><img src="../img/elearning_main.png" style="width: 100%;fig-align: center"></p>
-<p>::: {.fragment style=” position: absolute; top: 0%; /* Odległość od góry obrazka <em>/ left: 89%; /</em> Odległość od lewej <em>/ width: 150px; /</em> Szerokość ramki <em>/ height: 100px; /</em> Wysokość ramki <em>/ border: 10px solid #e60000; box-shadow: 0 0 10px rgba(0,0,0,0.5); /</em> Opcjonalny cień dla lepszej widoczności */ z-index: 10; “}</p>
+<div class="fragment" style="position: absolute; top: 0%; left: 89%; width: 150px; height: 100px; border: 10px solid #e60000; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 10;">
+
 </div>
-<p>::::</p>
+</div>
 </section>
 <section id="czym-jest-termodynamika" class="slide level2">
 <h2><i class="bi bi-fire"></i> Czym jest Termodynamika?</h2>
@@ -377,25 +376,95 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <li>Stan, w którym parametry są jednorodne i nie zmieniają się w czasie (równowaga termiczna, mechaniczna, chemiczna).</li>
 </ul>
 </div><div class="column" style="width:70%;">
-<div class="cell" data-reveal="true" data-fig-width="14" data-layout-align="center">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph Rownowaga [Pełna Równowaga&lt;br&gt;Termodynamiczna]
-        direction TB
-        
-        T[Termiczna] ---|T1 = T2| A(Brak przepływu ciepła)
-        M[Mechaniczna] ---|p1 = p2| B(Brak ruchu granic/tłoka)
-        C[Chemiczna] ---|u1 = u2| D(Brak dyfuzji/reakcji)
-    end
-    
-    style Rownowaga fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style T fill:#ffcccc,stroke:#333
-    style M fill:#ccffcc,stroke:#333
-    style C fill:#ccccff,stroke:#333
-</pre>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 748.78125 298" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="768" id="mermaid-figure-1" height="288">
+<style>#mermaid-figure-1{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771522073225_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771522073225_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771522073225_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771522073225_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771522073225_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771522073225_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g transform="translate(0, 0)" class="root"><g class="clusters"><g data-look="classic" id="Rownowaga" class="cluster"><rect height="282" width="732.78125" y="8" x="8" style="fill:#f9f9f9 !important;stroke:#333 !important;stroke-width:2px !important"></rect><g transform="translate(310.1015625, 8)" class="cluster-label"><foreignobject height="48" width="128.578125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Pełna Równowaga<br>Termodynamiczna
+</p>
+</span>
+</div>
+</foreignobject></g></g></g><g class="edgePaths"><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_A_0" d="M137.18,99.5L137.18,107.75C137.18,116,137.18,132.5,137.18,149C137.18,165.5,137.18,182,137.18,190.25L137.18,198.5"></path><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_B_0" d="M381.461,99.5L381.461,107.75C381.461,116,381.461,132.5,381.461,149C381.461,165.5,381.461,182,381.461,190.25L381.461,198.5"></path><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_0" d="M618.672,99.5L618.672,107.75C618.672,116,618.672,132.5,618.672,149C618.672,165.5,618.672,182,618.672,190.25L618.672,198.5"></path></g><g class="edgeLabels"><g transform="translate(137.1796875, 149)" class="edgeLabel"><g transform="translate(-26.5546875, -12)" class="label"><foreignobject height="24" width="53.109375">
+<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel">
+<p>
+T1 = T2
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(381.4609375, 149)" class="edgeLabel"><g transform="translate(-26.3203125, -12)" class="label"><foreignobject height="24" width="52.640625">
+<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel">
+<p>
+p1 = p2
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(618.671875, 149)" class="edgeLabel"><g transform="translate(-26.1484375, -12)" class="label"><foreignobject height="24" width="52.296875">
+<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="edgeLabel">
+<p>
+u1 = u2
+</p>
+</span>
+</div>
+</foreignobject></g></g></g><g class="nodes"><g transform="translate(137.1796875, 72.5)" id="flowchart-T-0" class="node default"><rect height="54" width="132.75" y="-27" x="-66.375" style="fill:#ffcccc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(-36.375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="72.75">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Termiczna
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(137.1796875, 225.5)" id="flowchart-A-1" class="node default"><rect height="54" width="188.359375" y="-27" x="-94.1796875" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-79.1796875, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="158.359375">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Brak przepływu ciepła
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(381.4609375, 72.5)" id="flowchart-M-2" class="node default"><rect height="54" width="151.125" y="-27" x="-75.5625" style="fill:#ccffcc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(-45.5625, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="91.125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Mechaniczna
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(381.4609375, 225.5)" id="flowchart-B-3" class="node default"><rect height="54" width="200.203125" y="-27" x="-100.1015625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-85.1015625, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="170.203125">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Brak ruchu granic/tłoka
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(618.671875, 72.5)" id="flowchart-C-4" class="node default"><rect height="54" width="137.546875" y="-27" x="-68.7734375" style="fill:#ccccff !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(-38.7734375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="77.546875">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Chemiczna
+</p>
+</span>
+</div>
+</foreignobject></g></g><g transform="translate(618.671875, 225.5)" id="flowchart-D-5" class="node default"><rect height="54" width="174.21875" y="-27" x="-87.109375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(-72.109375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="144.21875">
+<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
+<span class="nodeLabel">
+<p>
+Brak dyfuzji/reakcji
+</p>
+</span>
+</div>
+</foreignobject></g></g></g></g></g></g></g>
+</svg>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -554,14 +623,16 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </ul>
 </section>
 <section id="temperatura-i-skale" class="slide level2">
-<h2>Temperatura i Skale</h2>
+<h2><i class="bi bi-thermometer"></i> Temperatura i Skale</h2>
 <h3 id="konwersje-skal">Konwersje Skal</h3>
 <div class="columns">
 <div class="column" style="width:60%;">
+<div style="font-size: 0.9em;">
 <p>W Termodynamice Technicznej i obliczeniach preferowana jest <strong>skala bezwzględna (Kelvina)</strong>.</p>
 <p><span class="math display">\[ T[K] = t[°C] + 273.15 \]</span></p>
 <p>Konwersja na skalę Fahrenheita (<span class="math inline">\(t_F\)</span>): <span class="math display">\[ t_F = \frac{9}{5} t + 32; \space t = \frac{5}{9} (t_F - 32) \]</span></p>
 <p>Konwersja na skalę Rankine [°R] (<span class="math inline">\(t_R\)</span>): <span class="math display">\[ t_R = t_F + 459,67; \space t_F = t_R - 459,67 \]</span> <span class="math display">\[ t_R = \frac{9}{5} T; \space T = \frac{5}{9} t_R \]</span></p>
+</div>
 </div><div class="column" style="width:40%;">
 <!-- Wstaw grafikę porównującą skale Kelvina, Celsjusza i Fahrenheita. -->
 <div class="quarto-figure quarto-figure-left">
@@ -572,15 +643,27 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 </div></div>
 </section>
 <section id="ciśnienie-i-energia-cząstek" class="slide level2">
-<h2>Ciśnienie i Energia Cząstek</h2>
+<h2><i class="bi bi-speedometer"></i>Ciśnienie i Energia Cząstek</h2>
 <h3 id="makroskopowe-p-a-mikroskopowe-v">Makroskopowe <span class="math inline">\(p\)</span> a Mikroskopowe <span class="math inline">\(v\)</span></h3>
 <p>Ciśnienie makroskopowe (<span class="math inline">\(p\)</span>) jest bezpośrednio związane z <strong>ruchami cząstek</strong> w mikroskali.</p>
+<p><br></p>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Równanie kinetyczne gazów:</strong> Ciśnienie zależy od liczby cząstek <span class="math inline">\(N\)</span>, masy <span class="math inline">\(m\)</span> i średniej kwadratu prędkości <span class="math inline">\(\overline{v^2}\)</span>.</p>
+<div class="column" style="width:48%;">
+<div style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<p><strong>Równanie kinetyczne gazów:</strong></p>
+<p>Ciśnienie zależy od liczby cząstek <span class="math inline">\(N\)</span>, masy pojedynczej cząsteczki <span class="math inline">\(m\)</span> i średniej kwadratu prędkości <span class="math inline">\(\overline{v^2}\)</span>.</p>
 <p><span class="math display">\[ p V = \frac{1}{3} N m \overline{v^2} \]</span></p>
-</div><div class="column" style="width:50%;">
-<p><strong>Właściwości ciśnienia:</strong> - W gazie jako całości rozkład prędkości jest <strong>izotropowy</strong>. - Ciśnienie to siła <span class="math inline">\(dF\)</span> wywierana przez cząstki na pole powierzchni <span class="math inline">\(A\)</span>: <span class="math inline">\(p = dF/A\)</span>.</p>
+</div>
+</div><div class="column" style="width:4%;">
+<!-- Spacer -->
+</div><div class="column" style="width:48%;">
+<div style="background-color: #fff3e0; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<p><strong>Właściwości ciśnienia:</strong></p>
+<ul>
+<li>W gazie jako całości rozkład prędkości jest <strong>izotropowy</strong> (taki sam w każdym kierunku).</li>
+<li>Ciśnienie to siła <span class="math inline">\(dF\)</span> wywierana przez cząstki na pole powierzchni <span class="math inline">\(A\)</span>: <span class="math display">\[ p = \frac{dF}{dA} \]</span></li>
+</ul>
+</div>
 </div></div>
 </section>
 <section id="manometr-u-rurkowy" class="slide level2">
@@ -594,41 +677,79 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 <h3 id="jak-układy-reagują-na-p-i-t">Jak układy reagują na <span class="math inline">\(p\)</span> i <span class="math inline">\(T\)</span>?</h3>
 <div class="columns">
 <div class="column" style="width:33%;">
-<p><strong>1. Współczynnik Objętościowej Rozszerzalności Cieplnej (</strong><span class="math inline">\(\alpha\)</span>): Mierzy względną zmianę objętości przy stałym ciśnieniu. <span class="math display">\[ \alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p \]</span></p>
+<div style="background-color: #c7f76dff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<p><strong>1. Współczynnik Objętościowej Rozszerzalności Cieplnej <br>(</strong><span class="math inline">\(\alpha\)</span>): Mierzy względną zmianę objętości przy stałym ciśnieniu. <span class="math display">\[ \alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p \]</span></p>
+</div>
 </div><div class="column" style="width:33%;">
+<div style="background-color: #f6ce94ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
 <p><strong>2. Współczynnik rozprężliwości (</strong><span class="math inline">\(\beta\)</span>): Mierzy względną zmianę ciśnienia przy stałej objętości. <span class="math display">\[ \beta = \frac{1}{p} \left(\frac{\partial p}{\partial T}\right)_v \]</span></p>
+</div>
 </div><div class="column" style="width:33%;">
-<p><strong>3. Współczynnik Ściśliwości Izotermicznej (</strong><span class="math inline">\(\gamma\)</span>): Mierzy względną zmianę objętości przy stałej temperaturze. <span class="math display">\[ \gamma = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T \]</span></p>
+<div style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<p><strong>3. Współczynnik Ściśliwości Izotermicznej <br>(</strong><span class="math inline">\(\gamma\)</span>): Mierzy względną zmianę objętości przy stałej temperaturze. <span class="math display">\[ \gamma = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T \]</span></p>
+</div>
 </div></div>
-<p><strong>Korelacja:</strong> Istnienie równania stanu implikuje, że wszystkie te trzy wielkości (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) są ze sobą powiązane.</p>
+<div title="Korelacja" style="font-size: 70%;">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Korelacja</strong></p>
+</div>
+<div class="callout-content">
+<p>Istnienie równania stanu implikuje, że wszystkie te trzy wielkości (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) są ze sobą powiązane.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="równanie-stanu" class="slide level2">
 <h2>Równanie Stanu</h2>
 <h3 id="funkcjonalny-związek">Funkcjonalny Związek</h3>
 <p>Równanie stanu to związek funkcyjny między parametrami stanu (<span class="math inline">\(p, V, T\)</span>) dla układu będącego w równowadze termodynamicznej.</p>
 <p><span class="math display">\[ f(p, V, T) = 0 \]</span></p>
-<p><strong>Cel:</strong> Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to punkt wyjścia dla analizy gazów.</p>
+<div title="Cel">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Cel</strong></p>
+</div>
+<div class="callout-content">
+<p>Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to punkt wyjścia dla analizy gazów.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="modele-gazu-idealny-vs.-rzeczywisty" class="slide level2">
+<section id="modele-gazu-idealny-vs.-rzeczywisty" class="slide level2" style="color: #7f2d2dff">
 <h2>Modele Gazu: Idealny vs.&nbsp;Rzeczywisty</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="model-idealny-gaz-doskonały">Model Idealny: Gaz Doskonały</h3>
-<h3 id="równanie-clapeyrona">Równanie Clapeyrona</h3>
+<h3 id="model-idealny-gaz-doskonały"><span style="color: #422ef4ff">Model Idealny: Gaz Doskonały</span></h3>
+<h3 id="równanie-clapeyrona"><span style="color: #5865c6ff">Równanie Clapeyrona</span></h3>
+<div style="background-color: #b3b9f4ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
 <p>Równanie stanu dla 1 mola gazu doskonałego: <span class="math display">\[ \frac{pV}{RT} = 1 \]</span></p>
 <p><strong>Kiedy działa?</strong> - Dla małych ciśnień i wysokich temperatur.</p>
 <p><strong>Ograniczenia:</strong> - Gazy rzeczywiste (He, N<span class="math inline">\(_2\)</span>, CH<span class="math inline">\(_4\)</span>, Ar) odbiegają od tego idealnego zachowania, szczególnie przy <strong>dużych ciśnieniach</strong> i <strong>niskich temperaturach</strong>.</p>
-</div><div class="column" style="width:50%;">
-<h3 id="model-rzeczywisty-gaz-rzeczywisty">Model Rzeczywisty: Gaz Rzeczywisty</h3>
-<h3 id="równanie-van-der-waalsa">Równanie Van der Waalsa</h3>
+</div>
+</div><div class="column" style="font-size: 0.95em;">
+<h3 id="model-rzeczywisty-gaz-rzeczywisty"><span style="color: #25560dff">Model Rzeczywisty: Gaz Rzeczywisty</span></h3>
+<h3 id="równanie-van-der-waalsa"><span style="color: #468826ff">Równanie Van der Waalsa</span></h3>
+<div style="background-color: #47a542ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
 <p>Równanie van der Waalsa koryguje model idealny, uwzględniając:</p>
 <p><span class="math display">\[ \left(p + \frac{a}{V^2}\right) (V - b) = RT \]</span></p>
 <p><strong>Poprawki Fizyczne:</strong></p>
-<div style="font-size: 70%;">
+<div style="font-size: 0.7em;">
 <ol type="1">
 <li><p><strong>Objętość cząsteczek</strong> <span class="math inline">\(b\)</span>: Odejmujemy objętość własną cząsteczek od objętości <span class="math inline">\(V\)</span> zbiornika. Wpływa to na ograniczenie dostępnej przestrzeni dla ruchu cząstek.</p></li>
 <li><p><strong>Oddziaływania</strong> <span class="math inline">\(a/V^2\)</span>: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania między cząsteczkami. Poprawka ta uwzględnia fakt, że cząstki gazu rzeczywistego wzajemnie się przyciągają, co redukuje parcie na ścianki naczynia.</p></li>
 </ol>
+</div>
 </div>
 </div></div>
 </section>
@@ -641,8 +762,20 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 <li class="fragment"><span class="math inline">\(V_2\)</span>: Objętość 1 mola <strong>pary nasyconej</strong>.</li>
 <li class="fragment"><span class="math inline">\(V_3\)</span>: Rozwiązanie bez znaczenia fizycznego.</li>
 </ul>
-<div class="fragment">
-<p><strong>Punkt Krytyczny (</strong><span class="math inline">\(T_k\)</span>): Wraz ze wzrostem temperatury <span class="math inline">\(T\)</span>, objętości cieczy (<span class="math inline">\(V_1\)</span>) i pary (<span class="math inline">\(V_2\)</span>) zbliżają się do siebie. W temperaturze krytycznej <span class="math inline">\(T_k\)</span>, <span class="math inline">\(V_1 = V_2 = V_k\)</span>.</p>
+<div class="fragment" title="Punkt Krytyczny">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Punkt Krytyczny</strong></p>
+</div>
+<div class="callout-content">
+<p>(<strong><span class="math inline">\(T_k\)</span></strong>): Wraz ze wzrostem temperatury <span class="math inline">\(T\)</span>, objętości cieczy (<span class="math inline">\(V_1\)</span>) i pary (<span class="math inline">\(V_2\)</span>) zbliżają się do siebie. W temperaturze krytycznej <span class="math inline">\(T_k\)</span>, <span class="math inline">\(V_1 = V_2 = V_k\)</span>.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="stany-metastabilne" class="slide level2">
@@ -651,20 +784,40 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 <p>Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistości można osiągnąć w specyficznych warunkach:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p><strong>1. Para Przesycona:</strong> Izotermiczne sprężanie pary niezawierającej ośrodków kondensacji (pyłków, jonów).</p>
+</div>
+</div>
+</div>
 </div><div class="column" style="width:50%;">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
 <p><strong>2. Ciecz Przegrzana:</strong> Izotermiczne rozprężanie cieczy pozbawionej zanieczyszczeń.</p>
+</div>
+</div>
+</div>
 </div></div>
+<div class="fragment" title="Stany Metastabilne:">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Adnotacja</strong></p>
+<p><strong>Stany Metastabilne:</strong></p>
 </div>
 <div class="callout-content">
-<p>Te stany są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)*</p>
+<p>Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)</p>
+</div>
 </div>
 </div>
 </div>
@@ -684,12 +837,10 @@ Rysunek&nbsp;3: Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradient�
 <section id="pytania-kontrolne" class="slide level2">
 <h2>Pytania Kontrolne</h2>
 <ol type="1">
-<li>Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?</li>
-<li>Czy temperatura w <span class="math inline">\(^\circ C\)</span> jest parametrem intensywnym czy ekstensywnym?</li>
-<li>Jeśli manometr na oponie pokazuje 2.2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?
-<ul>
-<li>Odp: <span class="math inline">\(2.2 + 1.0 = 3.2\)</span> bara.</li>
-</ul></li>
+<li><p>Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?</p></li>
+<li><p>Czy temperatura w <span class="math inline">\(^\circ C\)</span> jest parametrem intensywnym czy ekstensywnym?</p></li>
+<li><p>Jeśli manometr na oponie pokazuje 2.2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?</p>
+<p><span class="fragment" style="color: #7f2d2dff">Odp: <span class="math inline">\(2.2 + 1.0 = 3.2\)</span> bara.</span></p></li>
 </ol>
 <p>Dziękuję za uwagę!</p>
 

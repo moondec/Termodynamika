@@ -1,7 +1,7 @@
 ---
 title: "W3: I Zasada Termodynamiki - cz. II"
 subtitle: "Bilans Energii w Układach Otwartych"
-author: "<span style='font-size: 1.5em;'>**dr hab. inż. prof. UPP Marek Urbaniak**</span>"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
@@ -17,11 +17,13 @@ institute: |
          
   </div>
 lang: pl
+mermaid-format: png
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
     include-in-header:
       text: |
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
         /* 1. Ustawienie koloru "pustych pasów" (tło całego ekranu) */
         body {
@@ -84,16 +86,71 @@ theme_set(theme_minimal(base_size = 18))
 
 ::: {.column width="50%"}
   
-::: {style="text-align: center;"}
-  <img src="../img/praca_techniczna.png" style="width: 100%;"> 
-  
-:::
+```{r}
+#| fig-height: 6
+#| fig-width: 9
+#| echo: false
+#| warning: false
 
-::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
+# Definicja punktów (1 -> 2)
+p1 <- 4; v1 <- 1
+v2 <- 4
+n <- 1.3 # Wykładnik politropy
+
+# Funkcja politropy p = C / v^n -> p = p1 * v1^n / v^n
+C <- p1 * v1^n
+func_p <- function(v) C / v^n
+
+# Obliczenie p2 z równania politropy (aby leżał na krzywej)
+p2 <- func_p(v2)
+
+# Generowanie danych do wykresu
+v_seq <- seq(v1, v2, length.out = 100)
+p_seq <- func_p(v_seq)
+df_poly <- data.frame(v = v_seq, p = p_seq)
+
+# Pole do osi rzędnych (p) - Praca Techniczna
+# Musimy odwrócić funkcję: v = (C/p)^(1/n)
+func_v <- function(p) (C/p)^(1/n)
+p_seq_rev <- seq(p2, p1, length.out = 100) # Od p2 do p1 (dół -> góra)
+v_seq_rev <- func_v(p_seq_rev)
+
+df_area <- data.frame(
+  v = c(0, v_seq_rev, 0),
+  p = c(p2, p_seq_rev, p1)
+)
+
+ggplot() +
+  # Pole Pracy Technicznej
+  geom_polygon(data = df_area, aes(x = v, y = p), fill = "#d35400", alpha = 0.4) + # Kolor ceglasty
   
-  Źródło: J. Szargut, *$Termodynamika \ techniczna$* PWN, (2000).
+  # Krzywa procesu
+  geom_path(data = df_poly, aes(x = v, y = p), color = "#e67e22", size = 2) +
   
-:::
+  # Punkty
+  geom_point(aes(x = c(v1, v2), y = c(p1, p2)), size = 5) +
+  geom_text(aes(x = v1, y = p1, label = "1"), hjust = -0.5, vjust = -0.5, size = 8) +
+  geom_text(aes(x = v2, y = p2, label = "2"), hjust = -0.5, vjust = 1.5, size = 8) +
+  
+  # Strzałka kierunku procesu
+  geom_segment(aes(x = 2, y = func_p(2), xend = 2.1, yend = func_p(2.1)),
+               arrow = arrow(length = unit(0.5, "cm")), color = "#e67e22", size = 1.5) +
+
+  # Opis Pola (parse = TRUE dla formatowania matematycznego)
+  annotate("text", x = 1.0, y = 2.5, label = "L[t] == - integral(V * dp)", parse = TRUE, color = "#d35400", size = 8) +
+  
+  # Etykiety osi i limity
+  labs(x = "Objętość właściwa (v)", y = "Ciśnienie (p)", title = "Praca Techniczna (Rozprężanie)") +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 5)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 5)) +
+  
+  theme_classic(base_size = 20) +
+  theme(
+    axis.title = element_text(size = 24),
+    axis.text = element_text(size = 20)
+  )
+
+```
   
 ::: incremental
 *   **Sprężanie ($dp > 0$):** praca jest wykonywana nad układem ($đL < 0$).
@@ -133,7 +190,7 @@ Dla procesów z tarciem:
 $$ đL_t = - V \cdot dp - L_F$$
 $$ L_t = - \int_{p_1}^{p_2} V \cdot dp - L_F$$
 
-::: {style="border: 3px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 $L_F$ to praca tarcia, która jest stratą i **równa jest** ciepłu $Q_F$, w postaci której jest rozpraszana w otoczenie.
 :::
 
@@ -148,18 +205,33 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
 *   Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.
 
 
-::: {style="text-align: center;"}
-  <img src="../img/wymiennik.png" style="width: 55%;">
-  
-:::
+<div style="width: 100%; margin: 0 auto; text-align: center;">
 
-::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
-  
-  Źródło: J. Szargut, *$Termodynamika \ techniczna$* PWN, (2000).
-  
-:::
+```{mermaid}
+flowchart LR
+    subgraph System ["Układ Otwarty&nbsp;."]
+        direction TB
+        K[Energia Kinetyczna]
+        P[Energia Potencjalna]
+        H["Entalpia (U + pV)"]
+    end
 
-## <i class="bi bi-bookmark"></i> Równanie Przepływu Ustalonego 
+    In[Wlot: m1] --> H
+    H --> Out[Wylot: m2]
+    
+    Q[Ciepło Q] -.-> H
+    H -.-> W[Praca Techniczna Lt]
+
+    style In fill:#2ecc71,stroke:#27ae60,stroke-width:2px
+    style Out fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+    style Q fill:#f1c40f,stroke:#f39c12,stroke-width:2px,stroke-dasharray: 5 5
+    style W fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px,stroke-dasharray: 5 5
+    style System fill:#ecf0f1,stroke:#95a5a6,stroke-width:4px
+```
+
+</div>
+
+## <i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego 
 
 ### Postać Ogólna Bilansu Mocy
 
@@ -214,6 +286,10 @@ W turbinach (parowych lub gazowych) czynnik rozpręża się, wykonując pracę t
 $$ P_i = \dot{m} (h_1 - h_2) $$
 Gdzie $P_i$ to moc wewnętrzna turbiny.
 
+::: {.fragment .fade-up .callout-tip title="Wniosek"}
+Zmniejszenie entalpii czynnika ($h_1 > h_2$) zamienia się na pracę na wale.
+:::
+
 
 ## <i class="bi bi-fan"></i> Zastosowanie: Sprężarka i Pompa 
 
@@ -227,10 +303,14 @@ Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnien
 **Bilans dla sprężarki:**
 $$ P_d = \dot{m} (h_2 - h_1) - \dot{Q} $$
 
+::: {.fragment .fade-up .callout-tip title="Wniosek"}
+Musimy dostarczyć pracę ($h_2 > h_1$), aby zwiększyć entalpię (i ciśnienie) czynnika.
+:::
+
 
 ## <i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego 
 
-W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę** ($pv^n=const$). Wzór inżynierski na pracę techniczną:
+W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę**<br>($pv^n=const$). Wzór inżynierski na pracę techniczną:
 
 $$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] $$
 
@@ -246,7 +326,7 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}
 
 ### Przepływ Izobaryczny
 
-W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej ($L_{tech} = 0$).
+W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej<br>($L_{tech} = 0$).
 
 **Bilans dla jednego czynnika:**
 $$ \dot{Q} = \dot{m} (h_2 - h_1) $$
@@ -255,7 +335,7 @@ Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz):
 $$ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B $$
 
 
-## <i class="bi bi-bookmark"></i> Zastosowanie: Dławienie 
+## <i class="bi bi-wind"></i> Zastosowanie: Dławienie 
 
 ### Proces Izentalpowy
 
@@ -270,7 +350,7 @@ $$ h_1 = h_2 $$
 
 
 
-## <i class="bi bi-1-circle"></i> I Zasada w Procesach Spalania 
+## <i class="bi bi-droplet-half"></i> I Zasada w Procesach Spalania 
 
 ### Energia Chemiczna
 
@@ -282,7 +362,7 @@ W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.
 $$ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} $$
 
 
-## <i class="bi bi-bookmark"></i> Zjawisko Joule'a-Thomsona 
+## <i class="bi bi-thermometer-snow"></i> Zjawisko Joule'a-Thomsona 
 
 ### Dławienie Adiabatyczne
 
