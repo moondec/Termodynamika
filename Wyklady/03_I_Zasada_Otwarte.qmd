@@ -404,4 +404,4 @@ W następnym module nauczymy się, jak wyznaczać parametry dla substancji zmien
 
 *   Korzystanie z **tablic pary wodnej**.
 *   Praca z wykresami **h-s** (Molliera) oraz **p-h**.
-*   Obliczanie stopnia suchości pary mokrej ($x$).
+*   Obliczanie stopnia suchości pary mokrej ($X$).
