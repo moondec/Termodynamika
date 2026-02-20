@@ -1,0 +1,1908 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+    <question type="category">
+        <category>
+            <text>$course$/top/egzamin/teoria</text>
+        </category>
+        <info format="moodle_auto_format">
+            <text>Pytania jednokrotnego wyboru i prawda/fałsz — egzamin z Termodynamiki Technicznej.</text>
+        </info>
+        <idnumber/>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P01_Uklad_zamkniety</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P1.&lt;/b&gt; Układ termodynamiczny zamknięty to układ, który:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;nie wymienia z otoczeniem ani masy, ani energii&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;wymienia z otoczeniem energię, ale nie wymienia masy&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;wymienia z otoczeniem zarówno masę, jak i energię&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ma stałą temperaturę&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P02_Entalpia</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P2.&lt;/b&gt; Entalpia \(H\) jest zdefiniowana jako:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;energia wewnętrzna gazu przy stałej objętości&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;suma ciepła i pracy wymienionej z otoczeniem&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;funkcja stanu równa \(U + pV\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;miara nieuporządkowania układu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P03_Praca_techniczna</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P3.&lt;/b&gt; Praca techniczna \(L_t\) jest równa:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(\int p \, dV\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;\(-\int V \, dp\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(\Delta U\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(Q - \Delta H\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P04_Energia_wewnetrzna</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P4.&lt;/b&gt; Energia wewnętrzna gazu doskonałego zależy wyłącznie od:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciśnienia&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;objętości&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;temperatury&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciśnienia i objętości jednocześnie&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P05_Dlawienie</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P5.&lt;/b&gt; Dławienie (przepływ przez zawór dławiący) jest procesem:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izotermicznym&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izentropowym&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;izentalpowym&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izochorycznym&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P06_Punkt_krytyczny</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P6.&lt;/b&gt; Punkt krytyczny substancji to stan, powyżej którego:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;substancja istnieje wyłącznie w fazie stałej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;współistnieją trzy fazy (punkt potrójny)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;zanika rozróżnienie między cieczą a gazem&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciśnienie osiąga wartość maksymalną&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P07_Stopien_suchosci</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P7.&lt;/b&gt; Stopień suchości pary mokrej \(x = 0{,}85\) oznacza, że mieszanina zawiera:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;85% cieczy i 15% pary&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;85% pary i 15% cieczy&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;parę przegrzaną o 85 K powyżej temperatury nasycenia&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;parę o wilgotności względnej 85%&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P08_Entalpia_pary_mokrej</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P8.&lt;/b&gt; Entalpia pary mokrej o stopniu suchości \(x\) wynosi:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(h_x = h'' - x \cdot r\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;\(h_x = h' + x \cdot r\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(h_x = x \cdot h'\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(h_x = h' \cdot h'' / x\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P09_Izoterma</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P9.&lt;/b&gt; W przemianie izotermicznej gazu doskonałego całe dostarczone ciepło:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zwiększa energię wewnętrzną gazu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;wynosi zero&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;zamienia się w pracę objętościową&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zwiększa temperaturę gazu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P10_Izentropa</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P10.&lt;/b&gt; Wykładnik politropy \(n = \kappa\) odpowiada przemianie:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izotermicznej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izobarycznej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;izochorycznej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;izentropowej (adiabatycznej odwracalnej)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P11_Praca_izochory</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P11.&lt;/b&gt; Praca objętościowa przemiany izochorycznej wynosi:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(mRT \ln(V_2 / V_1)\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(mc_v \Delta T\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(mc_p \Delta T\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;zero&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P12_Zwiazek_Mayera</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P12.&lt;/b&gt; Związek Mayera dla gazu doskonałego ma postać:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(c_p \cdot c_v = R\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;\(c_p - c_v = R\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(c_p + c_v = R\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(c_p / c_v = R\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P13_Kelvin_Planck</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P13.&lt;/b&gt; Sformułowanie Kelvina-Plancka II Zasady mówi, że:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciepło może samoistnie przepływać od ciała zimnego do ciepłego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;nie można zbudować silnika cyklicznego zamieniającego całe pobrane ciepło w pracę&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;entropia układu izolowanego może maleć&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;sprawność każdego silnika wynosi 100%&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P14_Carnot</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P14.&lt;/b&gt; Sprawność obiegu Carnota zależy wyłącznie od:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;rodzaju czynnika roboczego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciśnienia maksymalnego w obiegu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;objętości cylindra&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;temperatur źródła górnego i dolnego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P15_Chlodzenie</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P15.&lt;/b&gt; Urządzenie chłodnicze to maszyna, która:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zamienia ciepło bezpośrednio w pracę&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;pobiera pracę, aby przenosić ciepło z ciała zimnego do ciepłego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;pracuje w obiegu prawobieżnym&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;nie wymaga zasilania energią&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P16_Otto</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P16.&lt;/b&gt; W obiegu Otto ciepło jest dostarczane do czynnika:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałym ciśnieniu (izobarycznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałej temperaturze (izotermicznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;przy stałej objętości (izochorycznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałej entropii (izentropowo)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P17_Diesel</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P17.&lt;/b&gt; W obiegu Diesla ciepło jest dostarczane do czynnika:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;przy stałym ciśnieniu (izobarycznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałej temperaturze (izotermicznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałej objętości (izochorycznie)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przy stałej entropii (izentropowo)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P18_COP_pompa</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P18.&lt;/b&gt; Współczynnik wydajności grzejnej pompy ciepła (COP) jest:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zawsze mniejszy od 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zawsze równy 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;zawsze większy od 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zależny wyłącznie od rodzaju czynnika&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P19_Entropia_izolat</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P19.&lt;/b&gt; Entropia układu izolowanego w procesie nieodwracalnym:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;maleje&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;nie zmienia się&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;rośnie&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;może zarówno rosnąć, jak i maleć&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P20_Fourier</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P20.&lt;/b&gt; Przewodzenie ciepła (prawo Fouriera) polega na:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ruchu makroskopowych porcji płynu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;emisji promieniowania elektromagnetycznego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;przekazywaniu energii między cząsteczkami, proporcjonalnym do gradientu temperatury&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;wymianie masy między układem a otoczeniem&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P21_Stefan_Boltzmann</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P21.&lt;/b&gt; Strumień ciepła emitowanego przez ciało doskonale czarne jest proporcjonalny do:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(T\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(T^2\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(T^3\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;\(T^4\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P22_Egzergia</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P22.&lt;/b&gt; Egzergia to:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;całkowita energia wewnętrzna układu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;maksymalna praca, jaką można uzyskać z układu w stosunku do stanu otoczenia&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;energia tracona w każdym procesie&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;synonim entalpii&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P23_LHV_HHV</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P23.&lt;/b&gt; Wartość opałowa (LHV) różni się od ciepła spalania (HHV) tym, że:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;nie uwzględnia ciepła parowania wody w spalinach&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;uwzględnia dodatkowe ciepło od azotu&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;jest zawsze większa od HHV&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;odnosi się tylko do paliw gazowych&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P24_Nadmiar_powietrza</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P24.&lt;/b&gt; Współczynnik nadmiaru powietrza \(\lambda &gt; 1\) oznacza:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;brak tlenu w strefie spalania&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;spalanie stechiometryczne&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;nadmiar tlenu ponad ilość stechiometryczną&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;spalanie niezupełne z wydzielaniem sadzy&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P31_Rankine_skraplacz</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P31.&lt;/b&gt; W obiegu Rankine'a skraplacz służy do:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;podgrzania wody zasilającej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;sprężania pary przed turbiną&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;skroplenia pary po ekspansji w turbinie, zamykając obieg&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;odgazowania wody kotłowej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P32_Mieszanie_hX</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P32.&lt;/b&gt; Przy mieszaniu dwóch strumieni powietrza wilgotnego punkt M na wykresie h-X leży:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;poza odcinkiem łączącym punkty obu strumieni&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;na odcinku łączącym punkty obu strumieni, dzieląc go proporcjonalnie do mas&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zawsze w punkcie środkowym odcinka&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;na krzywej nasycenia&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P33_HHV_LHV</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P33.&lt;/b&gt; Ciepło spalania (HHV) jest większe od wartości opałowej (LHV), ponieważ:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;uwzględnia ciepło przegrzania spalin powyżej 100 °C&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;uwzględnia ciepło skroplenia wody zawartej w spalinach&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;pomija straty kominowe&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;dotyczy wyłącznie paliw stałych&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P34_DeltaT_lm</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P34.&lt;/b&gt; Średnia logarytmiczna różnica temperatur stosowana jest do obliczeń:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;sprawności obiegu Carnota&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;mocy sprężarki&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;wymienników ciepła&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciepła spalania paliw&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P35_Kociol_kondensacyjny</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P35.&lt;/b&gt; Kocioł kondensacyjny osiąga sprawność &gt; 100% (w odniesieniu do LHV), ponieważ:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;wytwarza energię z niczego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;odzyskuje ciepło skroplenia pary wodnej ze spalin&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;wykorzystuje energię elektryczną&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;pracuje w próżni&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P36_COP_PC_vs_ch</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P36.&lt;/b&gt; Współczynnik wydajności grzejnej pompy ciepła \(COP_{PC}\) jest zawsze:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;mniejszy od COP chłodziarki o 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;większy od COP chłodziarki o 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;równy COP chłodziarki&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;równy sprawności Carnota&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P37_Sublimacja</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P37.&lt;/b&gt; Sublimacja to przemiana fazowa polegająca na:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przejściu cieczy w gaz&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;przejściu ciała stałego bezpośrednio w gaz&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przejściu gazu w ciecz&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;przejściu cieczy w ciało stałe&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P38_Praca_izobary</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P38.&lt;/b&gt; Praca objętościowa przemiany izobarycznej wynosi:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;zero&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;\(p(V_2 - V_1)\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(mRT \ln(V_2/V_1)\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;\(mc_v \Delta T\)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P39_Joule_Thomson</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P39.&lt;/b&gt; Efekt Joule'a-Thomsona opisuje zmianę temperatury gazu podczas:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;sprężania izentropowego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ogrzewania izobarycznego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;dławienia (przepływu przez opór bez wymiany ciepła)&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ekspansji izotermicznej&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P40_Gouy_Stodola</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P40.&lt;/b&gt; Prawo Gouy-Stodoli wiąże straty egzergii z:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;ciśnieniem otoczenia i zmianą objętości&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;temperaturą otoczenia i generacją entropii&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;masą czynnika roboczego&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;sprawnością Carnota&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P25_PF_Ogrzewanie_phi</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P25.&lt;/b&gt; Ogrzewanie powietrza wilgotnego przy stałym ciśnieniu (bez dodawania wody) powoduje spadek jego wilgotności względnej \(\varphi\).&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P26_PF_Skraplacz</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P26.&lt;/b&gt; Obniżenie ciśnienia w skraplaczu siłowni parowej zwiększa pracę użyteczną turbiny.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P27_PF_Przeciwprad</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P27.&lt;/b&gt; Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych warunkach brzegowych.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P28_PF_Dlawienie_odwr</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P28.&lt;/b&gt; Proces dławienia w zaworze redukcyjnym jest odwracalny.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P29_PF_Eta_Carnot</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P29.&lt;/b&gt; Sprawność termiczna rzeczywistego obiegu silnikowego może przekroczyć sprawność Carnota dla tych samych temperatur skrajnych.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="truefalse">
+        <name>
+            <text>P30_PF_Kogeneracja</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P30.&lt;/b&gt; Kogeneracja (CHP) to jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text/>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>1.0000000</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <answer fraction="100" format="moodle_auto_format">
+            <text>true</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="moodle_auto_format">
+            <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+</quiz>
