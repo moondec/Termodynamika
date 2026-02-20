@@ -5,7 +5,7 @@
             <text>$course$/top/egzamin/trening</text>
         </category>
         <info format="moodle_auto_format">
-            <text>Baza treningowa zadań obliczeniowych z rozwiązanym i krok po kroku.</text>
+            <text>Baza treningowa zadań obliczeniowych z rozwiązaniami krok po kroku.</text>
         </info>
     </question>
     <question type="calculated">
@@ -13,10 +13,10 @@
             <text>Tr01_Cisnienie</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 1.&lt;/b&gt; Manometr na zbiorniku z gazem wskazuje nadciśnienie &lt;b&gt;{p_man}&lt;/b&gt; kPa. Ciśnienie otoczenia wynosi &lt;b&gt;{p_bar}&lt;/b&gt; hPa. Obliczyć ciśnienie absolutne gazu w zbiorniku.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p_abs [kPa]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 1.&lt;/b&gt; Manometr na zbiorniku z gazem wskazuje nadciśnienie &lt;b&gt;{p_man}&lt;/b&gt; kPa. Ciśnienie otoczenia wynosi &lt;b&gt;{p_bar}&lt;/b&gt; hPa. Oblicz ciśnienie absolutne gazu w zbiorniku.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p_abs [kPa]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Ciśnienie absolutne to suma barometrycznego i manometrycznego. Pamiętaj o jednostkach: 1 hPa = 0,1 kPa.&lt;br/&gt;\( p_{abs} = p_{man} + \frac{p_{bar}}{10} \)&lt;br/&gt;Podstawienie: \( p_{abs} = {p_man} + \frac{{p_bar}}{10} \) kPa.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — ciśnienie absolutne:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja:&lt;/b&gt; Ciśnienie absolutne (bezwzględne) w zbiorniku to suma ciśnienia barometrycznego (otoczenia) i nadciśnienia wskazywanego przez manometr.&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; Manometr podaje nadciśnienie w kPa, barometr często w hPa. 1 hPa = 0,1 kPa, więc p_bar (hPa) w kPa to p_bar/10.&lt;br/&gt;&lt;b&gt;3. Wzór:&lt;/b&gt; \( p_{abs} = p_{man} + p_{barometryczne} \) (w tych samych jednostkach).&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( p_{abs} = {p_man} + \frac{{p_bar}}{10} \) kPa.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -26,6 +26,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{p_man} + {p_bar}/10</text>
             <tolerance>0.5</tolerance>
@@ -498,11 +507,10 @@
             <text>Tr02_Clapeyron_m</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 2.&lt;/b&gt; Obliczyć masę azotu (\(\mu = 28,01\) kg/kmol, R_u = 8314 J/(kmol K)) zebranego w zbiorniku o objętości &lt;b&gt;{V}&lt;/b&gt; m³. Temperatura gazu to &lt;b&gt;{t}&lt;/b&gt; °C, a ciśnienie absolutne wynosi &lt;b&gt;{p}&lt;/b&gt; bar.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj m [kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 2.&lt;/b&gt; Oblicz masę azotu (\(\mu = 28{,}01\) kg/kmol, R_u = 8314 J/(kmol·K)) w zbiorniku o objętości &lt;b&gt;{V}&lt;/b&gt; m³. Temperatura gazu wynosi &lt;b&gt;{t}&lt;/b&gt; °C, ciśnienie absolutne &lt;b&gt;{p}&lt;/b&gt; bar.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj m [kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;1. Oblicz stałą gazową R = \( R_u / \mu \) = 8314 / 28,01 = 296,82 J/(kg·K).&lt;br/&gt;2. Zamień jednostki: T = {t} + 273,15 K, p = {p} · 10⁵ Pa.&lt;br/&gt;3. Ze wzoru &lt;i&gt;p V = m R T&lt;/i&gt; wyznacz 
-\( m = \frac{p \cdot V}{R \cdot T} \)&lt;br/&gt;Podstawienie: \( m = \frac{{p} \cdot 10^5 \cdot {V}}{296,82 \cdot ({t} + 273,15)} \) kg.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — równanie Clapeyrona (stan gazu):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Równanie stanu:&lt;/b&gt; \( pV = mRT \) (dla gazu doskonałego). Stąd \( m = \frac{pV}{RT} \).&lt;br/&gt;&lt;b&gt;2. Stała gazowa:&lt;/b&gt; \( R = R_u/\mu \) = 8314/28,01 ≈ 296,82 J/(kg·K).&lt;br/&gt;&lt;b&gt;3. Jednostki:&lt;/b&gt; p w Pa (1 bar = 10⁵ Pa), V w m³, T w K: T = {t} + 273,15. Wtedy m wyjdzie w kg.&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( m = \frac{p \cdot 10^5 \cdot V}{296{,}82 \cdot (t + 273{,}15)} \) → \( m = \frac{{p} \cdot 10^5 \cdot {V}}{296{,}82 \cdot ({t} + 273{,}15)} \) kg.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -512,6 +520,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({p} * 100000 * {V}) / (296.82 * ({t} + 273.15))</text>
             <tolerance>0.5</tolerance>
@@ -1209,10 +1226,10 @@
             <text>Tr03_Izochora</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 3.&lt;/b&gt; W stalowej butli (V=const) znajduje się gaz pod ciśnieniem &lt;b&gt;{p1}&lt;/b&gt; bar w temp. &lt;b&gt;{t1}&lt;/b&gt; °C. Butlę nasłoneczniono, w wyniku czego temp. wzrosła do &lt;b&gt;{t2}&lt;/b&gt; °C. Obliczyć nowe ciśnienie.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p2 [bar]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 3.&lt;/b&gt; W stalowej butli (V = const) znajduje się gaz pod ciśnieniem &lt;b&gt;{p1}&lt;/b&gt; bar w temperaturze &lt;b&gt;{t1}&lt;/b&gt; °C. Po nasłonecznieniu temperatura wzrosła do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz nowe ciśnienie.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p2 [bar]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Przemiana izochoryczna (Prawo Charles'a): \( \frac{p_1}{T_1} = \frac{p_2}{T_2} \). Koniecznie przelicz °C na K!&lt;br/&gt;\( p_2 = p_1 \cdot \frac{T_2}{T_1} \)&lt;br/&gt;Podstawienie: \( p_2 = {p1} \cdot \frac{{t2} + 273,15}{{t1} + 273,15} \) bar.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — przemiana izochoryczna (prawo Charles’a):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Założenie:&lt;/b&gt; Objętość stała (V = const), masa gazu stała → stosunek p/T jest stały.&lt;br/&gt;&lt;b&gt;2. Prawo Charles’a:&lt;/b&gt; \( \frac{p_1}{T_1} = \frac{p_2}{T_2} \). Temperatury muszą być w kelwinach (T = t + 273,15).&lt;br/&gt;&lt;b&gt;3. Wyznaczenie p₂:&lt;/b&gt; \( p_2 = p_1 \cdot \frac{T_2}{T_1} = p_1 \cdot \frac{t_2 + 273{,}15}{t_1 + 273{,}15} \).&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( p_2 = {p1} \cdot \frac{{t2} + 273{,}15}{{t1} + 273{,}15} \) bar. Jednostka ciśnienia (bar) zachowana.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1222,6 +1239,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{p1} * ({t2} + 273.15) / ({t1} + 273.15)</text>
             <tolerance>0.2</tolerance>
@@ -1919,10 +1945,10 @@
             <text>Tr04_PracaIzobara</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 4.&lt;/b&gt; Powietrze jest ogrzewane w cylindrze pod stałym tłokiem (p = &lt;b&gt;{p}&lt;/b&gt; bar = const). W wyniku tego jego objętość rośnie z &lt;b&gt;{V1}&lt;/b&gt; m³ do &lt;b&gt;{V2}&lt;/b&gt; m³. Obliczyć wykonaną pracę objętościową gazu.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 4.&lt;/b&gt; Powietrze jest ogrzewane w cylindrze pod stałym tłokiem (p = &lt;b&gt;{p}&lt;/b&gt; bar = const). Objętość rośnie z &lt;b&gt;{V1}&lt;/b&gt; m³ do &lt;b&gt;{V2}&lt;/b&gt; m³. Oblicz wykonaną pracę objętościową gazu.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Dla przemiany izobarycznej praca wynosi \( L = p \cdot (V_2 - V_1) \). Aby wynik był w kJ, przelicz ciśnienie z bar (1 bar = 100 kPa).&lt;br/&gt;Podstawienie: \( L = {p} \cdot 100 \cdot ({V2} - {V1}) \) kJ.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — praca objętościowa w przemianie izobarycznej:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja pracy:&lt;/b&gt; Przy stałym ciśnieniu \( L = \int p\,dV = p(V_2 - V_1) \).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; p w Pa, V w m³ → L w J. Aby otrzymać L w kJ: p w bar × 100 = p w kPa, wtedy L = p [bar] · 100 · (V₂ − V₁) [m³] daje kJ.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( L = {p} \cdot 100 \cdot ({V2} - {V1}) \) kJ. Wynik dodatni — gaz wykonuje pracę przy rozprężaniu.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1932,6 +1958,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{p} * 100 * ({V2} - {V1})</text>
             <tolerance>2</tolerance>
@@ -2629,10 +2664,10 @@
             <text>Tr05_DeltaU</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 5.&lt;/b&gt; &lt;b&gt;{m}&lt;/b&gt; kg azotu (\(c_v\) = 0,743 kJ/(kg·K)) podgrzano od temperatury &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. O ile wzrosła energia wewnętrzna tego gazu?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj ΔU [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 5.&lt;/b&gt; &lt;b&gt;{m}&lt;/b&gt; kg azotu (\(c_v\) = 0,743 kJ/(kg·K)) podgrzano z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz przyrost energii wewnętrznej gazu.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj ΔU [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Energia wewnętrzna gazu doskonałego zależy tylko od temperatury: \( \Delta U = m \cdot c_v \cdot (T_2 - T_1) \). Różnica temperatur K i °C jest liczbowo taka sama.&lt;br/&gt;Podstawienie: \( \Delta U = {m} \cdot 0,743 \cdot ({t2} - {t1}) \) kJ.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — przyrost energii wewnętrznej gazu doskonałego:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Właściwość gazu doskonałego:&lt;/b&gt; Energia wewnętrzna U zależy tylko od temperatury. Zmiana: \( \Delta U = m \cdot c_v \cdot (T_2 - T_1) \).&lt;br/&gt;&lt;b&gt;2. Ciepło właściwe:&lt;/b&gt; c_v = 0,743 kJ/(kg·K) dla azotu (przy stałej objętości).&lt;br/&gt;&lt;b&gt;3. Różnica temperatur:&lt;/b&gt; (T₂ − T₁) w kelwinach jest liczbowo równa (t₂ − t₁) w °C, więc można podstawiać temperatury w °C.&lt;br/&gt;&lt;b&gt;4. Jednostki:&lt;/b&gt; m [kg], c_v [kJ/(kg·K)], ΔT [K] → ΔU w kJ.&lt;br/&gt;&lt;b&gt;5. Podstawienie:&lt;/b&gt; \( \Delta U = {m} \cdot 0{,}743 \cdot ({t2} - {t1}) \) kJ.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -2642,6 +2677,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * 0.743 * ({t2} - {t1})</text>
             <tolerance>2</tolerance>
@@ -3339,10 +3383,10 @@
             <text>Tr06_DeltaH</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 6.&lt;/b&gt; &lt;b&gt;{m}&lt;/b&gt; kg tlenu (\(c_p\) = 0,918 kJ/(kg·K)) schłodzono izobarycznie z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Obliczyć zmianę entalpii układu z poprawnym znakiem (+/-).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj ΔH [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 6.&lt;/b&gt; &lt;b&gt;{m}&lt;/b&gt; kg tlenu (\(c_p\) = 0,918 kJ/(kg·K)) schłodzono izobarycznie z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz zmianę entalpii układu (uwzględnij znak).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj ΔH [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Entalpia gazu to \( \Delta H = m \cdot c_p \cdot (T_2 - T_1) \). Ze względu na chłodzenie (temperatura maleje), przyrost entalpii oraz ciepło układu jest wartością ujemną.&lt;br/&gt;Podstawienie: \( \Delta H = {m} \cdot 0,918 \cdot ({t2} - {t1}) \) kJ.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — zmiana entalpii przy procesie izobarycznym:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja entalpii:&lt;/b&gt; Dla gazu doskonałego przy stałym ciśnieniu \( \Delta H = m \cdot c_p \cdot (T_2 - T_1) \).&lt;br/&gt;&lt;b&gt;2. Ciepło właściwe:&lt;/b&gt; c_p = 0,918 kJ/(kg·K) dla tlenu (przy stałym ciśnieniu).&lt;br/&gt;&lt;b&gt;3. Znak:&lt;/b&gt; Przy chłodzeniu t₂ &amp;lt; t₁, więc (t₂ − t₁) &amp;lt; 0 — zmiana entalpii jest ujemna (entalpia maleje). Podaj wynik ze znakiem.&lt;br/&gt;&lt;b&gt;4. Jednostki:&lt;/b&gt; m [kg], c_p [kJ/(kg·K)], ΔT [K lub °C] → ΔH w kJ.&lt;br/&gt;&lt;b&gt;5. Podstawienie:&lt;/b&gt; \( \Delta H = {m} \cdot 0{,}918 \cdot ({t2} - {t1}) \) kJ.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -3352,6 +3396,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * 0.918 * ({t2} - {t1})</text>
             <tolerance>2</tolerance>
@@ -4049,10 +4102,10 @@
             <text>Tr07_Dysza</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 7.&lt;/b&gt; Para wodna przepływa przez dyszę adiabatyczną. Entalpia na wlocie to &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość strudze na wlocie to &lt;b&gt;{c1}&lt;/b&gt; m/s. Obliczyć prędkość pary na wylocie dyszy.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj c₂ [m/s]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 7.&lt;/b&gt; Para wodna przepływa przez dyszę adiabatyczną. Entalpia na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość strugi na wlocie wynosi &lt;b&gt;{c1}&lt;/b&gt; m/s. Oblicz prędkość pary na wylocie dyszy.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj c₂ [m/s]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z bilansu energii dla elementu bez pracy mechanicznej (dysza): \( h_1 + \frac{c_1^2}{2000} = h_2 + \frac{c_2^2}{2000} \). Dzielenie przez 2000 godzi jednostki (kJ z m²/s²).&lt;br/&gt;Po przekształceniu: \( c_2 = \sqrt{2000 \cdot (h_1 - h_2) + c_1^2} \)&lt;br/&gt;Podstawienie: \( c_2 = \sqrt{2000 \cdot ({h1} - {h2}) + {c1}^2} \) m/s.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — dysza adiabatyczna (bilans energii):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Założenia:&lt;/b&gt; Przepływ ustalony, brak pracy mechanicznej, brak wymiany ciepła (dysza adiabatyczna). Bilans energii (entalpia + energia kinetyczna): \( h_1 + \frac{c_1^2}{2} = h_2 + \frac{c_2^2}{2} \) w jednostkach kJ/kg.&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; h w kJ/kg, c w m/s. \( c^2/2 \) w (m/s)² daje J/kg = 10⁻³ kJ/kg. Aby dodać do h [kJ/kg], piszemy \( \frac{c^2}{2000} \) (bo 1 (m/s)² = 10⁻³ kJ/kg → c²/2 w kJ/kg to c²/2000).&lt;br/&gt;&lt;b&gt;3. Przekształcenie:&lt;/b&gt; \( \frac{c_2^2}{2000} = h_1 - h_2 + \frac{c_1^2}{2000} \), więc \( c_2 = \sqrt{2000(h_1 - h_2) + c_1^2} \).&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( c_2 = \sqrt{2000 \cdot ({h1} - {h2}) + {c1}^2} \) m/s.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -4062,6 +4115,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>pow(2000 * ({h1} - {h2}) + {c1}*{c1}, 0.5)</text>
             <tolerance>2</tolerance>
@@ -4759,10 +4821,10 @@
             <text>Tr08_MocTurbiny</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 8.&lt;/b&gt; Przez turbinę wodną zasilaną parą przepływa &lt;b&gt;{mdot}&lt;/b&gt; kg/s czynnika. Parą na wlocie ma &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, a na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Pominąć zmiany energii kinetycznej i potencjalnej. Obliczyć moc turbiny (adiabatycznej).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj P [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 8.&lt;/b&gt; Przez turbinę parową przepływa &lt;b&gt;{mdot}&lt;/b&gt; kg/s czynnika. Entalpia pary na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Pominąć zmiany energii kinetycznej i potencjalnej. Oblicz moc turbiny adiabatycznej.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj P [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z I Zasady Teromydnamiki dla przepływu ustalonego: \( P = \dot{m} \cdot (h_1 - h_2) \)&lt;br/&gt;Podstawienie: \( P = {mdot} \cdot ({h1} - {h2}) \) kW.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — moc turbiny (I zasada dla przepływu):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans energii:&lt;/b&gt; Dla przepływu ustalonego przez turbinę adiabatyczną, przy zaniedbaniu zmian energii kinetycznej i potencjalnej: moc na wale \( P = \dot{m}(h_1 - h_2) \). Ciepło nie jest wymieniane (adiabatyczna).&lt;br/&gt;&lt;b&gt;2. Znaczenie:&lt;/b&gt; Różnica entalpii (h₁ − h₂) to energia odbierana od czynnika na kg; mnożona przez strumień masy daje moc w kW, gdy \( \dot{m} \) w kg/s, h w kJ/kg.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( P = {mdot} \cdot ({h1} - {h2}) \) kW.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -4772,6 +4834,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{mdot} * ({h1} - {h2})</text>
             <tolerance>2</tolerance>
@@ -5469,10 +5540,10 @@
             <text>Tr09_MocSprezarki</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 9.&lt;/b&gt; Sprężarka adiabatyczna zasysa &lt;b&gt;{mdot}&lt;/b&gt; kg/s gazu. Entalpia gazu wzrasta o &lt;b&gt;{dh}&lt;/b&gt; kJ/kg. Obliczyć wymaganą moc napędową wpakowaną na wał.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj P [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 9.&lt;/b&gt; Sprężarka adiabatyczna zasysa &lt;b&gt;{mdot}&lt;/b&gt; kg/s gazu. Przyrost entalpii gazu wynosi &lt;b&gt;{dh}&lt;/b&gt; kJ/kg. Oblicz wymaganą moc napędową doprowadzoną do wału.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj P [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Moc doprowadzona do sprężarki (wartość dodatnia bezwzględnie): \( P = \dot{m} \cdot \Delta h \)&lt;br/&gt;Podstawienie: \( P = {mdot} \cdot {dh} \) kW.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — moc sprężarki (I zasada dla przepływu):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans energii:&lt;/b&gt; W sprężarce adiabatycznej praca jest doprowadzana do gazu; przyrost entalpii czynnika \( \Delta h = h_2 - h_1 \) [kJ/kg] wynika z pracy na wale. Moc napędowa \( P = \dot{m} \cdot \Delta h \).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; \( \dot{m} \) [kg/s], Δh [kJ/kg] → P [kW]. Zadanie podaje już przyrost entalpii Δh.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( P = {mdot} \cdot {dh} \) kW.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -5482,6 +5553,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{mdot} * {dh}</text>
             <tolerance>2</tolerance>
@@ -5954,10 +6034,10 @@
             <text>Tr10_WymiennikWoda</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 10.&lt;/b&gt; W wymienniku ciepła płynie woda (\(c_w\) = 4,19 kJ/(kg·K)) ze strumieniem &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Woda ogrzewa się z z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Obliczyć strumień przejmowanego ciepła przez wodę.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj Q [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 10.&lt;/b&gt; W wymienniku ciepła płynie woda (\(c_w\) = 4,19 kJ/(kg·K)) ze strumieniem &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Woda ogrzewa się z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz strumień ciepła przejmowanego przez wodę.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj Q [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Moc cieplna: \( \dot{Q} = \dot{m} \cdot c_w \cdot (T_2 - T_1) \)&lt;br/&gt;Podstawienie: \( \dot{Q} = {mdot} \cdot 4,19 \cdot ({t2} - {t1}) \) kW.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — strumień ciepła w wymienniku (ogrzewanie wody):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans ciepła:&lt;/b&gt; Ciepło przejmowane przez wodę przy ogrzewaniu: \( \dot{Q} = \dot{m} \cdot c_w \cdot (T_2 - T_1) \). Strumień masy \( \dot{m} \) [kg/s], ciepło właściwe c_w [kJ/(kg·K)], różnica temperatur w K lub °C.&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; \( \dot{m} \) [kg/s], c_w = 4,19 kJ/(kg·K), (t₂ − t₁) [K] → \( \dot{Q} \) w kW.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \dot{Q} = {mdot} \cdot 4{,}19 \cdot ({t2} - {t1}) \) kW.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -5967,6 +6047,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{mdot} * 4.19 * ({t2} - {t1})</text>
             <tolerance>2</tolerance>
@@ -6664,10 +6753,10 @@
             <text>Tr11_SprawnoscT</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 11.&lt;/b&gt; Czas pracy pewnego silnika to 1 cykl. Pobiera on &lt;b&gt;{Qin}&lt;/b&gt; kJ ciepła ze źródła i odprowadza &lt;b&gt;{Qout}&lt;/b&gt; kJ zasilonemu układowi otoczenia. Obliczyć sprawność termiczną silnika.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj (eta_t) [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 11.&lt;/b&gt; W jednym cyklu silnik pobiera ze źródła &lt;b&gt;{Qin}&lt;/b&gt; kJ ciepła i odprowadza do otoczenia &lt;b&gt;{Qout}&lt;/b&gt; kJ. Oblicz sprawność termiczną silnika.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj (eta_t) [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Wykonana praca \( L = Q_{in} - Q_{out} \). Sprawność \( \eta = \frac{L}{Q_{in}} = 1 - \frac{Q_{out}}{Q_{in}} \)&lt;br/&gt;Podstawienie: \( \eta = 1 - \frac{{Qout}}{{Qin}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — sprawność termiczna silnika:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja sprawności:&lt;/b&gt; \( \eta = \frac{L}{Q_{in}} \), gdzie L — praca netto wykonana w cyklu, Q_in — ciepło pobrane ze źródła.&lt;br/&gt;&lt;b&gt;2. Bilans energii (I zasada):&lt;/b&gt; W cyklu \( Q_{in} - Q_{out} = L \) (ciepło oddane Q_out do otoczenia). Stąd \( L = Q_{in} - Q_{out} \).&lt;br/&gt;&lt;b&gt;3. Postać sprawności:&lt;/b&gt; \( \eta = \frac{Q_{in} - Q_{out}}{Q_{in}} = 1 - \frac{Q_{out}}{Q_{in}} \). Wartość ułamkowa (0–1).&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( \eta = 1 - \frac{{Qout}}{{Qin}} \).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -6677,6 +6766,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>1 - ({Qout}/{Qin})</text>
             <tolerance>0.01</tolerance>
@@ -7149,10 +7247,10 @@
             <text>Tr12_Carnot</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 12.&lt;/b&gt; Idealnie odwracalny silnik pracuje cyklem Carnota między &lt;b&gt;{TH}&lt;/b&gt; °C i &lt;b&gt;{TL}&lt;/b&gt; °C. Obliczyć sprawność tego silnika.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj eta_C [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 12.&lt;/b&gt; Idealnie odwracalny silnik pracuje cyklem Carnota między &lt;b&gt;{TH}&lt;/b&gt; °C i &lt;b&gt;{TL}&lt;/b&gt; °C. Oblicz sprawność tego silnika.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj eta_C [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Sprawność wg Carnota: \( \eta_C = 1 - \frac{T_L}{T_H} \), gdzie temperatury są w kelwinach!&lt;br/&gt;Podstawienie: \( \eta_C = 1 - \frac{{TL} + 273,15}{{TH} + 273,15} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — sprawność obiegu Carnota:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Wzór Carnota:&lt;/b&gt; Dla silnika odwracalnego pracującego między źródłem górnym (T_H) a dolnym (T_L): \( \eta_C = 1 - \frac{T_L}{T_H} \). Temperatury muszą być w kelwinach.&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; T [K] = t [°C] + 273,15. Sprawność jest liczbą niemianowaną (0–1).&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \eta_C = 1 - \frac{{TL} + 273{,}15}{{TH} + 273{,}15} \).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -7162,6 +7260,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>1 - ({TL}+273.15)/({TH}+273.15)</text>
             <tolerance>0.01</tolerance>
@@ -7634,10 +7741,10 @@
             <text>Tr13_ChlodziarkaCOP</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 13.&lt;/b&gt; Obliczyć maksymalny teoretyczny współczynnik COP dla chłodziarki, by chłodziła wnętrze o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C, oddając ciepło w temp &lt;b&gt;{TH}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj COP [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 13.&lt;/b&gt; Oblicz maksymalny teoretyczny współczynnik COP chłodziarki, która chłodzi wnętrze o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C, oddając ciepło do otoczenia o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj COP [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z definicji dla chłodziarki Carnota: \( COP = \frac{T_L}{T_H - T_L} \) z T w kelwinach.&lt;br/&gt;Podstawienie: \( COP = \frac{{TL} + 273,15}{({TH} + 273,15) - ({TL} + 273,15)} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — COP chłodziarki (Carnot):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja COP:&lt;/b&gt; Współczynnik wydajności chłodniczej \( COP = \frac{\dot{Q}_L}{P} \) — stosunek ciepła odbieranego z wnętrza do pracy sprężarki. Dla obiegu Carnota: \( COP = \frac{T_L}{T_H - T_L} \) (T w kelwinach).&lt;br/&gt;&lt;b&gt;2. Znaczenie:&lt;/b&gt; T_L — temp. zimnego źródła (wnętrze), T_H — temp. otoczenia. Im mniejsza różnica T_H − T_L, tym wyższy COP.&lt;br/&gt;&lt;b&gt;3. Jednostki:&lt;/b&gt; T = t + 273,15 [K]. Wynik niemianowany.&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( COP = \frac{{TL} + 273{,}15}{({TH} + 273{,}15) - ({TL} + 273{,}15)} = \frac{{TL} + 273{,}15}{{TH} - {TL}} \).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -7647,6 +7754,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({TL} + 273.15) / ({TH} - {TL})</text>
             <tolerance>0.1</tolerance>
@@ -8119,10 +8235,10 @@
             <text>Tr14_PompaCieplaCOP</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 14.&lt;/b&gt; Z jaką maksymalną sprawnością energetyczną (COP wg równań Carnota) może parować pompa ciepła, pozyskująca energię z dolnego źródła gruntu przy &lt;b&gt;{TL}&lt;/b&gt; °C podgrzewając system ścienny pod C.O. do &lt;b&gt;{TH}&lt;/b&gt; °C?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj COP_PC [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 14.&lt;/b&gt; Pompa ciepła pozyskuje energię z dolnego źródła (grunt) o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C i oddaje ciepło do systemu grzewczego o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C. Oblicz maksymalny teoretyczny COP (wg Carnota) tej pompy ciepła.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj COP_PC [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Dla pompy ciepła wydajność (COP_PC) określa równanie: \( COP_H = \frac{T_H}{T_H - T_L} \) z T w kelwinach. Dodatkowo pamiętaj, że \(COP_{PC} = COP_{ch} + 1\).&lt;br/&gt;Podstawienie: \( COP_H = \frac{{TH} + 273,15}{{TH} - {TL}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — COP pompy ciepła (Carnot):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja COP pompy ciepła:&lt;/b&gt; \( COP_{PC} = \frac{\dot{Q}_H}{P} \) — stosunek ciepła oddanego do ogrzewania do pracy napędowej. Dla obiegu Carnota: \( COP_{PC} = \frac{T_H}{T_H - T_L} \) (T w kelwinach).&lt;br/&gt;&lt;b&gt;2. Związek z COP chłodziarki:&lt;/b&gt; \( COP_{PC} = COP_{chłodziarki} + 1 \), bo to ten sam obieg — pompa „przenosi” ciepło z T_L do T_H i oddaje więcej niż pobiera pracę.&lt;br/&gt;&lt;b&gt;3. Jednostki:&lt;/b&gt; T = t + 273,15 [K]. Wynik niemianowany, zwykle &amp;gt; 1.&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( COP_{PC} = \frac{{TH} + 273{,}15}{{TH} - {TL}} \) (mianownik w °C: TH − TL).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -8132,6 +8248,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({TH} + 273.15) / ({TH} - {TL})</text>
             <tolerance>0.1</tolerance>
@@ -8604,10 +8729,10 @@
             <text>Tr15_IzentropaGaz</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 15.&lt;/b&gt; Powietrze (\(\kappa = 1,4\)) zostaje izentropowo rozprężone. Ciśnienie początkowe wynosiło &lt;b&gt;{p1}&lt;/b&gt; bar, a temp. początkowa to &lt;b&gt;{T1}&lt;/b&gt; °C. Rejestrowana na dekompresji temp to &lt;b&gt;{T2}&lt;/b&gt; °C. Oblicz ciśnienie końcowe.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p2 [bar]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 15.&lt;/b&gt; Powietrze (\(\kappa = 1,4\)) rozprężono izentropowo. Ciśnienie początkowe wynosi &lt;b&gt;{p1}&lt;/b&gt; bar, temperatura początkowa &lt;b&gt;{T1}&lt;/b&gt; °C. Temperatura po rozprężeniu wynosi &lt;b&gt;{T2}&lt;/b&gt; °C. Oblicz ciśnienie końcowe.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj p2 [bar]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Przemiana izentropowa: \( \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{\frac{\kappa-1}{\kappa}} \). Przekształcając w p_2: \( p_2 = p_1 \cdot \left(\frac{T_2}{T_1}\right)^{\frac{\kappa}{\kappa-1}} \). Tutaj w kelwinach! Wykładnik to \( 1,4/0,4 = 3,5 \).&lt;br/&gt;Podstawienie: \( p_2 = {p1} \cdot \left( \frac{{T2}+273,15}{{T1}+273,15} \right)^{3,5} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — przemiana izentropowa (wyznaczenie p₂ z T₂):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Zależność T–p w izentropie:&lt;/b&gt; Dla gazu doskonałego \( \frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{(\kappa-1)/\kappa} \). Stąd \( \frac{p_2}{p_1} = \left(\frac{T_2}{T_1}\right)^{\kappa/(\kappa-1)} \) i \( p_2 = p_1 \cdot (T_2/T_1)^{\kappa/(\kappa-1)} \). Temperatury w kelwinach.&lt;br/&gt;&lt;b&gt;2. Wykładnik:&lt;/b&gt; Dla powietrza κ = 1,4: κ/(κ−1) = 1,4/0,4 = 3,5.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( p_2 = {p1} \cdot \left( \frac{{T2}+273{,}15}{{T1}+273{,}15} \right)^{3{,}5} \) bar.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -8617,6 +8742,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{p1} * pow(({T2}+273.15)/({T1}+273.15), 3.5)</text>
             <tolerance>0.2</tolerance>
@@ -9314,10 +9448,10 @@
             <text>Tr16_IzotermaL</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 16.&lt;/b&gt; W procesie sprzężania &lt;b&gt;{m}&lt;/b&gt; kg gazu doskonałego (R = &lt;b&gt;{R}&lt;/b&gt; J/(kg·K)) ciśnienie rośnie od &lt;b&gt;{p1}&lt;/b&gt; bar do &lt;b&gt;{p2}&lt;/b&gt; bar. Zjawisko wykonano izotermicznie przy temp. &lt;b&gt;{t}&lt;/b&gt; °C. Obliczyć pracę włożoną w system jako wartość ujemną lub pobranej pracy bezwzględnej. Tu podaj samą jej wielkość absolutną o wartości prcy nad tłokiem jako liczbe ze znakiem. System pod ciśnieniem zmniejsza obj. zatem praca oddawana do gazy to liczba  (- L_obs ) - podaj L.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 16.&lt;/b&gt; W procesie sprężania izotermicznego &lt;b&gt;{m}&lt;/b&gt; kg gazu doskonałego (R = &lt;b&gt;{R}&lt;/b&gt; J/(kg·K)) ciśnienie rośnie z &lt;b&gt;{p1}&lt;/b&gt; bar do &lt;b&gt;{p2}&lt;/b&gt; bar przy stałej temperaturze &lt;b&gt;{t}&lt;/b&gt; °C. Oblicz pracę sprężania (wartość bezwzględną w kJ).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z równań na przemianę izotermiczną gazu o stałej temperaturze: \( L = m R T \cdot \ln\left(\frac{p_1}{p_2}\right) \) by uzyskać kJ, R podajemy w kJ/kgK. &lt;br/&gt;Podstawienie: \( L = {m} \cdot \frac{{R}}{1000} \cdot ({t}+273,15) \cdot \ln\left(\frac{{p1}}{{p2}}\right) \). Ponieważ p2 &gt; p1, ln &lt; 0 co da ujemną wyliczoną w [kJ].&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — praca sprężania izotermicznego:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Praca w przemianie izotermicznej:&lt;/b&gt; \( L = m R T \ln\frac{V_2}{V_1} = m R T \ln\frac{p_1}{p_2} \) (z pV = const). Przy sprężaniu p₂ &amp;gt; p₁, więc ln(p₁/p₂) &amp;lt; 0 — praca doprowadzona (ujemna z konwencji „praca gazu”). Podaj wartość bezwzględną.&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; R podane w J/(kg·K) → R/1000 w kJ/(kg·K). T = t + 273,15 [K]. m [kg] → L w kJ.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( L = {m} \cdot \frac{{R}}{1000} \cdot ({t}+273{,}15) \cdot \ln\frac{{p1}}{{p2}} \). Wynik ujemny — weź wartość bezwzględną.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -9327,6 +9461,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * ({R}/1000) * ({t}+273.15) * log({p1}/{p2})</text>
             <tolerance>2</tolerance>
@@ -10474,10 +10617,10 @@
             <text>Tr17_MieszUdziałyMo</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 17.&lt;/b&gt; W butli o znanej masie wymieszano &lt;b&gt;{m1}&lt;/b&gt; kg tlenu O_2 z &lt;b&gt;{m2}&lt;/b&gt; kg dwutlenku węgla CO_2. Obliczyć udział masowy tlenu wyrażony w procentach (np 54.3 %).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj g_O2 [%]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 17.&lt;/b&gt; W butli wymieszano &lt;b&gt;{m1}&lt;/b&gt; kg tlenu O₂ z &lt;b&gt;{m2}&lt;/b&gt; kg dwutlenku węgla CO₂. Oblicz udział masowy tlenu w procentach (np. 54,3%).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj g_O2 [%]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Udział masowy to masa jednego składnika przez sumę obydwu: \( g = \frac{m_1}{m_1 + m_2} \cdot 100\% \).&lt;br/&gt;Podstawienie: \( g = \frac{{m1}}{{m1} + {m2}} \cdot 100 \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — udział masowy w mieszaninie gazów:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja udziału masowego:&lt;/b&gt; Udział masowy składnika 1 to \( g_1 = \frac{m_1}{m_1 + m_2} \) (jako ułamek) lub \( g_1 = \frac{m_1}{m_1 + m_2} \cdot 100\% \) w procentach.&lt;br/&gt;&lt;b&gt;2. Tutaj:&lt;/b&gt; Składnik 1 = tlen O₂, składnik 2 = CO₂. Szukamy g_O₂ [%].&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( g_{O_2} = \frac{{m1}}{{m1} + {m2}} \cdot 100 \) %.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -10487,6 +10630,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>100 * {m1} / ({m1} + {m2})</text>
             <tolerance>0.5</tolerance>
@@ -10959,10 +11111,10 @@
             <text>Tr18_ParaStopien</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 18.&lt;/b&gt; W fazie statycznej komorownika para mokra waży &lt;b&gt;{m_calkowita}&lt;/b&gt; kg z czego faza wodna stanowi &lt;b&gt;{m_woda}&lt;/b&gt; kg. Oblicz stopień jej suchości w ułamku lub punkcie całkowitym (tj. bez procentów np 0.53).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj x [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 18.&lt;/b&gt; W zbiorniku para mokra ma masę całkowitą &lt;b&gt;{m_calkowita}&lt;/b&gt; kg, z czego faza ciekła stanowi &lt;b&gt;{m_woda}&lt;/b&gt; kg. Oblicz stopień suchości pary (jako ułamek, np. 0,53).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj x [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Stopień suchości odpowiada podziałowi w masie fazy pazywej względem całego czynnika wilgotnego. Zatem  \( m'' = m - m' \). I wzór podstawowy \( x = \frac{m''}{m_{całkowita}} = 1 - \frac{m'}{m_{całkowita}} \).&lt;br/&gt;Podstawienie: \( x = 1 - \frac{{m_woda}}{{m_calkowita}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — stopień suchości pary mokrej:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja stopnia suchości:&lt;/b&gt; \( x = \frac{m''}{m} \) — stosunek masy pary nasyconej suchej (m″) do całkowitej masy mieszaniny (para + ciecz). Masa fazy ciekłej m′ = m − m″, więc \( x = \frac{m - m'}{m} = 1 - \frac{m'}{m} \).&lt;br/&gt;&lt;b&gt;2. W zadaniu:&lt;/b&gt; m_calkowita = m, m_woda = m′ (faza ciekła).&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( x = 1 - \frac{{m_woda}}{{m_calkowita}} \). Wynik jako ułamek (0 &amp;lt; x &amp;lt; 1).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -10972,6 +11124,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>1 - ({m_woda}/{m_calkowita})</text>
             <tolerance>0.01</tolerance>
@@ -11444,10 +11605,10 @@
             <text>Tr19_ZawilzeniePw</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 19.&lt;/b&gt; Na podstawie psychrometru Assmana wyliczono że ciśnienie cząstkowe pary wynosi &lt;b&gt;{pw}&lt;/b&gt; hPa dla klimatu o ogólnym b. ciśnieniem powietrza równym &lt;b&gt;{pB}&lt;/b&gt; hPa. Wynik X oddaj w g/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj X [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 19.&lt;/b&gt; Na podstawie pomiaru psychrometrem Assmanna wyznaczono ciśnienie cząstkowe pary wodnej &lt;b&gt;{pw}&lt;/b&gt; hPa przy ciśnieniu barometrycznym &lt;b&gt;{pB}&lt;/b&gt; hPa. Oblicz zawilżenie absolutne powietrza X.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj X [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Wzór na zawilżenie absolutne używa 622 (z R suchego/R mokrego). \( X = 622 \cdot \frac{p_w}{p_B - p_w} \).&lt;br/&gt;Podstawienie: \( X = 622 \cdot \frac{{pw}}{{pB} - {pw}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — zawilżenie absolutne powietrza (X):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja:&lt;/b&gt; Zawilżenie X [g/kg] to masa pary wodnej na 1 kg powietrza suchego. Z równania stanu i stosunku stałych gazowych (powietrze/para): \( X = 622 \cdot \frac{p_w}{p_B - p_w} \), gdzie p_w — ciśnienie cząstkowe pary, p_B — ciśnienie barometryczne (w tych samych jednostkach).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; p_w i p_B w hPa → X w g/kg (współczynnik 622 przy założeniu R_powietrza/R_pary ≈ 0,622).&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( X = 622 \cdot \frac{{pw}}{{pB} - {pw}} \) g/kg.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -11457,6 +11618,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>622 * {pw} / ({pB} - {pw})</text>
             <tolerance>0.5</tolerance>
@@ -11929,10 +12099,10 @@
             <text>Tr20_RegulaDzwigniPowietrza</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 20.&lt;/b&gt; Centrale obiegowe wentylacji rewelacyjnie mieszają &lt;b&gt;{m1}&lt;/b&gt; kg/s zewnętrznego mroźnego powietrza zewnątrz (- &lt;b&gt;{t1_ujemna}&lt;/b&gt; °C) ze &lt;b&gt;{m2}&lt;/b&gt; kg/s wyciągowego pow. odzyskanego (&lt;b&gt;{t2}&lt;/b&gt; °C). Oblicz końcową temperaturę wynikającą dla nawiewu do dalszej nagrzewnicy.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj T_miesz [%]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;UWAGA, t1= - {t1_ujemna} st. wpisz minus do równania!&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 20.&lt;/b&gt; W centrali wentylacyjnej miesza się &lt;b&gt;{m1}&lt;/b&gt; kg/s powietrza zewnętrznego o temperaturze −&lt;b&gt;{t1_ujemna}&lt;/b&gt; °C ze &lt;b&gt;{m2}&lt;/b&gt; kg/s powietrza wywiewanego o temperaturze &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz temperaturę powietrza po zmieszaniu (nawiew).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj T_miesz [°C]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Uwaga: t₁ = −{t1_ujemna} °C (wartość ujemna).&lt;/i&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Reguła dźwigni: T_mieszane wg bilansu: \( t_M = \frac{m_1 \cdot t_1 + m_2 \cdot t_2}{m_1 + m_2} \). Mając znaki, tj. t_1 wchodzi jako straty cieplne ujemne.&lt;br/&gt;Podstawienie: \( t_M = \frac{{m1} \cdot (-{t1_ujemna}) + {m2} \cdot {t2}}{{m1} + {m2}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — temperatura mieszaniny (bilans energii):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans przy mieszaniu:&lt;/b&gt; Przy mieszaniu dwóch strumieni powietrza (bez wymiany ciepła z otoczeniem) \( m_1 t_1 + m_2 t_2 = (m_1 + m_2) t_M \), więc \( t_M = \frac{m_1 t_1 + m_2 t_2}{m_1 + m_2} \). Temperatury w °C (dla powietrza przy niewielkiej zmianie c_p dopuszczalne).&lt;br/&gt;&lt;b&gt;2. Znaki:&lt;/b&gt; Powietrze zewnętrzne ma t₁ = −{t1_ujemna} °C (ujemne), więc w wzorze: t₁ = −t1_ujemna.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( t_M = \frac{{m1} \cdot (-{t1_ujemna}) + {m2} \cdot {t2}}{{m1} + {m2}} \) °C.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -11942,6 +12112,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({m1} * (-{t1_ujemna}) + {m2} * {t2}) / ({m1} + {m2})</text>
             <tolerance>0.5</tolerance>
@@ -12864,10 +13043,10 @@
             <text>Tr21_ScianaU</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 21.&lt;/b&gt; Policz opór całkowity z współczynnikiem przenikania ciepła jednowarstwowej zbrojki betonowej ściany płaskiej d= &lt;b&gt;{d_cm}&lt;/b&gt; cm ze spoiwem \(\lambda\)= &lt;b&gt;{lam}&lt;/b&gt; W/(m·K). Mając na zewnatrz alfa_1= &lt;b&gt;{a1}&lt;/b&gt; i alfa_2= &lt;b&gt;{a2}&lt;/b&gt; W/m²K. Otrzymaj U.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj U [W/(m²K)]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 21.&lt;/b&gt; Jednowarstwowa ściana płaska z betonu zbrojonego ma grubość &lt;b&gt;{d_cm}&lt;/b&gt; cm i współczynnik przewodzenia \(\lambda\) = &lt;b&gt;{lam}&lt;/b&gt; W/(m·K). Współczynniki przejmowania ciepła: od zewnątrz \(\alpha_1\) = &lt;b&gt;{a1}&lt;/b&gt; W/(m²·K), od wewnątrz \(\alpha_2\) = &lt;b&gt;{a2}&lt;/b&gt; W/(m²·K). Oblicz współczynnik przenikania ciepła U.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj U [W/(m²K)]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Suma oporów na zjawisko wnosi \( 1/U = R_{total} = \frac{1}{\alpha_1} + \frac{\delta}{\lambda} + \frac{1}{\alpha_2} \). Koniecznie centymetry konwertuj do 1 m = 100 cm!&lt;br/&gt;Podstawienie: \( 1/U = \frac{1}{{a1}} + \frac{{d_cm} / 100}{{lam}} + \frac{1}{{a2}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — współczynnik przenikania ciepła U:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Opór całkowity:&lt;/b&gt; Przenikanie przez ścianę: opór konwekcji zewnętrznej + opór przewodzenia + opór konwekcji wewnętrznej. \( \frac{1}{U} = R_{tot} = \frac{1}{\alpha_1} + \frac{\delta}{\lambda} + \frac{1}{\alpha_2} \). Stąd \( U = 1/R_{tot} \) [W/(m²·K)].&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; δ w m (d_cm/100), λ [W/(m·K)], α [W/(m²·K)].&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \frac{1}{U} = \frac{1}{{a1}} + \frac{{d_cm}/100}{{lam}} + \frac{1}{{a2}} \), następnie U = 1 / (prawa strona).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -12877,8 +13056,17 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
-            <text>1 / ( (1/{a1}) + ({d_cm}/100/{lam}) + (1/{a2}) )</text>
+            <text>1 / ((1/{a1}) + ({d_cm}/100/{lam}) + (1/{a2}))</text>
             <tolerance>0.1</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
@@ -13799,10 +13987,10 @@
             <text>Tr22_ObiegOtto</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 22.&lt;/b&gt; Oblicz sprawność dla uśpionego idealnego obiegu Otto pod stopniem sprężaniu obiętościowym V1/V2 na poziomie &lt;b&gt;{eps}&lt;/b&gt; z gazem doskonałym, np. zimne powietrze (\(\kappa\) = 1.4).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj eta [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 22.&lt;/b&gt; Oblicz sprawność idealnego obiegu Otto przy stopniu sprężania objętościowym \(\varepsilon = V_1/V_2\) = &lt;b&gt;{eps}&lt;/b&gt;. Gaz doskonały, \(\kappa\) = 1,4 (np. powietrze).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj eta [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Owa sprawność rzutuje od stosunku eps, wywiedzioną ogólnikową z izentropy izochorowej: \( \eta = 1 - \frac{1}{\varepsilon^{\kappa-1}} \).&lt;br/&gt;Podstawienie: \( \eta = 1 - \frac{1}{{eps}^{1.4-1}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — sprawność obiegu Otto:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Obieg Otto:&lt;/b&gt; Składa się z izentropy sprężania, izochorycznego doprowadzenia ciepła, izentropy rozprężania i izochorycznego odbioru ciepła. Dla gazu doskonałego ze stałym κ sprawność zależy tylko od stopnia sprężania ε = V₁/V₂.&lt;br/&gt;&lt;b&gt;2. Wzór:&lt;/b&gt; \( \eta = 1 - \frac{1}{\varepsilon^{\kappa-1}} \). Dla powietrza κ = 1,4: κ−1 = 0,4.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \eta = 1 - \frac{1}{{eps}^{0{,}4}} \). Wynik jako ułamek (0–1).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -13812,6 +14000,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>1 - 1 / pow({eps}, 0.4)</text>
             <tolerance>0.01</tolerance>
@@ -14059,10 +14256,10 @@
             <text>Tr23_EntalpiaPowwilg</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 23.&lt;/b&gt; Oblicz entalpię dla letniego powitrz z &lt;b&gt;{t}&lt;/b&gt; °C oraz podniesionej zawartości w &lt;b&gt;{X}&lt;/b&gt; g w kg (tzw z wilgocią).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj h [kJ/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 23.&lt;/b&gt; Oblicz entalpię powietrza wilgotnego o temperaturze &lt;b&gt;{t}&lt;/b&gt; °C i zawilżeniu &lt;b&gt;{X}&lt;/b&gt; g/kg (entalpia odniesiona do 1 kg powietrza suchego).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj h [kJ/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Przybliżony praktyczny inżynieri wzror wywodzacy sie z 1 kg szkieletu : \( h = 1.005 \cdot t + \frac{X}{1000} \cdot (2500 + 1.86 \cdot t) \), ew w g ułamkach na karcie : \( h \approx 1.005 t + X(2.5 + 0.00186 t) \).&lt;br/&gt;Podstawienie: \( h = 1.005 \cdot {t} + {X} \cdot (2.5 + 0.00186 \cdot {t}) \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — entalpia powietrza wilgotnego:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Entalpia odniesiona do 1 kg powietrza suchego:&lt;/b&gt; \( h = c_{p,pow}\,t + X \cdot (r_0 + c_{p,para}\,t) \), gdzie X [kg/kg] — zawilżenie. W praktyce X podaje się w g/kg; wtedy \( h \approx 1{,}005\,t + \frac{X}{1000}(2500 + 1{,}86\,t) \) kJ/kg, czyli \( h \approx 1{,}005\,t + X\cdot(2{,}5 + 0{,}00186\,t) \) gdy X w g/kg (2500 ≈ ciepło parowania przy 0°C w kJ/kg).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; t [°C], X [g/kg] → h [kJ/kg].&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( h = 1{,}005 \cdot {t} + {X} \cdot (2{,}5 + 0{,}00186 \cdot {t}) \) kJ/kg.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -14072,6 +14269,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>1.005 * {t} + {X} * (2.5 + 0.00186 * {t})</text>
             <tolerance>1.0</tolerance>
@@ -14544,10 +14750,10 @@
             <text>Tr24_SpalanieO2</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 24.&lt;/b&gt; W silniku o procesie ciągłym przepłoneło &lt;b&gt;{m_c}&lt;/b&gt; kg czystego pierwiastka grafen/węgla kopalnego C. Reagując bezresztkowo jak ze stechiometrii spalono go, oblicz zużytą tlenową cześć z masy O2 do CO2 (kg).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj M_O2 [kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 24.&lt;/b&gt; W procesie spalania stechiometrycznego spalono &lt;b&gt;{m_c}&lt;/b&gt; kg węgla (C). Oblicz masę tlenu O₂ zużytego do całkowitego spalenia do CO₂.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj M_O2 [kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Masy molowe tj C to 12. O2 to 32. 12 kg spali się na 32 kg tlenu.&lt;br/&gt;Podstawienie: Z proporcji z mas \( m_{O2} = \frac{m_C}{12} \cdot 32 = \frac{{m_c}}{12} \cdot 32 \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Reakcja i stechiometria:&lt;/b&gt; C + O₂ → CO₂. Z równania: 1 mol C (12 kg) wymaga 1 mola O₂ (32 kg).&lt;br/&gt;&lt;b&gt;2. Proporcja mas:&lt;/b&gt; \( m_{O_2}/m_C = 32/12 \), więc \( m_{O_2} = m_C \cdot 32/12 \).&lt;br/&gt;&lt;b&gt;3. Jednostki:&lt;/b&gt; masa węgla w kg → wynik w kg.&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( m_{O_2} = \frac{{m_c}}{12} \cdot 32 \) kg.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -14557,6 +14763,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({m_c} / 12) * 32</text>
             <tolerance>0.5</tolerance>
@@ -14804,10 +15019,10 @@
             <text>Tr25_PrzewScianaQ</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 25.&lt;/b&gt; Jaką wielkość strat gęstości rzutu strumienia dla osłoniętych warstwy komory płaskiej wyindukujemy od ściany zrównanej o temp styk &lt;b&gt;{t1}&lt;/b&gt; ze scianą zewnetrzną ubiegającą w stoku grubej ściedziny rzedu d=&lt;b&gt;{d}&lt;/b&gt; cm ze spoiwem \(\lambda\) rzędu &lt;b&gt;{lam}&lt;/b&gt;. Powierzchnia to chłodnicy zew. przy &lt;b&gt;{t2}&lt;/b&gt; °C stykowej.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj q [W/m²]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 25.&lt;/b&gt; Przez płaską warstwę o grubości &lt;b&gt;{d}&lt;/b&gt; cm i współczynniku przewodzenia \(\lambda\) = &lt;b&gt;{lam}&lt;/b&gt; W/(m·K) przenika ciepło. Temperatura po stronie wewnętrznej wynosi &lt;b&gt;{t1}&lt;/b&gt; °C, po zewnętrznej &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz gęstość strumienia ciepła (prawo Fouriera, bez oporów przejmowania).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj q [W/m²]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Gęstość przenikania przez warstawy płaskoprzewodzącej Fouriera (nie całe U tj bez alfa): \( q = \frac{\lambda}{\delta} \cdot (T_1 - T_2) \). Tutaj w cm ! Konwert do metrow. &lt;br/&gt;Podstawienie: \( q = \frac{{lam}}{{d}/100} \cdot ({t1} - {t2}) \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — gęstość strumienia ciepła (prawo Fouriera):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Prawo Fouriera:&lt;/b&gt; Dla ustalonego przewodzenia przez warstwę płaską \( q = \frac{\lambda}{\delta}(T_1 - T_2) \) [W/m²], gdzie λ — współczynnik przewodzenia, δ — grubość warstwy, T₁, T₂ — temperatury powierzchni. Nie uwzględniamy tu oporów przejmowania (alfa).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; δ w m (d [cm] → d/100), λ [W/(m·K)], T w K lub °C (różnica taka sama).&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( q = \frac{{lam}}{{d}/100} \cdot ({t1} - {t2}) \) W/m².&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -14817,6 +15032,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>({lam} / ({d}/100)) * ({t1} - {t2})</text>
             <tolerance>2.0</tolerance>
@@ -15739,10 +15963,10 @@
             <text>Tr26_KondesatCieplo</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 26.&lt;/b&gt; W chłodnicy oleju obniżono temp zlecenia ze &lt;b&gt;{t1}&lt;/b&gt; °C by finalnie opasać masarnie uł. &lt;b&gt;{t2}&lt;/b&gt; °C przemykającą ciecz o przepływie &lt;b&gt;{m}&lt;/b&gt; kg/s lepkości obdarzoną ciepłym włs. c=&lt;b&gt;{c}&lt;/b&gt; kJ/kgK. Oblicz rzucone straty uogólnione w cieple odprowadzonym do chłodzenia kW!&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj Q [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 26.&lt;/b&gt; W chłodnicy ciecz o strumieniu masy &lt;b&gt;{m}&lt;/b&gt; kg/s i cieple właściwym &lt;b&gt;{c}&lt;/b&gt; kJ/(kg·K) ochładza się z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz strumień ciepła odprowadzonego w chłodnicy (moc w kW).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj Q [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Ciepło oddane to zmiana entalpii z uwzględnieniem obranego kierunku znaków. Moc odprowadzona oblicz na czysto i oddaj jako wielkość absolutną. &lt;br/&gt;Podstawienie: \( Q = |\dot{m} c_v (t_{out} - t_{in})| = {m} \cdot {c} \cdot ({t1} - {t2}) \) jako wynik na +.&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — strumień ciepła w chłodnicy (wymiennik):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans ciepła:&lt;/b&gt; Ciecz ochładza się z t₁ do t₂, oddając ciepło do chłodnicy. Strumień ciepła odprowadzonego (moc): \( \dot{Q} = \dot{m} \cdot c \cdot (t_1 - t_2) \) — przy spadku temperatury (t₁ &amp;gt; t₂) wynik dodatni [kW].&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; \( \dot{m} \) [kg/s], c [kJ/(kg·K)], (t₁ − t₂) [K lub °C] → \( \dot{Q} \) [kW].&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \dot{Q} = {m} \cdot {c} \cdot ({t1} - {t2}) \) kW.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -15752,6 +15976,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * {c} * ({t1} - {t2})</text>
             <tolerance>2.0</tolerance>
@@ -16674,10 +16907,10 @@
             <text>Tr27_PracaCarnotaQ</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 27.&lt;/b&gt; Obieg cyklu odwracalnego wzięty pomiędzy zbiorami &lt;b&gt;{tH}&lt;/b&gt; °C oraz parną podłogowym skraplaczem dla opiętej zarysem ziemi &lt;b&gt;{tL}&lt;/b&gt; °C zasymilował wymianą rzędu chłodzącą w temp wyjściowo uchyłku &lt;b&gt;{Qout}&lt;/b&gt; MW ciepła z bloku. Mając na uwadzę że silnik obraca sie jako prawoskrętny obieg silnikowy Carnota, ile on potrafił oddać na przód prac z cyklu w MW ?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [MW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 27.&lt;/b&gt; Silnik Carnota pracuje między temperaturą źródła górnego &lt;b&gt;{tH}&lt;/b&gt; °C a temperaturą skraplacza &lt;b&gt;{tL}&lt;/b&gt; °C. Do skraplacza odprowadzane jest &lt;b&gt;{Qout}&lt;/b&gt; MW ciepła. Oblicz pracę netto cyklu w MW.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj L [MW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Aby obliczyć pracę z wyrzutu Q_L i ETA korzystasz z ETA = 1 - TL/TH. Ale też ETA = L/Q_H (z bilansu: L = Q_H - Q_L, lub Q_H = L + Q_L).&lt;br/&gt;Znając eta_C i równania dla stosunków ciepła to: Q_H / Q_L = TH / TL, zatem L = Q_H - Q_L = (TH/TL)*Q_L - Q_L = Q_L * ( (TH/TL) - 1 ). T podawaj w [K].&lt;br/&gt;Podstawienie: \( L = {Qout} \cdot \left[ \frac{{tH}+273.15}{{tL}+273.15} - 1 \right] \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — praca netto cyklu Carnota:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Stosunek ciepła w Carnota:&lt;/b&gt; Dla obiegu odwracalnego \( \frac{Q_H}{Q_L} = \frac{T_H}{T_L} \) (temperatury w K). Ciepło odprowadzone do skraplacza to Q_L (w zadaniu Qout).&lt;br/&gt;&lt;b&gt;2. Bilans i praca:&lt;/b&gt; \( L = Q_H - Q_L \). Z \( Q_H = Q_L \cdot T_H/T_L \) otrzymujemy \( L = Q_L \cdot (T_H/T_L - 1) \).&lt;br/&gt;&lt;b&gt;3. Jednostki:&lt;/b&gt; Qout [MW], T = t + 273,15 [K] → L [MW].&lt;br/&gt;&lt;b&gt;4. Podstawienie:&lt;/b&gt; \( L = {Qout} \cdot \left( \frac{{tH}+273{,}15}{{tL}+273{,}15} - 1 \right) \) MW.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -16687,6 +16920,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{Qout} * ( ({tH}+273.15)/({tL}+273.15) - 1 )</text>
             <tolerance>2.0</tolerance>
@@ -17384,10 +17626,10 @@
             <text>Tr28_EnatlpiaZSuchoscia</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 28.&lt;/b&gt; W fazie statycznej komorownika na karcie wodnej pobrano stan dla x=&lt;b&gt;{x}&lt;/b&gt;, h_ciecz_wrzaca=&lt;b&gt;{hw}&lt;/b&gt; kJ/kg oraz r_cieplo_parowania= &lt;b&gt;{r}&lt;/b&gt; kJ/kg. Odtwórz pełną ujętą enalpię x układu.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj h_x [kJ/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 28.&lt;/b&gt; Z tablic pary wodnej: entalpia cieczy wrzącej &lt;b&gt;{hw}&lt;/b&gt; kJ/kg, ciepło parowania &lt;b&gt;{r}&lt;/b&gt; kJ/kg. Dla stopnia suchości &lt;b&gt;{x}&lt;/b&gt; oblicz entalpię pary mokrej.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj h_x [kJ/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Entalpia mieszaniny suchość: \( h_x = h' + x \cdot r \).&lt;br/&gt;Podstawienie: \( h_x = {hw} + {x} \cdot {r} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — entalpia pary mokrej (wzór na h_x):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Wzór na entalpię pary mokrej:&lt;/b&gt; \( h_x = h' + x \cdot r \), gdzie h′ — entalpia cieczy wrzącej (kJ/kg), r — ciepło parowania (kJ/kg), x — stopień suchości (ułamek masy pary). Wartości h′, r odczytuje się z tablic pary dla danego ciśnienia (lub temperatury nasycenia).&lt;br/&gt;&lt;b&gt;2. Jednostki:&lt;/b&gt; h′, r [kJ/kg], x [−] → h_x [kJ/kg].&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( h_x = {hw} + {x} \cdot {r} \) kJ/kg.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -17397,6 +17639,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{hw} + {x} * {r}</text>
             <tolerance>2.0</tolerance>
@@ -18094,10 +18345,10 @@
             <text>Tr29_WymiennikEffectiv</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 29.&lt;/b&gt; Rzeczywisty strumien oddany cieplny w rurociągu to Q= &lt;b&gt;{Qrzecz}&lt;/b&gt; kW, zaś układ pod pełnym brakiem oporów teoretycznie dla owych warunków pociągnie przepływy aż za potencjalne idealne Max czyli Q_max= &lt;b&gt;{Qmax}&lt;/b&gt; kW. Z jaką rezerwą i tzw. sprawnością energetyczną epsilon wyliczysz to urządzenie odzyskowe na wprost jako wielkość [względną - np ułamek od 0 - 1.0]?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \( \epsilon \) [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 29.&lt;/b&gt; W wymienniku rzeczywisty strumień oddanego ciepła wynosi &lt;b&gt;{Qrzecz}&lt;/b&gt; kW. Teoretyczna maksymalna moc cieplna przy tych samych warunkach brzegowych wynosi &lt;b&gt;{Qmax}&lt;/b&gt; kW. Oblicz efektywność (sprawność) wymiennika ε jako ułamek od 0 do 1.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \( \epsilon \) [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z definicji efektywności (sprawności wymiennika lub systemu rekuperacji dla odysku Max): \( \epsilon = \frac{Q_{rzeczywiste}}{Q_{max\_idealne}} \).&lt;br/&gt;Podstawienie: \( \epsilon = \frac{{Qrzecz}}{{Qmax}} \).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — efektywność (sprawność) wymiennika:&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Definicja efektywności ε:&lt;/b&gt; Stosunek rzeczywistej mocy cieplnej wymienionej w wymienniku do teoretycznej maksymalnej mocy przy tych samych warunkach brzegowych (np. te same strumienie i temperatury wlotowe). \( \epsilon = \frac{Q_{rzeczywiste}}{Q_{max}} \).&lt;br/&gt;&lt;b&gt;2. Zakres:&lt;/b&gt; 0 ≤ ε ≤ 1. Im bliżej 1, tym wymiennik lepiej wykorzystuje możliwości odzysku ciepła.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \epsilon = \frac{{Qrzecz}}{{Qmax}} \).&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -18107,6 +18358,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{Qrzecz} / {Qmax}</text>
             <tolerance>0.01</tolerance>
@@ -18579,10 +18839,10 @@
             <text>Tr30_1ZasadaZamkn</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Tr 30.&lt;/b&gt; Ostatnie podniesie proste! Ukłąd w cyklu zamknietym bez odplywow otrzymal &lt;b&gt;{Q}&lt;/b&gt; kJ, a gaz z racji rozprezania dokonal pod pracami obijanej struny nad tlokiem odepchniecia oporow L = &lt;b&gt;{L}&lt;/b&gt; kJ. Co stanelo sie z energia wewnętrzna układu ? Jej skok Delta u - w gore czy w dól podaj jako wielkosc liczbe.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj dU [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Tr 30.&lt;/b&gt; Układ zamknięty (bez odpływu masy) otrzymał &lt;b&gt;{Q}&lt;/b&gt; kJ ciepła, a gaz podczas rozprężania wykonał pracę objętościową L = &lt;b&gt;{L}&lt;/b&gt; kJ. Oblicz zmianę energii wewnętrznej układu ΔU (w kJ).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj dU [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie:&lt;/b&gt;&lt;br/&gt;Z pierwszej zasady układ Zamkn.: \( Q = \Delta U + L \), tj. \( \Delta U = Q - L \).&lt;br/&gt;Podstawienie: \( \Delta U = {Q} - {L} \). (Znaki w Q dodatnie dodanie do ciala, a L od ciała odbija na zewnatrz).&lt;/div&gt;</text>
+            <text>&lt;div class='well'&gt;&lt;b&gt;Rozwiązanie — I zasada termodynamiki (układ zamknięty):&lt;/b&gt;&lt;br/&gt;&lt;b&gt;1. Bilans energii:&lt;/b&gt; Dla układu zamkniętego (bez przepływu masy) \( Q = \Delta U + L \): ciepło doprowadzone Q równa się przyrostowi energii wewnętrznej ΔU plus praca L wykonana przez układ. Konwencja: Q &amp;gt; 0 — doprowadzone ciepło, L &amp;gt; 0 — praca oddana przez gaz (np. rozprężanie).&lt;br/&gt;&lt;b&gt;2. Wyznaczenie ΔU:&lt;/b&gt; \( \Delta U = Q - L \). Jednostki: Q i L w kJ → ΔU w kJ.&lt;br/&gt;&lt;b&gt;3. Podstawienie:&lt;/b&gt; \( \Delta U = {Q} - {L} \) kJ.&lt;/div&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -18592,6 +18852,15 @@
         <single>0</single>
         <answernumbering>abc</answernumbering>
         <shuffleanswers>0</shuffleanswers>
+        <correctfeedback>
+            <text/>
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text/>
+        </incorrectfeedback>
         <answer fraction="100">
             <text>{Q} - {L}</text>
             <tolerance>1.0</tolerance>
