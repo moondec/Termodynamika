@@ -274,8 +274,8 @@ library(patchwork)
 
 # Współprąd (Parallel Flow)
 x <- seq(0, 1, length.out = 50)
-Th_par <- 90 * exp(-1.5 * x) + 30
-Tc_par <- 70 * (1 - exp(-1.8 * x)) + 10
+Th_par <- 45 * exp(-3 * x) + 55
+Tc_par <- 55 - 40 * exp(-3 * x)
 
 df_par <- data.frame(
     x = rep(x, 2),
@@ -296,8 +296,8 @@ p1 <- ggplot(df_par, aes(x = x, y = T, color = medium)) +
     scale_y_continuous(limits = c(0, 100))
 
 # Przeciwprąd (Counter Flow)
-Th_cnt <- 90 * exp(-1.0 * x) + 20
-Tc_cnt <- rev(80 * (1 - exp(-1.2 * x)) + 15)
+Th_cnt <- 40 * exp(-1.5 * x) + 60
+Tc_cnt <- rev(50 * (1 - exp(-1.5 * x)) + 15)
 
 df_cnt <- data.frame(
     x = rep(x, 2),
