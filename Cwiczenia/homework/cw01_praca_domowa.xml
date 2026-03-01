@@ -10,7 +10,7 @@
             <text>Ćw1 Zad. dom. – Masa powietrza w zbiorniku pustym [kg]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V = \) &lt;b&gt;{V}&lt;/b&gt; m³ zawiera powietrze przy ciśnieniu atmosferycznym \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg i temperaturze \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kg&lt;/strong&gt; (zaokrąglij do 1 miejsca po przecinku).&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wskazówka:&lt;/em&gt; \( pV = mRT \)&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V_zb = \) &lt;b&gt;{V_zb}&lt;/b&gt; m³ zawiera powietrze przy ciśnieniu atmosferycznym \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg i temperaturze \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kg&lt;/strong&gt; (zaokrąglij do 1 miejsca po przecinku).&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wskazówka:&lt;/em&gt; \( pV_zb = mRT \)&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -33,7 +33,7 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>({patm_mmHg} * 133.322) * {V} / (287 * ({t1} + 273.15))</text>
+            <text>({patm_mmHg} * 133.322) * {V_zb} / (287 * ({t1} + 273.15))</text>
             <tolerance>2</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
@@ -52,7 +52,7 @@
                     <text>private</text>
                 </status>
                 <name>
-                    <text>V</text>
+                    <text>V_zb</text>
                 </name>
                 <type>calculated</type>
                 <distribution>
@@ -1179,7 +1179,7 @@
             <text>Ćw1 Zad. dom. – Masa powietrza w zbiorniku pełnym [kg]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V = \) &lt;b&gt;{V}&lt;/b&gt; m³ został naładowany sprężonym powietrzem do ciśnienia \( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar (abs) i temperatury \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kg&lt;/strong&gt; (zaokrąglij do 1 miejsca po przecinku).&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V_zb = \) &lt;b&gt;{V_zb}&lt;/b&gt; m³ został naładowany sprężonym powietrzem do ciśnienia \( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar (abs) i temperatury \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz masę powietrza w zbiorniku. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kg&lt;/strong&gt; (zaokrąglij do 1 miejsca po przecinku).&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1202,7 +1202,7 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{p_full} * 100000 * {V} / (287 * ({t_full} + 273.15))</text>
+            <text>{p_full} * 100000 * {V_zb} / (287 * ({t_full} + 273.15))</text>
             <tolerance>2</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
@@ -1221,7 +1221,7 @@
                     <text>private</text>
                 </status>
                 <name>
-                    <text>V</text>
+                    <text>V_zb</text>
                 </name>
                 <type>calculated</type>
                 <distribution>
@@ -2348,7 +2348,7 @@
             <text>Ćw1 Zad. dom. – Wydajność masowa sprężarki [kg/h]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V = \) &lt;b&gt;{V}&lt;/b&gt; m³ musi być napompowany od ciśnienia atmosferycznego (\( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C) do ciśnienia roboczego (\( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar, \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C) w czasie 1 godziny.&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność masową sprężarki \( \dot{{m}} \) w &lt;strong&gt;kg/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Zbiornik o objętości \( V_zb = \) &lt;b&gt;{V_zb}&lt;/b&gt; m³ musi być napompowany od ciśnienia atmosferycznego (\( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C) do ciśnienia roboczego (\( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar, \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C) w czasie 1 godziny.&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność masową sprężarki \( \dot{m} \) w &lt;strong&gt;kg/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -2371,7 +2371,7 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{p_full} * 100000 * {V} / (287 * ({t_full} + 273.15)) - ({patm_mmHg} * 133.322) * {V} / (287 * ({t1} + 273.15))</text>
+            <text>{p_full} * 100000 * {V_zb} / (287 * ({t_full} + 273.15)) - ({patm_mmHg} * 133.322) * {V_zb} / (287 * ({t1} + 273.15))</text>
             <tolerance>2</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
@@ -2390,7 +2390,7 @@
                     <text>private</text>
                 </status>
                 <name>
-                    <text>V</text>
+                    <text>V_zb</text>
                 </name>
                 <type>calculated</type>
                 <distribution>
@@ -3517,7 +3517,7 @@
             <text>Ćw1 Zad. dom. – Wydajność objętościowa sprężarki [m³/h]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Sprężarka musi dostarczyć wydajność masową z poprzedniego zadania. Warunki ssania: \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( T = \) &lt;b&gt;{t1}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność objętościową sprężarki w warunkach ssania \( \dot{{V}} \) w &lt;strong&gt;m³/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;![CDATA[&lt;p&gt;Sprężarka musi dostarczyć wydajność masową z poprzedniego zadania. Warunki ssania: \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( T = \) &lt;b&gt;{t1}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność objętościową sprężarki w warunkach ssania \( \dot{V} \) w &lt;strong&gt;m³/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -3540,7 +3540,7 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>({p_full} * 100000 * {V} / (287 * ({t_full} + 273.15)) - ({patm_mmHg} * 133.322) * {V} / (287 * ({t1} + 273.15))) * 287 * ({t1} + 273.15) / ({patm_mmHg} * 133.322)</text>
+            <text>({p_full} * 100000 * {V_zb} / (287 * ({t_full} + 273.15)) - ({patm_mmHg} * 133.322) * {V_zb} / (287 * ({t1} + 273.15))) * 287 * ({t1} + 273.15) / ({patm_mmHg} * 133.322)</text>
             <tolerance>3</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
@@ -3559,7 +3559,7 @@
                     <text>private</text>
                 </status>
                 <name>
-                    <text>V</text>
+                    <text>V_zb</text>
                 </name>
                 <type>calculated</type>
                 <distribution>

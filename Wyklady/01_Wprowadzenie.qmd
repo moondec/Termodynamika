@@ -852,16 +852,101 @@ $a/V^2$: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania międz
 
 Równanie van der Waalsa może dawać **trzy różne objętości** ($V_1, V_2, V_3$) dla stałych wartości $p$ i $T$.
 
-::: incremental
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+#| fig-height: 7
+
+library(ggplot2)
+
+Tr <- 0.85
+Vr <- seq(0.5, 5, length.out = 500)
+
+# Izoterma T < Tk
+pr <- (8 * Tr) / (3 * Vr - 1) - (3 / Vr^2)
+df_vdw <- data.frame(Vr = Vr, pr = pr, Typ = "T < Tk (Tr=0.85)")
+
+# Izoterma krytyczna T = Tk
+Tr_crit <- 1.0
+pr_crit <- (8 * Tr_crit) / (3 * Vr - 1) - (3 / Vr^2)
+df_vdw_crit <- data.frame(Vr = Vr, pr = pr_crit, Typ = "T = Tk (Krytyczna)")
+
+df_all <- rbind(df_vdw, df_vdw_crit)
+
+p_const <- 0.504
+df_line <- data.frame(Vr = c(0.5, 5), pr = c(p_const, p_const))
+
+f_root <- function(v) { (8 * Tr) / (3 * v - 1) - (3 / v^2) - p_const }
+v1 <- uniroot(f_root, c(0.51, 0.8))$root
+v3 <- uniroot(f_root, c(0.8, 1.8))$root
+v2 <- uniroot(f_root, c(1.8, 4.5))$root
+
+# Punkty izotermy T < Tk
+v_points <- c(v1, v3, v2)
+labels <- c('V1 (Ciecz)', 'V3 (Niestabilny)', 'V2 (Para/Gaz)')
+colors <- c('#4caf50', '#ff9800', '#9c27b0')
+
+df_points <- data.frame(Vr = v_points, pr = rep(p_const, 3), 
+                        label = labels, color = colors)
+
+# Punkt krytyczny
+df_crit_point <- data.frame(Vr = 1.0, pr = 1.0, label = "K (Punkt Krytyczny)", color = "#d32f2f")
+
+df_points <- rbind(df_points, df_crit_point)
+
+ggplot() +
+  # Krzywe
+  geom_line(data = df_all, aes(x = Vr, y = pr, color = Typ), linewidth = 1.5) +
+  # Izobara (Maxwell)
+  geom_line(data = df_line, aes(x = Vr, y = pr), color = '#e74c3c', linewidth = 1, linetype = "dashed") +
+  # Punkty węzłowe
+  geom_point(data = df_points, aes(x = Vr, y = pr), color = df_points$color, size = 5) +
+  geom_text(data = df_points, aes(x = Vr, y = pr + 0.05, label = label), fontface = "bold", color = df_points$color) +
+  
+  # Estetyka ramy
+  scale_color_manual(values = c("T < Tk (Tr=0.85)" = "#2196f3", "T = Tk (Krytyczna)" = "#9e9e9e")) +
+  coord_cartesian(xlim = c(0.4, 4), ylim = c(0.2, 1.3)) +
+  labs(
+    title = "Ewolucja objętości w równaniu van der Waalsa",
+    x = "Objętość właściwa zredukowana (Vr)",
+    y = "Ciśnienie zredukowane (pr)",
+    color = "Izoterma"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    legend.position = "bottom"
+  )
+```
+
+:::
+
+::: {.column width="50%"}
+::: {.incremental style="font-size: 0.9em;"}
 -   $V_1$: Objętość 1 mola **cieczy**.
 -   $V_2$: Objętość 1 mola **pary nasyconej**.
 -   $V_3$: Rozwiązanie bez znaczenia fizycznego.
 :::
 
-::: {.fragment .callout-note title="Punkt Krytyczny"}
-(**$T_k$**): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, $V_1 = V_2 = V_k$.
+::: {.fragment .callout-note title="Punkt Krytyczny" style="font-size: 0.9em;"}
+(**$T_k$**): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, odcinek $V_1-V_2$ skraca się do zera: $V_1 = V_2 = V_k$. Ten unikalny punkt ($K$) wyznacza koniec "kopuły nasycenia".
 :::
 
+::: {.notes}
+**Uzasadnienie fizyczne "wyciętej" części (Reguła Maxwella):**
+
+*   Równanie van der Waalsa zakłada jednorodność materii również pod kopułą nasycenia.
+*   W rzeczywistości w tym obszarze (dla izobar poniżej ciśnienia pary nasyconej) faza staje się heterogeniczna - czynnik rozwarstwia się na ciecz i parę wrząc/skraplając się izobaryczno-izotermicznie (linia przerywana z czerwoną barwą na wykresie).  Rzeczywista objętość mieszaniny leży na prostej pomiędzy V1 a V2, a układ "ścina" esowate wygięcie w ten sposób, by wyrównać pola pod i nad linią stałego ciśnienia (tzw. konstrukcja Maxwella).
+*   Zakres rosnący izotermy między minimum a maksimum (V3) opisuje stany niestabilne mechanicznie, które w przyrodzie makroskopowej się nie zdarzają (układ natychmiast wrze/skrapla się na stałym ciśnieniu p_{sat}).
+:::
+
+:::
+::::
 ## Stany Metastabilne
 
 ### Niestabilne Stany Równowagi
