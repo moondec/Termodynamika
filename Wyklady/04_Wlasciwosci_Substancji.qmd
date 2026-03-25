@@ -254,6 +254,7 @@ $$ C_p > C_v $$
 Ogrzewanie przy stałym ciśnieniu wymaga **więcej** energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji ($L = p \Delta V$).
 
 Ciepło dostarczone ($Q_p$) rozdziela się na:
+
 1.  Wzrost energii wewnętrznej (temperatury).
 2.  Pracę wypychania tłoka.
 
@@ -276,6 +277,40 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 ---
 
+## <i class="bi bi-arrows-collapse"></i> Mikro vs Makro: Równanie Clapeyrona 
+
+Równanie stanu gazu doskonałego można interpretować na dwa sposoby:
+
+**1. Interpretacja Makroskopowa (Termodynamika Klasyczna):**
+$$ pV = nR_uT $$
+Wskazuje, że **potencjalna praca objętościowa** ($pV$), jaką gaz w danych warunkach mógłby wykonać, jest proporcjonalna do ilości substancji i temperatury.
+
+**2. Interpretacja Mikroskopowa (Kinetyczna Teoria Gazów):**
+Z kinetostatystyki wiemy, że ciśnienie wynika ze zderzeń cząsteczek ze ściankami naczynia. Ostateczny wzór to:
+$$ pV = \frac{2}{3} U $$
+*Gdzie $U$ to całkowita energia kinetyczna chaotycznego ruchu wszystkich cząsteczek.*
+
+---
+
+## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} U$ (1/2){.smaller}
+
+Rozważmy cząsteczkę o masie $m$ w sześcianie o boku $L$:
+
+1.  **Przebieg zderzenia ze ścianką:** Zmiana pędu (dla 1 cząsteczki) $\Delta p_x = 2m v_x$. Czas między zderzeniami z tą samą ścianką $\Delta t = \frac{2L}{v_x}$.
+2.  **Średnia siła uderzeń (Zasada Dynamiki Newtona):** $F = \frac{\Delta p_x}{\Delta t} = \frac{m v_{x}^2}{L}$.
+3.  **Ciśnienie (dla N cząsteczek):** $p = \frac{\sum F}{A} = \frac{N m \langle v_x^2 \rangle}{V}$.
+
+---
+
+## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} U$ (2/2){.smaller}
+
+4.  **Izotropia przestrzeni (mikroświat):** Kinetostatystyka zakłada równy rozdział ruchu na 3 wymiary ($x,y,z$), dlatego $\langle v_x^2 \rangle = \frac{1}{3} \langle v^2 \rangle$:
+    $$ pV = \frac{1}{3} N m \langle v^2 \rangle $$
+5.  **Energia kinetyczna ($U$):** Ponieważ $U = N \cdot (\frac{1}{2} m \langle v^2 \rangle)$, to widać, że $N m \langle v^2 \rangle = 2U$. 
+6.  **Finał (połączenie 4 i 5):** Podstawiając to do równania ciśnienia, otrzymujemy $pV = \frac{1}{3} (2U) = \frac{2}{3} U$. Liczba $3$ to wymiary przestrzeni, a $2$ bierze się ze wzoru na energię kinetyczną. Ostatecznie **równanie Clapeyrona bezpośrednio wiąże ze sobą ujęcie makro (pracę) i ujęcie mikro (energię cząsteczek)**.
+
+---
+
 ## <i class="bi bi-share"></i> Zasada Ekwipartycji Energii 
 
 ### Teoria Ciepła Właściwego
@@ -289,6 +324,7 @@ $$ \langle E_i \rangle = \frac{1}{2} k T $$
 *   **Ruch obrotowy:** +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).
 *   **Drgania (oscylacje):** Wnoszą wkład energii kinetycznej i potencjalnej.
 
+---
 
 ## <i class="bi bi-fire"></i> Ciepło Właściwe Gazów 
 
@@ -296,15 +332,28 @@ $$ \langle E_i \rangle = \frac{1}{2} k T $$
 
 Wartość molowego ciepła właściwego zależy od liczby stopni swobody ($f$):
 
-$$ (Mc_v) = \frac{f}{2} (MR) $$
+$$ (C_{v,m}) = \frac{f}{2} (R_u) $$
 
-| Typ Gazu | $f$ | $(Mc_v)$ | Przykład |
+| Typ Gazu | $f$ | $(C_{v,m})$ | Przykład |
 | :--- | :--- | :--- | :--- |
-| **Jednoatomowy** | 3 | $1.5 R$ | Ar, He |
-| **Dwuatomowy** | 5 | $2.5 R$ | $N_2, O_2$ |
-| **Wieloatomowy** | 6 | $3.0 R$ | $H_2O, CH_4$ |
+| **Jednoatomowy** | 3 | $1.5 R_u$ | Ar, He |
+| **Dwuatomowy** | 5 | $2.5 R_u$ | $N_2, O_2$ |
+| **Wieloatomowy** | 6 | $3.0 R_u$ | $H_2O, CH_4$ |
 
 *Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)*.
+
+---
+
+## <i class="bi bi-search"></i> Mikro vs Makro: Zagadka Wodoru 
+
+Dlaczego wodór ($H_2$) ma **największe masowe ciepło właściwe** ze wszystkich substancji ($c_p \approx 14,3 \frac{kJ}{kg \cdot K}$), mimo że ma mniej stopni swobody niż woda ($H_2O$)?
+
+*   **Podejście Mikro (Molowe):** 
+    Zasada ekwipartycji mówi, że więcej stopni swobody to większe ciepło molowe. Faktycznie, $C_{p,m}$ (wody) > $C_{p,m}$ (wodoru).
+*   **Podejście Makro (Masowe):**
+    Przechodząc na kilogramy ($c = \frac{C_{p,m}}{M}$), dzielimy przez masę molową. 
+*   **Klucz do zagadki:** 
+    Wodór jest ekstremalnie lekki ($M \approx 2 \frac{g}{mol}$). W 1 kg wodoru jest **9 razy więcej cząsteczek** niż w 1 kg wody ($M \approx 18 \frac{g}{mol}$)! To ogromna liczba cząsteczek sumarycznie zmagazynuje tak gigantyczną ilość energii cieplnej na kilogram.
 
 ---
 
