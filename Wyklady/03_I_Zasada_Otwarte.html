@@ -364,23 +364,88 @@
 <li>Dla gazów rzeczywistych występuje <strong>efekt Joule’a-Thomsona</strong> (zmiana temperatury).</li>
 </ul>
 </section>
-<section id="i-zasada-w-procesach-spalania" class="slide level2">
-<h2><i class="bi bi-droplet-half"></i> I Zasada w Procesach Spalania</h2>
-<h3 id="energia-chemiczna">Energia Chemiczna</h3>
-<p>W procesach spalania energia chemiczna paliwa jest uwalniana jako ciepło.</p>
-<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> Ciepło wydzielone przy zupełnym spaleniu jednostki paliwa, gdy woda w spalinach pozostaje w postaci pary.</p>
-<p><strong>Bilans energetyczny komory spalania:</strong> <span class="math display">\[ \dot{H}_{substratów} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
-</section>
-<section id="zjawisko-joulea-thomsona" class="slide level2">
+<section id="zjawisko-joulea-thomsona" class="slide level2 smaller">
 <h2><i class="bi bi-thermometer-snow"></i> Zjawisko Joule’a-Thomsona</h2>
 <h3 id="dławienie-adiabatyczne">Dławienie Adiabatyczne</h3>
-<p>Współczynnik <span class="math inline">\(\mu\)</span> określa zmianę temperatury przy spadku ciśnienia w procesie izentalpowym:</p>
-<p><span class="math display">\[ \mu = \left(\frac{\partial T}{\partial p}\right)_H \]</span></p>
+<p>Współczynnik Joule’a-Thomsona <span class="math inline">\(\mu_{JT}\)</span> określa zmianę temperatury przy dławieniu izentalpowym (<span class="math inline">\(h = const\)</span>):</p>
+<div style="border: 2px solid #2980b9; padding: 15px; border-radius: 10px; background-color: #f0f8ff; text-align: center; margin-bottom: 20px; font-size: 0.8em;">
+<p><span class="math display">\[ \mu_{JT} = \left(\frac{\partial T}{\partial p}\right)_h \]</span></p>
+</div>
 <ul>
-<li><strong><span class="math inline">\(\mu &gt; 0\)</span>:</strong> Gaz ochładza się przy dławieniu (większość gazów w temp. pokojowej).</li>
-<li><strong><span class="math inline">\(\mu &lt; 0\)</span>:</strong> Gaz ogrzewa się (np. wodór, hel w temp. pokojowej).</li>
-<li><strong>Krzywa inwersji:</strong> Linia, na której <span class="math inline">\(\mu = 0\)</span>.</li>
+<li><strong><span class="math inline">\(\mu_{JT} &gt; 0\)</span>:</strong> Gaz ochładza się przy dławieniu (spadek <span class="math inline">\(p \Rightarrow\)</span> spadek <span class="math inline">\(T\)</span>). Typowe zjawisko dla <strong>powietrza</strong> w temp. pokojowej.</li>
+<li><strong><span class="math inline">\(\mu_{JT} &lt; 0\)</span>:</strong> Gaz ogrzewa się (częsta cecha dla <strong>wodoru</strong> czy <strong>helu</strong> w temp. otoczenia).</li>
+<li><strong>Temp. inwersji (<span class="math inline">\(T_{inv}\)</span>):</strong> Miejsce gdzie <span class="math inline">\(\mu_{JT} = 0\)</span>. Oddziela obszar ochładzania od ogrzewania.</li>
 </ul>
+<div class="fragment fade-up absolute" style="top: 25%; left: 15%; width: 70%; ">
+<div title="Wodór vs Powietrze" style="font-size: 0.8em; box-shadow: 0 15px 40px rgba(0,0,0,0.4); z-index: 100; background-color: var(--bs-body-bg, #fff);">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wodór vs Powietrze</strong></p>
+</div>
+<div class="callout-content">
+<p>W temp. <span class="math inline">\(\approx 300\)</span> K powietrze przy dławieniu <strong>ochładza się</strong> (<span class="math inline">\(T_{inv} \approx 620\)</span> K). Natomiast wodór się <strong>ogrzewa</strong> (<span class="math inline">\(T_{inv} \approx 202\)</span> K), co stwarza ogromne ryzyko samozapłonu w przypadku powstania nieszczelności i dużego spadku ciśnienia.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="krzywa-inwersji-zjawisko-j-t" class="slide level2">
+<h2><i class="bi bi-graph-up"></i> Krzywa Inwersji (Zjawisko J-T)</h2>
+<div style="text-align: center; margin-bottom: 20px;">
+<p>Krzywa inwersji (czerwona przerywana linia) łączy wierzchołki izentalp (niebieskie linie), rozdzielając obszar ochładzania gazu od ogrzewania.</p>
+</div>
+
+<img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
+<section id="i-zasada-w-procesach-spalania" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-fire"></i> I Zasada w Procesach Spalania</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<h3 id="przemiana-energii-chemicznej">Przemiana Energii Chemicznej</h3>
+<p>Komora spalania to najczęściej układ otwarty izobaryczny, w którym nie wykonuje się pracy technicznej (<span class="math inline">\(L_t = 0\)</span>), ale uwalnia ogromną ilość ciepła utleniania.</p>
+<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> <br>Ciepło wydzielone ze spalenia jednostki paliwa (kg lub <span class="math inline">\(m^3\)</span>), przy założeniu że para wodna w spalinach nie skrapla się co z technicznego punktu widzenia zapobiega korozji.</p>
+<div style="border: 2px solid #f39c12; padding: 15px; border-radius: 10px; background-color: #fdf5e6; margin-bottom: 20px;">
+<p><strong>Bilans energii komory spalania:</strong> <span class="math display">\[ \dot{H}_{substr.} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
+</div>
+</div><div class="column" style="width:45%;">
+<br>
+<div style="text-align: center;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-2.png" style="width:3.6in;height:4.61in"></p>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="i-zasada-w-procesach-spalania-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-fire"></i> I Zasada w Procesach Spalania</h2>
+<p><em>Kontekst praktyczny:</em> Zasada ta jest fundamentem podczas projektowania <strong>kotłów</strong>, <strong>turbin gazowych</strong> i samochodowych <strong>silników spalinowych</strong>, pozwalając na precyzyjne wyliczenie temperatury spalania roboczego.</p>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Rola Powietrza jako Chłodziwa</strong></p>
+</div>
+<div class="callout-content">
+<p>W układach silnikowych (np. turbina odrzutowa) komora spalania wykorzystuje <strong>ogromny nadmiar powietrza</strong> (<span class="math inline">\(\lambda \approx 3-4\)</span>) aby chłodzić elementy płomieniówki i chronić łopatki wirnika przed stopieniem od gorących gazów!</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="analiza-egzergetyczna-wstęp" class="slide level2">
 <h2><i class="bi bi-door-open"></i> Analiza Egzergetyczna (Wstęp)</h2>
