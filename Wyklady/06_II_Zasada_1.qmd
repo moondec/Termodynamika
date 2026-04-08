@@ -129,7 +129,7 @@ Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności
 2.  **Źródło dolne ($T_L$):** Rzeka, Atmosfera, Grunt. Odbiera ciepło odpadowe $Q_L$ (Low).
 
 ::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zachodzą one od stanu wyższym potencjal do stanów opotencjale niższym.
+Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zachodzą one od stanu o wyższym potencjale do stanów o potencjale niższym.
 :::
 
 :::
@@ -356,7 +356,7 @@ Złamanie jednego, oznacza złamanie też drugiego.
 
 ::: incremental
 
-*   Gdyby silnik byłw w 100% sprawny (łamie K-P), możnaby nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).
+*   Gdyby silnik był w 100% sprawny (łamie K-P), możnaby nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).
 
 :::
 
@@ -550,7 +550,7 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 :::
 
 ::: incremental
-1.  **Tarcie** (Solidne i lepkość płynów) - zamiana pracy na ciepło jest jednostronna.
+1.  **Tarcie** (Ciał satałych i lepkość płynów) - zamiana pracy na ciepło jest jednostronna.
 2.  **Nierównowaga sił** (Gwałtowne rozprężanie) - ciśnienie wewnętrzne jest znacznie wyższe niż zewnętrzne.
 3.  **Wymiana ciepła przy skończonym $\Delta T$** - im większa różnica temperatur, tym większa nieodwracalność.
 4.  **Reakcje chemiczne** - spalanie jest wysoce nieodwracalne (nie da się odzyskać paliwa ze spalin przez ogrzanie).

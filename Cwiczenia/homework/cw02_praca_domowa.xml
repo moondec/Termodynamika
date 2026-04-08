@@ -977,7 +977,7 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 60 * 1000</text>
+            <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 60</text>
             <tolerance>3</tolerance>
             <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>

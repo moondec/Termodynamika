@@ -609,7 +609,7 @@ To kluczowe dane do raportu energetycznego --- sprężarki to często **najwięk
 **Cel:** Ile energii (na kg powietrza) zużywa sprężarka?
 
 **Metodyka:** Sprężanie rzeczywiste jest procesem politropowym ($n =$ `r p$n_poly`). Praca techniczna:
-$$l_t = \frac{n}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1\right]$$
+$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(1-\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}\right] $$
 
 `r if(!sa) "*Uwaga: $p_1 = 1$ bar (ssanie z atmosfery). $R = 287$ J/(kgK). $T_1$ w kelwinach!*"`
 

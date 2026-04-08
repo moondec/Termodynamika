@@ -668,8 +668,6 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 
 Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
 
-Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
-
 <div style="width: 100%; margin: 0 auto;">
 ```{mermaid}
 %%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Lato'}}}%%
