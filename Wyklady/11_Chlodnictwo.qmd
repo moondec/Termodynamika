@@ -66,6 +66,9 @@ theme_set(theme_minimal(base_size = 18))
 4.  **Wykres log(p)-h** (Analiza, Obliczenia)
 5.  **Modyfikacje Obiegu** (Dochłodzenie i Przegrzanie)
 6.  **Czynniki Chłodnicze** (Freony vs Eko)
+    -   **6a.** Metryki ekologiczne: ODP i GWP
+    -   **6b.** Porównanie parametrów (tabela + wykres GWP)
+    -   **6c.** R290 — "Święty Graal" i Technologia Monobloków
 7.  **Pompy Ciepła** (Zastosowanie grzewcze)
 
 ---
@@ -374,6 +377,239 @@ Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozpor
 
 ---
 
+## <i class="bi bi-shield-exclamation"></i> 6a. Metryki Ekologiczne: ODP i GWP
+
+Dwa parametry decydują o dopuszczalności stosowania czynnika chłodniczego.
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+### <i class="bi bi-sun"></i> ODP — Potencjał Niszczenia Ozonu {.fragment}
+
+::: {.callout-warning appearance="minimal"}
+Miara zdolności substancji do niszczenia stratosferycznej warstwy ozonowej.  
+Odniesienie: **R11 (CFC-11) → ODP = 1,0**
+:::
+
+::: {.fragment .callout-note appearance="minimal"}
+*   Czynniki **CFC** (R12): ODP = 1,0 ⛔ **Zakazane** (Protokół z Montrealu)
+*   Czynniki **HCFC** (R22): ODP = 0,05 ⚠️ **Wycofywane**
+*   Czynniki **HFC, HFO, naturalne**: ODP = **0** ✅
+:::
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+
+### <i class="bi bi-thermometer-high"></i> GWP — Potencjał Globalnego Ocieplenia {.fragment}
+
+::: {.callout-warning appearance="minimal"}
+Miara wpływu na efekt cieplarniany w horyzoncie **100 lat**.  
+Odniesienie: **CO₂ → GWP = 1**
+:::
+
+::: {.fragment .callout-important appearance="minimal"}
+*   **R410A:** GWP = **2 088** → 1 kg wycieku ≈ 2 t CO₂ ⛔
+*   **R134a:** GWP = **1 430** ⚠️
+*   **R290 (Propan):** GWP = **3** → de facto neutralny ✅
+:::
+
+:::
+
+::::
+
+::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
+**ODP** rozwiązało problem ozonu (Protokół z Montrealu, 1987). Teraz walczymy z **GWP** — rezygnacja z HFC stała się koniecznością.
+:::
+
+---
+
+## <i class="bi bi-clock-history"></i> 6b. Cztery Generacje Czynników Chłodniczych
+
+::: {style="font-size: 0.8em;"}
+
+| Generacja | Okres | Przykłady | ODP | GWP | Status |
+|-----------|-------|-----------|:---:|----:|--------|
+| **I — Naturalne** | 1830–1930 | NH₃, CO₂, R290 | 0 | ≤3 | ⚠️ Toksyczność / palność |
+| **II — CFC/HCFC** | 1930–1990 | R12, R22 | **>0** | >1800 | ⛔ Dziura ozonowa |
+| **III — HFC** | 1990–2010 | R134a, R410A, R32 | 0 | **>675** | ⛔ Efekt cieplarniany |
+| **IV — HFO + Powrót natury** | Dziś | R1234yf, **R290**, R744 | 0 | **<10** | ✅ Akceptowalne |
+
+:::
+
+::: {.fragment .callout-important appearance="minimal" style="font-size: 0.88em;"}
+**Historia zatoczyła koło:** branża chłodnicza wraca do czynników naturalnych z I generacji,  
+wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).
+:::
+
+---
+
+## <i class="bi bi-bar-chart-fill"></i> 6c. GWP Wybranych Czynników Chłodniczych
+
+```{r}
+#| label: gwp-comparison
+#| echo: false
+#| fig-width: 12
+#| fig-height: 5.5
+
+library(ggplot2)
+
+czynniki <- data.frame(
+  nazwa = factor(
+    c("R410A\n(HFC)", "R134a\n(HFC)", "R32\n(HFC)", "R1234yf\n(HFO)", "R744\n(CO2)", "R290\n(Propan)"),
+    levels = c("R410A\n(HFC)", "R134a\n(HFC)", "R32\n(HFC)", "R1234yf\n(HFO)", "R744\n(CO2)", "R290\n(Propan)")
+  ),
+  GWP = c(2088, 1430, 675, 4, 1, 3),
+  kategoria = c("HFC - wycofywany", "HFC - wycofywany", "HFC - przejsciowy",
+                "HFO - dopuszczalny", "Naturalny", "Naturalny")
+)
+
+kolory <- c(
+  "HFC - wycofywany"   = "#c0392b",
+  "HFC - przejsciowy"  = "#e67e22",
+  "HFO - dopuszczalny" = "#f1c40f",
+  "Naturalny"          = "#27ae60"
+)
+
+ggplot(czynniki, aes(x = nazwa, y = GWP, fill = kategoria)) +
+  geom_col(width = 0.65, show.legend = TRUE) +
+  geom_text(aes(label = GWP), vjust = -0.5, size = 5.5, fontface = "bold") +
+  geom_hline(yintercept = 750, linetype = "dashed", color = "#8e44ad", linewidth = 1) +
+  annotate("text", x = 5.5, y = 820, label = "Limit UE 2025: GWP = 750",
+           color = "#8e44ad", fontface = "italic", size = 4.5) +
+  scale_fill_manual(values = kolory, name = NULL) +
+  scale_y_continuous(limits = c(0, 2500), expand = c(0, 0),
+                     breaks = c(0, 500, 750, 1000, 1500, 2000)) +
+  labs(
+    title = "Globalny Potencjal Ocieplenia (GWP100) - porownanie czynnikow chlodniczych",
+    subtitle = "Odniesienie: CO2 = 1  |  Linia przerywana = limit rozporzadzenia UE 2024/573",
+    x = NULL, y = "GWP [-]"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    legend.position = "bottom",
+    legend.text = element_text(size = 12),
+    plot.title = element_text(face = "bold", size = 13),
+    plot.subtitle = element_text(size = 11, color = "grey40"),
+    axis.text.x = element_text(face = "bold", size = 13),
+    panel.grid.major.x = element_blank()
+  )
+```
+
+---
+
+## <i class="bi bi-table"></i> 6d. Parametry Techniczne i Klasy Bezpieczeństwa
+
+:::: {.columns}
+
+::: {.column width="62%"}
+
+::: {style="font-size: 0.73em;"}
+
+| Czynnik | Typ | GWP | $p_{kr}$ [bar] | $T_{kr}$ [°C] | Klasa | Uwagi |
+|---------|-----|----:|------:|------:|:-----:|-------|
+| R410A | HFC | 2 088 | 49,0 | 72,1 | **A1** | ⛔ Zakaz od 2025 r. |
+| R134a | HFC | 1 430 | 40,6 | 101,1 | **A1** | ⚠️ Wycofywany |
+| R32 | HFC | 675 | 57,8 | 78,1 | **A2L** | ⚠️ Przejściowy |
+| R1234yf | HFO | 4 | 33,8 | 94,7 | **A2L** | ✅ Motoryzacja |
+| R744 (CO₂) | Nat. | 1 | 73,8 | 31,1 | **A1** | ✅ Przemysł |
+| **R290 (Propan)** | **Nat.** | **3** | **42,5** | **96,7** | **A3** | ✅ **Monobloki PC** |
+
+: {.striped .hover}
+
+:::
+
+:::
+
+::: {.column width="38%"}
+
+::: {.callout-note appearance="minimal" style="font-size: 0.82em;"}
+**Klasy bezpieczeństwa ASHRAE 34:**
+
+| Kod | Znaczenie |
+|-----|-----------|
+| **A** | niska toksyczność |
+| **1** | niepalny |
+| **2L** | słabo palny |
+| **3** | **wysoce palny** |
+
+:::
+
+::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.8em;"}
+**A1** (R134a, R410A) — bezpieczny, lecz GWP > 1000 ⛔
+
+**A3** (R290) — wymaga monobloku, ale GWP = 3 i **COP wyższy o 10–15%** ✅
+:::
+
+:::
+
+::::
+
+---
+
+## <i class="bi bi-tree-fill"></i> 6e. R290 — Propan jako Czynnik Przyszłości
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Dlaczego Propan?
+
+::: {.callout-tip appearance="minimal" style="font-size: 0.82em;"}
+*   **GWP = 3** — praktycznie neutralny klimatycznie
+*   **COP o ~10–15% wyższy** niż syntetyki
+*   Temperatura zasilania **do 75°C** → stare grzejniki ✅
+*   Praca stabilna do **–25°C** zewnętrznych
+*   Gaz LPG — powszechny i tani
+:::
+
+::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.82em;"}
+**Klasa A3 — wysoce palny:**  
+Dolna granica palności **1,7% obj.** w powietrzu.  
+Rozwiązanie: minimalne napełnienie + hermetyczność + detekcja.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+### Technologia Monobloku {.fragment}
+
+::: {.callout-note appearance="minimal" style="font-size: 0.8em;"}
+Cały obieg R290 hermetycznie zamknięty w **zewnętrznej** jednostce (strefa ATEX).  
+Do wnętrza domu wchodzi tylko **woda grzewcza**.
+:::
+
+```{mermaid}
+%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '13px' }}}%%
+flowchart LR
+    subgraph OUT["Zewnatrz - MONOBLOCK R290 (ATEX)"]
+        direction TB
+        SP["Sprezarka"] --> SK["Skraplacz"]
+        SK --> ZR["Zawor Rozprezny"]
+        ZR --> PA["Parownik"]
+        PA --> SP
+    end
+    OUT -- "Woda grzewcza" --> IN["Wnetrze budynku"]
+    style OUT fill:#e8f5e9,stroke:#27ae60,stroke-width:2px
+    style IN fill:#fff3e0,stroke:#f39c12,stroke-width:2px
+```
+
+:::
+
+::::
+
+::: {.fragment .callout-important appearance="minimal" style="font-size: 0.72em; margin-top: 0.3em;"}
+📅 **F-Gas UE 2024/573:** od **2025** zakaz split GWP ≥ 750 | od **2032–35** stopniowy zakaz HFC w pompach ciepła | **R290 i CO₂ — standard technologiczny dekady.**
+:::
+
+
+---
+
 ## <i class="bi bi-bookmark"></i> 7. Pompy Ciepła 
 
 "Lodówka wywrócona na lewą stronę" — to samo urządzenie, inny **cel**.
@@ -447,7 +683,8 @@ $COP_{g} = \frac{Q_H}{L} = COP_{ch} + 1$ (typowo 3–5)
 
 2.  **Wykres p-h:** Kluczowe narzędzie. Pole parowania to moc chłodnicza.
 
-3.  **Ekologia:** Przyszłość to czynniki naturalne (Propan, $CO_2$).
+3.  **Ekologia:** Przyszłość to czynniki naturalne — Propan (R290, GWP=3) i $CO_2$ (R744).
+    Rozporządzenie F-Gas UE 2024/573 wymusza odwrót od HFC do 2035 r.
 :::
 
 ### Zagadnienia do Egzaminu{.fragment}
