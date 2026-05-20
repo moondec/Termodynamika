@@ -674,10 +674,6 @@ $COP_{g} = \frac{Q_H}{L} = COP_{ch} + 1$ (typowo 3–5)
 
 :::
 
-::: {.fragment style="text-align: center; margin-top: 20px;"}
-![Urządzenie AHU — Air Handling Unit](../img/IMG_0202.png){height="250"}
-:::
-
 ---
 
 ## <i class="bi bi-clipboard-check"></i> Podsumowanie W11 
