@@ -1201,6 +1201,10 @@ flowchart LR
 ![](../img/small-air-handling-units-senv-1591216654.jpg)
 ::: 
 
+::: {.fragment .absolute top=10% left=10% width=80% style="box-shadow: 0 0 30px rgba(0,0,0,0.8); z-index: 100;"}
+![](../img/IMG_0202.png)
+:::
+
 ---
 
 ## <i class="bi bi-scale"></i> 7. Bilans Masy i Energii 
