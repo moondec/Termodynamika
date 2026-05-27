@@ -130,7 +130,7 @@ Każdy punkt na wykresie jednoznacznie określa stan powietrza wilgotnego. Dowol
 
 ## <i class="bi bi-graph-up"></i> Wykres h-x (Molliera) {.smaller}
 
-![Wykres i-X dla wilgotnego powietrza przy ciśnieniu 0,1 MPa (wykres Molliera)](../img/air_hum-h-x_h.png){fig-align="center" width="85%"}
+![Wykres h-x dla wilgotnego powietrza przy ciśnieniu 0,1 MPa (wykres Molliera)](../img/air_hum-h-x_h.png){fig-align="center" width="85%"}
 
 ## <i class="bi bi-thermometer-sun"></i> Ogrzewanie (Nagrzewnica)
 
