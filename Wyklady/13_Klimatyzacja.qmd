@@ -432,8 +432,8 @@ $$\epsilon = \frac{\Delta H}{\Delta x} = \frac{\dot{Q}_j + \dot{Q}_u}{\dot{W}} \
 
 Gdzie:
 
-*   \( \dot{Q}_j + \dot{Q}_u \) – całkowite zyski ciepła w pomieszczeniu [kW],
-*   \( \dot{W} \) – zyski wilgoci w pomieszczeniu [kg/s].
+*   $\dot{Q}_j + \dot{Q}_u$ – całkowite zyski ciepła w pomieszczeniu [kW],
+*   $\dot{W}$ – zyski wilgoci w pomieszczeniu [kg/s].
 
 **Znaczenie geometryczne:**
 Współczynnik $\epsilon$ wyznacza nachylenie prostej przemiany na wykresie h-x. Powietrze nawiewane do pokoju o stanie (N) będzie zmieniać swój stan w kierunku stanu powietrza w pokoju (P) dokładnie wzdłuż linii o kierunku określonym przez $\epsilon$.
