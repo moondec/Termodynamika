@@ -20,30 +20,30 @@ output:
 | Metan $CH_4$ | 16,04 | 518,3 | 2,226 | 1,708 | 1,30 |
 | Woda (ciecz) | 18,01 | — | 4,19 | — | — |
 
-Stała uniwersalna: $MR$ = 8314 J/(kmol·K). Stała Stefana-Boltzmanna: $\sigma$ = 5,67·10⁻⁸ W/(m²·K⁴). Przelicznik energii: 1 MWh = 3,6 GJ.
+Stała uniwersalna: $MR$ = 8314 J/(kmol·K). Przelicznik energii: 1 MWh = 3,6 GJ.
 
 ------------------------------------------------------------------------
 
 ## Równanie stanu gazu doskonałego
 
-$$pV = mRT, \quad R = \frac{MR}{\mu}, \quad c_p - c_v = R, \quad \kappa = \frac{c_p}{c_v}$$
+$$pV = mRT, \quad R = \frac{MR}{\mu}$$
 
 ## I Zasada Termodynamiki
 
 -   Układ zamknięty: $Q_{1-2} = \Delta U + L_{1-2}$
 -   Układ otwarty (przepływ ustalony): $Q_{1-2} = \Delta H + L_t$
--   Praca objętościowa: $L = \int p \, dV$, praca techniczna: $L_t = -\int V \, dp$
+
 -   Bilans turbiny/sprężarki (adiabat., przepływ ustalony): $P = \dot{m}\left[(h_1 - h_2) + \frac{\omega_1^2 - \omega_2^2}{2}\right]$ (uwaga: $\frac{\omega^2}{2}$ daje J/kg)
 -   Bilans kotła/wymiennika: $\dot{Q} = \dot{m}(h_{wy} - h_{we})$
 
 ## Przemiany gazu doskonałego ($pv^n = \text{const}$)
 
-| Przemiana |   $n$    | Warunek            | Ciepło                    |
-|:----------|:--------:|:-------------------|:--------------------------|
-| Izobara   |    0     | $p = \text{const}$ | $Q = mc_p \Delta T$       |
-| Izoterma  |    1     | $T = \text{const}$ | $Q = L = mRT\ln(V_2/V_1) = mRT\ln(p_1/p_2)$ |
-| Izentropa | $\kappa$ | $S = \text{const}$ | $Q = 0$                   |
-| Izochora  | $\infty$ | $V = \text{const}$ | $Q = mc_v \Delta T$       |
+| Przemiana | Warunek            | Wzory dodatkowe                   |
+|:----------|:-------------------|:----------------------------------|
+| Izobara   | $p = \text{const}$ | $Q = mc_p \Delta T$               |
+| Izoterma  | $T = \text{const}$ | $L = mRT\ln(V_2/V_1) = mRT\ln(p_1/p_2)$ |
+| Izentropa | $S = \text{const}$ | $Q = 0$                           |
+| Izochora  | $V = \text{const}$ | $Q = mc_v \Delta T$               |
 
 Związek izentropa: $\frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{(\kappa-1)/\kappa}$
 
@@ -51,13 +51,12 @@ Związek izentropa: $\frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{(\kappa-1)/
 
 -   Sprawność termiczna: $\eta = 1 - \frac{|Q_{odpr}|}{Q_{dop}}$
 -   Obieg Carnota: $\eta_C = 1 - \frac{T_L}{T_H}$ (temperatury w K)
--   COP chłodziarki: $COP_{ch} = \frac{T_L}{T_H - T_L}$, COP pompy ciepła: $COP_{PC} = \frac{T_H}{T_H - T_L} = COP_{ch} + 1$
+-   COP chłodziarki: $COP_{ch} = \frac{T_L}{T_H - T_L}$, COP pompy ciepła: $COP_{PC} = \frac{T_H}{T_H - T_L}$
 -   Związek moc — ciepło: $\dot{Q}_{dop} = P/\eta$, $\dot{Q}_{odpr} = \dot{Q}_{dop} - P$
 
 ## Para wodna
 
--   Stopień suchości: $x = m''/(m'+m'')$
--   Entalpia pary mokrej: $h_x = h' + x \cdot r$, gdzie $r = h'' - h'$
+
 
 ### Tablica entalpii pary wodnej nasyconej
 
@@ -88,13 +87,6 @@ Związek izentropa: $\frac{T_2}{T_1} = \left(\frac{p_2}{p_1}\right)^{(\kappa-1)/
 
 *„—" oznacza, że para nie istnieje przy tych parametrach (poniżej temperatury nasycenia).*
 
-## Wymiana ciepła
-
--   Przewodzenie (Fourier): $\dot{Q} = \lambda A \, \Delta T / \delta$
--   Konwekcja (Newton): $\dot{Q} = \alpha A (T_s - T_\infty)$
--   Współczynnik przenikania: $U = \frac{1}{\frac{1}{\alpha_w} + \sum\frac{\delta_i}{\lambda_i} + \frac{1}{\alpha_z}}$
--   Wymiennik ciepła: $\dot{Q} = U \cdot A \cdot \Delta T_{lm}$, gdzie $\Delta T_{lm} = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1 / \Delta T_2)}$
--   Promieniowanie: $\dot{Q} = \varepsilon \sigma A T^4$
 
 ## Powietrze wilgotne
 

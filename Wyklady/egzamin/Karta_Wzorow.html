@@ -161,21 +161,20 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>Stała uniwersalna: <span class="math inline">\(MR\)</span> = 8314 J/(kmol·K). Stała Stefana-Boltzmanna: <span class="math inline">\(\sigma\)</span> = 5,67·10⁻⁸ W/(m²·K⁴). Przelicznik energii: 1 MWh = 3,6 GJ.</p>
+<p>Stała uniwersalna: <span class="math inline">\(MR\)</span> = 8314 J/(kmol·K). Przelicznik energii: 1 MWh = 3,6 GJ.</p>
 <hr>
 </section>
 <section id="równanie-stanu-gazu-doskonałego" class="level2">
 <h2 class="anchored" data-anchor-id="równanie-stanu-gazu-doskonałego">Równanie stanu gazu doskonałego</h2>
-<p><span class="math display">\[pV = mRT, \quad R = \frac{MR}{\mu}, \quad c_p - c_v = R, \quad \kappa = \frac{c_p}{c_v}\]</span></p>
+<p><span class="math display">\[pV = mRT, \quad R = \frac{MR}{\mu}\]</span></p>
 </section>
 <section id="i-zasada-termodynamiki" class="level2">
 <h2 class="anchored" data-anchor-id="i-zasada-termodynamiki">I Zasada Termodynamiki</h2>
 <ul>
-<li>Układ zamknięty: <span class="math inline">\(Q_{1-2} = \Delta U + L_{1-2}\)</span></li>
-<li>Układ otwarty (przepływ ustalony): <span class="math inline">\(Q_{1-2} = \Delta H + L_t\)</span></li>
-<li>Praca objętościowa: <span class="math inline">\(L = \int p \, dV\)</span>, praca techniczna: <span class="math inline">\(L_t = -\int V \, dp\)</span></li>
-<li>Bilans turbiny/sprężarki (adiabat., przepływ ustalony): <span class="math inline">\(P = \dot{m}\left[(h_1 - h_2) + \frac{\omega_1^2 - \omega_2^2}{2}\right]\)</span> (uwaga: <span class="math inline">\(\frac{\omega^2}{2}\)</span> daje J/kg)</li>
-<li>Bilans kotła/wymiennika: <span class="math inline">\(\dot{Q} = \dot{m}(h_{wy} - h_{we})\)</span></li>
+<li><p>Układ zamknięty: <span class="math inline">\(Q_{1-2} = \Delta U + L_{1-2}\)</span></p></li>
+<li><p>Układ otwarty (przepływ ustalony): <span class="math inline">\(Q_{1-2} = \Delta H + L_t\)</span></p></li>
+<li><p>Bilans turbiny/sprężarki (adiabat., przepływ ustalony): <span class="math inline">\(P = \dot{m}\left[(h_1 - h_2) + \frac{\omega_1^2 - \omega_2^2}{2}\right]\)</span> (uwaga: <span class="math inline">\(\frac{\omega^2}{2}\)</span> daje J/kg)</p></li>
+<li><p>Bilans kotła/wymiennika: <span class="math inline">\(\dot{Q} = \dot{m}(h_{wy} - h_{we})\)</span></p></li>
 </ul>
 </section>
 <section id="przemiany-gazu-doskonałego-pvn-textconst" class="level2">
@@ -183,40 +182,34 @@ window.Quarto = {
 <table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
-<col style="width: 14%">
-<col style="width: 29%">
-<col style="width: 39%">
+<col style="width: 30%">
+<col style="width: 53%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Przemiana</th>
-<th style="text-align: center;"><span class="math inline">\(n\)</span></th>
 <th style="text-align: left;">Warunek</th>
-<th style="text-align: left;">Ciepło</th>
+<th style="text-align: left;">Wzory dodatkowe</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Izobara</td>
-<td style="text-align: center;">0</td>
 <td style="text-align: left;"><span class="math inline">\(p = \text{const}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(Q = mc_p \Delta T\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Izoterma</td>
-<td style="text-align: center;">1</td>
 <td style="text-align: left;"><span class="math inline">\(T = \text{const}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(Q = L = mRT\ln(V_2/V_1) = mRT\ln(p_1/p_2)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(L = mRT\ln(V_2/V_1) = mRT\ln(p_1/p_2)\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Izentropa</td>
-<td style="text-align: center;"><span class="math inline">\(\kappa\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(S = \text{const}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(Q = 0\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Izochora</td>
-<td style="text-align: center;"><span class="math inline">\(\infty\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(V = \text{const}\)</span></td>
 <td style="text-align: left;"><span class="math inline">\(Q = mc_v \Delta T\)</span></td>
 </tr>
@@ -229,16 +222,12 @@ window.Quarto = {
 <ul>
 <li>Sprawność termiczna: <span class="math inline">\(\eta = 1 - \frac{|Q_{odpr}|}{Q_{dop}}\)</span></li>
 <li>Obieg Carnota: <span class="math inline">\(\eta_C = 1 - \frac{T_L}{T_H}\)</span> (temperatury w K)</li>
-<li>COP chłodziarki: <span class="math inline">\(COP_{ch} = \frac{T_L}{T_H - T_L}\)</span>, COP pompy ciepła: <span class="math inline">\(COP_{PC} = \frac{T_H}{T_H - T_L} = COP_{ch} + 1\)</span></li>
+<li>COP chłodziarki: <span class="math inline">\(COP_{ch} = \frac{T_L}{T_H - T_L}\)</span>, COP pompy ciepła: <span class="math inline">\(COP_{PC} = \frac{T_H}{T_H - T_L}\)</span></li>
 <li>Związek moc — ciepło: <span class="math inline">\(\dot{Q}_{dop} = P/\eta\)</span>, <span class="math inline">\(\dot{Q}_{odpr} = \dot{Q}_{dop} - P\)</span></li>
 </ul>
 </section>
 <section id="para-wodna" class="level2">
 <h2 class="anchored" data-anchor-id="para-wodna">Para wodna</h2>
-<ul>
-<li>Stopień suchości: <span class="math inline">\(x = m''/(m'+m'')\)</span></li>
-<li>Entalpia pary mokrej: <span class="math inline">\(h_x = h' + x \cdot r\)</span>, gdzie <span class="math inline">\(r = h'' - h'\)</span></li>
-</ul>
 <section id="tablica-entalpii-pary-wodnej-nasyconej" class="level3">
 <h3 class="anchored" data-anchor-id="tablica-entalpii-pary-wodnej-nasyconej">Tablica entalpii pary wodnej nasyconej</h3>
 <table class="caption-top table">
@@ -407,16 +396,6 @@ window.Quarto = {
 </table>
 <p><em>„—” oznacza, że para nie istnieje przy tych parametrach (poniżej temperatury nasycenia).</em></p>
 </section>
-</section>
-<section id="wymiana-ciepła" class="level2">
-<h2 class="anchored" data-anchor-id="wymiana-ciepła">Wymiana ciepła</h2>
-<ul>
-<li>Przewodzenie (Fourier): <span class="math inline">\(\dot{Q} = \lambda A \, \Delta T / \delta\)</span></li>
-<li>Konwekcja (Newton): <span class="math inline">\(\dot{Q} = \alpha A (T_s - T_\infty)\)</span></li>
-<li>Współczynnik przenikania: <span class="math inline">\(U = \frac{1}{\frac{1}{\alpha_w} + \sum\frac{\delta_i}{\lambda_i} + \frac{1}{\alpha_z}}\)</span></li>
-<li>Wymiennik ciepła: <span class="math inline">\(\dot{Q} = U \cdot A \cdot \Delta T_{lm}\)</span>, gdzie <span class="math inline">\(\Delta T_{lm} = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1 / \Delta T_2)}\)</span></li>
-<li>Promieniowanie: <span class="math inline">\(\dot{Q} = \varepsilon \sigma A T^4\)</span></li>
-</ul>
 </section>
 <section id="powietrze-wilgotne" class="level2">
 <h2 class="anchored" data-anchor-id="powietrze-wilgotne">Powietrze wilgotne</h2>
