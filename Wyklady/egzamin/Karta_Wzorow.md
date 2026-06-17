@@ -20,7 +20,7 @@ output:
 | Metan $CH_4$ | 16,04 | 518,3 | 2,226 | 1,708 | 1,30 |
 | Woda (ciecz) | 18,01 | — | 4,19 | — | — |
 
-Stała uniwersalna: $MR$ = 8314 J/(kmol·K). Stała Stefana-Boltzmanna: $\sigma$ = 5,67·10⁻⁸ W/(m²·K⁴).
+Stała uniwersalna: $MR$ = 8314 J/(kmol·K). Stała Stefana-Boltzmanna: $\sigma$ = 5,67·10⁻⁸ W/(m²·K⁴). Przelicznik energii: 1 MWh = 3,6 GJ.
 
 ------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ $$pV = mRT, \quad R = \frac{MR}{\mu}, \quad c_p - c_v = R, \quad \kappa = \frac{
 -   Układ zamknięty: $Q_{1-2} = \Delta U + L_{1-2}$
 -   Układ otwarty (przepływ ustalony): $Q_{1-2} = \Delta H + L_t$
 -   Praca objętościowa: $L = \int p \, dV$, praca techniczna: $L_t = -\int V \, dp$
--   Bilans turbiny/sprężarki (adiabat., przepływ ustalony): $P = \dot{m}\left[(h_1 - h_2) + \frac{\omega_1^2 - \omega_2^2}{2}\right]$
+-   Bilans turbiny/sprężarki (adiabat., przepływ ustalony): $P = \dot{m}\left[(h_1 - h_2) + \frac{\omega_1^2 - \omega_2^2}{2}\right]$ (uwaga: $\frac{\omega^2}{2}$ daje J/kg)
 -   Bilans kotła/wymiennika: $\dot{Q} = \dot{m}(h_{wy} - h_{we})$
 
 ## Przemiany gazu doskonałego ($pv^n = \text{const}$)
@@ -41,7 +41,7 @@ $$pV = mRT, \quad R = \frac{MR}{\mu}, \quad c_p - c_v = R, \quad \kappa = \frac{
 | Przemiana |   $n$    | Warunek            | Ciepło                    |
 |:----------|:--------:|:-------------------|:--------------------------|
 | Izobara   |    0     | $p = \text{const}$ | $Q = mc_p \Delta T$       |
-| Izoterma  |    1     | $T = \text{const}$ | $Q = L = mRT\ln(V_2/V_1)$ |
+| Izoterma  |    1     | $T = \text{const}$ | $Q = L = mRT\ln(V_2/V_1) = mRT\ln(p_1/p_2)$ |
 | Izentropa | $\kappa$ | $S = \text{const}$ | $Q = 0$                   |
 | Izochora  | $\infty$ | $V = \text{const}$ | $Q = mc_v \Delta T$       |
 
