@@ -38,6 +38,10 @@ agentinfo
 # Generated Outputs
 Cwiczenia/Karty_PDF/output/
 Cwiczenia/Karty_PDF/output_imienne/
+Cwiczenia/Karty_PDF/output_*/
+
+# Listy studentów (dane osobowe)
+Cwiczenia/Karty_PDF/studenci*.txt
 
 **/*.quarto_ipynb
 Cwiczenia/Karty_PDF/Karta_Projektowa_Szablon.pdf

@@ -20,7 +20,7 @@ format:
       \usepackage{lastpage}
       \usepackage{draftwatermark}
       \DraftwatermarkOptions{text={}, color=gray!10}
-      \definecolor{answercolor}{RGB}{0,100,180}
+      \definecolor{answercolor}{RGB}{200,30,30}
 params:
   zestaw_nr: 1
   student_name: "Jan Kowalski"
@@ -42,7 +42,6 @@ params:
   t_N2_tank: 15
   # Ćw.2 — Sprężarka
   p2: 10
-  t1_spr: 20
   n_poly: 1.30
   Vn: 120
   t_chlod: 30
@@ -61,11 +60,7 @@ params:
   eta_k: 0.90
   p_dlawienie: 2
   hm: 2400
-  # Ćw.4 — Turbina
-  p1_turb: 10
-  t1_turb: 250
-  p2_turb: 1.0
-  m_dot_turb: 0.5
+  # Ćw.4 — Turbina (wlot/wylot/strumień = kocioł i dławienie, patrz setup)
   eta_is: 0.80
   # Ćw.5 — Wymiennik
   m_spalin: 1.0
@@ -73,7 +68,6 @@ params:
   t_sp_out: 150
   t_w_in: 20
   t_w_out: 80
-  T0: 20
   # Ćw.6 — Chłodnictwo
   Q_o: 300
   t_o: 0
@@ -121,12 +115,16 @@ m_air <- (p$p_man * 1e5 + p$p_atm * 133.322) * p$V / (287 * T_K)
 ans <- function(val, unit, d = 2, approx = FALSE) {
   if (sa) {
     res <- format(round(val, d), nsmall = d)
+    res <- sub("^-", "$-$", res)  # znak minus zamiast dywizu
     if (approx) {
       prefix <- "Szacunkowo: "
       res <- paste0(prefix, res)
     }
     # Escape ^ in unit strings: wrap content after ^ in $^{...}$
-    unit_safe <- gsub("\\^(\\d+)", "$^{\\1}$", unit)
+    # (pomijając jednostki już w trybie matematycznym, np. "m$^3$" — inaczej powstaje "$$")
+    unit_safe <- gsub("(?<!\\$)\\^(\\d+)", "$^{\\1}$", unit, perl = TRUE)
+    # Escape % to \\% for LaTeX (using perl=TRUE for negative lookbehind)
+    unit_safe <- gsub("(?<!\\\\)%", "\\\\%", unit_safe, perl=TRUE)
     return(paste0("\\textbf{\\textcolor{answercolor}{", res, " ", unit_safe, "}}"))
   } else {
     return("....................")
@@ -138,25 +136,33 @@ p_fire <- p_abs_kPa * (p$t_fire + 273.15) / T_K
 p_N2_kPa <- (p$y_N2 / 100) * p$p_mix * 100
 y_O2 <- 100 - p$y_N2
 m_N2 <- (p$y_N2 / 100 * p$p_mix * 1e5) * p$V_mix / (297 * (p$t_mix + 273.15))
+p_O2_kPa <- (100 - p$y_N2) / 100 * p$p_mix * 100
+m_O2 <- p_O2_kPa * 1000 * p$V_mix / (260 * (p$t_mix + 273.15))
 rho_zb <- (p$p_man * 1e5 + p$p_atm * 133.322) / (287 * T_K)
 rho_norm <- 101325 / (287 * 273.15)
+v_zb <- 1 / rho_zb
+v_norm <- 1 / rho_norm
 m_N2_t <- p$m_N2_tank
 p_N2_t_Pa <- p$p_N2_tank * 1e5
 T_N2_t <- p$t_N2_tank + 273.15
 V_N2_tank <- m_N2_t * 297 * T_N2_t / p_N2_t_Pa
 T_valve_C <- (p$T_valve - 32) / 1.8
+t_proces_max <- 140  # maks. temperatura procesu (jak w przykładzie z Ćw. 1)
 
 # ---- Obliczenia Ćw.2 ----
-T1_spr <- p$t1_spr + 273.15
-lt_poly <- p$n_poly / (p$n_poly - 1) * 287 * T1_spr * ((p$p2 / 1)^((p$n_poly - 1) / p$n_poly) - 1) / 1000
+T1_spr <- p$t + 273.15
+p_atm_bar <- p_atm_kPa / 100
+lt_poly <- p$n_poly / (p$n_poly - 1) * 287 * T1_spr * ((p$p2 / p_atm_bar)^((p$n_poly - 1) / p$n_poly) - 1) / 1000
 m_dot_spr <- (101325 * p$Vn / 3600) / (287 * 273.15)
 N_silnika <- m_dot_spr * lt_poly / 0.9
-T2_spr <- T1_spr * (p$p2 / 1)^((p$n_poly - 1) / p$n_poly) - 273.15
+T2_spr <- T1_spr * (p$p2 / p_atm_bar)^((p$n_poly - 1) / p$n_poly) - 273.15
 Q_chlod <- m_dot_spr * 1.005 * (T2_spr - p$t_chlod)
-p_posr <- sqrt(1 * p$p2)
-T_I_out <- T1_spr * (p_posr / 1)^((p$n_poly - 1) / p$n_poly) - 273.15
+p_posr <- sqrt(p_atm_bar * p$p2)
+T_I_out <- T1_spr * (p_posr / p_atm_bar)^((p$n_poly - 1) / p$n_poly) - 273.15
 T_II_out <- (p$t_chlod + 273.15) * (p$p2 / p_posr)^((p$n_poly - 1) / p$n_poly) - 273.15
-lt_izo <- 287 * T1_spr * log(p$p2 / 1) / 1000
+lt_izo <- 287 * T1_spr * log(p$p2 / p_atm_bar) / 1000
+lt_ad <- 1.4 / 0.4 * 287 * T1_spr * ((p$p2 / p_atm_bar)^(0.4 / 1.4) - 1) / 1000
+oszcz_izo_ad <- (1 - lt_izo / lt_ad) * 100
 Q_ch_kW <- Q_chlod
 m_w_chlod <- (Q_ch_kW * 1000) / (4190 * (p$t_w_out_ch - p$t_w_in_ch))
 # Zad 2.8
@@ -187,6 +193,7 @@ V_gaz <- Q_kociol / (p$eta_k * 50000 * 0.7) * 3600
 p_dlaw <- p$p_dlawienie
 h_before_dlaw <- PropW("H", "P", p_k_Pa, "T", T_para_K)  # [J/kg]
 t_3_dlaw <- PropW("T", "H", h_before_dlaw, "P", p_dlaw_Pa) - 273.15  # [°C]
+hg_dlaw <- PropW("H", "P", p_dlaw_Pa, "Q", 1) / 1000  # h'' przy ciśnieniu po dławieniu
 
 # Zad 3.5: Para Mokra — stopień suchości
 # hm podane jako parametr (z zakresu 2200-2600 kJ/kg)
@@ -198,11 +205,17 @@ x_mokra <- (p$hm - hf_mokra) / (hg_mokra - hf_mokra)
 if (x_mokra > 1) x_mokra <- 1
 if (x_mokra < 0) x_mokra <- 0
 
-# Zad 3.6: Interpolacja — dokładne wartości z CoolProp
+# Zad 3.6: Interpolacja liniowa (jak w przykładzie z Ćw. 3) — stan w połowie
+# między wierszami tablicy przegrzania (co 50 K), przy ciśnieniu kotła
 p_interp <- p$p_kociol
-t_interp <- p$t_para
-h_interp <- PropW("H", "P", p_k_Pa, "T", T_para_K) / 1000
-s_interp <- PropW("S", "P", p_k_Pa, "T", T_para_K) / 1000
+t_interp <- p$t_para + 25
+t_lo <- p$t_para; t_hi <- p$t_para + 50
+h_lo <- PropW("H", "P", p_k_Pa, "T", t_lo + 273.15) / 1000
+h_hi <- PropW("H", "P", p_k_Pa, "T", t_hi + 273.15) / 1000
+s_lo <- PropW("S", "P", p_k_Pa, "T", t_lo + 273.15) / 1000
+s_hi <- PropW("S", "P", p_k_Pa, "T", t_hi + 273.15) / 1000
+h_interp <- h_lo + 0.5 * (h_hi - h_lo)
+s_interp <- s_lo + 0.5 * (s_hi - s_lo)
 
 # Zad 3.7: Entropia
 s1_kociol <- PropW("S", "T", T_zas_K, "Q", 0) / 1000    # s wody zasilającej
@@ -217,6 +230,12 @@ q_wym_jedn <- h_wlot_wym - h_wylot_wym
 Q_wym_total <- p$m_dot_kociol * 1000 / 3600 * q_wym_jedn
 
 # ---- Obliczenia Ćw.4 (CoolProp) ----
+# Turbina przeciwprężna zastępuje zawór dławiący (jak w przykładzie z Ćw. 4):
+# wlot = para z kotła, wylot = ciśnienie po dławieniu, strumień = wydajność kotła
+p$p1_turb <- p$p_kociol
+p$t1_turb <- p$t_para
+p$p2_turb <- p$p_dlawienie
+p$m_dot_turb <- p$m_dot_kociol / 3.6  # t/h -> kg/s
 p1t_Pa <- p$p1_turb * 1e5
 p2t_Pa <- p$p2_turb * 1e5
 T1t_K <- p$t1_turb + 273.15
@@ -237,7 +256,7 @@ h2s_t <- hf_2 + x_is * (hg_2 - hf_2)
 N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
 h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
 N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
-eta_Carnot <- (1 - 293.15 / T1t_K) * 100  # T_L = otoczenie 20°C
+eta_Carnot <- (1 - (p$t + 273.15) / T1t_K) * 100  # T_L = otoczenie (hala)
 
 # ---- Obliczenia Ćw.5 ----
 Q_wym <- p$m_spalin * 1 * (p$t_sp_in - p$t_sp_out)
@@ -245,11 +264,11 @@ m_w_wym <- Q_wym * 1000 / (4.19 * (p$t_w_out - p$t_w_in))
 dS_sp <- p$m_spalin * 1000 * log((p$t_sp_out + 273.15) / (p$t_sp_in + 273.15))
 dS_w <- m_w_wym / 1000 * 4190 * log((p$t_w_out + 273.15) / (p$t_w_in + 273.15))
 dS_gen <- dS_sp + dS_w
-W_strata <- (p$T0 + 273.15) * dS_gen / 1000
+W_strata <- (p$t + 273.15) * dS_gen / 1000
 
 # Zad 5.4 - Sprawność Carnota Wymiennika
 T_gor_K <- p$t_sp_in + 273.15
-eta_C_wym <- (1 - (p$T0 + 273.15) / T_gor_K) * 100
+eta_C_wym <- (1 - (p$t + 273.15) / T_gor_K) * 100
 B_max_wym <- eta_C_wym / 100 * Q_wym
 psi_wym <- (1 - W_strata / B_max_wym) * 100
 
@@ -257,10 +276,13 @@ psi_wym <- (1 - W_strata / B_max_wym) * 100
 # Zakładamy podział temperatur jak w przykładzie (300 -> 220 -> 150)
 Q_A_kaskada <- p$m_spalin * 1 * (p$t_sp_in - 220)
 Q_B_kaskada <- p$m_spalin * 1 * (220 - p$t_sp_out)
+# woda jak w przykładzie z Ćw. 5: A — woda kotłowa 20 -> 90 °C, B — woda użytkowa 15 -> 50 °C
+m_w_A <- Q_A_kaskada * 1000 / (4190 * (90 - 20))
+m_w_B <- Q_B_kaskada * 1000 / (4190 * (50 - 15))
 
 # Zad 5.7 - Entropia Otoczenia
-Q_komin <- p$m_spalin * 1 * (p$t_sp_out - p$T0)
-dS_atm <- Q_komin * 1000 / (p$T0 + 273.15)
+Q_komin <- p$m_spalin * 1 * (p$t_sp_out - p$t)
+dS_atm <- Q_komin * 1000 / (p$t + 273.15)
 
 # Zad 5.5 - LMTD i Entropia (Przeciwprąd)
 # Współprąd (Dane z Zad 5.1/5.2):
@@ -309,7 +331,9 @@ Q_k <- N_spr_ch + p$Q_o
 COP_PC <- EER + 1
 rho_ss <- PropR("D", "T", To_K, "Q", 1)  # gęstość pary na ssaniu [kg/m³]
 v_ss <- 1 / rho_ss  # objętość właściwa [m³/kg]
-w_rura <- m_dot_ch * v_ss / (pi * (p$d_rura / 1000)^2 / 4)
+V_ss <- m_dot_ch * v_ss  # strumień objętości na ssaniu [m³/s]
+w_rura <- V_ss / (pi * (p$d_rura / 1000)^2 / 4)
+d_wym_mm <- 1000 * sqrt(4 * V_ss / (pi * 12))  # średnica dla w = 12 m/s [mm]
 
 # Zad 6.5 - Wpływ tk
 tk_high <- p$t_k + 15
@@ -328,6 +352,7 @@ h3_R290 <- PropR("H", "T", Tk_K, "Q", 0, "R290") / 1000
 q_o_R290 <- h1_R290 - h3_R290
 l_k_R290 <- h2_R290 - h1_R290
 EER_R290 <- q_o_R290 / l_k_R290
+m_dot_R290 <- p$Q_o / q_o_R290
 
 # ---- Obliczenia Ćw.7 (CoolProp — HAPropsSI) ----
 m_dot_hvac <- 1.2 * p$V_dot / 3600
@@ -410,6 +435,10 @@ Q_chlod8 <- m_dot_hvac * 1.005 * (p$t_lato - p$t_wewn)
 # Formatowanie liczb (przywrócone — używane w treści zadań)
 f <- function(x, d = 2) formatC(round(x, d), format = "f", digits = d)
 
+# Rozwiązanie krok po kroku (tylko w kluczu). Końcowe "\n\n" zamyka akapit,
+# żeby następna linia "- ..." była nowym punktem listy, a nie kontynuacją.
+sol <- function(fmt, ...) if (sa) paste0(sprintf(fmt, ...), "\n\n")
+
 reflection <- function(text) {
     if (!sa) {
         paste0(
@@ -476,7 +505,7 @@ Twoim pierwszym zleceniem jest **kompleksowy audyt energetyczny hali produkcyjne
 | **Kocioł parowy** | Ciśnienie pary | `r p$p_kociol` bar |
 | | Temperatura pary przegrzanej | `r p$t_para` $^\circ$C |
 | | Wydajność parowa | `r p$m_dot_kociol` t/h |
-| **Turbina parowa** | Ciśn./temp. wlot: $p_1$/$t_1$ | `r p$p1_turb` bar / `r p$t1_turb` $^\circ$C |
+| **Turbina parowa** | Wlot (para z kotła) / wylot | `r p$p1_turb` bar, `r p$t1_turb` $^\circ$C / `r p$p2_turb` bar |
 | | Sprawność izentropowa $\eta_{is}$ | `r p$eta_is` |
 | **Wymiennik spaliny/woda** | Strumień spalin $\dot{m}_{\text{s}}$ | `r p$m_spalin` kg/s |
 | | Temp. wlot/wylot spalin | `r p$t_sp_in` / `r p$t_sp_out` $^\circ$C |
@@ -536,7 +565,9 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 `r if(!sa) "\\vspace{3cm}"`
 
 - Ciśnienie absolutne $p_{\text{abs}}$ = `r ans(p_abs_kPa, "kPa")`
+`r sol("\n\n\\textcolor{red}{$$ p_{abs} = %.1f \\text{ bar} + %.1f \\text{ mmHg} \\cdot 0.13332 = %.1f + %.1f = %.1f \\text{ kPa} $$}", p$p_man, p$p_atm, p$p_man*100, p_atm_kPa, p_abs_kPa)`
 - Masa powietrza $m$ = `r ans(m_air, "kg")`
+`r sol("\n\n\\textcolor{red}{$$ m = \\frac{%.1f \\cdot %.2f}{287 \\cdot %.2f} = %.2f \\text{ kg} $$}", p_abs_kPa*1000, p$V, T_K, m_air)`
 
 ## Zad. 1.2 --- Próba hydrauliczna
 
@@ -546,6 +577,7 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 
 `r if(!sa) "\\vspace{2cm}"`
 - Masa wody $m_w$ = `r ans(m_water, "kg", 0)`
+`r sol("\n\n\\textcolor{red}{$$ m_w = \\rho_w \\cdot V = 1000 \\cdot %.2f = %.0f \\text{ kg} $$}", p$V, m_water)`
 
 `r reflection("*Dodatkowo rozważ: Skomentuj otrzymane wyniki mas. Jakie wnioski na temat właściwości fizycznych substancji w różnych stanach skupienia można wyciągnąć z tego porównania?*")`
 
@@ -557,6 +589,7 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 
 `r if(!sa) "\\vspace{3cm}"`
 - Ciśnienie po pożarze $p_2$ = `r ans(p_fire, "kPa")` (`r ans(p_fire/100, "bar")`)
+`r sol("\n\n\\textcolor{red}{$$ p_2 = %.1f \\cdot \\frac{%.2f}{%.2f} = %.1f \\text{ kPa} $$}", p_abs_kPa, p$t_fire+273.15, T_K, p_fire)`
 
 `r reflection("*Dodatkowo rozważ: Oceń bezpieczeństwo zbiornika w warunkach pożaru. Jakie techniczne środki zaradcze powinny zostać uwzględnione w projekcie instalacji?*")`
 
@@ -564,22 +597,30 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 
 **Kontekst:** Na hali znajduje się butla kalibracyjna do analizatora spalin. Zawiera mieszaninę: **`r p$y_N2`% $\text{N}_2$** + **`r y_O2`% $\text{O}_2$** (ułamki molowe), pod ciśnieniem **`r p$p_mix` bar**, objętość butli **`r p$V_mix` m$^3$**, temperatura **`r p$t_mix` $^\circ$C**.
 
-**Cel:** Oblicz ciśnienie parcjalne i masy składników.
+**Cel:** Oblicz ciśnienia parcjalne i masy obu składników oraz masę całkowitą mieszaniny.
 
 **Metodyka:** Prawo Daltona: $p_i = y_i \cdot p$. Masa: $m_i = \frac{p_i \cdot V}{R_i \cdot T}$. ($R_{\text{N2}}=297, R_{\text{O2}}=260$).
 
 `r if(!sa) "\\vspace{4cm}"`
-- $p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`
+- $p_{N_2}$ = `r ans(p_N2_kPa, "kPa")`, $p_{O_2}$ = `r ans(p_O2_kPa, "kPa")`
+`r sol("\n\n\\textcolor{red}{$$ p_{N_2} = %.2f \\cdot %.0f = %.1f \\text{ kPa}, \\quad p_{O_2} = %.2f \\cdot %.0f = %.1f \\text{ kPa} $$}", p$y_N2/100, p$p_mix*100, p_N2_kPa, (100-p$y_N2)/100, p$p_mix*100, p_O2_kPa)`
 - $m_{N_2}$ = `r ans(m_N2, "kg")`
-- $m_{O_2}$ = `r ans((100-p$y_N2)/100 * p$p_mix * 1e5 * p$V_mix / (260 * (p$t_mix + 273.15)), "kg")`
+`r sol("\n\n\\textcolor{red}{$$ m_{N_2} = \\frac{%.0f \\cdot %.2f}{297 \\cdot %.2f} = %.3f \\text{ kg} $$}", p_N2_kPa*1000, p$V_mix, p$t_mix+273.15, m_N2)`
+- $m_{O_2}$ = `r ans(m_O2, "kg")`
+`r sol("\n\n\\textcolor{red}{$$ m_{O_2} = \\frac{%.0f \\cdot %.2f}{260 \\cdot %.2f} = %.3f \\text{ kg} $$}", p_O2_kPa*1000, p$V_mix, p$t_mix+273.15, m_O2)`
+- Masa całkowita $m$ = `r ans(m_N2 + m_O2, "kg")`
 
 ## Zad. 1.2d --- Gęstość i Objętość Właściwa
 
-Oblicz gęstość powietrza w głównym zbiorniku (Zad 1.1) oraz porównaj ją z gęstością w warunkach normalnych.
+Oblicz gęstość i objętość właściwą powietrza w głównym zbiorniku (Zad. 1.1) oraz porównaj je z wartościami w warunkach normalnych ($p_n = 101325$ Pa, $T_n = 273{,}15$ K).
 
 `r if(!sa) "\\vspace{2cm}"`
 - $\rho_{\text{rzecz}}$ = `r ans(rho_zb, "kg/m$^3$")`
+`r sol("\n\n\\textcolor{red}{$$ \\rho = \\frac{p_{abs}}{R \\cdot T} = \\frac{%.1f}{287 \\cdot %.2f} = %.2f \\text{ kg/m}^3 $$}", p_abs_kPa*1000, T_K, rho_zb)`
 - $\rho_{\text{norm}}$ = `r ans(rho_norm, "kg/m$^3$")`
+`r sol("\n\n\\textcolor{red}{$$ \\rho_n = \\frac{101325}{287 \\cdot 273.15} = %.2f \\text{ kg/m}^3 $$}", rho_norm)`
+- Objętość właściwa $v = 1/\rho$: w zbiorniku `r ans(v_zb, "m$^3$/kg", 3)`, w warunkach normalnych `r ans(v_norm, "m$^3$/kg", 3)`
+- Stosunek gęstości $\rho_{\text{rzecz}}/\rho_{\text{norm}}$ = `r ans(rho_zb / rho_norm, "", 1)`
 
 ## Zad. 1.2e --- Dobór butli na Azot
 
@@ -587,12 +628,16 @@ Dział spawalniczy potrzebuje przechować **`r p$m_N2_tank` kg** azotu przy ciś
 
 `r if(!sa) "\\vspace{2cm}"`
 - $V_{min}$ = `r ans(V_N2_tank, "m$^3$", 3)` (`r ans(V_N2_tank*1000, "litrów", 0)`)
+`r sol("\n\n\\textcolor{red}{$$ V = \\frac{m \\cdot R \\cdot T}{p} = \\frac{%.1f \\cdot 297 \\cdot %.2f}{%.1f \\cdot 10^5} = %.3f \\text{ m}^3 $$}", p$m_N2_tank, T_N2_t, p$p_N2_tank, V_N2_tank)`
 
 ## Zad. 1.3 --- Odczyt dokumentacji zagranicznej
 
-**Kontekst:** Na tabliczce znamionowej importowanego zaworu bezpieczeństwa widnieje: *"Max. operating temperature: `r p$T_valve` $^\circ$F"*. Musisz to przeliczyć na stopnie Celsjusza.
+**Kontekst:** Na tabliczce znamionowej importowanego zaworu bezpieczeństwa widnieje: *"Max. operating temperature: `r p$T_valve` $^\circ$F"*. Musisz to przeliczyć na stopnie Celsjusza i ocenić, czy zawór nadaje się do instalacji, w której maksymalna temperatura procesu wynosi **`r t_proces_max` $^\circ$C**.
 
+`r if(!sa) "\\vspace{1.5cm}"`
 - `r p$T_valve` $^\circ$F = `r ans(T_valve_C, "°C")`
+`r sol("\n\n\\textcolor{red}{$$ t = \\frac{%.1f - 32}{1.8} = %.1f ^\\circ\\text{C} $$}", p$T_valve, T_valve_C)`
+- Decyzja: `r if(sa) { if (T_valve_C < t_proces_max) paste0("\\textbf{\\textcolor{answercolor}{zawór NIE nadaje się}} --- ", f(T_valve_C, 1), "$^\\circ$C $<$ ", t_proces_max, "$^\\circ$C, otworzy się podczas normalnej pracy instalacji.") else paste0("\\textbf{\\textcolor{answercolor}{zawór nadaje się}} --- ", f(T_valve_C, 1), "$^\\circ$C $>$ ", t_proces_max, "$^\\circ$C.") } else "...................................... (nadaje się / nie nadaje się, uzasadnij)"`
 
 \newpage
 
@@ -609,21 +654,25 @@ To kluczowe dane do raportu energetycznego --- sprężarki to często **najwięk
 **Cel:** Ile energii (na kg powietrza) zużywa sprężarka?
 
 **Metodyka:** Sprężanie rzeczywiste jest procesem politropowym ($n =$ `r p$n_poly`). Praca techniczna:
-$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(1-\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}\right] $$
+$$ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] $$
 
-`r if(!sa) "*Uwaga: $p_1 = 1$ bar (ssanie z atmosfery). $R = 287$ J/(kgK). $T_1$ w kelwinach!*"`
+*Znak: ujemna praca techniczna oznacza, że pracę trzeba **dostarczyć** z zewnątrz (sprężarkę napędza silnik).*
+
+`r if(!sa) "*Uwaga: $p_1 = p_{atm}$ z hali (przelicz z mmHg na bar). $R = 287$ J/(kgK). $T_1$ to temperatura z hali w kelwinach!*"`
 
 `r if(!sa) "\\vspace{3cm}"`
-- $l_t$ = `r ans(lt_poly, "kJ/kg")`
+- $l_t$ = `r ans(-lt_poly, "kJ/kg")`
+`r sol("\n\n\\textcolor{red}{$$ l_t = \\frac{%.3f}{%.3f - 1} \\cdot 287 \\cdot %.2f \\left[ 1 - \\left(\\frac{%.2f}{%.4f}\\right)^{\\frac{%.3f-1}{%.3f}} \\right] = %.2f \\text{ kJ/kg} $$}", p$n_poly, p$n_poly, T1_spr, p$p2, p_atm_bar, p$n_poly, p$n_poly, -lt_poly)`
 
 ## Zad. 2.2 --- Dobór silnika elektrycznego
 
 **Cel:** Jaki silnik zamówić? Musimy znać moc na wale sprężarki.
 
-**Metodyka:** Twoja wydajność $\dot{V}_n$ wynosi **`r p$Vn` m$^3$/h** (patrz tabela). Oblicz strumień masy: $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273{,}15$ K). Moc: $N = \frac{\dot{m} \cdot l_t}{\eta_m}$, gdzie $\eta_m = 0{,}9$ (sprawność mechaniczna).
+**Metodyka:** Twoja wydajność $\dot{V}_n$ wynosi **`r p$Vn` m$^3$/h** (patrz tabela). Oblicz strumień masy: $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273{,}15$ K). Moc: $N = \frac{\dot{m} \cdot |l_t|}{\eta_m}$, gdzie $\eta_m = 0{,}9$ (sprawność mechaniczna).
 
 `r if(!sa) "\\vspace{2cm}"`
 - Moc silnika $N$ = `r ans(N_silnika, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m} = \\frac{101325 \\cdot %.2f / 3600}{287 \\cdot 273.15} = %.4f \\text{ kg/s} $$} \n\n \\textcolor{red}{$$ N = \\frac{%.4f \\cdot |%.2f|}{0.9} = %.2f \\text{ kW} $$}", p$Vn, m_dot_spr, m_dot_spr, -lt_poly, N_silnika)`
 
 ## Zad. 2.3 --- Temperatura tłoczenia
 
@@ -634,6 +683,7 @@ $$T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}$$
 
 `r if(!sa) "\\vspace{2cm}"`
 - $t_2$ = `r ans(T2_spr, "°C")`
+`r sol("\n\n\\textcolor{red}{$$ T_2 = %.2f \\cdot \\left(\\frac{%.2f}{%.4f}\\right)^{\\frac{%.3f-1}{%.3f}} = %.2f \\text{ K} \\implies t_2 = %.2f ^\\circ\\text{C} $$}", T1_spr, p$p2, p_atm_bar, p$n_poly, p$n_poly, T2_spr+273.15, T2_spr)`
 
 `r reflection("*Dodatkowo rozważ: Przeanalizuj uzyskany wynik temperatury tłoczenia w kontekście ograniczeń eksploatacyjnych olejów sprężarkowych (typowo max. 180°C). Jakie działania inżynierskie mogą być konieczne?*")`
 
@@ -645,36 +695,51 @@ $$T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}$$
 
 $$ \dot{Q}_{chl} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (T_{wylot} - T_{wlot}) $$
 
+gdzie $c_p \approx 1{,}005$ kJ/(kg$\cdot$K). *Znak minus oznacza ciepło odprowadzone **z** układu.*
+
 
 `r if(!sa) "\\vspace{2cm}"`
-- $\dot{Q}_{chl}$ = `r ans(Q_chlod, "kW")`
+- $\dot{Q}_{chl}$ = `r ans(-Q_chlod, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{chl} = %.4f \\cdot 1.005 \\cdot (%.2f - %.2f) = %.2f \\text{ kW} $$}", m_dot_spr, p$t_chlod, T2_spr, -Q_chlod)`
 
 ## Zad. 2.5 --- Propozycja modernizacji: sprężanie dwustopniowe
 
-**Kontekst:** W raporcie audytowym rekomendujesz modernizację --- zamiast jednego stopnia, dwa stopnie z chłodzeniem międzystopniowym. Przy dwóch stopniach **optymalne ciśnienie pośrednie**: $p_{\text{pośr}} = \sqrt{p_1 \cdot p_2}$.
+**Kontekst:** W raporcie audytowym rekomendujesz modernizację --- zamiast jednego stopnia, dwa stopnie z chłodzeniem międzystopniowym do **`r p$t_chlod` $^\circ$C** (jak w chłodnicy z Zad. 2.4). Przy dwóch stopniach **optymalne ciśnienie pośrednie**: $p_{\text{pośr}} = \sqrt{p_1 \cdot p_2}$.
 
 `r if(!sa) "\\vspace{3cm}"`
 - $p_{posrednie}$ = `r ans(p_posr, "bar")`
+`r sol("\n\n\\textcolor{red}{$$ p_{posr} = \\sqrt{%.4f \\cdot %.2f} = %.3f \\text{ bar} $$}", p_atm_bar, p$p2, p_posr)`
 - Temperatura po I stopniu: $t_{I,out}$ = `r ans(T_I_out, "°C")`
+`r sol("\n\n\\textcolor{red}{$$ T_{I} = %.2f \\cdot \\left(\\frac{%.3f}{%.4f}\\right)^{\\frac{%.3f-1}{%.3f}} = %.2f \\text{ K} \\implies t_{I} = %.2f ^\\circ\\text{C} $$}", T1_spr, p_posr, p_atm_bar, p$n_poly, p$n_poly, T_I_out+273.15, T_I_out)`
 - Temperatura po II stopniu: $t_{II,out}$ = `r ans(T_II_out, "°C")`
+`r sol("\n\n\\textcolor{red}{$$ T_{II} = %.2f \\cdot \\left(\\frac{%.2f}{%.3f}\\right)^{\\frac{%.3f-1}{%.3f}} = %.2f \\text{ K} \\implies t_{II} = %.2f ^\\circ\\text{C} $$}", p$t_chlod+273.15, p$p2, p_posr, p$n_poly, p$n_poly, T_II_out+273.15, T_II_out)`
 
 `r reflection("*Dodatkowo rozważ: Porównaj temperaturę wylotową po I stopniu sprężania z temperaturą tłoczenia w układzie jednostopniowym (Zad. 2.3). Uzasadnij celowość zastosowania sprężania wielostopniowego.*")`
 
-## Zad. 2.6 --- Granica termodynamiczna: sprężanie izotermiczne
+## Zad. 2.6 --- Porównanie procesów sprężania
 
-**Cel:** Jaka byłaby praca przy idealnym (izotermicznym) sprężaniu? To dolna granica --- lepiej się nie da.
+**Cel:** Porównaj (co do wartości bezwzględnej) pracę techniczną sprężania dla trzech procesów przy tych samych $p_1$, $p_2$ i $T_1$: izotermicznego ($n = 1$, dolna granica --- lepiej się nie da), politropowego (Zad. 2.1) i adiabatycznego ($n = \kappa = 1{,}4$).
 
-`r if(!sa) "\\vspace{2cm}"`
+**Metodyka:** Izoterma: $l_t = R T_1 \ln\frac{p_2}{p_1}$. Adiabata: wzór z Zad. 2.1 z $n = \kappa$.
+
+`r if(!sa) "\\vspace{3cm}"`
 - $l_{t,\text{izo}}$ = `r ans(lt_izo, "kJ/kg")`
+`r sol("\n\n\\textcolor{red}{$$ l_{t,izo} = 287 \\cdot %.2f \\cdot \\ln\\left(\\frac{%.2f}{%.4f}\\right) / 1000 = %.2f \\text{ kJ/kg} $$}", T1_spr, p$p2, p_atm_bar, lt_izo)`
+- $l_{t,\text{pol}}$ (z Zad. 2.1) = `r ans(lt_poly, "kJ/kg")`
+- $l_{t,\text{ad}}$ = `r ans(lt_ad, "kJ/kg")`
+`r sol("\n\n\\textcolor{red}{$$ l_{t,ad} = \\frac{1.4}{0.4} \\cdot 287 \\cdot %.2f \\left[ \\left(\\frac{%.2f}{%.4f}\\right)^{0.286} - 1 \\right] / 1000 = %.2f \\text{ kJ/kg} $$}", T1_spr, p$p2, p_atm_bar, lt_ad)`
+- Sprężanie izotermiczne wymaga mniej pracy niż adiabatyczne o `r ans(oszcz_izo_ad, "%", 0)`
+`r sol("\n\n\\textcolor{red}{$$ \\left(1 - \\frac{%.1f}{%.1f}\\right) \\cdot 100 = %.0f \\%% $$}", lt_izo, lt_ad, oszcz_izo_ad)`
 
 `r reflection("*Dodatkowo rozważ: Porównaj pracę sprężania w procesie politropowym i izotermicznym. Skomentuj wielkość potencjalnych oszczędności energii i fizyczną możliwość ich osiągnięcia.*")`
 
 ## Zad. 2.7 --- Dobór chłodnicy wodnej (I Zasada)
 
-**Cel:** Oblicz ilość wody potrzebnej do chłodzenia sprężarki, jeśli woda ogrzewa się od **`r p$t_w_in_ch`** do **`r p$t_w_out_ch` $^\circ$C**. Ciepło do odebrania $\dot{Q} =$ `r f(Q_chlod, 1)` kW.
+**Cel:** Oblicz ilość wody potrzebnej do chłodzenia sprężarki, jeśli woda ogrzewa się od **`r p$t_w_in_ch`** do **`r p$t_w_out_ch` $^\circ$C**. Ciepło do odebrania (wartość bezwzględna z Zad. 2.4) $|\dot{Q}_{chl}| =$ `r ans(Q_chlod, "kW", d=1)`.
 
 `r if(!sa) "\\vspace{2cm}"`
 - Strumień wody $\dot{m}_w$ = `r ans(m_w_chlod, "kg/s", 3)` (`r ans(m_w_chlod*60/1, "l/min", 1)`)
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_w = \\frac{%.2f \\cdot 1000}{4190 \\cdot (%.1f - %.1f)} = %.4f \\text{ kg/s} $$}", Q_chlod, p$t_w_out_ch, p$t_w_in_ch, m_w_chlod)`
 
 ## Zad. 2.8 --- Weryfikacja stanu technicznego ($n$)
 
@@ -687,10 +752,11 @@ $$ T_2/T_1 = (p_2/p_1)^{(n-1)/n} $$
 `r if(!sa) "\\vspace{3cm}"`
 
 - Wykładnik $n$ = `r ans(n_real, "", 2)`
+`r sol("\n\n\\textcolor{red}{$$ \\ln(T_2/T_1) = \\ln(%.2f/%.2f) = %.4f $$} \n\n \\textcolor{red}{$$ \\ln(p_2/p_1) = \\ln(%.2f/%.2f) = %.4f $$} \n\n \\textcolor{red}{$$ n = \\frac{1}{1 - %.4f/%.4f} = %.2f $$}", T2_p, T1_p, log_T, p$p2_pom, p$p1_pom, log_p, log_T, log_p, n_real)`
 
 
 
-`r reflection(paste0("*Dodatkowo rozważ: Porównaj rzeczywisty wykładnik z wartością $n=$ ", p$n_poly, ". Zastanów się, o czym świadczy różnica, a jeśli wartości są zblione to rozważ co by oznaczała wartość większa.*"))`
+`r reflection(paste0("*Dodatkowo rozważ: Porównaj rzeczywisty wykładnik z wartością $n=$ ", p$n_poly, ". Zastanów się, o czym świadczy różnica, a jeśli wartości są zbliżone, to rozważ co by oznaczała wartość większa.*"))`
 
 \newpage
 
@@ -708,14 +774,14 @@ Przechodzimy do kotłowni. Kocioł gazowy wytwarza parę przegrzaną o parametra
 
 `r if(!sa) "\\vspace{1cm}"`
 - Temperatura nasycenia $t_{\text{sat}}$ dla ciśnienia `r p$p_kociol` bar wynosi: `r ans(tsat_kociol, "°C", d=1, approx=TRUE)`
-- Wniosek ($t .... t_{sat}$?): Para jest ....................................... .
+- Wniosek ($t .... t_{sat}$?): Para jest `r if(sa) paste0("\\textbf{\\textcolor{answercolor}{przegrzana}} ($t = ", p$t_para, "^\\circ$C $>$ $t_{sat} = ", f(tsat_kociol, 1), "^\\circ$C)") else "......................................."`.
 
 ## Zad. 3.2 --- Moc cieplna kotła \Tablice
 
 **Metodyka:** Moc to ilość ciepła dostarczanego na sekundę:
 $$\dot{Q} = \dot{m} \cdot (h_2 - h_1)$$
 
-gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg (entalpia wody zasilającej) i $h_2 \approx 2800$ kJ/kg (entalpia pary przegrzanej).
+gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg (entalpia wody zasilającej), a $h_2$ to entalpia pary przegrzanej odczytana z tablic dla Twojego ciśnienia i temperatury.
 
 *Uwaga: To uproszczenie; dokładną wartość odczytujesz z tablic pary.*
 
@@ -723,6 +789,7 @@ gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg
 
 `r if(!sa) "\\vspace{2cm}"`
 - Moc cieplna $\dot{Q}$ = `r ans(Q_kociol, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q} = \\frac{%.2f \\cdot 1000}{3600} \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", p$m_dot_kociol, h2_kociol, h1_kociol, Q_kociol)`
 
 ## Zad. 3.3 --- Kosztorys: zużycie gazu
 
@@ -732,6 +799,7 @@ gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg
 
 `r if(!sa) "\\vspace{2cm}"`
 - Zużycie gazu $\dot{V}_{\text{gaz}}$ = `r ans(V_gaz, "m³/h")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{V}_{gaz} = \\frac{%.1f}{%.2f \\cdot 50000 \\cdot 0.7} \\cdot 3600 = %.1f \\text{ m}^3\\text{/h} $$}", Q_kociol, p$eta_k, V_gaz)`
 
 
 `r reflection(paste0("*Dodatkowo rozważ: Oszacuj miesięczny koszt eksploatacji kotła (zakładając pracę ciągłą). Czy koszt paliwa jest znaczącym elementem budżetu?*"))`
@@ -742,10 +810,11 @@ gdzie $h_1 = c_w \cdot t_{\text{zas}} \approx 4{,}19 \cdot t_{\text{zas}}$ kJ/kg
 
 **Pytanie:** Jaka będzie temperatura pary po dławieniu?
 
-1. Stan początkowy: $h_1 \approx$ `r 2943` kJ/kg (dla `r p$p_kociol` bar).
+1. Stan początkowy: $h_1 \approx$ `r f(h2_kociol, 0)` kJ/kg (dla `r p$p_kociol` bar).
 2. Stan końcowy: $p_2=$ `r p$p_dlawienie` bar, $h_2 = h_1$.
 
 `r if(!sa) "\\vspace{2cm}"`
+- Czy para po dławieniu jest nadal przegrzana? (porównaj $h_2$ z $h''$ dla `r p$p_dlawienie` bar): `r if(sa) paste0("\\textbf{\\textcolor{answercolor}{Tak}} --- $h_2 = ", f(h2_kociol, 0), " > h'' = ", f(hg_dlaw, 0), "$ kJ/kg") else "........"`
 - Temperatura po dławieniu $t_2$ = `r ans(t_3_dlaw, "°C", approx=TRUE)`
 
 *(Odczyt z tablic przegrzania dla `r p$p_dlawienie` bar i entalpii $h_1$)*
@@ -757,21 +826,22 @@ W odbiorniku pary (wymiennik ciepła) para skrapla się częściowo. Serwisant z
 **Czy para jest mokra, sucha nasycona, czy przegrzana?**
 
 `r if(!sa) "\\vspace{2cm}"`
-- Wniosek: ..............................................................
+- Wniosek: `r if(sa) "\\textbf{\\textcolor{answercolor}{para nasycona}} ($t = t_{sat}$ dla danego ciśnienia); z pomiaru entalpii ($h' < h_{pomiar} < h''$) --- \\textbf{\\textcolor{answercolor}{para mokra}}" else ".............................................................."`
 - Jeśli mokra, oblicz stopień suchości $x$ (zakładając $h_{pomiar} =$ `r p$hm` kJ/kg):
 - $x$ = `r ans(x_mokra, "", approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ x = \\frac{%.1f - %.1f}{%.1f - %.1f} = %.3f $$}", p$hm, hf_mokra, hg_mokra, hf_mokra, x_mokra)`
 
 `r if(!sa) "*Uwaga: Odczytaj h' i h'' dla podanego ciśnienia.*"`
 
 ## Zad. 3.6 --- Interpolacja w Tablicach \Tablice
 
-Nasz kocioł produkuje parę o parametrach $p =$ **`r p_interp` bar**, $t =$ **`r t_interp` $^\circ$C**. 
-
-`r if(!sa) "*Odczytaj entalpię i entropię z tablic pary przegrzanej (stosując interpolację liniową).*" `
+Producent kotła proponuje podniesienie temperatury pary do $t =$ **`r t_interp` $^\circ$C** przy tym samym ciśnieniu $p =$ **`r p_interp` bar**. Takiej temperatury nie ma w tablicach --- odczytaj entalpię i entropię dla sąsiednich temperatur (`r t_lo` i `r t_hi` $^\circ$C) i zastosuj **interpolację liniową**.
 
 `r if(!sa) "\\vspace{3cm}"`
 - Entalpia $h$ = `r ans(h_interp, "kJ/kg", d=0, approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ h_{%d} = %.0f + \\frac{%d - %d}{%d - %d} \\cdot (%.0f - %.0f) = %.0f \\text{ kJ/kg} $$}", as.integer(t_interp), h_lo, as.integer(t_interp), as.integer(t_lo), as.integer(t_hi), as.integer(t_lo), h_hi, h_lo, h_interp)`
 - Entropia $s$ = `r ans(s_interp, "kJ/kgK", d=3, approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ s_{%d} = %.3f + 0.5 \\cdot (%.3f - %.3f) = %.3f \\text{ kJ/kgK} $$}", as.integer(t_interp), s_lo, s_hi, s_lo, s_interp)`
 
 ## Zad. 3.7 --- Entropia w Kotle \Tablice
 
@@ -779,7 +849,9 @@ Oblicz zmianę entropii wody/pary w procesie parowania w kotle (z Zadania 3.2): 
 
 `r if(!sa) "\\vspace{3cm}"`
 - Zmiana entropii $\Delta s$ = `r ans(dS_kociol, "kJ/kgK")`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta s = s_2 - s_1 = %.3f - %.3f = %.3f \\text{ kJ/kgK} $$}", s2_kociol, s1_kociol, dS_kociol)`
 - Strumień entropii $\dot{S} = \dot{m} \cdot \Delta s$ = `r ans(S_dot_kociol, "kW/K")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{S} = \\frac{%.2f \\cdot 1000}{3600} \\cdot %.3f = %.2f \\text{ kW/K} $$}", p$m_dot_kociol, dS_kociol, S_dot_kociol)`
 
 `r reflection("*Dodatkowo rozważ: Skomentuj wzrost entropii. Czy proces spalania i przekazywania ciepła jest odwracalny?*")`
 
@@ -792,6 +864,7 @@ Wymiennik ciepła skrapla parę z **`r p$p_dlawienie` bar** do postaci cieczy na
 `r if(!sa) "\\vspace{2cm}"`
 - $q_{wym}$ = $h_{para} - h'$ = `r ans(h_wlot_wym, "kJ/kg")` - `r ans(h_wylot_wym, "kJ/kg")` = `r ans(q_wym_jedn, "kJ/kg")`
 - Moc cieplna wymiennika $\dot{Q}_{wym}$ = `r ans(Q_wym_total, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{wym} = \\frac{%.2f \\cdot 1000}{3600} \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", p$m_dot_kociol, h_wlot_wym, h_wylot_wym, Q_wym_total)`
 
 
 \newpage
@@ -800,21 +873,21 @@ Wymiennik ciepła skrapla parę z **`r p$p_dlawienie` bar** do postaci cieczy na
 
 ## Sytuacja
 
-W ramach modernizacji klient rozważa zainstalowanie **turbiny parowej** (zamiast marnować energie podczas dławienia na zaworze) --- para najpierw wytworzy prąd w turbinie, a potem (o niższym ciśnieniu) pójdzie do procesów technologicznych. To klasyczna **kogeneracja** (CHP --- *Combined Heat and Power*).
+W poprzednim etapie redukowaliśmy ciśnienie pary z `r p$p_kociol` do `r p$p_dlawienie` bar na zaworze dławiącym --- to strata energii (egzergii)! W ramach modernizacji klient rozważa zainstalowanie w miejscu zaworu **turbiny przeciwprężnej**: para najpierw wytworzy prąd w turbinie, a potem (o niższym ciśnieniu) pójdzie do procesów technologicznych. To klasyczna **kogeneracja** (CHP --- *Combined Heat and Power*).
 
-Para wchodzi do turbiny: $p_1 =$ **`r p$p1_turb` bar**, $t_1 =$ **`r p$t1_turb` $^\circ$C**. Na wylocie: $p_2 =$ **`r p$p2_turb` bar**. Strumień masy: $\dot{m} =$ **`r p$m_dot_turb` kg/s**.
+Para z kotła wchodzi do turbiny: $p_1 =$ **`r p$p1_turb` bar**, $t_1 =$ **`r p$t1_turb` $^\circ$C**. Na wylocie: $p_2 =$ **`r p$p2_turb` bar**. Strumień masy: $\dot{m} =$ **`r p$m_dot_kociol` t/h** $=$ **`r f(p$m_dot_turb, 3)` kg/s** (cała wydajność kotła).
 
 ## Zad. 4.1 --- Proces izentropowy (s=const) \Tablice
 
 **Cel:** Określ parametry pary na wylocie z idealnej turbiny ($s_1 = s_2$).
 \newline
 `r if(!sa) "*(uproszczenie; dokładne wartości z tablic pary lub wykresu Molliera)*"`
-Dla p=10 bar, t=250C: $s_1 \approx$ `r f(s1_t, 3)` kJ/kgK.
+Dla p=`r p$p1_turb` bar, t=`r p$t1_turb`$^\circ$C: $s_1 \approx$ `r f(s1_t, 3)` kJ/kgK.
 Dla p=`r p$p2_turb` bar (nasycenie): $s' \approx$ `r f(sf_2, 3)`, $s'' \approx$ `r f(sg_2, 3)`.
 
 `r if(!sa) "\\vspace{2cm}"`
-- Czy $s_1$ mieści się między $s'$ a $s''$? (Tak/Nie): ........
-- Stan pary na wylocie: .......................................
+- Czy $s_1$ mieści się między $s'$ a $s''$? (Tak/Nie): `r if(sa) "\\textbf{\\textcolor{answercolor}{Tak}}" else "........"`
+- Stan pary na wylocie: `r if(sa) "\\textbf{\\textcolor{answercolor}{para mokra}} ($0 < x_2 < 1$)" else "......................................."`
 
 ## Zad. 4.2 --- Stopień suchości ($x_2$) \Tablice
 
@@ -823,19 +896,20 @@ $$x_2 = \frac{s_2 - s'}{s'' - s'}$$
 
 `r if(!sa) "\\vspace{2cm}"`
 - Stopień suchości $x_2$ = `r ans(x_is, "", 3)`
+`r sol("\n\n\\textcolor{red}{$$ x_2 = \\frac{%.4f - %.4f}{%.4f - %.4f} = %.4f $$}", s1_t, sf_2, sg_2, sf_2, x_is)`
 
 ## Zad. 4.3 --- Idealna moc turbiny \Tablice
 
 **Cel:** Ile mocy produkowałaby *idealna* turbina (proces izentropowy)?
-Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla 1 bar: $h' \approx 417, h'' \approx 2675$.
+Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla `r p$p2_turb` bar: $h' \approx$ `r f(hf_2, 0)`, $h'' \approx$ `r f(hg_2, 0)`.
 
-- Entalpia $h_{2s}$ = `r ans(h2s_t, "kJ/kg", 1)`
-- Moc $N_t = \dot{m} (h_1 - h_{2s})$ = `r ans(N_turb_ideal, "kW")`
-
-**Metodyka:** $N_t = \dot{m} \cdot (h_1 - h_{2s})$, gdzie $h_1 \approx 2800$ kJ/kg, $h_{2s} \approx 2200$ kJ/kg *(uproszczenie; dokładne wartości z tablic pary lub wykresu Molliera)*.
+**Metodyka:** $N_t = \dot{m} \cdot (h_1 - h_{2s})$ *(dokładne wartości z tablic pary lub wykresu Molliera dla Twoich parametrów)*.
 
 `r if(!sa) "\\vspace{2cm}"`
-- $N_t$ = `r ans(N_turb_ideal, "kW", approx=TRUE)`
+- Entalpia $h_{2s}$ = `r ans(h2s_t, "kJ/kg", 1)`
+`r sol("\n\n\\textcolor{red}{$$ h_{2s} = %.1f + %.4f \\cdot (%.1f - %.1f) = %.1f \\text{ kJ/kg} $$}", hf_2, x_is, hg_2, hf_2, h2s_t)`
+- Moc $N_t = \dot{m} (h_1 - h_{2s})$ = `r ans(N_turb_ideal, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ N_t = %.3f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", p$m_dot_turb, h1_t, h2s_t, N_turb_ideal)`
 
 ## Zad. 4.4 --- Rzeczywista moc (straty) \Tablice
 
@@ -846,23 +920,15 @@ Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla 1 bar: $h' \approx 417, h'' \approx 2
 `r if(!sa) "\\vspace{2cm}"`
 - $h_{2r}$ = `r ans(h2r_t, "kJ/kg")`
 - Rzeczywista moc $N_r$ = `r ans(N_turb_real, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ h_{2r} = %.1f - %.2f \\cdot (%.1f - %.1f) = %.1f \\text{ kJ/kg} $$} \n\n \\textcolor{red}{$$ N_r = %.3f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", h1_t, p$eta_is, h1_t, h2s_t, h2r_t, p$m_dot_turb, h1_t, h2r_t, N_turb_real)`
 
 ```{r task_4.5_setup, include=FALSE}
-# Zad 4.5 - Wariant (p1_var, t1_var zależne od nr zestawu)
-# Tabela wariantów (nadkrytyczne parametry lub wysokie ciśnienie)
-variants <- data.frame(
-  p = c(15, 20, 30, 40),
-  t = c(300, 350, 400, 450),
-  h = c(3037.6, 3137.0, 3230.9, 3330.3),
-  s = c(6.918, 6.956, 6.921, 6.936)
-)
-idx <- (p$zestaw_nr %% 4) + 1
-var_row <- variants[idx, ]
-
-p1_var <- var_row$p
-t1_var <- var_row$t
-h1_var <- var_row$h
-s1_var <- var_row$s
+# Zad 4.5 - Wariant: wyższe ciśnienie i temperatura pary z kotła
+# (przykład z Ćw. 4: 10 bar/250 °C -> 15 bar/300 °C); +4 bar mieści się w tablicach B2/B3
+p1_var <- p$p1_turb + 4
+t1_var <- p$t1_turb + 50
+h1_var <- PropW("H", "P", p1_var * 1e5, "T", t1_var + 273.15) / 1000
+s1_var <- PropW("S", "P", p1_var * 1e5, "T", t1_var + 273.15) / 1000
 
 # Stan 2s (przy p2_turb, s=s1_var)
 # Używamy nasycenia z poprzedniego kroku (sf_2, sg_2, hf_2, hg_2 są dla p2_turb)
@@ -889,20 +955,25 @@ diff_percent <- (Nt_var - N_turb_ideal) / N_turb_ideal * 100
 
 `r if(!sa) "\\vspace{4cm}"`
 - Nowa moc idealna $N_{t,var}$ = `r ans(Nt_var, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ x_{2s} = \\frac{%.4f - %.4f}{%.4f - %.4f} = %.4f $$} \n\n \\textcolor{red}{$$ h_{2s} = %.1f + %.4f \\cdot (%.1f - %.1f) = %.1f \\text{ kJ/kg} $$} \n\n \\textcolor{red}{$$ N_{t,var} = %.3f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", s1_var, sf_2, sg_2, sf_2, x2_var, hf_2, x2_var, hg_2, hf_2, h2s_var, p$m_dot_turb, h1_var, h2s_var, Nt_var)`
 - Wzrost mocy: `r ans(diff_percent, "%")`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta = \\frac{%.1f - %.1f}{%.1f} \\cdot 100 = %.1f \\%% $$}", Nt_var, N_turb_ideal, N_turb_ideal, diff_percent)`
 
 
-`r reflection("*Dodatkowo rozważ: W jaki sposób wzrost ciśnienia i temperatury o 50% wpływa na moc idealną turbiny?*")`
+`r reflection("*Dodatkowo rozważ: W jaki sposób wzrost ciśnienia i temperatury pary wlotowej wpływa na moc idealną turbiny? Co ogranicza dalsze podnoszenie tych parametrów?*")`
 
 
 ## Zad. 4.6 --- Sprawność idealna (Carnot)
 
 **Cel:** Jaka jest maksymalna sprawność konwersji ciepła w pracę przy tych temperaturach? To **górna granica** --- żadna rzeczywista maszyna jej nie osiągnie.
 
-**Metodyka:** $\eta_C = 1 - T_L/T_H$, gdzie $T_H = t_1 + 273{,}15$ K, $T_L = 293{,}15$ K (otoczenie 20$^\circ$C).
+**Metodyka:** $\eta_C = 1 - T_L/T_H$, gdzie $T_H = t_1 + 273{,}15$ K, $T_L =$ `r f(p$t + 273.15, 1)` K (otoczenie `r p$t`$^\circ$C).
 
 `r if(!sa) "\\vspace{2cm}"`
 - $\eta_C$ = `r ans(eta_Carnot, "%")`
+`r sol("\n\n\\textcolor{red}{$$ \\eta_C = 1 - \\frac{%.2f}{%.2f} = %.2f \\%% $$}", p$t+273.15, p$t1_turb+273.15, eta_Carnot)`
+- Porównaj ze sprawnością turbiny odniesioną do mocy kotła: $\eta_t = N_t / \dot{Q}_{\text{kotła}}$ (Zad. 4.3 i 3.2) = `r ans(N_turb_ideal / Q_kociol * 100, "%", 1)`
+`r sol("\n\n\\textcolor{red}{$$ \\eta_t = \\frac{%.1f}{%.1f} \\cdot 100 = %.1f \\%% $$}", N_turb_ideal, Q_kociol, N_turb_ideal / Q_kociol * 100)`
 
 `r reflection("*Dodatkowo rozważ: Odnieś obliczoną sprawność obiegu Carnota do rzeczywistych sprawności siłowni parowych. Wskaż główne przyczyny różnic.*")`
 
@@ -922,7 +993,9 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 
 `r if(!sa) "\\vspace{2cm}"`
 - Odzyskana moc $\dot{Q}$ = `r ans(Q_wym, "kW")`
-- Strumien wody $\dot{m}_w$ = `r ans(m_w_wym/1000, "kg/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q} = %.2f \\cdot 1 \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", p$m_spalin, p$t_sp_in, p$t_sp_out, Q_wym)`
+- Strumień wody $\dot{m}_w$ = `r ans(m_w_wym/1000, "kg/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_w = \\frac{%.1f \\cdot 1000}{4190 \\cdot (%.1f - %.1f)} = %.4f \\text{ kg/s} $$}", Q_wym, p$t_w_out, p$t_w_in, m_w_wym/1000)`
 
 ## Zad. 5.2 --- Generacja entropii
 
@@ -932,44 +1005,51 @@ Spaliny z kotła o temperaturze **`r p$t_sp_in` $^\circ$C** wciąż niosą dużo
 
 `r if(!sa) "\\vspace{4cm}"`
 - $\Delta\dot{S}_{\text{gen}}$ = `r ans(dS_gen, "W/K")`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta\\dot{S}_{spalin} = %.2f \\cdot 1000 \\cdot \\ln\\left(\\frac{%.1f}{%.1f}\\right) = %.2f \\text{ W/K} $$} \n\n \\textcolor{red}{$$ \\Delta\\dot{S}_{wody} = %.4f \\cdot 4190 \\cdot \\ln\\left(\\frac{%.1f}{%.1f}\\right) = %.2f \\text{ W/K} $$} \n\n \\textcolor{red}{$$ \\Delta\\dot{S}_{gen} = %.2f + %.2f = %.2f \\text{ W/K} $$}", p$m_spalin, p$t_sp_out+273.15, p$t_sp_in+273.15, dS_sp, m_w_wym/1000, p$t_w_out+273.15, p$t_w_in+273.15, dS_w, dS_sp, dS_w, dS_gen)`
 
 ## Zad. 5.3 --- Strata egzergii (twierdzenie Gouy-Stodoli)
 
 **Cel:** Przełożenie wyników entropijnych na język zrozumiały dla dyrektora finansowego --- **ile kW potencjalnej pracy tracimy** przez nieodwracalność procesu?
 
-**Metodyka:** Twierdzenie Gouy--Stodoli: $\dot{B}_{\text{str}} = T_0 \cdot \Delta\dot{S}_{\text{gen}}$, gdzie $T_0 =$ `r p$T0` $^\circ$C (otoczenie).
+**Metodyka:** Twierdzenie Gouy--Stodoli: $\dot{B}_{\text{str}} = T_0 \cdot \Delta\dot{S}_{\text{gen}}$, gdzie $T_0 =$ `r p$t` $^\circ$C (temperatura hali).
 
 `r if(!sa) "\\vspace{2cm}"`
 - Strata egzergii = `r ans(W_strata, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{B}_{str} = %.2f \\cdot %.2f / 1000 = %.2f \\text{ kW} $$}", p$t+273.15, dS_gen, W_strata)`
 
-`r reflection("*Dodatkowo rozważ: Przeanalizuj uzyskane wartości odzyskanego ciepła (I zasada) i straty egzergii (II zasada). Jakie czynniki projektowe wpływają na wielkość start egzergii i jak można je minimalizować?*")`
+`r reflection("*Dodatkowo rozważ: Przeanalizuj uzyskane wartości odzyskanego ciepła (I zasada) i straty egzergii (II zasada). Jakie czynniki projektowe wpływają na wielkość strat egzergii i jak można je minimalizować?*")`
 
 ## Zad. 5.4 --- Sprawność Carnota Wymiennika
 
 **Cel:** Ile pracy moglibyśmy **teoretycznie** uzyskać z naszego strumienia spalin (zamiast tylko grzać wodę)?
 
-**Silnik Carnota** między $T_{gor} =$ `r f(T_gor_K, 1)` K a $T_{zim} =$ `r f(p$T0 + 273.15, 1)` K:
+**Silnik Carnota** między $T_{gor} =$ `r f(T_gor_K, 1)` K a $T_{zim} =$ `r f(p$t + 273.15, 1)` K:
 
 `r if(!sa) "\\vspace{3cm}"`
 - Sprawność $\eta_C = 1 - T_{zim}/T_{gor}$ = `r ans(eta_C_wym, "%")`
 - Maksymalna praca $\dot{B}_{max} = \eta_C \cdot \dot{Q}$ = `r ans(B_max_wym, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\eta_C = 1 - \\frac{%.2f}{%.2f} = %.2f \\%% $$} \n\n \\textcolor{red}{$$ \\dot{B}_{max} = %.4f \\cdot %.1f = %.1f \\text{ kW} $$}", p$t+273.15, T_gor_K, eta_C_wym, eta_C_wym/100, Q_wym, B_max_wym)`
 - Stracona egzergia (z Zad. 5.3): $\dot{B}_{str}$ = `r ans(W_strata, "kW")`
 
 **Sprawność egzergetyczna wymiennika:**
 $$\psi = 1 - \frac{\dot{B}_{str}}{\dot{B}_{max}}$$
 
 - $\psi$ = `r ans(psi_wym, "%")`
+`r sol("\n\n\\textcolor{red}{$$ \\psi = 1 - \\frac{%.2f}{%.1f} = %.1f \\%% $$}", W_strata, B_max_wym, psi_wym)`
 
-`r reflection("Dodatkowo rozważ: Ile energii nie zaminimy już na pracę?")`
+`r reflection("Dodatkowo rozważ: Ile energii nie zamienimy już na pracę?")`
 
 ## Zad. 5.5 --- Przeciwprąd vs Współprąd
 
 **Wpływ na generację entropii:**
-Wymiennik przeciwprądowy pozwala podgrzać wodę do wyższej temperatury (np. `r t_w_out_pre`$^\circ$C) przy tym samym schłodzeniu spalin.
+Inżynier proponuje zmianę wymiennika współprądowego na **przeciwprądowy**, który pozwala podgrzać wodę do wyższej temperatury --- **`r t_w_out_pre` $^\circ$C** --- przy tym samym schłodzeniu spalin (ta sama moc $\dot{Q}$ z Zad. 5.1).
 
 `r if(!sa) "\\vspace{3cm}"`
+- Strumień wody (przeciwprąd) $\dot{m}_{w}$ = `r ans(m_w_pre, "kg/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_w = \\frac{%.1f \\cdot 1000}{4190 \\cdot (%.0f - %.0f)} = %.4f \\text{ kg/s} $$}", Q_wym, t_w_out_pre, p$t_w_in, m_w_pre)`
 - $\Delta \dot{S}_{gen}$ (współprąd) = `r ans(dS_gen, "W/K")` (z Zad. 5.2)
 - $\Delta \dot{S}_{gen}$ (przeciwprąd) = `r ans(dS_gen_pre, "W/K")`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta\\dot{S}_{w,prz} = %.4f \\cdot 4190 \\cdot \\ln\\left(\\frac{%.1f}{%.1f}\\right) = %.2f \\text{ W/K} $$} \n\n \\textcolor{red}{$$ \\Delta\\dot{S}_{gen,prz} = %.2f + %.2f = %.2f \\text{ W/K} $$}", m_w_pre, t_w_out_pre+273.15, p$t_w_in+273.15, dS_w_pre, dS_sp, dS_w_pre, dS_gen_pre)`
 
 `r reflection("Dodatkowo rozważ: Dlaczego mniejsza generacja entropii oznacza lepszą sprawność energetyczną układu?")`
 
@@ -977,22 +1057,32 @@ Wymiennik przeciwprądowy pozwala podgrzać wodę do wyższej temperatury (np. `
 
 Zamiast jednego wymiennika, użyjmy **dwóch kolejnych** (kaskada):
 
-1.  **Wymiennik A:** Spaliny `r p$t_sp_in` $\rightarrow$ 220 $^\circ$C $\rightarrow$ Podgrzewanie wody kotłowej.
-2.  **Wymiennik B:** Spaliny 220 $\rightarrow$ `r p$t_sp_out` $^\circ$C $\rightarrow$ Podgrzewanie wody użytkowej.
+1.  **Wymiennik A:** Spaliny `r p$t_sp_in` $\rightarrow$ 220 $^\circ$C $\rightarrow$ Podgrzewanie wody kotłowej od 20 do 90 $^\circ$C.
+2.  **Wymiennik B:** Spaliny 220 $\rightarrow$ `r p$t_sp_out` $^\circ$C $\rightarrow$ Podgrzewanie wody użytkowej od 15 do 50 $^\circ$C.
+
+Oblicz moc każdego wymiennika i strumień podgrzewanej w nim wody.
 
 `r if(!sa) "\\vspace{4cm}"`
 - $\dot{Q}_A$ = `r ans(Q_A_kaskada, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_A = %.2f \\cdot 1 \\cdot (%.1f - 220) = %.1f \\text{ kW} $$}", p$m_spalin, p$t_sp_in, Q_A_kaskada)`
+- $\dot{m}_{w,A}$ = `r ans(m_w_A, "kg/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_{w,A} = \\frac{%.1f \\cdot 1000}{4190 \\cdot (90 - 20)} = %.3f \\text{ kg/s} $$}", Q_A_kaskada, m_w_A)`
 - $\dot{Q}_B$ = `r ans(Q_B_kaskada, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_B = %.2f \\cdot 1 \\cdot (220 - %.1f) = %.1f \\text{ kW} $$}", p$m_spalin, p$t_sp_out, Q_B_kaskada)`
+- $\dot{m}_{w,B}$ = `r ans(m_w_B, "kg/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_{w,B} = \\frac{%.1f \\cdot 1000}{4190 \\cdot (50 - 15)} = %.3f \\text{ kg/s} $$}", Q_B_kaskada, m_w_B)`
 
 `r reflection("Dodatkowo rozważ: Dlaczego rozdzielenie różnicy temperatur na dwa etapy (kaskada) zmniejsza generację entropii? Odwołaj się do $T_{log}$.")`
 
 ## Zad. 5.7 --- Entropia a Otoczenie
 
-Na koniec: obliczmy, ile entropii "eksportuje" nasz zakład do otoczenia przez komin (spaliny **`r p$t_sp_out` $^\circ$C** wyrzucane do atmosfery **`r p$T0` $^\circ$C**).
+Na koniec: obliczmy, ile entropii "eksportuje" nasz zakład do otoczenia przez komin (spaliny **`r p$t_sp_out` $^\circ$C** wyrzucane do atmosfery **`r p$t` $^\circ$C**).
 
 `r if(!sa) "\\vspace{2cm}"`
 - Ciepło tracone w kominie $\dot{Q}_{komin}$ = `r ans(Q_komin, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{komin} = %.2f \\cdot 1 \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", p$m_spalin, p$t_sp_out, p$t, Q_komin)`
 - Export entropii $\Delta \dot{S}_{atm} = \dot{Q}_{komin}/T_{atm}$ = `r ans(dS_atm, "W/K")`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta\\dot{S}_{atm} = \\frac{%.1f \\cdot 1000}{%.2f} = %.1f \\text{ W/K} $$}", Q_komin, p$t+273.15, dS_atm)`
 
 `r reflection("Dodatkowo rozważ: Każda sekunda pracy to wzrost entropii wszechświata. Jak obniżenie temperatury spalin (np. kocioł kondensacyjny) wpłynęłoby na $\\Delta S_{atm}$?")`
 
@@ -1031,6 +1121,7 @@ Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p
 - Ciepło skraplania (odpadowe): $q_{sk} = h_2 - h_3 =$ `r ans(h2_ch - h3_ch, "kJ/kg", d=0, approx=TRUE)`
 
 *Sprawdzenie I Zasady Termodynamiki:*
+
 - Czy $q_o + l_k \approx q_{sk}$? `r if(sa) "**TAK** (bilans zamknięty)" else "...................."`
 
 **Krok 3: Moc i Efektywność**
@@ -1043,9 +1134,13 @@ Na hali jest **komora chłodnicza** o wymaganej wydajności $\dot{Q}_o =$ **`r p
 
 `r if(!sa) "\\vspace{4cm}"`
 - Strumień czynnika $\dot{m}$ = `r ans(m_dot_ch, "kg/s")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m} = \\frac{\\dot{Q}_o}{q_o} = \\frac{%.1f}{%.1f} = %.3f \\text{ kg/s} $$}", p$Q_o, q_o, m_dot_ch)`
 - Moc sprężarki $N$ = `r ans(N_spr_ch, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ N = \\frac{\\dot{Q}_o}{\\text{EER}} = \\frac{%.1f}{%.2f} = %.1f \\text{ kW} $$}", p$Q_o, EER, N_spr_ch)`
 - Ciepło skraplania (odpadowe) $\dot{Q}_{sk} = \dot{Q}_o + N$ = `r ans(Q_k, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{sk} = %.1f + %.1f = %.1f \\text{ kW} $$}", p$Q_o, N_spr_ch, Q_k)`
 - EER = `r ans(EER, "")`
+`r sol("\n\n\\textcolor{red}{$$ \\text{EER} = \\frac{q_o}{l_k} = \\frac{%.1f}{%.1f} = %.2f $$}", q_o, l_k, EER)`
 
 `r reflection("*Dodatkowo rozważ: Oszacuj dobowy koszt energii elektrycznej dla układu chłodniczego. Czy jest to istotna pozycja w kosztach operacyjnych hali?*")`
 
@@ -1057,6 +1152,7 @@ Skoro skraplacz wyrzuca $\dot{Q}_{sk}$ ciepła na dach... to jest to nasza moc g
 
 `r if(!sa) "\\vspace{2cm}"`
 - $COP_{PC} = \dot{Q}_{sk} / N$ = `r ans(COP_PC, "")`
+`r sol("\n\n\\textcolor{red}{$$ COP_{PC} = \\frac{%.0f - %.0f}{%.0f} = %.2f $$}", h2_ch, h3_ch, l_k, COP_PC)`
 
 `r reflection("*Dodatkowo rozważ: Zinterpretuj wartość COP w kontekście ogrzewania elektrycznego (grzejnik oporowy). Wyjaśnij fizyczny mechanizm \"pompowania\" ciepła.*")`
 
@@ -1074,7 +1170,9 @@ Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wz
 
 `r if(!sa) "\\vspace{3cm}"`
 - Nowy EER = `r ans(EER_high, "")`
+`r sol("\n\n\\textcolor{red}{$$ \\text{EER}_{new} = \\frac{%.1f - %.1f}{%.1f - %.1f} = %.2f $$}", h1_ch, h3_high, h2_high, h1_ch, EER_high)`
 - Spadek efektywności: `r ans((EER - EER_high)/EER*100, "%")`.
+`r sol("\n\n\\textcolor{red}{$$ \\Delta\\text{EER} = \\frac{%.2f - %.2f}{%.2f} \\cdot 100 = %.1f \\%% $$}", EER, EER_high, EER, (EER - EER_high)/EER*100)`
 
 `r reflection("*Dodatkowo rozważ: Zinterpretuj zmiany $q_o$ i $l_k$. Jak wpłynęły na efektywność?*")`
 
@@ -1082,27 +1180,36 @@ Co się stanie, jeśli skraplacz ulegnie zabrudzeniu i temperatura skraplania wz
 
 **Kontekst:** Rozważamy zamianę R134a (GWP=1430) na **R290 (propan, GWP=3)**. Czy warto?
 
-**Dane z wykresu p-h dla R290:** ($t_o=2^\circ$C, $t_k=40^\circ$C)
-- $h_1 \approx 570$ kJ/kg (ssanie)
-- $h_2 \approx 625$ kJ/kg (tłoczenie)
-- $h_3 \approx 280$ kJ/kg (skraplanie/dławienie)
+**Dane z wykresu p-h dla R290:** ($t_o=`r p$t_o`^\circ$C, $t_k=`r p$t_k`^\circ$C)
+
+- $h_1 \approx$ `r f(h1_R290, 0)` kJ/kg (ssanie)
+- $h_2 \approx$ `r f(h2_R290, 0)` kJ/kg (tłoczenie)
+- $h_3 \approx$ `r f(h3_R290, 0)` kJ/kg (skraplanie/dławienie)
 
 `r if(!sa) "\\vspace{3cm}"`
 - $q_o$ (R290) = `r ans(q_o_R290, "kJ/kg", d=0, approx=TRUE)`
 - $l_k$ (R290) = `r ans(l_k_R290, "kJ/kg", d=0, approx=TRUE)`
 - EER (R290) = `r ans(EER_R290, "", approx=TRUE)`
-- Wniosek: R290 jest .................... (bardziej/mniej) efektywny niż R134a.
+- Strumień czynnika $\dot{m}_{R290} = \dot{Q}_o / q_o$ = `r ans(m_dot_R290, "kg/s")` (porównaj z R134a, Zad. 6.3)
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m}_{R290} = \\frac{%.0f}{%.1f} = %.2f \\text{ kg/s} \\quad (\\text{R134a: } %.2f \\text{ kg/s}) $$}", p$Q_o, q_o_R290, m_dot_R290, m_dot_ch)`
+- Wniosek: R290 jest `r if(sa) paste0("\\textbf{\\textcolor{answercolor}{", if (EER_R290 > EER) "bardziej" else "mniej", "}} efektywny niż R134a (EER ", f(EER_R290), " vs ", f(EER), ").") else ".................... (bardziej/mniej) efektywny niż R134a."`
 
 `r reflection("*Dodatkowo rozważ: R290 to propan - gaz wybuchowy. Jakie dodatkowe środki bezpieczeństwa są wymagane w maszynowni przy takiej zmianie czynnika?*")`
 
 ## Zad. 6.7 --- Weryfikacja rurociągu \Tablice
 
-**Cel:** Sprawdź, czy rurociąg ssawny ($d =$ `r p$d_rura` mm) zapewnia dopuszczalną prędkość czynnika (norma: 8--15 m/s).
+**Cel:** Sprawdź, czy istniejący rurociąg ssawny ($d =$ `r p$d_rura` mm) zapewnia dopuszczalną prędkość czynnika (norma: 8--15 m/s). Wyznacz średnicę, przy której prędkość wyniesie ok. 12 m/s.
 
-**Metodyka:** $w = \frac{\dot{m} \cdot v_1}{\pi d^2/4}$, gdzie $v_1 \approx 0{,}065$ m$^3$/kg (objętość właściwa pary nasyconej R134a na ssaniu).
+**Metodyka:** Strumień objętości $\dot{V} = \dot{m} \cdot v_1$, gdzie $v_1 \approx$ `r f(v_ss, 3)` m$^3$/kg (objętość właściwa pary nasyconej R134a na ssaniu). Prędkość $w = \frac{\dot{V}}{\pi d^2/4}$, a stąd średnica wymagana $d = \sqrt{\frac{4 \dot{V}}{\pi w}}$.
 
 `r if(!sa) "\\vspace{3cm}"`
-- Prędkość $w$ = `r ans(w_rura, "m/s")` `r if(sa) paste0(" --- ", if(w_rura >= 8 && w_rura <= 15) "OK, mieści się w normie." else "UWAGA: poza zakresem normy! Należy dobrać inną średnicę.")`
+- Strumień objętości $\dot{V}$ = `r ans(V_ss, "m$^3$/s", 3)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{V} = %.3f \\cdot %.4f = %.3f \\text{ m}^3\\text{/s} $$}", m_dot_ch, v_ss, V_ss)`
+- Prędkość $w$ = `r ans(w_rura, "m/s")`
+`r sol("\n\n\\textcolor{red}{$$ w = \\frac{%.3f}{\\pi \\cdot %.3f^2 / 4} = %.1f \\text{ m/s} $$}", V_ss, p$d_rura/1000, w_rura)`
+- Ocena: `r if(sa) paste0("\\textbf{\\textcolor{answercolor}{", if (w_rura > 15) "rura za mała" else if (w_rura < 8) "rura za duża" else "prędkość w normie", "}}", if (w_rura > 15) " --- duże spadki ciśnienia na ssaniu obniżają EER." else if (w_rura < 8) " --- ryzyko złego powrotu oleju do sprężarki." else ".") else "...................................... (w normie / rura za mała / rura za duża)"`
+- Średnica dla $w \approx 12$ m/s: $d$ = `r ans(d_wym_mm, "mm", 0)`
+`r sol("\n\n\\textcolor{red}{$$ d = \\sqrt{\\frac{4 \\cdot %.3f}{\\pi \\cdot 12}} = %.3f \\text{ m} \\approx %.0f \\text{ mm} $$}", V_ss, d_wym_mm/1000, d_wym_mm)`
 
 \newpage
 
@@ -1133,24 +1240,26 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 - Zawilżenie wewnętrzne $X_W$ = `r ans(X_W, "g/kg", approx=TRUE)`
 - Entalpia $h_Z$ = `r ans(h_Z_zima, "kJ/kg", d=0, approx=TRUE)`
 - Entalpia $h_P$ (po nagrzaniu) = `r ans(h_P_zima, "kJ/kg", d=0, approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ h_P = %.1f \\text{ kJ/kg (odczyt dla } X=%.1f \\text{ i } t=%.1f^\\circ\\text{C)} $$}", h_P_zima, X_Z_zima, p$t_wewn)`
 
 ## Zad. 7.2 --- Proces Letni (Chłodzenie + Osuszanie) \Tablice
 
-**Kontekst:** Latem: $t_Z = `r p$t_lato`^\circ$C, $\varphi_Z = 45\%$. Zawilżenie $X_Z \approx `r X_Z_lato`$ g/kg. Ponieważ $X_Z > X_W$, musimy **osuszać**!
+**Kontekst:** Latem: $t_Z = `r p$t_lato`^\circ$C, $\varphi_Z = 45\%$. Zawilżenie $X_Z \approx `r f(X_Z_lato, 1)`$ g/kg. Ponieważ $X_Z > X_W$, musimy **osuszać**!
 
 **Metodyka:**
 
 1.  Zaznacz punkt Z na wykresie h-X. Odczytaj $h_Z$.
 2.  Chłodzenie przebiega pionowo w dół ($X = const$) do krzywej nasycenia ($\varphi = 100\%$), a następnie po krzywej $\varphi = 100\%$ aż do $X = X_W$.
 3.  Odczytaj temperaturę punktu rosy aparatu $t_R$ i entalpię $h_R$.
-4.  Powietrze za chłodnicą ($t_R \approx 11.5^\circ$C) jest za zimne --- **nagrzewnica wtórna** podgrzewa je do $t_N \approx 18^\circ$C.
+4.  Powietrze za chłodnicą ($t_R \approx$ `r f(t_R_lato, 1)`$^\circ$C) jest za zimne --- **nagrzewnica wtórna** podgrzewa je do $t_N \approx$ `r f(t_N_lato, 0)`$^\circ$C.
 
 `r if(!sa) "\\vspace{4cm}"`
 
 - Entalpia $h_Z$ (lato) = `r ans(h_Z_lato, "kJ/kg", d=0, approx=TRUE)`
 - Temperatura punktu rosy $t_R$ = `r ans(t_R_lato, "$^\\circ$C", approx=TRUE)`
 - Entalpia $h_R$ = `r ans(h_R_lato, "kJ/kg", d=0, approx=TRUE)`
-- Entalpia $h_N$ (nawiew $18^\circ$C) = `r ans(h_N_lato, "kJ/kg", d=0, approx=TRUE)`
+- Entalpia $h_N$ (nawiew `r f(t_N_lato, 0)`$^\circ$C) = `r ans(h_N_lato, "kJ/kg", d=0, approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ h_N = %.1f \\text{ kJ/kg (odczyt dla } X=%.1f \\text{ i } t=%.0f^\\circ\\text{C)} $$}", h_N_lato, X_wewn, t_N_lato)`
 
 ## Zad. 7.3 --- Bilans Centrali \Tablice
 
@@ -1161,34 +1270,39 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 `r if(!sa) "\\vspace{4cm}"`
 
 - Moc chłodnicy (lato): $\dot{Q}_{ch} = \dot{m} \cdot (h_Z - h_R)$ = `r ans(Q_chlod_lato, "kW", d=1)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{ch} = %.2f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", m_dot_hvac, h_Z_lato, h_R_lato, Q_chlod_lato)`
 - Moc nagrzewnicy wtórnej: $\dot{Q}_{grz} = \dot{m} \cdot (h_N - h_R)$ = `r ans(Q_grz_wtorna, "kW", d=1)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{grz} = %.2f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", m_dot_hvac, h_N_lato, h_R_lato, Q_grz_wtorna)`
 
 ::: {.callout-important appearance="simple"}
-Marnujemy `r f(Q_grz_wtorna, 1)` kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy! Rozwiązanie: rekuperacja lub by-pass.
+Marnujemy `r ans(Q_grz_wtorna, "kW", d=1)` ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy! Rozwiązanie: rekuperacja lub by-pass.
 :::
 
 ## Zad. 7.4 --- Punkt Rosy (Kontrola kondensacji) \Tablice
 
 **Kontekst:** Ściana zewnętrzna hali ma temperaturę $12^\circ$C. Czy przy parametrach wewnętrznych ($t_W=$ `r p$t_wewn`$^\circ$C, $\varphi=50\%$) para wodna skropli się na ścianie?
 
-**Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = `r X_wewn`$ g/kg --- idź w dół po $X = const$ aż do przecięcia z krzywą $\varphi = 100\%$.
+**Metodyka:** Odczytaj z wykresu h-X temperaturę punktu rosy ($t_R$) dla $X_W = `r f(X_wewn, 1)`$ g/kg --- idź w dół po $X = const$ aż do przecięcia z krzywą $\varphi = 100\%$.
 
 `r if(!sa) "\\vspace{2cm}"`
 
 - Temperatura punktu rosy $t_R$ = `r ans(t_rosy, "$^\\circ$C", approx=TRUE)`
-- Czy wystąpi kondensacja? `r if(sa) paste0("**$t_{\\text{sciana}} = 12^\\circ$C $>$ $t_R = ", f(t_rosy, 1), "^\\circ$C --- Na granicy!**") else ".................... (Tak/Nie, uzasadnij)"`
+- Czy wystąpi kondensacja? `r if(sa) { if (t_rosy < 12) paste0("**Nie** --- $t_{\\text{ściana}} = 12^\\circ$C $>$ $t_R = ", f(t_rosy, 1), "^\\circ$C", if (12 - t_rosy < 1.5) " (niewielki zapas --- na granicy!)" else "", ".") else paste0("**Tak** --- $t_{\\text{ściana}} = 12^\\circ$C $\\le$ $t_R = ", f(t_rosy, 1), "^\\circ$C, para wodna skropli się na ścianie!") } else ".................... (Tak/Nie, uzasadnij)"`
 
 ## Zad. 7.5 --- Wymagany Strumień Powietrza
 
 **Kontekst:** Zyski ciepła jawnego w hali: $Q_j = `r p$Q_jawne`$ kW, zyski wilgoci: $W = 10$ kg/h. Jaki minimalny strumień powietrza nawiewanego potrzebny?
 
-**Metodyka:** Bilans ciepła jawnego: $Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N)$. Przyjmij $t_N = 16^\circ$C.
+**Metodyka:** Bilans ciepła jawnego: $Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N)$. Przyjmij $t_N =$ `r f(t_N_nawiew, 0)`$^\circ$C.
 
 `r if(!sa) "\\vspace{4cm}"`
 
 - Strumień masowy $\dot{m}$ = `r ans(m_dot_strum, "kg/s")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{m} = \\frac{%.1f}{1.005 \\cdot (%.1f - %.0f)} = %.2f \\text{ kg/s} $$}", p$Q_jawne, p$t_wewn, t_N_nawiew, m_dot_strum)`
 - Strumień objętościowy $\dot{V}$ = `r ans(V_dot_strum_h, "m³/h", d=0)`
-- Weryfikacja bilansu wilgoci: $\Delta X$ = `r ans(dX_strum, "g/kg")` --- `r if(sa) "**Praktycznie brak zmiany. Zyski wilgoci sa niewielkie.**" else "skomentuj wynik."`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{V} = \\frac{%.2f}{1.2} \\cdot 3600 = %.0f \\text{ m}^3\\text{/h} $$}", m_dot_strum, V_dot_strum_h)`
+- Weryfikacja bilansu wilgoci: $\Delta X$ = `r ans(dX_strum, "g/kg")` --- `r if(sa) "**Praktycznie brak zmiany. Zyski wilgoci są niewielkie.**" else "skomentuj wynik."`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta X = \\frac{W}{\\dot{m}} \\cdot 1000 = \\frac{%.4f}{%.2f} \\cdot 1000 = %.2f \\text{ g/kg} $$}", W_wilgoc, m_dot_strum, dX_strum)`
 
 ## Zad. 7.6 --- Recyrkulacja Powietrza
 
@@ -1201,15 +1315,18 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 `r if(!sa) "\\vspace{4cm}"`
 
 - Temperatura mieszaniny $t_M$ = `r ans(t_mix_rec, "$^\\circ$C")`
+`r sol("\n\n\\textcolor{red}{$$ t_M = %.2f \\cdot %.1f + %.2f \\cdot %.1f = %.1f ^\\circ\\text{C} $$}", p$rec/100, p$t_wewn, (100-p$rec)/100, p$t_lato, t_mix_rec)`
 - Zawilżenie mieszaniny $X_M$ = `r ans(X_mix_rec, "g/kg")`
+`r sol("\n\n\\textcolor{red}{$$ X_M = %.2f \\cdot %.1f + %.2f \\cdot %.1f = %.1f \\text{ g/kg} $$}", p$rec/100, X_wewn, (100-p$rec)/100, X_Z_lato, X_mix_rec)`
 - Bez recyrkulacji: $\Delta X = `r f(dX_bez_rec, 1)`$ g/kg, z recyrkulacją: $\Delta X = `r f(dX_z_rec, 1)`$ g/kg
 - Redukcja obciążenia osuszania: `r ans(redukcja_prc, "\\%", d=0)`
+`r sol("\n\n\\textcolor{red}{$$ \\text{Redukcja} = \\left(1 - \\frac{%.1f}{%.1f}\\right) \\cdot 100 = %.0f \\%% $$}", dX_z_rec, dX_bez_rec, redukcja_prc)`
 
-`r reflection("*Dodatkowo rozważ: Ocen skale oszczednosci energii wynikajaca z recyrkulacji. Jakie ograniczenia (np. higieniczne --- min. 30 m$^3$/h powietrza swiezego na osobe) nalezy uwzglednic?*")`
+`r reflection("*Dodatkowo rozważ: Oceń skalę oszczędności energii wynikającą z recyrkulacji. Jakie ograniczenia (np. higieniczne --- min. 30 m$^3$/h powietrza świeżego na osobę) należy uwzględnić?*")`
 
 ## Zad. 7.7 --- Ilość Kondensatu (Lato) \Tablice
 
-**Kontekst:** W procesie letnim chłodnica osusza powietrze z $X_Z = `r X_Z_lato`$ g/kg do $X_W = `r X_wewn`$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
+**Kontekst:** W procesie letnim chłodnica osusza powietrze z $X_Z = `r f(X_Z_lato, 1)`$ g/kg do $X_W = `r f(X_wewn, 1)`$ g/kg. Ile wody (litrów/h) wykrapla się w centrali?
 
 **Metodyka:** $\dot{m}_w = \dot{m} \cdot (X_Z - X_W)$, $\dot{V}_w = \dot{m}_w \cdot 3600$ (przy $\rho_w \approx 1$ kg/l).
 
@@ -1217,6 +1334,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 
 - Zmiana zawilżenia $\Delta X$ = `r ans(dX_lato * 1000, "g/kg", d=1)`
 - Ilość kondensatu $\dot{V}_w$ = `r ans(V_cond_lh, "l/h", d=0, approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{V}_w = %.2f \\cdot \\frac{%.1f - %.1f}{1000} \\cdot 3600 = %.1f \\text{ l/h} $$}", m_dot_hvac, X_Z_lato, X_wewn, V_cond_lh)`
 
 ## Zad. 7.8 --- Nagrzewnica Zimowa -- Moc \Tablice
 
@@ -1227,9 +1345,10 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 `r if(!sa) "\\vspace{3cm}"`
 
 - Moc nagrzewnicy $\dot{Q}_{\text{nagr}}$ = `r ans(Q_nagr, "kW")`
+`r sol("\n\n\\textcolor{red}{$$ \\dot{Q}_{nagr} = %.2f \\cdot (%.1f - (%.1f)) = %.1f \\text{ kW} $$}", m_dot_hvac, h_P_zima, h_Z_zima, Q_nagr)`
 
 ::: {.callout-important appearance="simple"}
-`r f(Q_nagr, 0)` kW to jak ogrzewanie ~`r round(Q_nagr / 20)` domów jednorodzinnych! Dlatego rekuperacja jest kluczowa.
+`r ans(Q_nagr, "kW", d=0)` to jak ogrzewanie ok. `r if(sa) round(Q_nagr / 20) else "......"` domów jednorodzinnych! Dlatego rekuperacja jest kluczowa.
 :::
 
 ## Zad. 7.9 --- Odzysk Ciepła (Rekuperacja)
@@ -1241,15 +1360,17 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 `r if(!sa) "\\vspace{3cm}"`
 
 - Temp. za rekuperatorem $t_{\text{odzysk}}$ = `r ans(t_odzysk, "$^\\circ$C", approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ t_{odz} = %.1f + 0.75 \\cdot (%.1f - (%.1f)) = %.1f ^\\circ\\text{C} $$}", p$t_zima, p$t_wewn, p$t_zima, t_odzysk)`
 - Oszczędność mocy $\Delta \dot{Q}$ = `r ans(Q_rec_oszcz, "kW", approx=TRUE)`
+`r sol("\n\n\\textcolor{red}{$$ \\Delta\\dot{Q} = %.2f \\cdot 1.005 \\cdot (%.1f - (%.1f)) = %.1f \\text{ kW} $$}", m_dot_hvac, t_odzysk, p$t_zima, Q_rec_oszcz)`
 
-`r reflection("*Dodatkowo rozwaz: Porownaj koszt rekuperatora (ok. 20 000 zl) z oszczednoscia gazu przy sezonowej pracy 3000 h. Czy inwestycja sie zwroci?*")`
+`r reflection("*Dodatkowo rozważ: Porównaj koszt rekuperatora (ok. 20 000 zł) z oszczędnością gazu przy sezonowej pracy 3000 h. Czy inwestycja się zwróci?*")`
 
 \vspace{1em}
 \hrule
 \vspace{0.5em}
 
-`r if(!sa) "**Pamietaj:** Kazdy wynik to decyzja inzynierska. Liczby bez interpretacji nie maja wartosci. W raporcie audytowym zawsze uzasadnij, CO policzyles, DLACZEGO i jakie WNIOSKI z tego plyna dla klienta." else "--- Koniec klucza odpowiedzi ---"`
+`r if(!sa) "**Pamiętaj:** Każdy wynik to decyzja inżynierska. Liczby bez interpretacji nie mają wartości. W raporcie audytowym zawsze uzasadnij, CO policzono, DLACZEGO i jakie WNIOSKI z tego płyną dla klienta." else "--- Koniec klucza odpowiedzi ---"`
 
 \newpage
 
