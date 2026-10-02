@@ -87,7 +87,7 @@ arrow_style <- arrow(length = unit(0.4, "cm"), type = "closed")
 4.  **Obieg Diesla** (Silnik wysokoprężny)
 5.  **Obieg Sabathé** (Silnik wysokoprężny)
 6.  **Obieg Joule'a-Braytona** (Turbina Gazowa)
-7.  **Porównanie Sprawności i Ciśnienie Średnie**
+7.  **Średnie Ciśnienie Użyteczne** ($p_{me}$)
 
 ---
 
@@ -101,7 +101,7 @@ W termodynamice stosujemy model uproszczony (**Air-Standard Assumptions**):
 ::: {.incremental}
 1.  Czynnik roboczy to **powietrze** (gaz doskonały).
 2.  Obieg jest **zamknięty** (nie ma wymiany ładunku).
-3.  Spalanie zastępujemy **doprowadzeniem ciepła** ze źrodła zewnętrznego.
+3.  Spalanie zastępujemy **doprowadzeniem ciepła** ze źródła zewnętrznego.
 4.  Wydech zastępujemy **odprowadzeniem ciepła** (chłodzeniem).
 5.  Wszystkie procesy są odwracalne.
 :::
@@ -118,7 +118,7 @@ ___
 *   Zmiana funkcji stanu (energii wewnętrznej, entropii) w pełnym cyklu wynosi zero:
     $$ \oint dU = 0, \quad \oint dS = 0 $$
 *   Z I Zasady Termodynamiki wynika, że praca netto obiegu równa jest ciepłu netto:
-    $$ L_{ob} = Q_{netto} = Q_{dop} - |Q_{wyp}| $$
+    $$ L_{ob} = Q_{\text{netto}} = Q_{dop} - |Q_{wyp}| $$
     
 :::
 
@@ -143,8 +143,8 @@ $$ \varepsilon = \frac{V_{max}}{V_{min}} $$
 :::
 
 ::: incremental
-*   Silniki benzynowe: $\varepsilon = 8 - 12$.
-*   Diesle: $\varepsilon = 14 - 24$.
+*   Silniki benzynowe: $\varepsilon = 8\text{–}12$.
+*   Diesle: $\varepsilon = 14\text{–}24$.
 :::
 
 ---
@@ -249,6 +249,7 @@ p_pv <- ggplot(df, aes(x=v, y=p, group=1)) +
   geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=6, fontface="bold") +
   geom_text(aes(x=v3, y=p3, label="3"), hjust=1.5, size=6, fontface="bold") +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Otto (p-v)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 
 p_ts <- ggplot(df, aes(x=s, y=T, group=1)) +
@@ -258,6 +259,7 @@ p_ts <- ggplot(df, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=df$s[n_points], y=T2, label="2"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=df$s[2*n_points], y=T3, label="3"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=df$s[3*n_points], y=T4, label="4"), vjust=1.5, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Otto (T-s)", x=expression(s ~ "[kJ/kgK]"), y=expression(T ~ "[K]"))
 
 p_pv
@@ -266,7 +268,7 @@ p_ts
 :::
 
 ::: {.column width="40%"}
-$$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{\kappa-1}} $$
+$$ \eta_{\text{Otto}} = 1 - \frac{1}{\varepsilon^{\kappa-1}} $$
 
 ::: {.incremental style="font-size: 0.8em;"}
 1.  **1-2:** Sprężanie izentropowe ($s=const$).
@@ -281,7 +283,7 @@ $$ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{\kappa-1}} $$
 
 ::: {.fragment .callout-important title="Wniosek:"}
 Im wyższy stopień sprężania, tym wyższa sprawność.
-Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).
+Ograniczenie: Spalanie stukowe (samozapłon niespalonej części mieszanki przed frontem płomienia).
 :::
 
 ---
@@ -372,6 +374,7 @@ p_pv_d <- ggplot(df_diesel, aes(x=v, y=p, group=1)) +
   geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=6, fontface="bold") +
   geom_text(aes(x=v3, y=p3, label="3"), hjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Diesla (p-v)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 
 p_ts_d <- ggplot(df_diesel, aes(x=s, y=T, group=1)) +
@@ -381,6 +384,7 @@ p_ts_d <- ggplot(df_diesel, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=df_diesel$s[n_points], y=T2, label="2"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=df_diesel$s[2*n_points], y=T3, label="3"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=df_diesel$s[3*n_points], y=T4, label="4"), vjust=1.5, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Diesla (T-s)", x=expression(s ~ "[kJ/kgK]"), y=expression(T ~ "[K]"))
 
 p_pv_d
@@ -405,10 +409,10 @@ p_ts_d
 
 ## <i class="bi bi-percent"></i> Sprawność Diesla 
 
-Zależy od stopnia obciążenia silnika (Stopnia obciążenia $\rho = V_3/V_2$).
+Zależy od stopnia obciążenia silnika ($\varphi = V_3/V_2$).
 
-$$ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] $$
-gdzie: stopień obciążenia - $\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}$,<br>wykładnik adiabaty -  $\kappa=\frac{c_p}{c_v}$
+$$ \eta_{\text{Diesel}} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] $$
+gdzie: stopień obciążenia - $\varphi = \frac{V_3}{V_2}=\frac{v_3}{v_2}=\frac{T_3}{T_2}$,<br>wykładnik adiabaty -  $\kappa=\frac{c_p}{c_v}$
 
 ::: {.incremental}
 
@@ -490,6 +494,7 @@ p_pv_s <- ggplot(df_sab, aes(x=v, y=p, group=1)) +
   geom_text(aes(x=v2a, y=p2a, label="2a"), vjust=-1, hjust=1, size=6, fontface="bold") +
   geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, hjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=-1, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Sabathé (p-v)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 
 p_ts_s <- ggplot(df_sab, aes(x=s, y=T, group=1)) +
@@ -500,6 +505,7 @@ p_ts_s <- ggplot(df_sab, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=df_sab$s[2*n_points], y=T2a, label="2a"), vjust=-1.5, size=6, fontface="bold") +
   geom_text(aes(x=df_sab$s[3*n_points], y=T3, label="3"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=df_sab$s[4*n_points], y=T4, label="4"), vjust=1.5, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Obieg Sabathé (T-s)", x=expression(s ~ "[kJ/kgK]"), y=expression(T ~ "[K]"))
 
 p_pv_s
@@ -511,7 +517,7 @@ p_ts_s
 ::: {.column width="40%"}
 ::: {.incremental style="font-size: 0.8em;"}
 1.  **1-2:** Sprężanie izentropowe. ($s=const$)
-2.  **2-2a:** Doprowadzenie ciepła przy **stałej obiętości** ($v=const$).
+2.  **2-2a:** Doprowadzenie ciepła przy **stałej objętości** ($v=const$).
 3.  **2a-3:** Doprowadzenie ciepła przy **stałym ciśnieniu** ($p=const$).
 4.  **3-4:** Rozprężanie izentropowe. ($s=const$)
 5.  **4-1:** Odprowadzanie ciepła przy **stałej objętości** ($v=const$).
@@ -560,9 +566,9 @@ Składa się z maszyn przepływowych (nie tłokowych!). Obieg jest otwarty.
 1. **S - Sprężarka:** Sprężanie adiabatyczne powietrza.
 2. **K - Komora Spalania:** Izobaryczne doprowadzenie ciepła ($p=const$).
 3. **T - Turbina:** Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).
-4. **O - Wtryskiwacz**
-5. **R - Wymiennik ciepła** Odzysk ciepła ze spalin
-6. **N - Odbiornik macy**
+4. **W - Wtryskiwacz**
+5. **R - Wymiennik ciepła:** Odzysk ciepła ze spalin
+6. **N - Odbiornik mocy**
 :::
 
 ![](../img/turbina.png)
@@ -627,7 +633,8 @@ p_pv_b <- ggplot(df_br, aes(x=v, y=p, group=1)) +
   geom_text(aes(x=v2, y=p2, label="2"), hjust=1.5, size=6, fontface="bold") +
   geom_text(aes(x=v3, y=p3, label="3"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=v4, y=p4, label="4"), vjust=1.5, size=6, fontface="bold") +
-  labs(title="Wykres p-V (Brayton)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
+  labs(title="Wykres p-v (Brayton)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 
 p_ts_b <- ggplot(df_br, aes(x=s, y=T, group=1)) +
   geom_path(aes(color=color), size=2) +
@@ -636,6 +643,7 @@ p_ts_b <- ggplot(df_br, aes(x=s, y=T, group=1)) +
   geom_text(aes(x=s2, y=T2, label="2"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=s3, y=T3, label="3"), vjust=-1, size=6, fontface="bold") +
   geom_text(aes(x=s4, y=T4, label="4"), vjust=1.5, size=6, fontface="bold") +
+  scale_y_continuous(expand = expansion(mult = 0.12)) +
   labs(title="Wykres T-s (Brayton)", x=expression(s ~ "[kJ/kgK]"), y=expression(T ~ "[K]"))
 
 p_pv_b
@@ -666,48 +674,50 @@ p_ts_b
 ## <i class="bi bi-percent"></i> Sprawność Braytona 
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
-Zależy od sprężu ($\pi = p_2/p_1$) a nie stopnia sprężania $\varepsilon$.
+Zależy od sprężu ($\pi = p_2/p_1$). Przy sprężaniu izentropowym $\pi^{\frac{\kappa-1}{\kappa}} = \varepsilon^{\kappa-1}$ — spręż i stopień sprężania są równoważne (wzór ma postać jak dla Otto).
 :::
 
-$$ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} $$
+$$ \eta_{\text{JB}} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} $$
 
 ::: {.fragment .callout-note appearance="simple"}
-W przeciwieństwie do Diesla, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć $\pi = 30-40$.
-Problemem jest wytrzymałość łopatek turbiny na temperaturę ($T_3 \approx 1400-1600^\circ C$).
+W przeciwieństwie do silnika Otto, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć $\pi = 30\text{–}40$.
+Problemem jest wytrzymałość łopatek turbiny na temperaturę ($T_3 \approx 1400\text{–}1600\,^\circ\text{C}$).
 
 :::
 
-::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
-### Praca Wsteczna (Back Work Ratio)
-Własność Turbin Gazowych (TG): Sprężarka zużywa aż **50-60%** mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %).
+::: {.fragment style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+### Wniosek: Praca Wsteczna (Back Work Ratio)
+Własność Turbin Gazowych (TG): Sprężarka zużywa aż **50-60%** mocy produkowanej przez turbinę! (W siłowni parowej praca pompy to tylko ok. 1–2% pracy turbiny.)
 Dlatego TG są bardzo czułe na sprawność komponentów.
 :::
 
 ---
 
-## <i class="bi bi-bookmark"></i> 7. Ciśnienie Średnie Indykowane ($p_{me}$) 
+## <i class="bi bi-bookmark"></i> 7. Średnie Ciśnienie Użyteczne ($p_{me}$) 
 
 Jak porównać silnik od kosiarki (mały $V_s$) z silnikiem okrętowym (duży $V_s$)?
 Używamy parametru uniezależnionego od wielkości.
 
-**Mean Effective Pressure ($MEP$):**
-Stałe ciśnienie, które działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.
+**Średnie ciśnienie** (*Mean Effective Pressure*, $\text{MEP}$):
+Stałe ciśnienie, które, działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.
 
-$$ p_{me} = \frac{L}{V_s} $$
+$$ p_{mi} = \frac{L_i}{V_s} \;\; \text{(indykowane)}, \qquad p_{me} = \frac{L_e}{V_s} \;\; \text{(użyteczne, efektywne)} $$
 
-Dla nowoczesnych silników turbo: $p_{me} \approx 20-30 \text{ bar}$.
-Dla wolnossących: $10-12 \text{ bar}$.
+$L_i$ — praca indykowana (pole wykresu indykatorowego), $L_e$ — praca użyteczna oddana na wale (po odjęciu strat mechanicznych).
+
+Dla nowoczesnych silników turbo: $p_{me} \approx 20\text{–}30 \text{ bar}$.
+Dla wolnossących: $10\text{–}12 \text{ bar}$.
 
 ---
 
 ## <i class="bi bi-clipboard-check"></i> Podsumowanie W9 
 
 1.  **Stopień sprężania $\varepsilon$** to klucz do sprawności w silnikach tłokowych.
-2.  **Otto:** Ogrzewanie izochoryczne. Ograniczenie: stukowe.
+2.  **Otto:** Ogrzewanie izochoryczne. Ograniczenie: spalanie stukowe.
 3.  **Diesel:** Ogrzewanie izobaryczne. Wysokie $\varepsilon$.
 4.  **Brayton:** Maszyny przepływowe. Obieg otwarty pracy ciągłej.
 5.  Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).
 
 ### Zadanie Do Samodzielnego Rozwiązania
-Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($\kappa=1.4$).
-Wynik: $\eta = 1 - 1/10^{0.4} \approx 60\%$. (Rzeczywista to ok 30-35%).
+Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 ($\kappa=1{,}4$).
+Wynik: $\eta = 1 - 1/10^{0{,}4} \approx 60\%$. (Rzeczywista to ok. 30-35%).

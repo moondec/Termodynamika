@@ -99,7 +99,7 @@ editor: source
 ### Definicja i Charakterystyka
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-**Energia wewnętrzna ($U$)** to suma całkowitej energii kinetycznej składników układu i energii potencjalnej ich wzajemnego oddziaływania.
+**Energia wewnętrzna ($U$)** to suma energii kinetycznej chaotycznego (mikroskopowego) ruchu składników układu i energii potencjalnej ich wzajemnego oddziaływania. Nie obejmuje makroskopowej energii kinetycznej i potencjalnej układu jako całości.
 :::
 
 ::: incremental
@@ -117,11 +117,11 @@ W termodynamice kluczowe jest rozróżnienie matematyczne:
 
 ::: incremental
 1.  **Różniczka zupełna ($d$):** Dotyczy funkcji stanu ($U, H, S$). Całka po drodze zamkniętej wynosi zero: $\oint dU = 0$.
-2.  **Forma Pfaffa (różniczka niezupełna $đ$):** Dotyczy wielkości procesowych ($Q, L$). Ich wartość zależy od drogi przejścia: $\oint đQ \neq 0$.
+2.  **Różniczka niezupełna ($đ$):** Dotyczy wielkości procesowych ($Q, L$) – jest to forma Pfaffa, która nie jest różniczką zupełną żadnej funkcji stanu. Ich wartość zależy od drogi przejścia: $\oint đQ \neq 0$.
 :::
 
 ::: {.fragment .fade-up .callout-warning title="Ciekawe" style="font-size: 1.0em; color: blue;"}
-*Czynnik całkujący ($1/T$) pozwala zamienić $đQ$ w różniczkę zupełną entropii $dS = đQ/T$*.
+*Czynnik całkujący ($1/T$) pozwala zamienić $đQ$ w różniczkę zupełną entropii $dS = đQ_{\text{odwr}}/T$ (dla procesu odwracalnego)*.
 :::
 
 ::: {.fragment .fade-up .callout-note title="Do tego wrócimy..." style="font-size: 1.0em; color: red;"}
@@ -363,7 +363,7 @@ $$ \Delta U = Q - L $$
 ::: {.fragment .fade-up}
 Gdzie:
 
-*   $\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)$.
+*   $\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)$ – dla gazu doskonałego przy $c_v = \text{const}$.
 *   $L = \int_{V_1}^{V_2} p(V) dV$.
 
 :::
@@ -383,7 +383,7 @@ Gdzie:
   <img src="../img/praca2.png" style="width: 100%;"> 
 
 ::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
-  Źródło: J. Szargut, *$Termodynamika \ techniczna$* PWN, (2000).
+  Źródło: J. Szargut, *Termodynamika techniczna*, PWN, (2000).
   
 :::  
   
@@ -414,7 +414,7 @@ $$ H = U + p \cdot V $$
 :::
 
 ::: {.fragment .fade-up .callout-note title="Znaczenie" style="font-size: 0.8em;"}
-Człon $p \cdot V$ można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce "rozepchać" przeciwko ciśnieniu otoczenia ($p$) zajmując objętość ($V$).
+Człon $p \cdot V$ można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce "rozepchać" przeciwko ciśnieniu panującemu w danym przekroju (ciśnieniu czynnika $p$), zajmując objętość ($V$).
 :::
 
 ## <i class="bi bi-music-note-beamed"></i> Analogia dla ___entalpii___ z życia: "Impreza w Klubie"
@@ -423,7 +423,7 @@ Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnienie
 1.  **Twoja energia ($U$):** To jak dobrze tańczysz.
 2.  **Praca wejścia ($pV$):** Aby wejść, musisz rozepchnąć tłum łokciami.
     * Im większy ścisk w klubie (wyższe $p$), tym więcej energii zużywasz na samo wejście.
-    * Im jesteś "szerszy" (większe $v$), tym więcej miejsca zajmujesz.
+    * Im jesteś "szerszy" (większe $V$), tym więcej miejsca zajmujesz.
 
 **Entalpia ($H$)** to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.
 
@@ -453,12 +453,12 @@ $$ đQ = dU + p dV = d(U + pV) = dH $$
 W przemianie przy stałym ciśnieniu doprowadzone ciepło jest równe przyrostowi entalpii. Jest to kluczowe przy projektowaniu kotłów i wymienników ciepła.
 
 $$Q_{p=const} =\Delta H$$
-To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: $Q=H_{wylot} − H_{wlot}$. Żadnego całkowania!
+To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: $Q=H_{\text{wylot}} − H_{\text{wlot}}$. Żadnego całkowania! (Kocioł to układ przepływowy – ścisłe uzasadnienie daje bilans układu otwartego przy $L_t = 0$, zob. W3).
 :::
 
-[A co się dzieje z energią dostarczaną przy stałej obiętości?]{.fragment style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;"}
+[A co się dzieje z energią dostarczaną przy stałej objętości?]{.fragment style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;"}
 
-## <i class="bi bi-arrow-left-right"></i> Entalpia (E) a Energia Wewnętrzna (U)
+## <i class="bi bi-arrow-left-right"></i> Entalpia (H) a Energia Wewnętrzna (U)
 
 ### Ponieważ: [$Q = \Delta U + L$]{style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"} - I zasada termodynamiki, z której wynika, że jeżeli:
 
@@ -486,23 +486,23 @@ Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest więk
 | **Ciepło właściwe** | **$c_v = \frac{\Delta u}{\Delta T}$** | **$c_p = \frac{\Delta h}{\Delta T}$** |
 : Porównanie przemian charakterystycznych gazu doskonałego {tbl-colwidths="[20,40,40]"}
 
-## <i class="bi bi-graph-up-arrow"></i> $C_p$ > $C_v$ (Zastosowanie praktyczne)
+## <i class="bi bi-graph-up-arrow"></i> $c_p$ > $c_v$ (Zastosowanie praktyczne)
 
 * Przy $v=const \ (c_v)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz TYLKO się ogrzewa.]{.fragment .highlight-blue}
 * Przy $p=const \ (c_p)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.]{.fragment .highlight-blue} 
 
 ::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Dlatego, żeby ogrzać gaz o 1 stopień przy stałym ciśnieniu, musimy dostarczyć więcej ciepła (bo część ucieka na pracę). Stąd wynika wzór Mayera:
-$$ C_p - C_v = n \cdot R_u $$
+$$ C_p - C_v = n \cdot R_u \quad (\text{na 1 kg: } c_p - c_v = R) $$
 
 :::
 
-## <i class="bi bi-eye-slash"></i> $C_v$ oraz $C_p$ {visibility="hidden"}
+## <i class="bi bi-eye-slash"></i> $c_v$ oraz $c_p$ {visibility="hidden"}
 
-**Pojemność cieplna w stałej objętości ($C_v$):**
+**Ciepło właściwe przy stałej objętości ($c_v$):**
 $$ c_v = \left(\frac{\partial u}{\partial T}\right)_V $$
 
-**Pojemność cieplna przy stałym ciśnieniu ($C_p$):**
+**Ciepło właściwe przy stałym ciśnieniu ($c_p$):**
 $$ c_p = \left(\frac{\partial h}{\partial T}\right)_p $$ 
 
 Dla gazów doskonałych zachodzi **Równanie Mayera**:
@@ -510,7 +510,7 @@ $$ C_p - C_v = n \cdot R_u $$, lub
 $$ c_p - c_v = R $$
 
 ## <i class="bi bi-exclamation-triangle"></i> Uwaga na oznaczenia!
-Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
+Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
 | :--- | :--- | :--- | :--- |
@@ -532,6 +532,6 @@ Wzory $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
     $$ \Delta U = Q - L $$
 3.  **Praca Objętościowa ($L$):** Zależy od zmiany objętości ($pdV$) i drogi procesu.
 4.  **Entalpia ($H$):** Suma energii wewnętrznej i pracy przetłaczania ($U+pV$).
-5.  **Ciepła Właściwe:** $C_p > C_v$, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.
+5.  **Ciepła Właściwe:** $c_p > c_v$, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.
 
 

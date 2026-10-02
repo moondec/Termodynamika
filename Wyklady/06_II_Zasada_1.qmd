@@ -104,9 +104,9 @@ Dlaczego film puszczony od tyłu wygląda nienaturalnie?
 
 ::: incremental
 1.  **Rozprężanie swobodne gazu:** Gaz wypuszczony z butli do próżni nigdy sam nie wróci do butli, chociaż energia by na to pozwoliła.
-2.  **Mieszanie płynów:** Kawa z mlekiem nigdy sama się nie rozdzieli .
+2.  **Mieszanie płynów:** Kawa z mlekiem nigdy sama się nie rozdzieli.
 3.  **Tarcie:** Tarcie zamienia pracę na ciepło. Ogrzanie klocka hamulcowego nie sprawi, że samochód zacznie jechać.
-4.  **Przepływ ciepła:** Ciepło płynie tylko $\Delta T > 0$.
+4.  **Przepływ ciepła:** Ciepło płynie samorzutnie tylko od ciała cieplejszego do zimniejszego ($\Delta T > 0$).
 :::
 
 ::: {.fragment  .callout-note}
@@ -247,7 +247,7 @@ Urządzenie cykliczne, które zamienia ciepło na pracę.
 ::: {.fragment}
 ### Sprawność Termiczna
 
-$$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{W_{net}}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} $$
+$$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{L}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} $$
 
 :::
 
@@ -270,9 +270,9 @@ To "odwrócony" silnik cieplny.
 
 ::: incremental
 *   **Chłodziarka:** Cel to $Q_L$.
-    $$ COP_R = \frac{Q_L}{W} $$
+    $$ \text{COP}_R = \frac{Q_L}{L} $$
 *   **Pompa Ciepła:** Cel to $Q_H$ (ogrzewanie).
-    $$ COP_{HP} = \frac{Q_H}{W} = COP_R + 1 $$
+    $$ \text{COP}_{HP} = \frac{Q_H}{L} = \text{COP}_R + 1 $$
 :::
 
 :::
@@ -290,7 +290,7 @@ Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje
     $$ Q_L = Q_H - L = 100 - 30 = 70 \text{ kJ} $$
 
 2.  **Jaka jest sprawność termiczna ($\eta_{th}$)?**
-    $$ \eta_{th} = \frac{L}{Q_H} = \frac{30}{100} = 0.30 = 30\% $$
+    $$ \eta_{th} = \frac{L}{Q_H} = \frac{30}{100} = 0{,}30 = 30\% $$
 :::
 
 ::: {.fragment .callout-tip title= "**Wniosek:**"}
@@ -303,7 +303,7 @@ Większość energii (70%) jest marnowana jako ciepło odpadowe! To typowa warto
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 
-Dlaczego $COP$ może być większe od 1 (np. 3 lub 4)?
+Dlaczego $\text{COP}$ może być większe od 1 (np. 3 lub 4)?
 Czy to perpetuum mobile? [**NIE!**]{.fragment style="color: #e60000; font-weight: bold;"}
 
 :::
@@ -311,11 +311,11 @@ Czy to perpetuum mobile? [**NIE!**]{.fragment style="color: #e60000; font-weight
 ::: incremental
 *   Pompujemy ciepło, a nie je wytwarzamy.
 *   Płacimy pracą ($L$) tylko za przenoszenie energii.
-$$ COP_{HP} = \frac{Q_H}{L} = \frac{Q_L + L}{L} = \frac{Q_L}{L} + 1 = COP_R + 1 $$
+$$ \text{COP}_{HP} = \frac{Q_H}{L} = \frac{Q_L + L}{L} = \frac{Q_L}{L} + 1 = \text{COP}_R + 1 $$
 :::
 
 ::: {.fragment .callout-tip title= "**Wniosek:**"}
-Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w domu (1 kWh z prądu + 3 kWh z darmowego powietrza na zewnątrz).
+Jeśli $\text{COP}_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w domu (1 kWh z prądu + 3 kWh z darmowego powietrza na zewnątrz).
 :::
 
 ---
@@ -341,7 +341,7 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 :::
 
 ::: {.fragment .callout-tip title= "**Wniosek:**" style="font-size: .8em;"}
-**Chłodziarka musi zużywać prąd.** Ciepło nie popłynie "pod górę" samoistnie.
+**Chłodziarka wymaga doprowadzenia energii z zewnątrz** — pracy (sprężarka) lub ciepła o wysokiej temperaturze (chłodziarka absorpcyjna). Ciepło nie popłynie "pod górę" samoistnie.
 :::
 
 ---
@@ -351,12 +351,13 @@ Jeśli $COP_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w dom
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Te dwa twierdzenia brzmią różnie, ale są równoważne.
 
-Złamanie jednego, oznacza złamanie też drugiego.
+Złamanie jednego oznacza złamanie też drugiego.
 :::
 
 ::: incremental
 
-*   Gdyby silnik był w 100% sprawny (łamie K-P), możnaby nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).
+*   Gdyby silnik był w 100% sprawny (łamie K-P), można by nim zasilić pompę ciepła, co w rezultacie pompowałoby ciepło z zimnego do ciepłego bez udziału pracy z zewnątrz (łamie Clausiusa).
+*   I odwrotnie: gdyby urządzenie przenosiło ciepło z zimnego do ciepłego bez pracy (łamie Clausiusa), można by nim przenosić z powrotem do źródła górnego całe ciepło $Q_L$, które zwykły silnik oddaje do źródła dolnego. Źródło dolne nie zmienia stanu, a ciepło netto $Q_H - Q_L$ pobrane ze źródła górnego zamienia się w całości na pracę (łamie K-P).
 
 :::
 
@@ -371,14 +372,14 @@ Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plan
 :::: {.columns}
 
 ::: {.column width="40%"}
-Wyobraźmy sobie statek, który pobiera ciepło z oceanu ($T \approx 15^\circ C$) i zamienia je w całości na napęd.
+Wyobraźmy sobie statek, który pobiera ciepło z oceanu ($T \approx 15^\circ\text{C}$) i zamienia je w całości na napęd.
 
 *   I Zasada? **Spełniona** (Energia z wody $\to$ Praca).
 *   II Zasada? **Złamana** (Brak $Q_L$, $\eta = 100\%$).
 
 ::: {style="border: 2px solid red; padding: 10px; text-align: center;"}
 **NIEMOŻLIWE**
-$$ Q_H \to [SILNIK] \to L $$
+$$ Q_H \to [\text{SILNIK}] \to L $$
 (Brak strzałki $Q_L$)
 :::
 :::
@@ -521,7 +522,7 @@ flowchart LR
 ::: {.column width="50%"}
 ### Proces Nieodwracalny
 ::: {style="border: 2px solid #e60000; padding: 15px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em; text-align: center; margin-bottom: 20px;"}
-Cofnięcie wymaga pracy z zewnątrz.
+Układ można przywrócić do stanu początkowego tylko kosztem trwałych zmian w otoczeniu (np. zużycia pracy).
 :::
 
 <div style="text-align: center; zoom: 1.5;">
@@ -550,7 +551,7 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 :::
 
 ::: incremental
-1.  **Tarcie** (Ciał satałych i lepkość płynów) - zamiana pracy na ciepło jest jednostronna.
+1.  **Tarcie** (Ciał stałych i lepkość płynów) - zamiana pracy na ciepło jest jednostronna.
 2.  **Nierównowaga sił** (Gwałtowne rozprężanie) - ciśnienie wewnętrzne jest znacznie wyższe niż zewnętrzne.
 3.  **Wymiana ciepła przy skończonym $\Delta T$** - im większa różnica temperatur, tym większa nieodwracalność.
 4.  **Reakcje chemiczne** - spalanie jest wysoce nieodwracalne (nie da się odzyskać paliwa ze spalin przez ogrzanie).
@@ -559,22 +560,23 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 
 ---
 
-## <i class="bi bi-clock-history"></i> Proces Kwazistatyczny (Wewnętrznie Odwracalny) 
+## <i class="bi bi-clock-history"></i> Proces Kwazistatyczny i Warunki Odwracalności 
 
 ::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
-Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi.
+Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi (proces kwazistatyczny). To warunek konieczny, ale niewystarczający — potrzebny jest też brak dyssypacji.
 :::
 
 ::: incremental 
 
-*   Dzieje się to "nieskończenie powoli".
-*   W każdym momencie $P_{układu} \approx P_{otoczenia}$.
-*   W każdym momencie $T_{układu} \approx T_{otoczenia}$.
+*   Dzieje się to "nieskończenie powoli" — w każdym momencie $p_{\text{układu}} \approx p_{\text{otoczenia}}$ (równowaga mechaniczna).
+*   **Odwracalność wewnętrzna:** proces kwazistatyczny bez tarcia i innych efektów dyssypacyjnych wewnątrz układu.
+*   **Odwracalność zewnętrzna:** wymiana ciepła przy $T_{\text{układu}} \approx T_{\text{otoczenia}}$ (nieskończenie małe $\Delta T$), brak tarcia poza układem.
+*   Proces **całkowicie odwracalny** jest odwracalny wewnętrznie i zewnętrznie.
 
 :::
 
 ::: {.fragment}
-Taki proces to **idelizacja** (jak punkt materialny w mechanice). Służy do wyznaczenia teoretycznych granic wydajności.
+Taki proces to **idealizacja** (jak punkt materialny w mechanice). Służy do wyznaczenia teoretycznych granic wydajności.
 :::
 
 ---
@@ -614,7 +616,8 @@ Składa się z 4 procesów **odwracalnych**:
 ![](../img/carnot_p_v.png){fig-align="center" width="70%"}
 
 ::: {style="font-size: 0.5em; color: gray; margin-top: -60px;"}
-  Źródło: *$Termodynamika \ techniczna$* 2000, J. Szargut.
+  Źródło: *Termodynamika techniczna*, 2000, J. Szargut.<br>
+  Oznaczenia na rysunku: $T_{\text{I}} = T_H$, $T_{\text{II}} = T_L$; $\dot{Q}_d$, $q_d$ — ciepło doprowadzone ($Q_H$); $\dot{Q}_w$, $q_w$ — ciepło wyprowadzone ($Q_L$); $N$ — moc (praca $L$ w jednostce czasu).
 :::
 
 :::
@@ -671,11 +674,11 @@ Na wykresie T-s (Temperatura-Entropia) obieg Carnota to idealny **prostokąt**.
 
 ::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;"}
 
-$$ \eta_{Carnot} = 1 - \frac{T_L}{T_H} $$
+$$ \eta_{\text{Carnot}} = 1 - \frac{T_L}{T_H} $$
 
 :::
 
-To maksymalna teoretyczna sprawność, maszyny cieplnej.
+To maksymalna teoretyczna sprawność maszyny cieplnej.
 :::
 
 ::: {.column width="50%"}
@@ -749,9 +752,9 @@ $$ \eta = 1 - \frac{T_L}{T_H} $$
 
 ::: incremental
 1.  **Sprawność zależy tylko od temperatur.** Nie zależy od czynnika roboczego (powietrze, para, hel - bez znaczenia).
-2.  **Im wyższa $T_H$, tym lepiej.** Dlatego w elektrowniach dążymy do jak najwyższych temperatur pary (np. $600^\circ C$).
-3.  **Im niższa $T_L$, tym lepiej.** Ale jesteśmy ograniczeni temperaturą otoczenia (ok. $20^\circ C$ lub $300 K$).
-4.  **$\eta < 100\%$:** Aby mieć $\eta=1$, musielibyśmy mieć $T_L = 0 K$ (niemożliwe).
+2.  **Im wyższa $T_H$, tym lepiej.** Dlatego w elektrowniach dążymy do jak najwyższych temperatur pary (np. $600^\circ\text{C}$).
+3.  **Im niższa $T_L$, tym lepiej.** Ale jesteśmy ograniczeni temperaturą otoczenia (ok. $20^\circ\text{C} \approx 293\text{ K}$).
+4.  **$\eta < 100\%$:** Aby mieć $\eta=1$, musielibyśmy mieć $T_L = 0\text{ K}$ (niemożliwe).
 :::
 
 ---
@@ -788,12 +791,12 @@ $$ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} $$
 ::: incremental
 *   Stosunek temperatur jest równy stosunkowi ciepła wymienianego w obiegu odwracalnym.
 *   Skala ta nie zależy od czynnika roboczego.
-*   **Zero absolutne ($0 K$):** Teoretyczny stan, w którym silnik Carnota miałby sprawność 100% (nie oddawałby ciepła $Q_L=0$).
+*   **Zero absolutne ($0\text{ K}$):** Teoretyczny stan, w którym silnik Carnota miałby sprawność 100% (nie oddawałby ciepła $Q_L=0$).
 
 :::
 
 ::: {.fragment .callout-note}
-Jednostka Kelvina jest podstawową jednostką w układzie SI. $T(K) = t(^\circ C) + 273.15$.
+Kelwin (K) jest jednostką podstawową układu SI. $T(\text{K}) = t(^\circ\text{C}) + 273{,}15$.
 :::
 
 ---

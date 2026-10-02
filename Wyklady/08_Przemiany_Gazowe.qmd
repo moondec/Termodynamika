@@ -66,6 +66,7 @@ theme_thermo <- function() {
   )
 }
 theme_set(theme_thermo())
+options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
 
 # --- COLORS ---
 col_iso_p <- "#2ecc71" # Green (Isobar)
@@ -111,13 +112,13 @@ arrow_style <- arrow(length = unit(0.4, "cm"), type = "closed")
 Dla układu zamkniętego w procesie kwazistatycznym I zasada przyjmuje postać:
 :::
 
-$$ dU = đQ + đL $$
+$$ dU = đQ - đL $$
 
 Gdzie:
 
 *   $dU$ – zmiana energii wewnętrznej
 *   $đQ$ – ciepło elementarne wymienione z otoczeniem
-*   $đL$ – praca elementarna wykonana **na układzie**.
+*   $đL$ – praca elementarna wykonana **przez układ**.
 
 ---
 
@@ -128,7 +129,7 @@ W procesach odwracalnych praca objętościowa wyraża się wzorem:
 $$ đL = p dV $$ 
 
 ::: {.callout-warning appearance="simple"}
-znak "+" zgodnie z konwencją przyjętą w W3
+Znak "+" zgodnie z konwencją przyjętą w W2
 :::
 
 Całkowita praca przy zmianie objętości od $V_1$ do $V_2$:
@@ -145,10 +146,10 @@ $$ L_{1-2} = \int_{V_1}^{V_2} p(V) dV $$
 
 Podstawowe wzory i zależności:
 
-1.  **Równanie Clapeyrona:** $pV = nRT$ lub $pv = RT$ (dla 1 kg)
-2.  **Energię wewnętrzną:** Zależy tylko od temperatury, $du = c_v dT$.
-3.  **Entalpię:** Zależy tylko od temperatury, $dh = c_p dT$.
-4.  **Równanie Mayera:** $C_p - C_V = nR$ lub $c_p - c_v = R$.
+1.  **Równanie Clapeyrona:** $pV = nR_uT$ lub $pv = RT$ (dla 1 kg; $R = R_u/M$ — indywidualna stała gazowa)
+2.  **Energia wewnętrzna:** Zależy tylko od temperatury, $du = c_v dT$.
+3.  **Entalpia:** Zależy tylko od temperatury, $dh = c_p dT$.
+4.  **Równanie Mayera:** $C_p - C_v = nR_u$ lub $c_p - c_v = R$.
 
 ---
 
@@ -164,7 +165,7 @@ Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)
 ::: {.column width="60%"}
 
 1.  **Równanie procesu:** Związek między $p$ i $v$.
-2.  **Praca objętościowa ($l$):** Pole pod krzywą na $p-v$.
+2.  **Praca objętościowa ($l$):** Pole pod krzywą na wykresie $p$-$v$.
     $$ l = \int p \, dv $$
 3.  **Praca techniczna ($l_t$):** Pole do osi $p$.
     $$ l_t = -\int v \, dp $$
@@ -174,7 +175,9 @@ Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)
 
 ::: {.column width="40%"}
 
-::: {.fragment title= "**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+::: {.fragment style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+
+**Wniosek:**
 
 Pamiętamy zawsze: $$\Delta u = c_v \Delta T$$ oraz $$\Delta h = c_p \Delta T$$
 :::
@@ -195,7 +198,7 @@ Ogrzewanie gazu w szczelnie zamkniętym zbiorniku (szybkowar).
 :::
 
 :::: {.columns}
-::: {.fragment .fade-rigth .column width="50%"}
+::: {.fragment .fade-right .column width="50%"}
 ### Równanie Stanu (Charlesa)
 $$ \frac{p_1}{T_1} = \frac{p_2}{T_2} \Rightarrow \frac{p}{T} = const $$
 :::
@@ -234,9 +237,10 @@ p1_plot <- ggplot(dt_iso, aes(x=x, y=y)) +
   geom_line(color=col_iso_v, size=2) +
   geom_point(size=4) +
   geom_segment(aes(x=v, y=p1, xend=v, yend=p2), arrow=arrow_style, color=col_iso_v, size=1.5) +
-  annotate("text", x=v+0.2, y=p1, label="1", size=7, fontface="bold") +
-  annotate("text", x=v+0.2, y=p2, label="2", size=7, fontface="bold") +
-  labs(title=expression("Izochora " * p-v), x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
+  annotate("text", x=v+0.06, y=p1, label="1", size=7, fontface="bold") +
+  annotate("text", x=v+0.06, y=p2, label="2", size=7, fontface="bold") +
+  labs(title=expression("Izochora " * p-v), x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]")) +
+  xlim(0.5, 1.5)
 
 # Wykres T-s (Krzywa wykładnicza)
 s <- seq(1, 1.5, length.out=50)
@@ -264,7 +268,7 @@ Ogrzewanie gazu w cylindrze pod swobodnym tłokiem.
 :::
 
 :::: {.columns}
-::: {.fragment .fade-rigth .column width="50%"}
+::: {.fragment .fade-right .column width="50%"}
 ### Równanie Stanu (Gay-Lussaca)
 $$ \frac{v_1}{T_1} = \frac{v_2}{T_2} \Rightarrow \frac{v}{T} = const $$
 
@@ -284,7 +288,7 @@ W izobarze ciepło jest równe zmianie entalpii ($q = \Delta h$).
 
 ## <i class="bi bi-clipboard-check"></i> Izobara: Podsumowanie 
 
-1.  **Ciepło:** $Q_{1-2} = n c_p (T_2 - T_1)$.
+1.  **Ciepło:** $Q_{1-2} = m c_p (T_2 - T_1)$.
 2.  **Praca:** Część ciepła idzie na wykonanie pracy objętościowej (rozszerzanie), reszta na podgrzanie (wzrost $u$).
 3.  **Wykres p-v:** Linia pozioma.
 4.  Standardowa zmiana entropii: $\Delta s = c_p \ln(T_2/T_1)$.
@@ -341,14 +345,14 @@ Bardzo powolne sprężanie z chłodzeniem.
 :::: {.columns}
 ::: {.fragment .fade-left .column width="50%"}
 
-### Równanie Stanu (Boyle-Mariotte)
+### Równanie Stanu (Boyle'a–Mariotte'a)
 $$ p_1 v_1 = p_2 v_2 = const $$
 :::
 
 ::: {.fragment .fade-right .column width="50%"}
 ### Bilans Energii (1 kg)
-1.  **Praca:** $l = -RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
-2.  **Ciepło:** $q = -l$ (Całe ciepło zamienia się w pracę).
+1.  **Praca:** $l = RT \ln(v_2/v_1)$ (zwróć uwagę na znak!).
+2.  **Ciepło:** $q = l$ (Całe ciepło zamienia się w pracę).
 3.  **Wykres T-s:** Pozioma linia prosta ($T=const$).
 :::
 ::::
@@ -357,7 +361,7 @@ $$ p_1 v_1 = p_2 v_2 = const $$
 
 ## <i class="bi bi-bookmark"></i> Obliczenia Pracy i Entropii (Izoterma) 
 
-**Praca (bezwzględna wykonana w układzie):**
+**Praca (bezwzględna, wykonana przez układ):**
 $$ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) $$
 
 ::: {.fragment .fade-right .callout-important appearance="simple"}
@@ -386,7 +390,7 @@ p <- 4/v
 # p-v (Izoterma)
 p1_plot <- ggplot() + 
   geom_line(aes(x=v, y=p), size=2, color=col_iso_T) +
-  geom_rect(aes(xmin=1, xmax=4, ymin=0, ymax=1), fill=col_iso_T, alpha=0.1) + # Symboliczne pole pracy
+  geom_ribbon(aes(x=v, ymin=0, ymax=p), fill=col_iso_T, alpha=0.1) + # Pole pracy (pole pod krzywą)
   annotate("text", x=2, y=3, label="T=const", color=col_iso_T, size=6, fontface="bold") +
   labs(title=expression("Izoterma " * p-v), x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 
@@ -406,7 +410,7 @@ p1_plot + p2_plot
 
 ## <i class="bi bi-wind"></i> 6. Przemiana Adiabatyczna ($q=0$) 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-**Warunek:** $dq = 0$. (Izolacja termiczna)
+**Warunek:** $đq = 0$. (Izolacja termiczna)
 :::
 ::: {.fragment .fade-up .callout-tip title="Wskazówka praktyczna"}
 Dla procesu odwracalnego: **Izentropa** ($ds = 0, s = const$).
@@ -425,7 +429,7 @@ $$ p v^\kappa = const \quad \text{oraz} \quad T v^{\kappa-1} = const $$
 
 1.  **Ciepło:** $q = 0$.
 2.  **Praca:** $l = -\Delta u = c_v(T_1 - T_2)$.
-    *   Rozprężanie: $T \downarrow$ (kosztem energii wewn).
+    *   Rozprężanie: $T \downarrow$ (kosztem energii wewnętrznej).
 3.  **Wykres T-s:** Pionowa linia prosta ($s=const$).
 
 
@@ -436,9 +440,9 @@ $$ p v^\kappa = const \quad \text{oraz} \quad T v^{\kappa-1} = const $$
 
 ## <i class="bi bi-list-check"></i> Wykresy i Właściwości (Adiabata) 
 
-*   **Wykres p-V:** Krzywa **bardziej stroma** niż izoterma (ponieważ $\kappa > 1$).
+*   **Wykres p-v:** Krzywa **bardziej stroma** niż izoterma (ponieważ $\kappa > 1$).
 *   **Wykres T-s:** Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.
-*   **Praca Techniczna:** $l_t = \kappa \cdot l = \Delta h$.
+*   **Praca Techniczna:** $l_t = \kappa \cdot l = -\Delta h = c_p(T_1 - T_2)$.
 
 ```{r}
 #| echo: false
@@ -450,7 +454,7 @@ v <- seq(1, 4, 0.1)
 p1_plot <- ggplot() + 
   geom_line(aes(x=v, y=4/v), size=1, color="grey", linetype="dashed") +
   geom_line(aes(x=v, y=4/(v^1.4)), size=2, color=col_adi) +
-  geom_rect(aes(xmin=1, xmax=4, ymin=0, ymax=4/(4^1.4)), fill=col_adi, alpha=0.1) + # Pole pracy
+  geom_ribbon(aes(x=v, ymin=0, ymax=4/(v^1.4)), fill=col_adi, alpha=0.1) + # Pole pracy (pole pod krzywą)
   annotate("text", x=2.5, y=3, label="Izoterma", color="grey", size=5) +
   annotate("text", x=2, y=0.5, label="Adiabata", color=col_adi, size=6, fontface="bold") +
   labs(title=expression("Adiabata " * p-v), x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
@@ -461,7 +465,7 @@ T_adj <- seq(200, 500, 10)
 p2_plot <- ggplot() +
   geom_segment(aes(x=s, y=200, xend=s, yend=500), size=2, color=col_adi) +
   geom_segment(aes(x=s, y=450, xend=s, yend=200), arrow=arrow_style, color=col_adi, size=2) + # Strzałka rozprężanie
-  annotate("text", x=1.3, y=350, label="s=const\nq=0", color=col_adi, size=6, fontface="bold") +
+  annotate("text", x=1.1, y=350, label="s=const\nq=0", color=col_adi, size=6, fontface="bold", hjust=0) +
   labs(title=expression("Adiabata (Izentropa) " * T-s), x=expression(s ~ "[kJ/kgK]"), y=expression(T ~ "[K]")) +
   xlim(0, 2) + ylim(100, 600)
 
@@ -481,7 +485,7 @@ flowchart TD
     
     B -- "n = 0" --> C["<b>Izobara</b><br>p = const"]
     B -- "n = 1" --> D["<b>Izoterma</b><br>T = const"]
-    B -- "n = k (kappa)" --> E["<b>Adiabata</b><br>q = 0"]
+    B -- "n = &kappa;" --> E["<b>Adiabata</b><br>q = 0"]
     B -- "n &rarr; &infin;" --> F["<b>Izochora</b><br>v = const"]
     
     style A fill:#fff3e0,stroke:#f39c12,stroke-width:4px
@@ -541,9 +545,9 @@ ggplot() +
   geom_segment(aes(x=1, y=10, xend=1, yend=2), color=col_iso_v, size=1.5) + 
   
   annotate("text", x=2.5, y=10.5, label="Izobara (n=0)", color=col_iso_p, size=6, fontface="bold") +
-  annotate("text", x=2.5, y=4.5, label="Izoterma (n=1)", color=col_iso_T, size=6, fontface="bold") +
-  annotate("text", x=2.5, y=2.0, label="Adiabata (n=k)", color=col_adi, size=6, fontface="bold") +
-  annotate("text", x=1.1, y=3, label="Izochora", color=col_iso_v, size=6, fontface="bold") +
+  annotate("text", x=2.5, y=5.0, label="Izoterma (n=1)", color=col_iso_T, size=6, fontface="bold") +
+  annotate("text", x=2.5, y=2.0, label="Adiabata (n=\u03BA)", color=col_adi, size=6, fontface="bold") +
+  annotate("text", x=1.03, y=3, label="Izochora", color=col_iso_v, size=6, fontface="bold", hjust=0) +
   
   labs(title="Porównanie Przemian (Rozprężanie z tego samego punktu)", x=expression(v ~ "[m"^3*"/kg]"), y=expression(p ~ "[MPa]"))
 ```
@@ -583,7 +587,7 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}
 
 *   Dla izobary ($n=0$): $l_t = 0$.
 *   Dla izotermy ($n=1$): $l_t = RT \ln(p_1/p_2)$.
-*   Dla adiabaty ($n=\kappa$): $l_t = \Delta h = c_p(T_2 - T_1)$.
+*   Dla adiabaty ($n=\kappa$): $l_t = -\Delta h = c_p(T_1 - T_2)$.
 
 gdzie: $\kappa = c_p/c_v$.
 
@@ -607,7 +611,7 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 
 ## <i class="bi bi-bookmark"></i> Sprężanie Wielostopniowe z Chłodzeniem 
 
-Przy dużych stopniach sprężania ($p_2/p_1 > 4$) temperatura końcowa jest zbyt wysoka. Rozwiązanie: **sprężanie w kilku stopniach** z chłodzeniem międzystopniowym.
+Przy dużych stopniach sprężania (w praktyce powyżej $p_2/p_1 \approx 8$) temperatura końcowa jest zbyt wysoka — np. powietrze sprężane adiabatycznie od $20^\circ\text{C}$ przy $p_2/p_1 = 8$ osiąga ok. $260^\circ\text{C}$. Rozwiązanie: **sprężanie w kilku stopniach** z chłodzeniem międzystopniowym.
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -615,16 +619,16 @@ Przy dużych stopniach sprężania ($p_2/p_1 > 4$) temperatura końcowa jest zby
 
 Dla **dwóch stopni** (minimalna suma prac):
 
-$$ p_{pośr} = \sqrt{p_1 \cdot p_2} $$
+$$ p_{\text{pośr}} = \sqrt{p_1 \cdot p_2} $$
 
 Każdy stopień ma ten sam stosunek sprężania:
-$$ \frac{p_{pośr}}{p_1} = \frac{p_2}{p_{pośr}} = \sqrt{\frac{p_2}{p_1}} $$
+$$ \frac{p_{\text{pośr}}}{p_1} = \frac{p_2}{p_{\text{pośr}}} = \sqrt{\frac{p_2}{p_1}} $$
 
 :::
 ::: {.column width="50%"}
 ### Efekty
 
-::: {.fragment .callout-success}
+::: {.fragment .callout-tip}
 1.  **Niższa temperatura** końcowa (bezpieczeństwo oleju, uszczelek).
 2.  **Mniejsza praca** całkowita (zbliżenie do izotermy).
 3.  **Wyższy stopień sprężania** bez ryzyka awarii.
@@ -633,8 +637,8 @@ $$ \frac{p_{pośr}}{p_1} = \frac{p_2}{p_{pośr}} = \sqrt{\frac{p_2}{p_1}} $$
 :::
 
 ::: {.fragment .callout-note title="Uogólnienie" style="font-size: 0.8em;"}
-Dla $k$ stopni: $p_i = p_1 \cdot (p_2/p_1)^{i/k}$.
-W praktyce: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\approx 60$ — 3 stopnie.
+Dla $z$ stopni: $p_i = p_1 \cdot (p_2/p_1)^{i/z}$, $i = 1, \dots, z$.
+W praktyce stosunek sprężania w jednym stopniu nie przekracza ok. 8: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\approx 60$ ($\approx 8^2$) — 3 stopnie.
 :::
 
 ---
@@ -645,8 +649,8 @@ W praktyce: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\appr
 | :--- | :---: | :---: | :---: | :---: |
 | **Izochora** | $\infty$ | $\Delta u$ | 0 | $-v\Delta p$|
 | **Izobara** | 0 | $\Delta h$ | $p \Delta v$ | 0 |
-| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $-q$ | $l$ |
-| **Adiabata** | $\kappa$ | 0 | $-\Delta u$ | $\Delta h$ |
+| **Izoterma** | 1 | $RT \ln(v_2/v_1)$ | $q$ | $l = q$ |
+| **Adiabata** | $\kappa$ | 0 | $-\Delta u$ | $-\Delta h$ |
 
 ::: {.callout-important title="**Kluczowe do Zapamiętania:**"}
 

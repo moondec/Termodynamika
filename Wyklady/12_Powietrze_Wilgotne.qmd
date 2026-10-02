@@ -87,8 +87,8 @@ $p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząs
 ::: {.fragment style="font-size: .9em;"}
 ### Stan pary wodnej:
 
-*   **Para przegrzana:** $p_p < p_{nasycenia}$ (Typowy stan w pomieszczeniu).
-*   **Para nasycona:** $p_p = p_{nasycenia}$ ($RH = 100\%$).
+*   **Para przegrzana:** $p_p < p_{\text{nasycenia}}$ (Typowy stan w pomieszczeniu).
+*   **Para nasycona:** $p_p = p_{\text{nasycenia}}$ ($\varphi = 100\%$).
 *   **Mgła:** Powietrze przesycone (zawiera kropelki cieczy).
 :::
 
@@ -96,7 +96,7 @@ $p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząs
 
 ## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out"}
 
-Inżynierowie (i nie tylko) używają dwóch definicji wilgotności:
+Inżynierowie (i nie tylko) opisują wilgotność powietrza za pomocą trzech wielkości: $\varphi$, $g$ i $X$.
 
 ::: {.callout-tip title="Wilgotność Względna (Relative Humidity)"}
 Określa, jak blisko jesteśmy stanu nasycenia (mgły).
@@ -104,13 +104,13 @@ $$ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% $$
 
 ::: {style="font-size: .7em;"}
 *   $\varphi = 0\%$: Powietrze suche.
-*   $\varphi = 100\%$: Punkt rosy (powietrze nasycone).
+*   $\varphi = 100\%$: Powietrze nasycone ($t = t_r$, temperatura punktu rosy).
 :::
 :::
 
 :::{.fragment .callout-note title="Wilgotność Bezwzględna" style="font-size: .9em;"}
 Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza.
-$$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
+$$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{\mathrm{H_2O}}}{m^3}] $$
 :::
 ---
 
@@ -119,12 +119,12 @@ $$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{H2O}}{m^3}] $$
 ::: {.callout-important title="Stopień Zawilżenia (Mixing Ratio)"}
 
 Stosunek masy pary ($m_p$) do masy powietrza **suchego** ($m_g$).
-$$ X = \frac{m_p}{m_g} = 0.622 \frac{p_p}{p - p_p} \quad [\frac{kg_{H2O}}{kg_{suchego}}] $$
+$$ X = \frac{m_p}{m_g} = 0{,}622 \frac{p_p}{p - p_p} \quad [\frac{kg_{\mathrm{H_2O}}}{kg_{\text{suchego}}}] $$
 
 *   **Kluczowe:** W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc **$X = const$** (jeśli nie nawilżamy).
 
-0.622 to stosunek mas molowych pary wodnej do powietrza suchego:
-$$ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622$$
+0,622 to stosunek mas molowych pary wodnej do powietrza suchego:
+$$ \frac{M_{H_2O}}{M_{\text{powietrza}}} = \frac{18{,}015}{28{,}97} \approx 0{,}622$$
 
 :::
 
@@ -136,19 +136,19 @@ $$ \frac{M_{H_2O}}{M_{powietrza}} = \frac{18.015}{28.97} \approx 0.622$$
 Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
 :::
 
-$$ h = h_{powietrza} + X \cdot h_{pary} $$
+$$ h = h_{\text{powietrza}} + X \cdot h_{\text{pary}} $$
 
 ::: {.fragment .callout-note appearance="minimal"}
-Przyjmując $0^\circ C$ jako punkt odniesienia:
-$$ h = (1.005 \cdot T) + X \cdot (2501 + 1.86 \cdot T) \quad [\frac{kJ}{kg}] $$
+Przyjmując $0^\circ C$ jako punkt odniesienia ($t$ w $^\circ C$):
+$$ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad [\frac{kJ}{kg}] $$
 :::
 
 ::: {.fragment}
 **Składniki:**
 
-1.  **1.005:** Ciepło właściwe powietrza suchego ($C_p$) $[kJ/(kg \cdot K)]$.
+1.  **1,005:** Ciepło właściwe powietrza suchego ($c_p$) $[kJ/(kg \cdot K)]$.
 2.  **2501:** Ciepło parowania wody ($r$) w $0^\circ C$ $[kJ/kg]$.
-3.  **1.86:** Ciepło właściwe pary wodnej $[kJ/(kg \cdot K)]$.
+3.  **1,86:** Ciepło właściwe pary wodnej ($c_{p,p}$) $[kJ/(kg \cdot K)]$.
 :::
 
 ---
@@ -158,7 +158,7 @@ $$ h = (1.005 \cdot T) + X \cdot (2501 + 1.86 \cdot T) \quad [\frac{kJ}{kg}] $$
 Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienasycony).
 
 ::: { }
-*   **Oś pionowa:** Temperatura $t$ [°C].
+*   **Oś pionowa ($X = 0$):** Entalpia $h$ (układ ukośnokątny); dla powietrza suchego $h = c_p t$, dlatego opisuje się ją pomocniczą skalą temperatury $t$ [°C].
 :::
 ::: {.fragment .fade-in}
 *   **Oś pozioma:** Stopień zawilżenia $X$ [g/kg].
@@ -172,10 +172,10 @@ Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienas
 
 ### Interpretacja Linii:{.fragment}
 ::: {.fragment style="font-size: .8em;"}
-1.  **Izotermy ($t$):** Lekko wznoszą się w prawo, a po zetknięciu z krzywą $varphi = 100%$ opadają równolegle do izentalp.
+1.  **Izotermy ($t$):** Lekko wznoszą się w prawo, a po zetknięciu z krzywą $\varphi = 100\%$ opadają niemal równolegle do izentalp.
 2.  **Krzywe $\varphi$:** Układają się "bananowo" nad krzywą graniczną.
 3.  **Izentalpy ($h$):** nachylone pod kątem ~135°.
-4.  **Linie Randa** (promienie z "bieguna") to linie nachylenie wektora przemiany względem osi X (zależne od medium nawilżającego).
+4.  **Podziałka brzegowa (kątowa)** $\varepsilon = \Delta h/\Delta X$ na obrzeżu wykresu: prosta z "bieguna" do danej wartości $\varepsilon$ wyznacza kierunek wektora przemiany (zależny m.in. od medium nawilżającego).
 :::
 
 ---
@@ -334,7 +334,7 @@ generate_mollier_data <- function() {
 
     # Lista wartości ze skrajnymi zakresami
     eps_values <- sort(unique(c(
-        -1000, # Chłodzenie z osuszaniem
+        -1000, # epsilon < 0 (np. dodawanie lodu)
         seq(0, 1500, 500),
         seq(2000, 3200, 200),
         2500,
@@ -412,7 +412,7 @@ data <- generate_mollier_data()
 
 p <- ggplot() +
 
-    # 0. TŁO - PĘK LINII (Skala Randa) dla epsilon
+    # 0. TŁO - PĘK LINII (podziałka brzegowa) dla epsilon
     geom_segment(
         data = data$fan,
         aes(x = x0, y = y0, xend = x1, yend = y1),
@@ -424,7 +424,7 @@ p <- ggplot() +
         hjust = 0.5, vjust = -0.3,
         size = 3.2, color = "gray60", fontface = "bold"
     ) +
-    # Opis jednostki skali Randa
+    # Opis jednostki podziałki brzegowej
     annotate("text", x = 35, y = 53, label = "[\u0394h/\u0394X kJ/kg]", color = "gray60", size = 5.5, fontface = "italic", hjust = 1) +
 
     # 1. LINIE ENTALPII
@@ -473,7 +473,7 @@ p <- ggplot() +
     labs(
         title = "Wykres h-X (Molliera)",
         subtitle = NULL, # Usunąłem podtytuł, by zyskać miejsce
-        x = "Stopień zwilżenia X [g/kg]",
+        x = "Stopień zawilżenia X [g/kg]",
         y = "Temperatura [°C]"
     ) +
     theme_bw(base_size = 22) + # Duża czcionka bazowa
@@ -517,8 +517,8 @@ print(p)
 *   **Efekt:** $\varphi$ rośnie aż do 100% (Punkt Rosy $t_r$).
 :::
 
-::: {.fragment .callout-note title="3. Suszenie (h=const)" style="font-size: .9em;"}
-*   **Proces:** Nawilżanie adiabatyczne (kontakt z wodą).
+::: {.fragment .callout-note title="3. Nawilżanie adiabatyczne (h ≈ const)" style="font-size: .9em;"}
+*   **Proces:** Kontakt powietrza z wodą (komora zraszania, nawilżacz wodny, suszenie materiału).
 *   **Wykres:** Skośnie w dół (w stronę wyższego X).
 *   **Efekt:** Powietrze się nawilża i ochładza (energia zostaje w układzie).
 :::
@@ -648,7 +648,7 @@ cooling <- data.frame(
 
 # 3. NAWILŻANIE ADIABATYCZNE (h=const, ukośnie w dół-prawo)
 # Dla h=const: nawilżamy wodą, temp spada, x rośnie
-x_humid_max <- min(x0 + 6, x_calc(15, 99)) # Kończymy przy niższej temp
+x_humid_max <- 9.6 # Koniec tuż przed krzywą nasycenia (izentalpa przecina φ = 100% przy X ≈ 9.8 g/kg, t_m ≈ 13.7°C)
 df_humid_temp <- data.frame(x = seq(x0, x_humid_max, length.out = 30))
 df_humid_temp$t <- (h0 - 2.5 * df_humid_temp$x) / (1.005 + 0.00186 * df_humid_temp$x)
 humidification <- df_humid_temp[df_humid_temp$t >= 10, ]
@@ -708,14 +708,14 @@ ggplot() +
         color = "#00aa00", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
     ) +
     annotate("text",
-        x = (x0 + x_humid_max + 1) / 2 + 2, y = humidification$t[10] + 5,
-        label = "3. Nawilżanie\nadiabatyczne (h=const)", color = "#00aa00", fontface = "bold", size = 8
+        x = x0 + 0.8, y = humidification$t[10] + 5,
+        label = "3. Nawilżanie\nadiabatyczne (h=const)", color = "#00aa00", fontface = "bold", size = 8, hjust = 0
     ) +
 
     # Punkt początkowy
     geom_point(aes(x = x0, y = t0), size = 5, color = "black", shape = 21, fill = "yellow", stroke = 2) +
     annotate("text",
-        x = x0 - .3, y = t0 + 3, label = sprintf("Start\n(%.1f°C, %.0f%%)", t0, phi0),
+        x = x0 - .3, y = t0 + 3, label = sprintf("Start\n(%s°C, %.0f%%)", format(t0, nsmall = 1, decimal.mark = ","), phi0),
         fontface = "bold", size = 8, hjust = 1
     ) +
 
@@ -752,36 +752,41 @@ $$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg
 ::: {.column width="60%"}
 **Interpretacja fizyczna:**
 
-$\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
+Bez doprowadzenia ciepła ($\dot{Q} = 0$): $\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
 
 ::: {.fragment style="font-size: 0.85em;"}
 | Medium | $\varepsilon$ | Kierunek na wykresie |
 |--------|---------------|----------------------|
-| Lód / chłodzenie z osuszaniem | < 0 (np. -1000) | stromo w dół ↓↘ |
+| Lód (0 °C) | ≈ −335 | nieco poniżej izentalpy (↘) |
+| Chłodzenie z osuszaniem | > 0, duże (ok. 5000–15000) | w lewo w dół (↙) |
 | Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↘ |
-| Para nasycona (100°C) | ≈ 2500 | prawie poziomo → |
-| Para przegrzana | > 2500 (np. 4500) | lekko w górę ↗ |
+| Para nasycona (100°C) | ≈ 2676 | prawie poziomo (lekko w górę) → |
+| Para przegrzana | > 2676 (np. 2800–3000) | lekko w górę ↗ |
 | Czyste ciepło (bez wilgoci) | ∞ | pionowo ↑ |
+
+Temperatura rośnie, gdy $\varepsilon > 2501 + 1{,}86\,t$ (nachylenie izotermy).
 :::
 :::
 ::: {.column width="40%"}
 ::: {.fragment}
 **Bilans energii:**
-$$ \dot{m}_g (h_2 - h_1) = \dot{m}_w \cdot h_w $$
+$$ \dot{m}_g (h_2 - h_1) = \dot{Q} + \dot{m}_w \cdot h_w, \quad \dot{m}_w = \dot{m}_g (X_2 - X_1) $$
 
 **Stąd:**
-$$ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = h_w $$
+$$ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = \frac{\dot{Q} + \dot{m}_w h_w}{\dot{m}_w} $$
+
+Dla $\dot{Q} = 0$: $\varepsilon = h_w$.
 :::
 
-::: {.fragment .callout-tip title="Skala Randa" style="font-size: 0.85em;"}
-Linie o stałym $\varepsilon$ tworzą **pęk promieni** z "bieguna" — to **skala Randa** na wykresie h-X.
+::: {.fragment .callout-tip title="Podziałka brzegowa (kątowa)" style="font-size: 0.85em;"}
+Kierunek o danym $\varepsilon = \Delta h/\Delta X$ wyznacza prosta z "bieguna" do odpowiedniej wartości na **podziałce brzegowej (kątowej)** na obrzeżu wykresu h-X (**pęk promieni**).
 :::
 :::
 :::
 
 ---
 
-## <i class="bi bi-shuffle"></i> Przemiana 1: Mieszanie Strumieni Powietrza 
+## <i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
@@ -789,14 +794,16 @@ Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku maso
 
 ::: {.columns}
 ::: {.column width="35%"}
-**Bilansy:**
+**Bilanse:**
 
-$$ X_M = \frac{\dot{m}_1 X_1 + \dot{m}_2 X_2}{\dot{m}_1 + \dot{m}_2} $$
+$$ \dot{m}_{g,M} = \dot{m}_{g,1} + \dot{m}_{g,2} $$
 
-$$ h_M = \frac{\dot{m}_1 h_1 + \dot{m}_2 h_2}{\dot{m}_1 + \dot{m}_2} $$
+$$ X_M = \frac{\dot{m}_{g,1} X_1 + \dot{m}_{g,2} X_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
+
+$$ h_M = \frac{\dot{m}_{g,1} h_1 + \dot{m}_{g,2} h_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
 
 ::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
-**Rekuperacja:** Odzysk ciepła w centralach wentylacyjnych. **Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym. **Wentylacja:** Rozcieńczanie zanieczyszczeń.
+**Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym w komorze mieszania centrali. **Wentylacja:** Rozcieńczanie zanieczyszczeń. *(Uwaga: rekuperacja to nie mieszanie — w rekuperatorze strumienie wymieniają ciepło przez przegrodę.)*
 :::
 :::
 ::: {.column width="65%"}
@@ -861,15 +868,15 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-moisture"></i> Przemiana 2: Nawilżanie Parą Wodną 
+## <i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
-Przy nawilżaniu **parą** ($h_w \approx 2500$ kJ/kg) przemiana biegnie **prawie poziomo** (wzdłuż izotermy). $\varepsilon = h_w \approx 2500$ kJ/kg.
+Przy nawilżaniu **parą** ($h_w \approx 2676$ kJ/kg dla pary nasyconej 100 °C) przemiana biegnie **prawie poziomo** (niemal wzdłuż izotermy; $t$ lekko rośnie, bo $h_w > 2501 + 1{,}86\,t$). $\varepsilon = h_w \approx 2676$ kJ/kg.
 :::
 
 ::: {.columns}
 ::: {.column width="38%"}
-**Bilansy:**
+**Bilanse:**
 
 $$ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} $$
 
@@ -893,7 +900,7 @@ Temperatura prawie stała!
 
 # Stan początkowy i końcowy
 p1 <- list(x = 5, t = 25)
-p2 <- list(x = 18, t = 25.8)
+p2 <- list(x = 18, t = 26.6) # epsilon = h_w ~ 2676 kJ/kg (para nasycona 100 °C)
 
 p1v <- list(x = p1$x, t = transform_vis(p1$t, p1$x))
 p2v <- list(x = p2$x, t = transform_vis(p2$t, p2$x))
@@ -916,7 +923,7 @@ df_iso <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t, iso_x))
 ggplot() +
     # Izoterma
     geom_line(data = df_iso, aes(x = x_g, y = t_vis), color = "orange", size = 1.2, linetype = "dotted") +
-    annotate("text", x = 22, y = transform_vis(iso_t, 22) + 2, label = "t = 25°C", color = "orange", size = 6) +
+    annotate("text", x = 22, y = transform_vis(iso_t, 22) - 2, label = "t = 25°C", color = "orange", size = 6) +
     # Krzywe RH
     geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
     scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
@@ -945,7 +952,7 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> Przemiana 3: Cykl Suszarniczy 
+## <i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy 
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 **(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
@@ -974,10 +981,12 @@ flowchart LR
 **Etap B:** $h_B \approx h_A$, $X \uparrow$, $t \downarrow$
 
 ::: {.fragment}
-Sprawność: $\eta \sim (X_B - X_0)$
+Odparowana woda: $\dot{m}_w = \dot{m}_g (X_B - X_0)$
+
+Jednostkowe zużycie powietrza: $l = \frac{\dot{m}_g}{\dot{m}_w} = \frac{1}{X_B - X_0}$ [kg pow. suchego/kg wody], $X$ w kg/kg
 :::
 ::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
-**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Pasta, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
+**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Makaron, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
 :::
 :::
 ::: {.column width="65%"}
@@ -991,7 +1000,7 @@ Sprawność: $\eta \sim (X_B - X_0)$
 # Stany
 p0 <- list(x = 8, t = 20)
 pA <- list(x = 8, t = 60)
-pB <- list(x = 28, t = 28)
+pB <- list(x = 20.8, t = 28)
 
 p0v <- list(x = p0$x, t = transform_vis(p0$t, p0$x))
 pAv <- list(x = pA$x, t = transform_vis(pA$t, pA$x))
@@ -1016,7 +1025,7 @@ df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
 ggplot() +
     # Izentalpa
     geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
-    annotate("text", x = 32, y = df_isoH$t_vis[nrow(df_isoH)] + 2, label = "h = const", color = "darkgreen", size = 6) +
+    annotate("text", x = 26, y = df_isoH$t_vis[df_isoH$x_g == 25] + 2, label = "h = const", color = "darkgreen", size = 6, hjust = 0) +
     # Krzywe RH
     geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
     scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
@@ -1079,7 +1088,7 @@ Chłodzenie ewaporacyjne!
 
 # Stany
 p1 <- list(x = 8, t = 40)
-p2 <- list(x = 22, t = 23)
+p2 <- list(x = 14.8, t = 23)
 
 p1v <- list(x = p1$x, t = transform_vis(p1$t, p1$x))
 p2v <- list(x = p2$x, t = transform_vis(p2$t, p2$x))
@@ -1103,7 +1112,7 @@ df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
 ggplot() +
     # Izentalpa
     geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
-    annotate("text", x = 27, y = df_isoH$t_vis[nrow(df_isoH)] + 2, label = "h = const", color = "darkgreen", size = 6) +
+    annotate("text", x = 18, y = df_isoH$t_vis[df_isoH$x_g == 17] + 2, label = "h = const", color = "darkgreen", size = 6, hjust = 0) +
     # Krzywe RH
     geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
     scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
@@ -1135,7 +1144,7 @@ ggplot() +
 
 ::: {.columns}
 ::: {.column width="50%"}
-### Psychrometr Augusta/Assmana
+### Psychrometr Augusta/Assmanna
 Dwa termometry:
 
 1.  **Suchy ($t$):** Mierzy temp. powietrza.
@@ -1191,7 +1200,7 @@ flowchart LR
 
 ::: {.fragment}
 ### Zastosowania
-*   **Klimatyzacja komfortu:** $t \approx 20-24^\circ C$, $\varphi \approx 40-60\%$.
+*   **Klimatyzacja komfortu:** $t \approx 20\text{–}24^\circ C$, $\varphi \approx 40\text{–}60\%$.
 *   **Technologia:** Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
 *   **Wentylacja:** Usuwanie zanieczyszczeń i wilgoci.
 *   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
@@ -1209,15 +1218,16 @@ flowchart LR
 
 ## <i class="bi bi-scale"></i> 7. Bilans Masy i Energii 
 
-Dla mieszania dwóch strumieni powietrza (1 i 2) obwiązują zasady zachowania:
+Dla mieszania dwóch strumieni powietrza (1 i 2 → M) obowiązują zasady zachowania:
 
-::: {.callout-important title="Równanie Ciągłości (Bilans Masy Wilgoci)"}
-$$ \dot{m}_{g1} \cdot X_1 + \dot{m}_{g2} \cdot X_2 = \dot{m}_{g3} \cdot X_3 $$
-Masa pary wodnej w strumieniu wynikowym jest sumą mas cząstkowych.
+::: {.callout-important title="Równania Ciągłości (Bilans Powietrza Suchego i Wilgoci)"}
+$$ \dot{m}_{g,1} + \dot{m}_{g,2} = \dot{m}_{g,M} $$
+$$ \dot{m}_{g,1} \cdot X_1 + \dot{m}_{g,2} \cdot X_2 = \dot{m}_{g,M} \cdot X_M $$
+Masa powietrza suchego i masa pary wodnej w strumieniu wynikowym są sumami mas strumieni składowych.
 :::
 
 ::: {.fragment .callout-note title="Bilans Entalpii (Bilans Energii)"}
-$$ \dot{m}_{g1} \cdot h_1 + \dot{m}_{g2} \cdot h_2 = \dot{m}_{g3} \cdot h_3 $$
+$$ \dot{m}_{g,1} \cdot h_1 + \dot{m}_{g,2} \cdot h_2 = \dot{m}_{g,M} \cdot h_M $$
 Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 :::
 
@@ -1228,17 +1238,19 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 ::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
 **Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
 
-1.  Z tablic $p_s(25) = 3.17$ kPa $\rightarrow p_p = 0.5 \cdot 3.17 = 1.585$ kPa.
+1.  Z tablic $p_s(25) = 3{,}17$ kPa $\rightarrow p_p = 0{,}5 \cdot 3{,}17 = 1{,}585$ kPa.
 2.  Ponieważ $X=const$, to $p_p$ się nie zmienia!
-3.  Z tablic $p_s(35) = 5.63$ kPa.
-4.  Nowa wilgotność: $\varphi_2 = \frac{1.585}{5.63} \approx 28.2\%$.
+3.  Z tablic $p_s(35) = 5{,}63$ kPa.
+4.  Nowa wilgotność: $\varphi_2 = \frac{1{,}585}{5{,}63} \approx 28{,}2\%$.
+
 **Wniosek:** Ogrzewanie silnie wysusza powietrze (względnie).
 :::
 
 ::: {.fragment .callout-tip title="Zadanie 2: Parametry Powietrza"}
 **Dane:** $p=110$ kPa, $t=30^\circ C$, $\varphi=60\%$.
-*   $p_s=4.24$ kPa $\rightarrow p_p = 2.54$ kPa.
-*   $X = 0.622 \frac{2.54}{110-2.54} \approx 14.7$ g/kg.
+
+*   $p_s=4{,}24$ kPa $\rightarrow p_p = 0{,}6 \cdot 4{,}24 = 2{,}54$ kPa.
+*   $X = 0{,}622 \frac{2{,}54}{110-2{,}54} \approx 0{,}0147$ kg/kg $= 14{,}7$ g/kg.
 :::
 
 
@@ -1247,7 +1259,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 ## <i class="bi bi-clipboard-check"></i> Podsumowanie W12 
 
 ::: {.incremental}
-1.  **Wilgotność:** Rozróżniamy względną ($\varphi$, komfort) i bezwzględną ($X$, bilans masy).
+1.  **Wilgotność:** Rozróżniamy wilgotność względną ($\varphi$, komfort) i stopień zawilżenia ($X$, bilanse masy).
 2.  **Entalpia:** Para wodna niesie ogromną energię (ciepło utajone).
 3.  **Psychrometr:** Różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.
 4.  **Procesy:** Ogrzewanie obniża $\varphi$, nawilżanie wodne obniża $t$.
@@ -1255,5 +1267,5 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 
 ::: {.fragment .callout-tip title="Zadanie dla chętnych" style="font-size: 0.9em;"}
-Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"? Wyjaśnij zjawisko używając pojęcia **Punkt Rosy** i **Ciśnienie Cząstkowe**.
+Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"? Wyjaśnij zjawisko, używając pojęć **Punkt Rosy** i **Ciśnienie Cząstkowe**.
 :::

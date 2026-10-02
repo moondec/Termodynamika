@@ -62,9 +62,9 @@ theme_set(theme_minimal(base_size = 18))
 
 1.  **Trzy Mechanizmy Wymiany Ciepła**
 2.  **Przewodzenie** (Prawo Fouriera, Ściana)
-3.  **Konwekcja** (Prawo Newtona, Liczba Nusselta)
+3.  **Konwekcja i Przenikanie Ciepła** (Prawo Newtona, Współczynnik U)
 4.  **Promieniowanie** (Prawo Stefana-Boltzmanna)
-5.  **Przenikanie Ciepła** (Współczynnik U)
+5.  **Wymienniki Ciepła** (Współprąd vs Przeciwprąd)
 
 ---
 
@@ -99,7 +99,7 @@ flowchart LR
 ::: {.fragment style="font-size: 0.85em;"}
 | Mechanizm | Medium | Przykład | Intensywność |
 |-----------|--------|---------|------------|
-| Przewodzenie | Ciała stałe | Ściana, rura | λ = 0.04–400 W/mK |
+| Przewodzenie | Ciała stałe | Ściana, rura | λ = 0,04–400 W/(m·K) |
 | Konwekcja | Płyny | Kaloryfer, wiatr | α = 5–5000 W/m²K |
 | Promieniowanie | Próżnia/gaz | Słońce, ogień | ∼ T⁴ |
 :::
@@ -119,9 +119,9 @@ $$ \dot{q} = - \lambda \frac{dT}{dx} \quad [\frac{W}{m^2}] $$
 :::
 
 ::: {.fragment .incremental}
-    *   Miedź: 400 W/mK
-    *   Cegła: 0.8 W/mK
-    *   Styropian: 0.04 W/mK (Izolator ma niską lambdę).
+*   Miedź: 400 W/mK
+*   Cegła: 0,8 W/mK
+*   Styropian: 0,04 W/mK (Izolator ma niską lambdę).
 :::
 
 ### Ściana Płaska {.fragment}
@@ -136,8 +136,9 @@ $\delta$: Grubość ściany.
 ## <i class="bi bi-plug"></i> Opór Cieplny ($R$). Analogia elektryczna 
 
 ::: {.callout-note appearance="minimal"}
-$$ \dot{Q} = \frac{\Delta T}{R_{term}} $$
-$$ R_{przewodzenia} = \frac{\delta}{\lambda A} $$
+$$ \dot{Q} = \frac{\Delta T}{R} $$
+$$ R_{\text{przewodzenia}} = \frac{\delta}{\lambda A} \quad [\text{K/W}] $$
+$$ R' = R \cdot A = \frac{\delta}{\lambda} \quad [\text{m}^2\text{K/W}] \quad (\text{opór jednostkowy, na 1 m}^2) $$
 :::
 
 ::: {.fragment}
@@ -149,10 +150,10 @@ $$ R_{przewodzenia} = \frac{\delta}{\lambda A} $$
 
 %%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
 flowchart LR
-    T1["<b>T<sub>wewn</sub></b><br>20°C"] -->|"R<sub>si</sub>"| A["Pow. wewn."]
-    A -->|"R<sub>ceg</sub> = δ/λ"| B["Cegła"]
-    B -->|"R<sub>styr</sub> = δ/λ"| C["Styropian"]
-    C -->|"R<sub>se</sub>"| T2["<b>T<sub>zewn</sub></b><br>-10°C"]
+    T1["<b>T<sub>wewn</sub></b><br>20°C"] -->|"R′<sub>si</sub>"| A["Pow. wewn."]
+    A -->|"R′<sub>ceg</sub> = δ/λ"| B["Cegła"]
+    B -->|"R′<sub>styr</sub> = δ/λ"| C["Styropian"]
+    C -->|"R′<sub>se</sub>"| T2["<b>T<sub>zewn</sub></b><br>-10°C"]
     
     style T1 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     style A fill:#fff3e0,stroke:#f39c12,stroke-width:2px
@@ -168,7 +169,7 @@ flowchart LR
 
 ::: {.fragment}
 Dla ściany wielowarstwowej (cegła + styropian + tynk):
-$$ R_{calkowite} = R_1 + R_2 + R_3 $$
+$$ R'_{\text{całkowite}} = R'_1 + R'_2 + R'_3 \quad [\text{m}^2\text{K/W}] $$
 :::
 
 ::: {.fragment .callout-important appearance="simple"}
@@ -190,9 +191,9 @@ $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
 :::
 
 ::: {.fragment .incremental}
-    *   Konwekcja naturalna (kaloryfer): 5-20 W/m²K
-    *   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
-    *   Wrzenie wody: 5000+ W/m²K
+*   Konwekcja naturalna (kaloryfer): 5-20 W/m²K
+*   Konwekcja wymuszona (wiatr, wentylator): 50-200 W/m²K
+*   Wrzenie wody: 5000+ W/m²K
 :::
 
 ---
@@ -201,15 +202,16 @@ $$ \dot{Q} = \alpha A (T_{pow} - T_{pl}) $$
 
 ::: {.callout-note title="Współczynnik przenikania ciepła"}
 W budownictwie interesuje nas ciepło płynące od powietrza wewn. do powietrza zewn.
-Suma oporów (R_si + R_sciany + R_se).
+Suma oporów jednostkowych ($R'_{si} + R'_{\text{ściany}} + R'_{se}$) [m²K/W].
 :::
 
 ::: {.fragment}
-$$ U = k = \frac{1}{R_{si} + \Sigma \frac{\delta}{\lambda} + R_{se}} $$
+$$ U = k = \frac{1}{R'_{si} + \Sigma \frac{\delta}{\lambda} + R'_{se}} \quad [\text{W/(m}^2\text{K)}] $$
+$$ \dot{Q} = U A \, (T_i - T_e) $$
 :::
 
 ::: {.fragment .callout-important appearance="simple"}
-Dla nowoczesnego domu $U < 0.2$ W/(m²K).
+Dla nowoczesnego domu $U < 0{,}2$ W/(m²K).
 :::
 
 ---
@@ -217,21 +219,23 @@ Dla nowoczesnego domu $U < 0.2$ W/(m²K).
 ## <i class="bi bi-sun"></i> 4. Promieniowanie 
 
 ::: {.callout-tip title="Prawo Stefana-Boltzmanna"}
-Każde ciało emituje światło.
-Moc emisji ciała doskonale czarnego:
+Każde ciało o temperaturze $T > 0$ K emituje promieniowanie cieplne (elektromagnetyczne).
+Moc emisji (z 1 m²) ciała doskonale czarnego:
 
-$$ E_b = \sigma T^4 $$
+$$ E_b = \sigma T^4 \quad [\text{W/m}^2] $$
 :::
 
 ::: {.fragment .incremental}
-*   $\sigma$: Stała Stefana-Boltzmanna ($5.67 \cdot 10^{-8}$).
-*   $T$: Temperatura w **Kelvinach**!
+*   $\sigma$: Stała Stefana-Boltzmanna ($5{,}67 \cdot 10^{-8}$ W/(m²K⁴)).
+*   $T$: Temperatura w **kelwinach**!
 :::
 
 ### Wymiana między ciałami {.fragment}
 
 ::: {.fragment}
 $$ \dot{Q} = \varepsilon \sigma A (T_1^4 - T_2^4) $$
+
+Małe ciało szare (powierzchnia $A$, emisyjność $\varepsilon$, temperatura $T_1$) w dużym otoczeniu o temperaturze $T_2$.
 :::
 
 ::: {.fragment}
@@ -272,10 +276,19 @@ $\Delta T_{ln}$ - Logarytmiczna różnica temperatur (LMTD).
 library(ggplot2)
 library(patchwork)
 
-# Współprąd (Parallel Flow)
+# Profile temperatur z bilansu (metoda e-NTU, rozwiązanie analityczne):
+# te same C_h, C_c, UA i temperatury wlotowe w obu układach
+Th_in <- 100; Tc_in <- 15     # temperatury wlotowe [°C]
+C_h <- 1.0; C_c <- 1.25       # pojemności cieplne strumieni [kW/K]
+UA <- 1.5                     # [kW/K] -> NTU = UA/C_min = 1.5, C_r = 0.8
 x <- seq(0, 1, length.out = 50)
-Th_par <- 45 * exp(-3 * x) + 55
-Tc_par <- 55 - 40 * exp(-3 * x)
+
+# Współprąd (Parallel Flow): oba płyny wpływają przy x = 0
+th0 <- Th_in - Tc_in
+th_par <- th0 * exp(-UA * (1 / C_h + 1 / C_c) * x)   # ΔT(x)
+Th_par <- Th_in - (th0 - th_par) * C_c / (C_h + C_c)
+Tc_par <- Tc_in + (th0 - th_par) * C_h / (C_h + C_c)
+Q_par <- C_h * (Th_in - Th_par[50])
 
 df_par <- data.frame(
     x = rep(x, 2),
@@ -290,14 +303,21 @@ p1 <- ggplot(df_par, aes(x = x, y = T, color = medium)) +
              color = "gray40", size = 1, linetype = "dashed",
              arrow = arrow(length = unit(0.2, "cm"), ends = "both")) +
     annotate("text", x = 0.55, y = (Th_par[25] + Tc_par[25])/2, label = "ΔT", size = 6, fontface = "bold") +
-    labs(title = "Współprąd", x = "Długość wymiennika", y = "T [°C]", color = "") +
+    labs(title = "Współprąd", subtitle = bquote(Delta*T[ln] %~~% .(round(Q_par / UA)) ~ K * "," ~~ Q %~~% .(round(Q_par)) ~ kW),
+         x = "Długość wymiennika", y = "T [°C]", color = "") +
     theme_minimal(base_size = 18) +
-    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold")) +
+    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5)) +
     scale_y_continuous(limits = c(0, 100))
 
-# Przeciwprąd (Counter Flow)
-Th_cnt <- 40 * exp(-1.5 * x) + 60
-Tc_cnt <- rev(50 * (1 - exp(-1.5 * x)) + 15)
+# Przeciwprąd (Counter Flow): gorący wpływa przy x = 0, zimny przy x = 1
+C_min <- min(C_h, C_c); Cr <- C_min / max(C_h, C_c); NTU <- UA / C_min
+eps_cnt <- (1 - exp(-NTU * (1 - Cr))) / (1 - Cr * exp(-NTU * (1 - Cr)))
+Q_cnt <- eps_cnt * C_min * (Th_in - Tc_in)
+Tc_out <- Tc_in + Q_cnt / C_c
+k_cnt <- UA * (1 / C_h - 1 / C_c)
+I_cnt <- (Th_in - Tc_out) * (1 - exp(-k_cnt * x)) / k_cnt   # całka z ΔT(x)
+Th_cnt <- Th_in - UA / C_h * I_cnt
+Tc_cnt <- Tc_out - UA / C_c * I_cnt
 
 df_cnt <- data.frame(
     x = rep(x, 2),
@@ -312,16 +332,17 @@ p2 <- ggplot(df_cnt, aes(x = x, y = T, color = medium)) +
              color = "gray40", size = 1, linetype = "dashed",
              arrow = arrow(length = unit(0.2, "cm"), ends = "both")) +
     annotate("text", x = 0.55, y = (Th_cnt[25] + Tc_cnt[25])/2, label = "ΔT", size = 6, fontface = "bold") +
-    labs(title = "Przeciwprąd", x = "Długość wymiennika", y = "T [°C]", color = "") +
+    labs(title = "Przeciwprąd", subtitle = bquote(Delta*T[ln] %~~% .(round(Q_cnt / UA)) ~ K * "," ~~ Q %~~% .(round(Q_cnt)) ~ kW),
+         x = "Długość wymiennika", y = "T [°C]", color = "") +
     theme_minimal(base_size = 18) +
-    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold")) +
+    theme(legend.position = "top", plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5)) +
     scale_y_continuous(limits = c(0, 100))
 
 p1 + p2
 ```
 
 ::: {.fragment .callout-important}
-**Wniosek praktyczny:** Przy tych samych temperaturach wlotowych, wymiennik **przeciwprądowy** ma wyższe $\Delta T_{ln}$ → potrzebuje **mniejszej powierzchni** $A$ (tańszy!) lub osiąga **większą moc** $\dot{Q}$.
+**Wniosek praktyczny:** Przy tych samych temperaturach wlotowych (i tych samych strumieniach), wymiennik **przeciwprądowy** ma wyższe $\Delta T_{ln}$ → potrzebuje **mniejszej powierzchni** $A$ (tańszy!) lub osiąga **większą moc** $\dot{Q}$.
 :::
 
 ---
@@ -330,7 +351,7 @@ p1 + p2
 
 ::: {.incremental}
 1.  **Izolacja** to walka z przewodzeniem ($\lambda$).
-2.  **Radiator** to walka z konwekcją (zwiększanie $A$ i $\alpha$).
+2.  **Radiator (żebra)** to intensyfikacja konwekcji (zwiększanie $A$, a przy przepływie wymuszonym także $\alpha$).
 3.  **Promieniowanie** zależy od $T^4$ - małe zmiany temperatury dają wielkie zmiany mocy.
 4.  **Współczynnik U** to klucz do energooszczędnych budynków.
 :::
@@ -338,7 +359,7 @@ p1 + p2
 ### Zadanie Dla Chętnych {.fragment}
 
 ::: {.fragment .callout-tip title="Oblicz współczynnik U dla ściany"}
-Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
+Cegła 25 cm ($\lambda=0{,}8$) + Styropian 15 cm ($\lambda=0{,}04$). Pomiń $R'_{si}$ i $R'_{se}$.
 :::
 
 ---
@@ -347,32 +368,33 @@ Cegła 25cm ($\lambda=0.8$) + Styropian 15cm ($\lambda=0.04$). Pomiń $R_s$.
 
 ::: {.callout-note appearance="simple" icon="false" style="font-size: 0.7em;"}
 **Dane:**
-Cegła: $\delta_{ceg} = 0.25$ m, $\lambda_{ceg} = 0.8$ W/(m$\cdot$K) 
-Styropian: $\delta_{styr} = 0.15$ m, $\lambda_{styr} = 0.04$ W/(m$\cdot$K)
-Pomijamy opory zjawisk konwekcyjnych na powierzchniach ($R_{si}$ i $R_{se}$).
+
+*   Cegła: $\delta_{ceg} = 0{,}25$ m, $\lambda_{ceg} = 0{,}8$ W/(m$\cdot$K)
+*   Styropian: $\delta_{styr} = 0{,}15$ m, $\lambda_{styr} = 0{,}04$ W/(m$\cdot$K)
+*   Pomijamy opory przejmowania ciepła na powierzchniach ($R'_{si}$ i $R'_{se}$).
 :::
 
 ::: {.columns}
 ::: {.column width="45%"}
 ::: {.fragment}
 ### 1. Opory cieplne warstw
-Wzór na opór przewodzenia: $R = \frac{\delta}{\lambda}$
-$$ R_{ceg} = \frac{0.25}{0.8} = \mathbf{0.3125 \, \text{m}^2\text{K/W}} $$
-$$ R_{styr} = \frac{0.15}{0.04} = \mathbf{3.75 \, \text{m}^2\text{K/W}} $$
+Opór jednostkowy warstwy: $R' = \frac{\delta}{\lambda}$
+$$ R'_{ceg} = \frac{0{,}25}{0{,}8} = \mathbf{0{,}3125 \, \text{m}^2\text{K/W}} $$
+$$ R'_{styr} = \frac{0{,}15}{0{,}04} = \mathbf{3{,}75 \, \text{m}^2\text{K/W}} $$
 :::
 :::
 ::: {.column width="55%"}
 ::: {.fragment}
 ### 2. Opór całkowity i U
 Suma oporów warstw (opór termiczny dla szeregowego przepływu): 
-$$ R_{tot} = 0.3125 + 3.75 \approx \mathbf{4.06 \, \text{m}^2\text{K/W}} $$
+$$ R'_{tot} = 0{,}3125 + 3{,}75 \approx \mathbf{4{,}06 \, \text{m}^2\text{K/W}} $$
 
 Współczynnik przenikania ciepła $U$:
-$$ U = \frac{1}{R_{tot}} = \frac{1}{4.06} \approx \mathbf{0.246 \, \text{W/(m}^2\text{K)}} $$
+$$ U = \frac{1}{R'_{tot}} = \frac{1}{4{,}06} \approx \mathbf{0{,}246 \, \text{W/(m}^2\text{K)}} $$
 :::
 :::
 :::
 ::: {.fragment .callout-important title="Wniosek" style="font-size: 0.7em;"}
-Styropian stawia **ponad 10 razy większy** opór cieplny ($3.75$) niż grubsza cegła ($0.31$)! Izolator "wykonuje całą robotę" blokując przepływ.
+Styropian stawia **ponad 10 razy większy** opór cieplny ($3{,}75$) niż grubsza cegła ($0{,}31$)! Izolator "wykonuje całą robotę" blokując przepływ.
 :::
 

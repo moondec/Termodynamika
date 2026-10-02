@@ -87,10 +87,10 @@ theme_set(theme_minimal(base_size = 18))
 3.  **Gazowe:** Gaz ziemny (Metan $CH_4$), Wodór $H_2$.
 :::
 
-### Trójkąt Spalania (Gibbsa) {.fragment}
+### Trójkąt składu C–H–O (Gibbsa) {.fragment}
 
 ::: {.fragment}
-Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, tym wyższa wartość opałowa, ale trudniejsze spalanie.
+Dla paliw stałych skład przedstawia się na trójkącie C–H–O. Im więcej C, tym wyższa wartość opałowa, ale trudniejsze spalanie.
 :::
 
 ---
@@ -105,7 +105,7 @@ Dla paliw stałych skład przedstawia się na trójkącie C-H-O. Im więcej C, t
 flowchart LR
     P["💧 <b>Paliwo</b><br>C, H, S"] --> K["🔥 <b>Komora<br>Spalania</b>"]
     POW["🌬️ <b>Powietrze</b><br>λ·L₀"] --> K
-    K --> SP["🌫️ <b>Spaliny</b><br>CO₂, H₂O, N₂"]
+    K --> SP["🌫️ <b>Spaliny</b><br>CO₂, H₂O, SO₂, N₂, O₂"]
     K --> Q["⚡ <b>Ciepło</b> Q"]
     
     style P fill:#efebe9,stroke:#795548,stroke-width:2px
@@ -135,16 +135,18 @@ $$ CH_4 + 2O_2 \rightarrow CO_2 + 2H_2O $$
 ## Zapotrzebowanie na Powietrze
 
 ::: {.fragment .callout-note appearance="simple"}
-Powietrze to nie czysty tlen! To 21% $O_2$ i 79% $N_2$.
-Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4.76 $m^3$ powietrza**.
+Powietrze to nie czysty tlen! To 21% $O_2$ i 79% $N_2$ (objętościowo).
+Aby dostarczyć 1 $m^3$ tlenu, trzeba zassać ok. **4,76 $m^3$ powietrza**.
+
+Rzeczywista ilość powietrza: $L = \lambda L_0$, gdzie $L_0$ – teoretyczne (stechiometryczne) zapotrzebowanie powietrza do spalenia 1 kg (1 m³) paliwa.
 :::
 
 ### Współczynnik Nadmiaru Powietrza ($\lambda$) {.fragment}
 
 ::: {.fragment .incremental style="font-size: 0.9em;"}
-*   $\lambda = 1$: Idealnie (stechiometria).
-*   $\lambda < 1$: Za mało tlenu $\to$ Sadza i CO (Czad). Strata energii!
-*   $\lambda > 1$: Nadmiar tlenu. Pełne spalanie, ale strata kominowa (grzejemy azot).
+*   $\lambda = 1$: Spalanie teoretyczne (stechiometryczne); w praktyce $\lambda \approx 1{,}05\text{–}1{,}5$.
+*   $\lambda < 1$: Za mało powietrza $\to$ Sadza i CO (Czad). Strata energii!
+*   $\lambda > 1$: Nadmiar powietrza. Pełne spalanie, ale strata kominowa (grzejemy azot i nadmiarowe powietrze).
 :::
 
 ---
@@ -159,7 +161,7 @@ To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
 
 ::: {.column width="50%"}
 
-### Ciepło Spalania ($HHV$) {.fragment}
+### Ciepło Spalania $W_g$ (HHV) {.fragment}
 
 ::: {.fragment}
 Całkowita energia uwolniona. Zakładamy, że woda ze spalin uległa **skropleniu** (odzyskujemy ciepło utajone).
@@ -168,7 +170,7 @@ Całkowita energia uwolniona. Zakładamy, że woda ze spalin uległa **skropleni
 
 ::: {.column width="50%"}
 
-### Wartość Opałowa ($LHV$) {.fragment}
+### Wartość Opałowa $W_d$ (LHV) {.fragment}
 
 ::: {.fragment}
 Energia "użyteczna" w zwykłym kotle. Woda ucieka w postaci pary kominem (tracimy ciepło parowania).
@@ -178,11 +180,13 @@ Energia "użyteczna" w zwykłym kotle. Woda ucieka w postaci pary kominem (traci
 ::::
 
 ::: {.fragment}
-$$ W_o = C_s - r \cdot m_{H2O} $$
+$$ W_d = W_g - r\,(9h + w) $$
+
+$r \approx 2442$ kJ/kg – ciepło parowania wody (25 °C); $h$, $w$ – udziały masowe wodoru i wilgoci w paliwie [kg/kg]; $9h$ – woda powstała ze spalenia wodoru.
 :::
 
 ::: {.fragment .callout-tip appearance="simple"}
-Kotły kondensacyjne wykorzystują HHV, osiągając sprawność > 100% (względem LHV).
+Kotły kondensacyjne odzyskują część ciepła skraplania pary ze spalin: sprawność liczona względem $W_d$ (LHV) może przekroczyć 100%, ale względem $W_g$ (HHV) jest zawsze < 100%.
 :::
 
 ---
@@ -195,7 +199,7 @@ Ponieważ tracimy jej **jakość**!
 :::
 
 ::: {.fragment .callout-tip title="Egzergia ($B$)"}
-Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia.
+Maksymalna praca użyteczna, jaką można uzyskać przy odwracalnym doprowadzeniu układu do równowagi z otoczeniem, gdy otoczenie jest jedynym źródłem ciepła.
 :::
 
 ::: {.fragment .incremental}
@@ -211,12 +215,14 @@ Maksymalna praca, jaką można uzyskać z danego układu w stosunku do otoczenia
 ::: {.callout-note title="Niszczenie egzergii"}
 Każdy proces nieodwracalny (tarcie, mieszanie, spalanie) generuje entropię i niszczy egzergię.
 
-$$ \delta B_{straty} = T_{otoczenia} \cdot \Delta S_{generowana} $$
+$$ \Delta B_{\text{strat}} = T_0 \sum \Delta S $$
+
+$T_0$ – temperatura otoczenia [K]; $\sum \Delta S$ – suma przyrostów entropii wszystkich ciał uczestniczących w procesie (entropia generowana).
 :::
 
 ---
 
-## <i class="bi bi-bar-chart-line"></i> 5. Prawo Gouy-Stodoli 
+## <i class="bi bi-bar-chart-line"></i> 5. Bilans energii elektrowni (I zasada) 
 
 ### Wykres Strat Energii w Elektrowni {.fragment}
 
@@ -242,12 +248,12 @@ flowchart LR
 ```
 
 ::: {.fragment .callout-important appearance="simple"}
-Sprawność egzergetyczna elektrowni cieplnej jest niska, dlatego przyszłością są układy skojarzone (Kogeneracja/CHP), gdzie ciepło "odpadowe" ogrzewa miasta.
+Największa strata energii to skraplacz, ale największa destrukcja egzergii zachodzi w kotle; kogeneracja (CHP) zwiększa wykorzystanie energii paliwa.
 :::
 
 ---
 
-## <i class="bi bi-lightning-charge"></i> Kogeneracja (CHP - Combined Heat and Power) 
+## <i class="bi bi-lightning-charge"></i> 6. Kogeneracja (CHP - Combined Heat and Power) 
 
 ::: {.callout-tip title="Idea układów skojarzonych"}
 Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.
@@ -268,7 +274,7 @@ Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego
 flowchart TD
     F["100 MJ Paliwo"] --> T["⚙️ Turbina"]
     T -->|"40 MJ"| E["⚡ Prąd"]
-    T -->|"60 MJ"| S["❌ Straty<br>(do rzeki)"]
+    T -->|"60 MJ"| S["❌ Straty<br>(komin + skraplacz)"]
     
     style F fill:#efebe9,stroke:#795548,stroke-width:2px
     style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
@@ -322,7 +328,7 @@ Sprawność całkowita: **~80%!**
 
 ---
 
-## <i class="bi bi-ev-station"></i> Ogniwa Paliwowe 
+## <i class="bi bi-ev-station"></i> 7. Ogniwa Paliwowe 
 
 ::: {.callout-important title="Bezpośrednia zamiana energii chemicznej w elektryczną" style="font-size: 0.7em;"}
 Ogniwa paliwowe to urządzenia elektrochemiczne, które przekształcają energię chemiczną paliwa (np. wodoru) bezpośrednio w prąd, **omijając spalanie** i cykl Carnota.
@@ -389,7 +395,7 @@ flowchart LR
 
 ---
 
-## <i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu 
+## <i class="bi bi-clipboard-check"></i> 8. Podsumowanie Kursu 
 
 ::: {.callout-note title="Droga kursu"}
 Przeszliśmy drogę od:
@@ -418,7 +424,7 @@ flowchart LR
 
 ---
 
-## <i class="bi bi-clipboard-check"></i> 6. Podsumowanie Kursu 
+## <i class="bi bi-clipboard-check"></i> 8. Podsumowanie Kursu 
 
 ### Egzamin
 
@@ -429,7 +435,7 @@ flowchart LR
 1. **I i II Zasada Termodynamiki** (Bilanse energii, entropia, odwracalność).
 2. **Właściwości substancji** (Gazy doskonałe, prawo Clapeyrona, tablice i wykresy parowe).
 3. **Przemiany gazowe** (Izoprocesy, politropy, praca objętościowa).
-4. **Obiegi gazowe** (Silniki cieplne: Otto, Diesel, Sabathe, Brayton).
+4. **Obiegi gazowe** (Silniki cieplne: Otto, Diesel, Sabathé, Brayton).
 5. **Obiegi parowe** (Siłownie parowe: obieg Rankine'a).
 6. **Obiegi lewobieżne** (Chłodnictwo, pompy ciepła, obieg Lindego).
 7. **Powietrze wilgotne i klimatyzacja** (Wykres h-X Molliera, procesy obróbki powietrza).

@@ -174,7 +174,7 @@
 <li><strong>Obieg Diesla</strong> (Silnik wysokoprężny)</li>
 <li><strong>Obieg Sabathé</strong> (Silnik wysokoprężny)</li>
 <li><strong>Obieg Joule’a-Braytona</strong> (Turbina Gazowa)</li>
-<li><strong>Porównanie Sprawności i Ciśnienie Średnie</strong></li>
+<li><strong>Średnie Ciśnienie Użyteczne</strong> (<span class="math inline">\(p_{me}\)</span>)</li>
 </ol>
 </section>
 <section id="standard-powietrzny" class="slide level2">
@@ -185,7 +185,7 @@
 <ol type="1">
 <li class="fragment">Czynnik roboczy to <strong>powietrze</strong> (gaz doskonały).</li>
 <li class="fragment">Obieg jest <strong>zamknięty</strong> (nie ma wymiany ładunku).</li>
-<li class="fragment">Spalanie zastępujemy <strong>doprowadzeniem ciepła</strong> ze źrodła zewnętrznego.</li>
+<li class="fragment">Spalanie zastępujemy <strong>doprowadzeniem ciepła</strong> ze źródła zewnętrznego.</li>
 <li class="fragment">Wydech zastępujemy <strong>odprowadzeniem ciepła</strong> (chłodzeniem).</li>
 <li class="fragment">Wszystkie procesy są odwracalne.</li>
 </ol>
@@ -197,7 +197,7 @@
 </div>
 <ul>
 <li class="fragment">Zmiana funkcji stanu (energii wewnętrznej, entropii) w pełnym cyklu wynosi zero: <span class="math display">\[ \oint dU = 0, \quad \oint dS = 0 \]</span></li>
-<li class="fragment">Z I Zasady Termodynamiki wynika, że praca netto obiegu równa jest ciepłu netto: <span class="math display">\[ L_{ob} = Q_{netto} = Q_{dop} - |Q_{wyp}| \]</span></li>
+<li class="fragment">Z I Zasady Termodynamiki wynika, że praca netto obiegu równa jest ciepłu netto: <span class="math display">\[ L_{ob} = Q_{\text{netto}} = Q_{dop} - |Q_{wyp}| \]</span></li>
 </ul>
 </section>
 <section id="geometria-silnika" class="slide level2">
@@ -214,8 +214,8 @@
 <p><span class="math display">\[ \varepsilon = \frac{V_{max}}{V_{min}} \]</span></p>
 </div>
 <ul>
-<li class="fragment">Silniki benzynowe: <span class="math inline">\(\varepsilon = 8 - 12\)</span>.</li>
-<li class="fragment">Diesle: <span class="math inline">\(\varepsilon = 14 - 24\)</span>.</li>
+<li class="fragment">Silniki benzynowe: <span class="math inline">\(\varepsilon = 8\text{–}12\)</span>.</li>
+<li class="fragment">Diesle: <span class="math inline">\(\varepsilon = 14\text{–}24\)</span>.</li>
 </ul>
 </section>
 <section id="obieg-otto-zapłon-iskrowy---zi" class="slide level2">
@@ -246,7 +246,7 @@
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<p><span class="math display">\[ \eta_{Otto} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \]</span></p>
+<p><span class="math display">\[ \eta_{\text{Otto}} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \]</span></p>
 <div style="font-size: 0.8em;">
 <ol type="1">
 <li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>).</li>
@@ -266,7 +266,7 @@
 <p><strong>Wniosek:</strong></p>
 </div>
 <div class="callout-content">
-<p>Im wyższy stopień sprężania, tym wyższa sprawność. Ograniczenie: Spalanie stukowe (benzyna wybucha sama przed iskrą).</p>
+<p>Im wyższy stopień sprężania, tym wyższa sprawność. Ograniczenie: Spalanie stukowe (samozapłon niespalonej części mieszanki przed frontem płomienia).</p>
 </div>
 </div>
 </div>
@@ -322,8 +322,8 @@
 </section>
 <section id="sprawność-diesla" class="slide level2">
 <h2><i class="bi bi-percent"></i> Sprawność Diesla</h2>
-<p>Zależy od stopnia obciążenia silnika (Stopnia obciążenia <span class="math inline">\(\rho = V_3/V_2\)</span>).</p>
-<p><span class="math display">\[ \eta_{Diesel} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_4}{V_3}=\frac{v_4}{v_3}=\frac{T_4}{T_3}\)</span>,<br>wykładnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
+<p>Zależy od stopnia obciążenia silnika (<span class="math inline">\(\varphi = V_3/V_2\)</span>).</p>
+<p><span class="math display">\[ \eta_{\text{Diesel}} = 1 - \frac{1}{\varepsilon^{\kappa-1}} \left[ \frac{\varphi^\kappa - 1}{\kappa(\varphi - 1)} \right] \]</span> gdzie: stopień obciążenia - <span class="math inline">\(\varphi = \frac{V_3}{V_2}=\frac{v_3}{v_2}=\frac{T_3}{T_2}\)</span>,<br>wykładnik adiabaty - <span class="math inline">\(\kappa=\frac{c_p}{c_v}\)</span></p>
 <ul>
 <li class="fragment">Człon w nawiasie jest zawsze <span class="math inline">\(&gt; 1\)</span>.</li>
 <li class="fragment">Dla tego samego stopnia sprężania <span class="math inline">\(\varepsilon\)</span>, Otto jest sprawniejszy niż Diesel!</li>
@@ -351,7 +351,7 @@
 <div style="font-size: 0.8em;">
 <ol type="1">
 <li class="fragment"><strong>1-2:</strong> Sprężanie izentropowe. (<span class="math inline">\(s=const\)</span>)</li>
-<li class="fragment"><strong>2-2a:</strong> Doprowadzenie ciepła przy <strong>stałej obiętości</strong> (<span class="math inline">\(v=const\)</span>).</li>
+<li class="fragment"><strong>2-2a:</strong> Doprowadzenie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>).</li>
 <li class="fragment"><strong>2a-3:</strong> Doprowadzenie ciepła przy <strong>stałym ciśnieniu</strong> (<span class="math inline">\(p=const\)</span>).</li>
 <li class="fragment"><strong>3-4:</strong> Rozprężanie izentropowe. (<span class="math inline">\(s=const\)</span>)</li>
 <li class="fragment"><strong>4-1:</strong> Odprowadzanie ciepła przy <strong>stałej objętości</strong> (<span class="math inline">\(v=const\)</span>).</li>
@@ -391,9 +391,9 @@
 <li><strong>S - Sprężarka:</strong> Sprężanie adiabatyczne powietrza.</li>
 <li><strong>K - Komora Spalania:</strong> Izobaryczne doprowadzenie ciepła (<span class="math inline">\(p=const\)</span>).</li>
 <li><strong>T - Turbina:</strong> Rozprężanie adiabatyczne (daje pracę napędową sprężarce + prąd).</li>
-<li><strong>O - Wtryskiwacz</strong></li>
-<li><strong>R - Wymiennik ciepła</strong> Odzysk ciepła ze spalin</li>
-<li><strong>N - Odbiornik macy</strong></li>
+<li><strong>W - Wtryskiwacz</strong></li>
+<li><strong>R - Wymiennik ciepła:</strong> Odzysk ciepła ze spalin</li>
+<li><strong>N - Odbiornik mocy</strong></li>
 </ol>
 </div>
 
@@ -433,9 +433,9 @@
 <section id="sprawność-braytona" class="slide level2">
 <h2><i class="bi bi-percent"></i> Sprawność Braytona</h2>
 <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<p>Zależy od sprężu (<span class="math inline">\(\pi = p_2/p_1\)</span>) a nie stopnia sprężania <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Zależy od sprężu (<span class="math inline">\(\pi = p_2/p_1\)</span>). Przy sprężaniu izentropowym <span class="math inline">\(\pi^{\frac{\kappa-1}{\kappa}} = \varepsilon^{\kappa-1}\)</span> — spręż i stopień sprężania są równoważne (wzór ma postać jak dla Otto).</p>
 </div>
-<p><span class="math display">\[ \eta_{JB} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} \]</span></p>
+<p><span class="math display">\[ \eta_{\text{JB}} = 1 - \frac{1}{\pi^{\frac{\kappa-1}{\kappa}}} \]</span></p>
 <div class="fragment">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
@@ -443,34 +443,35 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>W przeciwieństwie do Diesla, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć <span class="math inline">\(\pi = 30-40\)</span>. Problemem jest wytrzymałość łopatek turbiny na temperaturę (<span class="math inline">\(T_3 \approx 1400-1600^\circ C\)</span>).</p>
+<p>W przeciwieństwie do silnika Otto, tutaj nie jesteśmy ograniczeni spalaniem stukowym. Możemy mieć <span class="math inline">\(\pi = 30\text{–}40\)</span>. Problemem jest wytrzymałość łopatek turbiny na temperaturę (<span class="math inline">\(T_3 \approx 1400\text{–}1600\,^\circ\text{C}\)</span>).</p>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
-<h3 id="praca-wsteczna-back-work-ratio">Praca Wsteczna (Back Work Ratio)</h3>
-<p>Własność Turbin Gazowych (TG): Sprężarka zużywa aż <strong>50-60%</strong> mocy produkowanej przez turbinę! (W silniku Diesla sprężanie to tylko kilka %). Dlatego TG są bardzo czułe na sprawność komponentów.</p>
+<div class="fragment" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<h3 id="wniosek-praca-wsteczna-back-work-ratio">Wniosek: Praca Wsteczna (Back Work Ratio)</h3>
+<p>Własność Turbin Gazowych (TG): Sprężarka zużywa aż <strong>50-60%</strong> mocy produkowanej przez turbinę! (W siłowni parowej praca pompy to tylko ok. 1–2% pracy turbiny.) Dlatego TG są bardzo czułe na sprawność komponentów.</p>
 </div>
 </section>
-<section id="ciśnienie-średnie-indykowane-p_me" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 7. Ciśnienie Średnie Indykowane (<span class="math inline">\(p_{me}\)</span>)</h2>
+<section id="średnie-ciśnienie-użyteczne-p_me" class="slide level2">
+<h2><i class="bi bi-bookmark"></i> 7. Średnie Ciśnienie Użyteczne (<span class="math inline">\(p_{me}\)</span>)</h2>
 <p>Jak porównać silnik od kosiarki (mały <span class="math inline">\(V_s\)</span>) z silnikiem okrętowym (duży <span class="math inline">\(V_s\)</span>)? Używamy parametru uniezależnionego od wielkości.</p>
-<p><strong>Mean Effective Pressure (<span class="math inline">\(MEP\)</span>):</strong> Stałe ciśnienie, które działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.</p>
-<p><span class="math display">\[ p_{me} = \frac{L}{V_s} \]</span></p>
-<p>Dla nowoczesnych silników turbo: <span class="math inline">\(p_{me} \approx 20-30 \text{ bar}\)</span>. Dla wolnossących: <span class="math inline">\(10-12 \text{ bar}\)</span>.</p>
+<p><strong>Średnie ciśnienie</strong> (<em>Mean Effective Pressure</em>, <span class="math inline">\(\text{MEP}\)</span>): Stałe ciśnienie, które, działając na tłok przez cały suw pracy, wykonałoby taką samą pracę jak rzeczywisty cykl.</p>
+<p><span class="math display">\[ p_{mi} = \frac{L_i}{V_s} \;\; \text{(indykowane)}, \qquad p_{me} = \frac{L_e}{V_s} \;\; \text{(użyteczne, efektywne)} \]</span></p>
+<p><span class="math inline">\(L_i\)</span> — praca indykowana (pole wykresu indykatorowego), <span class="math inline">\(L_e\)</span> — praca użyteczna oddana na wale (po odjęciu strat mechanicznych).</p>
+<p>Dla nowoczesnych silników turbo: <span class="math inline">\(p_{me} \approx 20\text{–}30 \text{ bar}\)</span>. Dla wolnossących: <span class="math inline">\(10\text{–}12 \text{ bar}\)</span>.</p>
 </section>
 <section id="podsumowanie-w9" class="slide level2">
 <h2><i class="bi bi-clipboard-check"></i> Podsumowanie W9</h2>
 <ol type="1">
 <li><strong>Stopień sprężania <span class="math inline">\(\varepsilon\)</span></strong> to klucz do sprawności w silnikach tłokowych.</li>
-<li><strong>Otto:</strong> Ogrzewanie izochoryczne. Ograniczenie: stukowe.</li>
+<li><strong>Otto:</strong> Ogrzewanie izochoryczne. Ograniczenie: spalanie stukowe.</li>
 <li><strong>Diesel:</strong> Ogrzewanie izobaryczne. Wysokie <span class="math inline">\(\varepsilon\)</span>.</li>
 <li><strong>Brayton:</strong> Maszyny przepływowe. Obieg otwarty pracy ciągłej.</li>
 <li>Standard powietrzny ułatwia obliczenia (ciepła właściwe stałe, gaz doskonały).</li>
 </ol>
 <h3 id="zadanie-do-samodzielnego-rozwiązania">Zadanie Do Samodzielnego Rozwiązania</h3>
-<p>Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 (<span class="math inline">\(\kappa=1.4\)</span>). Wynik: <span class="math inline">\(\eta = 1 - 1/10^{0.4} \approx 60\%\)</span>. (Rzeczywista to ok 30-35%).</p>
+<p>Oblicz sprawność teoretyczną silnika benzynowego o stopniu sprężania 10 (<span class="math inline">\(\kappa=1{,}4\)</span>). Wynik: <span class="math inline">\(\eta = 1 - 1/10^{0{,}4} \approx 60\%\)</span>. (Rzeczywista to ok. 30-35%).</p>
 
 </section>
     </div>

@@ -186,7 +186,7 @@
 <li class="fragment">Wrzenie (Ciecz <span class="math inline">\(\to\)</span> Gaz)</li>
 <li class="fragment">Topnienie (Ciało stałe <span class="math inline">\(\to\)</span> Ciecz)</li>
 </ul></li>
-<li class="fragment"><strong>II Rodzaju:</strong> Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego <span class="math inline">\(C_p\)</span>.
+<li class="fragment"><strong>II Rodzaju:</strong> Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego <span class="math inline">\(c_p\)</span>.
 <ul>
 <li class="fragment">Przejście w nadciekłość (Hel).</li>
 </ul></li>
@@ -207,11 +207,11 @@
 <section id="równanie-clapeyrona-clausiusa" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Równanie Clapeyrona-Clausiusa</h2>
 <p>Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:</p>
-<p><span class="math display">\[ \frac{dp}{dT} = \frac{Q_{r}}{T (v'' - v')} \]</span></p>
+<p><span class="math display">\[ \frac{dp}{dT} = \frac{r}{T (v'' - v')} \]</span></p>
 <ul>
-<li><span class="math inline">\(Q_r\)</span>: Ciepło przemiany (ciepło parowania lub topnienia) [J/kg]</li>
-<li><span class="math inline">\(v''\)</span>: Objętość właściwa pary (gazu)</li>
-<li><span class="math inline">\(v'\)</span>: Objętość właściwa cieczy</li>
+<li><span class="math inline">\(r\)</span>: Ciepło przemiany fazowej (ciepło parowania lub topnienia) [J/kg]</li>
+<li><span class="math inline">\(v''\)</span>: Objętość właściwa fazy powstającej (przy wrzeniu: pary)</li>
+<li><span class="math inline">\(v'\)</span>: Objętość właściwa fazy zanikającej (przy wrzeniu: cieczy)</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -223,7 +223,7 @@
 <p><strong>Adnotacja</strong></p>
 </div>
 <div class="callout-content">
-<p>Ponieważ zazwyczaj <span class="math inline">\(v'' &gt; v'\)</span> (gaz większy od cieczy) i <span class="math inline">\(r &gt; 0\)</span> (trzeba grzać), to <span class="math inline">\(dp/dT &gt; 0\)</span>. Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w <span class="math inline">\(120^\circ C\)</span>, co przyspiesza gotowanie).</p>
+<p>Ponieważ zazwyczaj <span class="math inline">\(v'' &gt; v'\)</span> (gaz większy od cieczy) i <span class="math inline">\(r &gt; 0\)</span> (trzeba grzać), to <span class="math inline">\(dp/dT &gt; 0\)</span>. Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w <span class="math inline">\(120^\circ\text{C}\)</span>, co przyspiesza gotowanie).</p>
 </div>
 </div>
 </div>
@@ -231,72 +231,41 @@
 </section>
 <section id="wyjątek-wody-topnienie" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Wyjątek Wody: Topnienie</h2>
-<p>Woda (lód) ma unikalną cechę: <span class="math inline">\(v_{Lód} &gt; v_{Woda}\)</span> (lód pływa!). Zatem <span class="math inline">\(v'' - v' &lt; 0\)</span> (dla topnienia).</p>
+<p>Woda ma rzadką cechę (podobnie m.in. Bi, Ga, Si, Ge): <span class="math inline">\(v_{\text{lód}} &gt; v_{\text{woda}}\)</span> (lód pływa!). Zatem dla topnienia <span class="math inline">\(v'' - v' = v_{\text{woda}} - v_{\text{lód}} &lt; 0\)</span>.</p>
 <p><span class="math display">\[ \frac{dp}{dT} &lt; 0 \]</span></p>
 <p>Wzrost ciśnienia <strong>obniża</strong> temperaturę topnienia lodu.</p>
 <div class="fragment fade-up">
 <ul>
-<li>Dlatego pod płozą łyżwy (wysokie ciśnienie) lód topi się w temp. np. <span class="math inline">\(-2^\circ C\)</span>, tworząc warstewkę wody (poślizg).</li>
+<li>Efekt jest jednak mały: ok. <span class="math inline">\(-0{,}0074\)</span> K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.</li>
 </ul>
 </div>
 </section>
-<section id="wykres-stanów-faz-wody-we-współrzędnych-p-t." class="slide level2 center">
-<h2><i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych <span class="math inline">\(p-T\)</span>.</h2>
+<section id="wykres-stanów-faz-wody-we-współrzędnych-p-t" class="slide level2 center">
+<h2><i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych <span class="math inline">\(p\)</span>-<span class="math inline">\(T\)</span></h2>
 
 <img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
-<section id="tablice-pary-wodnej" class="slide level2">
-<h2><i class="bi bi-table"></i> 4. Tablice Pary Wodnej</h2>
-<p>Inżynier nie “liczy” pary z równania gazu doskonałego. Inżynier <strong>odczytuje</strong> z tablic.</p>
-<p>Rodzaje tablic:</p>
-<div class="fragment">
-<ol type="1">
-<li><strong>Tablice Nasycenia (wg Temperatury lub Ciśnienia):</strong>
-<ul>
-<li>Używamy, gdy wiemy, że mamy wrzenie <span class="math inline">\((p, T_{nasycenia})\)</span>.</li>
-<li>Odczytujemy <span class="math inline">\(v', v'', h', h'', s', s''\)</span>.</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li><strong>Tablice Pary Przegrzanej:</strong>
-<ul>
-<li>Używamy, gdy <span class="math inline">\(T &gt; T_{nasycenia}\)</span> (dla danego <span class="math inline">\(p\)</span>).</li>
-<li>Jest to macierz <span class="math inline">\((p, T) \to v, h, s\)</span>.</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="3" type="1">
-<li><strong>Tablice Cieczy Sprężonej:</strong>
-<ul>
-<li>Gdy <span class="math inline">\(T &lt; T_{nasycenia}\)</span>. Zazwyczaj zakładamy <span class="math inline">\(v \approx v'\)</span>.</li>
-</ul></li>
-</ol>
-</div>
-</section>
 <section id="para-nasycona---struktura" class="slide level2">
 <h2><i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura</h2>
 <p>Gdy podgrzewamy wodę pod stałym ciśnieniem:</p>
 <div class="fragment" style="font-size: 0.98em;">
 <ol type="1">
-<li class="fragment"><strong>Ciecz Dochłodzona:</strong> <span class="math inline">\(T &lt; T_{wrzenia}\)</span>.
+<li class="fragment"><strong>Ciecz Dochłodzona (Sprężona):</strong> <span class="math inline">\(T &lt; T_{\text{wrzenia}}\)</span>.
 <ul>
 <li class="fragment">💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
 </ul></li>
-<li class="fragment"><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{wrzenia}\)</span>. Pierwszy bąbel pary.
+<li class="fragment"><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{\text{wrzenia}}\)</span>. Pierwszy bąbel pary.
 <ul>
 <li class="fragment">💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
 </ul></li>
 <li class="fragment"><strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu!
 <ul>
-<li class="fragment">☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań).</li>
+<li class="fragment">☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka <span class="math inline">\(p(v''-v')\)</span>).</li>
 </ul></li>
 <li class="fragment"><strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała.
 <ul>
 <li class="fragment">☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
 </ul></li>
-<li class="fragment"><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{wrzenia}\)</span>.
+<li class="fragment"><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{\text{wrzenia}}\)</span>.
 <ul>
 <li class="fragment">💨🔥 Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
 </ul></li>
@@ -329,12 +298,12 @@
 <h2><i class="bi bi-bookmark"></i> 3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p>Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.</p>
-<p><span class="math display">\[ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} \]</span></p>
+<p><span class="math display">\[ x = \frac{m_{\text{pary}}}{m_{\text{mieszaniny}}} = \frac{m''}{m' + m''} \]</span></p>
 </div>
 <ul>
 <li><span class="math inline">\(x = 0\)</span>: <span class="math inline">\(100\%\)</span> cieczy (linia lewa).</li>
 <li><span class="math inline">\(x = 1\)</span>: <span class="math inline">\(100\%\)</span> pary (linia prawa).</li>
-<li><span class="math inline">\(x = 0.8\)</span>: <span class="math inline">\(80\%\)</span> pary, <span class="math inline">\(20\%\)</span> wody (typowa para wylotowa z turbiny).</li>
+<li><span class="math inline">\(x = 0{,}9\)</span>: <span class="math inline">\(90\%\)</span> pary, <span class="math inline">\(10\%\)</span> wody (typowa para wylotowa z turbiny kondensacyjnej).</li>
 </ul>
 </section>
 <section id="obliczanie-właściwości-pary-mokrej" class="slide level2">
@@ -353,9 +322,40 @@
 <li><span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</li>
 </ul>
 </section>
+<section id="tablice-pary-wodnej" class="slide level2">
+<h2><i class="bi bi-table"></i> 4. Tablice Pary Wodnej</h2>
+<p>Inżynier nie “liczy” pary z równania gazu doskonałego. Inżynier <strong>odczytuje</strong> z tablic.</p>
+<p>Rodzaje tablic:</p>
+<div class="fragment">
+<ol type="1">
+<li><strong>Tablice Nasycenia (wg Temperatury lub Ciśnienia):</strong>
+<ul>
+<li>Używamy, gdy wiemy, że mamy wrzenie <span class="math inline">\((p, T_{\text{nasycenia}})\)</span>.</li>
+<li>Odczytujemy <span class="math inline">\(v', v'', h', h'', s', s''\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><strong>Tablice Pary Przegrzanej:</strong>
+<ul>
+<li>Używamy, gdy <span class="math inline">\(T &gt; T_{\text{nasycenia}}\)</span> (dla danego <span class="math inline">\(p\)</span>).</li>
+<li>Jest to macierz <span class="math inline">\((p, T) \to v, h, s\)</span>.</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><strong>Tablice Cieczy Sprężonej (Dochłodzonej):</strong>
+<ul>
+<li>Gdy <span class="math inline">\(T &lt; T_{\text{nasycenia}}\)</span> (dla danego <span class="math inline">\(p\)</span>). Zazwyczaj przyjmujemy <span class="math inline">\(v \approx v'(T)\)</span>, <span class="math inline">\(h \approx h'(T)\)</span> — wartości dla cieczy nasyconej w tej samej temperaturze.</li>
+</ul></li>
+</ol>
+</div>
+</section>
 <section id="przykład-odczytu-nasycenie" class="slide level2">
 <h2><i class="bi bi-calculator"></i> Przykład Odczytu (Nasycenie)</h2>
-<p>Mamy wodę wrzącą pod ciśnieniem atmosferycznym (<span class="math inline">\(p=1\)</span> bar <span class="math inline">\(\approx 0.1\)</span> MPa). Szukamy w Tablicy Nasycenia (wg ciśnienia):</p>
+<p>Mamy wodę wrzącą pod ciśnieniem atmosferycznym (<span class="math inline">\(p=1\)</span> bar <span class="math inline">\(\approx 0{,}1\)</span> MPa). Szukamy w Tablicy Nasycenia (wg ciśnienia):</p>
 <table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 16%">
@@ -367,20 +367,20 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">p [MPa]</th>
-<th style="text-align: center;">T_sat [C]</th>
-<th style="text-align: center;">v’ [m3/kg]</th>
-<th style="text-align: center;">v’’ [m3/kg]</th>
-<th style="text-align: center;">h’ [kJ/kg]</th>
-<th style="text-align: center;">h’’ [kJ/kg]</th>
+<th style="text-align: center;"><span class="math inline">\(p\)</span> [MPa]</th>
+<th style="text-align: center;"><span class="math inline">\(T_s\)</span> [°C]</th>
+<th style="text-align: center;"><span class="math inline">\(v'\)</span> [m³/kg]</th>
+<th style="text-align: center;"><span class="math inline">\(v''\)</span> [m³/kg]</th>
+<th style="text-align: center;"><span class="math inline">\(h'\)</span> [kJ/kg]</th>
+<th style="text-align: center;"><span class="math inline">\(h''\)</span> [kJ/kg]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.10</td>
-<td style="text-align: center;"><strong>99.6</strong></td>
-<td style="text-align: center;">0.001043</td>
-<td style="text-align: center;"><strong>1.694</strong></td>
+<td style="text-align: center;">0,10</td>
+<td style="text-align: center;"><strong>99,6</strong></td>
+<td style="text-align: center;">0,001043</td>
+<td style="text-align: center;"><strong>1,694</strong></td>
 <td style="text-align: center;">417</td>
 <td style="text-align: center;"><strong>2675</strong></td>
 </tr>
@@ -388,8 +388,8 @@
 </table>
 <p>Wnioski:</p>
 <ol type="1">
-<li>Temp. wrzenia to <span class="math inline">\(99.6^\circ C\)</span>.</li>
-<li>Para zajmuje 1600 razy więcej miejsca niż woda (<span class="math inline">\(1.694 / 0.001\)</span>). Wybuchowe rozszerzanie!</li>
+<li>Temp. wrzenia to <span class="math inline">\(99{,}6^\circ\text{C}\)</span>.</li>
+<li>Para zajmuje ok. 1620 razy więcej miejsca niż woda (<span class="math inline">\(1{,}694 / 0{,}001043\)</span>). Wybuchowe rozszerzanie!</li>
 <li>Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</li>
 </ol>
 </section>
@@ -408,9 +408,9 @@
 <p><strong>Przykład</strong></p>
 </div>
 <div class="callout-content">
-<p>Szukamy entalpii pary przegrzanej przy <span class="math inline">\(p = 10\)</span> bar i <span class="math inline">\(t = 275^\circ C\)</span>.</p>
-<p>Z tablic: <span class="math inline">\(h(250^\circ C) = 2943\)</span>, <span class="math inline">\(h(300^\circ C) = 3052\)</span> kJ/kg.</p>
-<p><span class="math display">\[ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0.5 \cdot 109 \approx \mathbf{2997.5 \text{ kJ/kg}} \]</span></p>
+<p>Szukamy entalpii pary przegrzanej przy <span class="math inline">\(p = 10\)</span> bar i <span class="math inline">\(t = 275^\circ\text{C}\)</span>.</p>
+<p>Z tablic: <span class="math inline">\(h(250^\circ\text{C}) = 2943\)</span>, <span class="math inline">\(h(300^\circ\text{C}) = 3052\)</span> kJ/kg.</p>
+<p><span class="math display">\[ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0{,}5 \cdot 109 \approx \mathbf{2997{,}5 \text{ kJ/kg}} \]</span></p>
 </div>
 </div>
 </div>
@@ -440,11 +440,11 @@
 <li>Oś Y: Entalpia <span class="math inline">\(h\)</span> (Energia).</li>
 <li>Oś X: Entropia <span class="math inline">\(s\)</span>.</li>
 <li><strong>Zastosowanie:</strong> Turbiny parowe.</li>
-<li>Rozprężanie adiabatyczne (idealna turbina) to linia <strong>pionowa w dół</strong> (<span class="math inline">\(\Delta s = 0\)</span>).</li>
+<li>Rozprężanie adiabatyczne odwracalne (izentropowe, idealna turbina) to linia <strong>pionowa w dół</strong> (<span class="math inline">\(\Delta s = 0\)</span>).</li>
 <li>Różnica wysokości na wykresie (<span class="math inline">\(h_1 - h_2\)</span>) to uzyskana PRACA.</li>
 </ul>
 <div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T−s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz <strong>praca techniczna</strong> są na nim przedstawiane <strong>jako odcinki</strong>, a nie pola powierzchni</p>
+<p>Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T-s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz <strong>praca techniczna</strong> (w przemianach adiabatycznych) są na nim przedstawiane <strong>jako odcinki</strong>, a nie pola powierzchni.</p>
 </div>
 </div><div class="column" style="width:40%;">
 <p><img data-src="../img/mollier-chart.png" style="width:100.0%"></p>
@@ -452,16 +452,28 @@
 </section>
 <section id="mollier-w-praktyce" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Mollier w Praktyce</h2>
-<p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ C\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0.1\)</span> bar.</p>
+<p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0{,}1\)</span> bar.</p>
 <div style="width: 100%; margin: 0 auto;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/mermaid-figure-1.png" style="width:20.38in;height:4.07in"></p>
+<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/mermaid-figure-1.png" style="width:20.33in;height:4.74in"></p>
 </div>
 <p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" style="font-size: 0.8em;">
+<div class="callout callout-warning callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>W tym przykładzie <span class="math inline">\(x_{2s} \approx 0{,}79 &lt; 0{,}85\)</span> — trafiamy w gałąź „Erozja łopatek”. Dlatego w praktyce stosuje się m.in. przegrzew wtórny (W10).</p>
 </div>
 </div>
 </div>
@@ -473,7 +485,7 @@
 <div class="column" style="width:40%;">
 <h3 id="wykres-p-h-logarytmiczny">Wykres p-h (Logarytmiczny)</h3>
 <ul>
-<li>Oś Y: Ciśnienie absolutne <span class="math inline">\(\ln(p)\)</span>.</li>
+<li>Oś Y: Ciśnienie absolutne <span class="math inline">\(p\)</span> (skala logarytmiczna).</li>
 <li>Oś X: Entalpia właściwa <span class="math inline">\(h\)</span>.</li>
 <li><strong>Zastosowanie:</strong> Chłodnictwo / Pompy Ciepła.</li>
 <li>“Kopuła” jest mocno przechylona w prawo.</li>
@@ -485,15 +497,15 @@
 <p>Analiza typowego obiegu chłodniczego:</p>
 <ol type="1">
 <li>Parowanie: Pozioma linia w prawo (pobieranie ciepła <span class="math inline">\(q_d = \Delta h\)</span>).</li>
-<li>Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca sprężarki <span class="math inline">\(l_t= \Delta h\)</span>).</li>
+<li>Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca techniczna <span class="math inline">\(l_t = -\Delta h\)</span>; praca napędowa sprężarki <span class="math inline">\(|l_t| = \Delta h\)</span>).</li>
 <li>Skraplanie: Pozioma linia w lewo (oddawanie ciepła <span class="math inline">\(q_w=\Delta h\)</span>).</li>
 <li>Dławienie: Pionowa linia w dół (stała entalpia).</li>
 </ol>
-<p>Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X</p>
+<p>Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X.</p>
 </div>
 </section>
 <section id="para-przegrzana" class="slide level2">
-<h2><i class="bi bi-cloud-fog"></i> Para Przegrzana</h2>
+<h2><i class="bi bi-cloud-fog"></i> 6. Para Przegrzana</h2>
 <h3 id="powyżej-linii-nasycenia">Powyżej Linii Nasycenia</h3>
 <p>Para o temperaturze wyższej niż temperatura nasycenia <strong>przy danym ciśnieniu</strong> (<span class="math inline">\(T &gt; T_s\)</span>).</p>
 <p><strong>Zastosowanie w energetyce (Obieg Rankine’a):</strong></p>
@@ -504,7 +516,7 @@
 <p><strong>Cechy fizyczne:</strong></p>
 <ul>
 <li>Zachowuje się coraz bardziej jak <strong>gaz doskonały</strong> im <strong>wyższa temperatura</strong> i <strong>niższe ciśnienie</strong>.</li>
-<li>W obszarze dalekim od nasycenia: <span class="math inline">\(h \approx C_p T\)</span> (dla gazu doskonałego).</li>
+<li>W obszarze dalekim od nasycenia: <span class="math inline">\(\Delta h \approx c_p \Delta T\)</span> (jak dla gazu doskonałego). Sama wartość <span class="math inline">\(h\)</span> z tablic zależy od przyjętego stanu odniesienia, więc <span class="math inline">\(h \neq c_p T\)</span>.</li>
 </ul>
 </section>
 <section id="podsumowanie-w5" class="slide level2">
@@ -517,7 +529,7 @@
 <li><strong>Mollier (h-s):</strong> Niezastąpiony do szybkiej analizy procesów w turbinach.</li>
 </ol>
 <h3 id="zadanie-do-samodzielnego-wykonania">Zadanie Do Samodzielnego Wykonania</h3>
-<p>Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: <span class="math inline">\(p=1\)</span> bar, <span class="math inline">\(x=0.9\)</span>. Odczytaj entalpię.</p>
+<p>Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: <span class="math inline">\(p=1\)</span> bar, <span class="math inline">\(x=0{,}9\)</span>. Odczytaj entalpię.</p>
 
 </section>
     </div>

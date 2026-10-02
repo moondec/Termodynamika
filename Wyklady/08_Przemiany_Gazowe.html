@@ -200,12 +200,12 @@
 </div>
 </div>
 </div>
-<p><span class="math display">\[ dU = đQ + đL \]</span></p>
+<p><span class="math display">\[ dU = đQ - đL \]</span></p>
 <p>Gdzie:</p>
 <ul>
 <li><span class="math inline">\(dU\)</span> – zmiana energii wewnętrznej</li>
 <li><span class="math inline">\(đQ\)</span> – ciepło elementarne wymienione z otoczeniem</li>
-<li><span class="math inline">\(đL\)</span> – praca elementarna wykonana <strong>na układzie</strong>.</li>
+<li><span class="math inline">\(đL\)</span> – praca elementarna wykonana <strong>przez układ</strong>.</li>
 </ul>
 </section>
 <section id="praca-objętościowa" class="slide level2">
@@ -218,7 +218,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p>znak “+” zgodnie z konwencją przyjętą w W3</p>
+<p>Znak “+” zgodnie z konwencją przyjętą w W2</p>
 </div>
 </div>
 </div>
@@ -239,10 +239,10 @@
 <h2><i class="bi bi-list-check"></i> Właściwości Gazu Doskonałego (Przypomnienie)</h2>
 <p>Podstawowe wzory i zależności:</p>
 <ol type="1">
-<li><strong>Równanie Clapeyrona:</strong> <span class="math inline">\(pV = nRT\)</span> lub <span class="math inline">\(pv = RT\)</span> (dla 1 kg)</li>
-<li><strong>Energię wewnętrzną:</strong> Zależy tylko od temperatury, <span class="math inline">\(du = c_v dT\)</span>.</li>
-<li><strong>Entalpię:</strong> Zależy tylko od temperatury, <span class="math inline">\(dh = c_p dT\)</span>.</li>
-<li><strong>Równanie Mayera:</strong> <span class="math inline">\(C_p - C_V = nR\)</span> lub <span class="math inline">\(c_p - c_v = R\)</span>.</li>
+<li><strong>Równanie Clapeyrona:</strong> <span class="math inline">\(pV = nR_uT\)</span> lub <span class="math inline">\(pv = RT\)</span> (dla 1 kg; <span class="math inline">\(R = R_u/M\)</span> — indywidualna stała gazowa)</li>
+<li><strong>Energia wewnętrzna:</strong> Zależy tylko od temperatury, <span class="math inline">\(du = c_v dT\)</span>.</li>
+<li><strong>Entalpia:</strong> Zależy tylko od temperatury, <span class="math inline">\(dh = c_p dT\)</span>.</li>
+<li><strong>Równanie Mayera:</strong> <span class="math inline">\(C_p - C_v = nR_u\)</span> lub <span class="math inline">\(c_p - c_v = R\)</span>.</li>
 </ol>
 </section>
 <section id="metodyka-analizy" class="slide level2">
@@ -261,12 +261,13 @@
 <div class="column" style="width:60%;">
 <ol type="1">
 <li><strong>Równanie procesu:</strong> Związek między <span class="math inline">\(p\)</span> i <span class="math inline">\(v\)</span>.</li>
-<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na <span class="math inline">\(p-v\)</span>. <span class="math display">\[ l = \int p \, dv \]</span></li>
+<li><strong>Praca objętościowa (<span class="math inline">\(l\)</span>):</strong> Pole pod krzywą na wykresie <span class="math inline">\(p\)</span>-<span class="math inline">\(v\)</span>. <span class="math display">\[ l = \int p \, dv \]</span></li>
 <li><strong>Praca techniczna (<span class="math inline">\(l_t\)</span>):</strong> Pole do osi <span class="math inline">\(p\)</span>. <span class="math display">\[ l_t = -\int v \, dp \]</span></li>
 <li><strong>Ciepło (<span class="math inline">\(q\)</span>):</strong> Z I Zasady Termodynamiki. <span class="math display">\[ q = \Delta u + l \quad \text{lub} \quad q = \Delta h + l_t \]</span></li>
 </ol>
 </div><div class="column" style="width:40%;">
-<div class="fragment" title="**Wniosek:**" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<div class="fragment" style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<p><strong>Wniosek:</strong></p>
 <p>Pamiętamy zawsze: <span class="math display">\[\Delta u = c_v \Delta T\]</span> oraz <span class="math display">\[\Delta h = c_p \Delta T\]</span></p>
 </div>
 </div></div>
@@ -292,7 +293,7 @@
 </div>
 </div>
 <div class="columns">
-<div class="fragment fade-rigth column" style="width:50%;">
+<div class="fragment fade-right column" style="width:50%;">
 <h3 id="równanie-stanu-charlesa">Równanie Stanu (Charlesa)</h3>
 <p><span class="math display">\[ \frac{p_1}{T_1} = \frac{p_2}{T_2} \Rightarrow \frac{p}{T} = const \]</span></p>
 </div><div class="fragment fade-left column" style="width:50%;">
@@ -334,7 +335,7 @@
 </div>
 </div>
 <div class="columns">
-<div class="fragment fade-rigth column" style="width:50%;">
+<div class="fragment fade-right column" style="width:50%;">
 <h3 id="równanie-stanu-gay-lussaca">Równanie Stanu (Gay-Lussaca)</h3>
 <p><span class="math display">\[ \frac{v_1}{T_1} = \frac{v_2}{T_2} \Rightarrow \frac{v}{T} = const \]</span></p>
 </div><div class="fragment fade-left column" style="width:50%;">
@@ -358,7 +359,7 @@
 <section id="izobara-podsumowanie" class="slide level2">
 <h2><i class="bi bi-clipboard-check"></i> Izobara: Podsumowanie</h2>
 <ol type="1">
-<li><strong>Ciepło:</strong> <span class="math inline">\(Q_{1-2} = n c_p (T_2 - T_1)\)</span>.</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(Q_{1-2} = m c_p (T_2 - T_1)\)</span>.</li>
 <li><strong>Praca:</strong> Część ciepła idzie na wykonanie pracy objętościowej (rozszerzanie), reszta na podgrzanie (wzrost <span class="math inline">\(u\)</span>).</li>
 <li><strong>Wykres p-v:</strong> Linia pozioma.</li>
 <li>Standardowa zmiana entropii: <span class="math inline">\(\Delta s = c_p \ln(T_2/T_1)\)</span>.</li>
@@ -387,20 +388,20 @@
 </div>
 <div class="columns">
 <div class="fragment fade-left column" style="width:50%;">
-<h3 id="równanie-stanu-boyle-mariotte">Równanie Stanu (Boyle-Mariotte)</h3>
+<h3 id="równanie-stanu-boyleamariottea">Równanie Stanu (Boyle’a–Mariotte’a)</h3>
 <p><span class="math display">\[ p_1 v_1 = p_2 v_2 = const \]</span></p>
 </div><div class="fragment fade-right column" style="width:50%;">
 <h3 id="bilans-energii-1-kg-2">Bilans Energii (1 kg)</h3>
 <ol type="1">
-<li><strong>Praca:</strong> <span class="math inline">\(l = -RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
-<li><strong>Ciepło:</strong> <span class="math inline">\(q = -l\)</span> (Całe ciepło zamienia się w pracę).</li>
+<li><strong>Praca:</strong> <span class="math inline">\(l = RT \ln(v_2/v_1)\)</span> (zwróć uwagę na znak!).</li>
+<li><strong>Ciepło:</strong> <span class="math inline">\(q = l\)</span> (Całe ciepło zamienia się w pracę).</li>
 <li><strong>Wykres T-s:</strong> Pozioma linia prosta (<span class="math inline">\(T=const\)</span>).</li>
 </ol>
 </div></div>
 </section>
 <section id="obliczenia-pracy-i-entropii-izoterma" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Obliczenia Pracy i Entropii (Izoterma)</h2>
-<p><strong>Praca (bezwzględna wykonana w układzie):</strong> <span class="math display">\[ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
+<p><strong>Praca (bezwzględna, wykonana przez układ):</strong> <span class="math display">\[ L_{1-2} = \int_{V_1}^{V_2} \frac{mRT}{V} dV = mRT \ln\left(\frac{V_2}{V_1}\right) = -mRT \ln\left(\frac{p_2}{p_1}\right) \]</span></p>
 <div class="fragment fade-right">
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
@@ -426,7 +427,7 @@
 <section id="przemiana-adiabatyczna-q0" class="slide level2">
 <h2><i class="bi bi-wind"></i> 6. Przemiana Adiabatyczna (<span class="math inline">\(q=0\)</span>)</h2>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><strong>Warunek:</strong> <span class="math inline">\(dq = 0\)</span>. (Izolacja termiczna)</p>
+<p><strong>Warunek:</strong> <span class="math inline">\(đq = 0\)</span>. (Izolacja termiczna)</p>
 </div>
 <div class="fragment fade-up" title="Wskazówka praktyczna">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -453,7 +454,7 @@
 <li><strong>Ciepło:</strong> <span class="math inline">\(q = 0\)</span>.</li>
 <li><strong>Praca:</strong> <span class="math inline">\(l = -\Delta u = c_v(T_1 - T_2)\)</span>.
 <ul>
-<li>Rozprężanie: <span class="math inline">\(T \downarrow\)</span> (kosztem energii wewn).</li>
+<li>Rozprężanie: <span class="math inline">\(T \downarrow\)</span> (kosztem energii wewnętrznej).</li>
 </ul></li>
 <li><strong>Wykres T-s:</strong> Pionowa linia prosta (<span class="math inline">\(s=const\)</span>).</li>
 </ol>
@@ -462,9 +463,9 @@
 <section id="wykresy-i-właściwości-adiabata" class="slide level2">
 <h2><i class="bi bi-list-check"></i> Wykresy i Właściwości (Adiabata)</h2>
 <ul>
-<li><strong>Wykres p-V:</strong> Krzywa <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(\kappa &gt; 1\)</span>).</li>
+<li><strong>Wykres p-v:</strong> Krzywa <strong>bardziej stroma</strong> niż izoterma (ponieważ <span class="math inline">\(\kappa &gt; 1\)</span>).</li>
 <li><strong>Wykres T-s:</strong> Linia pionowa. Pole pod wykresem (ciepło) wynosi zero.</li>
-<li><strong>Praca Techniczna:</strong> <span class="math inline">\(l_t = \kappa \cdot l = \Delta h\)</span>.</li>
+<li><strong>Praca Techniczna:</strong> <span class="math inline">\(l_t = \kappa \cdot l = -\Delta h = c_p(T_1 - T_2)\)</span>.</li>
 </ul>
 
 <img data-src="08_Przemiany_Gazowe_files/figure-revealjs/unnamed-chunk-5-1.png" width="768" class="r-stretch"></section>
@@ -478,7 +479,7 @@
 <div>
 <svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 732.25 613.171875" height="480" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" style="; display: block; margin: auto auto auto auto">
 <style>#mermaid-figure-1{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:20px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff0f0;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:#ffffff;padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771529338018_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1771529338018_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M367.176,131.656L367.176,135.823C367.176,139.99,367.176,148.323,367.246,156.073C367.316,163.823,367.457,170.99,367.527,174.574L367.597,178.157"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_0" d="M287.345,355.341L252.561,375.313C217.777,395.285,148.209,435.228,113.425,461.2C78.641,487.172,78.641,499.172,78.641,505.172L78.641,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_D_0" d="M321.284,389.28L312.889,403.595C304.494,417.911,287.704,446.541,279.309,466.857C270.914,487.172,270.914,499.172,270.914,505.172L270.914,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_E_0" d="M414.067,389.28L422.296,403.595C430.524,417.911,446.981,446.541,455.209,466.857C463.438,487.172,463.438,499.172,463.438,505.172L463.438,511.172"></path><path marker-end="url(#mermaid-1771529338018_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_F_0" d="M447.861,355.486L482.266,375.434C516.67,395.382,585.48,435.277,619.884,461.224C654.289,487.172,654.289,499.172,654.289,505.172L654.289,511.172"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790944705267_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790944705267_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790944705267_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790944705267_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790944705267_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790944705267_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790944705267_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M367.176,131.656L367.176,135.823C367.176,139.99,367.176,148.323,367.246,156.073C367.316,163.823,367.457,170.99,367.527,174.574L367.597,178.157"></path><path marker-end="url(#mermaid-1790944705267_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_0" d="M287.345,355.341L252.561,375.313C217.777,395.285,148.209,435.228,113.425,461.2C78.641,487.172,78.641,499.172,78.641,505.172L78.641,511.172"></path><path marker-end="url(#mermaid-1790944705267_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_D_0" d="M321.284,389.28L312.889,403.595C304.494,417.911,287.704,446.541,279.309,466.857C270.914,487.172,270.914,499.172,270.914,505.172L270.914,511.172"></path><path marker-end="url(#mermaid-1790944705267_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_E_0" d="M414.067,389.28L422.296,403.595C430.524,417.911,446.981,446.541,455.209,466.857C463.438,487.172,463.438,499.172,463.438,505.172L463.438,511.172"></path><path marker-end="url(#mermaid-1790944705267_flowchart-v2-pointEnd_black)" style="stroke-width:3px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_F_0" d="M447.861,355.486L482.266,375.434C516.67,395.382,585.48,435.277,619.884,461.224C654.289,487.172,654.289,499.172,654.289,505.172L654.289,511.172"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
 <div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
 <span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black"></span>
 </div>
@@ -498,11 +499,11 @@ n = 1
 </p>
 </span>
 </div>
-</foreignobject></g></g><g transform="translate(463.4375, 475.171875)" class="edgeLabel"><g transform="translate(-58.828125, -15)" class="label"><foreignobject height="30" width="117.65625">
+</foreignobject></g></g><g transform="translate(463.4375, 475.171875)" class="edgeLabel"><g transform="translate(-22.1875, -15)" class="label"><foreignobject height="30" width="44.375">
 <div class="labelBkg" data-xmlns="http://www.w3.org/1999/xhtml" style="stroke-width: 3px; stroke: black; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
 <span class="edgeLabel" style=";stroke-width:3px;color:none;stroke:black">
 <p>
-n = k (kappa)
+n = κ
 </p>
 </span>
 </div>
@@ -562,7 +563,7 @@ Wartość wykładnika n
 </p>
 </span>
 </div>
-</foreignobject></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1771529338018_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+</foreignobject></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790944705267_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -673,7 +674,7 @@ Wartość wykładnika n
 <ul>
 <li>Dla izobary (<span class="math inline">\(n=0\)</span>): <span class="math inline">\(l_t = 0\)</span>.</li>
 <li>Dla izotermy (<span class="math inline">\(n=1\)</span>): <span class="math inline">\(l_t = RT \ln(p_1/p_2)\)</span>.</li>
-<li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = \Delta h = c_p(T_2 - T_1)\)</span>.</li>
+<li>Dla adiabaty (<span class="math inline">\(n=\kappa\)</span>): <span class="math inline">\(l_t = -\Delta h = c_p(T_1 - T_2)\)</span>.</li>
 </ul>
 <p>gdzie: <span class="math inline">\(\kappa = c_p/c_v\)</span>.</p>
 </section>
@@ -700,21 +701,33 @@ Wartość wykładnika n
 </section>
 <section id="sprężanie-wielostopniowe-z-chłodzeniem" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Sprężanie Wielostopniowe z Chłodzeniem</h2>
-<p>Przy dużych stopniach sprężania (<span class="math inline">\(p_2/p_1 &gt; 4\)</span>) temperatura końcowa jest zbyt wysoka. Rozwiązanie: <strong>sprężanie w kilku stopniach</strong> z chłodzeniem międzystopniowym.</p>
+<p>Przy dużych stopniach sprężania (w praktyce powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span>) temperatura końcowa jest zbyt wysoka — np. powietrze sprężane adiabatycznie od <span class="math inline">\(20^\circ\text{C}\)</span> przy <span class="math inline">\(p_2/p_1 = 8\)</span> osiąga ok. <span class="math inline">\(260^\circ\text{C}\)</span>. Rozwiązanie: <strong>sprężanie w kilku stopniach</strong> z chłodzeniem międzystopniowym.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="optymalne-ciśnienie-pośrednie">Optymalne ciśnienie pośrednie</h3>
 <p>Dla <strong>dwóch stopni</strong> (minimalna suma prac):</p>
-<p><span class="math display">\[ p_{pośr} = \sqrt{p_1 \cdot p_2} \]</span></p>
-<p>Każdy stopień ma ten sam stosunek sprężania: <span class="math display">\[ \frac{p_{pośr}}{p_1} = \frac{p_2}{p_{pośr}} = \sqrt{\frac{p_2}{p_1}} \]</span></p>
+<p><span class="math display">\[ p_{\text{pośr}} = \sqrt{p_1 \cdot p_2} \]</span></p>
+<p>Każdy stopień ma ten sam stosunek sprężania: <span class="math display">\[ \frac{p_{\text{pośr}}}{p_1} = \frac{p_2}{p_{\text{pośr}}} = \sqrt{\frac{p_2}{p_1}} \]</span></p>
 </div><div class="column" style="width:50%;">
 <h3 id="efekty">Efekty</h3>
-<div class="fragment callout-success">
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wskazówka</strong></p>
+</div>
+<div class="callout-content">
 <ol type="1">
 <li><strong>Niższa temperatura</strong> końcowa (bezpieczeństwo oleju, uszczelek).</li>
 <li><strong>Mniejsza praca</strong> całkowita (zbliżenie do izotermy).</li>
 <li><strong>Wyższy stopień sprężania</strong> bez ryzyka awarii.</li>
 </ol>
+</div>
+</div>
+</div>
 </div>
 </div></div>
 <div class="fragment" title="Uogólnienie" style="font-size: 0.8em;">
@@ -727,7 +740,7 @@ Wartość wykładnika n
 <p><strong>Uogólnienie</strong></p>
 </div>
 <div class="callout-content">
-<p>Dla <span class="math inline">\(k\)</span> stopni: <span class="math inline">\(p_i = p_1 \cdot (p_2/p_1)^{i/k}\)</span>. W praktyce: powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span> stosuje się 2 stopnie, powyżej <span class="math inline">\(\approx 60\)</span> — 3 stopnie.</p>
+<p>Dla <span class="math inline">\(z\)</span> stopni: <span class="math inline">\(p_i = p_1 \cdot (p_2/p_1)^{i/z}\)</span>, <span class="math inline">\(i = 1, \dots, z\)</span>. W praktyce stosunek sprężania w jednym stopniu nie przekracza ok. 8: powyżej <span class="math inline">\(p_2/p_1 \approx 8\)</span> stosuje się 2 stopnie, powyżej <span class="math inline">\(\approx 60\)</span> (<span class="math inline">\(\approx 8^2\)</span>) — 3 stopnie.</p>
 </div>
 </div>
 </div>
@@ -764,15 +777,15 @@ Wartość wykładnika n
 <td style="text-align: left;"><strong>Izoterma</strong></td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;"><span class="math inline">\(RT \ln(v_2/v_1)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-q\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(l\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(q\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(l = q\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Adiabata</strong></td>
 <td style="text-align: center;"><span class="math inline">\(\kappa\)</span></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">\(-\Delta u\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\Delta h\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-\Delta h\)</span></td>
 </tr>
 </tbody>
 </table>

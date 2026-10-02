@@ -92,10 +92,10 @@ $$ \oint \frac{đ Q}{T} \le 0 $$
 ```{mermaid}
 %%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
 graph TD
-    A[Nierowność<br>Clausiusa] --> B{Wynik<br>całkowania}
-    B -- "Rowne 0" --> C[Proces<br>Odwracalny<br>Idealny]
-    B -- "Mniejsze od 0" --> D[Proces<br>Nieodwracalny<br>Rzeczywisty]
-    B -- "Wieksze od 0" --> E[Proces<br>Niemozliwy]
+    A[Nierówność<br>Clausiusa] --> B{Wynik<br>całkowania}
+    B -- "Równe 0" --> C[Obieg<br>Odwracalny<br>Idealny]
+    B -- "Mniejsze od 0" --> D[Obieg<br>Nieodwracalny<br>Rzeczywisty]
+    B -- "Większe od 0" --> E[Obieg<br>Niemożliwy]
 
     style A fill:#e3f2fd,stroke:#2196f3,stroke-width:4px
     style C fill:#eafaf1,stroke:#27ae60,stroke-width:4px
@@ -112,7 +112,7 @@ graph TD
 ## <i class="bi bi-shuffle"></i> 2. Entropia ($S$) 
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Skoro dla procesu odwracalnego $\oint \frac{đ Q_{rev}}{T} = 0$, to całka ta nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
+Skoro dla obiegu odwracalnego $\oint \frac{đ Q_{rev}}{T} = 0$, to całka $\int_1^2 \frac{đ Q_{rev}}{T}$ nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
 :::
 
 ::: {.fragment}
@@ -125,7 +125,7 @@ $$ dS = \left( \frac{đ Q}{T} \right)_{rev} $$
 :::
 
 ::: {.fragment style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
-Jednostka: $[J/K]$ (lub dla entropii właściwej $s$: $[J/(kg\cdot K)]$).
+Jednostka: $[\text{J/K}]$ (lub dla entropii właściwej $s$: $[\text{J/(kg}\cdot\text{K)}]$).
 :::
 
 ::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
@@ -143,12 +143,12 @@ Dlaczego ciepło płynie od gorącego do zimnego?
 
 ::: {.column width="40%"}
 
-1.  Ciało A ($T_H$) oddaje ciepło $Q$: 
+1.  Zbiornik ciepła A ($T_H = const$) oddaje ciepło $Q$: 
 
     $$ \Delta S_A = \frac{-Q}{T_H} $$ 
     
     [ (Spadek entropii) ]{.fragment .highlight-red}
-2.  Ciało B ($T_L$) pobiera ciepło $Q$: 
+2.  Zbiornik ciepła B ($T_L = const$) pobiera ciepło $Q$: 
 
     $$ \Delta S_B = \frac{+Q}{T_L} $$ 
     
@@ -174,11 +174,11 @@ flow_data <- data.frame(
 ggplot() +
   # Blok A (Gorący)
   geom_rect(aes(xmin=0, xmax=3, ymin=3, ymax=7), fill="#e74c3c", color="black", size=1) +
-  annotate("text", x=1.5, y=5, label="Th", size=8, fontface="bold", color="white") +
+  annotate("text", x=1.5, y=5, label="bold(T[H])", parse=TRUE, size=8, color="white") +
   
   # Blok B (Zimny)
   geom_rect(aes(xmin=7, xmax=10, ymin=3, ymax=7), fill="#3498db", color="black", size=1) +
-  annotate("text", x=8.5, y=5, label="Tl", size=8, fontface="bold", color="white") +
+  annotate("text", x=8.5, y=5, label="bold(T[L])", parse=TRUE, size=8, color="white") +
   
   # Strzałka Q
   geom_segment(aes(x=3.1, xend=6.9, y=5, yend=5), arrow=arrow(length=unit(0.5,"cm")), color="#d35400", size=3) +
@@ -186,13 +186,13 @@ ggplot() +
   
   # Strzałki Entropii (Zmiany)
   # A: Spadek
-  annotate("text", x=1.5, y=2.5, label="dS = -Q/Th", size=5, color="#c0392b", fontface="bold") +
+  annotate("text", x=1.5, y=2.5, label="Delta*S[A] == -Q/T[H]", parse=TRUE, size=5, color="#c0392b", fontface="bold") +
   
   # B: Wzrost
-  annotate("text", x=8.5, y=2.5, label="dS = +Q/Tl", size=5, color="#2980b9", fontface="bold") +
+  annotate("text", x=8.5, y=2.5, label="Delta*S[B] == +Q/T[L]", parse=TRUE, size=5, color="#2980b9", fontface="bold") +
   
   # Suma
-  annotate("text", x=5, y=1.5, label="Suma dS > 0", size=6, color="#27ae60", fontface="bold") +
+  annotate("text", x=5, y=1.5, label="'Suma: ' * Delta*S[A] + Delta*S[B] > 0", parse=TRUE, size=6, color="#27ae60", fontface="bold") +
 
   xlim(-1, 11) + ylim(0, 8) +
   theme_void()
@@ -210,9 +210,9 @@ Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! P
 ## <i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii 
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Dla układu izolowanego (adiabatycznego):
+Dla układu izolowanego (bez wymiany energii i masy z otoczeniem; sama adiabatyczność nie wystarcza):
 
-$$ \Delta S_{izol} \ge 0 $$
+$$ \Delta S_{\text{izol}} \ge 0 $$
 :::
 
 ::: incremental
@@ -231,10 +231,10 @@ Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie
 ## <i class="bi bi-bookmark"></i> Generacja Entropii ($S_{gen}$) 
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Możemy zapisać bilans entropii dla dowolnego procesu:
+Bilans entropii dla układu zamkniętego (dowolny proces):
 :::
 
-$$ \Delta S_{ukladu} = \int \frac{đ Q}{T_{granicy}} + S_{gen} $$
+$$ \Delta S_{\text{układu}} = \int \frac{đ Q}{T_{\text{granicy}}} + S_{gen} $$
 
 *   $S_{gen}$: Entropia generowana wewnątrz układu przez nieodwracalności (tarcie, mieszanie, spalanie).
 *   **$S_{gen}$ nigdy nie może być ujemne!**
@@ -247,9 +247,9 @@ $$ \Delta S_{ukladu} = \int \frac{đ Q}{T_{granicy}} + S_{gen} $$
 
 ### Dla ciał nieściśliwych (Ciecze, Ciała stałe)
 
-$v \approx const$, $C_p \approx C_v = C$.
+$v \approx const$, $c_p \approx c_v = c$.
 
-$$ \Delta s = C \cdot \ln \left( \frac{T_2}{T_1} \right) $$
+$$ \Delta s = c \cdot \ln \left( \frac{T_2}{T_1} \right) $$
 
 ### Dla Gazów Doskonałych
 
@@ -259,8 +259,8 @@ $$ \Delta s = C \cdot \ln \left( \frac{T_2}{T_1} \right) $$
 
 Mamy dwa wzory (zależnie od znanych zmiennych):
 
-1.  $$ \Delta s = C_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{p_2}{p_1} \right) $$
-2.  $$ \Delta s = C_v \ln \left( \frac{T_2}{T_1} \right) + R \ln \left( \frac{v_2}{v_1} \right) $$
+1.  $$ \Delta s = c_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{p_2}{p_1} \right) $$
+2.  $$ \Delta s = c_v \ln \left( \frac{T_2}{T_1} \right) + R \ln \left( \frac{v_2}{v_1} \right) $$
 :::
 ::: {.column width="60%"}
 
@@ -283,7 +283,7 @@ $$ Q_{rev} = \int_{1}^{2} T \, dS $$
 ::: {.column width="55%"}
 
 ::: {.fragment .fade-left style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Na wykresie T-s, pole powierzchni pod krzywą przemiany reprezentuje **ciepło wymienione** w procesie (podobnie jak pole na p-v reprezentuje pracę).
+Na wykresie T-s pole powierzchni pod krzywą przemiany reprezentuje **ciepło wymienione** w procesie (podobnie jak pole na p-v reprezentuje pracę).
 :::
 
 ::: {.fragment .fade-right .callout-warning appearance="simple" style="font-size: 0.8em;"}
@@ -327,7 +327,7 @@ ggplot(df_carnot, aes(x=s, y=T)) +
   # 1. Środek (Praca = Ciepło Netto)
   # Używamy atop(), żeby zrobić dwie linijki tekstu matematycznego
   annotate("text", x=2.5, y=450, 
-           label = "atop(Q[rev])", 
+           label = "atop('Praca obiegu', L[ob] == Q[H] - Q[L])", 
            fontface="bold", color="darkgreen", size=5, parse=TRUE) +
   
   # 2. Góra (Pobieranie ciepła)
@@ -362,9 +362,9 @@ ggplot(df_carnot, aes(x=s, y=T)) +
 
 ## <i class="bi bi-1-circle"></i> 5. III Zasada Termodynamiki 
 
-Sformułowana przez Nernsta:
+Sformułowanie Plancka (na podstawie twierdzenia cieplnego Nernsta):
 
-> Entropia kryształu substancji doskonałej w temperaturze zera bezwzględnego ($0 K$) jest równa **ZERO**.
+> Entropia doskonałego kryształu czystej substancji w temperaturze zera bezwzględnego ($0\text{ K}$) jest równa **ZERO**.
 
 $$ \lim_{T \to 0} S = 0 $$
 
@@ -378,11 +378,11 @@ $$ \lim_{T \to 0} S = 0 $$
 ## <i class="bi bi-clipboard-check"></i> Podsumowanie W7 
 
 1.  **Nierówność Clausiusa:** Podstawa matematyczna II Zasady.
-2.  **Entropia:** Funkcja stanu. Rośnie w procesach nieodwracalnych, stała w odwracalnych (izentropowych).
+2.  **Entropia:** Funkcja stanu. Entropia układu izolowanego rośnie w procesach nieodwracalnych i jest stała w odwracalnych ($S_{gen} > 0$ / $S_{gen} = 0$).
 3.  **Kierunek:** Procesy biegną tam, gdzie rośnie całkowita entropia.
 4.  **Wzory:**
-    $$ \Delta s = C_p \ln(T_2/T_1) - R \ln(p_2/p_1) $$
-5.  **III Zasada:** W $0 K$ entropia wynosi 0 (stan idealnego porządku).
+    $$ \Delta s = c_p \ln(T_2/T_1) - R \ln(p_2/p_1) $$
+5.  **III Zasada:** W $0\text{ K}$ entropia doskonałego kryształu czystej substancji wynosi 0 (stan idealnego porządku).
 
 ## <i class="bi bi-bookmark"></i> Zapowiedź W8 
-Ubrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie **Przemiany Gazowe** (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.
+Uzbrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie **Przemiany Gazowe** (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.

@@ -66,9 +66,9 @@ theme_set(theme_minimal(base_size = 18))
 4.  **Wykres log(p)-h** (Analiza, Obliczenia)
 5.  **Modyfikacje Obiegu** (Dochłodzenie i Przegrzanie)
 6.  **Czynniki Chłodnicze** (Freony vs Eko)
-    -   **6a.** Metryki ekologiczne: ODP i GWP
-    -   **6b.** Porównanie parametrów (tabela + wykres GWP)
-    -   **6c.** R290 — "Święty Graal" i Technologia Monobloków
+    -   **6a.** Metryki ODP i GWP · **6b.** Cztery generacje czynników
+    -   **6c.** Wykres GWP · **6d.** Parametry i klasy bezpieczeństwa
+    -   **6e.** R290 i monobloki · **6f.** Harmonogram F-gazów (UE 2024/573)
 7.  **Pompy Ciepła** (Zastosowanie grzewcze)
 
 ---
@@ -85,7 +85,7 @@ Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie o
 :::
 
 ::: {.fragment .callout-important title="Cel i Koszt"}
-*   **Chłodziarka:** Utrzymuje $T_L < T_{otoczenia}$. Celem jest ciepło odebrane ($Q_L$).
+*   **Chłodziarka:** Utrzymuje $T_L < T_{\text{otoczenia}}$. Celem jest ciepło odebrane ($Q_L$).
 *   **Pompa Ciepła:** Ogrzewa pomieszczenie. Celem jest ciepło oddane ($Q_H$).
 :::
 
@@ -100,29 +100,29 @@ W urządzeniach chłodniczych sprawność może przekraczać 1, dlatego używamy
 :::{.columns}
 ::: {.fragment .column width="50%"}
 ### Chłodziarka ($\varepsilon_{ch}$)
-$$ COP_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} $$
+$$ \text{COP}_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} $$
 
 ::: {.fragment .callout-note appearance="minimal"}
-Dla domowej lodówki <br>$COP \approx 2-3$.
+Dla domowej lodówki <br>$\text{COP} \approx 2\text{–}3$.
 (1 kW prądu "przepompowuje" 3 kW ciepła).
 :::
 :::
 
 ::: {.column width="50%"}
 ### Pompa Ciepła ($\varepsilon_{g}$)
-$COP_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|}$
+$\text{COP}_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|}$
 
 ::: {.fragment .callout-tip appearance="minimal"}
 
 Zależność:
-$$ COP_{g} = COP_{ch} + 1 $$
+$$ \text{COP}_{g} = \text{COP}_{ch} + 1 $$
 :::
 
 :::
 :::
 
-::: {.fragment .callout-note title="Terminologia: EER" style="font-size: 0.85em;"}
-W branży chłodniczej i HVAC zamiast $COP_{ch}$ często stosuje się termin **EER** (*Energy Efficiency Ratio*). To ta sama wielkość fizyczna — stosunek wydajności chłodniczej do mocy napędowej. W normach europejskich EER jest podawany w warunkach znormalizowanych ($t_o = 2^\circ C, t_k = 40^\circ C$).
+::: {.fragment .callout-note title="Terminologia: EER" style="font-size: 0.75em;"}
+W branży chłodniczej i HVAC zamiast $\text{COP}_{ch}$ często stosuje się termin **EER** (*Energy Efficiency Ratio*). To ta sama wielkość fizyczna — stosunek wydajności chłodniczej do mocy napędowej. EER wyznacza się w warunkach badania wg PN-EN 14511 (temperatury nośników, np. klimatyzator powietrze–powietrze: 35 °C na zewnątrz, 27 °C wewnątrz); sezonowy SEER — wg PN-EN 14825.
 :::
 
 ---
@@ -160,7 +160,7 @@ Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 ### Schemat Przemian:
 
 ::: {.fragment .fade-in}
-1.  **1-2 Sprężarka:** Adiabatyczne sprężanie pary suchej ($s=const$).
+1.  **1-2 Sprężarka:** Izentropowe (adiabatyczne odwracalne) sprężanie pary suchej ($s=const$).
 :::
 ::: {.fragment .fade-in}
 2.  **2-3 Skraplacz:** Izobaryczne oddawanie ciepła ($p=const$). Czynnik skrapla się.
@@ -203,7 +203,7 @@ flowchart TD
 
 ## <i class="bi bi-bookmark"></i> Zjawisko Dławienia (Joule-Thomson) 
 
-W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.
+W elemencie dławiącym (zawór rozprężny lub rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.
 
 ::: {.fragment .callout-note appearance="minimal"}
 *   **Proces:** Przepływ bez wymiany ciepła ($Q=0$) i bez pracy ($L_t=0$).
@@ -215,7 +215,7 @@ W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona
 :::
 
 ::: {.fragment .callout-tip appearance="minimal"}
-*   **Efekt:** Dla czynników chłodniczych spadek ciśnienia powoduje **spadek temperatury** i częściowe odparowanie cieczy (powstaje para mokra o niskiej jakości).
+*   **Efekt:** Dla czynników chłodniczych spadek ciśnienia powoduje **spadek temperatury** i częściowe odparowanie cieczy (powstaje para mokra o małym stopniu suchości $x$).
 :::
 
 ::: {.fragment}
@@ -227,7 +227,7 @@ W zaworze rozprężnym (rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona
 ## <i class="bi bi-graph-up"></i> 4. Wykres log(p)-h 
 
 Podstawowe narzędzie inżyniera chłodnictwa i HVAC.
-Oś Y (log p) pozwala łatwo rysować izobary, a Oś X (h) pozwala odczytywać ciepło i pracę jako odcinki.
+Oś Y w skali logarytmicznej (log p) obejmuje szeroki zakres ciśnień, a izobary są na niej liniami poziomymi; oś X (h) pozwala odczytywać ciepło i pracę jako odcinki.
 
 **Kluczowe odległości na wykresie:**
 
@@ -277,9 +277,9 @@ dome <- data.frame(
 # h1 = 405 (Superheated)
 h1 <- 405
 p1 <- 2.0
-# P2 = 12 bar (~ 45C). Sat Gas h ~ 423.
-# h2 = 435 (Superheated, after compression)
-h2 <- 435
+# P2 = 12 bar (~ 46C). Sat Gas h ~ 422.
+# h2 = 455 (Superheated, after compression; CoolProp: h2s ~ 445 -> eta_is ~ 0.8)
+h2 <- 455
 p2 <- 12.0
 # P3 = 12 bar. Sat Liq h ~ 266.
 # h3 = 260 (Subcooled)
@@ -301,7 +301,7 @@ segments <- data.frame(
 ggplot() +
     # Dome (Smooth Path)
     geom_path(data = dome, aes(x = h, y = p), color = "grey40", size = 1) +
-    annotate("text", x = 390, y = 45, label = "C.P.", color = "grey40", fontface = "italic", size = 4) +
+    annotate("text", x = 390, y = 45, label = "PK", color = "grey40", fontface = "italic", size = 4) +
 
     # Cycle Lines with Arrows
     geom_segment(
@@ -326,7 +326,7 @@ ggplot() +
     theme_bw() +
     labs(
         title = "Rzeczywisty Obieg Lindego (R134a)",
-        subtitle = "Dane nasycenia wg NIST WebBook (High Res)",
+        subtitle = "Dane nasycenia wg NIST WebBook",
         x = "Entalpia właściwa h [kJ/kg]",
         y = "Ciśnienie p [bar]"
     )
@@ -355,24 +355,28 @@ Ciecz za skraplaczem (pkt 3) jest **dochładzana**.
 
 ## <i class="bi bi-bookmark"></i> 6. Czynniki Chłodnicze 
 
-Substancja musi wrzeć w niskiej temperaturze (np. $-20^\circ C$) i skraplać się w wysokiej ($40^\circ C$) przy rozsądnych ciśnieniach.
+Substancja musi wrzeć w niskiej temperaturze (np. $-20\,^\circ\text{C}$) i skraplać się w wysokiej ($40\,^\circ\text{C}$) przy rozsądnych ciśnieniach.
 
 ::: {.fragment style="font-size: 0.75em;"}
 
 | Generacja | Czynnik | ODP | GWP | Status | Zastosowanie |
 |-----------|---------|:---:|----:|--------|-------------|
-| CFC | R12 | 1.0 | 10 900 | ⛔ Zakazany | — |
-| HCFC | R22 | 0.05 | 1 810 | ⚠️ Wycofywany | Stare klimat. |
+| CFC | R12 | 1,0 | 10 900 | ⛔ Zakazany | — |
+|HCFC|R22|0,05|1 810|⛔ Zakazany w UE (od 2015 r.)|Stare klimat.|
 | HFC | R134a | 0 | 1 430 | ⚠️ Wycofywany | Klimatyzacja |
-| HFO | R1234yf | 0 | 4 | ✅ Aktualny | Motoryzacja |
+| HFO | R1234yf | 0 | < 1 | ✅ Aktualny | Motoryzacja |
 | Naturalny | R717 (NH₃) | 0 | 0 | ✅ | Przemysł |
 | Naturalny | R744 (CO₂) | 0 | 1 | ✅ | Supermarkety |
 | Naturalny | R290 (Propan) | 0 | 3 | ✅ | Pompy ciepła |
 
+::: {style="font-size: 0.8em; color: gray;"}
+GWP100 wg IPCC AR4 (dla HFO — AR6), jak w rozporządzeniu (UE) 2024/573.
+:::
+
 :::
 
 ::: {.fragment .callout-tip title="Trend" style="font-size: 0.9em;"}
-Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozporządzenie EU F-Gas wymusza wycofanie HFC do 2030.
+Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozporządzenie UE F-Gas (2024/573) wymusza stopniowe wycofanie HFC z rynku UE do 2050 r.
 :::
 
 ---
@@ -381,7 +385,7 @@ Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozpor
 
 Dwa parametry decydują o dopuszczalności stosowania czynnika chłodniczego.
 
-:::: {.columns}
+:::: {.columns style="font-size: 0.9em;"}
 
 ::: {.column width="48%"}
 
@@ -394,7 +398,7 @@ Odniesienie: **R11 (CFC-11) → ODP = 1,0**
 
 ::: {.fragment .callout-note appearance="minimal"}
 *   Czynniki **CFC** (R12): ODP = 1,0 ⛔ **Zakazane** (Protokół z Montrealu)
-*   Czynniki **HCFC** (R22): ODP = 0,05 ⚠️ **Wycofywane**
+*   Czynniki **HCFC** (R22): ODP = 0,05 ⛔ **Zakazane w UE (od 2015 r.)**
 *   Czynniki **HFC, HFO, naturalne**: ODP = **0** ✅
 :::
 
@@ -436,7 +440,7 @@ Odniesienie: **CO₂ → GWP = 1**
 |-----------|-------|-----------|:---:|----:|--------|
 | **I — Naturalne** | 1830–1930 | NH₃, CO₂, R290 | 0 | ≤3 | ⚠️ Toksyczność / palność |
 | **II — CFC/HCFC** | 1930–1990 | R12, R22 | **>0** | >1800 | ⛔ Dziura ozonowa |
-| **III — HFC** | 1990–2010 | R134a, R410A, R32 | 0 | **>675** | ⛔ Efekt cieplarniany |
+| **III — HFC** | 1990–2010 | R134a, R410A, R32 | 0 | **≥675** | ⛔ Efekt cieplarniany |
 | **IV — HFO + Powrót natury** | Dziś | R1234yf, **R290**, R744 | 0 | **<10** | ✅ Akceptowalne |
 
 :::
@@ -463,30 +467,39 @@ czynniki <- data.frame(
     c("R410A\n(HFC)", "R134a\n(HFC)", "R32\n(HFC)", "R1234yf\n(HFO)", "R744\n(CO2)", "R290\n(Propan)"),
     levels = c("R410A\n(HFC)", "R134a\n(HFC)", "R32\n(HFC)", "R1234yf\n(HFO)", "R744\n(CO2)", "R290\n(Propan)")
   ),
-  GWP = c(2088, 1430, 675, 4, 1, 3),
-  kategoria = c("HFC - wycofywany", "HFC - wycofywany", "HFC - przejsciowy",
+  GWP = c(2088, 1430, 675, 0.5, 1, 3),
+  etykieta = c("2088", "1430", "675", "<1", "1", "3"),
+  kategoria = c("HFC - wycofywany", "HFC - wycofywany", "HFC - przejściowy",
                 "HFO - dopuszczalny", "Naturalny", "Naturalny")
+)
+
+# Etykiety osi X (plotmath: indeks dolny w CO2)
+etykiety_x <- expression(
+  atop(bold("R410A"), bold("(HFC)")), atop(bold("R134a"), bold("(HFC)")),
+  atop(bold("R32"), bold("(HFC)")), atop(bold("R1234yf"), bold("(HFO)")),
+  atop(bold("R744"), bold("(CO"[2]*")")), atop(bold("R290"), bold("(Propan)"))
 )
 
 kolory <- c(
   "HFC - wycofywany"   = "#c0392b",
-  "HFC - przejsciowy"  = "#e67e22",
+  "HFC - przejściowy"  = "#e67e22",
   "HFO - dopuszczalny" = "#f1c40f",
   "Naturalny"          = "#27ae60"
 )
 
 ggplot(czynniki, aes(x = nazwa, y = GWP, fill = kategoria)) +
   geom_col(width = 0.65, show.legend = TRUE) +
-  geom_text(aes(label = GWP), vjust = -0.5, size = 5.5, fontface = "bold") +
+  geom_text(aes(label = etykieta), vjust = -0.5, size = 5.5, fontface = "bold") +
   geom_hline(yintercept = 750, linetype = "dashed", color = "#8e44ad", linewidth = 1) +
-  annotate("text", x = 5.5, y = 820, label = "Limit UE 2025: GWP = 750",
+  annotate("text", x = 5.0, y = 850, label = "Limit UE 2025 (single split < 3 kg): GWP = 750",
            color = "#8e44ad", fontface = "italic", size = 4.5) +
   scale_fill_manual(values = kolory, name = NULL) +
+  scale_x_discrete(labels = etykiety_x) +
   scale_y_continuous(limits = c(0, 2500), expand = c(0, 0),
                      breaks = c(0, 500, 750, 1000, 1500, 2000)) +
   labs(
-    title = "Globalny Potencjal Ocieplenia (GWP100) - porownanie czynnikow chlodniczych",
-    subtitle = "Odniesienie: CO2 = 1  |  Linia przerywana = limit rozporzadzenia UE 2024/573",
+    title = "Globalny Potencjał Ocieplenia (GWP100) – porównanie czynników chłodniczych",
+    subtitle = expression("Odniesienie: CO"[2] * " = 1  |  GWP wg rozp. UE 2024/573 (HFC: AR4, HFO: AR6)  |  Linia przerywana = limit rozporządzenia"),
     x = NULL, y = "GWP [-]"
   ) +
   theme_minimal(base_size = 15) +
@@ -512,14 +525,18 @@ ggplot(czynniki, aes(x = nazwa, y = GWP, fill = kategoria)) +
 
 | Czynnik | Typ | GWP | $p_{kr}$ [bar] | $T_{kr}$ [°C] | Klasa | Uwagi |
 |---------|-----|----:|------:|------:|:-----:|-------|
-| R410A | HFC | 2 088 | 49,0 | 72,1 | **A1** | ⛔ Zakaz od 2025 r. |
+| R410A | HFC | 2 088 | 49,0 | 72,1 | **A1** | ⛔ Zakaz w nowych klimatyzatorach single-split < 3 kg od 2025 r. |
 | R134a | HFC | 1 430 | 40,6 | 101,1 | **A1** | ⚠️ Wycofywany |
 | R32 | HFC | 675 | 57,8 | 78,1 | **A2L** | ⚠️ Przejściowy |
-| R1234yf | HFO | 4 | 33,8 | 94,7 | **A2L** | ✅ Motoryzacja |
+| R1234yf | HFO | < 1 | 33,8 | 94,7 | **A2L** | ✅ Motoryzacja |
 | R744 (CO₂) | Nat. | 1 | 73,8 | 31,1 | **A1** | ✅ Przemysł |
 | **R290 (Propan)** | **Nat.** | **3** | **42,5** | **96,7** | **A3** | ✅ **Monobloki PC** |
 
 : {.striped .hover}
+
+::: {style="font-size: 0.8em; color: gray;"}
+GWP100 wg IPCC AR4 (dla HFO — AR6), jak w rozporządzeniu (UE) 2024/573.
+:::
 
 :::
 
@@ -542,7 +559,7 @@ ggplot(czynniki, aes(x = nazwa, y = GWP, fill = kategoria)) +
 ::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.8em;"}
 **A1** (R134a, R410A) — bezpieczny, lecz GWP > 1000 ⛔
 
-**A3** (R290) — wymaga monobloku, ale GWP = 3 i **COP wyższy o 10–15%** ✅
+**A3** (R290) — zwykle w monoblokach (ograniczenie napełnienia), ale GWP = 3 i **COP porównywalny lub do ~10% wyższy** niż R410A ✅
 :::
 
 :::
@@ -561,10 +578,10 @@ ggplot(czynniki, aes(x = nazwa, y = GWP, fill = kategoria)) +
 
 ::: {.callout-tip appearance="minimal" style="font-size: 0.82em;"}
 *   **GWP = 3** — praktycznie neutralny klimatycznie
-*   **COP o ~10–15% wyższy** niż syntetyki
+*   **COP porównywalny lub do ~10% wyższy** niż R410A
 *   Temperatura zasilania **do 75°C** → stare grzejniki ✅
 *   Praca stabilna do **–25°C** zewnętrznych
-*   Gaz LPG — powszechny i tani
+*   Propan (R290 = propan o czystości chłodniczej) — powszechnie dostępny i tani
 :::
 
 ::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.82em;"}
@@ -587,14 +604,14 @@ Do wnętrza domu wchodzi tylko **woda grzewcza**.
 ```{mermaid}
 %%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '13px' }}}%%
 flowchart LR
-    subgraph OUT["Zewnatrz - MONOBLOCK R290 (ATEX)"]
+    subgraph OUT["Zewnątrz – MONOBLOK R290 (ATEX)"]
         direction TB
-        SP["Sprezarka"] --> SK["Skraplacz"]
-        SK --> ZR["Zawor Rozprezny"]
+        SP["Sprężarka"] --> SK["Skraplacz"]
+        SK --> ZR["Zawór Rozprężny"]
         ZR --> PA["Parownik"]
         PA --> SP
     end
-    OUT -- "Woda grzewcza" --> IN["Wnetrze budynku"]
+    OUT -- "Woda grzewcza" --> IN["Wnętrze budynku"]
     style OUT fill:#e8f5e9,stroke:#27ae60,stroke-width:2px
     style IN fill:#fff3e0,stroke:#f39c12,stroke-width:2px
 ```
@@ -603,10 +620,23 @@ flowchart LR
 
 ::::
 
-::: {.fragment .callout-important appearance="minimal" style="font-size: 0.72em; margin-top: 0.3em;"}
-📅 **F-Gas UE 2024/573:** od **2025** zakaz split GWP ≥ 750 | od **2032–35** stopniowy zakaz HFC w pompach ciepła | **R290 i CO₂ — standard technologiczny dekady.**
+---
+
+## <i class="bi bi-calendar-check"></i> 6f. Harmonogram F-gazów (UE 2024/573)
+
+::: {.callout-important appearance="minimal"}
+📅 **F-Gas UE 2024/573:**
+
+*   od **2025 r.** — zakaz czynników o GWP ≥ 750 w nowych klimatyzatorach single-split < 3 kg (np. R410A),
+*   zakaz F-gazów w nowych małych klimatyzatorach i pompach ciepła (z wyjątkami bezpieczeństwa):
+    *   monobloki (≤ 12 kW) — od **2032 r.**,
+    *   systemy split — od **2035 r.**,
+*   stopniowe wycofanie HFC z rynku UE — do **2050 r.**
 :::
 
+::: {.fragment .callout-tip appearance="minimal"}
+**R290 i CO₂ — standard technologiczny dekady.**
+:::
 
 ---
 
@@ -638,7 +668,7 @@ flowchart TD
 ```
 
 ::: {.fragment .callout-note appearance="minimal" style="font-size: 0.85em;"}
-$COP_{ch} = \frac{Q_L}{L}$ (typowo 2–3)
+$\text{COP}_{ch} = \frac{Q_L}{L}$ (typowo 2–3)
 :::
 :::
 
@@ -664,14 +694,14 @@ flowchart TD
 ```
 
 ::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
-$COP_{g} = \frac{Q_H}{L} = COP_{ch} + 1$ (typowo 3–5)
+$\text{COP}_{g} = \frac{Q_H}{L} = \text{COP}_{ch} + 1$ (typowo 3–5)
 :::
 :::
 
 ::::
 
-::: {.fragment .callout-important title="Obieg Gazowy (Joule'a-Braytona)|Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza. Stosowany w klimatyzacji samolotowej." style="font-size: 0.65em;"}
-
+::: {.fragment .callout-important title="Obieg gazowy (Joule'a-Braytona)" style="font-size: 0.65em;"}
+Można realizować ogrzewanie/chłodzenie bez przemian fazowych, używając powietrza. Stosowany w klimatyzacji samolotowej.
 :::
 
 ---
@@ -681,16 +711,20 @@ $COP_{g} = \frac{Q_H}{L} = COP_{ch} + 1$ (typowo 3–5)
 ::: {.incremental}
 1.  **Linde vs Carnot:** Zastąpiliśmy drogą turbinę tanim zaworem dławiącym (kosztem wzrostu entropii).
 
-2.  **Wykres p-h:** Kluczowe narzędzie. Pole parowania to moc chłodnicza.
+2.  **Wykres p-h:** Kluczowe narzędzie. Długość odcinka parowania $h_1 - h_4 = q_L$ (jednostkowa wydajność chłodnicza); moc chłodnicza $\dot{Q}_L = \dot{m}\,(h_1 - h_4)$.
 
-3.  **Ekologia:** Przyszłość to czynniki naturalne — Propan (R290, GWP=3) i $CO_2$ (R744).
-    Rozporządzenie F-Gas UE 2024/573 wymusza odwrót od HFC do 2035 r.
+3.  **Ekologia:** Przyszłość to czynniki naturalne — Propan (R290, GWP=3) i CO₂ (R744).
+    Rozporządzenie F-Gas UE 2024/573: stopniowe wycofanie HFC z rynku UE do 2050 r.; w nowych małych klimatyzatorach i pompach ciepła F-gazy zakazane od 2032 r. (monobloki) i od 2035 r. (split).
 :::
+
+---
+
+## <i class="bi bi-pencil-square"></i> Zagadnienia do Egzaminu i Zadanie Domowe
 
 ### Zagadnienia do Egzaminu{.fragment}
 
 ::: {.fragment .fade-in}
-1.  Obliczyć COP chłodziarki i pompy ciepła mając dane entalpie ($h_1, h_2, h_3, h_4$).
+1.  Obliczyć COP chłodziarki i pompy ciepła, mając dane entalpie ($h_1, h_2, h_3, h_4$).
 2.  Narysować obieg Lindego na wykresie log p - h i T-s.
 3.  Wyjaśnić różnicę między dławieniem a rozprężaniem izentropowym.
 :::

@@ -145,7 +145,7 @@ Możemy patrzeć na układ z dwóch perspektyw:
 -   Opis za pomocą wielkości **mierzalnych** i uśrednionych.
 -   Zmienne: $p, T, V, U$ (***Parametry stanu***).
 -   To podejście dominuje w inżynierii.
--   **To tzw. metoda** $fenomenologiczna$
+-   **To tzw. metoda** *fenomenologiczna*
 :::
 
 ::: {.column width="50%" .incremental}
@@ -154,12 +154,12 @@ Możemy patrzeć na układ z dwóch perspektyw:
 -   Opis stanu każdej pojedynczej cząstki.
 -   Pędy i położenia miliardów atomów.
 -   Wymaga metod statystycznych.
--   **To tzw. metoda** $statystyczna$
+-   **To tzw. metoda** *statystyczna*
 :::
 :::::
 
 ::: {.fragment .fade-up .callout-note title="Wniosek"}
-Makrostan o największej liczbie odpowiadających mu mikrostanów (największym $\Omega$) jest **najbardziej prawdopodobny** i odpowiada stanowi równowagi
+Makrostan o największej liczbie odpowiadających mu mikrostanów $\Omega$ jest **najbardziej prawdopodobny** i odpowiada stanowi równowagi.
 :::
 
 
@@ -219,7 +219,7 @@ Dla **układu izolowanego** zmiana energii wewnętrznej jest zerowa: $\Delta U =
 ::: {.column width="60%"}
 ```{r}
 #| label: fig-przemiany
-#| fig-cap: "Porównanie przemian termodynamicznych (rozprężanie gazu)"
+#| fig-cap: "Porównanie przemian termodynamicznych (rozprężanie izotermiczne i adiabatyczne, ochładzanie izochoryczne)"
 #| echo: false
 #| warning: false
 #| message: false
@@ -288,8 +288,8 @@ ggplot() +
   # Opisy osi i tytuły
   labs(
     title = "Diagram p-V: Porównanie Przemian",
-    x = "Objętość [V]",
-    y = "Ciśnienie [p]",
+    x = "Objętość V",
+    y = "Ciśnienie p",
     color = "Rodzaj Przemiany"
   ) +
   
@@ -404,8 +404,8 @@ ggplot() +
   annotate("text", x = v4 + 0.2, y = p4, label = "4", size = 6, fontface = "bold") +
   
   # D. Annotations for Heat/Work (Arrows)
-  annotate("text", x = mean(c(v1, v2)), y = mean(c(p1, p2)) * 0.5, 
-           label = "Pole = Praca (L)", color = "grey50", fontface = "italic") +
+  annotate("text", x = 2.4, y = 12.5, lineheight = 0.9,
+           label = "Pole =\nPraca (L)", color = "grey50", fontface = "italic") +
 
   # E. Colors and Scales
   scale_color_manual(values = c(
@@ -413,14 +413,22 @@ ggplot() +
     "2-3: Zapłon (Q_dost)" = "#e41a1c",      # Red (Heat In)
     "3-4: Praca (Adiabata)" = "#ff7f00",     # Orange
     "4-1: Wydech (Q_wyl)" = "#4daf4a"        # Green (Heat Out)
-  )) +
+  ),
+  # Etykiety legendy z indeksami (plotmath) zamiast widocznego podkreślnika
+  breaks = c("1-2: Sprężanie (Adiabata)", "2-3: Zapłon (Q_dost)",
+             "3-4: Praca (Adiabata)", "4-1: Wydech (Q_wyl)"),
+  labels = c("1-2: Sprężanie (Adiabata)",
+             expression("2-3: Zapłon (" * Q[dost] * ")"),
+             "3-4: Praca (Adiabata)",
+             expression("4-1: Wydech (" * Q[wyl] * ")"))
+  ) +
   
   # F. Theme details
   labs(
     title = "Obieg Otta (Silnik ZI)",
     subtitle = "Teoretyczny cykl idealny gazu doskonałego",
-    x = "Objętość [V]",
-    y = "Ciśnienie [p]",
+    x = "Objętość V",
+    y = "Ciśnienie p",
     color = "Etap cyklu"
   ) +
   theme_minimal(base_size = 16) +
@@ -455,7 +463,7 @@ flowchart LR
         
         T[Termiczna] ---|T1 = T2| A(Brak przepływu ciepła)
         M[Mechaniczna] ---|p1 = p2| B(Brak ruchu granic/tłoka)
-        C[Chemiczna] ---|u1 = u2| D(Brak dyfuzji/reakcji)
+        C[Chemiczna] ---|μ1 = μ2| D(Brak dyfuzji/reakcji)
     end
     
     style Rownowaga fill:#f9f9f9,stroke:#333,stroke-width:2px
@@ -539,14 +547,14 @@ p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = "bottom")
 
 *   **Proces Kwazistatyczny (Równowagowy):** 
     * Proces nieskończenie powolny, który w każdej chwili znajduje się nieskończenie blisko stanu równowagi termodynamicznej. 
-    * Może być odwrócony przez nieskończenie małą zmianę parametrów układu i otoczenia.
+    * Proces kwazistatyczny bez tarcia i innych zjawisk dyssypacyjnych jest **odwracalny** – może być odwrócony przez nieskończenie małą zmianę parametrów układu i otoczenia (kwazistatyczny ≠ odwracalny: np. bardzo powolne sprężanie z tarciem tłoka jest nieodwracalne).
 
 ::: incremental
 *   **Znaczenie Inżynierskie:** 
     * Procesy kwazistatyczne są często używane jako **idealny model porównawczy** dla rzeczywistych (nieodwracalnych) maszyn cieplnych i chłodniczych.
 
-*   **Przykłady procesów kwazistatycznych** 
-    * Rozprężanie adiabatyczne przy braku tarcia, Obieg Carnota, Otto, Diesla czy Rankine'a
+*   **Przykłady** 
+    * Rozprężanie adiabatyczne przy braku tarcia; obiegi teoretyczne (Carnota, Otta, Diesla, Rankine'a) złożone z przemian kwazistatycznych.
 :::
 
 ## <i class="bi bi-speedometer2"></i> Parametry Stanu
@@ -583,7 +591,7 @@ Wyobraź sobie szklankę gorącej herbaty. Jeśli przelejesz połowę herbaty do
 ::::
 
 :::: {.column width="50%"}
-![](../img/zerowa.png){width="100%" fig-align="left"} ***
+![](../img/zerowa.png){width="100%" fig-align="left"}
 
 ::: {style="font-size: 0.7em; color: red;" .fragment .fade-up .callout-tip title="Prostym językiem"}
 Dwa ciała znajdujące się w równowadze termicznej z trzecim ciałem są także w równowadze termicznej między sobą.
@@ -596,7 +604,7 @@ Dwa ciała znajdujące się w równowadze termicznej z trzecim ciałem są takż
 Energia wewnętrzna układu jest jego immanentną cechą, zależną wyłącznie od parametrów określających aktualny stan systemu.
 
 * Spadek energii układu adiabatycznego jest równy pracy wykonanej przez ten układ:
-    $E_{u1} - E_{u2} = L_{1-2}$
+    $U_1 - U_2 = L_{1-2}$
     
 ::: {.callout-warning appearance="simple" title="**Wniosek:**"}    
 Energia jest funkcją stanu, co oznacza, że jej zmiana nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
@@ -621,8 +629,9 @@ W układzie SI podstawową jednostką pracy, ciepła i energii jest **dżul (J)*
 * $1 \text{ J} = 1 \text{ N} \cdot \text{m} = 1 \text{ W} \cdot \text{s}$
 * W technice często stosujemy wielokrotności: $1 \text{ kJ} = 10^3 \text{ J}$.
 * Jednostki pozaukładowe dopuszczone:
-    * Kilowatogodzina: $1 \text{ kWh} = 3,6 \cdot 10^6 \text{ J}$
-    * Koniogodzina: $1 \text{ KMh}$ (praca silnika o mocy 1 KM w ciągu 1 h).
+    * Kilowatogodzina: $1 \text{ kWh} = 3{,}6 \cdot 10^6 \text{ J}$
+* Jednostki dawne (niedopuszczone w UE, spotykane w starszej literaturze):
+    * Koniogodzina: $1 \text{ KMh} \approx 2{,}648 \text{ MJ}$ (praca silnika o mocy 1 KM w ciągu 1 h).
 
 
 ## <i class="bi bi-thermometer"></i> Temperatura i Skale
@@ -634,11 +643,11 @@ W układzie SI podstawową jednostką pracy, ciepła i energii jest **dżul (J)*
 ::: {style="font-size: 0.9em;"}
 W Termodynamice Technicznej i obliczeniach preferowana jest **skala bezwzględna (Kelvina)**.
 
-$$ T[K] = t[°C] + 273.15 $$
+$$ T[K] = t[°C] + 273{,}15 $$
 
 Konwersja na skalę Fahrenheita ($t_F$): $$ t_F = \frac{9}{5} t + 32; \space t = \frac{5}{9} (t_F - 32) $$
 
-Konwersja na skalę Rankine \[°R\] ($t_R$): $$ t_R = t_F + 459,67; \space t_F = t_R - 459,67 $$ $$ t_R = \frac{9}{5} T; \space T = \frac{5}{9} t_R $$
+Konwersja na skalę Rankine'a \[°R\] ($t_R$): $$ t_R = t_F + 459{,}67; \space t_F = t_R - 459{,}67 $$ $$ t_R = \frac{9}{5} T; \space T = \frac{5}{9} t_R $$
 :::
 :::
 
@@ -649,10 +658,10 @@ Konwersja na skalę Rankine \[°R\] ($t_R$): $$ t_R = t_F + 459,67; \space t_F =
 :::
 :::::
 
-## <i class="bi bi-speedometer"></i>Ciśnienie i Energia Cząstek
+## <i class="bi bi-speedometer"></i> Ciśnienie i Energia Cząstek
 
 
-### Makroskopowe $p$ a Mikroskopowe $v$
+### Makroskopowe $p$ a Mikroskopowe $w$
 
 Ciśnienie makroskopowe ($p$) jest bezpośrednio związane z **ruchami cząstek** w mikroskali.
 
@@ -663,9 +672,9 @@ Ciśnienie makroskopowe ($p$) jest bezpośrednio związane z **ruchami cząstek*
 ::: { style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 **Równanie kinetyczne gazów:**
 
-Ciśnienie zależy od liczby cząstek $N$, masy pojedynczej cząsteczki $m$ i średniej kwadratu prędkości $\overline{v^2}$.
+Ciśnienie zależy od liczby cząstek $N$, masy pojedynczej cząsteczki $m$ i średniej kwadratu prędkości $\overline{w^2}$.
 
-$$ p V = \frac{1}{3} N m \overline{v^2} $$
+$$ p V = \frac{1}{3} N m \overline{w^2} $$
 :::
 :::
 
@@ -678,8 +687,8 @@ $$ p V = \frac{1}{3} N m \overline{v^2} $$
 **Właściwości ciśnienia:**
 
 *   W gazie jako całości rozkład prędkości jest **izotropowy** (taki sam w każdym kierunku).
-*   Ciśnienie to siła $dF$ wywierana przez cząstki na pole powierzchni $A$:
-    $$ p = \frac{dF}{dA} $$
+*   Ciśnienie to składowa normalna siły $dF_n$ wywieranej przez cząstki na element powierzchni $dA$:
+    $$ p = \frac{dF_n}{dA} $$
 :::
 :::
 :::::
@@ -745,11 +754,11 @@ ggplot() +
   # --- OZNACZENIA ---
   # Poziom cieczy lewy
   geom_segment(aes(x=-r_outer-0.5, xend=-r_inner+0.5, y=h_left, yend=h_left), linetype="dashed") +
-  annotate("text", x=-2.5, y=h_left, label="p[1] (gaz)", parse=TRUE, fontface="bold", size=5) +
+  annotate("text", x=-1.9, y=h_left, label="p[1] (gaz)", parse=TRUE, fontface="bold", size=5, hjust=1) +
   
   # Poziom cieczy prawy
   geom_segment(aes(x=r_inner-0.5, xend=r_outer+0.5, y=h_right, yend=h_right), linetype="dashed") +
-  annotate("text", x=2.5, y=h_right, label="p[2] (atm)", parse=TRUE, fontface="bold", size=5) +
+  annotate("text", x=1.9, y=h_right, label="p[2] (atm)", parse=TRUE, fontface="bold", size=5, hjust=0) +
   
   # Delta h wymiarowanie
   geom_segment(aes(x=0, xend=0, y=h_left, yend=h_right), arrow=arrow(length=unit(0.2,"cm"), ends="both")) +
@@ -764,7 +773,7 @@ ggplot() +
   xlim(-3.5, 3.5) + ylim(-2, 11)
 ```
 
-$$ \Delta p = \rho_{cieczy} \cdot g \cdot h $$
+$$ \Delta p = \rho_{\text{cieczy}} \cdot g \cdot \Delta h $$
 
 ## Współczynniki Termiczne
 
@@ -815,7 +824,7 @@ Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to 
 
 ::: {style="background-color: #b3b9f4ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 
-Równanie stanu dla 1 mola gazu doskonałego: $$ \frac{pV}{RT} = 1 $$
+Równanie stanu dla 1 mola gazu doskonałego ($V_m$ – objętość molowa, $R_u$ – uniwersalna stała gazowa): $$ \frac{pV_m}{R_u T} = 1 $$
 
 **Kiedy działa?** - Dla małych ciśnień i wysokich temperatur.
 
@@ -823,7 +832,7 @@ Równanie stanu dla 1 mola gazu doskonałego: $$ \frac{pV}{RT} = 1 $$
 :::
 ::::
 
-:::: {.column width="50%" style="font-size: 0.95em;"}
+:::: {.column style="width: 50%; font-size: 0.95em;"}
 ### [Model Rzeczywisty: Gaz Rzeczywisty]{style="color: #25560dff"}
 
 ### [Równanie Van der Waalsa]{style="color: #468826ff"}
@@ -831,16 +840,16 @@ Równanie stanu dla 1 mola gazu doskonałego: $$ \frac{pV}{RT} = 1 $$
 ::: {style="background-color: #47a542ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);"}
 Równanie van der Waalsa koryguje model idealny, uwzględniając:
 
-$$ \left(p + \frac{a}{V^2}\right) (V - b) = RT $$
+$$ \left(p + \frac{a}{V_m^2}\right) (V_m - b) = R_u T $$
 
 **Poprawki Fizyczne:** 
 
 ::: {style="font-size: 0.7em;"}
 1. **Objętość cząsteczek**
-$b$: Odejmujemy objętość własną cząsteczek od objętości $V$ zbiornika. Wpływa to na ograniczenie dostępnej przestrzeni dla ruchu cząstek.
+$b$: Odejmujemy od objętości molowej $V_m$ **kowolumen** – objętość niedostępną dla ruchu cząsteczek (ok. 4-krotność ich objętości własnej).
 
 2. **Oddziaływania**
-$a/V^2$: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania między cząsteczkami. Poprawka ta uwzględnia fakt, że cząstki gazu rzeczywistego wzajemnie się przyciągają, co redukuje parcie na ścianki naczynia.
+$a/V_m^2$: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania między cząsteczkami. Poprawka ta uwzględnia fakt, że cząstki gazu rzeczywistego wzajemnie się przyciągają, co redukuje parcie na ścianki naczynia.
 :::
 :::
 ::::
@@ -869,7 +878,7 @@ Vr <- seq(0.5, 5, length.out = 500)
 
 # Izoterma T < Tk
 pr <- (8 * Tr) / (3 * Vr - 1) - (3 / Vr^2)
-df_vdw <- data.frame(Vr = Vr, pr = pr, Typ = "T < Tk (Tr=0.85)")
+df_vdw <- data.frame(Vr = Vr, pr = pr, Typ = "T < Tk (Tr = 0,85)")
 
 # Izoterma krytyczna T = Tk
 Tr_crit <- 1.0
@@ -899,6 +908,11 @@ df_crit_point <- data.frame(Vr = 1.0, pr = 1.0, label = "K (Punkt Krytyczny)", c
 
 df_points <- rbind(df_points, df_crit_point)
 
+# Położenie etykiet (V1, V3, V2, K) - przesunięte tak, aby nie nachodziły na krzywe
+df_points$lx <- df_points$Vr + c(0.04, 0.06, 0, 0.06)
+df_points$ly <- df_points$pr + c(0.05, -0.05, 0.08, 0.06)
+df_points$hj <- c(0, 0, 0.5, 0)
+
 ggplot() +
   # Krzywe
   geom_line(data = df_all, aes(x = Vr, y = pr, color = Typ), linewidth = 1.5) +
@@ -906,10 +920,10 @@ ggplot() +
   geom_line(data = df_line, aes(x = Vr, y = pr), color = '#e74c3c', linewidth = 1, linetype = "dashed") +
   # Punkty węzłowe
   geom_point(data = df_points, aes(x = Vr, y = pr), color = df_points$color, size = 5) +
-  geom_text(data = df_points, aes(x = Vr, y = pr + 0.05, label = label), fontface = "bold", color = df_points$color) +
+  geom_text(data = df_points, aes(x = lx, y = ly, label = label, hjust = hj), fontface = "bold", color = df_points$color) +
   
   # Estetyka ramy
-  scale_color_manual(values = c("T < Tk (Tr=0.85)" = "#2196f3", "T = Tk (Krytyczna)" = "#9e9e9e")) +
+  scale_color_manual(values = c("T < Tk (Tr = 0,85)" = "#2196f3", "T = Tk (Krytyczna)" = "#9e9e9e")) +
   coord_cartesian(xlim = c(0.4, 4), ylim = c(0.2, 1.3)) +
   labs(
     title = "Ewolucja objętości w równaniu van der Waalsa",
@@ -934,7 +948,7 @@ ggplot() +
 :::
 
 ::: {.fragment .callout-note title="Punkt Krytyczny" style="font-size: 0.9em;"}
-(**$T_k$**): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, odcinek $V_1-V_2$ skraca się do zera: $V_1 = V_2 = V_k$. Ten unikalny punkt ($K$) wyznacza koniec "kopuły nasycenia".
+(**$T_k$**): Wraz ze wzrostem temperatury $T$, objętości cieczy ($V_1$) i pary ($V_2$) zbliżają się do siebie. W temperaturze krytycznej $T_k$, odcinek $V_1$–$V_2$ skraca się do zera: $V_1 = V_2 = V_k$. Ten unikalny punkt ($K$) wyznacza koniec "kopuły nasycenia".
 :::
 
 ::: {.notes}
@@ -949,7 +963,7 @@ ggplot() +
 ::::
 ## Stany Metastabilne
 
-### Niestabilne Stany Równowagi
+### Metastabilne (Nietrwałe) Stany Równowagi
 
 Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistości można osiągnąć w specyficznych warunkach:
 
@@ -964,7 +978,7 @@ Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistośc
 :::::
 
 ::: {.fragment .callout-note title="Stany Metastabilne:"}
-Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana)
+Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana).
 :::
  
 ## Przemiany Fazowe
@@ -974,7 +988,10 @@ Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para p
 
 Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja istnieje w danej fazie (stałej, ciekłej, gazowej lub ich równowadze).
 
-**Przykłady wykresów fazowych:** - Woda (posiadająca punkt potrójny). - Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
+**Przykłady wykresów fazowych:**
+
+- Woda (anomalia: ujemne nachylenie krzywej topnienia – wzrost ciśnienia obniża temperaturę topnienia lodu).
+- Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
 
 ::::: columns
 ::: {.column width="50%"}
@@ -991,8 +1008,8 @@ Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja i
 
 1.  Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?
 2.  Czy temperatura w $^\circ C$ jest parametrem intensywnym czy ekstensywnym?
-3.  Jeśli manometr na oponie pokazuje 2.2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?
+3.  Jeśli manometr na oponie pokazuje 2,2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?
 
-    [Odp: $2.2 + 1.0 = 3.2$ bara.]{.fragment style="color: #7f2d2dff"}
+    [Odp: $2{,}2 + 1{,}0 = 3{,}2$ bara.]{.fragment style="color: #7f2d2dff"}
 
 Dziękuję za uwagę!

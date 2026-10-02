@@ -90,14 +90,14 @@ theme_set(theme_thermo())
 3.  **Suchość Pary** i erozja łopatek.
 4.  **Przegrzew Wtórny** (Reheat)
 5.  **Regeneracja Podgrzewaczowa** (Regeneration)
-6.  **Układy Gazowo-Parowe** (IGCC/CCGT)
+6.  **Układy Gazowo-Parowe** (CCGT)
 
 ---
 
 ## <i class="bi bi-cloud-fog"></i> 1. Dlaczego Para Wodna? 
  
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Siłownie parowe produkują >70% elektryczności na świecie (węgiel, atom, biomasa).
+Siłownie parowe produkują ok. 55–60% elektryczności na świecie (węgiel, atom, biomasa, część parowa bloków gazowo-parowych; Ember 2023).
 Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 :::
 
@@ -108,7 +108,7 @@ Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 ::: {.column width="60%"}
 
 ::: {.incremental}
-1.  **Pompa wodna:** Spręża ciecz (mała praca, bo ciecz nieściśliwa).
+1.  **Pompa wodna:** Spręża ciecz (mała praca, bo ciecz ma małą objętość właściwą: $l_p \approx v\,\Delta p$).
 2.  **Kocioł (Generator Pary):** Dostarcza ciepło, zamienia wodę w parę.
 3.  **Turbina:** Para rozpręża się, napędzając generator.
 4.  **Skraplacz:** Para skrapla się do wody (oddając ciepło do rzeki/chłodni).
@@ -146,7 +146,7 @@ flowchart TD
 
 > Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.
 
-W teorii, aby osiągnąć maksymalną sprawność, para musiałaby być skraplana do cieczy nasyconej, **a następnie sprężana do ciśnienia kotła**, co jest niemożliwe do zrealizowania w praktyce.
+W teorii para musiałaby być skraplana tylko częściowo, **a następnie para mokra (mieszanina dwufazowa) sprężana izentropowo do cieczy nasyconej przy ciśnieniu kotła** (pkt $3' \to 4'$), co jest niemożliwe w praktyce. Sprężanie samej cieczy w pompie to już obieg Rankine'a.
 
 ::: {style="text-align: center;"}
 ![](../img/carnot_pw.png){width=25%}
@@ -165,7 +165,7 @@ Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieńst
 :::
 
 ::: {.callout-important appearance="simple"}
-Jest to realizacja obiegu Carnota dla pary, ale z modyfikacjami.
+Jest to praktyczna modyfikacja obiegu Carnota dla pary: para jest skraplana całkowicie, a pompa spręża samą ciecz.
 :::
 
 ::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
@@ -173,7 +173,7 @@ Wykres h-s (Molliera) jest kluczowy do analizy tego obiegu, ponieważ praca tech
 
 ::: incremental
 *   **Praca turbiny:** $l_t = h_3 - h_4$ (spadek entalpii w pionie dla idealnej turbiny).
-*   **Ciepło doprowadzone:** $q_{in} = h_3 - h_2$ (różnica entalpii pary wylotowej i wody zasilającej).
+*   **Ciepło doprowadzone:** $q_{in} = h_3 - h_2$ (różnica entalpii pary świeżej na wylocie z kotła i wody zasilającej).
 
 :::
 :::
@@ -417,21 +417,21 @@ ggplot() +
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
-Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
+Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
 :::
 :::
 
 ::: {.column width="40%"}
 ::: {.incremental}
-1.  **1-2:** Sprężanie izentropowe wody w pompie.
-2.  **2-3:** Izobaryczne podgrzewanie i wrzenie w kotle.
-3.  **3-4:** Rozprężanie izentropowe pary w turbinie.
+1.  **1-2:** Sprężanie adiabatyczne wody w pompie (nieodwracalne, $\eta_p = 0{,}85$).
+2.  **2-3:** Izobaryczne podgrzewanie, wrzenie i przegrzewanie w kotle.
+3.  **3-4:** Rozprężanie adiabatyczne pary w turbinie (nieodwracalne, $\eta_t = 0{,}85$).
 4.  **4-1:** Izobaryczne (i izotermiczne) skraplanie.
 :::
 
 ::: fragment
 **Sprawność:**
-$$ \eta_{C-R} = \frac{l_{turbiny} - l_{pompy}}{q_{dostarczone}} \approx \frac{h_3 - h_4}{h_3 - h_2} $$
+$$ \eta_{\text{C-R}} = \frac{l_{\text{turbiny}} - l_{\text{pompy}}}{q_{\text{dostarczone}}} \approx \frac{h_3 - h_4}{h_3 - h_2} $$
 
 :::
 :::
@@ -546,7 +546,7 @@ ggplot() +
     geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
     geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
     annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
-    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") + # Adjusted label pos
+    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = "gray50") + # Adjusted label pos
 
     # 1-2 Pump
     geom_path(data = df_12, aes(x = s, y = h), color = "blue", size = 2, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
@@ -586,7 +586,7 @@ ggplot() +
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
-Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
+Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ woda jest w zasadzie nieściśliwa.
 :::
 :::
 
@@ -594,12 +594,12 @@ Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ w
 
 ### Zalety wykresu h-s{.fragment}
 
-::: {.incremental}
+::: {.incremental style="font-size: 0.9em;"}
 1.  **Entalpia na osi Y:**
     Wszystkie wielkości energetyczne (Praca, Ciepło) są pionowymi odcinkami. Nie trzeba liczyć pól powierzchni (jak w T-s).
 
 2.  **Rozprężanie (Ekspansja) w turbinie:**
-    W przypadku idealnym ($s=const$), proces w turbinie jest linią pionową skierowaną w dół.
+    W przypadku idealnym ($s=const$) proces w turbinie jest linią pionową skierowaną w dół.
     
 3.  **Łatwy odczyt spadku entalpii:**
     $$ l_t = h_3 - h_4 $$
@@ -619,7 +619,7 @@ Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ w
 ![](../img/rankine_rzeczywisty.png)
 
 ::: {style="font-size: 0.6em; color: gray;"}
-Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
+Źródło: "Termodynamika Techniczna" Wiśniewski (2017). Oznaczenia na rysunku → w wykładzie: 1 → 3, 2s → 4s, 2 → 4, (3,4) → (1,2).
 :::
 :::
 
@@ -634,9 +634,9 @@ Punkty **1-2**, w rzeczywistości niemal nakładają się na siebie, ponieważ w
 %%| fig-height: 8
 %%| fig-align: center
 flowchart TD
-    A["<b>Stan 1 (Wlot)</b><br>p = 100 bar<br>h = 3375 kJ/kg"] 
-    B["<b>Stan 2s (Idealny)</b><br>p = 0.1 bar<br>h = 2100 kJ/kg"]
-    C["<b>Stan 2 (Rzeczywisty)</b><br>p = 0.1 bar<br>h = 2291 kJ/kg"]
+    A["<b>Stan 3 (Wlot)</b><br>p = 100 bar<br>h = 3375 kJ/kg"] 
+    B["<b>Stan 4s (Idealny)</b><br>p = 0,1 bar<br>h = 2100 kJ/kg"]
+    C["<b>Stan 4 (Rzeczywisty)</b><br>p = 0,1 bar<br>h = 2291 kJ/kg"]
     
     A -->|"Rozprężanie<br>Idealne<br>(pionowo)"| B
     A -->|"Rozprężanie<br>Rzeczywiste<br>(w prawo)"| C
@@ -657,20 +657,20 @@ flowchart TD
 
 Rzeczywista turbina nie jest idealna — występują tarcie, straty cieplne i turbulencje. Definiujemy sprawność izentropową jako stosunek pracy rzeczywistej do idealnej:
 
-$$ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} $$
+$$ \eta_{is} = \frac{h_3 - h_4}{h_3 - h_{4s}} $$
 
 ::: {.columns}
 ::: {.column width="50%"}
 ::: {.fragment .callout-note}
-*   $h_{2s}$ — entalpia na wylocie w procesie idealnym (izentropowym, $s=const$)
-*   $h_{2r}$ — entalpia na wylocie w procesie rzeczywistym
-*   Typowe wartości: $\eta_{is} = 0.75 - 0.90$
+*   $h_{4s}$ — entalpia na wylocie w procesie idealnym (izentropowym, $s=const$)
+*   $h_4$ — entalpia na wylocie w procesie rzeczywistym
+*   Typowe wartości: $\eta_{is} = 0{,}75\text{–}0{,}90$
 :::
 :::
 ::: {.column width="50%"}
 ::: {.fragment .callout-tip}
 **Rzeczywista entalpia wylotowa:**
-$$ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) $$
+$$ h_4 = h_3 - \eta_{is} \cdot (h_3 - h_{4s}) $$
 
 Na wykresie h-s linia rozprężania **odchyla się w prawo** (wzrost entropii), ponieważ proces jest nieodwracalny.
 :::
@@ -687,7 +687,7 @@ Oznacza to, że jest to **para mokra** (mieszanina pary i kropelek wody).
 :::
 
 ::: fragment
-*   Jeśli $x < 0.85-0.90$ (więcej niż 10-15% wody):
+*   Jeśli $x < 0{,}85\text{–}0{,}90$ (więcej niż 10-15% wody):
     *   Kropelki wody uderzają w łopatki wirnika z prędkością kilkuset m/s.
     *   Powoduje to **erozję** (wżery) i zniszczenie turbiny.
     
@@ -720,7 +720,7 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 %%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '20px', 'fontFamily': 'sans-serif' }}}%%
 flowchart LR
     K["<b>Kocioł</b><br>Dostarcza ciepło <em style='font-style: italic'>q<sub>in</sub></em>"] --> HP["<b>Turbina HP</b><br>Praca <em style='font-style: italic'>l<sub>HP</sub></em>"]
-    HP --> K2["<b>Przegrzewacz</b><br>Ciepło <em style='font-style: italic'>q<sub>rh</sub></em>"]
+    HP --> K2["<b>Przegrzewacz<br>wtórny</b><br>(międzystopniowy)<br>Ciepło <em style='font-style: italic'>q<sub>rh</sub></em>"]
     K2 --> LP["<b>Turbina LP</b><br>Praca <em style='font-style: italic'>l<sub>LP</sub></em>"]
     LP --> S["<b>Skraplacz</b><br>Ciepło <em style='font-style: italic'>q<sub>out</sub></em>"]
     S --> P["<b>Pompa</b><br>Praca <em style='font-style: italic'>l<sub>p</sub></em>"]
@@ -775,27 +775,26 @@ dome_vap_df <- data.frame(s = spline_vap$x, h = spline_vap$y)
 
 # --- 2. REHEAT POINTS ---
 
-# P3 (HP Inlet): 100 bar, 550C -> s=6.75, h=3500
-p3 <- data.frame(s = 6.75, h = 3500)
+# Values from CoolProp (Water), isentropic expansions
+# P3 (HP Inlet): 100 bar, 550C -> s=6.758, h=3502
+p3 <- data.frame(s = 6.76, h = 3502)
 
-# P3a (HP Outlet): 20 bar. Isentropic s=6.75.
-# At 20 bar, s_sat_vap ~ 6.34, so it is still superheated or close.
-# Let's say h ~ 2900 (just approximate for visual)
-p3a <- data.frame(s = 6.75, h = 2900)
+# P3a (HP Outlet): 20 bar. Isentropic s=6.758.
+# At 20 bar, s_sat_vap ~ 6.34, so it is still superheated (T ~ 298C), h ~ 3019
+p3a <- data.frame(s = 6.76, h = 3019)
 
 # P3b (LP Inlet / Reheat): 20 bar, reheated to 550C.
 # Pressure is lower than P3, so entropy is higher for same T.
-# s ~ 7.7, h ~ 3600 (approx)
-p3b <- data.frame(s = 7.7, h = 3600)
+# s = 7.572, h = 3579
+p3b <- data.frame(s = 7.57, h = 3579)
 
-# P4 (LP Outlet): 0.1 bar. Isentropic from P3b. s=7.7.
-# s_liq=0.65, s_vap=8.15. x = (7.7-0.65)/7.5 = 0.94 (Very dry!)
-# h = 192 + 0.94*2392 ~ 2440
-p4 <- data.frame(s = 7.7, h = 2440)
+# P4 (LP Outlet): 0.1 bar. Isentropic from P3b. s=7.572.
+# s_liq=0.649, s_vap=8.149 -> x = 0.923, h = 2400
+p4 <- data.frame(s = 7.57, h = 2400)
 
 # P4_old (No Reheat): Continued expansion from 3.
-# s=6.75. We calculated h=2130 (x=0.81).
-p4_old <- data.frame(s = 6.75, h = 2130)
+# s=6.758 -> x = 0.815, h = 2140
+p4_old <- data.frame(s = 6.76, h = 2140)
 
 
 # --- 3. PROCESS LINES ---
@@ -818,8 +817,7 @@ ggplot() +
     geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
     annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
     annotate("point", x = 4.43, y = 2100, size = 3, color = "gray50") +
-    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") +
-    annotate("text", x = 4.43, y = 1900, label = "P.Krytyczny", size = 4, fontface = "italic", color = "gray50") +
+    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = "gray50") +
 
     # HP Turbine
     geom_path(data = df_3_3a, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
@@ -838,17 +836,17 @@ ggplot() +
         x = c(p3$s, p3a$s, p3b$s, p4$s, p4_old$s),
         y = c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size = 4
     ) +
-    annotate("text", x = p3$s, y = p3$h + 150, label = "3 (HP In)", size = 5, fontface = "bold") +
-    annotate("text", x = p3a$s - 0.6, y = p3a$h, label = "3a (HP Out)", size = 5, fontface = "bold") +
-    annotate("text", x = p3b$s, y = p3b$h + 150, label = "3b (LP In)", size = 5, fontface = "bold") +
-    annotate("text", x = p4$s, y = p4$h - 150, label = "4 (LP Out)", size = 5, fontface = "bold") +
+    annotate("text", x = p3$s + 0.1, y = p3$h + 150, label = "3 (wlot HP)", hjust = 1, size = 5, fontface = "bold") +
+    annotate("text", x = p3a$s - 0.15, y = p3a$h, label = "3a (wylot HP)", hjust = 1, size = 5, fontface = "bold") +
+    annotate("text", x = p3b$s - 0.15, y = p3b$h + 150, label = "3b (wlot LP)", hjust = 0, size = 5, fontface = "bold") +
+    annotate("text", x = p4$s, y = p4$h - 150, label = "4 (wylot LP)", size = 5, fontface = "bold") +
     annotate("text", x = p4_old$s - 0.1, y = p4_old$h - 150, label = "4'", size = 5, fontface = "bold", color = "gray60") +
     annotate("text", x = 4.8, y = p3b$h - 200, label = "Przegrzew Wtórny", color = "red", fontface = "bold") +
     annotate("segment", x = 6.1, y = p3b$h - 200, xend = (p3a$s + p3b$s) / 2 - 0.1, yend = (p3a$h + p3b$h) / 2 - 50, color = "red", size = 1) +
-    annotate("text", x = 1.5, y = 3500, label = "HP = High Pressure\nLP = Low Pressure", hjust = 0, size = 4, color = "gray30", fontface = "italic") +
+    annotate("text", x = 1.5, y = 3500, label = "HP – część wysokoprężna\nLP – część niskoprężna", hjust = 0, size = 4, color = "gray30", fontface = "italic") +
     labs(
         title = "Cykl z Przegrzewem Wtórnym",
-        subtitle = expression("Dodatkowe ciepło" ~ q[rh] ~ "i przesunięcie punktu 4 w prawo (" * chi %up% "" * ")"),
+        subtitle = expression("Dodatkowe ciepło" ~ q[rh] ~ "i przesunięcie punktu 4 w prawo (" * italic(x) %up% "" * ")"),
         x = expression(s ~ "[kJ/(kg·K)]"), y = expression(h ~ "[kJ/kg]")
     ) +
     theme_thermo()
@@ -861,7 +859,7 @@ ggplot() +
 ### Analiza Wykresu{.fragment}
 
 ::: {.incremental style="font-size: 0.9em;"}
-1.  **3 $\to$ 3a:** Pierwszy stopień rozprężania w turbinie wysokoprężnej (HP). Kończymy zanim para stanie się zbyt mokra.
+1.  **3 $\to$ 3a:** Pierwszy stopień rozprężania w turbinie wysokoprężnej (HP). Kończymy, zanim para stanie się zbyt mokra.
 2.  **3a $\to$ 3b:** Powrót do kotła. Dostarczamy ciepło przy stałym (niższym) ciśnieniu. Entalpia rośnie.
 3.  **3b $\to$ 4:** Drugi stopień rozprężania w turbinie niskoprężnej (LP).
 :::
@@ -871,7 +869,7 @@ ggplot() +
 :::
 ::: {.fragment .callout-tip title="**Efekt:**"}
 Punkt **4** (z przegrzewem) leży znacznie bardziej na prawo niż punkt **4'** (bez przegrzewu).
-Suchość pary $x_4 > x_{4'}$ (np. 0.94 vs 0.81).
+Suchość pary $x_4 > x_{4'}$ (ok. 0,92 vs 0,81).
 :::
 ::::
 
@@ -881,8 +879,8 @@ Suchość pary $x_4 > x_{4'}$ (np. 0.94 vs 0.81).
 ## <i class="bi bi-recycle"></i> 5. Regeneracja (Podgrzewanie Wody) 
 
 ::: {.callout-note appearance="simple"}
-W zwykłym Rankine'ie do kotła trafia zimna woda ze skraplacza (np. 30°C).
-To marnotrawstwo spalać węgiel, żeby podgrzać wodę z 30 do 100°C.
+W zwykłym obiegu Rankine'a do kotła trafia zimna woda ze skraplacza (ok. 46 °C przy 0,1 bar).
+To marnotrawstwo spalać węgiel, żeby podgrzewać ją aż do temperatury wrzenia w kotle (ok. 264 °C przy 50 bar).
 :::
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 **Rozwiązanie:** Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.
@@ -890,7 +888,7 @@ To marnotrawstwo spalać węgiel, żeby podgrzać wodę z 30 do 100°C.
 
 ::: {.incremental}
 *   Woda wchodząca do kotła jest już gorąca.
-*   Sprawność rośnie drastycznie (zbliżamy się do Carnota).
+*   Sprawność rośnie o kilka punktów procentowych (wyższa średnia temperatura doprowadzania ciepła — zbliżamy się do Carnota).
 *   W nowoczesnych blokach mamy 7-9 wymienników regeneracyjnych.
 
 :::
@@ -982,6 +980,7 @@ for i, T_lev in enumerate(Ts):
         curr_T = T_cond
 
 # Condenser Line
+s4_end = curr_s  # end of expansion at T_cond (point 4)
 s3_liq = CP.PropsSI('S', 'P', p_cond, 'Q', 0, fluid) / 1000
 steam_path.append({'x': curr_s, 'y': T_cond, 'xend': s3_liq, 'yend': T_cond, 'color': 'cyan3', 'type': 'cond'})
 
@@ -1021,13 +1020,13 @@ df_w_arr = pd.DataFrame(water_arrows)
 
 # Points Renumbered
 # s1 (Main Steam) -> 3
-# s1 at chi=1 intersection -> 4
+# s4_end (end of expansion, T_cond) -> 4
 # s3_liq (Cond Out) -> 1
-# s_sat_boil (Boiler In) -> 2
+# end of regenerative heating (Ts[0], sat. liquid) -> 2; Ts[0] -> T_sat(boiler) = economizer
 pts = pd.DataFrame({
     'label': ['3', '4', '1', '2'],
-    's': [s1, s1 + 0.3, s3_liq, s_sat_boil],
-    'T': [T1, T_bleed1 + 20, T_cond, T_w_levels[-1]]
+    's': [s1, s4_end, s3_liq, CP.PropsSI('S', 'T', Ts[0], 'Q', 0, fluid)/1000],
+    'T': [T1, T_cond, T_cond, Ts[0]]
 })
 ```
 
@@ -1052,9 +1051,9 @@ ggplot() +
     # Dome
     geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1) +
 
-    # Dome Labels (chi=0, chi=1)
-    annotate("text", x = 3.4, y = 620, label = "chi == 0", parse = TRUE, color = "gray50", size = 5, angle = 45) +
-    annotate("text", x = 8.5, y = 320, label = "chi == 1", parse = TRUE, color = "gray50", size = 5, angle = -25) +
+    # Dome Labels (x=0, x=1)
+    annotate("text", x = 3.4, y = 620, label = "italic(x) == 0", parse = TRUE, color = "gray50", size = 5, angle = 45) +
+    annotate("text", x = 8.5, y = 320, label = "italic(x) == 1", parse = TRUE, color = "gray50", size = 5, angle = -25) +
 
     # Critical Point
     annotate("point", x = 4.43, y = 647.1, size = 3, color = "red") +
@@ -1080,7 +1079,7 @@ ggplot() +
     ) +
 
     # Points Labels
-    geom_text(data = p, aes(x = s, y = T + c(20, -20, -20, 20), label = label), size = 6, fontface = "bold") +
+    geom_text(data = p, aes(x = s + c(0, 0, 0, 0.2), y = T + c(20, -20, -20, -15), label = label), size = 6, fontface = "bold") +
 
     # q_r Labels (Steam Side) - Next to arrows
     geom_text(data = sar, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = "chartreuse4", size = 6, fontface = "bold") +
@@ -1103,8 +1102,8 @@ ggplot() +
 ### Analiza
 
 ::: {style="font-size: 0.9em;"}
-*   **1 $\to$ 2:** Podgrzewanie wody zasilającej wzdłuż krzywej cieczy nasyconej (czerwona linia). Ciepło $q_r$ pochodzi ze skraplającej się pary z upustów turbiny.
-*   **2 $\to$ 3:** Kocioł — wrzenie i przegrzewanie pary do $T_{max}$. **Oszczędzamy paliwo**, bo woda w punkcie 2 jest już gorąca!
+*   **1 $\to$ 2:** Podgrzewanie wody zasilającej w podgrzewaczach regeneracyjnych ciepłem $q_r$ skraplającej się pary z upustów turbiny.
+*   **2 $\to$ 3:** Kocioł — ekonomizer, wrzenie i przegrzewanie pary do $T_{max}$. **Oszczędzamy paliwo**, bo woda w punkcie 2 jest już gorąca!
 *   **3 $\to$ 4:** Ekspansja pary w turbinie z upustami. Na każdym stopniu para oddaje ciepło $q_r$ do wody zasilającej.
 *   **4 $\to$ 1:** Skraplanie reszty pary w skraplaczu.
 :::
@@ -1126,7 +1125,7 @@ Połączenie Braytona (W9) i Rankine'a (W10).
 ::: {.column width="60%"}
 ::: {.incremental}
 1.  **Góra (Top Cycle):** Turbina Gazowa (Spaliny wylotowe mają ~550°C).
-2.  **Kocioł Odzysknicowy (HRSG):** Zamiast palić węgiel, używamy gorących spalin z TG do zagotowania wody.
+2.  **Kocioł odzyskowy (HRSG):** Zamiast palić węgiel, używamy gorących spalin z TG do zagotowania wody.
 3.  **Dół (Bottom Cycle):** Turbina Parowa zasilana z HRSG.
 :::
 
@@ -1138,7 +1137,7 @@ To obecnie najczystsza technologia spalania paliw kopalnych.
 :::
 
 ::: {.column width="40%"}
-![](../img/coges_diagram.svg.png){width="150%" style="background: white; top;"}
+![](../img/coges_diagram.svg.png){width="150%" style="background: white;"}
 
 ::: {style="font-size: 0.6em; color: gray;"}
 Źródło: <a href="https://commons.wikimedia.org/wiki/File:COGES-diagram.png">COGES-diagram</a>, <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>, via Wikimedia Commons
@@ -1146,7 +1145,7 @@ To obecnie najczystsza technologia spalania paliw kopalnych.
 :::
 
 ::: {style="border: 2px solid #1596ea; padding: 5px; border-radius: 10px; background-color: #30b1e6; font-size: 0.55em;"}
-Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Kondensator, 4-Pompa, 5-Kocioł/wymiennik ciepła, 6-Turbina gazowa
+Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Skraplacz, 4-Pompa, 5-Kocioł/wymiennik ciepła, 6-Turbina gazowa
 :::
 :::
 ::::

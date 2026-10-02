@@ -55,6 +55,7 @@ editor: source
 #| message: false
 library(ggplot2)
 theme_set(theme_minimal(base_size = 18))
+options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
 ```
 
 
@@ -77,7 +78,7 @@ theme_set(theme_minimal(base_size = 18))
 *   **I Rodzaju:** Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała ($T=const$).
     *   Wrzenie (Ciecz $\to$ Gaz)
     *   Topnienie (Ciało stałe $\to$ Ciecz)
-*   **II Rodzaju:** Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego $C_p$.
+*   **II Rodzaju:** Ciągła zmiana entalpii, ale skokowa zmiana ciepła właściwego $c_p$.
     *   Przejście w nadciekłość (Hel).
 :::
 
@@ -103,35 +104,35 @@ theme_set(theme_minimal(base_size = 18))
 
 Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:
 
-$$ \frac{dp}{dT} = \frac{Q_{r}}{T (v'' - v')} $$
+$$ \frac{dp}{dT} = \frac{r}{T (v'' - v')} $$
 
-*   $Q_r$: Ciepło przemiany (ciepło parowania lub topnienia) [J/kg]
-*   $v''$: Objętość właściwa pary (gazu)
-*   $v'$: Objętość właściwa cieczy
+*   $r$: Ciepło przemiany fazowej (ciepło parowania lub topnienia) [J/kg]
+*   $v''$: Objętość właściwa fazy powstającej (przy wrzeniu: pary)
+*   $v'$: Objętość właściwa fazy zanikającej (przy wrzeniu: cieczy)
 
 ::: {.callout-note .fragment}
 Ponieważ zazwyczaj $v'' > v'$ (gaz większy od cieczy) i $r > 0$ (trzeba grzać), to $dp/dT > 0$.
-Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w $120^\circ C$, co przyspiesza gotowanie).
+Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w $120^\circ\text{C}$, co przyspiesza gotowanie).
 :::
 
 ---
 
 ## <i class="bi bi-bookmark"></i> Wyjątek Wody: Topnienie 
 
-Woda (lód) ma unikalną cechę: $v_{Lód} > v_{Woda}$ (lód pływa!).
-Zatem $v'' - v' < 0$ (dla topnienia).
+Woda ma rzadką cechę (podobnie m.in. Bi, Ga, Si, Ge): $v_{\text{lód}} > v_{\text{woda}}$ (lód pływa!).
+Zatem dla topnienia $v'' - v' = v_{\text{woda}} - v_{\text{lód}} < 0$.
 
 $$ \frac{dp}{dT} < 0 $$
 
 Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
 
 ::: {.fragment .fade-up}
-*   Dlatego pod płozą łyżwy (wysokie ciśnienie) lód topi się w temp. np. $-2^\circ C$, tworząc warstewkę wody (poślizg).
+*   Efekt jest jednak mały: ok. $-0{,}0074$ K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.
 :::
 
 ---
 
-## <i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych $p-T$. {.center}
+## <i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych $p$-$T$ {.center}
 
 ```{r}
 #| echo: false
@@ -156,14 +157,14 @@ p_vap <- function(temp) P_tp * exp(A_vap * (1 - T_tp / temp))
 A_sub <- 22.5 
 p_sub <- function(temp) P_tp * exp(A_sub * (1 - T_tp / temp))
 
-# Topnienie (anomalia: dT/dp < 0)
+# Topnienie (anomalia: dT/dp < 0); lód Ih istnieje do ok. 210 MPa
 t_melt <- function(pres) T_tp - (7.4e-8 * (pres - P_tp))
 # 3. Generowanie danych
 df_vap  <- data.frame(T = seq(T_tp, T_c, length.out = 200))
 df_vap$P <- p_vap(df_vap$T)
 df_sub  <- data.frame(T = seq(220, T_tp, length.out = 100))
 df_sub$P <- p_sub(df_sub$T)
-p_m_seq <- exp(seq(log(P_tp), log(1e9), length.out = 100))
+p_m_seq <- exp(seq(log(P_tp), log(2e8), length.out = 100))
 df_melt <- data.frame(T = t_melt(p_m_seq), P = p_m_seq)
 # Punkty charakterystyczne
 points <- data.frame(
@@ -194,12 +195,12 @@ ggplot() +
   annotate("text", x = 420, y = 1e8, label = "WODA CIEKŁA", size = 5, fontface = "bold", color = "darkgreen") +
   annotate("text", x = 550, y = 1e4, label = "PARA", size = 5, fontface = "bold", color = "red") +
   # FLUID NADKRYTYCZNY (tylko w dół względem poprzedniej pozycji)
-  annotate("text", x = 700, y = 8e7, label = "STAN\nNADKRY\nTYCZNY", 
-           fontface = "italic", color = "grey30", size = 4) +
+  annotate("text", x = 698, y = 8e7, label = "STAN\nNADKRYTYCZNY", 
+           fontface = "italic", color = "grey30", size = 3.3) +
   # Konfiguracja osi
   scale_y_log10(limits = c(10, 1e9), 
                 breaks = c(P_tp, 101325, P_c),
-                labels = c("611.7 Pa", "101.3 kPa", "22.06 MPa")) +
+                labels = c("611,7 Pa", "101,3 kPa", "22,06 MPa")) +
   scale_x_continuous(limits = c(220, 750), breaks = seq(200, 800, 50)) +
   labs(
        x = "Temperatura T [K]", y = "Ciśnienie p [Pa]") +
@@ -209,45 +210,20 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-table"></i> 4. Tablice Pary Wodnej 
-
-Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
-
-Rodzaje tablic:
-
-::: {.fragment}
-1.  **Tablice Nasycenia (wg Temperatury lub Ciśnienia):**
-    *   Używamy, gdy wiemy, że mamy wrzenie $(p, T_{nasycenia})$.
-    *   Odczytujemy $v', v'', h', h'', s', s''$.
-:::
-
-::: {.fragment}
-2.  **Tablice Pary Przegrzanej:**
-    *   Używamy, gdy $T > T_{nasycenia}$ (dla danego $p$).
-    *   Jest to macierz $(p, T) \to v, h, s$.
-:::
-    
-::: {.fragment}    
-3.  **Tablice Cieczy Sprężonej:**
-    *   Gdy $T < T_{nasycenia}$. Zazwyczaj zakładamy $v \approx v'$.
-:::
-
----
-
 ## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura 
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
 ::: {.fragment .incremental style="font-size: 0.98em;"}
-1.  **Ciecz Dochłodzona:** $T < T_{wrzenia}$. 
+1.  **Ciecz Dochłodzona (Sprężona):** $T < T_{\text{wrzenia}}$. 
     - 💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, "tłok" jest nisko.
-2.  **Ciecz Nasycona ($x=0$):** $T = T_{wrzenia}$. Pierwszy bąbel pary.
+2.  **Ciecz Nasycona ($x=0$):** $T = T_{\text{wrzenia}}$. Pierwszy bąbel pary.
     - 💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.
 3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu! 
-    - ☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (cała energia idzie na rozerwanie wiązań). 
+    - ☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka $p(v''-v')$). 
 4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała. 
     - ☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze "gęsta".
-5.  **Para Przegrzana:** Dalszy wzrost $T > T_{wrzenia}$.
+5.  **Para Przegrzana:** Dalszy wzrost $T > T_{\text{wrzenia}}$.
     - 💨🔥 Gaz, który zachowuje się jak "szalony". Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!
 :::
 
@@ -488,7 +464,7 @@ for (x_val in qualities) {
     tmp_df <- data.frame(
         T = spline_x$x,
         s = spline_x$y,
-        label = paste0("x=", x_val)
+        label = paste0("x=", format(x_val))
     )
     df_quality_lines <- rbind(df_quality_lines, tmp_df)
 
@@ -499,7 +475,7 @@ for (x_val in qualities) {
     df_quality_labels <- rbind(df_quality_labels, data.frame(
         x = s_lbl,
         y = T_lbl + 10, # Lekko nad punktem
-        label = paste0("x=", x_val)
+        label = paste0("x=", format(x_val))
     ))
 }
 
@@ -508,8 +484,11 @@ for (x_val in qualities) {
 spline_liq_T <- spline(nist_dense$T, nist_dense$s_l, xout = seq(300, 373.15, length.out = 50))
 iso_1_liq <- data.frame(T = spline_liq_T$x, s = spline_liq_T$y)
 iso_1_sat <- data.frame(T = c(373.15, 373.15), s = c(1.307, 7.354))
-T_sup <- seq(373.15, 750, length.out = 50)
-iso_1_sup <- data.frame(T = T_sup, s = 7.354 + 2.05 * log(T_sup / 373.15))
+# Para przegrzana: s(T) wg IAPWS-95 (CoolProp), p = 1,01325 bar
+T_sup <- c(373.15, 400, 450, 500, 550, 600, 650, 700, 750)
+s_sup <- c(7.3544, 7.4962, 7.7303, 7.9386, 8.1283, 8.3035, 8.4669, 8.6203, 8.7654)
+sp_sup <- spline(T_sup, s_sup, n = 50, method = "hyman")
+iso_1_sup <- data.frame(T = sp_sup$x, s = sp_sup$y)
 df_iso_1 <- rbind(iso_1_liq, iso_1_sat, iso_1_sup)
 
 # --- Izobara 100 bar ---
@@ -521,8 +500,11 @@ iso_100_liq <- data.frame(T = seq(300, T_sat_100, length.out = 100))
 iso_100_liq$s <- approx(df_all$T[df_all$s < sc], df_all$s[df_all$s < sc], xout = iso_100_liq$T)$y
 
 iso_100_sat <- data.frame(T = c(T_sat_100, T_sat_100), s = c(sl_100, sv_100))
-T_sup_100 <- seq(T_sat_100, 750, length.out = 50)
-iso_100_sup <- data.frame(T = T_sup_100, s = sv_100 + 2.6 * log(T_sup_100 / T_sat_100))
+# Para przegrzana: s(T) wg IAPWS-95 (CoolProp), p = 100 bar
+T_sup_100 <- c(584.15, 590, 600, 615, 630, 650, 675, 700, 725, 750)
+s_sup_100 <- c(5.6160, 5.6817, 5.7756, 5.8913, 5.9887, 6.1009, 6.2225, 6.3305, 6.4289, 6.5200)
+sp_sup_100 <- spline(T_sup_100, s_sup_100, n = 50, method = "hyman")
+iso_100_sup <- data.frame(T = sp_sup_100$x, s = sp_sup_100$y)
 df_iso_100 <- rbind(iso_100_liq, iso_100_sat, iso_100_sup)
 
 ggplot() +
@@ -538,11 +520,11 @@ ggplot() +
     geom_line(data = df_iso_1, aes(x = s, y = T), color = "red", size = 1.5) +
     annotate("text", x = 4.5, y = 410, label = "p = 1 atm", color = "red", fontface = "italic") +
     geom_line(data = df_iso_100, aes(x = s, y = T), color = "darkred", size = 1.2, linetype = "longdash") +
-    annotate("text", x = 5.6, y = 700, label = "p = 100 atm", color = "darkred", fontface = "italic", angle = 76) +
+    annotate("text", x = 5.95, y = 690, label = "p = 100 bar", color = "darkred", fontface = "italic", angle = 72) +
 
     # Punkt Krytyczny
     annotate("point", x = sc, y = Tc, color = "black", size = 4) +
-    annotate("text", x = sc, y = 690, label = paste0("PK\n(s=", round(sc, 3), ")"), fontface = "bold") +
+    annotate("text", x = sc, y = 690, label = paste0("PK\n(s=", format(round(sc, 3)), ")"), fontface = "bold") +
 
     # x=0 / x=1
     annotate("text", x = 0.3, y = 320, label = "x=0", color = "blue", fontface = "bold", angle = 46) +
@@ -570,12 +552,12 @@ ggplot() +
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.
 
-$$ x = \frac{m_{pary}}{m_{mieszaniny}} = \frac{m''}{m' + m''} $$
+$$ x = \frac{m_{\text{pary}}}{m_{\text{mieszaniny}}} = \frac{m''}{m' + m''} $$
 :::
 
 *   $x = 0$: $100\%$ cieczy (linia lewa).
 *   $x = 1$: $100\%$ pary (linia prawa).
-*   $x = 0.8$: $80\%$ pary, $20\%$ wody (typowa para wylotowa z turbiny).
+*   $x = 0{,}9$: $90\%$ pary, $10\%$ wody (typowa para wylotowa z turbiny kondensacyjnej).
 
 ---
 
@@ -598,19 +580,44 @@ Zastosowanie:
 
 ---
 
+## <i class="bi bi-table"></i> 4. Tablice Pary Wodnej 
+
+Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
+
+Rodzaje tablic:
+
+::: {.fragment}
+1.  **Tablice Nasycenia (wg Temperatury lub Ciśnienia):**
+    *   Używamy, gdy wiemy, że mamy wrzenie $(p, T_{\text{nasycenia}})$.
+    *   Odczytujemy $v', v'', h', h'', s', s''$.
+:::
+
+::: {.fragment}
+2.  **Tablice Pary Przegrzanej:**
+    *   Używamy, gdy $T > T_{\text{nasycenia}}$ (dla danego $p$).
+    *   Jest to macierz $(p, T) \to v, h, s$.
+:::
+    
+::: {.fragment}    
+3.  **Tablice Cieczy Sprężonej (Dochłodzonej):**
+    *   Gdy $T < T_{\text{nasycenia}}$ (dla danego $p$). Zazwyczaj przyjmujemy $v \approx v'(T)$, $h \approx h'(T)$ — wartości dla cieczy nasyconej w tej samej temperaturze.
+:::
+
+---
+
 ## <i class="bi bi-calculator"></i> Przykład Odczytu (Nasycenie) 
 
-Mamy wodę wrzącą pod ciśnieniem atmosferycznym ($p=1$ bar $\approx 0.1$ MPa).
+Mamy wodę wrzącą pod ciśnieniem atmosferycznym ($p=1$ bar $\approx 0{,}1$ MPa).
 Szukamy w Tablicy Nasycenia (wg ciśnienia):
 
-| p [MPa] | T_sat [C] | v' [m3/kg] | v'' [m3/kg] | h' [kJ/kg] | h'' [kJ/kg] |
+| $p$ [MPa] | $T_s$ [°C] | $v'$ [m³/kg] | $v''$ [m³/kg] | $h'$ [kJ/kg] | $h''$ [kJ/kg] |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 0.10 | **99.6** | 0.001043 | **1.694** | 417 | **2675** |
+| 0,10 | **99,6** | 0,001043 | **1,694** | 417 | **2675** |
 
 Wnioski:
 
-1.  Temp. wrzenia to $99.6^\circ C$.
-2.  Para zajmuje 1600 razy więcej miejsca niż woda ($1.694 / 0.001$). Wybuchowe rozszerzanie!
+1.  Temp. wrzenia to $99{,}6^\circ\text{C}$.
+2.  Para zajmuje ok. 1620 razy więcej miejsca niż woda ($1{,}694 / 0{,}001043$). Wybuchowe rozszerzanie!
 3.  Żeby odparować wodę, trzeba dostarczyć $2675 - 417 = 2258 \text{ kJ/kg}$.
 
 ---
@@ -623,11 +630,11 @@ Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub
 $$ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) $$
 
 ::: {.fragment .callout-tip title="Przykład" style="font-size: 0.7em;"}
-Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ C$.
+Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ\text{C}$.
 
-Z tablic: $h(250^\circ C) = 2943$, $h(300^\circ C) = 3052$ kJ/kg.
+Z tablic: $h(250^\circ\text{C}) = 2943$, $h(300^\circ\text{C}) = 3052$ kJ/kg.
 
-$$ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0.5 \cdot 109 \approx \mathbf{2997.5 \text{ kJ/kg}} $$
+$$ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0{,}5 \cdot 109 \approx \mathbf{2997{,}5 \text{ kJ/kg}} $$
 :::
 
 ::: {.fragment .callout-warning style="font-size: 0.8em;"}
@@ -647,11 +654,11 @@ Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależn
 *   Oś Y: Entalpia $h$ (Energia).
 *   Oś X: Entropia $s$.
 *   **Zastosowanie:** Turbiny parowe.
-*   Rozprężanie adiabatyczne (idealna turbina) to linia **pionowa w dół** ($\Delta s = 0$).
+*   Rozprężanie adiabatyczne odwracalne (izentropowe, idealna turbina) to linia **pionowa w dół** ($\Delta s = 0$).
 *   Różnica wysokości na wykresie ($h_1 - h_2$) to uzyskana PRACA.
 
 ::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T−s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz __praca techniczna__ są na nim przedstawiane __jako odcinki__, a nie pola powierzchni
+Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T-s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz __praca techniczna__ (w przemianach adiabatycznych) są na nim przedstawiane __jako odcinki__, a nie pola powierzchni.
 :::
 :::
 
@@ -666,18 +673,18 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 
 ## <i class="bi bi-bookmark"></i> Mollier w Praktyce 
 
-Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ C$. Rozpręża do $p_2 = 0.1$ bar.
+Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ\text{C}$. Rozpręża do $p_2 = 0{,}1$ bar.
 
 <div style="width: 100%; margin: 0 auto;">
 ```{mermaid}
 %%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Lato'}}}%%
 flowchart LR
-    A[Start: Znajdź <br>punkt 1] --> B{Odczytaj h1}
+    A[Start: Znajdź <br>punkt 1] --> B[Odczytaj h1]
     B --> C[Rysuj linię <br>pionową w dół<br>s = const]
-    C --> D{Przecięcie z p2}
+    C --> D[Przecięcie z p2]
     D --> E[Odczytaj h2]
     E --> F[Oblicz Pracę: <br>L = h1 - h2]
-    E --> G[Sprawdź <br>x2 > 0.85?]
+    E --> G{"Sprawdź <br>x2 > 0,85?"}
     G -- Tak --> H[OK: Turbina <br>bezpieczna]
     G -- Nie --> I[BŁĄD: Erozja <br>łopatek!]
 
@@ -687,6 +694,9 @@ flowchart LR
 ```
 </div>
 
+::: {.fragment .callout-warning appearance="simple" style="font-size: 0.8em;"}
+W tym przykładzie $x_{2s} \approx 0{,}79 < 0{,}85$ — trafiamy w gałąź „Erozja łopatek”. Dlatego w praktyce stosuje się m.in. przegrzew wtórny (W10).
+:::
 
 ---
 
@@ -698,7 +708,7 @@ flowchart LR
 
 ### Wykres p-h (Logarytmiczny)
 
-*   Oś Y: Ciśnienie absolutne $\ln(p)$.
+*   Oś Y: Ciśnienie absolutne $p$ (skala logarytmiczna).
 *   Oś X: Entalpia właściwa $h$.
 *   **Zastosowanie:** Chłodnictwo / Pompy Ciepła.
 *   "Kopuła" jest mocno przechylona w prawo.
@@ -717,16 +727,16 @@ flowchart LR
 Analiza typowego obiegu chłodniczego:
 
 1. Parowanie: Pozioma linia w prawo (pobieranie ciepła $q_d = \Delta h$).
-2. Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca sprężarki $l_t= \Delta h$).
+2. Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca techniczna $l_t = -\Delta h$; praca napędowa sprężarki $|l_t| = \Delta h$).
 3. Skraplanie: Pozioma linia w lewo (oddawanie ciepła $q_w=\Delta h$).
 4. Dławienie: Pionowa linia w dół (stała entalpia).
 
-Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X
+Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X.
 :::
 
 ---
 
-## <i class="bi bi-cloud-fog"></i> Para Przegrzana 
+## <i class="bi bi-cloud-fog"></i> 6. Para Przegrzana 
 
 ### Powyżej Linii Nasycenia
 
@@ -740,7 +750,7 @@ Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu*
 **Cechy fizyczne:**
 
 *   Zachowuje się coraz bardziej jak **gaz doskonały** im **wyższa temperatura** i **niższe ciśnienie**.
-*   W obszarze dalekim od nasycenia: $h \approx C_p T$ (dla gazu doskonałego).
+*   W obszarze dalekim od nasycenia: $\Delta h \approx c_p \Delta T$ (jak dla gazu doskonałego). Sama wartość $h$ z tablic zależy od przyjętego stanu odniesienia, więc $h \neq c_p T$.
 
 
 ---
@@ -755,4 +765,4 @@ Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu*
 
 ### Zadanie Do Samodzielnego Wykonania
 
-Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: $p=1$ bar, $x=0.9$. Odczytaj entalpię.
+Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: $p=1$ bar, $x=0{,}9$. Odczytaj entalpię.

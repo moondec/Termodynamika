@@ -202,7 +202,7 @@
 <h2><i class="bi bi-battery-charging"></i> Energia Wewnętrzna (<span class="math inline">\(U\)</span>)</h2>
 <h3 id="definicja-i-charakterystyka">Definicja i Charakterystyka</h3>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p><strong>Energia wewnętrzna (<span class="math inline">\(U\)</span>)</strong> to suma całkowitej energii kinetycznej składników układu i energii potencjalnej ich wzajemnego oddziaływania.</p>
+<p><strong>Energia wewnętrzna (<span class="math inline">\(U\)</span>)</strong> to suma energii kinetycznej chaotycznego (mikroskopowego) ruchu składników układu i energii potencjalnej ich wzajemnego oddziaływania. Nie obejmuje makroskopowej energii kinetycznej i potencjalnej układu jako całości.</p>
 </div>
 <ul>
 <li class="fragment">Jest <strong>funkcją stanu</strong>: jej zmiana zależy tylko od stanu początkowego i końcowego, a nie od drogi procesu.</li>
@@ -216,7 +216,7 @@
 <p>W termodynamice kluczowe jest rozróżnienie matematyczne:</p>
 <ol type="1">
 <li class="fragment"><strong>Różniczka zupełna (<span class="math inline">\(d\)</span>):</strong> Dotyczy funkcji stanu (<span class="math inline">\(U, H, S\)</span>). Całka po drodze zamkniętej wynosi zero: <span class="math inline">\(\oint dU = 0\)</span>.</li>
-<li class="fragment"><strong>Forma Pfaffa (różniczka niezupełna <span class="math inline">\(đ\)</span>):</strong> Dotyczy wielkości procesowych (<span class="math inline">\(Q, L\)</span>). Ich wartość zależy od drogi przejścia: <span class="math inline">\(\oint đQ \neq 0\)</span>.</li>
+<li class="fragment"><strong>Różniczka niezupełna (<span class="math inline">\(đ\)</span>):</strong> Dotyczy wielkości procesowych (<span class="math inline">\(Q, L\)</span>) – jest to forma Pfaffa, która nie jest różniczką zupełną żadnej funkcji stanu. Ich wartość zależy od drogi przejścia: <span class="math inline">\(\oint đQ \neq 0\)</span>.</li>
 </ol>
 <div class="fragment fade-up" title="Ciekawe" style="font-size: 1.0em; color: blue;">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -228,7 +228,7 @@
 <p><strong>Ciekawe</strong></p>
 </div>
 <div class="callout-content">
-<p><em>Czynnik całkujący (<span class="math inline">\(1/T\)</span>) pozwala zamienić <span class="math inline">\(đQ\)</span> w różniczkę zupełną entropii <span class="math inline">\(dS = đQ/T\)</span></em>.</p>
+<p><em>Czynnik całkujący (<span class="math inline">\(1/T\)</span>) pozwala zamienić <span class="math inline">\(đQ\)</span> w różniczkę zupełną entropii <span class="math inline">\(dS = đQ_{\text{odwr}}/T\)</span> (dla procesu odwracalnego)</em>.</p>
 </div>
 </div>
 </div>
@@ -326,7 +326,7 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 <div class="fragment fade-up">
 <p>Gdzie:</p>
 <ul>
-<li><span class="math inline">\(\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)\)</span>.</li>
+<li><span class="math inline">\(\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)\)</span> – dla gazu doskonałego przy <span class="math inline">\(c_v = \text{const}\)</span>.</li>
 <li><span class="math inline">\(L = \int_{V_1}^{V_2} p(V) dV\)</span>.</li>
 </ul>
 </div>
@@ -338,7 +338,7 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 </div><div class="column" style="width:50%;">
 <p><img src="../img/praca2.png" style="width: 100%;"></p>
 <div style="font-size: 0.5em; color: gray; margin-top: -5px;">
-<p>Źródło: J. Szargut, <em><span class="math inline">\(Termodynamika \ techniczna\)</span></em> PWN, (2000).</p>
+<p>Źródło: J. Szargut, <em>Termodynamika techniczna</em>, PWN, (2000).</p>
 </div>
 </div></div>
 </div>
@@ -370,7 +370,7 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 <p><strong>Znaczenie</strong></p>
 </div>
 <div class="callout-content">
-<p>Człon <span class="math inline">\(p \cdot V\)</span> można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce “rozepchać” przeciwko ciśnieniu otoczenia (<span class="math inline">\(p\)</span>) zajmując objętość (<span class="math inline">\(V\)</span>).</p>
+<p>Człon <span class="math inline">\(p \cdot V\)</span> można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce “rozepchać” przeciwko ciśnieniu panującemu w danym przekroju (ciśnieniu czynnika <span class="math inline">\(p\)</span>), zajmując objętość (<span class="math inline">\(V\)</span>).</p>
 </div>
 </div>
 </div>
@@ -384,7 +384,7 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 <li><strong>Praca wejścia (<span class="math inline">\(pV\)</span>):</strong> Aby wejść, musisz rozepchnąć tłum łokciami.
 <ul>
 <li>Im większy ścisk w klubie (wyższe <span class="math inline">\(p\)</span>), tym więcej energii zużywasz na samo wejście.</li>
-<li>Im jesteś “szerszy” (większe <span class="math inline">\(v\)</span>), tym więcej miejsca zajmujesz.</li>
+<li>Im jesteś “szerszy” (większe <span class="math inline">\(V\)</span>), tym więcej miejsca zajmujesz.</li>
 </ul></li>
 </ol>
 <p><strong>Entalpia (<span class="math inline">\(H\)</span>)</strong> to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.</p>
@@ -438,15 +438,15 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 </div>
 <div class="callout-content">
 <p>W przemianie przy stałym ciśnieniu doprowadzone ciepło jest równe przyrostowi entalpii. Jest to kluczowe przy projektowaniu kotłów i wymienników ciepła.</p>
-<p><span class="math display">\[Q_{p=const} =\Delta H\]</span> To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: <span class="math inline">\(Q=H_{wylot} − H_{wlot}\)</span>. Żadnego całkowania!</p>
+<p><span class="math display">\[Q_{p=const} =\Delta H\]</span> To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: <span class="math inline">\(Q=H_{\text{wylot}} − H_{\text{wlot}}\)</span>. Żadnego całkowania! (Kocioł to układ przepływowy – ścisłe uzasadnienie daje bilans układu otwartego przy <span class="math inline">\(L_t = 0\)</span>, zob. W3).</p>
 </div>
 </div>
 </div>
 </div>
-<p><span class="fragment" style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;">A co się dzieje z energią dostarczaną przy stałej obiętości?</span></p>
+<p><span class="fragment" style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;">A co się dzieje z energią dostarczaną przy stałej objętości?</span></p>
 </section>
-<section id="entalpia-e-a-energia-wewnętrzna-u" class="slide level2">
-<h2><i class="bi bi-arrow-left-right"></i> Entalpia (E) a Energia Wewnętrzna (U)</h2>
+<section id="entalpia-h-a-energia-wewnętrzna-u" class="slide level2">
+<h2><i class="bi bi-arrow-left-right"></i> Entalpia (H) a Energia Wewnętrzna (U)</h2>
 <h3 id="ponieważ-q-delta-u-l---i-zasada-termodynamiki-z-której-wynika-że-jeżeli">Ponieważ: <span style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"><span class="math inline">\(Q = \Delta U + L\)</span></span> - I zasada termodynamiki, z której wynika, że jeżeli:</h3>
 <ol type="1">
 <li>Zachodzi przemiana izochoryczna: <strong>V=const</strong>.</li>
@@ -504,19 +504,19 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 </table>
 </section>
 <section id="c_p-c_v-zastosowanie-praktyczne" class="slide level2">
-<h2><i class="bi bi-graph-up-arrow"></i> <span class="math inline">\(C_p\)</span> &gt; <span class="math inline">\(C_v\)</span> (Zastosowanie praktyczne)</h2>
+<h2><i class="bi bi-graph-up-arrow"></i> <span class="math inline">\(c_p\)</span> &gt; <span class="math inline">\(c_v\)</span> (Zastosowanie praktyczne)</h2>
 <ul>
 <li>Przy <span class="math inline">\(v=const \ (c_v)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz TYLKO się ogrzewa.</span></li>
 <li>Przy <span class="math inline">\(p=const \ (c_p)\)</span>: <span class="fragment highlight-red">Dostarczamy energię</span> <span class="fragment highlight-blue">→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.</span></li>
 </ul>
 <div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
-<p>Dlatego, żeby ogrzać gaz o 1 stopień przy stałym ciśnieniu, musimy dostarczyć więcej ciepła (bo część ucieka na pracę). Stąd wynika wzór Mayera: <span class="math display">\[ C_p - C_v = n \cdot R_u \]</span></p>
+<p>Dlatego, żeby ogrzać gaz o 1 stopień przy stałym ciśnieniu, musimy dostarczyć więcej ciepła (bo część ucieka na pracę). Stąd wynika wzór Mayera: <span class="math display">\[ C_p - C_v = n \cdot R_u \quad (\text{na 1 kg: } c_p - c_v = R) \]</span></p>
 </div>
 </section>
 
 <section id="uwaga-na-oznaczenia" class="slide level2">
 <h2><i class="bi bi-exclamation-triangle"></i> Uwaga na oznaczenia!</h2>
-<p>Wzory <span class="math inline">\(c_p - c_v = ...\)</span> ma różne postacie w zależności od jednostek.</p>
+<p>Wzór <span class="math inline">\(c_p - c_v = ...\)</span> ma różne postacie w zależności od jednostek.</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 25%">
@@ -565,7 +565,7 @@ Rysunek&nbsp;1: Konwencja znaków dla ciepła (Q) i pracy (L)
 <li><strong>I Zasada Termodynamiki:</strong> Bilans energii dla układów zamkniętych. <span class="math display">\[ \Delta U = Q - L \]</span></li>
 <li><strong>Praca Objętościowa (<span class="math inline">\(L\)</span>):</strong> Zależy od zmiany objętości (<span class="math inline">\(pdV\)</span>) i drogi procesu.</li>
 <li><strong>Entalpia (<span class="math inline">\(H\)</span>):</strong> Suma energii wewnętrznej i pracy przetłaczania (<span class="math inline">\(U+pV\)</span>).</li>
-<li><strong>Ciepła Właściwe:</strong> <span class="math inline">\(C_p &gt; C_v\)</span>, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.</li>
+<li><strong>Ciepła Właściwe:</strong> <span class="math inline">\(c_p &gt; c_v\)</span>, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.</li>
 </ol>
 
 </section></section>

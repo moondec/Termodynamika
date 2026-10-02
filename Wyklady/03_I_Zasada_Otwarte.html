@@ -191,12 +191,13 @@
 </div>
 </div>
 <ul>
-<li class="fragment"><strong>Sprężanie (<span class="math inline">\(dp &gt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL &lt; 0\)</span>).</li>
-<li class="fragment"><strong>Rozprężanie (<span class="math inline">\(dp &lt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL &gt; 0\)</span>).</li>
+<li class="fragment"><strong>Sprężanie (<span class="math inline">\(dp &gt; 0\)</span>):</strong> praca jest wykonywana nad układem (<span class="math inline">\(đL_t &lt; 0\)</span>).</li>
+<li class="fragment"><strong>Rozprężanie (<span class="math inline">\(dp &lt; 0\)</span>):</strong> praca jest wykonywana przez układ (<span class="math inline">\(đL_t &gt; 0\)</span>).</li>
 <li class="fragment"><strong>Nadal nie uwzględniamy tu tarcia</strong></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><span class="math display">\[L_t = L_{1-2} + L_n + L_w = L_{1-2} + p_1 V_1 - p_2 V_2\]</span></p>
+<p>gdzie: <span class="math inline">\(L_n = p_1 V_1\)</span> – praca napełniania (wprowadzenia czynnika), <span class="math inline">\(L_w = -p_2 V_2\)</span> – praca wytłaczania (wyprowadzenia czynnika).</p>
 <div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
 <p><span class="math display">\[đL_t = -V dp\]</span> <span class="math display">\[L_t = -\int_{p_1}^{p_2} V(p) dp\]</span></p>
 </div>
@@ -223,7 +224,7 @@
 <h3 id="kontrola-przepływu-materii">Kontrola Przepływu Materii</h3>
 <p>W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę bilansową) przepływa czynnik roboczy.</p>
 <ul>
-<li>Należy uwzględnić <strong>pracę tłoczenia</strong> (wprowadzenia i wyprowadzenia czynnika).</li>
+<li>Należy uwzględnić <strong>pracę przetłaczania</strong> (wprowadzenia i wyprowadzenia czynnika).</li>
 <li>Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.</li>
 </ul>
 <div style="width: 100%; margin: 0 auto; text-align: center;">
@@ -232,7 +233,7 @@
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-1.png" style="width:7.25in;height:3.95in"></p>
+<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-1.png" style="width:7.4in;height:4.2in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -244,7 +245,7 @@
 <h2><i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego</h2>
 <h3 id="postać-ogólna-bilansu-mocy">Postać Ogólna Bilansu Mocy</h3>
 <p>Dla maszyny działającej w sposób ustalony (strumień masy <span class="math inline">\(\dot{m} = const\)</span>):</p>
-<p><span class="math display">\[ \underbrace{\dot{Q} + \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
+<p><span class="math display">\[ \underbrace{\dot{Q} - \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
 =
 \dot{m}
 \left[
@@ -259,14 +260,14 @@
 <div class="column" style="width:50%;">
 <p>Gdzie:</p>
 <ul>
-<li><span class="math inline">\(\dot{Q}\)</span> – strumień ciepła (moc cieplna) [W].</li>
-<li><span class="math inline">\(\dot{L}_{t}\)</span> – moc techniczna (na wale) [W].</li>
-<li><span class="math inline">\(\dot{m}\)</span> – Strumień masy czynnika [kg/s]</li>
+<li><span class="math inline">\(\dot{Q}\)</span> – strumień ciepła (moc cieplna) [W]; <span class="math inline">\(\dot{Q} &gt; 0\)</span> – ciepło doprowadzone.</li>
+<li><span class="math inline">\(\dot{L}_{t}\)</span> – moc techniczna (na wale) [W]; <span class="math inline">\(\dot{L}_{t} &gt; 0\)</span> – praca wykonana przez czynnik.</li>
+<li><span class="math inline">\(\dot{m}\)</span> – strumień masy czynnika [kg/s]</li>
 <li><span class="math inline">\(h\)</span> – entalpia właściwa [J/kg].</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><span class="math inline">\(w\)</span> – prędkość przepływu [J/kg].</li>
+<li><span class="math inline">\(w\)</span> – prędkość przepływu [m/s].</li>
 <li><span class="math inline">\(g \Delta z\)</span> – energia potencjalna [J/kg].</li>
 <li><span class="math inline">\(z\)</span> – wysokość [m]</li>
 </ul>
@@ -281,7 +282,7 @@
 <li>Zazwyczaj proces jest <strong>adiabatyczny</strong> (<span class="math inline">\(\dot{Q} \approx 0\)</span>).</li>
 <li>Zmiany energii kinetycznej i potencjalnej są często pomijalne.</li>
 </ul>
-<p><strong>Uproszczony bilans:</strong> <span class="math display">\[ P_i = \dot{m} (h_1 - h_2) \]</span> Gdzie <span class="math inline">\(P_i\)</span> to moc wewnętrzna turbiny.</p>
+<p><strong>Uproszczony bilans:</strong> <span class="math display">\[ P_i = \dot{L}_t = \dot{m} (h_1 - h_2) &gt; 0 \]</span> Gdzie <span class="math inline">\(P_i\)</span> to moc wewnętrzna turbiny (praca wykonana przez czynnik, więc <span class="math inline">\(\dot{L}_t &gt; 0\)</span>).</p>
 <div class="fragment fade-up" title="Wniosek">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -303,10 +304,10 @@
 <h3 id="kompresja-czynnika">Kompresja Czynnika</h3>
 <p>Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnienie czynnika.</p>
 <ul>
-<li>Moc napędowa sprężarki <span class="math inline">\(N &lt; 0\)</span> (według konwencji inżynierskiej).</li>
-<li>W pompach (ciecz nieściśliwa) praca techniczna wynosi: <span class="math inline">\(l_t = v \Delta p\)</span>.</li>
+<li>Moc techniczna sprężarki jest ujemna: <span class="math inline">\(\dot{L}_t &lt; 0\)</span> (praca jest doprowadzana do czynnika).</li>
+<li>W pompach (ciecz nieściśliwa) praca techniczna wynosi: <span class="math inline">\(l_t = -v \Delta p\)</span> (praca napędowa <span class="math inline">\(|l_t| = v \Delta p\)</span>).</li>
 </ul>
-<p><strong>Bilans dla sprężarki:</strong> <span class="math display">\[ P_d = \dot{m} (h_2 - h_1) - \dot{Q} \]</span></p>
+<p><strong>Bilans dla sprężarki</strong> (moc napędowa <span class="math inline">\(P_d\)</span>)<strong>:</strong> <span class="math display">\[ P_d = -\dot{L}_t = \dot{m} (h_2 - h_1) - \dot{Q} &gt; 0 \]</span></p>
 <div class="fragment fade-up" title="Wniosek">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -326,7 +327,8 @@
 <section id="praca-sprężania-gazu-doskonałego" class="slide level2">
 <h2><i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego</h2>
 <p>W przypadku <strong>powietrza</strong> (gaz dosk.) często modelujemy sprężanie jako <strong>politropę</strong><br>(<span class="math inline">\(pv^n=const\)</span>). Wzór inżynierski na pracę techniczną:</p>
-<p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1 \right] \]</span></p>
+<p><span class="math display">\[ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] \]</span></p>
+<p>Przy sprężaniu (<span class="math inline">\(p_2 &gt; p_1\)</span>) <span class="math inline">\(l_t &lt; 0\)</span> – praca napędowa sprężarki wynosi <span class="math inline">\(|l_t|\)</span>.</p>
 <div title="Zastosowanie w Projekcie (Ćw. 2)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -338,9 +340,9 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>Gdy <span class="math inline">\(n = \kappa \approx 1.4\)</span> <span class="math inline">\(\rightarrow\)</span> <strong>Adiabata</strong> (brak chłodzenia).</li>
-<li>Gdy <span class="math inline">\(n = 1\)</span> <span class="math inline">\(\rightarrow\)</span> <strong>Izoterma</strong> (idealne chłodzenie).</li>
-<li>Rzeczywista sprężarka: <span class="math inline">\(1 &lt; n &lt; \kappa\)</span> (częściowe chłodzenie).</li>
+<li>Gdy <span class="math inline">\(n = \kappa \approx 1{,}4\)</span> <span class="math inline">\(\rightarrow\)</span> <strong>Izentropa</strong> (adiabata odwracalna: brak chłodzenia i tarcia).</li>
+<li>Gdy <span class="math inline">\(n = 1\)</span> <span class="math inline">\(\rightarrow\)</span> <strong>Izoterma</strong> (idealne chłodzenie): <span class="math inline">\(l_t = -R T_1 \ln\frac{p_2}{p_1}\)</span>.</li>
+<li>Sprężarka chłodzona: <span class="math inline">\(1 &lt; n &lt; \kappa\)</span> (częściowe chłodzenie); sprężarka niechłodzona z tarciem: <span class="math inline">\(n &gt; \kappa\)</span>.</li>
 </ul>
 </div>
 </div>
@@ -350,7 +352,7 @@
 <section id="zastosowanie-wymiennik-ciepła" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Zastosowanie: Wymiennik Ciepła</h2>
 <h3 id="przepływ-izobaryczny">Przepływ Izobaryczny</h3>
-<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej<br>(<span class="math inline">\(L_{tech} = 0\)</span>).</p>
+<p>W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej<br>(<span class="math inline">\(L_t = 0\)</span>).</p>
 <p><strong>Bilans dla jednego czynnika:</strong> <span class="math display">\[ \dot{Q} = \dot{m} (h_2 - h_1) \]</span></p>
 <p>Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz): <span class="math display">\[ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B \]</span></p>
 </section>
@@ -374,7 +376,7 @@
 <ul>
 <li><strong><span class="math inline">\(\mu_{JT} &gt; 0\)</span>:</strong> Gaz ochładza się przy dławieniu (spadek <span class="math inline">\(p \Rightarrow\)</span> spadek <span class="math inline">\(T\)</span>). Typowe zjawisko dla <strong>powietrza</strong> w temp. pokojowej.</li>
 <li><strong><span class="math inline">\(\mu_{JT} &lt; 0\)</span>:</strong> Gaz ogrzewa się (częsta cecha dla <strong>wodoru</strong> czy <strong>helu</strong> w temp. otoczenia).</li>
-<li><strong>Temp. inwersji (<span class="math inline">\(T_{inv}\)</span>):</strong> Miejsce gdzie <span class="math inline">\(\mu_{JT} = 0\)</span>. Oddziela obszar ochładzania od ogrzewania.</li>
+<li><strong>Temp. inwersji (<span class="math inline">\(T_{inv}\)</span>):</strong> Miejsce, gdzie <span class="math inline">\(\mu_{JT} = 0\)</span>. Oddziela obszar ochładzania od ogrzewania.</li>
 </ul>
 <div class="fragment fade-up absolute" style="top: 25%; left: 15%; width: 70%; ">
 <div title="Wodór vs Powietrze" style="font-size: 0.8em; box-shadow: 0 15px 40px rgba(0,0,0,0.4); z-index: 100; background-color: var(--bs-body-bg, #fff);">
@@ -387,7 +389,7 @@
 <p><strong>Wodór vs Powietrze</strong></p>
 </div>
 <div class="callout-content">
-<p>W temp. <span class="math inline">\(\approx 300\)</span> K powietrze przy dławieniu <strong>ochładza się</strong> (<span class="math inline">\(T_{inv} \approx 620\)</span> K). Natomiast wodór się <strong>ogrzewa</strong> (<span class="math inline">\(T_{inv} \approx 202\)</span> K), co stwarza ogromne ryzyko samozapłonu w przypadku powstania nieszczelności i dużego spadku ciśnienia.</p>
+<p>W temp. <span class="math inline">\(\approx 300\)</span> K powietrze przy dławieniu <strong>ochładza się</strong> (<span class="math inline">\(T_{inv} \approx 620\)</span> K). Natomiast wodór się <strong>ogrzewa</strong> (<span class="math inline">\(T_{inv} \approx 202\)</span> K) – nawet przy dławieniu z 700 bar tylko o kilkadziesiąt kelwinów (ok. 30 K). Sam efekt J-T nie wywołuje więc samozapłonu wodoru (<span class="math inline">\(T_{\text{samozapłonu}} \approx 858\)</span> K).</p>
 </div>
 </div>
 </div>
@@ -407,9 +409,9 @@
 <div class="column" style="width:55%;">
 <h3 id="przemiana-energii-chemicznej">Przemiana Energii Chemicznej</h3>
 <p>Komora spalania to najczęściej układ otwarty izobaryczny, w którym nie wykonuje się pracy technicznej (<span class="math inline">\(L_t = 0\)</span>), ale uwalnia ogromną ilość ciepła utleniania.</p>
-<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> <br>Ciepło wydzielone ze spalenia jednostki paliwa (kg lub <span class="math inline">\(m^3\)</span>), przy założeniu że para wodna w spalinach nie skrapla się co z technicznego punktu widzenia zapobiega korozji.</p>
+<p><strong>Wartość opałowa (<span class="math inline">\(Q_i\)</span>):</strong> <br>Ciepło wydzielone ze spalenia jednostki paliwa (kg lub <span class="math inline">\(m^3\)</span>), przy założeniu, że para wodna w spalinach nie skrapla się. <em>Uwaga praktyczna: brak kondensacji pary wodnej w spalinach chroni kanały spalinowe przed korozją.</em></p>
 <div style="border: 2px solid #f39c12; padding: 15px; border-radius: 10px; background-color: #fdf5e6; margin-bottom: 20px;">
-<p><strong>Bilans energii komory spalania:</strong> <span class="math display">\[ \dot{H}_{substr.} + \dot{m}_{pal} \cdot Q_i = \dot{H}_{spalin} + \dot{Q}_{strat} \]</span></p>
+<p><strong>Bilans energii komory spalania:</strong> <span class="math display">\[ \dot{H}_{\text{substr.}} + \dot{m}_{\text{pal}} \cdot Q_i = \dot{H}_{\text{spalin}} + \dot{Q}_{\text{strat}} \]</span></p>
 </div>
 </div><div class="column" style="width:45%;">
 <br>
@@ -419,7 +421,7 @@
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-2.png" style="width:3.6in;height:4.61in"></p>
+<p><img data-src="03_I_Zasada_Otwarte_files/figure-revealjs/mermaid-figure-2.png" style="width:3.59in;height:4.68in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -441,7 +443,7 @@
 <p><strong>Rola Powietrza jako Chłodziwa</strong></p>
 </div>
 <div class="callout-content">
-<p>W układach silnikowych (np. turbina odrzutowa) komora spalania wykorzystuje <strong>ogromny nadmiar powietrza</strong> (<span class="math inline">\(\lambda \approx 3-4\)</span>) aby chłodzić elementy płomieniówki i chronić łopatki wirnika przed stopieniem od gorących gazów!</p>
+<p>W układach silnikowych (np. turbina odrzutowa) komora spalania wykorzystuje <strong>ogromny nadmiar powietrza</strong> (<span class="math inline">\(\lambda \approx 3\text{–}4\)</span>), aby chłodzić elementy płomieniówki i chronić łopatki wirnika przed stopieniem od gorących gazów!</p>
 </div>
 </div>
 </div>
@@ -450,11 +452,11 @@
 <section id="analiza-egzergetyczna-wstęp" class="slide level2">
 <h2><i class="bi bi-door-open"></i> Analiza Egzergetyczna (Wstęp)</h2>
 <h3 id="energia-dostępna">Energia Dostępna</h3>
-<p>Egzergia to maksymalna praca, jaką układ może wykonać przechodząc do stanu równowagi z otoczeniem.</p>
+<p>Egzergia to maksymalna praca, jaką układ może wykonać, przechodząc do stanu równowagi z otoczeniem.</p>
 <ul>
-<li>I Zasada mówi o ilości energii (konserwacja).</li>
+<li>I Zasada mówi o ilości energii (zachowanie).</li>
 <li>II Zasada mówi o jakości energii (degradacja).</li>
-<li><strong>Strata egzergii (<span class="math inline">\(\delta B\)</span>):</strong> Jest proporcjonalna do przyrostu entropii (Prawo Gouya-Stodoli).</li>
+<li><strong>Strata egzergii (<span class="math inline">\(\delta B\)</span>):</strong> Jest proporcjonalna do przyrostu entropii układu izolowanego (prawo Gouy–Stodoli): <span class="math inline">\(\delta B = T_{\text{ot}} \cdot \Delta S_{\text{iz}}\)</span>.</li>
 </ul>
 </section>
 <section id="podsumowanie-w3" class="slide level2">
