@@ -35,7 +35,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 Oblicz jednostkową pracę techniczną $l_t$ potrzebną do sprężenia 1 kg powietrza.
 
 ::: {.callout-note title="Wzór na pracę techniczną przemiany politropowej"}
-$$ l_t = \frac{n}{n-1} R T_1 \left[ \left(1-\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}\right] $$
+$$ l_t = \frac{n}{n-1} R T_1 \left[ 1-\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] $$
 :::
 
 ::: {.columns}

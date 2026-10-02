@@ -193,7 +193,7 @@ Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprąd
 
 *   Spaliny: $300 \rightarrow 150^\circ C$
 *   Woda: $20 \rightarrow 130^\circ C$ (możliwa wyższa $t_{out}$!)
-*   $\Delta T_{min}$ (na zimnym końcu): $150 - 130 = 20 K$
+*   $\Delta T$ na końcach: $300 - 130 = 170 K$ i $150 - 20 = 130 K$ (współprąd: $280 K$ i $70 K$) --- różnica temperatur bardziej wyrównana
 *   Strumień wody: $\dot{m}_w = \frac{150\,000}{4190 \cdot 110} \approx 0.326$ kg/s
 :::
 :::

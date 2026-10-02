@@ -283,14 +283,14 @@ Analiza Zadań 6.1 (Standard) i 6.5 (Podwyższone $t_k$).
 Rozważamy zamianę R134a (GWP=1430) na **R290 (propan, GWP=3)**. Czy warto?
 
 ::: {.callout-tip title="Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)"}
-*   $h_1 \approx 570$ kJ/kg, $h_2 \approx 625$ kJ/kg
-*   $h_3 \approx 280$ kJ/kg, $h_4 = h_3$
+*   $h_1 \approx 577$ kJ/kg, $h_2 \approx 624$ kJ/kg
+*   $h_3 \approx 307$ kJ/kg, $h_4 = h_3$
 :::
 
 ::: {.fragment}
-$$ q_o = 570 - 280 = \mathbf{290 \text{ kJ/kg}} \quad (\text{R134a: } 144) $$
-$$ l_k = 625 - 570 = \mathbf{55 \text{ kJ/kg}} \quad (\text{R134a: } 25) $$
-$$ EER = 290/55 = \mathbf{5.27} $$
+$$ q_o = 577 - 307 = \mathbf{270 \text{ kJ/kg}} \quad (\text{R134a: } 144) $$
+$$ l_k = 624 - 577 = \mathbf{47 \text{ kJ/kg}} \quad (\text{R134a: } 25) $$
+$$ EER = 270/47 = \mathbf{5.74} \quad (\text{R134a: } 5.77) $$
 :::
 
 ### Dane R134a (Porównanie)
@@ -317,9 +317,9 @@ $$ EER = 290/55 = \mathbf{5.27} $$
 
 **R290 (Propan):**
 
-*   $h_1 = 570$ kJ/kg
-*   $h_2 = 625$ kJ/kg
-*   $h_3 = 280$ kJ/kg
+*   $h_1 = 577$ kJ/kg
+*   $h_2 = 624$ kJ/kg
+*   $h_3 = 307$ kJ/kg
 
 :::
 ::::
@@ -330,10 +330,12 @@ $$ EER = 290/55 = \mathbf{5.27} $$
 ## 🧊 Zadanie 6.6 (cd.): Wnioski
 
 **Strumień czynnika:**
-$\dot{m}_{R290} = 300/290 = \mathbf{1.03 \text{ kg/s}}$ (R134a: $2.08$ kg/s — **połowę mniej!**)
+$\dot{m}_{R290} = 300/270 = \mathbf{1.11 \text{ kg/s}}$ (R134a: $2.08$ kg/s — **prawie o połowę mniej!**)
+
+**Efektywność:** EER praktycznie taki sam (5.74 wobec 5.77) — o wyborze decyduje ekologia i bezpieczeństwo, nie sprawność.
 
 ::: {.callout-warning style="font-size: 1.8em"}
-R290 ma lepszą wydajność objętościową i zerowy wpływ na warstwę ozonową. **Ale jest palny!** Wymaga specjalnych zabezpieczeń (ATEX).
+R290 ma lepszą wydajność objętościową i pomijalny GWP (3 wobec 1430); podobnie jak R134a nie niszczy warstwy ozonowej. **Ale jest palny!** Wymaga specjalnych zabezpieczeń (ATEX).
 :::
 
 ---
