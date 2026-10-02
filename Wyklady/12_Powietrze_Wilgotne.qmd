@@ -70,7 +70,7 @@ theme_set(theme_minimal(base_size = 18))
 
 ---
 
-## <i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego 
+## <i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego {style="font-size: 0.95em;"}
 
 ::: {.callout-note appearance="simple" style="font-size: .9em;"}
 **Powietrze wilgotne** to jednorodna mieszanina gazów zbliżonych do doskonałych ($N_2, O_2, Ar$) oraz **pary wodnej**.
@@ -94,7 +94,7 @@ $p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząs
 
 ---
 
-## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out" style="font-size: 0.85em;"}
 
 Inżynierowie (i nie tylko) opisują wilgotność powietrza za pomocą trzech wielkości: $\varphi$, $g$ i $X$.
 
@@ -153,7 +153,7 @@ $$ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad [\frac{kJ}{kg}]
 
 ---
 
-## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X 
+## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X {style="font-size: 0.85em;"}
 
 Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienasycony).
 
@@ -503,7 +503,7 @@ print(p)
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
+## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out" style="font-size: 0.9em;"}
 
 ::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
 *   **Proces:** Nagrzewnica.
@@ -741,9 +741,9 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.85em;"}
+## <i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.75em;"}
 
-::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
+::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple" style="font-size: 0.85em;"}
 $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
 $$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] $$
 :::
@@ -756,7 +756,7 @@ Bez doprowadzenia ciepła ($\dot{Q} = 0$): $\varepsilon$ = entalpia właściwa m
 
 ::: {.fragment style="font-size: 0.85em;"}
 | Medium | $\varepsilon$ | Kierunek na wykresie |
-|--------|---------------|----------------------|
+|----------------------------|---------------------------|--------------------------------|
 | Lód (0 °C) | ≈ −335 | nieco poniżej izentalpy (↘) |
 | Chłodzenie z osuszaniem | > 0, duże (ok. 5000–15000) | w lewo w dół (↙) |
 | Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↘ |
@@ -786,7 +786,7 @@ Kierunek o danym $\varepsilon = \Delta h/\Delta X$ wyznacza prosta z "bieguna" d
 
 ---
 
-## <i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza
+## <i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza {style="font-size: 0.75em;"}
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
@@ -868,7 +868,7 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną 
+## <i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną {style="font-size: 0.9em;"}
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 Przy nawilżaniu **parą** ($h_w \approx 2676$ kJ/kg dla pary nasyconej 100 °C) przemiana biegnie **prawie poziomo** (niemal wzdłuż izotermy; $t$ lekko rośnie, bo $h_w > 2501 + 1{,}86\,t$). $\varepsilon = h_w \approx 2676$ kJ/kg.
@@ -952,27 +952,30 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy 
+## <i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy {style="font-size: 0.75em;"}
 
 ::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
 **(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
 :::
 
+::: {.mmd-fit style="height: 150px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 10
-%%| fig-height: 1
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    P0["<b>Powietrze 0</b><br>t=20°C, φ=50%"] -->|"Nagrzewnica<br>X=const ↑t"| PA["<b>Punkt A</b><br>t=60°C, φ↓"]
-    PA -->|"Suszarnia<br>h≈const ↑X"| PB["<b>Punkt B</b><br>t=28°C, φ↑"]
+    P0["`**Powietrze 0**
+t=20°C, φ=50%`"] -->|"Nagrzewnica<br>X=const ↑t"| PA["`**Punkt A**
+t=60°C, φ↓`"]
+    PA -->|"Suszarnia<br>h≈const ↑X"| PB["`**Punkt B**
+t=28°C, φ↑`"]
     
     style P0 fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
     style PA fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     style PB fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 ::: {.columns}
 ::: {.column width="35%"}
@@ -1172,19 +1175,20 @@ Dwa termometry:
 
 ### Urządzenia (AHU — Air Handling Unit)
 
-<div style="text-align: center; transform: scale(1.4); transform-origin: top center;">
+::: {.mmd-fit style="height: 150px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 14
-%%| fig-height: 1
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    IN["🌬️ Powietrze<br>zewnętrzne"] --> F["<b>Filtr</b>"]
-    F --> N["<b>Nagrzewnica</b><br>↑t (zima)"]
-    N --> CH["<b>Chłodnica</b><br>↓t (lato)"]
-    CH --> NAW["<b>Nawilżacz</b><br>↑X (zima)"]
-    NAW --> W["<b>Wentylator</b>"]
+    IN["🌬️ Powietrze<br>zewnętrzne"] --> F["`**Filtr**`"]
+    F --> N["`**Nagrzewnica**
+↑t (zima)`"]
+    N --> CH["`**Chłodnica**
+↓t (lato)`"]
+    CH --> NAW["`**Nawilżacz**
+↑X (zima)`"]
+    NAW --> W["`**Wentylator**`"]
     W --> OUT["🏢 Kanał<br>nawiewny"]
     
     style IN fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
@@ -1196,7 +1200,7 @@ flowchart LR
     style OUT fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
-</div>
+:::
 
 ::: {.fragment}
 ### Zastosowania
@@ -1233,7 +1237,7 @@ Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 
 ---
 
-## <i class="bi bi-calculator"></i> Przykłady Obliczeniowe 
+## <i class="bi bi-calculator"></i> Przykłady Obliczeniowe {style="font-size: 0.8em;"}
 
 ::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
 **Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.

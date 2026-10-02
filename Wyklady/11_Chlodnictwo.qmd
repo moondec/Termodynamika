@@ -91,7 +91,7 @@ Zgodnie z II Zasadą Termodynamiki (Clausius), ciepło nie płynie samorzutnie o
 
 ---
 
-## <i class="bi bi-bookmark"></i> Mierniki Efektywności (COP) 
+## <i class="bi bi-bookmark"></i> Mierniki Efektywności (COP) {style="font-size: 0.9em;"}
 
 ::: {.callout-important appearance="simple"}
 W urządzeniach chłodniczych sprawność może przekraczać 1, dlatego używamy **COP** (Coefficient of Performance).
@@ -127,7 +127,7 @@ W branży chłodniczej i HVAC zamiast $\text{COP}_{ch}$ często stosuje się ter
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Dlaczego nie Carnot? 
+## <i class="bi bi-bookmark"></i> 2. Dlaczego nie Carnot? {style="font-size: 0.9em;"}
 
 ::: {.callout-note appearance="simple"}
 Odwrócony obieg Carnota ma teoretycznie najwyższe COP. Dlaczego go nie budujemy?
@@ -175,16 +175,19 @@ Standard przemysłowy (lodówki, klimatyzatory, pompy ciepła).
 
 ::: {.column width="45%"}
 
-<div style="text-align: center; transform: scale(1.5); transform-origin: top center;">
+::: {.mmd-fit style="height: 685px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 6
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30 }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
-    S["<b>Sprężarka</b><br>Praca <em style='font-style: italic'>l<sub>sp</sub></em>"] --> SK["<b>Skraplacz</b><br>Oddaje ciepło <em style='font-style: italic'>q<sub>H</sub></em>"]
-    SK --> Z["<b>Zawór Rozprężny</b><br><em style='font-style: italic'>h=const</em>"]
-    Z --> P["<b>Parownik</b><br>Pobiera ciepło <em style='font-style: italic'>q<sub>L</sub></em>"]
+    S["`**Sprężarka**
+Praca *lₛₚ*`"] --> SK["`**Skraplacz**
+Oddaje ciepło *qₕ*`"]
+    SK --> Z["`**Zawór Rozprężny**
+*h=const*`"]
+    Z --> P["`**Parownik**
+Pobiera ciepło *qₗ*`"]
     P --> S
     
     style S fill:#fff3e0,stroke:#f39c12,stroke-width:2px
@@ -194,7 +197,7 @@ flowchart TD
     
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
-</div>
+:::
 
 :::
 ::::
@@ -381,7 +384,7 @@ Przyszłość to czynniki **naturalne** (GWP ≈ 0) i **HFO** (GWP < 10). Rozpor
 
 ---
 
-## <i class="bi bi-shield-exclamation"></i> 6a. Metryki Ekologiczne: ODP i GWP
+## <i class="bi bi-shield-exclamation"></i> 6a. Metryki Ekologiczne: ODP i GWP {style="font-size: 0.95em;"}
 
 Dwa parametry decydują o dopuszczalności stosowania czynnika chłodniczego.
 
@@ -601,8 +604,9 @@ Cały obieg R290 hermetycznie zamknięty w **zewnętrznej** jednostce (strefa AT
 Do wnętrza domu wchodzi tylko **woda grzewcza**.
 :::
 
+::: {.mmd-fit style="height: 515px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '13px' }}}%%
+%%{init: {'theme': 'default', 'themeVariables': {'fontSize': '24px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}}}%%
 flowchart LR
     subgraph OUT["Zewnątrz – MONOBLOK R290 (ATEX)"]
         direction TB
@@ -615,6 +619,7 @@ flowchart LR
     style OUT fill:#e8f5e9,stroke:#27ae60,stroke-width:2px
     style IN fill:#fff3e0,stroke:#f39c12,stroke-width:2px
 ```
+:::
 
 :::
 
@@ -640,7 +645,7 @@ flowchart LR
 
 ---
 
-## <i class="bi bi-bookmark"></i> 7. Pompy Ciepła 
+## <i class="bi bi-bookmark"></i> 7. Pompy Ciepła {style="font-size: 0.75em;"}
 
 "Lodówka wywrócona na lewą stronę" — to samo urządzenie, inny **cel**.
 
@@ -650,22 +655,24 @@ flowchart LR
 
 ### <i class="bi bi-snow"></i> Chłodziarka {.fragment}
 
+::: {.mmd-fit style="height: 460px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 5
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
-    TH["☀️ <b>Otoczenie</b> T<sub>H</sub>"] 
-    TL["❄️ <b>Wnętrze lodówki</b> T<sub>L</sub>"]
-    M["⚙️ Sprężarka<br>Praca <em>L</em>"]
-    TL -->|"Q<sub>L</sub> ← CEL"| M
-    M -->|"Q<sub>H</sub>"| TH
+    TH["`☀️ **Otoczenie** Tₕ`"] 
+    TL["`❄️ **Wnętrze lodówki** Tₗ`"]
+    M["`⚙️ Sprężarka
+Praca *L*`"]
+    TL -->|"Qₗ ← CEL"| M
+    M -->|"Qₕ"| TH
     
     style TH fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     style TL fill:#e3f2fd,stroke:#1565c0,stroke-width:3px
     style M fill:#fff3e0,stroke:#f39c12,stroke-width:2px
 ```
+:::
 
 ::: {.fragment .callout-note appearance="minimal" style="font-size: 0.85em;"}
 $\text{COP}_{ch} = \frac{Q_L}{L}$ (typowo 2–3)
@@ -676,22 +683,24 @@ $\text{COP}_{ch} = \frac{Q_L}{L}$ (typowo 2–3)
 
 ### <i class="bi bi-fire"></i> Pompa Ciepła {.fragment}
 
+::: {.mmd-fit style="height: 460px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 5
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
-    TH["🏠 <b>Pomieszczenie</b> T<sub>H</sub>"]
-    TL["🌍 <b>Grunt / Powietrze</b> T<sub>L</sub>"]
-    M["⚙️ Sprężarka<br>Praca <em>L</em>"]
-    TL -->|"Q<sub>L</sub>"| M
-    M -->|"Q<sub>H</sub> ← CEL"| TH
+    TH["`🏠 **Pomieszczenie** Tₕ`"]
+    TL["`🌍 **Grunt / Powietrze** Tₗ`"]
+    M["`⚙️ Sprężarka
+Praca *L*`"]
+    TL -->|"Qₗ"| M
+    M -->|"Qₕ ← CEL"| TH
     
     style TH fill:#ffebee,stroke:#e74c3c,stroke-width:3px
     style TL fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
     style M fill:#fff3e0,stroke:#f39c12,stroke-width:2px
 ```
+:::
 
 ::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
 $\text{COP}_{g} = \frac{Q_H}{L} = \text{COP}_{ch} + 1$ (typowo 3–5)

@@ -112,8 +112,9 @@ Substancja czysta może występować w różnych fazach (stanach skupienia):
 :::
 
 ::: {style="text-align: center;"}
+::: {.mmd-fit style="height: 220px;"}
 ```{mermaid}
-%%| fig-width: 15
+%%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart LR
     S[Ciało Stałe] <-->|Topnienie / Krzepnięcie| L[Ciecz]
     L <-->|Parowanie / Skraplanie| G[Gaz]
@@ -123,6 +124,7 @@ flowchart LR
     style L fill:#74b9ff,stroke:#0984e3,stroke-width:2px
     style G fill:#dfe6e9,stroke:#636e72,stroke-width:2px,stroke-dasharray: 5 5
 ```
+:::
 :::
 
 ---
@@ -204,7 +206,7 @@ Używana w technice w równaniu dla masy: $pV = m R T$.
 
 ---
 
-## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ { .smaller }
+## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ {.smaller  style="font-size: 0.9em;"}
 
 $$ R = \frac{8314}{M} $$
 

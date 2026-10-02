@@ -28,3 +28,11 @@ h1 {
 .author, .date {
   font-size: 34px;
 }
+
+/* Diagramy mermaid: ramka .mmd-fit o zadanej wysokości, SVG skaluje się do niej (proporcjonalnie) */
+.mmd-fit { margin: 0.2em auto; }
+.mmd-fit div, .mmd-fit figure { width: 100%; height: 100%; margin: 0 !important; }
+.mmd-fit p:empty { display: none; }
+.mmd-fit svg { width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important; }
+/* podpisy strzałek: pełne tło, żeby linia nie przechodziła przez tekst */
+.mmd-fit .edgeLabel rect, .mmd-fit .edgeLabel .background { opacity: 1 !important; fill: #ffffff !important; }

@@ -95,18 +95,22 @@ Dla paliw stałych skład przedstawia się na trójkącie C–H–O. Im więcej 
 
 ---
 
-## <i class="bi bi-fire"></i> 2. Stechiometria Spalania 
+## <i class="bi bi-fire"></i> 2. Stechiometria Spalania {style="font-size: 0.85em;"}
 
+::: {.mmd-fit style="height: 455px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 10
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    P["💧 <b>Paliwo</b><br>C, H, S"] --> K["🔥 <b>Komora<br>Spalania</b>"]
-    POW["🌬️ <b>Powietrze</b><br>λ·L₀"] --> K
-    K --> SP["🌫️ <b>Spaliny</b><br>CO₂, H₂O, SO₂, N₂, O₂"]
-    K --> Q["⚡ <b>Ciepło</b> Q"]
+    P["`💧 **Paliwo**
+C, H, S`"] --> K["`🔥 **Komora**
+**Spalania**`"]
+    POW["`🌬️ **Powietrze**
+λ·L₀`"] --> K
+    K --> SP["`🌫️ **Spaliny**
+CO₂, H₂O, SO₂, N₂, O₂`"]
+    K --> Q["`⚡ **Ciepło** Q`"]
     
     style P fill:#efebe9,stroke:#795548,stroke-width:2px
     style POW fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
@@ -115,6 +119,7 @@ flowchart LR
     style Q fill:#fff3e0,stroke:#f39c12,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 ::: {.callout-tip title="Ile tlenu potrzeba, żeby spalić 1 kmol Węgla?"}
 :::
@@ -151,7 +156,7 @@ Rzeczywista ilość powietrza: $L = \lambda L_0$, gdzie $L_0$ – teoretyczne (s
 
 ---
 
-## <i class="bi bi-thermometer-high"></i> 3. Wartość Opałowa ($W_d$) 
+## <i class="bi bi-thermometer-high"></i> 3. Wartość Opałowa ($W_d$) {style="font-size: 0.85em;"}
 
 ::: {.callout-important title="Krytyczne rozróżnienie"}
 To rozróżnienie jest krytyczne w technice (i na fakturach za gaz!).
@@ -226,17 +231,19 @@ $T_0$ – temperatura otoczenia [K]; $\sum \Delta S$ – suma przyrostów entrop
 
 ### Wykres Strat Energii w Elektrowni {.fragment}
 
+::: {.mmd-fit style="height: 520px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 12
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    F["💧 <b>Paliwo</b><br>100%"] --> K["🔥 <b>Kocioł</b>"]
+    F["`💧 **Paliwo**
+100%`"] --> K["`🔥 **Kocioł**`"]
     K -->|"10%"| KOM["🌫️ Straty<br>kominowe"]
-    K -->|"90%"| T["⚙️ <b>Turbina</b>"]
+    K -->|"90%"| T["`⚙️ **Turbina**`"]
     T -->|"50%"| SKR["❄️ Straty<br>skraplacza"]
-    T -->|"40%"| GEN["⚡ <b>Prąd</b><br>elektryczny"]
+    T -->|"40%"| GEN["`⚡ **Prąd**
+elektryczny`"]
     
     style F fill:#efebe9,stroke:#795548,stroke-width:2px
     style K fill:#ffebee,stroke:#e74c3c,stroke-width:3px
@@ -246,6 +253,7 @@ flowchart LR
     style GEN fill:#e8f5e9,stroke:#4caf50,stroke-width:3px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 ::: {.fragment .callout-important appearance="simple"}
 Największa strata energii to skraplacz, ale największa destrukcja egzergii zachodzi w kotle; kogeneracja (CHP) zwiększa wykorzystanie energii paliwa.
@@ -253,7 +261,7 @@ Największa strata energii to skraplacz, ale największa destrukcja egzergii zac
 
 ---
 
-## <i class="bi bi-lightning-charge"></i> 6. Kogeneracja (CHP - Combined Heat and Power) 
+## <i class="bi bi-lightning-charge"></i> 6. Kogeneracja (CHP - Combined Heat and Power) {style="font-size: 0.85em;"}
 
 ::: {.callout-tip title="Idea układów skojarzonych"}
 Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.
@@ -266,11 +274,11 @@ Jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego
 ### Tradycyjna Elektrownia {.fragment}
 
 ::: {.fragment}
+::: {.mmd-fit style="height: 465px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 5
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
     F["100 MJ Paliwo"] --> T["⚙️ Turbina"]
     T -->|"40 MJ"| E["⚡ Prąd"]
@@ -282,6 +290,7 @@ flowchart TD
     style S fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 :::
 
 ::: {.fragment .callout-warning appearance="minimal" style="font-size: 0.85em;"}
@@ -295,14 +304,12 @@ Sprawność: **~40%**
 
 
 ::: {.fragment}
-<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 465px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 5
-%%| fig-height: 3
 
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '14px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
     F["100 MJ Paliwo"] --> T["⚙️ Turbina"]
     T -->|"35 MJ"| E["⚡ Prąd"]
@@ -316,9 +323,8 @@ flowchart TD
     style S fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
-</div>
 :::
-<div style="margin-top: 200px;"></div>
+:::
 ::: {.fragment .callout-tip appearance="minimal" style="font-size: 0.85em;"}
 Sprawność całkowita: **~80%!**
 :::
@@ -335,18 +341,19 @@ Ogniwa paliwowe to urządzenia elektrochemiczne, które przekształcają energi�
 :::
 
 ::: {.fragment}
-<div style="text-align: center; transform: scale(1.9); transform-origin: top center;">
+::: {.mmd-fit style="height: 375px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 7
-%%| fig-height: 2
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '26px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    H2["💧 H₂"] --> A["<b>Anoda</b><br>H₂→2H⁺+2e⁻"]
+    H2["💧 H₂"] --> A["`**Anoda**
+H₂→2H⁺+2e⁻`"]
     A -.->|"⚡ e⁻ (prąd)"| LOAD["Obciążenie"]
-    A -->|"H⁺"| E["<b>Elektrolit</b><br>PEM"]
-    E --> C["<b>Katoda</b><br>O₂+4H⁺+4e⁻→2H₂O"]
+    A -->|"H⁺"| E["`**Elektrolit**
+PEM`"]
+    E --> C["`**Katoda**
+O₂+4H⁺+4e⁻→2H₂O`"]
     O2["🌬️ O₂"] --> C
     LOAD -.-> C
     C --> W["💧 H₂O"]
@@ -360,11 +367,10 @@ flowchart LR
     style W fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
-</div>
+:::
 
 :::
 
-<div style="margin-top: 200px;"></div>
 
 :::: {.columns}
 
@@ -401,17 +407,35 @@ flowchart LR
 Przeszliśmy drogę od:
 :::
 
+::: {.mmd-fit style="height: 555px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 14
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
-flowchart LR
-    A["<b>W1–3</b><br>Podstawy<br>p, T, I Zasada"] --> B["<b>W4–5</b><br>Substancje<br>Para, Tablice"]
-    B --> C["<b>W6–7</b><br>II Zasada<br>Entropia"]
-    C --> D["<b>W8–10</b><br>Maszyny<br>Obiegi"]
-    D --> E["<b>W11–13</b><br>Zastosowania<br>Chłodnictwo, Klimat."]
-    E --> F["<b>W14–15</b><br>Transfer<br>Ciepło, Spalanie"]
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
+flowchart TB
+    subgraph R1 [" "]
+        direction LR
+        A["`**W1–3**
+Podstawy
+p, T, I Zasada`"] --> B["`**W4–5**
+Substancje
+Para, Tablice`"]
+        B --> C["`**W6–7**
+II Zasada
+Entropia`"]
+    end
+    subgraph R2 [" "]
+        direction LR
+        D["`**W8–10**
+Maszyny
+Obiegi`"] --> E["`**W11–13**
+Zastosowania
+Chłodnictwo, Klimat.`"]
+        E --> F["`**W14–15**
+Transfer
+Ciepło, Spalanie`"]
+    end
+    R1 --> R2
     
     style A fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
     style B fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
@@ -419,8 +443,11 @@ flowchart LR
     style D fill:#fff3e0,stroke:#f39c12,stroke-width:2px
     style E fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
     style F fill:#ffebee,stroke:#e74c3c,stroke-width:2px
+    style R1 fill:none,stroke:none
+    style R2 fill:none,stroke:none
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 ---
 

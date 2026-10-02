@@ -10,7 +10,7 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
-mermaid-format: png
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
@@ -70,7 +70,7 @@ options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych 
+## <i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych {style="font-size: 0.9em;"}
 
 ### Rodzaje Przemian
 
@@ -210,7 +210,7 @@ ggplot() +
 
 ---
 
-## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura 
+## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura {style="font-size: 0.85em;"}
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
@@ -336,7 +336,7 @@ Obszar pod dzwonem to mieszanina (Para Mokra).
 #| label: steam-dome
 #| echo: false
 #| fig-width: 12
-#| fig-height: 9
+#| fig-height: 8
 
 library(ggplot2)
 
@@ -622,7 +622,7 @@ Wnioski:
 
 ---
 
-## <i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach 
+## <i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach {style="font-size: 0.9em;"}
 
 Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży **między** wartościami tablicowymi, stosujemy **interpolację liniową**.
 
@@ -643,7 +643,7 @@ Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależn
 
 ---
 
-## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne 
+## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne {style="font-size: 0.85em;"}
 
 :::: {.columns}
 
@@ -663,7 +663,7 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 :::
 
 ::: {.column width="40%"}
-![](../img/mollier-chart.png){width="100%"}
+![](../img/mollier-chart.png){width="88%"}
 
 :::
 
@@ -676,22 +676,28 @@ Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od w
 Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ\text{C}$. Rozpręża do $p_2 = 0{,}1$ bar.
 
 <div style="width: 100%; margin: 0 auto;">
+::: {.mmd-fit style="height: 585px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'Lato'}}}%%
-flowchart LR
-    A[Start: Znajdź <br>punkt 1] --> B[Odczytaj h1]
-    B --> C[Rysuj linię <br>pionową w dół<br>s = const]
-    C --> D[Przecięcie z p2]
-    D --> E[Odczytaj h2]
-    E --> F[Oblicz Pracę: <br>L = h1 - h2]
-    E --> G{"Sprawdź <br>x2 > 0,85?"}
-    G -- Tak --> H[OK: Turbina <br>bezpieczna]
-    G -- Nie --> I[BŁĄD: Erozja <br>łopatek!]
+%%{init: {'theme': 'default', 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}}}%%
+flowchart TB
+    subgraph ODCZYT ["Odczyt z wykresu h–s"]
+        direction LR
+        A["Start: Znajdź<br>punkt 1"] --> B["Odczytaj h1"]
+        B --> C["Rysuj linię<br>pionową w dół<br>s = const"]
+        C --> D["Przecięcie z p2"]
+        D --> E["Odczytaj h2"]
+    end
+    ODCZYT --> F["Oblicz Pracę:<br>L = h1 − h2"]
+    ODCZYT --> G{"Sprawdź<br>x2 ≥ 0,85?"}
+    G -- Tak --> H["OK: Turbina<br>bezpieczna"]
+    G -- Nie --> I["BŁĄD: Erozja<br>łopatek!"]
 
     style A fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px
     style F fill:#2ecc71,stroke:#27ae60,stroke-width:2px
     style I fill:#e74c3c,stroke:#c0392b,stroke-width:2px
+    style ODCZYT fill:#f4f8fb,stroke:#90a4ae,stroke-width:1px
 ```
+:::
 </div>
 
 ::: {.fragment .callout-warning appearance="simple" style="font-size: 0.8em;"}

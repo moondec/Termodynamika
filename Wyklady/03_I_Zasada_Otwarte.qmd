@@ -17,7 +17,7 @@ institute: |
          
   </div>
 lang: pl
-mermaid-format: png
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"] # Czysty, jasny motyw (inne opcje: serif, white, night)
@@ -87,7 +87,7 @@ theme_set(theme_minimal(base_size = 18))
 ::: {.column width="50%"}
   
 ```{r}
-#| fig-height: 6
+#| fig-height: 5.2
 #| fig-width: 9
 #| echo: false
 #| warning: false
@@ -167,12 +167,11 @@ $$L_t = L_{1-2} + L_n + L_w = L_{1-2} + p_1 V_1 - p_2 V_2$$
 
 gdzie: $L_n = p_1 V_1$ – praca napełniania (wprowadzenia czynnika), $L_w = -p_2 V_2$ – praca wytłaczania (wyprowadzenia czynnika).
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-$$đL_t = -V dp$$
-$$L_t = -\int_{p_1}^{p_2} V(p) dp$$
+::: {style="border: 2px solid #e60000; padding: 8px 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
+$$\begin{aligned} đL_t &= -V\,dp \\ L_t &= -\int_{p_1}^{p_2} V(p)\,dp \end{aligned}$$
 :::
 
-::: {.callout-note title="Definicja"}
+::: {.callout-note title="Definicja" style="font-size: 0.8em;"}
 W układzie $p-V$, pracę techniczną przedstawia pole pomiędzy krzywą przemiany a osią rzędnych ($p$).
 
 :::
@@ -209,10 +208,12 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
 
 <div style="width: 100%; margin: 0 auto; text-align: center;">
 
+::: {.mmd-fit style="height: 195px;"}
 ```{mermaid}
+%%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart LR
     subgraph System ["Układ Otwarty"]
-        direction TB
+        direction LR
         K[Energia Kinetyczna]
         P[Energia Potencjalna]
         H["Entalpia (U + pV)"]
@@ -223,7 +224,7 @@ flowchart LR
     System --> Out[Wylot: ṁ]
 
     Q[Ciepło Q] -.-> System
-    System -.-> W["Praca Techniczna L<sub>t</sub>"]
+    System -.-> W["Praca Techniczna Lₜ"]
 
     style In fill:#2ecc71,stroke:#27ae60,stroke-width:2px
     style Out fill:#e74c3c,stroke:#c0392b,stroke-width:2px
@@ -231,10 +232,11 @@ flowchart LR
     style W fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px,stroke-dasharray: 5 5
     style System fill:#ecf0f1,stroke:#95a5a6,stroke-width:4px
 ```
+:::
 
 </div>
 
-## <i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego 
+## <i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego {style="font-size: 0.9em;"}
 
 ### Postać Ogólna Bilansu Mocy
 
@@ -452,12 +454,14 @@ $$ \dot{H}_{\text{substr.}} + \dot{m}_{\text{pal}} \cdot Q_i = \dot{H}_{\text{sp
 <br>
 <div style="text-align: center;">
 
+::: {.mmd-fit style="height: 700px;"}
 ```{mermaid}
+%%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart TB
     A["Powietrze"] -->|Entalpia wlotowa| C
-    B["Paliwo (Q<sub>i</sub>)"] --> C{"Komora<br>Spalania"}
+    B["Paliwo (Qᵢ)"] --> C{"Komora<br>Spalania"}
     
-    C -->|"Straty ciepła Q<sub>strat</sub>"| D((Otoczenie))
+    C -->|"Straty ciepła Qₛₜᵣₐₜ"| D((Otoczenie))
     C -->|Entalpia wylotowa| E["Gorące Spaliny"]
 
     style C fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
@@ -466,6 +470,7 @@ flowchart TB
     style E fill:#f39c12,stroke:#d35400,color:#fff
     style D fill:#bdc3c7,stroke:#95a5a6
 ```
+:::
 
 </div>
 

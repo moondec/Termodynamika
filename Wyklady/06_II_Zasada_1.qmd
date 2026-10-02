@@ -10,7 +10,7 @@ institute: |
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
-mermaid-format: png
+mermaid-format: svg
 format:
   revealjs:
     theme: ["../theme/q-theme.scss"]
@@ -253,7 +253,7 @@ $$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{L}{Q_H} = \frac{Q_H
 
 ---
 
-## <i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła 
+## <i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła {style="font-size: 0.9em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 To "odwrócony" silnik cieplny.
@@ -279,7 +279,7 @@ To "odwrócony" silnik cieplny.
 
 ---
 
-## <i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik 
+## <i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik {style="font-size: 0.95em;"}
 
 ::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
 Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje $L = 30 \text{ kJ}$ pracy.
@@ -320,7 +320,7 @@ Jeśli $\text{COP}_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepł
 
 ---
 
-## <i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady 
+## <i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady {style="font-size: 0.85em;"}
 
 ### Sformułowanie Kelvina-Plancka{style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
 
@@ -363,7 +363,7 @@ Złamanie jednego oznacza złamanie też drugiego.
 
 ---
 
-## <i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju 
+## <i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju {style="font-size: 0.9em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).
@@ -400,27 +400,28 @@ library(ggplot2)
 ocean <- data.frame(xmin = 0, xmax = 12, ymin = 0, ymax = 3.5)
 
 # Statek
+# kadłub nieco nad linią wody (y = 3.5), żeby horyzont nie pokrywał się z pokładem
 ship_hull <- data.frame(
   x = c(1, 11, 10, 2),
-  y = c(3.5, 3.5, 1.5, 1.5)
+  y = c(4.1, 4.1, 2.1, 2.1)
 )
-ship_cabin <- data.frame(xmin = 3, xmax = 6, ymin = 3.5, ymax = 5.5)
-ship_stack <- data.frame(xmin = 4, xmax = 5, ymin = 5.5, ymax = 6.5)
+ship_cabin <- data.frame(xmin = 3, xmax = 6, ymin = 4.1, ymax = 6.1)
+ship_stack <- data.frame(xmin = 4, xmax = 5, ymin = 6.1, ymax = 7.1)
 
 # --- 2. Definicja Strzałek Energetycznych ---
 
 arrows <- data.frame(
   x_start = c(6, 8),   
-  y_start = c(1.5, 4.5),
+  y_start = c(2.1, 5.1),
   x_end   = c(6, 13),
-  y_end   = c(3.5, 4.5),
+  y_end   = c(4.1, 5.1),
   color   = c("#e74c3c", "#27ae60"), 
   lw      = c(2, 2) # Zmieniono nazwę kolumny na 'lw' (linewidth) dla porządku
 )
 
 labels_arrows <- data.frame(
   x = c(6.2, 10.5),
-  y = c(2.5, 5.2),
+  y = c(3.1, 5.8),
   label = c("Pobór Ciepła\n(Q z Oceanu)", "Całkowita zamiana\nna NAPĘD (L = Q)"),
   color = c("#e74c3c", "#27ae60")
 )
@@ -456,7 +457,7 @@ ggplot() +
   geom_polygon(data = ship_hull, aes(x=x, y=y), fill = "#95a5a6", color = "black") +
   geom_rect(data = ship_cabin, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), fill = "white", color = "black") +
   geom_rect(data = ship_stack, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), fill = "#7f8c8d", color = "black") +
-  annotate("text", x = 4.5, y = 4.5, label = "SILNIK\nSTATKU", fontface = "bold", size = 4) +
+  annotate("text", x = 4.5, y = 5.1, label = "SILNIK\nSTATKU", fontface = "bold", size = 4) +
 
   # 3. Strzałki przepływu (POPRAWIONE)
   # Zmiana 1: xend = x_end (poprawna nazwa kolumny)
@@ -507,8 +508,9 @@ Można go cofnąć bez śladu w otoczeniu.
 :::
 
 <div style="text-align: center; zoom: 1.5;">
+::: {.mmd-fit style="height: 320px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': { 'htmlLabels': false, 'curve': 'basis' }, 'themeVariables': { 'fontSize': '40px', 'fontFamily': 'Lato', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 flowchart LR
     A((Stan 1)) <==> B((Stan 2))
 
@@ -516,6 +518,7 @@ flowchart LR
     style B fill:#eafaf1,stroke:#27ae60,stroke-width:4px
     linkStyle 0 stroke:#27ae60,stroke-width:4px
 ```
+:::
 </div>
 :::
 
@@ -526,8 +529,9 @@ Układ można przywrócić do stanu początkowego tylko kosztem trwałych zmian 
 :::
 
 <div style="text-align: center; zoom: 1.5;">
+::: {.mmd-fit style="height: 260px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': { 'htmlLabels': false, 'curve': 'basis' }, 'themeVariables': { 'fontSize': '40px', 'fontFamily': 'Lato', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 flowchart LR
     C((Stan 1)) ==> D((Stan 2))
     D -.-> |Praca| C
@@ -537,6 +541,7 @@ flowchart LR
     linkStyle 0 stroke:#e60000,stroke-width:4px
     linkStyle 1 stroke:#e60000,stroke-width:3px
 ```
+:::
 </div>
 :::
 
@@ -613,7 +618,7 @@ Składa się z 4 procesów **odwracalnych**:
 :::::
 
 ::: {style="text-align: center;"}
-![](../img/carnot_p_v.png){fig-align="center" width="70%"}
+![](../img/carnot_p_v.png){fig-align="center" width="62%"}
 
 ::: {style="font-size: 0.5em; color: gray; margin-top: -60px;"}
   Źródło: *Termodynamika techniczna*, 2000, J. Szargut.<br>
@@ -778,7 +783,7 @@ Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.
 
 ---
 
-## <i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina) 
+## <i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina) {style="font-size: 0.95em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:

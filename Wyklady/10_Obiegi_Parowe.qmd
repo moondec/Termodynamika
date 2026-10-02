@@ -118,15 +118,19 @@ Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 ::: {.column width="40%"}
 
  
+::: {.mmd-fit style="height: 455px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 6
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30 }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'diagramPadding': 0, 'nodeSpacing': 30, 'rankSpacing': 30, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '22px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart TD
-    P["<b>Pompa</b><br>Pobiera pracę <em style='font-style: italic'>l<sub>p</sub></em>"] --> K["<b>Kocioł</b><br>Dostarcza ciepło <em style='font-style: italic'>q<sub>in</sub></em>"]
-    K --> T["<b>Turbina</b><br>Generuje pracę <em style='font-style: italic'>l<sub>t</sub></em>"]
-    T --> S["<b>Skraplacz</b><br>Oddaje ciepło <em style='font-style: italic'>q<sub>out</sub></em>"]
+    P["`**Pompa**
+Pobiera pracę *lₚ*`"] --> K["`**Kocioł**
+Dostarcza ciepło *qᵢₙ*`"]
+    K --> T["`**Turbina**
+Generuje pracę *lₜ*`"]
+    T --> S["`**Skraplacz**
+Oddaje ciepło *qₒᵤₜ*`"]
     S --> P
     
     style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
@@ -136,6 +140,7 @@ flowchart TD
     
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 :::
 :::
@@ -149,7 +154,7 @@ flowchart TD
 W teorii para musiałaby być skraplana tylko częściowo, **a następnie para mokra (mieszanina dwufazowa) sprężana izentropowo do cieczy nasyconej przy ciśnieniu kotła** (pkt $3' \to 4'$), co jest niemożliwe w praktyce. Sprężanie samej cieczy w pompie to już obieg Rankine'a.
 
 ::: {style="text-align: center;"}
-![](../img/carnot_pw.png){width=25%}
+![](../img/carnot_pw.png){width=22%}
 
 ::: {style="font-size: 0.6em; color: gray;"}
 Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
@@ -158,7 +163,7 @@ W teorii para musiałaby być skraplana tylko częściowo, **a następnie para m
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> 2. Obieg Clausiusa-Rankine'a (C-R) 
+## <i class="bi bi-arrow-repeat"></i> 2. Obieg Clausiusa-Rankine'a (C-R) {style="font-size: 0.95em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieństwie do Otto/Diesla, zachodzi tu **zmiana fazy** czynnika.
@@ -184,7 +189,7 @@ Praca pompy jest zwykle pomijalnie mała.
 
 ---
 
-## <i class="bi bi-graph-up"></i> Wykres T-s dla C-R 
+## <i class="bi bi-graph-up"></i> Wykres T-s dla C-R {style="font-size: 0.9em;"}
 
 :::: {.columns}
 
@@ -611,7 +616,7 @@ Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ wo
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> Rzeczywisty obieg Rankine'a 
+## <i class="bi bi-arrow-repeat"></i> Rzeczywisty obieg Rankine'a {style="font-size: 0.9em;"}
 
 ::: {.columns}
 
@@ -626,17 +631,21 @@ Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ wo
 ::: {.column width="50%"}
 ::: {.fragment}
 
-<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 720px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': true, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '10px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 
-%%| fig-width: 1
-%%| fig-height: 8
 %%| fig-align: center
 flowchart TD
-    A["<b>Stan 3 (Wlot)</b><br>p = 100 bar<br>h = 3375 kJ/kg"] 
-    B["<b>Stan 4s (Idealny)</b><br>p = 0,1 bar<br>h = 2100 kJ/kg"]
-    C["<b>Stan 4 (Rzeczywisty)</b><br>p = 0,1 bar<br>h = 2291 kJ/kg"]
+    A["`**Stan 3 (Wlot)**
+p = 100 bar
+h = 3375 kJ/kg`"] 
+    B["`**Stan 4s (Idealny)**
+p = 0,1 bar
+h = 2100 kJ/kg`"]
+    C["`**Stan 4 (Rzeczywisty)**
+p = 0,1 bar
+h = 2291 kJ/kg`"]
     
     A -->|"Rozprężanie<br>Idealne<br>(pionowo)"| B
     A -->|"Rozprężanie<br>Rzeczywiste<br>(w prawo)"| C
@@ -646,7 +655,7 @@ flowchart TD
     style B fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,stroke-dasharray: 5 5
     style C fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
 ```
-</div>
+:::
 
 :::
 :::
@@ -679,7 +688,7 @@ Na wykresie h-s linia rozprężania **odchyla się w prawo** (wzrost entropii), 
 
 ---
 
-## <i class="bi bi-bookmark"></i> 3. Problem Wilgotności (Erozja) 
+## <i class="bi bi-bookmark"></i> 3. Problem Wilgotności (Erozja) {style="font-size: 0.9em;"}
 
 ::: {.callout-caution title="Ograniczenia"}
 Zauważ, że punkt 4 (wylot z turbiny) leży "pod kopułą".
@@ -703,7 +712,7 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 
 ---
 
-## <i class="bi bi-arrow-repeat"></i> 4. Przegrzew Wtórny (Reheat) 
+## <i class="bi bi-arrow-repeat"></i> 4. Przegrzew Wtórny (Reheat) {style="font-size: 0.9em;"}
  
  
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
@@ -713,17 +722,24 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 :::
 
 
+::: {.mmd-fit style="height: 200px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 12
-%%| fig-height: 3
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '20px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    K["<b>Kocioł</b><br>Dostarcza ciepło <em style='font-style: italic'>q<sub>in</sub></em>"] --> HP["<b>Turbina HP</b><br>Praca <em style='font-style: italic'>l<sub>HP</sub></em>"]
-    HP --> K2["<b>Przegrzewacz<br>wtórny</b><br>(międzystopniowy)<br>Ciepło <em style='font-style: italic'>q<sub>rh</sub></em>"]
-    K2 --> LP["<b>Turbina LP</b><br>Praca <em style='font-style: italic'>l<sub>LP</sub></em>"]
-    LP --> S["<b>Skraplacz</b><br>Ciepło <em style='font-style: italic'>q<sub>out</sub></em>"]
-    S --> P["<b>Pompa</b><br>Praca <em style='font-style: italic'>l<sub>p</sub></em>"]
+    K["`**Kocioł**
+Dostarcza ciepło *qᵢₙ*`"] --> HP["`**Turbina HP**
+Praca *lₕₚ*`"]
+    HP --> K2["`**Przegrzewacz**
+**wtórny**
+(międzystopniowy)
+Ciepło *qᵣₕ*`"]
+    K2 --> LP["`**Turbina LP**
+Praca *lₗₚ*`"]
+    LP --> S["`**Skraplacz**
+Ciepło *qₒᵤₜ*`"]
+    S --> P["`**Pompa**
+Praca *lₚ*`"]
     P --> K
     
     style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
@@ -735,6 +751,7 @@ flowchart LR
     
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
+:::
 
 ::: {.fragment .callout-tip title="**Zalety:**" style="font-size: 0.6em; color: navy;"}
 *   Punkt końcowy przesuwa się w prawo (para suchsza).
@@ -745,7 +762,7 @@ flowchart LR
 
 ---
 
-## <i class="bi bi-graph-up"></i> Wykres h-s: Przegrzew Wtórny 
+## <i class="bi bi-graph-up"></i> Wykres h-s: Przegrzew Wtórny {style="font-size: 0.95em;"}
 
 :::: {.columns}
 
@@ -1152,7 +1169,7 @@ Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Skraplacz, 4-Pompa, 5-Koc
 
 ---
 
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W10 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W10 {style="font-size: 0.95em;"}
 
 1.  **Obieg Rankine'a** rządzi światową energetyką.
 2.  **Klucz do sprawności:**

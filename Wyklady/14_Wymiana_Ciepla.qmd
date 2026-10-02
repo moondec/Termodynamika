@@ -74,27 +74,30 @@ theme_set(theme_minimal(base_size = 18))
 Ciepło płynie zawsze, gdy istnieje $\Delta T$.
 Jakim "autobusem"?
 :::
-<div style="text-align: center; transform: scale(2.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 315px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 10
-%%| fig-height: 1
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '22px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
     subgraph "Transport Ciepła"
-    A["<b>Przewodzenie</b><br>λ·ΔT/δ<br><em>Drgania sieci</em>"]
-    B["<b>Konwekcja</b><br>α·ΔT<br><em>Ruch płynu</em>"]
-    C["<b>Promieniowanie</b><br>σ·T⁴<br><em>Fala EM</em>"]
+    A["`**Przewodzenie**
+λ·ΔT/δ
+*Drgania sieci*`"]
+    B["`**Konwekcja**
+α·ΔT
+*Ruch płynu*`"]
+    C["`**Promieniowanie**
+σ·T⁴
+*Fala EM*`"]
     end
     
     style A fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     style B fill:#fff3e0,stroke:#f39c12,stroke-width:2px
     style C fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
 ```
-</div>
+:::
 
-<div style="margin-top: 200px;"></div>
 
 ::: {.fragment style="font-size: 0.85em;"}
 | Mechanizm | Medium | Przykład | Intensywność |
@@ -106,7 +109,7 @@ flowchart LR
 
 ---
 
-## <i class="bi bi-bricks"></i> 2. Przewodzenie i Prawo Fouriera 
+## <i class="bi bi-bricks"></i> 2. Przewodzenie i Prawo Fouriera {style="font-size: 0.85em;"}
 
 ::: {.callout-tip title="Prawo Fouriera: Strumień ciepła jest proporcjonalny do gradientu temperatury."}
 
@@ -133,7 +136,7 @@ $\delta$: Grubość ściany.
 
 ---
 
-## <i class="bi bi-plug"></i> Opór Cieplny ($R$). Analogia elektryczna 
+## <i class="bi bi-plug"></i> Opór Cieplny ($R$). Analogia elektryczna {style="font-size: 0.85em;"}
 
 ::: {.callout-note appearance="minimal"}
 $$ \dot{Q} = \frac{\Delta T}{R} $$
@@ -142,18 +145,18 @@ $$ R' = R \cdot A = \frac{\delta}{\lambda} \quad [\text{m}^2\text{K/W}] \quad (\
 :::
 
 ::: {.fragment}
-<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 150px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 10
-%%| fig-height: 1
 
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'sans-serif' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    T1["<b>T<sub>wewn</sub></b><br>20°C"] -->|"R′<sub>si</sub>"| A["Pow. wewn."]
-    A -->|"R′<sub>ceg</sub> = δ/λ"| B["Cegła"]
-    B -->|"R′<sub>styr</sub> = δ/λ"| C["Styropian"]
-    C -->|"R′<sub>se</sub>"| T2["<b>T<sub>zewn</sub></b><br>-10°C"]
+    T1["`**T wewn.**
+20°C`"] -->|"R′ₛᵢ"| A["Pow. wewn."]
+    A -->|"R′ ceg = δ/λ"| B["Cegła"]
+    B -->|"R′ styr = δ/λ"| C["Styropian"]
+    C -->|"R′ₛₑ"| T2["`**T zewn.**
+-10°C`"]
     
     style T1 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
     style A fill:#fff3e0,stroke:#f39c12,stroke-width:2px
@@ -162,7 +165,7 @@ flowchart LR
     style T2 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
     linkStyle default stroke-width:2px,fill:none,stroke:black
 ```
-</div>
+:::
 :::
 
 <br>
@@ -216,7 +219,7 @@ Dla nowoczesnego domu $U < 0{,}2$ W/(m²K).
 
 ---
 
-## <i class="bi bi-sun"></i> 4. Promieniowanie 
+## <i class="bi bi-sun"></i> 4. Promieniowanie {style="font-size: 0.8em;"}
 
 ::: {.callout-tip title="Prawo Stefana-Boltzmanna"}
 Każde ciało o temperaturze $T > 0$ K emituje promieniowanie cieplne (elektromagnetyczne).
@@ -364,7 +367,7 @@ Cegła 25 cm ($\lambda=0{,}8$) + Styropian 15 cm ($\lambda=0{,}04$). Pomiń $R'_
 
 ---
 
-## <i class="bi bi-lightbulb"></i> Rozwiązanie Zadania
+## <i class="bi bi-lightbulb"></i> Rozwiązanie Zadania {style="font-size: 0.8em;"}
 
 ::: {.callout-note appearance="simple" icon="false" style="font-size: 0.7em;"}
 **Dane:**

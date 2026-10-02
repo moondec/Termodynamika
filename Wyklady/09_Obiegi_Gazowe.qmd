@@ -671,7 +671,7 @@ p_ts_b
 
 ---
 
-## <i class="bi bi-percent"></i> Sprawność Braytona 
+## <i class="bi bi-percent"></i> Sprawność Braytona {style="font-size: 0.95em;"}
 
 ::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Zależy od sprężu ($\pi = p_2/p_1$). Przy sprężaniu izentropowym $\pi^{\frac{\kappa-1}{\kappa}} = \varepsilon^{\kappa-1}$ — spręż i stopień sprężania są równoważne (wzór ma postać jak dla Otto).

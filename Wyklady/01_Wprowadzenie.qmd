@@ -132,7 +132,7 @@ To nauka o tym, jak zamienić chaos (ciepło) w użyteczne działanie (pracę).
 
 ::::
 
-## Poziomy Opisu Układu
+## Poziomy Opisu Układu {style="font-size: 0.95em;"}
 
 ### Makrostan vs. Mikrostan
 
@@ -448,15 +448,17 @@ ggplot() +
 **Stan Równowagi:** 
 
 * Stan, w którym parametry są jednorodne i nie zmieniają się w czasie (równowaga termiczna, mechaniczna, chemiczna).
+
+[*Wykres obok (na dole): wizualizacja istoty równowagi termodynamicznej — zanik gradientów.*]{style="font-size: 0.6em; color: #555;"}
 :::
 
 ::: {.column width="70%"}
 
 
+::: {.mmd-fit style="height: 410px;"}
 ```{mermaid}
 %%| fig-align: center
-%%| fig-width: 8
-%%| fig-height: 3
+%%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart LR
     subgraph Rownowaga [Pełna Równowaga<br>Termodynamiczna]
         direction TB
@@ -471,15 +473,15 @@ flowchart LR
     style M fill:#ccffcc,stroke:#333
     style C fill:#ccccff,stroke:#333
 ```
+:::
 
 
 ```{r}
-#| label: fig-equilibrium
-#| fig-cap: "Wizualizacja istoty Równowagi Termodynamicznej: Zanik gradientów."
+#| label: equilibrium
 #| echo: false
 #| warning: false
 #| fig-width: 12
-#| fig-height: 4
+#| fig-height: 3.4
 
 library(ggplot2)
 library(dplyr)
@@ -544,8 +546,9 @@ p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = "bottom")
 
 ### Ideał Termodynamiki
 
+:::: {style="font-size: 0.85em;"}
 
-*   **Proces Kwazistatyczny (Równowagowy):** 
+*   **Proces Kwazistatyczny (Równowagowy):**
     * Proces nieskończenie powolny, który w każdej chwili znajduje się nieskończenie blisko stanu równowagi termodynamicznej. 
     * Proces kwazistatyczny bez tarcia i innych zjawisk dyssypacyjnych jest **odwracalny** – może być odwrócony przez nieskończenie małą zmianę parametrów układu i otoczenia (kwazistatyczny ≠ odwracalny: np. bardzo powolne sprężanie z tarciem tłoka jest nieodwracalne).
 
@@ -556,6 +559,8 @@ p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = "bottom")
 *   **Przykłady** 
     * Rozprężanie adiabatyczne przy braku tarcia; obiegi teoretyczne (Carnota, Otta, Diesla, Rankine'a) złożone z przemian kwazistatycznych.
 :::
+
+::::
 
 ## <i class="bi bi-speedometer2"></i> Parametry Stanu
 
@@ -814,7 +819,7 @@ $$ f(p, V, T) = 0 $$
 Umożliwia obliczenie brakującego parametru, gdy znane są pozostałe. Jest to punkt wyjścia dla analizy gazów.
 :::
 
-## Modele Gazu: Idealny vs. Rzeczywisty{style="color: #7f2d2dff"}
+## Modele Gazu: Idealny vs. Rzeczywisty {style="font-size: 0.9em; color: #7f2d2dff"}
 
 ::::: columns
 :::: {.column width="50%"}
@@ -855,7 +860,7 @@ $a/V_m^2$: Dodajemy wewnętrzne ciśnienie wynikające z sił przyciągania mię
 ::::
 :::::
 
-## Implikacje Stanu Rzeczywistego
+## Implikacje Stanu Rzeczywistego {style="font-size: 0.95em;"}
 
 ### Stany Cieczy i Pary
 
@@ -981,10 +986,9 @@ Równanie stanu van der Waalsa opisuje stany nietrwałe, które w rzeczywistośc
 Są nietrwałe. Małe zaburzenie może spowodować gwałtowne skroplenie (para przesycona) lub wrzenie (ciecz przegrzana).
 :::
  
-## Przemiany Fazowe
+## Przemiany Fazowe: wykresy $p$-$T$
 
-### Wykresy $p-T$
-
+:::: {style="font-size: 0.85em;"}
 
 Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja istnieje w danej fazie (stałej, ciekłej, gazowej lub ich równowadze).
 
@@ -993,12 +997,14 @@ Wykresy fazowe pokazują obszary w przestrzeni ($p, T$), w których substancja i
 - Woda (anomalia: ujemne nachylenie krzywej topnienia – wzrost ciśnienia obniża temperaturę topnienia lodu).
 - Hel-4 (posiadający linię $\lambda$, która jest przejściem fazowym drugiego rodzaju do stanu nadciekłego).
 
+::::
+
 ::::: columns
 ::: {.column width="50%"}
-![](../img/phase_diagram_h2o.png){width="90%"}
+![](../img/phase_diagram_h2o.png){width="72%"}
 :::
 ::: {.column width="50%"}
-![](../img/phase_diagram_he4.png){width="90%"}
+![](../img/phase_diagram_he4.png){width="72%"}
 :::
 :::::
 

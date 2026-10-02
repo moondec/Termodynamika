@@ -86,11 +86,11 @@ $$ \oint \frac{đ Q}{T} \le 0 $$
 
 ---
 
-## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa{auto-animate="true"}
+## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa {auto-animate="true"}
 
-<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 720px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '30px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 graph TD
     A[Nierówność<br>Clausiusa] --> B{Wynik<br>całkowania}
     B -- "Równe 0" --> C[Obieg<br>Odwracalny<br>Idealny]
@@ -104,7 +104,7 @@ graph TD
     
     linkStyle 0,1,2,3 stroke-width:4px,fill:none,stroke:black
 ```
-</div>
+:::
 
 
 ---

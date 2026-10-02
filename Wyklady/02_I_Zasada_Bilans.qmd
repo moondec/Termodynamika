@@ -120,11 +120,11 @@ W termodynamice kluczowe jest rozróżnienie matematyczne:
 2.  **Różniczka niezupełna ($đ$):** Dotyczy wielkości procesowych ($Q, L$) – jest to forma Pfaffa, która nie jest różniczką zupełną żadnej funkcji stanu. Ich wartość zależy od drogi przejścia: $\oint đQ \neq 0$.
 :::
 
-::: {.fragment .fade-up .callout-warning title="Ciekawe" style="font-size: 1.0em; color: blue;"}
+::: {.fragment .fade-up .callout-warning title="Ciekawe" style="font-size: 0.75em; color: blue;"}
 *Czynnik całkujący ($1/T$) pozwala zamienić $đQ$ w różniczkę zupełną entropii $dS = đQ_{\text{odwr}}/T$ (dla procesu odwracalnego)*.
 :::
 
-::: {.fragment .fade-up .callout-note title="Do tego wrócimy..." style="font-size: 1.0em; color: red;"}
+::: {.fragment .fade-up .callout-note title="Do tego wrócimy..." style="font-size: 0.6em; color: red;"}
 W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 :::
 
@@ -215,7 +215,7 @@ ggplot() +
 $$ dU = đQ - đL $$
 :::
 
-## <i class="bi bi-gear-wide-connected"></i> Praca ($L$)
+## <i class="bi bi-gear-wide-connected"></i> Praca ($L$) {style="font-size: 0.9em;"}
 
 ### Praca Objętościowa
 
@@ -396,7 +396,7 @@ Gdzie:
 
 # A co jeśli mamy układ otwarty - przepływowy {style="text-align: center;"}
 
-## <i class="bi bi-speedometer2"></i> Entalpia ($H$)
+## <i class="bi bi-speedometer2"></i> Entalpia ($H$) {style="font-size: 0.9em;"}
 
 ### Definicja i Znaczenie
 
@@ -438,7 +438,7 @@ To jest najważniejszy slajd dla inżyniera!
 | **Układ Zamknięty**<br>(Garnek, Tłok) | **$U$** | Gaz nigdzie nie idzie. "Siedzi" w miejscu. Nie musi się wpychać do rury. |
 | **Układ Otwarty**<br>(Turbina, Kocioł) | **$H$** | Gaz płynie. Musi wykonać pracę przetłaczania ($pV$), żeby wpłynąć i wypłynąć. |
 
-## <i class="bi bi-buildings"></i> Entalpia w Technice
+## <i class="bi bi-buildings"></i> Entalpia w Technice {style="font-size: 0.85em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 W nawiązaniu do **I zasady termodynamiki**, zmiana energii wewnętrznej wynosi: $dU=đQ − p dV$.

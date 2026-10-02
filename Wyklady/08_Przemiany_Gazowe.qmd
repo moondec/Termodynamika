@@ -153,7 +153,7 @@ Podstawowe wzory i zależności:
 
 ---
 
-## <i class="bi bi-bookmark"></i> 2. Metodyka Analizy 
+## <i class="bi bi-bookmark"></i> 2. Metodyka Analizy {style="font-size: 0.85em;"}
 
 ::: {.callout-note appearance="simple"}
 Dla każdej przemiany chcemy wyznaczyć 4 kluczowe wielkości (na 1 kg czynnika)<br>
@@ -475,18 +475,22 @@ p1_plot + p2_plot
 ---
 
 
-## <i class="bi bi-diagram-3"></i> Klasyfikacja Procesów Politropowych 
+## <i class="bi bi-diagram-3"></i> Klasyfikacja Procesów Politropowych {style="font-size: 0.85em;"}
 
-<div style="text-align: center; transform: scale(1.7); transform-origin: top center;">
+::: {.mmd-fit style="height: 720px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': { 'useMaxWidth': false, 'htmlLabels': true }, 'themeVariables': { 'fontSize': '20px', 'fontFamily': 'sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff0f0' }}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 flowchart TD
-    A["Przemiana<br>Politropowa<br>p&middot;v<sup>n</sup> = const"] --> B{"Wartość wykładnika n"}
+    A["Przemiana<br>Politropowa<br>p·vⁿ = const"] --> B{"Wartość wykładnika n"}
     
-    B -- "n = 0" --> C["<b>Izobara</b><br>p = const"]
-    B -- "n = 1" --> D["<b>Izoterma</b><br>T = const"]
-    B -- "n = &kappa;" --> E["<b>Adiabata</b><br>q = 0"]
-    B -- "n &rarr; &infin;" --> F["<b>Izochora</b><br>v = const"]
+    B -- "n = 0" --> C["`**Izobara**
+p = const`"]
+    B -- "n = 1" --> D["`**Izoterma**
+T = const`"]
+    B -- "n = κ" --> E["`**Adiabata**
+q = 0`"]
+    B -- "n → ∞" --> F["`**Izochora**
+v = const`"]
     
     style A fill:#fff3e0,stroke:#f39c12,stroke-width:4px
     style C fill:#eafaf1,stroke:#2ecc71,stroke-width:3px
@@ -496,11 +500,11 @@ flowchart TD
     
     linkStyle default stroke-width:3px,fill:none,stroke:black
 ```
-</div>
+:::
 
 ---
 
-## <i class="bi bi-bezier2"></i> 7. Przemiana Politropowa (Uogólnienie) 
+## <i class="bi bi-bezier2"></i> 7. Przemiana Politropowa (Uogólnienie) {style="font-size: 0.9em;"}
 
 ::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
 **Równanie ogólne dla wszystkich procesów:**
@@ -575,7 +579,7 @@ Powyższy wzór podaje **wartość pracy napędowej** (dodatnią przy sprężani
 
 ---
 
-## <i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach{auto-animate="true"} 
+## <i class="bi bi-gear-wide-connected"></i> Praca Techniczna w Przemianach {auto-animate="true" style="font-size: 0.95em;"}
 
 Dla układów otwartych (turbina, sprężarka) liczymy pracę techniczną:
 
@@ -611,6 +615,8 @@ Aby zużyć najmniej prądu na sprężanie gazu, powinniśmy dążyć do **izote
 
 ## <i class="bi bi-bookmark"></i> Sprężanie Wielostopniowe z Chłodzeniem 
 
+:::: {style="font-size: 0.85em;"}
+
 Przy dużych stopniach sprężania (w praktyce powyżej $p_2/p_1 \approx 8$) temperatura końcowa jest zbyt wysoka — np. powietrze sprężane adiabatycznie od $20^\circ\text{C}$ przy $p_2/p_1 = 8$ osiąga ok. $260^\circ\text{C}$. Rozwiązanie: **sprężanie w kilku stopniach** z chłodzeniem międzystopniowym.
 
 ::: {.columns}
@@ -640,6 +646,8 @@ $$ \frac{p_{\text{pośr}}}{p_1} = \frac{p_2}{p_{\text{pośr}}} = \sqrt{\frac{p_2
 Dla $z$ stopni: $p_i = p_1 \cdot (p_2/p_1)^{i/z}$, $i = 1, \dots, z$.
 W praktyce stosunek sprężania w jednym stopniu nie przekracza ok. 8: powyżej $p_2/p_1 \approx 8$ stosuje się 2 stopnie, powyżej $\approx 60$ ($\approx 8^2$) — 3 stopnie.
 :::
+
+::::
 
 ---
 
