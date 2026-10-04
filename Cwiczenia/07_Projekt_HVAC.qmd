@@ -1,30 +1,44 @@
 ---
 title: "Ćwiczenie 7: Klimatyzacja Precyzyjna Hali"
-format: 
+subtitle: "Projekt Termo-Tech – Etap 7: Centrala Klimatyzacyjna"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/kbig.jpg" style="height: 200px;">
+  </div>
+lang: pl
+mermaid-format: svg
+format:
   revealjs:
-    slide-number: true
-    theme: simple
+    theme: ["../theme/q-theme.scss", "../theme/cw-theme.scss"]
+    include-in-header: ../theme/cw-header.html
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    footer: "Termodynamika Techniczna – Ćwiczenia (Ć7)"
     width: 1600
     height: 900
-    logo: "../img/kbig.jpg"
-    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
-    chalkboard: true
+    margin: 0.2
 ---
 
-## 🏭 Projekt: Etap Finalny - HVAC (ang. heating, ventilation, air conditioning)
+## <i class="bi bi-buildings"></i> Projekt: Etap Finalny – HVAC (ang. heating, ventilation, air conditioning)
 
 W hali montażu elektroniki musimy utrzymać ściśle określone warunki, aby uniknąć wyładowań elektrostatycznych (ESD) i korozji.
 
 ::: {.columns}
 ::: {.column width="60%"}
 ### Wymagania Hali (Punkt W):
-1.  **Temperatura:** $t_w = 22^\circ C \pm 1K$.
-2.  **Wilgotność:** $\varphi_w = 50\% \pm 5\%$.
-3.  **Zyski Ciepła Jawnego:** $Q_j = 50 \text{ kW}$.
-4.  **Zyski Wilgoci:** $W = 10 \text{ kg/h}$.
+1.  **Temperatura:** $t_W = 22^\circ\text{C} \pm 1\,\text{K}$.
+2.  **Wilgotność:** $\varphi_W = 50\% \pm 5\%$.
+3.  **Zyski ciepła jawnego:** $Q_j = 50 \text{ kW}$.
+4.  **Zyski wilgoci:** $\dot{W} = 10 \text{ kg/h}$.
 
 ### Zadanie:
-Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lato).
+Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (zima/lato).
 :::
 ::: {.column width="40%"}
 ![](../img/ahu_schematic.png)
@@ -33,40 +47,53 @@ Zaprojektować proces przygotowania powietrza w centrali wentylacyjnej (Zima/Lat
 
 ---
 
-## ❄️ Zadanie 7.1: Proces Zimowy (Ogrzewanie + Nawilżanie)
+## <i class="bi bi-clipboard-data"></i> Założenia i Oznaczenia (jak w Karcie Projektowej)
 
-Zimą powietrze zewnętrzne ma parametry: $t_z = -10^\circ C$, $\varphi_z = 90\%$.
-Musimy je doprowadzić do stanu nawiewu $N$, aby pokryć straty ciepła.
+*   **Centrala:** $\dot{V} = 25\,000 \text{ m}^3/\text{h}$, $\rho \approx 1.2 \text{ kg/m}^3$ → $\dot{m} \approx 8.33 \text{ kg/s}$; $c_p = 1.005 \text{ kJ/(kg}\cdot\text{K)}$.
+*   **Nawiew latem:** $t_N = t_W - 4\,\text{K}$.
+*   **Punkty na wykresie h-X:** **Z** – powietrze zewnętrzne, **P** – za nagrzewnicą (zima), **N** – nawiew, **W** – hala, **R** – za chłodnicą (punkt rosy), **M** – mieszanina (recyrkulacja).
+*   **Jednostki:** zawilżenie $X$ w g/kg, entalpia $h$ w kJ/kg – obie odniesione do **1 kg powietrza suchego**.
+*   **Ciśnienie:** wykres h-X sporządzono dla 0.1 MPa, a wartości w przykładach (i w karcie) liczono dla $p = 101.325$ kPa – odczytane z wykresu $X$ wyjdzie ok. 1% większe (np. $X_W \approx 8.4$ zamiast $8.3 \text{ g/kg}$); oba wyniki są poprawne.
+*   Na wykresie entalpia jest oznaczona $i_{1+X}$ – to to samo co $h$.
+
+---
+
+## <i class="bi bi-snow"></i> Zadanie 7.1: Proces Zimowy (Ogrzewanie + Nawilżanie){.smaller}
+
+Zimą powietrze zewnętrzne ma parametry: $t_Z = -10^\circ\text{C}$, $\varphi_Z = 90\%$.
+Musimy je doprowadzić do stanu nawiewu $N$ (upraszczamy: $t_N = t_W$, $X_N = X_W$).
 
 ::: {.fragment}
 ### Krok 1: Wykres h-X
-1.  Zaznacz punkt Z ($t_z=-10, \varphi_z=90\%$). $X_z \approx 1.5 \text{ g/kg}$.
-2.  Punkt W ($t_w=22, \varphi_w=50\%$). $X_w \approx 8.4 \text{ g/kg}$.
+1.  Zaznacz punkt Z ($t_Z = -10^\circ\text{C}$, $\varphi_Z = 90\%$): $X_Z \approx 1.4 \text{ g/kg}$, $h_Z \approx -6.5 \text{ kJ/kg}$.
+2.  Punkt W ($t_W = 22^\circ\text{C}$, $\varphi_W = 50\%$): $X_W \approx 8.3 \text{ g/kg}$ (z wykresu dla 0.1 MPa: $\approx 8.4 \text{ g/kg}$).
 :::
 ::: {.fragment}
 ### Krok 2: Proces w Centrali
-Aby osiągnąć $X_w$ z $X_z$, musimy dodać wilgoć (nawilżanie parowe - izoterma).
-Aby osiągnąć $t_w$, musimy ogrzać powietrze.
+Aby osiągnąć $X_W$ z $X_Z$, musimy dodać wilgoć (nawilżanie parowe – izoterma).
+Aby osiągnąć $t_W$, musimy ogrzać powietrze.
 
 ::: {.columns}
 ::: {.column width="50%"}
 **Sekwencja:**
-1.  **Nagrzewnica Wstępna:** Ogrzewanie $Z \rightarrow P$ ($X=const$).
-2.  **Nawilżacz Parowy:** Nawilżanie $P \rightarrow N$ ($t \approx const$).
-3.  Stan nawiewu $N$ musi mieć $X_N = X_W$ (przyjmijmy bilans wilgoci $\approx 0$).
+
+1.  **Nagrzewnica Wstępna:** Ogrzewanie $Z \rightarrow P$ ($X = \text{const}$).
+2.  **Nawilżacz Parowy:** Nawilżanie $P \rightarrow N$ ($t \approx \text{const}$).
+3.  Stan nawiewu $N$ musi mieć $X_N = X_W$ (przyjmujemy bilans wilgoci $\approx 0$).
 :::
 ::: {.column width="50%"}
 **Obliczenia:**
-Szukamy $X_P = X_Z = 1.5$.
-Szukamy $X_N = 8.4$.
-$t_N \approx 22^\circ C$ (uproszczenie, $t_N > t_W$ dla ogrzewania).
+
+*   $X_P = X_Z \approx 1.4 \text{ g/kg}$, $t_P = t_W = 22^\circ\text{C}$ → $h_P \approx 26 \text{ kJ/kg}$.
+*   $X_N = X_W \approx 8.3 \text{ g/kg}$.
+*   $t_N \approx t_W = 22^\circ\text{C}$ (uproszczenie: pomijamy straty ciepła hali).
 :::
 :::
 :::
 
 ---
 
-## 📈 Wizualizacja na Wykresie h-X (zima){.smaller}
+## <i class="bi bi-graph-up"></i> Wizualizacja na Wykresie h-X (zima){.smaller}
 
 ::: {style="font-size: 0.8em"}
 Jak narysować proces zimowy?
@@ -78,8 +105,9 @@ Jak narysować proces zimowy?
 ::: {style="position: relative; display: block; width: 100%; margin: 0 auto;"}
 ![](../img/air_hum-h-x_h.png){width="100%"}
 
-<!-- Step 1: Point Z -->
-::: {.fragment fragment-index=1 style="position: absolute; top: 81%; left: 6%; width: 0; height: 0;"}
+<!-- Overlay coords: left = 0.95*x_img (img max-width 95%), top = 1.6 + 0.958*y_img (p margin) -->
+<!-- Step 1: Point Z (-10 °C, X = 1.46 g/kg on the 0.1 MPa chart) -->
+::: {.fragment fragment-index=1 style="position: absolute; top: 81%; left: 6.03%; width: 0; height: 0;"}
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
@@ -87,8 +115,8 @@ Jak narysować proces zimowy?
 </div>
 :::
 
-<!-- Step 2: Point W -->
-::: {.fragment fragment-index=2 style="position: absolute; top: 50%; left: 12.4%; width: 0; height: 0;"}
+<!-- Step 2: Point W (22 °C, X = 8.37 g/kg on the 0.1 MPa chart) -->
+::: {.fragment fragment-index=2 style="position: absolute; top: 49.9%; left: 12.78%; width: 0; height: 0;"}
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
 <div style="position: absolute; bottom: 4px; left: 4px; width: 30px; height: 30px; border-left: 1px solid red; transform: rotate(45deg); transform-origin: bottom left; z-index: 1;"></div>
 <div style="position: absolute; bottom: 25px; left: 25px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
@@ -96,21 +124,19 @@ Jak narysować proces zimowy?
 </div>
 :::
 
-<!-- Step 3: Heating -->
+<!-- Step 3: Heating Z -> P (X = const), P on the 22 °C isotherm -->
 ::: {.fragment fragment-index=3}
-<!-- Line stops at top: 50% (Isotherm 22C, same as Point W) -->
-<div style="position: absolute; top: 50%; left: 6%; width: 2px; height: 31%; background-color: red; z-index: 1;"></div>
-<div style="position: absolute; top: 50%; left: 6%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">t_P</div>
+<div style="position: absolute; top: 50.2%; left: calc(6.03% - 1px); width: 2px; height: 30.8%; background-color: red; z-index: 1;"></div>
+<div style="position: absolute; top: 50.2%; left: 6.03%; transform: translate(-50%, -120%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em;">P (t<sub>P</sub>)</div>
 :::
 
-<!-- Step 4: Humidifying -->
+<!-- Step 4: Humidifying P -> N = W (t = const) -->
 ::: {.fragment fragment-index=4}
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <!-- Horizontal line from P (6%, 50%) to W (12.4%, 50%) -->
-  <line x1="6%" y1="50%" x2="12.4%" y2="50%" style="stroke:blue;stroke-width:2" />
+  <line x1="6.03%" y1="50.2%" x2="12.78%" y2="49.9%" style="stroke:blue;stroke-width:2" />
 </svg>
 <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <line x1="9%" y1="49%" x2="12.5%" y2="37%" style="stroke:blue;stroke-width:2" />
+  <line x1="9.4%" y1="49.6%" x2="12.9%" y2="37%" style="stroke:blue;stroke-width:2" />
 </svg>
 <div style="position: absolute; top: 35%; left: 16.2%; transform: translate(-50%, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
   izotermiczne nawilżanie
@@ -124,24 +150,29 @@ Jak narysować proces zimowy?
 ::: {.column width="30%"}
 ::: {.fragment fragment-index=1}
 ### 1. Punkt Z
-$-10^\circ C, 90\%$
+$-10^\circ\text{C}$, $90\%$.
 Odczytaj $X_Z$.
 :::
 
 ::: {.fragment fragment-index=2}
 ### 2. Punkt W
-$22^\circ C, 50\%$
+$22^\circ\text{C}$, $50\%$.
 Odczytaj $X_W$.
 :::
 
 ::: {.fragment fragment-index=3}
 ### 3. Nagrzewanie
-Pionowo w górę od Z ($X = const$) do temperatury $t_P$.
+Pionowo w górę od Z ($X = \text{const}$) do temperatury $t_P = t_W$ (punkt P).
 :::
 
 ::: {.fragment fragment-index=4}
 ### 4. Nawilżanie
-Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
+Po izotermie ($t \approx \text{const}$) w prawo, aż osiągniesz $X_W$.
+:::
+
+::: {.fragment fragment-index=5}
+### 5. Entalpia
+Od punktu idź równolegle do ukośnych linii $i_{1+X} = \text{const}$ do lewej skali [kJ/kg] ($i_{1+X} \equiv h$): $h_Z \approx -6.5$, $h_P \approx 26 \text{ kJ/kg}$.
 :::
 :::
 
@@ -151,27 +182,29 @@ Po izotermie ($t \approx const$) w prawo, aż osiągniesz $X_W$.
 
 ---
 
-## ☀️ Zadanie 7.2: Proces Letni (Chłodzenie + Osuszanie)
+## <i class="bi bi-sun"></i> Zadanie 7.2: Proces Letni (Chłodzenie + Osuszanie){.smaller}
 
-Latem jest gorąco i wilgotno: $t_z = 32^\circ C, \varphi_z = 45\%$.
-$X_z \approx 13.5 \text{ g/kg}$.
-Punkt W: $X_w = 8.4 \text{ g/kg}$.
+Latem jest gorąco i wilgotno: $t_Z = 32^\circ\text{C}$, $\varphi_Z = 45\%$.
+$X_Z \approx 13.5 \text{ g/kg}$, $h_Z \approx 67 \text{ kJ/kg}$.
+Punkt W: $X_W \approx 8.3 \text{ g/kg}$.
 
 ### Analiza:
-$X_z > X_w$ (13.5 > 8.4) $\Rightarrow$ **Musimy OSUSZAĆ!**
+$X_Z > X_W$ ($13.5 > 8.3$) $\Rightarrow$ **Musimy OSUSZAĆ!**
 
 ### Proces w Chłodnicy:
-Chłodzenie przebiega do punktu rosy, a potem po linii nasycenia ($\varphi=100\%$).
+Chłodzenie przebiega przy $X = \text{const}$ do punktu rosy, a potem po linii nasycenia ($\varphi = 100\%$).
 Wykraplanie wody zachodzi na powierzchni chłodnicy.
 
-1.  Oziębiamy powietrze aż do $X = 8.4 \text{ g/kg}$ (na linii nasycenia).
-    *   To wymaga temperatury punktu rosy: $t_R (8.4 g/kg) \approx 11.5^\circ C$.
-2.  Ale $11.5^\circ C$ to za zimno dla ludzi!
-3.  Musimy podgrzać powietrze (Nagrzewnica Wtórna) do np. $18^\circ C$.
+1.  Oziębiamy powietrze aż do $X = X_W \approx 8.3 \text{ g/kg}$ (na linii nasycenia) – punkt R.
+    *   To wymaga temperatury punktu rosy (tzw. punktu rosy aparatu): $t_R \approx 11.1^\circ\text{C}$, $h_R \approx 32 \text{ kJ/kg}$.
+2.  Ale $11.1^\circ\text{C}$ to za zimno dla ludzi!
+3.  Musimy podgrzać powietrze (Nagrzewnica Wtórna, $X = \text{const}$) do $t_N = t_W - 4\,\text{K} = 18^\circ\text{C}$: $h_N \approx 39 \text{ kJ/kg}$.
 
 **Wniosek:** Latem musimy najpierw mocno chłodzić (by osuszyć), a potem lekko podgrzać! To duży koszt energetyczny.
 
 ---
+
+## <i class="bi bi-graph-up"></i> Wizualizacja na Wykresie h-X (lato){.smaller}
 
 :::: {.columns}
 
@@ -179,8 +212,8 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 ::: {style="position: relative; display: block; width: 100%; margin: 0 auto;"}
 ![](../img/air_hum-h-x_h.png){width="100%"}
 
-<!-- Step 1: Point Z (Summer) - Hot & Humid (Right/Top) -->
-::: {.fragment fragment-index=1 style="position: absolute; top: 41.5%; left: 18%; width: 0; height: 0;"}
+<!-- Step 1: Point Z (32 °C, X = 13.67 g/kg on the 0.1 MPa chart) -->
+::: {.fragment fragment-index=1 style="position: absolute; top: 39.9%; left: 17.95%; width: 0; height: 0;"}
 <div style="position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
 <!-- Label to the RIGHT of Z to avoid cooling line -->
 <div style="position: absolute; bottom: 10px; left: 15px; background-color: rgba(255,255,255,0.9); border: 1px solid red; color: red; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.7em; white-space: nowrap; box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
@@ -188,17 +221,14 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 </div>
 :::
 
-<!-- Step 2: Cooling & Dehumidification (Z -> S -> R) -->
+<!-- Step 2: Cooling & Dehumidification (Z -> saturation at X_Z -> R along phi = 100%) -->
 ::: {.fragment fragment-index=2}
-<!-- Point R (Dew Point) - Cold & Saturated (Left/Bottom) -->
-<div style="position: absolute; top: 60.4%; left: 12.4%; width: 8px; height: 8px; background-color: blue; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
-<!-- Cooling Line 1: Sensible Cooling (Vertical Down to Saturation) -->
-<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <line x1="18.2%" y1="41.5%" x2="18.2%" y2="52.2%" style="stroke:blue;stroke-width:2" />
-</svg>
-<!-- Cooling Line 2: Dehumidification (Along Saturation Curve) -->
-<svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
-  <line x1="18.2%" y1="52.2%" x2="12.4%" y2="60.2%" style="stroke:blue;stroke-width:2" />
+<!-- Point R (dew point of W): 11.1 °C, X = 8.37 g/kg -->
+<div style="position: absolute; top: 60.5%; left: 12.78%; width: 8px; height: 8px; background-color: blue; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<div style="position: absolute; top: 60.5%; left: 12.78%; transform: translate(6px, 2px); color: blue; font-weight: bold; font-size: 0.7em; z-index: 2;">R</div>
+<!-- Cooling: X = const down to saturation (18.6 °C), then along the saturation curve to R -->
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+  <polyline points="17.95,39.88 17.95,53.08 16.65,54.68 15.18,56.69 13.88,58.67 12.78,60.54" style="fill:none;stroke:blue;stroke-width:2" vector-effect="non-scaling-stroke" />
 </svg>
 <!-- Label to the RIGHT of Cooling Process -->
 <div style="position: absolute; top: 50%; left: 22%; transform: translate(0, -50%); background-color: blue; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
@@ -206,20 +236,20 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 </div>
 :::
 
-<!-- Step 3: Heating (R -> N) -->
+<!-- Step 3: Heating (R -> N), N: 18 °C, X = 8.37 g/kg -->
 ::: {.fragment fragment-index=3}
-<!-- Point N (Supply) - Warmer -->
-<div style="position: absolute; top: 53.6%; left: 12.4%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<div style="position: absolute; top: 53.8%; left: 12.78%; width: 8px; height: 8px; background-color: red; border-radius: 50%; transform: translate(-50%, -50%); z-index: 2;"></div>
+<div style="position: absolute; top: 53.8%; left: 12.78%; transform: translate(6px, -50%); color: red; font-weight: bold; font-size: 0.7em; z-index: 2;">N</div>
 <!-- Heating Line -->
-<div style="position: absolute; top: 53.6%; left: 12.3%; width: 4px; height: 6.5%; background-color: red; z-index: 1;"></div>
+<div style="position: absolute; top: 53.8%; left: calc(12.78% - 2px); width: 4px; height: 6.7%; background-color: red; z-index: 1;"></div>
 <!-- Label to the LEFT of Heating Process -->
-<div style="position: absolute; top: 60.4%; left: 10%; transform: translate(-100%, -50%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
+<div style="position: absolute; top: 57.5%; left: 11.3%; transform: translate(-100%, -50%); background-color: red; color: white; padding: 2px 5px; border-radius: 4px; font-size: 0.7em; white-space: nowrap;">
   Nagrzewanie
 </div>
 :::
 
-<!-- Final State: W (Reference) -->
-<div style="position: absolute; top: 50%; left: 12.4%; width: 6px; height: 6px; background-color: gray; border-radius: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0.5;"></div>
+<!-- Final State: W (Reference), 22 °C, X = 8.37 g/kg -->
+<div style="position: absolute; top: 49.9%; left: 12.78%; width: 6px; height: 6px; background-color: gray; border-radius: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0.5;"></div>
 
 :::
 :::
@@ -227,20 +257,20 @@ Wykraplanie wody zachodzi na powierzchni chłodnicy.
 ::: {.column width="30%"}
 ::: {.fragment fragment-index=1}
 ### 1. Punkt Z
-$32^\circ C, 45\%$
+$32^\circ\text{C}$, $45\%$.
 Wilgotno i gorąco.
 :::
 
 ::: {.fragment fragment-index=2}
 ### 2. Chłodzenie i Osuszanie
-Oziębiamy powietrze poniżej punktu rosy, aż osiągniemy $X = 8.4 \text{ g/kg}$ (na linii nasycenia).
-$t_R \approx 11.5^\circ C$.
+Oziębiamy powietrze do punktu rosy, a dalej wzdłuż krzywej $\varphi = 100\%$, aż $X = X_W \approx 8.3 \text{ g/kg}$ (punkt R).
+$t_R \approx 11.1^\circ\text{C}$.
 :::
 
 ::: {.fragment fragment-index=3}
 ### 3. Nagrzewanie Wtórne
-$11.5^\circ C$ to za zimno!
-Podgrzewamy powietrze (bez zmiany wilgotności) do temperatury nawiewu (np. $18^\circ C$).
+$11.1^\circ\text{C}$ to za zimno!
+Podgrzewamy powietrze ($X = \text{const}$) do temperatury nawiewu $t_N = t_W - 4\,\text{K} = 18^\circ\text{C}$ (punkt N).
 :::
 :::
 
@@ -248,53 +278,55 @@ Podgrzewamy powietrze (bez zmiany wilgotności) do temperatury nawiewu (np. $18^
 
 ---
 
-## 🏗️ Zadanie 7.3: Bilans Centrali{.smaller}
+## <i class="bi bi-building-gear"></i> Zadanie 7.3: Bilans Centrali{.smaller}
 
-Oblicz moc chłodniczą i grzewczą dla strumienia $\dot{V} = 10\,000 \text{ m}^3/h$. $\rho \approx 1.2 \text{ kg/m}^3$.
+Oblicz moc chłodniczą i grzewczą dla strumienia $\dot{V} = 25\,000 \text{ m}^3/\text{h}$, $\rho \approx 1.2 \text{ kg/m}^3$.
 
-$$ \dot{m} = \frac{10000}{3600} \cdot 1.2 \approx \mathbf{3.33 \text{ kg/s}} $$
+$$ \dot{m} = \rho \cdot \frac{\dot{V}}{3600} = 1.2 \cdot \frac{25\,000}{3600} \approx \mathbf{8.33 \text{ kg/s}} $$
 
 ::: {.fragment}
 ### Chłodnica (Lato):
-$h_z (32^\circ C, 45\%) \approx 67 \text{ kJ/kg}$.
-$h_{ch} (11.5^\circ C, 100\%) \approx 33 \text{ kJ/kg}$.
-$$ \dot{Q}_{ch} = \dot{m} (h_z - h_{ch}) = 3.33 \cdot (67 - 33) = 3.33 \cdot 34 \approx \mathbf{113 \text{ kW}} $$
+$h_Z (32^\circ\text{C}, 45\%) \approx 67 \text{ kJ/kg}$.
+$h_R (11.1^\circ\text{C}, 100\%) \approx 32 \text{ kJ/kg}$.
+$$ \dot{Q}_{ch} = \dot{m} (h_Z - h_R) = 8.33 \cdot (67 - 32) = 8.33 \cdot 35 \approx \mathbf{292 \text{ kW}} $$
 :::
 
 ::: {.fragment}
 ### Nagrzewnica Wtórna (Lato):
-$h_{ch} (11.5^\circ C) \approx 33$.
-$h_{nawiew} (18^\circ C, X=8.4) \approx 40$.
-$$ \dot{Q}_{grz} = \dot{m} (40 - 33) = 3.33 \cdot 7 \approx \mathbf{23 \text{ kW}} $$
+$h_R (11.1^\circ\text{C}) \approx 32 \text{ kJ/kg}$.
+$h_N (18^\circ\text{C}, X = 8.3 \text{ g/kg}) \approx 39 \text{ kJ/kg}$.
+$$ \dot{Q}_{grz} = \dot{m} (h_N - h_R) = 8.33 \cdot (39 - 32) = 8.33 \cdot 7 \approx \mathbf{58 \text{ kW}} $$
 :::
 
 ::: {.fragment .callout-important title="Wniosek"  style="font-size: 1.8em;"}
-Marnujemy 23 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy!
+Marnujemy ok. 58 kW ciepła, żeby podgrzać powietrze, które wcześniej schłodziliśmy!
 **Rozwiązanie:** Rekuperacja chłodu lub by-pass powietrza.
 :::
 
 ---
 
-## 🔍 Zadanie 7.4: Punkt Rosy – Kontrola Kondensacji
+## <i class="bi bi-search"></i> Zadanie 7.4: Punkt Rosy – Kontrola Kondensacji{.smaller}
 
 
 ::: {.panel-tabset}
 
 ### Wyznacz punkt rosy z wykresu h-X:
 
-W magazynie elektroniki temperatura ściany zewnętrznej spada do $12^\circ C$ zimą. Czy przy parametrach wewnętrznych ($22^\circ C, 50\%$) dojdzie do **kondensacji na ścianie**?
+W hali temperatura wewnętrznej powierzchni ściany zewnętrznej spada zimą do $12^\circ\text{C}$. Czy przy parametrach wewnętrznych ($22^\circ\text{C}$, $50\%$) dojdzie do **kondensacji na ścianie**?
 
-1.  Punkt W: $t_w = 22^\circ C, \varphi = 50\% \rightarrow X_w \approx 8.4 \text{ g/kg}$.
-2.  Punkt rosy: idź w dół po $X = const$ (8.4 g/kg) aż do przecięcia z krzywą $\varphi = 100\%$.
+1.  Punkt W: $t_W = 22^\circ\text{C}$, $\varphi_W = 50\% \rightarrow X_W \approx 8.3 \text{ g/kg}$.
+2.  Punkt rosy: idź w dół po $X = \text{const}$ aż do przecięcia z krzywą $\varphi = 100\%$.
 
 ::: {.fragment}
-$$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
+$$ t_R (X_W = 8.3 \text{ g/kg}) \approx \mathbf{11.1^\circ\text{C}} $$
 
-Ściana ma $12^\circ C > 11.5^\circ C$ → **Na granicy!** Przy lekkim spadku temperatury pojawi się rosa.
+Ściana ma $12^\circ\text{C} > t_R = 11.1^\circ\text{C}$ → kondensacji **nie ma**, ale zapas to tylko $0.9\,\text{K}$ – **na granicy!** Przy niewielkim spadku temperatury ściany pojawi się rosa.
+
+Gdy $|t_{\text{ściany}} - t_R| < 0.5\,\text{K}$, wynik uznajemy za „na granicy” (dokładność odczytu z wykresu).
 :::
 
-::: {.fragment .callout-error}
-**Decyzja:** Należy ocieplić ścianę (zwiększyć współczynnik U) lub obniżyć wilgotność w hali do $\varphi < 45\%$.
+::: {.fragment .callout-caution title="Decyzja"}
+Należy docieplić ścianę (zmniejszyć współczynnik przenikania ciepła $U$ – wzrośnie temperatura jej wewnętrznej powierzchni) lub obniżyć wilgotność w hali do $\varphi \le 45\%$ ($t_R \approx 9.5^\circ\text{C}$).
 :::
 
 ### Wykres
@@ -307,104 +339,105 @@ $$ t_{rosy} (X = 8.4) \approx \mathbf{11.5^\circ C} $$
 
 ---
 
-## 📐 Zadanie 7.5: Wymagany Strumień Powietrza
+## <i class="bi bi-rulers"></i> Zadanie 7.5: Wymagany Strumień Powietrza{.smaller}
 
-Oblicz minimalny strumień powietrza nawiewanego, aby pokryć zyski ciepła jawnego ($Q_j = 50$ kW) i wilgoci ($W = 10$ kg/h).
+Oblicz minimalny strumień powietrza nawiewanego, aby pokryć zyski ciepła jawnego ($Q_j = 50$ kW) i wilgoci ($\dot{W} = 10$ kg/h).
 
 **Bilans ciepła jawnego:**
 $$ Q_j = \dot{m} \cdot c_p \cdot (t_W - t_N) $$
 
-Przyjmijmy $t_N = 16^\circ C$ (Nawiew chłodniejszy niż hala), $t_W = 22^\circ C$.
+Przyjmijmy $t_N = t_W - 4\,\text{K} = 18^\circ\text{C}$ (jak w Zad. 7.2), $t_W = 22^\circ\text{C}$, $c_p = 1.005 \text{ kJ/(kg}\cdot\text{K)}$.
 
 ::: {.fragment}
-$$ \dot{m} = \frac{50\,000}{1005 \cdot (22 - 16)} = \frac{50\,000}{6030} \approx \mathbf{8.3 \text{ kg/s}} $$
-$$ \dot{V} = \frac{8.3}{1.2} \approx \mathbf{6.9 \text{ m}^3/\text{s} = 24\,900 \text{ m}^3/h} $$
+$$ \dot{m} = \frac{Q_j}{c_p \, (t_W - t_N)} = \frac{50}{1.005 \cdot (22 - 18)} = \frac{50}{4.02} \approx \mathbf{12.44 \text{ kg/s}} $$
+$$ \dot{V} = \frac{12.44}{1.2} \approx 10.4 \text{ m}^3/\text{s} \approx \mathbf{37\,300 \text{ m}^3/\text{h}} $$
 :::
 
 ::: {.fragment}
 **Weryfikacja bilansu wilgoci:**
-$$ \Delta X = \frac{W}{\dot{m}} = \frac{10/3600}{8.3} = 0.000335 \text{ kg/kg} = 0.34 \text{ g/kg} $$
-$X_N = X_W - \Delta X = 8.4 - 0.34 = 8.06$ g/kg → Praktycznie brak zmiany. Zyski wilgoci są niewielkie.
+$$ \Delta X = \frac{\dot{W}}{\dot{m}} = \frac{10/3600}{12.44} = 0.000223 \text{ kg/kg} = 0.22 \text{ g/kg} $$
+$X_N = X_W - \Delta X = 8.3 - 0.22 \approx 8.1$ g/kg → Praktycznie brak zmiany. Zyski wilgoci są niewielkie.
 :::
 
 ---
 
-## 🔄 Zadanie 7.6: Recyrkulacja Powietrza
+## <i class="bi bi-arrow-repeat"></i> Zadanie 7.6: Recyrkulacja Powietrza
 
-Zamiast pobierać 100% powietrza zewnętrznego, stosujemy **recyrkulację**: 70% powietrza wraca z hali, 30% to świeże powietrze.
+Zamiast pobierać 100% powietrza zewnętrznego, stosujemy **recyrkulację**: $r = 70\%$ powietrza wraca z hali (stan W), $100\% - r = 30\%$ to świeże powietrze (stan Z).
 
-**Lato:** Punkt Z (zewn.): $32^\circ C, 45\%$. Punkt W (hala): $22^\circ C, 50\%$.
+**Lato:** Punkt Z (zewn.): $32^\circ\text{C}$, $45\%$, $X_Z \approx 13.5$ g/kg. Punkt W (hala): $22^\circ\text{C}$, $50\%$, $X_W \approx 8.3$ g/kg.
 
 ### Punkt Mieszaniny M:
-$$ t_M = 0.3 \cdot t_Z + 0.7 \cdot t_W = 0.3 \cdot 32 + 0.7 \cdot 22 = \mathbf{25.0^\circ C} $$
-$$ X_M = 0.3 \cdot X_Z + 0.7 \cdot X_W = 0.3 \cdot 13.5 + 0.7 \cdot 8.4 = 4.05 + 5.88 = \mathbf{9.93 \text{ g/kg}} $$
+$$ t_M = \tfrac{r}{100}\, t_W + \left(1 - \tfrac{r}{100}\right) t_Z = 0.7 \cdot 22 + 0.3 \cdot 32 = 15.4 + 9.6 = \mathbf{25.0^\circ\text{C}} $$
+$$ X_M = \tfrac{r}{100}\, X_W + \left(1 - \tfrac{r}{100}\right) X_Z = 0.7 \cdot 8.3 + 0.3 \cdot 13.5 = 5.81 + 4.05 = \mathbf{9.86 \text{ g/kg}} $$
 
 ---
 
-## 🔄 Zadanie 7.6 (cd.): Analiza Oszczędności
+## <i class="bi bi-arrow-repeat"></i> Zadanie 7.6 (cd.): Analiza Oszczędności
 
 **Porównanie obciążenia osuszania:**
 
-*   Bez recyrkulacji ($X_Z = 13.5$): Musimy usunąć $13.5 - 8.4 = 5.1$ g/kg.
-*   Z recyrkulacją ($X_M = 9.93$): Musimy usunąć $9.93 - 8.4 = 1.53$ g/kg.
+*   Bez recyrkulacji ($X_Z = 13.5$): Musimy usunąć $13.5 - 8.3 = 5.2$ g/kg.
+*   Z recyrkulacją ($X_M = 9.86$): Musimy usunąć $9.86 - 8.3 = 1.56$ g/kg.
 
-::: {.callout-success}
-Redukcja obciążenia osuszania o **70%**! → Mniejsza chłodnica, mniejszy koszt energii.
+::: {.callout-tip title="Wniosek"}
+Redukcja obciążenia osuszania o **70%** ($1 - 1.56/5.2 = 0.70$)! → Mniejsza chłodnica, mniejszy koszt energii.
+Uwaga: redukcja zawsze równa się udziałowi recyrkulacji $r$, bo $X_M - X_W = \left(1 - \tfrac{r}{100}\right)(X_Z - X_W)$.
 :::
 
-::: {.callout-tip}
+::: {.callout-note title="Uwaga"}
 Recyrkulacja to **najskuteczniejszy** sposób zmniejszenia kosztów energetycznych centrali. Ograniczenie: wymogi higieniczne (min. 30 m³/h powietrza świeżego na osobę).
 :::
 
 ---
 
-## 💧 Zadanie 7.7: Ilość Skroplonej Wody
+## <i class="bi bi-droplet"></i> Zadanie 7.7: Ilość Kondensatu (Lato){.smaller}
 
-W procesie letnim (chłodzenie+osuszanie) z powietrza wykrapla się woda. Ile litrów na godzinę?
+W procesie letnim (chłodzenie + osuszanie) z powietrza wykrapla się woda. Ile litrów na godzinę?
 
 ::: {.fragment}
-**Strumień masy powietrza:** $\dot{m} = 3.33$ kg/s (z zad. 7.3).
+**Strumień masy powietrza:** $\dot{m} = 8.33$ kg/s (z Zad. 7.3).
 
-**Zmiana zawilżenia:**
-$$ \Delta X = X_Z - X_{ch} = 13.5 - 8.4 = 5.1 \text{ g/kg} = 0.0051 \text{ kg/kg} $$
+**Zmiana zawilżenia** (za chłodnicą $X_R = X_W$):
+$$ \Delta X = X_Z - X_R = 13.5 - 8.3 = 5.2 \text{ g/kg} = 0.0052 \text{ kg/kg} $$
 
 **Strumień kondensatu:**
-$$ \dot{m}_w = \dot{m} \cdot \Delta X = 3.33 \cdot 0.0051 = 0.017 \text{ kg/s} $$
-$$ \dot{V}_w = 0.017 \cdot 3600 = \mathbf{61.2 \text{ l/h}} $$
+$$ \dot{m}_w = \dot{m} \cdot \Delta X = 8.33 \cdot 0.0052 = 0.0433 \text{ kg/s} $$
+$$ \dot{V}_w = 0.0433 \cdot 3600 \approx \mathbf{156 \text{ l/h}} \quad (\rho_w \approx 1 \text{ kg/l}) $$
 :::
 
-::: {.fragment .callout-note}
-To ponad **litr na minutę** wykroplonej wody! Musi być odprowadzona do kanalizacji przez syfon (aby nie wciągać powietrza). Tę wodę można też wykorzystać jako destylowaną do procesów technologicznych.
+::: {.fragment .callout-note title="Uwaga"}
+To ok. **2.6 litra na minutę** wykroplonej wody! Musi być odprowadzona do kanalizacji przez syfon (aby nie wciągać powietrza). Tę wodę (o niskiej mineralizacji) można po uzdatnieniu wykorzystać np. do nawilżania.
 :::
 
 ---
 
-## 🏗️ Zadanie 7.8: Nagrzewnica Zimowa – Moc
+## <i class="bi bi-building-gear"></i> Zadanie 7.8: Nagrzewnica Zimowa – Moc{.smaller}
 
 ::: {.panel-tabset}
 
 ### Obliczenia
 
-Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = 25\,000 \text{ m}^3/h$ powietrza podgrzewanego od $-10^\circ C$ do $22^\circ C$.
+Oblicz moc nagrzewnicy zimowej dla strumienia $\dot{V} = 25\,000 \text{ m}^3/\text{h}$ powietrza podgrzewanego od $-10^\circ\text{C}$ do $22^\circ\text{C}$ (proces $Z \rightarrow P$ z Zad. 7.1).
 
 ::: {.columns}
 ::: {.column width="50%"}
-$$ \dot{m} = \frac{25000}{3600} \cdot 1.2 \approx 8.33 \text{ kg/s} $$
+$$ \dot{m} = 1.2 \cdot \frac{25\,000}{3600} \approx 8.33 \text{ kg/s} $$
 
 **Z wykresu h-X:**
 
-*   $h_Z (-10^\circ C, 90\%) \approx -8 \text{ kJ/kg}$
-*   $h_N (22^\circ C, X=1.5 g/kg) \approx 26 \text{ kJ/kg}$
+*   $h_Z (-10^\circ\text{C}, 90\%) \approx -6.5 \text{ kJ/kg}$
+*   $h_P (22^\circ\text{C}, X = 1.4 \text{ g/kg}) \approx 26 \text{ kJ/kg}$
 :::
 ::: {.column width="50%"}
-$$ \dot{Q}_{nagr} = \dot{m} (h_N - h_Z) $$
-$$ \dot{Q}_{nagr} = 8.33 \cdot (26 - (-8)) $$
-$$ \dot{Q}_{nagr} = 8.33 \cdot 34 \approx \mathbf{283 \text{ kW}} $$
+$$ \dot{Q}_{nagr} = \dot{m} (h_P - h_Z) $$
+$$ \dot{Q}_{nagr} = 8.33 \cdot (26 - (-6.5)) $$
+$$ \dot{Q}_{nagr} = 8.33 \cdot 32.5 \approx \mathbf{271 \text{ kW}} $$
 :::
 :::
 
-::: {.fragment .callout-warning}
-$283 \text{ kW}$ to jak ogrzewanie **~15 domów jednorodzinnych**! Dlatego rekuperacja (odzysk ciepła) jest kluczowa — może zaoszczędzić 75% tej mocy.
+::: {.fragment .callout-warning title="Uwaga"}
+$271 \text{ kW}$ to jak ogrzewanie **ok. 14 domów jednorodzinnych** (przyjmując ok. 20 kW na dom)! Dlatego rekuperacja (odzysk ciepła) jest kluczowa – może zaoszczędzić ok. 75% tej mocy (Zad. 7.9).
 :::
 
 ### Wykres
@@ -413,20 +446,59 @@ $283 \text{ kW}$ to jak ogrzewanie **~15 domów jednorodzinnych**! Dlatego rekup
 ![](../img/air_hum-h-x_h.png){width="100%"}
 :::
 :::
+
 ---
 
-## 🏠 Zadanie Domowe (Raport 7)
+## <i class="bi bi-arrow-left-right"></i> Zadanie 7.9: Odzysk Ciepła (Rekuperacja){.smaller}
 
-**Temat:** Odzysk Ciepła w Centrali.
+Wymiennik krzyżowy (rekuperator) o sprawności temperaturowej $\eta = 75\%$ podgrzewa powietrze świeże ($t_Z = -10^\circ\text{C}$) ciepłem powietrza wywiewanego z hali ($t_W = 22^\circ\text{C}$). Strumień: $\dot{V} = 25\,000 \text{ m}^3/\text{h}$ → $\dot{m} = 8.33$ kg/s.
 
-Zaprojektuj wymiennik Krzyżowy (Rekuperator) dla sezonu zimowego.
+::: {.columns}
+::: {.column width="50%"}
+::: {.fragment}
+**1. Temperatura za rekuperatorem** (przed nagrzewnicą):
+$$ \eta = \frac{t_{odz} - t_Z}{t_W - t_Z} \;\Rightarrow\; t_{odz} = t_Z + \eta \, (t_W - t_Z) $$
+$$ t_{odz} = -10 + 0.75 \cdot (22 - (-10)) = -10 + 24 = \mathbf{14^\circ\text{C}} $$
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+**2. Zaoszczędzona moc grzewcza** (warunki obliczeniowe):
+$$ \Delta\dot{Q} = \dot{m} \, c_p \, (t_{odz} - t_Z) = 8.33 \cdot 1.005 \cdot (14 - (-10)) \approx \mathbf{201 \text{ kW}} $$
+Nagrzewnica musi dostarczyć już tylko ok. $271 - 201 = 70$ kW (oszczędność ok. 74%).
+:::
+:::
+:::
 
-1.  Powietrze wyrzucane z hali: $22^\circ C$.
-2.  Powietrze czerpane: $-10^\circ C$.
-3.  Sprawność odzysku rekuperatora: $\eta = 75\%$.
+---
 
-**Oblicz:**
+## <i class="bi bi-arrow-left-right"></i> Zadanie 7.9 (cd.): Czy Rekuperator się Opłaci?{.smaller}
 
-1.  Temperaturę powietrza za rekuperatorem (przed nagrzewnicą właściwą).
-2.  Ile mocy grzewczej [kW] zaoszczędzimy dzięki temu urządzeniu?
-3.  Porównaj koszt rekuperatora (20 000 zł) z oszczędnością gazu (zakładając zimę 3000h).
+Przyjmij średnią sezonową temperaturę zewnętrzną $t_{Z,\text{śr}} = +2^\circ\text{C}$, 3000 h pracy w sezonie i cenę ciepła 0.35 zł/kWh. Rekuperator kosztuje ok. 150 000 zł.
+
+::: {.fragment}
+**Średnia moc odzyskiwana w sezonie** (ta sama sprawność, mniejsza różnica temperatur):
+$$ \Delta\dot{Q}_{\text{śr}} = \dot{m} \, c_p \, \eta \, (t_W - t_{Z,\text{śr}}) = 8.33 \cdot 1.005 \cdot 0.75 \cdot (22 - 2) \approx 125.6 \text{ kW} $$
+:::
+
+::: {.fragment}
+**Roczna oszczędność:**
+$$ E = 125.6 \text{ kW} \cdot 3000 \text{ h} \approx 376\,800 \text{ kWh} \quad\Rightarrow\quad K = 376\,800 \cdot 0.35 \approx \mathbf{132\,000 \text{ zł/rok}} $$
+
+**Prosty okres zwrotu:**
+$$ T_{zw} = \frac{150\,000}{132\,000} \approx \mathbf{1.1 \text{ roku}} $$
+:::
+
+::: {.fragment .callout-important title="Uwaga"}
+Nie licz oszczędności dla mocy obliczeniowej ($201 \text{ kW} \cdot 3000 \text{ h}$) – temperatura $-10^\circ\text{C}$ występuje tylko przez kilka dni w roku; zawyżyłbyś oszczędność o ok. 60%.
+:::
+
+---
+
+## <i class="bi bi-house-door"></i> Zadanie Domowe (Raport 7)
+
+**Temat:** Etap 7 Karty Projektowej – Centrala Klimatyzacyjna.
+
+1.  Rozwiąż zadania 7.1–7.9 dla **swoich** danych z karty ($t_Z$ zima/lato, $t_W$, $\dot{V}$, $Q_j$, $r$).
+2.  Na jednym wykresie h-X zaznacz wszystkie punkty (Z, P, N, W, R, M) oraz procesy zimowy i letni.
+3.  Oceń wyniki: czy strumień centrali wystarcza do pokrycia zysków ciepła (Zad. 7.5)? Czy rekuperator się opłaca (Zad. 7.9)?

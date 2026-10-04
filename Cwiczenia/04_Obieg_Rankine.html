@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="pl"><head>
 <script src="04_Obieg_Rankine_files/libs/clipboard/clipboard.min.js"></script>
 <script src="04_Obieg_Rankine_files/libs/quarto-html/tabby.min.js"></script>
 <script src="04_Obieg_Rankine_files/libs/quarto-html/popper.min.js"></script>
@@ -9,7 +9,8 @@
 <link href="04_Obieg_Rankine_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ćwiczenie 4: Kogeneracja (Obieg Parowy)</title>
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
+  <title>Ćwiczenie 4: Kogeneracja – Turbina Parowa</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="04_Obieg_Rankine_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="04_Obieg_Rankine_files/libs/revealjs/dist/theme/quarto-d4cf13167e7aae231ddf91befd63bd72.css">
   <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="04_Obieg_Rankine_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,107 +123,188 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+  body { background-color: #1a1a1a; }
+  .reveal .slide-background-content {
+      background-image: url("../img/background0.png") !important;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      opacity: 0.35 !important;
+  }
+  .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+      background-image: none !important;
+      background-color: white !important;
+      opacity: 1 !important;
+  }
+  </style>
+  <script src="04_Obieg_Rankine_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenie 4: Kogeneracja (Obieg Parowy)</h1>
+  <h1 class="title">Ćwiczenie 4: Kogeneracja – Turbina Parowa</h1>
+  <p class="subtitle">Projekt Termo-Tech – Etap 4: Turbina Przeciwprężna Zamiast Zaworu Dławiącego</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="projekt-etap-4---mikroturbina" class="slide level2">
-<h2>🏭 Projekt: Etap 4 - Mikroturbina</h2>
-<p>W poprzednim zadaniu redukowaliśmy ciśnienie pary z <strong>10 bar</strong> do <strong>2 bar</strong> na zaworze dławiącym. To strata energii (egzergii)! Zamiast zaworu proponujemy zainstalować <strong>Turbinę Przeciwprężną</strong>.</p>
+<section id="projekt-etap-4-mikroturbina" class="slide level2">
+<h2><i class="bi bi-buildings"></i> Projekt: Etap 4 – Mikroturbina</h2>
+<p>W Ćw. 3 (Zad. 3.4) redukowaliśmy ciśnienie pary z <strong>10 bar</strong> do <strong>2 bar</strong> na zaworze dławiącym. Energia się nie traci (<span class="math inline">\(h = \text{const}\)</span>), ale tracimy <strong>egzergię</strong> – zdolność pary do wykonania pracy! W miejscu zaworu proponujemy zainstalować <strong>turbinę przeciwprężną</strong>: para najpierw wytworzy prąd, a potem (o niższym ciśnieniu) trafi do wymiennika. To <strong>kogeneracja</strong> (CHP – <em>Combined Heat and Power</em>).</p>
 <div class="columns">
-<div class="column" style="width:60%;">
-<h3 id="twoje-zadanie">Twoje Zadanie:</h3>
-<ol type="1">
-<li>Obliczyć teoretyczną (izentropową) pracę turbiny.</li>
-<li>Sprawdzić stan pary na wylocie (czy jest mokra?).</li>
-<li>Obliczyć moc elektryczną generatora.</li>
-</ol>
-<p><strong>Dane wejściowe:</strong></p>
+<div class="column" style="width:55%;">
+<div class="mmd-fit" style="height: 380px;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 1039.6875 272.87109375" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:20px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791011603819_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791011603819_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791011603819_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791011603819_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791011603819_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791011603819_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791011603819_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_K_T_0" d="M194.922,122.748L213.456,117.086C231.99,111.424,269.057,100.1,307.884,94.438C346.711,88.775,387.297,88.775,407.59,88.775L427.883,88.775"></path><path style="" class="edge-thickness-thick edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_G_0" d="M622.445,80.719L639.632,79.266C656.818,77.813,691.19,74.906,732.434,73.453C773.677,72,821.792,72,845.849,72L869.906,72"></path><path marker-end="url(#mermaid-1791011603819_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_W_0" d="M622.445,122.535L639.632,128.624C656.818,134.713,691.19,146.892,722.501,157.456C753.812,168.021,782.062,176.971,796.187,181.447L810.312,185.922"></path><path marker-end="url(#mermaid-1791011603819_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" id="L_K_Z_0" d="M189.607,188.801L209.027,197.063C228.446,205.324,267.286,221.848,304.573,230.109C341.859,238.371,377.594,238.371,395.461,238.371L413.328,238.371"></path><path marker-end="url(#mermaid-1791011603819_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Z_W_0" d="M637,238.371L651.76,238.371C666.521,238.371,696.042,238.371,724.898,237.173C753.755,235.975,781.947,233.578,796.043,232.38L810.139,231.182"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g transform="translate(306.125, 88.775390625)" class="edgeLabel"><g transform="translate(-86.203125, -13.55078125)" class="label"><g><rect height="27.1015625" width="172.40625" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">1:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> para</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> przegrzana</tspan></tspan></text></g></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g transform="translate(725.5625, 159.0703125)" class="edgeLabel"><g transform="translate(-63.5625, -13.55078125)" class="label"><g><rect height="27.1015625" width="127.125" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">2:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> para,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> bar</tspan></tspan></text></g></g></g><g transform="translate(306.125, 238.37109375)" class="edgeLabel"><g transform="translate(-37.703125, -13.55078125)" class="label"><g><rect height="27.1015625" width="75.40625" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">dawniej</tspan></tspan></text></g></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(101.4609375, 151.30078125)" id="flowchart-K-0" class="node default"><rect height="75" width="186.921875" y="-37.5" x="-93.4609375" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Kocioł</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">10</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> bar,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 250</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> °C</tspan></tspan></text></g></g></g><g transform="translate(527.1640625, 88.775390625)" id="flowchart-T-1" class="node default"><rect height="75.1015625" width="190.5625" y="-37.55078125" x="-95.28125" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Turbina</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">przeciwprężna</tspan></tspan></text></g></g></g><g transform="translate(922.90625, 72)" id="flowchart-G-3" class="node default"><circle cy="0" cx="0" r="53" style="fill:#e8f5e9 !important;stroke:#4caf50 !important;stroke-width:2px !important" class="basic label-container"></circle><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Generator</tspan></tspan></text></g></g></g><g transform="translate(922.90625, 221.595703125)" id="flowchart-W-5" class="node default"><rect height="75.1796875" width="217.5625" y="-37.58984375" x="-108.78125" style="fill:#e0f7fa !important;stroke:#00bcd4 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.58984375)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Wymiennik</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepła</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">(odbiorcy</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> pary)</tspan></tspan></text></g></g></g><g transform="translate(527.1640625, 238.37109375)" id="flowchart-Z-7" class="node default"><rect height="75" width="219.671875" y="-37.5" x="-109.8359375" style="fill:#f5f5f5 !important;stroke:#9e9e9e !important;stroke-width:2px !important;stroke-dasharray:5 5 !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Zawór</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> redukcyjny</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">10</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> →</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> bar</tspan></tspan></text></g></g></g></g></g></g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<p><strong>Dane (przykład z Ćw. 3):</strong></p>
 <ul>
-<li>Wlot: <span class="math inline">\(p_1=10 \text{ bar}, t_1=250^\circ C\)</span>.</li>
-<li>Wylot: <span class="math inline">\(p_2=2 \text{ bar}\)</span>.</li>
-<li>Strumień: <span class="math inline">\(\dot{m}=2 \text{ t/h}\)</span>.</li>
+<li>Wlot = para z kotła: <span class="math inline">\(p_1 = 10\ \text{bar}\)</span>, <span class="math inline">\(t_1 = 250\ \text{°C}\)</span></li>
+<li>Wylot = ciśnienie po dławieniu: <span class="math inline">\(p_2 = 2\ \text{bar}\)</span></li>
+<li>Strumień = cała wydajność kotła: <span class="math inline">\(\dot{m} = 2\ \text{t/h} = \frac{2 \cdot 1000}{3600} \approx 0.5556\ \text{kg/s}\)</span></li>
+<li>Sprawność izentropowa: <span class="math inline">\(\eta_{\text{is}} = 0.80\)</span></li>
 </ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="../img/turbina.png"></p>
 </div></div>
 </section>
-<section id="wizualizacja-obiegu-wykres-t-s" class="slide level2">
-<h2>📈 Wizualizacja Obiegu (Wykres T-s)</h2>
-<p>Proces w turbinie (1 <span class="math inline">\(\to\)</span> 2) to (w przybliżeniu) pionowa linia w dół (izentropa).</p>
-
-<img data-src="../img/rankine_ts_chart.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><p>Para sucha (Punkt 1) wchodzi do turbiny i opuszcza ją jako lekko mokra lub sucha nasycona (Punkt 2).</p>
+<section id="twoje-zadanie-jak-w-karcie-projektowej" class="slide level2">
+<h2><i class="bi bi-clipboard-data"></i> Twoje zadanie (jak w karcie projektowej)</h2>
+<ul>
+<li><strong>4.1</strong> – stan pary za turbiną idealną (<span class="math inline">\(s = \text{const}\)</span>): porównanie <span class="math inline">\(s_1\)</span> z <span class="math inline">\(s'\)</span> i <span class="math inline">\(s''\)</span></li>
+<li><strong>4.2</strong> – stopień suchości pary na wylocie <span class="math inline">\(x_2\)</span></li>
+<li><strong>4.3</strong> – idealna moc turbiny <span class="math inline">\(N_t\)</span></li>
+<li><strong>4.4</strong> – rzeczywista moc turbiny <span class="math inline">\(N_r\)</span> (sprawność izentropowa <span class="math inline">\(\eta_{\text{is}}\)</span>)</li>
+<li><strong>4.5</strong> – wariant „Modernizacja Plus”: para z kotła o <span class="math inline">\(4\ \text{bar}\)</span> i <span class="math inline">\(50\ \text{K}\)</span> „wyżej”</li>
+<li><strong>4.6</strong> – sprawność Carnota <span class="math inline">\(\eta_C\)</span> i sprawność <span class="math inline">\(\eta_t = N_t / \dot{Q}_{\text{kotła}}\)</span></li>
+</ul>
+<div title="Na Twojej karcie">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Na Twojej karcie</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><span class="math inline">\(p_1\)</span>, <span class="math inline">\(t_1\)</span> – ciśnienie i temperatura pary z kotła (Etap 3); <span class="math inline">\(p_2\)</span> – ciśnienie po dławieniu (Zad. 3.4); <span class="math inline">\(\dot{m}\)</span> – wydajność kotła (cała para idzie przez turbinę); <span class="math inline">\(\eta_{\text{is}}\)</span> – z tabeli parametrów.</li>
+<li>Para przegrzana: <strong>Załącznik B</strong> (ciśnienia w MPa: <span class="math inline">\(10\ \text{bar} = 1.0\ \text{MPa}\)</span>). Stan nasycenia na wylocie: <strong>Załącznik A</strong> (wiersz <span class="math inline">\(p_2\)</span>; kolumna <span class="math inline">\(r = h'' - h'\)</span>).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="zadanie-4.1-ekspansja-izentropowa-sconst" class="slide level2">
-<h2>🌀 Zadanie 4.1: Ekspansja Izentropowa (<span class="math inline">\(s=const\)</span>)</h2>
-<p>Proces w idealnej turbinie jest adiabatyczny odwracalny (<span class="math inline">\(s_1 = s_2\)</span>).</p>
-<h3 id="krok-1-parametry-na-wlocie-10-bar-250c">Krok 1: Parametry na Wlocie (10 bar, 250°C)</h3>
-<p>Z tablic pary przegrzanej:</p>
+<section id="wizualizacja-procesu-wykres-t-s" class="slide level2">
+<h2><i class="bi bi-graph-up"></i> Wizualizacja procesu (wykres T-s)</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="../img/rankine_ts_przeciwprezna.png" style="width:100.0%"></p>
+</div><div class="column" style="width:45%;">
 <ul>
-<li><span class="math inline">\(h_1 = 2943 \text{ kJ/kg}\)</span></li>
-<li><span class="math inline">\(s_1 = 6.926 \text{ kJ/kgK}\)</span></li>
+<li><strong>1 → 2s</strong> – turbina idealna: pionowa linia w dół (izentropa, <span class="math inline">\(s = \text{const}\)</span>).</li>
+<li><strong>1 → 2r</strong> – turbina rzeczywista: tarcie i zawirowania zwiększają entropię, więc punkt 2r leży <strong>na prawo</strong> od 2s.</li>
+<li><strong>1 → D</strong> – dawny zawór dławiący (<span class="math inline">\(h = \text{const}\)</span>): ten sam spadek ciśnienia, ale <strong>zero pracy</strong>.</li>
 </ul>
-<h3 id="krok-2-parametry-na-wylocie-2-bar-s-6.926">Krok 2: Parametry na Wylocie (2 bar, s = 6.926)</h3>
-<p>Sprawdzamy stan nasycenia dla 2 bar:</p>
+<p>Para przegrzana (punkt 1) opuszcza turbinę jako lekko mokra (2s, 2r). Przy niskiej sprawności <span class="math inline">\(\eta_{\text{is}}\)</span> może wyjść nawet przegrzana (<span class="math inline">\(h_{2r} &gt; h''\)</span>).</p>
+</div></div>
+</section>
+<section id="zadanie-4.1-rozprężanie-izentropowe-s-textconst" class="slide level2 smaller">
+<h2><i class="bi bi-wind"></i> Zadanie 4.1: Rozprężanie izentropowe (<span class="math inline">\(s = \text{const}\)</span>)</h2>
+<p>Proces w idealnej turbinie jest adiabatyczny i odwracalny (<span class="math inline">\(s_1 = s_2\)</span>).</p>
+<h3 id="krok-1-parametry-na-wlocie-10-bar-250-c">Krok 1: Parametry na wlocie (10 bar, 250 °C)</h3>
+<p>Tablica B2, kolumna 1,0 MPa, wiersz 250 °C:</p>
 <ul>
-<li><span class="math inline">\(s' = 1.530\)</span> (ciecz)</li>
-<li><span class="math inline">\(s'' = 7.127\)</span> (para nasycona)</li>
+<li><span class="math inline">\(h_1 = 2943\ \text{kJ/kg}\)</span> (ta sama wartość co <span class="math inline">\(h_2\)</span> w Zad. 3.2 – to ta sama para z kotła)</li>
+<li><span class="math inline">\(s_1 = 6.926\ \text{kJ/(kg·K)}\)</span></li>
 </ul>
+<h3 id="krok-2-parametry-na-wylocie-2-bar-s_2-s_1">Krok 2: Parametry na wylocie (2 bar, <span class="math inline">\(s_2 = s_1\)</span>)</h3>
+<p>Załącznik A, wiersz 2 bar – porównujemy <span class="math inline">\(s_2 = 6.926\ \text{kJ/(kg·K)}\)</span> z:</p>
+<ul>
+<li><span class="math inline">\(s' = 1.530\ \text{kJ/(kg·K)}\)</span> (ciecz nasycona)</li>
+<li><span class="math inline">\(s'' = 7.127\ \text{kJ/(kg·K)}\)</span> (para sucha nasycona)</li>
+</ul>
+<div title="Wniosek">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Wniosek</strong></p>
 </div>
 <div class="callout-content">
-<p>Ponieważ <span class="math inline">\(s' &lt; s_2 &lt; s''\)</span> (<span class="math inline">\(1.530 &lt; 6.926 &lt; 7.127\)</span>), para na wylocie jest <strong>Mokrą Parą Nasyconą</strong> (mieszanina cieczy i pary).</p>
+<p>Ponieważ <span class="math inline">\(s' &lt; s_2 &lt; s''\)</span> (<span class="math inline">\(1.530 &lt; 6.926 &lt; 7.127\)</span>), para na wylocie jest <strong>parą mokrą</strong> (mieszaniną cieczy i pary, <span class="math inline">\(0 &lt; x_2 &lt; 1\)</span>).</p>
+</div>
 </div>
 </div>
 </div>
 </section>
 <section id="zadanie-4.2-stopień-suchości-x_2" class="slide level2">
-<h2>💧 Zadanie 4.2: Stopień Suchości (<span class="math inline">\(x_2\)</span>)</h2>
+<h2><i class="bi bi-droplet"></i> Zadanie 4.2: Stopień suchości (<span class="math inline">\(x_2\)</span>)</h2>
 <p>Jaka część pary skropliła się w turbinie?</p>
 <p><span class="math display">\[ s_2 = s' + x_2 (s'' - s') \]</span> <span class="math display">\[ x_2 = \frac{s_2 - s'}{s'' - s'} \]</span></p>
 <div class="columns">
 <div class="fragment column" style="width:50%;">
 <p><strong>Obliczenia:</strong> <span class="math display">\[ x_2 = \frac{6.926 - 1.530}{7.127 - 1.530} \]</span> <span class="math display">\[ x_2 = \frac{5.396}{5.597} \approx \mathbf{0.964} \]</span></p>
 </div><div class="fragment column" style="width:50%;">
-<p><strong>Interpretacja:</strong> 96.4% to para sucha, a <strong>3.6% to kropelki wody</strong>. To bezpieczny poziom wilgotności dla turbiny (zazwyczaj dopuszcza się <span class="math inline">\(x &gt; 0.85-0.90\)</span>).</p>
+<p><strong>Interpretacja:</strong> 96.4% masy to para (sucha nasycona), a <strong>3.6% to kropelki wody</strong>. To bezpieczny poziom wilgotności dla turbiny (zwykle wymaga się <span class="math inline">\(x \geq 0.85\text{–}0.90\)</span>).</p>
 </div></div>
 </section>
-<section id="zadanie-4.3-moc-turbiny" class="slide level2">
-<h2>⚡ Zadanie 4.3: Moc Turbiny</h2>
-<p>Obliczamy entalpię na wylocie (<span class="math inline">\(h_{2s}\)</span>) dla procesu izentropowego: <span class="math display">\[ h_{2s} = h' + x_2 (h'' - h') \]</span></p>
+<section id="zadanie-4.3-idealna-moc-turbiny" class="slide level2">
+<h2><i class="bi bi-lightning-charge"></i> Zadanie 4.3: Idealna moc turbiny</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Entalpia na wylocie (<span class="math inline">\(h_{2s}\)</span>) dla procesu izentropowego: <span class="math display">\[ h_{2s} = h' + x_2 (h'' - h') \]</span></p>
 <div class="fragment">
-<p>Dla 2 bar: <span class="math inline">\(h' = 504.7\)</span>, <span class="math inline">\(h'' = 2706.7\)</span>.</p>
-<p><span class="math display">\[ h_{2s} = 504.7 + 0.964 \cdot (2706.7 - 504.7) \]</span> <span class="math display">\[ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4 \text{ kJ/kg}} \]</span></p>
+<p>Załącznik A, wiersz 2 bar: <span class="math inline">\(h' = 504.7\ \text{kJ/kg}\)</span>, <span class="math inline">\(h'' = 2707\ \text{kJ/kg}\)</span>, <span class="math inline">\(h'' - h' = r \approx 2202\ \text{kJ/kg}\)</span>.</p>
+<p><span class="math display">\[ h_{2s} = 504.7 + 0.964 \cdot 2202 \]</span> <span class="math display">\[ h_{2s} \approx 504.7 + 2122.7 = \mathbf{2627.4\ \text{kJ/kg}} \]</span></p>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<h3 id="moc-teoretyczna-n_t">Moc Teoretyczna (<span class="math inline">\(N_t\)</span>):</h3>
-<p><span class="math display">\[ N_t = \dot{m} \cdot (h_1 - h_{2s}) \]</span> <span class="math display">\[ N_t = 0.556 \text{ kg/s} \cdot (2943 - 2627.4) \text{ kJ/kg} \]</span> <span class="math display">\[ N_t = 0.556 \cdot 315.6 \approx \mathbf{175.5 \text{ kW}} \]</span></p>
+<p><strong>Moc idealna (<span class="math inline">\(N_t\)</span>):</strong> <span class="math display">\[ N_t = \dot{m} \cdot (h_1 - h_{2s}) \]</span> <span class="math display">\[ N_t = 0.5556\ \text{kg/s} \cdot (2943 - 2627.4)\ \text{kJ/kg} \]</span> <span class="math display">\[ N_t = 0.5556 \cdot 315.6 \approx \mathbf{175.3\ \text{kW}} \]</span></p>
 </div>
+</div></div>
 </section>
-<section id="zadanie-4.4-sprawność-izentropowa-turbiny" class="slide level2">
-<h2>🎯 Zadanie 4.4: Sprawność Izentropowa Turbiny</h2>
-<div title="Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową $\eta_{is} = 0.80$.">
+<section id="zadanie-4.4-rzeczywista-moc-sprawność-izentropowa" class="slide level2 smaller">
+<h2><i class="bi bi-bullseye"></i> Zadanie 4.4: Rzeczywista moc (sprawność izentropowa)</h2>
+<div title="Rzeczywista turbina nie jest idealna. Producent deklaruje sprawność izentropową $\eta_{\text{is}} = 0.80$.">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Rzeczywista turbina nie jest idealna. Przyjmijmy sprawność izentropową <span class="math inline">\(\eta_{is} = 0.80\)</span>.</strong></p>
+<p><strong>Rzeczywista turbina nie jest idealna. Producent deklaruje sprawność izentropową <span class="math inline">\(\eta_{\text{is}} = 0.80\)</span>.</strong></p>
 </div>
 <div class="callout-content">
 
@@ -234,81 +316,81 @@
 <p><strong>Jaka jest rzeczywista entalpia na wylocie (<span class="math inline">\(h_{2r}\)</span>)?</strong></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \eta_{is} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} \]</span></p>
+<p><span class="math display">\[ \eta_{\text{is}} = \frac{h_1 - h_{2r}}{h_1 - h_{2s}} \]</span></p>
 </div>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="fragment">
-<p><span class="math display">\[ h_{2r} = h_1 - \eta_{is} \cdot (h_1 - h_{2s}) \]</span></p>
+<p><span class="math display">\[ h_{2r} = h_1 - \eta_{\text{is}} \cdot (h_1 - h_{2s}) \]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[ h_{2r} = 2943 - 0.80 \cdot (2943 - 2627.4) = \newline 2943 - 252.5 \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ h_{2r} \approx \mathbf{2690.5 \text{ kJ/kg}} \]</span></p>
+<p><span class="math display">\[ h_{2r} \approx \mathbf{2690.5\ \text{kJ/kg}} \]</span></p>
 </div>
 </div><div class="column" style="width:40%;">
 <div class="fragment">
-<p><strong>Rzeczywista moc:</strong> <span class="math display">\[ N_{r} = \dot{m} \cdot (h_1 - h_{2r}) = \newline 0.556 \cdot 252.5 \approx \mathbf{140.4 \text{ kW}} \]</span></p>
+<p><strong>Rzeczywista moc:</strong> <span class="math display">\[ N_r = \dot{m} \cdot (h_1 - h_{2r}) = \newline 0.5556 \cdot 252.5 \approx \mathbf{140.3\ \text{kW}} \]</span></p>
 </div>
 <div class="fragment">
-<p>(Zamiast <span class="math inline">\(175.5\)</span> kW w idealnym przypadku — strata <span class="math inline">\(35\)</span> kW).</p>
+<p>(Zamiast <span class="math inline">\(175.3\ \text{kW}\)</span> w idealnym przypadku – strata <span class="math inline">\(35.0\ \text{kW}\)</span>).</p>
 </div>
 </div></div>
-<div class="fragment">
+<div class="fragment" title="Stan pary na wylocie">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Stan pary na wylocie</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Stan pary na wylocie:</strong> Czy <span class="math inline">\(h_{2r} = 2690.5\)</span> to nadal para mokra? <span class="math inline">\(h'' (2 bar) = 2706.7 &gt; 2690.5\)</span> → Tak, ale <span class="math inline">\(x_{2r} \approx 0.99\)</span>! Praktycznie sucha.</p>
+<p>Czy <span class="math inline">\(h_{2r} = 2690.5\ \text{kJ/kg}\)</span> to nadal para mokra? <span class="math inline">\(h''(2\ \text{bar}) = 2707 &gt; 2690.5\)</span> → tak, ale <span class="math inline">\(x_{2r} = \frac{2690.5 - 504.7}{2202} \approx 0.993\)</span> – praktycznie sucha. Gdyby <span class="math inline">\(h_{2r} &gt; h''\)</span>, para na wylocie byłaby <strong>przegrzana</strong> (stopień suchości <span class="math inline">\(x\)</span> nie istnieje).</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-4.5-analiza-wariantowa-wyższe-ciśnienie" class="slide level2">
-<h2>🔧 Zadanie 4.5: Analiza Wariantowa – Wyższe Ciśnienie</h2>
-<p>Co jeśli kocioł dostarczy parę <span class="math inline">\(15 \text{ bar}, 300^\circ C\)</span> zamiast <span class="math inline">\(10 \text{ bar}, 250^\circ C\)</span>? Wylot nadal <span class="math inline">\(2 \text{ bar}\)</span>.</p>
-<div title="Dane z tablic (15 bar, 300°C)">
+<section id="zadanie-4.5-analiza-wariantowa-wyższe-parametry-pary" class="slide level2 smaller">
+<h2><i class="bi bi-wrench"></i> Zadanie 4.5: Analiza wariantowa – wyższe parametry pary</h2>
+<p>Co jeśli kocioł dostarczy parę o <strong>4 bar</strong> i <strong>50 K</strong> „wyżej”: <span class="math inline">\(14\ \text{bar}\)</span>, <span class="math inline">\(300\ \text{°C}\)</span> zamiast <span class="math inline">\(10\ \text{bar}\)</span>, <span class="math inline">\(250\ \text{°C}\)</span>? Wylot nadal <span class="math inline">\(2\ \text{bar}\)</span>. <em>(Na karcie: Twoje <span class="math inline">\(p_1 + 4\ \text{bar}\)</span> i <span class="math inline">\(t_1 + 50\ \text{K}\)</span>; dla ciśnień 16–20 bar – Tablica B3.)</em></p>
+<div title="Tablica B2, kolumna 1,4 MPa, wiersz 300 °C">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Dane z tablic (15 bar, 300°C)</strong></p>
+<p><strong>Tablica B2, kolumna 1,4 MPa, wiersz 300 °C</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(h_1 = 3038\)</span> kJ/kg, <span class="math inline">\(s_1 = 6.918\)</span> kJ/kgK</p>
+<p><span class="math inline">\(h_1 = 3041\ \text{kJ/kg}\)</span>, <span class="math inline">\(s_1 = 6.955\ \text{kJ/(kg·K)}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Krok 1:</strong> Sprawdzamy stan na wylocie (<span class="math inline">\(s_2 = 6.918\)</span>, <span class="math inline">\(p_2 = 2\)</span> bar). <span class="math inline">\(s'' (2 bar) = 7.127\)</span> → <span class="math inline">\(s_2 &lt; s''\)</span> → Para mokra.</p>
+<p><strong>Krok 1:</strong> Sprawdzamy stan na wylocie (<span class="math inline">\(s_2 = 6.955\ \text{kJ/(kg·K)}\)</span>, <span class="math inline">\(p_2 = 2\ \text{bar}\)</span>): <span class="math inline">\(s''(2\ \text{bar}) = 7.127\)</span> → <span class="math inline">\(s_2 &lt; s''\)</span> → para mokra.</p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ x_2 = \frac{6.918 - 1.530}{7.127 - 1.530} = \frac{5.388}{5.597} \approx 0.963 \]</span></p>
+<p><span class="math display">\[ x_{2s} = \frac{6.955 - 1.530}{7.127 - 1.530} = \frac{5.425}{5.597} \approx 0.969 \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ h_{2s} = 504.7 + 0.963 \cdot 2202 = 504.7 + 2120.5 \approx 2625.2 \text{ kJ/kg} \]</span></p>
+<p><span class="math display">\[ h_{2s} = 504.7 + 0.969 \cdot 2202 = 504.7 + 2133.7 \approx 2638.4\ \text{kJ/kg} \]</span></p>
 </div>
 <div class="fragment">
-<p><strong>Moc idealna:</strong> <span class="math display">\[ N_t = 0.556 \cdot (3038 - 2625.2) = 0.556 \cdot 412.8 \approx \mathbf{229.5 \text{ kW}} \]</span></p>
+<p><strong>Moc idealna:</strong> <span class="math display">\[ N_{t,\text{var}} = 0.5556 \cdot (3041 - 2638.4) = 0.5556 \cdot 402.6 \approx \mathbf{223.7\ \text{kW}} \]</span> <span class="math display">\[ \Delta = \frac{N_{t,\text{var}} - N_t}{N_t} \cdot 100 = \frac{223.7 - 175.3}{175.3} \cdot 100 \approx \mathbf{27.6\%} \]</span></p>
 </div>
-<div class="fragment" title="Wzrost ciśnienia i temperatury z ($10$ bar, $250^\circ C$) na ($15$ bar, $300^\circ C$) zwiększył moc o **31%** ($175.5 \rightarrow 229.5$ kW)!">
+<div class="fragment" title="Podniesienie parametrów pary z (10 bar, 250 °C) na (14 bar, 300 °C) zwiększyło moc idealną o **27.6%** (175.3 → 223.7 kW)!">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Wzrost ciśnienia i temperatury z (<span class="math inline">\(10\)</span> bar, <span class="math inline">\(250^\circ C\)</span>) na (<span class="math inline">\(15\)</span> bar, <span class="math inline">\(300^\circ C\)</span>) zwiększył moc o <strong>31%</strong> (<span class="math inline">\(175.5 \rightarrow 229.5\)</span> kW)!</strong></p>
+<p><strong>Podniesienie parametrów pary z (10 bar, 250 °C) na (14 bar, 300 °C) zwiększyło moc idealną o <strong>27.6%</strong> (175.3 → 223.7 kW)!</strong></p>
 </div>
 <div class="callout-content">
 
@@ -318,7 +400,7 @@
 </div>
 </section>
 <section id="zadanie-4.6-sprawność-obiegu-carnota" class="slide level2">
-<h2>📐 Zadanie 4.6: Sprawność Obiegu Carnota</h2>
+<h2><i class="bi bi-rulers"></i> Zadanie 4.6: Sprawność obiegu Carnota</h2>
 <div title="Jaka byłaby **maksymalna teoretyczna** sprawność silnika cieplnego pracującego między temperaturą pary wlotowej a temperaturą otoczenia?">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -334,48 +416,85 @@
 </div>
 </div>
 </div>
+<p><span class="math inline">\(T_H = t_1 + 273.15\)</span>; <span class="math inline">\(T_L\)</span> – temperatura otoczenia (hali): przyjmujemy <span class="math inline">\(20\ \text{°C}\)</span>, czyli <span class="math inline">\(T_L = 293.15\ \text{K}\)</span>. <em>(Na karcie: Twoja temperatura w hali <span class="math inline">\(t\)</span> z Etapu 1.)</em></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Wariant 1</strong> (<span class="math inline">\(t_1 = 250^\circ C\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{T_{zimne}}{T_{gorące}} \]</span> <span class="math display">\[ \eta_C = 1 - \frac{293}{523} \approx \mathbf{44\%} \]</span></p>
+<p><strong>Wariant podstawowy</strong> (<span class="math inline">\(t_1 = 250\ \text{°C}\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{T_L}{T_H} \]</span> <span class="math display">\[ \eta_C = 1 - \frac{293.15}{523.15} \approx \mathbf{43.96\%} \]</span></p>
 </div><div class="column" style="width:50%;">
-<p><strong>Wariant 2</strong> (<span class="math inline">\(t_1 = 300^\circ C\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{293}{573} \approx \mathbf{49\%} \]</span></p>
+<p><strong>Wariant z Zad. 4.5</strong> (<span class="math inline">\(t_1 = 300\ \text{°C}\)</span>): <span class="math display">\[ \eta_C = 1 - \frac{293.15}{573.15} \approx \mathbf{48.85\%} \]</span></p>
 </div></div>
-<div class="fragment">
+</section>
+<section id="zadanie-4.6-cd.-sprawność-eta_t-a-carnot" class="slide level2 smaller">
+<h2><i class="bi bi-rulers"></i> Zadanie 4.6 (cd.): Sprawność <span class="math inline">\(\eta_t\)</span> a Carnot</h2>
+<p>Porównujemy idealną moc turbiny (Zad. 4.3) z mocą cieplną kotła (Zad. 3.2): <span class="math display">\[ \eta_t = \frac{N_t}{\dot{Q}_{\text{kotła}}} \cdot 100 = \frac{175.3}{1495} \cdot 100 \approx \mathbf{11.7\%} \]</span></p>
+<div class="fragment" title="Dlaczego tak daleko od Carnota?">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Dlaczego tak daleko od Carnota?</strong></p>
 </div>
 <div class="callout-content">
-<p>Nasza mikroturbina ma sprawność <span class="math inline">\(N_t/\dot{Q}_{kotła} = 175.5/1496 \approx 11.7\%\)</span> — daleko od Carnota! To dlatego, że turbina jest <strong>przeciwprężna</strong> (nie skrapla pary do otoczenia, ale oddaje ją do wymiennika).</p>
+<p>Daleko od Carnota (<span class="math inline">\(43.96\%\)</span>)! Turbina jest <strong>przeciwprężna</strong> – nie rozpręża pary do temperatury otoczenia, lecz oddaje ją do wymiennika przy <span class="math inline">\(t_s(2\ \text{bar}) = 120.2\ \text{°C}\)</span>. Dla takiej maszyny realną granicą jest Carnot z <span class="math inline">\(T_L = 393.35\ \text{K}\)</span>: <span class="math inline">\(\eta_C = 1 - \frac{393.35}{523.15} \approx 24.8\%\)</span>.</p>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="zadanie-domowe-raport-4" class="slide level2">
-<h2>💰 Zadanie Domowe (Raport 4)</h2>
-<p><strong>Temat:</strong> Opłacalność Kogeneracji.</p>
-<p>Zainstalowanie turbiny kosztuje <strong>150 000 PLN</strong>. Generator ma sprawność <span class="math inline">\(\eta_{gen} = 90\%\)</span>. Cena prądu dla przemysłu: <strong>0.80 PLN/kWh</strong>. Turbina pracuje <strong>4000 h/rok</strong>.</p>
-<ol type="1">
-<li>Oblicz rzeczywistą moc elektryczną (<span class="math inline">\(N_{el} = N_t \cdot \eta_{gen}\)</span>).</li>
-<li>Oblicz roczną produkcję energii [MWh].</li>
-<li>Oblicz roczny zysk [PLN].</li>
-<li>Oblicz czas zwrotu inwestycji (SPBT - Simple Payback Period).</li>
-</ol>
+<div class="fragment" title="Kogeneracja: ciepło nie jest stracone">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Kogeneracja: ciepło nie jest stracone</strong></p>
 </div>
 <div class="callout-content">
-<p>Czy opłaca się montować turbinę? Porównaj z kosztem dławienia pary na zaworze (0 PLN zysku).</p>
+<p>To nie jest strata! Z pozostałych ≈ 88% mocy kotła większość trafia do wymiennika (Zad. 3.8) jako ciepło użytkowe. W kogeneracji ocenia się więc <strong>wskaźnik wykorzystania energii</strong> <span class="math inline">\((N + \dot{Q}_{\text{wym}}) / \dot{Q}_{\text{kotła}}\)</span>, a nie samą sprawność wytwarzania prądu.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="zadanie-domowe-raport-4" class="slide level2 smaller">
+<h2><i class="bi bi-cash-coin"></i> Zadanie domowe (Raport 4)</h2>
+<p><strong>Temat:</strong> Opłacalność kogeneracji.</p>
+<p>Zainstalowanie turbiny kosztuje <strong>150 000 PLN</strong>. Generator ma sprawność <span class="math inline">\(\eta_{\text{gen}} = 90\%\)</span>. Cena prądu dla przemysłu: <strong>0.80 PLN/kWh</strong>. Turbina pracuje <strong>4000 h/rok</strong>.</p>
+<ol type="1">
+<li>Oblicz moc elektryczną: <span class="math inline">\(N_{\text{el}} = N_r \cdot \eta_{\text{gen}}\)</span> (<span class="math inline">\(N_r\)</span> – rzeczywista moc turbiny z Zad. 4.4).</li>
+<li>Oblicz roczną produkcję energii elektrycznej [MWh].</li>
+<li>Oblicz roczny zysk ze sprzedaży (lub niekupionego) prądu [PLN].</li>
+<li>Oblicz prosty okres zwrotu nakładów (SPBT, <em>Simple Pay-Back Time</em>).</li>
+</ol>
+<div title="Pytanie do raportu">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Pytanie do raportu</strong></p>
+</div>
+<div class="callout-content">
+<p>Czy opłaca się montować turbinę? Porównaj z dławieniem pary na zaworze (0 PLN z produkcji prądu).</p>
+</div>
+</div>
+</div>
+</div>
+<div title="Uwaga – bilans energii">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Uwaga – bilans energii</strong></p>
+</div>
+<div class="callout-content">
+<p>Turbina zamienia część entalpii pary na pracę, więc do wymiennika trafia mniej ciepła: <span class="math inline">\(0.5556 \cdot (2690.5 - 504.7) \approx 1214\ \text{kW}\)</span> zamiast <span class="math inline">\(\approx 1355\ \text{kW}\)</span> (Zad. 3.8) – o <span class="math inline">\(\approx N_r = 140\ \text{kW}\)</span> mniej. Aby utrzymać ciepło dla procesu, kocioł musi spalić więcej gazu (metodą z Zad. 3.3: <span class="math inline">\(\approx 16\ \text{m}^3\text{/h}\)</span>). Uwzględnij ten koszt w ocenie opłacalności.</p>
+</div>
 </div>
 </div>
 </div>
@@ -383,9 +502,8 @@
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../img/kbig.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Termodynamika Techniczna - Ćwiczenia Projektowe</p>
+<p>Termodynamika Techniczna – Ćwiczenia (Ć4)</p>
 </div>
 </div></div>
 
@@ -545,7 +663,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -570,7 +688,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -621,12 +739,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Skopiowano!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Skopiowano!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

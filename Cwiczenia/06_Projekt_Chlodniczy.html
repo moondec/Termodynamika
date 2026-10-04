@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="pl"><head>
 <script src="06_Projekt_Chlodniczy_files/libs/clipboard/clipboard.min.js"></script>
 <script src="06_Projekt_Chlodniczy_files/libs/quarto-html/tabby.min.js"></script>
 <script src="06_Projekt_Chlodniczy_files/libs/quarto-html/popper.min.js"></script>
@@ -9,7 +9,8 @@
 <link href="06_Projekt_Chlodniczy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
-  <title>Ćwiczenie 6: IAgregat wody lodowej (Chiller)</title>
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
+  <title>Ćwiczenie 6: Agregat Wody Lodowej (Chiller)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="06_Projekt_Chlodniczy_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="06_Projekt_Chlodniczy_files/libs/revealjs/dist/theme/quarto-d4cf13167e7aae231ddf91befd63bd72.css">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="06_Projekt_Chlodniczy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,159 +123,216 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+  body { background-color: #1a1a1a; }
+  .reveal .slide-background-content {
+      background-image: url("../img/background0.png") !important;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      opacity: 0.35 !important;
+  }
+  .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+      background-image: none !important;
+      background-color: white !important;
+      opacity: 1 !important;
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ćwiczenie 6: IAgregat wody lodowej (Chiller)</h1>
+  <h1 class="title">Ćwiczenie 6: Agregat Wody Lodowej (Chiller)</h1>
+  <p class="subtitle">Projekt Termo-Tech – Etap 6: Instalacja Chłodnicza</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="projekt-etap-6---chłodzenie-hali" class="slide level2">
-<h2>🏭 Projekt: Etap 6 - Chłodzenie Hali</h2>
-<p>Hala produkcyjna o powierzchni <span class="math inline">\(2000 \text{ m}^2\)</span> generuje <span class="math inline">\(300 \text{ kW}\)</span> zysku ciepła od maszyn. Musimy zaprojektować Agregat Wody Lodowej (Chiller), który odbierze to ciepło.</p>
+<section id="projekt-etap-6-chłodzenie-hali" class="slide level2 smaller">
+<h2><i class="bi bi-buildings"></i> Projekt: Etap 6 – Chłodzenie Hali</h2>
+<p>W hali produkcyjnej o powierzchni <span class="math inline">\(2000 \text{ m}^2\)</span> maszyny oddają <span class="math inline">\(300 \text{ kW}\)</span> ciepła (zyski ciepła). Musimy zaprojektować agregat wody lodowej (chiller), który odbierze to ciepło.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <h3 id="założenia">Założenia:</h3>
 <ol type="1">
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span>.</li>
 <li><strong>Czynnik chłodniczy:</strong> R134a.</li>
-<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
-<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.</li>
 </ol>
-<p><strong>Pytania Inwestora:</strong></p>
+<p><strong>Pytania inwestora:</strong></p>
 <ol type="1">
-<li>Jaką moc elektryczną pobierze sprężarka? (<span class="math inline">\(N_{el}\)</span>)</li>
-<li>Ile ciepła musimy wyrzucić na dach (skraplacz)? (<span class="math inline">\(Q_k\)</span>)</li>
-<li>Czy urządzenie będzie efektywne? (<span class="math inline">\(EER\)</span>)</li>
+<li>Jaką moc pobierze sprężarka? (<span class="math inline">\(N\)</span>)</li>
+<li>Ile ciepła musimy wyrzucić na dach (skraplacz)? (<span class="math inline">\(\dot{Q}_{sk}\)</span>)</li>
+<li>Czy urządzenie będzie efektywne? (<span class="math inline">\(\text{EER}\)</span>)</li>
 </ol>
+<div style="font-size: 0.6em">
+<p>W karcie projektowej (Etap 6) ta sama metoda dotyczy komory chłodniczej – zmieniają się tylko dane.</p>
+</div>
 </div><div class="column" style="width:40%;">
 <p><img data-src="../img/agregat-wody-lodowej-chiller-carrier-30rbp-520-o-wydajnosci-chlodniczej-520-kw.jpeg?auto=format&amp;fit=crop&amp;q=80&amp;w=800"></p>
 </div></div>
 </section>
-<section id="zadanie-6.1-obieg-lindego-na-wykresie-p-h" class="slide level2">
-<h2>🧊 Zadanie 6.1: Obieg Lindego na Wykresie p-h</h2>
+<section id="zadanie-6.1-obieg-lindego-na-wykresie-p-h" class="slide level2 smaller">
+<h2><i class="bi bi-snow"></i> Zadanie 6.1: Obieg Lindego na Wykresie p-h</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Zadanie 6.1</a></li><li><a href="#tabset-1-2">Dane Wejściowe</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Krok 1: odczyt</a></li><li><a href="#tabset-1-2">Tablica (interpolacja)</a></li><li><a href="#tabset-1-3">Dane wejściowe</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p>Przeanalizujmy obieg teoretyczny (bez strat ciśnienia i dochłodzenia/przegrzania).</p>
-<div style="font-size: 0.8em">
-<p><strong>Krok 1: Odczyt z Wykresu p-h (R134a)</strong></p>
+<div class="columns">
+<div class="column" style="width:52%;">
+<p>Obieg teoretyczny (bez strat ciśnienia i bez dochłodzenia/przegrzania).</p>
 <ol type="1">
-<li><strong>Punkt 1 (Ssanie):</strong> Para nasycona sucha (<span class="math inline">\(x=1\)</span>) przy <span class="math inline">\(t_o = 2^\circ C\)</span>.
+<li><strong>Punkt 1 (ssanie):</strong> para nasycona sucha (<span class="math inline">\(x = 1\)</span>) przy <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>, <span class="math inline">\(p_o \approx 3.15\)</span> bar.
 <ul>
-<li><span class="math inline">\(h_1 \approx 400 \text{ kJ/kg}\)</span></li>
+<li>tablica: <span class="math inline">\(h_1 = h''(2\,^\circ\text{C}) \approx 400 \text{ kJ/kg}\)</span>, <span class="math inline">\(s_1 \approx 1.73 \text{ kJ/(kg·K)}\)</span>.</li>
 </ul></li>
-<li><strong>Punkt 2 (Tłoczenie):</strong> Sprężanie izentropowe (<span class="math inline">\(s=const\)</span>) do ciśnienia nasycenia <span class="math inline">\(t_k = 40^\circ C\)</span>.
+<li><strong>Punkt 2 (tłoczenie):</strong> sprężanie izentropowe (<span class="math inline">\(s = \text{const}\)</span>) do ciśnienia skraplania <span class="math inline">\(p_k = p_s(40\,^\circ\text{C}) \approx 10.17\)</span> bar.
 <ul>
-<li><span class="math inline">\(s_1 \approx 1.72 \rightarrow s_2 \approx 1.72\)</span>.</li>
-<li><span class="math inline">\(h_2 \approx 425 \text{ kJ/kg}\)</span> (ODCZYT Z WYKRESU).</li>
+<li>wykres: <span class="math inline">\(s_2 = s_1\)</span> na izobarze <span class="math inline">\(p_k\)</span> → <span class="math inline">\(h_2 \approx 425 \text{ kJ/kg}\)</span>, <span class="math inline">\(t_2 \approx 44\,^\circ\text{C}\)</span> (więcej niż <span class="math inline">\(t_k\)</span>!).</li>
 </ul></li>
-<li><strong>Punkt 3 (Skraplacz):</strong> Ciecz nasycona (<span class="math inline">\(x=0\)</span>) przy <span class="math inline">\(t_k = 40^\circ C\)</span>.
+<li><strong>Punkt 3 (wylot skraplacza):</strong> ciecz nasycona (<span class="math inline">\(x = 0\)</span>) przy <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.
 <ul>
-<li><span class="math inline">\(h_3 \approx 256 \text{ kJ/kg}\)</span>.</li>
+<li>tablica: <span class="math inline">\(h_3 = h'(40\,^\circ\text{C}) \approx 256 \text{ kJ/kg}\)</span>.</li>
 </ul></li>
-<li><strong>Punkt 4 (Dławienie):</strong> Izenthalpa (<span class="math inline">\(h=const\)</span>).
+<li><strong>Punkt 4 (dławienie):</strong> przemiana izentalpowa (<span class="math inline">\(h = \text{const}\)</span>).
 <ul>
-<li><span class="math inline">\(h_4 = h_3 = 256 \text{ kJ/kg}\)</span>.</li>
+<li><span class="math inline">\(h_4 = h_3 \approx 256 \text{ kJ/kg}\)</span>.</li>
 </ul></li>
 </ol>
-</div>
+</div><div class="column" style="width:48%;">
+<p><img data-src="../img/cw6_obieg_r134a.png" style="width:100.0%"></p>
+</div></div>
 </div>
 <div id="tabset-1-2">
+<p>Załącznik C (R134a) ma wiersze co 5 K – dla <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span> interpolujemy między <span class="math inline">\(0\)</span> a <span class="math inline">\(5\,^\circ\text{C}\)</span>:</p>
+<p><span class="math display">\[ h_1 = h''(2\,^\circ\text{C}) = 398.6 + \tfrac{2}{5}\,(401.5 - 398.6) = 399.8 \approx 400 \text{ kJ/kg} \]</span> <span class="math display">\[ s_1 = s''(2\,^\circ\text{C}) = 1.727 + \tfrac{2}{5}\,(1.725 - 1.727) \approx 1.726 \text{ kJ/(kg·K)} \]</span> <span class="math display">\[ p_o = 2.93 + \tfrac{2}{5}\,(3.50 - 2.93) \approx 3.16 \text{ bar} \quad (\text{dokładnie } 3.15 \text{ bar}) \]</span></p>
+<p>Punkt 3 – wiersz <span class="math inline">\(40\,^\circ\text{C}\)</span>, bez interpolacji: <span class="math inline">\(h_3 = h' = 256.4 \text{ kJ/kg}\)</span>, <span class="math inline">\(p_k = 10.17 \text{ bar}\)</span>.</p>
+<div title="Z wykresu p-h (Załącznik F) odczytujemy tylko punkt 2">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Z wykresu p-h (Załącznik F) odczytujemy tylko punkt 2</strong></p>
+</div>
+<div class="callout-content">
+<p>Izentropa <span class="math inline">\(s = 1.726 \text{ kJ/(kg·K)}\)</span> przecina izobarę <span class="math inline">\(p_k = 10.17 \text{ bar}\)</span> → <span class="math inline">\(h_2 \approx 425 \text{ kJ/kg}\)</span>. Uwaga: oś ciśnienia wykresu jest w MPa – <span class="math inline">\(p_o \approx 0.315 \text{ MPa}\)</span>, <span class="math inline">\(p_k \approx 1.017 \text{ MPa}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
 <ul>
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span></li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span></li>
 <li><strong>Czynnik:</strong> R134a</li>
-<li><strong>Temp. parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span></li>
-<li><strong>Temp. skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span></li>
+<li><strong>Temp. parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span></li>
+<li><strong>Temp. skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-6.2-bilans-energetyczny" class="slide level2">
-<h2>⚡ Zadanie 6.2: Bilans Energetyczny</h2>
+<section id="zadanie-6.2-bilans-energetyczny-krok-2" class="slide level2">
+<h2><i class="bi bi-lightning-charge"></i> Zadanie 6.2: Bilans Energetyczny (Krok 2)</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Zadanie 6.2</a></li><li><a href="#tabset-2-2">Dane (do Kroku 1)</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Zadanie 6.2</a></li><li><a href="#tabset-2-2">Dane i wyniki Kroku 1</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<p><strong>Bilans Energetyczny (Jednostkowy):</strong></p>
+<p><strong>Bilans energetyczny (jednostkowy):</strong></p>
 <div style="text-align: center">
-<p><span class="math inline">\(q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}}\)</span> (Chłodzenie użyteczne)</p>
-<p><span class="math inline">\(l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}}\)</span> (Praca sprężania)</p>
-<p><span class="math inline">\(q_{sk} = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}}\)</span> (Ciepło skraplania - odpadowe)</p>
+<p><span class="math inline">\(q_o = h_1 - h_4 = 400 - 256 = \mathbf{144 \text{ kJ/kg}}\)</span> (chłodzenie użyteczne)</p>
+<p><span class="math inline">\(l_k = h_2 - h_1 = 425 - 400 = \mathbf{25 \text{ kJ/kg}}\)</span> (praca sprężania)</p>
+<p><span class="math inline">\(q_{sk} = h_2 - h_3 = 425 - 256 = \mathbf{169 \text{ kJ/kg}}\)</span> (ciepło skraplania – odpadowe)</p>
 </div>
-<div title="Weryfikacja I Zasady">
+<div title="Weryfikacja I zasady">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Weryfikacja I Zasady</strong></p>
+<p><strong>Weryfikacja I zasady</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[ q_o + l_k = 144 + 25 = 169 = q_sk \]</span> <span class="math display">\[ Energia_{in} = Energia_{out} \quad (OK!) \]</span></p>
+<p><span class="math display">\[ q_o + l_k = 144 + 25 = 169 = q_{sk} \]</span> <span class="math display">\[ \text{Energia}_\text{in} = \text{Energia}_\text{out} \quad \text{(OK!)} \]</span></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-2-2">
-<p><strong>Parametry wejściowe::</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Parametry wejściowe:</strong></p>
 <ol type="1">
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span>.</li>
 <li><strong>Czynnik chłodniczy:</strong> R134a.</li>
-<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
-<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.</li>
 </ol>
-<p><strong>Entalpie (z Wykresu):</strong></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Entalpie (tablica + wykres):</strong></p>
 <ul>
 <li><span class="math inline">\(h_1 = 400\)</span> kJ/kg</li>
 <li><span class="math inline">\(h_2 = 425\)</span> kJ/kg</li>
 <li><span class="math inline">\(h_3 = 256\)</span> kJ/kg</li>
 <li><span class="math inline">\(h_4 = 256\)</span> kJ/kg</li>
 </ul>
+</div></div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-6.3-moc-i-efektywność" class="slide level2">
-<h2>💰 Zadanie 6.3: Moc i Efektywność</h2>
+<section id="zadanie-6.3-moc-i-efektywność-krok-3" class="slide level2 smaller">
+<h2><i class="bi bi-cash-coin"></i> Zadanie 6.3: Moc i Efektywność (Krok 3)</h2>
 <div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Zadanie 6.3</a></li><li><a href="#tabset-3-2">Dane (do Kroku 2)</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Zadanie 6.3</a></li><li><a href="#tabset-3-2">Dane i wyniki Kroku 2</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div style="font-size: 0.8em">
-<p><strong>Strumień Czynnika:</strong></p>
-<p>Musimy odebrać 300 kW ciepła z hali (<span class="math inline">\(Q_o\)</span>). <span class="math display">\[ \dot{m} = \frac{Q_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} \]</span> <span class="math display">\[ \dot{m} \approx \mathbf{2.08 \text{ kg/s}} \]</span></p>
-</div>
-<div class="{columns}">
-<div class="column" style="width:50%;">
+<p><strong>Strumień czynnika</strong> – musimy odebrać <span class="math inline">\(\dot{Q}_o = 300\)</span> kW ciepła z hali: <span class="math display">\[ \dot{m} = \frac{\dot{Q}_o}{q_o} = \frac{300 \text{ kJ/s}}{144 \text{ kJ/kg}} \approx \mathbf{2.08 \text{ kg/s}} \]</span></p>
+<div class="columns">
+<div class="column" style="width:33%;">
 <div class="fragment">
-<p><strong>Moc Sprężarki:</strong> <span class="math display">\[ N_{el} = \dot{m} \cdot l_k = 2.08 \cdot 25 \]</span> <span class="math display">\[ N_{el} \approx \mathbf{52 \text{ kW}} \]</span></p>
+<p><strong>Moc sprężarki:</strong> <span class="math display">\[ N = \dot{m} \cdot l_k = 2.08 \cdot 25 \]</span> <span class="math display">\[ N \approx \mathbf{52 \text{ kW}} \]</span></p>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:34%;">
 <div class="fragment">
-<p><strong>Efektywność (COP/EER):</strong> <span class="math display">\[ EER = \frac{Q_o}{N_{el}} = \frac{300}{52} \]</span> <span class="math display">\[ EER \approx \mathbf{5.77} \]</span></p>
+<p><strong>Ciepło skraplania:</strong> <span class="math display">\[ \dot{Q}_{sk} = \dot{Q}_o + N = 300 + 52 \]</span> <span class="math display">\[ \dot{Q}_{sk} \approx \mathbf{352 \text{ kW}} \]</span> <span class="math inline">\((= \dot{m} \cdot q_{sk} = 2.08 \cdot 169)\)</span></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="fragment">
+<p><strong>Efektywność (EER):</strong> <span class="math display">\[ \text{EER} = \frac{\dot{Q}_o}{N} = \frac{q_o}{l_k} = \frac{144}{25} \]</span> <span class="math display">\[ \text{EER} \approx \mathbf{5.76} \]</span></p>
 </div>
 </div></div>
-<div class="fragment" title="Wniosek: Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.">
+<div class="fragment" title="Wniosek: na 1 kW mocy sprężania prawie 6 kW chłodu">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Wniosek: Urządzenie jest bardzo efektywne! Na każdy 1 kW prądu uzyskujemy prawie 6 kW chłodu.</strong></p>
+<p><strong>Wniosek: na 1 kW mocy sprężania prawie 6 kW chłodu</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Obieg teoretyczny (<span class="math inline">\(N\)</span> – moc sprężania izentropowego). W rzeczywistym agregacie EER jest wyraźnie niższy: przy <span class="math inline">\(\eta_{is} \approx 0.7\)</span> i sprawności silnika <span class="math inline">\(\eta_{el} \approx 0.9\)</span>: <span class="math inline">\(\text{EER} \approx 5.76 \cdot 0.7 \cdot 0.9 \approx 3.6\)</span>.</p>
 </div>
 </div>
 </div>
@@ -285,17 +343,17 @@
 <div class="column" style="width:50%;">
 <p><strong>Parametry wejściowe:</strong></p>
 <ol type="1">
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span>.</li>
 <li><strong>Czynnik chłodniczy:</strong> R134a.</li>
-<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
-<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.</li>
 </ol>
 </div><div class="column" style="width:50%;">
 <p><strong>Entalpie:</strong></p>
 <ul>
-<li><span class="math inline">\(h_1=400, h_2=425, h_3=256, h_4=256\)</span></li>
+<li><span class="math inline">\(h_1 = 400\)</span>, <span class="math inline">\(h_2 = 425\)</span>, <span class="math inline">\(h_3 = 256\)</span>, <span class="math inline">\(h_4 = 256\)</span> kJ/kg</li>
 </ul>
-<p><strong>Wielkości Jednostkowe:</strong></p>
+<p><strong>Wielkości jednostkowe:</strong></p>
 <ul>
 <li><span class="math inline">\(q_o = 144\)</span> kJ/kg</li>
 <li><span class="math inline">\(l_k = 25\)</span> kJ/kg</li>
@@ -306,28 +364,40 @@
 </div>
 </div>
 </section>
-<section id="zadanie-6.4-pompa-ciepła-z-tego-samego-obiegu" class="slide level2">
-<h2>🔄 Zadanie 6.4: Pompa Ciepła z Tego Samego Obiegu</h2>
+<section id="zadanie-6.4-pompa-ciepła-z-tego-samego-obiegu" class="slide level2 smaller">
+<h2><i class="bi bi-arrow-repeat"></i> Zadanie 6.4: Pompa Ciepła z Tego Samego Obiegu</h2>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Zadanie 6.4</a></li><li><a href="#tabset-4-2">Dane (do Kroku 3)</a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Zadanie 6.4</a></li><li><a href="#tabset-4-2">Dane i wyniki Kroku 3</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
-<p>Skoro skraplacz wyrzuca <span class="math inline">\(Q_k = 352 \text{ kW}\)</span> ciepła na dach… Czy moglibyśmy <strong>zimą</strong> odwrócić logikę i wykorzystać to ciepło do ogrzewania biur?</p>
-<p><strong>Ten sam obieg, ale patrząc jako Pompa Ciepła:</strong> <span class="math display">\[ COP_{PC} = \frac{Q_k}{N_{el}} = \frac{352}{52} \approx \mathbf{6.77} \]</span></p>
-<div class="fragment callout-success">
-<p>Na każdy 1 kW prądu dostajemy <strong>6.77 kW ciepła</strong> do ogrzewania! Porównaj z grzejnikiem elektrycznym (<span class="math inline">\(COP = 1\)</span>) lub kotłem gazowym (<span class="math inline">\(\eta \approx 0.95\)</span>).</p>
+<p>Skoro skraplacz wyrzuca <span class="math inline">\(\dot{Q}_{sk} = 352 \text{ kW}\)</span> ciepła na dach… Czy moglibyśmy <strong>zimą</strong> odwrócić logikę i wykorzystać to ciepło do ogrzewania biur?</p>
+<p><strong>Ten sam obieg, ale patrząc jako pompa ciepła:</strong> <span class="math display">\[ \text{COP}_{PC} = \frac{\dot{Q}_{sk}}{N} = \frac{q_{sk}}{l_k} = \frac{169}{25} \approx \mathbf{6.76} \quad (= \text{EER} + 1) \]</span></p>
+<div class="fragment" title="Wniosek">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="fragment">
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Na każdy 1 kW mocy sprężania dostajemy <strong>6.76 kW ciepła</strong> do ogrzewania (obieg teoretyczny)! Porównaj z grzejnikiem elektrycznym (<span class="math inline">\(\text{COP} = 1\)</span>) lub kotłem gazowym (<span class="math inline">\(\eta \approx 0.95\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" title="Ale uwaga">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Ale uwaga</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Ale uwaga:</strong> Zimą <span class="math inline">\(t_o\)</span> (dolne źródło) musi być wyższe niż zamarzanie → potrzebujemy np. gruntu, ścieków, lub powietrza zewnętrznego. Zmieni to parametry obiegu!</p>
+<p>Zimą nie ma już ciepłej hali jako dolnego źródła – trzeba je znaleźć (grunt, ścieki, powietrze zewnętrzne). Niższe <span class="math inline">\(t_o\)</span> i wyższe <span class="math inline">\(t_k\)</span> potrzebne do ogrzewania obniżą COP!</p>
 </div>
 </div>
 </div>
@@ -338,97 +408,105 @@
 <div class="column" style="width:50%;">
 <p><strong>Parametry wejściowe:</strong></p>
 <ol type="1">
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span>.</li>
 <li><strong>Czynnik chłodniczy:</strong> R134a.</li>
-<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
-<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.</li>
 </ol>
 </div><div class="column" style="width:50%;">
 <p><strong>Wyniki chłodnicze:</strong></p>
 <ul>
-<li><span class="math inline">\(q_o = 144\)</span> kJ/kg</li>
-<li><span class="math inline">\(l_k = 25\)</span> kJ/kg</li>
+<li><span class="math inline">\(q_o = 144\)</span> kJ/kg, <span class="math inline">\(l_k = 25\)</span> kJ/kg, <span class="math inline">\(q_{sk} = 169\)</span> kJ/kg</li>
 <li><span class="math inline">\(\dot{m} = 2.08\)</span> kg/s</li>
-<li><span class="math inline">\(N_{el} = 52\)</span> kW</li>
-<li><span class="math inline">\(EER = 5.77\)</span></li>
-<li><strong>Całkowite ciepło skraplania:</strong> <span class="math inline">\(Q_k = Q_o + N_{el} = 352\)</span> kW</li>
+<li><span class="math inline">\(N = 52\)</span> kW</li>
+<li><span class="math inline">\(\text{EER} = 5.76\)</span></li>
+<li><strong>Ciepło skraplania:</strong> <span class="math inline">\(\dot{Q}_{sk} = \dot{Q}_o + N = 352\)</span> kW</li>
 </ul>
 </div></div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-6.5-wpływ-temperatury-skraplania-na-eer" class="slide level2">
-<h2>🌡️ Zadanie 6.5: Wpływ Temperatury Skraplania na EER</h2>
-<p>Jak zmieni się EER, jeśli latem temperatura na dachu wzrośnie i skraplacz będzie pracował przy <span class="math inline">\(t_k = 50^\circ C\)</span> zamiast <span class="math inline">\(40^\circ C\)</span>?</p>
-<div title="Odczyt z wykresu p-h (R134a, tk=50°C)">
+<section id="zadanie-6.5-wpływ-temperatury-skraplania-na-eer" class="slide level2 smaller">
+<h2><i class="bi bi-thermometer-half"></i> Zadanie 6.5: Wpływ Temperatury Skraplania na EER</h2>
+<p>Skraplacz na dachu ulega zabrudzeniu (albo latem jest upał) i temperatura skraplania rośnie o 15 K – z <span class="math inline">\(t_k = 40\)</span> do <span class="math inline">\(55\,^\circ\text{C}\)</span>. Jak zmieni się EER?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div title="Odczyt: tablica + wykres p-h (R134a)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Odczyt z wykresu p-h (R134a, tk=50°C)</strong></p>
+<p><strong>Odczyt: tablica + wykres p-h (R134a)</strong></p>
 </div>
 <div class="callout-content">
+<p>Dla <span class="math inline">\(t_k = 55\,^\circ\text{C}\)</span> (<span class="math inline">\(p_k \approx 14.9\)</span> bar):</p>
 <ul>
-<li><span class="math inline">\(h_1 = 400\)</span> kJ/kg (bez zmian — parowanie <span class="math inline">\(2^\circ C\)</span>)</li>
-<li><span class="math inline">\(h_2 \approx 440\)</span> kJ/kg (sprężanie do wyższego ciśnienia → więcej pracy)</li>
-<li><span class="math inline">\(h_3 \approx 272\)</span> kJ/kg (wyższe ciśnienie → wyższa entalpia cieczy)</li>
+<li><span class="math inline">\(h_1 = 400\)</span> kJ/kg (bez zmian – parowanie w <span class="math inline">\(2\,^\circ\text{C}\)</span>)</li>
+<li><span class="math inline">\(h_{2'} \approx 432\)</span> kJ/kg (wykres: ta sama izentropa, wyższe ciśnienie → więcej pracy)</li>
+<li><span class="math inline">\(h_{3'} = h'(55\,^\circ\text{C}) = 279.5 \approx 280\)</span> kJ/kg (tablica: wyższe ciśnienie → wyższa entalpia cieczy)</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
-<p><span class="math display">\[ q_o = 400 - 272 = 128 \text{ kJ/kg} \quad (\text{było } 144) \]</span> <span class="math display">\[ l_k = 440 - 400 = 40 \text{ kJ/kg} \quad (\text{było } 25) \]</span> <span class="math display">\[ EER = \frac{128}{40} = \mathbf{3.20} \quad (\text{było } 5.77) \]</span></p>
-<p><strong>Pogorszenie o 45%!</strong> Moc sprężarki wzrasta, a wydajność chłodnicza maleje.</p>
+<p><span class="math display">\[ q_o = 400 - 280 = 120 \text{ kJ/kg} \quad (\text{było } 144) \]</span> <span class="math display">\[ l_k = 432 - 400 = 32 \text{ kJ/kg} \quad (\text{było } 25) \]</span> <span class="math display">\[ \text{EER}_{new} = \frac{120}{32} = \mathbf{3.75} \quad (\text{było } 5.76) \]</span></p>
 </div>
-<div class="fragment" title="Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia $t_k$ poprawia EER!">
+<div class="fragment">
+<p><span class="math display">\[ \Delta\text{EER} = \frac{5.76 - 3.75}{5.76} \cdot 100\% \approx \mathbf{35\%} \]</span></p>
+<p><strong>Pogorszenie o 35%!</strong> Przy tej samej <span class="math inline">\(\dot{Q}_o\)</span> moc sprężarki rośnie z 52 do <span class="math inline">\(N = 300/3.75 = 80\)</span> kW.</p>
+</div>
+</div></div>
+<div class="fragment" title="Dlatego skraplacze na dachach mają wentylatory i zraszanie wodą">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Dlatego skraplacze na dachach wyposażone są w wentylatory i zraszanie wodą — każdy stopień obniżenia <span class="math inline">\(t_k\)</span> poprawia EER!</strong></p>
+<p><strong>Dlatego skraplacze na dachach mają wentylatory i zraszanie wodą</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Każdy 1 K obniżenia <span class="math inline">\(t_k\)</span> to ok. 2–3% wyższy EER (tu: 35% / 15 K ≈ 2.3% na 1 K).</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <section id="wizualizacja-wpływ-temperatury-skraplania-t_k" class="slide level2">
-<h2>Wizualizacja: Wpływ temperatury skraplania (<span class="math inline">\(t_k\)</span>)</h2>
-<p>Analiza Zadań 6.1 (Standard) i 6.5 (Podwyższone <span class="math inline">\(t_k\)</span>).</p>
+<h2><i class="bi bi-bar-chart"></i> Wizualizacja: Wpływ Temperatury Skraplania (<span class="math inline">\(t_k\)</span>)</h2>
+<p>Analiza zadań 6.1 (obieg bazowy, <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>) i 6.5 (zabrudzony skraplacz, <span class="math inline">\(t_k = 55\,^\circ\text{C}\)</span>).</p>
 
-<img data-src="../img/cycles_comparison.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"><div class="fragment fade-up" style="font-size: 0.7em; text-align: center;">
-<p><strong>Wniosek:</strong> Podniesienie temperatury skraplania (Czerwony obieg 2’) powoduje:</p>
+<img data-src="../img/cycles_comparison.png" class="r-stretch quarto-figure quarto-figure-center"><div class="fragment fade-up" style="font-size: 0.7em; text-align: center;">
+<p><strong>Wniosek:</strong> podniesienie temperatury skraplania (czerwony obieg 1–2′–3′–4′) powoduje:</p>
 <ol type="1">
-<li>Wzrost pracy sprężania (<span class="math inline">\(h_{2'} &gt; h_2\)</span>).</li>
-<li>Przestunięcie punktu dławienia w prawo (<span class="math inline">\(h_{3'} &gt; h_3\)</span>) → Mniejsza wydajność chłodnicza <span class="math inline">\(q_o\)</span>.</li>
+<li>Wzrost pracy sprężania: <span class="math inline">\(h_{2'} - h_1 &gt; h_2 - h_1\)</span>.</li>
+<li>Przesunięcie punktu dławienia w prawo (<span class="math inline">\(h_{3'} &gt; h_3\)</span>) → mniejsza wydajność chłodnicza <span class="math inline">\(q_o\)</span>.</li>
 </ol>
 </div>
 </section>
 <section id="zadanie-6.6-porównanie-czynników-r134a-vs-r290" class="slide level2">
-<h2>🧊 Zadanie 6.6: Porównanie Czynników (R134a vs R290)</h2>
+<h2><i class="bi bi-snow"></i> Zadanie 6.6: Porównanie Czynników (R134a vs R290)</h2>
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Zadanie 6.6</a></li><li><a href="#tabset-5-2">Dane R134a (Porównanie)</a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Zadanie 6.6</a></li><li><a href="#tabset-5-2">Dane R134a (porównanie)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
-<p>Rozważamy zamianę R134a (GWP=1430) na <strong>R290 (propan, GWP=3)</strong>. Czy warto?</p>
-<div title="Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)">
+<p>Rozważamy zamianę R134a (GWP = 1430) na <strong>R290 (propan, GWP = 3)</strong>. Czy warto?</p>
+<div title="Odczyt dla R290 (Załącznik D i G)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Odczyt z wykresu p-h (R290, to=2°C, tk=40°C)</strong></p>
+<p><strong>Odczyt dla R290 (Załącznik D i G)</strong></p>
 </div>
 <div class="callout-content">
+<p>Dla <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>, <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>:</p>
 <ul>
 <li><span class="math inline">\(h_1 \approx 577\)</span> kJ/kg, <span class="math inline">\(h_2 \approx 624\)</span> kJ/kg</li>
 <li><span class="math inline">\(h_3 \approx 307\)</span> kJ/kg, <span class="math inline">\(h_4 = h_3\)</span></li>
@@ -438,27 +516,27 @@
 </div>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ q_o = 577 - 307 = \mathbf{270 \text{ kJ/kg}} \quad (\text{R134a: } 144) \]</span> <span class="math display">\[ l_k = 624 - 577 = \mathbf{47 \text{ kJ/kg}} \quad (\text{R134a: } 25) \]</span> <span class="math display">\[ EER = 270/47 = \mathbf{5.74} \quad (\text{R134a: } 5.77) \]</span></p>
+<p><span class="math display">\[ q_o = 577 - 307 = \mathbf{270 \text{ kJ/kg}} \quad (\text{R134a: } 144) \]</span> <span class="math display">\[ l_k = 624 - 577 = \mathbf{47 \text{ kJ/kg}} \quad (\text{R134a: } 25) \]</span> <span class="math display">\[ \text{EER} = \frac{270}{47} = \mathbf{5.74} \quad (\text{R134a: } 5.76) \]</span></p>
 </div>
 </div>
 <div id="tabset-5-2">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Parametry wejściowe::</strong></p>
+<p><strong>Parametry wejściowe:</strong></p>
 <ol type="1">
-<li><strong>Moc chłodnicza:</strong> <span class="math inline">\(Q_{o} = 300 \text{ kW}\)</span>.</li>
+<li><strong>Wydajność chłodnicza:</strong> <span class="math inline">\(\dot{Q}_o = 300 \text{ kW}\)</span>.</li>
 <li><strong>Czynnik chłodniczy:</strong> R134a.</li>
-<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2^\circ C\)</span>.</li>
-<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40^\circ C\)</span>.</li>
+<li><strong>Temperatura parowania:</strong> <span class="math inline">\(t_o = 2\,^\circ\text{C}\)</span>.</li>
+<li><strong>Temperatura skraplania:</strong> <span class="math inline">\(t_k = 40\,^\circ\text{C}\)</span>.</li>
 </ol>
 </div><div class="column" style="width:50%;">
-<p><strong>R134a (Referencja):</strong></p>
+<p><strong>R134a (referencja):</strong></p>
 <ul>
 <li><span class="math inline">\(q_o = 144\)</span> kJ/kg</li>
 <li><span class="math inline">\(l_k = 25\)</span> kJ/kg</li>
-<li><span class="math inline">\(EER = 5.77\)</span></li>
+<li><span class="math inline">\(\text{EER} = 5.76\)</span></li>
 </ul>
-<p><strong>R290 (Propan):</strong></p>
+<p><strong>R290 (propan):</strong></p>
 <ul>
 <li><span class="math inline">\(h_1 = 577\)</span> kJ/kg</li>
 <li><span class="math inline">\(h_2 = 624\)</span> kJ/kg</li>
@@ -470,69 +548,76 @@
 </div>
 </section>
 <section id="zadanie-6.6-cd.-wnioski" class="slide level2">
-<h2>🧊 Zadanie 6.6 (cd.): Wnioski</h2>
-<p><strong>Strumień czynnika:</strong> <span class="math inline">\(\dot{m}_{R290} = 300/270 = \mathbf{1.11 \text{ kg/s}}\)</span> (R134a: <span class="math inline">\(2.08\)</span> kg/s — <strong>prawie o połowę mniej!</strong>)</p>
-<p><strong>Efektywność:</strong> EER praktycznie taki sam (5.74 wobec 5.77) — o wyborze decyduje ekologia i bezpieczeństwo, nie sprawność.</p>
-<div style="font-size: 1.8em">
+<h2><i class="bi bi-snow"></i> Zadanie 6.6 (cd.): Wnioski</h2>
+<p><strong>Strumień czynnika:</strong> <span class="math inline">\(\dot{m}_{R290} = \dot{Q}_o / q_o = 300/270 = \mathbf{1.11 \text{ kg/s}}\)</span> (R134a: <span class="math inline">\(2.08\)</span> kg/s – <strong>prawie o połowę mniej!</strong>)</p>
+<p><strong>Efektywność:</strong> EER praktycznie taki sam (5.74 wobec 5.76) – R290 jest <strong>nieznacznie mniej</strong> efektywny (dokładne obliczenia: różnica ok. 2%). O wyborze decydują ekologia i bezpieczeństwo, nie sprawność.</p>
+<div title="Bezpieczeństwo i środowisko" style="font-size: 1.3em">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Bezpieczeństwo i środowisko</strong></p>
 </div>
 <div class="callout-content">
-<p>R290 ma lepszą wydajność objętościową i pomijalny GWP (3 wobec 1430); podobnie jak R134a nie niszczy warstwy ozonowej. <strong>Ale jest palny!</strong> Wymaga specjalnych zabezpieczeń (ATEX).</p>
+<p>R290 ma lepszą wydajność objętościową i pomijalny GWP (3 wobec 1430); podobnie jak R134a nie niszczy warstwy ozonowej. <strong>Ale jest palny!</strong> Klasa bezpieczeństwa wg EN 378 / ISO 817: R134a – A1 (niepalny), R290 – A3 (wysoka palność). Wymaga specjalnych zabezpieczeń (ATEX).</p>
 </div>
 </div>
 </div>
+</div>
+<div style="font-size: 0.6em">
+<p>GWP wg AR4 (rozporządzenie UE 517/2014), jak w karcie projektowej. Nowe rozporządzenie (UE) 2024/573 podaje wartości wg AR6: R134a – 1530, R290 – 0.02.</p>
 </div>
 </section>
-<section id="zadanie-6.7-dobór-rurociągu-ssawnego" class="slide level2">
-<h2>💧 Zadanie 6.7: Dobór Rurociągu Ssawnego</h2>
-<p>Ile wynosi prędkość czynnika R134a w rurociągu ssawnym o średnicy <span class="math inline">\(d = 80 \text{ mm}\)</span>?</p>
+<section id="zadanie-6.7-dobór-rurociągu-ssawnego" class="slide level2 smaller">
+<h2><i class="bi bi-droplet"></i> Zadanie 6.7: Dobór Rurociągu Ssawnego</h2>
+<p>Ile wynosi prędkość czynnika R134a w rurociągu ssawnym o średnicy <span class="math inline">\(d = 80 \text{ mm}\)</span>? Przy jakiej średnicy prędkość wyniesie ok. 12 m/s?</p>
 <div class="fragment">
-<p><strong>Z wykresu p-h:</strong> Na ssaniu (<span class="math inline">\(2^\circ C\)</span>, para nasycona) objętość właściwa <span class="math inline">\(v_1 \approx 0.065 \text{ m}^3/\text{kg}\)</span>.</p>
+<p><strong>Z wykresu p-h (izochory):</strong> na ssaniu (<span class="math inline">\(2\,^\circ\text{C}\)</span>, para nasycona) objętość właściwa <span class="math inline">\(v_1 \approx 0.065 \text{ m}^3/\text{kg}\)</span> (w karcie projektowej <span class="math inline">\(v_1\)</span> jest podane).</p>
 <p><span class="math display">\[ \dot{V} = \dot{m} \cdot v_1 = 2.08 \cdot 0.065 = 0.135 \text{ m}^3/\text{s} \]</span></p>
-<p>Przekrój rury: <span class="math display">\[ A = \frac{\pi d^2}{4} = \frac{\pi \cdot 0.08^2}{4} = 0.00503 \text{ m}^2 \]</span></p>
-<p><span class="math display">\[ w = \frac{\dot{V}}{A} = \frac{0.135}{0.00503} \approx \mathbf{26.8 \text{ m/s}} \]</span></p>
+<p><span class="math display">\[ A = \frac{\pi d^2}{4} = \frac{\pi \cdot 0.08^2}{4} = 0.00503 \text{ m}^2 \qquad w = \frac{\dot{V}}{A} = \frac{0.135}{0.00503} \approx \mathbf{26.8 \text{ m/s}} \]</span></p>
 </div>
-<div class="fragment">
+<div class="fragment" title="Dopuszczalna prędkość w rurociągu ssawnym: 8–15 m/s">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Dopuszczalna prędkość w rurociągu ssawnym: 8–15 m/s</strong></p>
 </div>
 <div class="callout-content">
-<p>Dopuszczalna prędkość w rurociągu ssawnym: <strong>8-15 m/s</strong>. Nasza rura jest <strong>za mała!</strong> Potrzebujemy <span class="math inline">\(d \approx 120 \text{ mm}\)</span>. Zbyt duża prędkość → spadki ciśnienia → spadek EER.</p>
+<p>Nasza rura jest <strong>za mała!</strong> Zbyt duża prędkość → spadki ciśnienia → spadek EER. (Poniżej 8 m/s rura jest za duża – ryzyko złego powrotu oleju do sprężarki.)</p>
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p>Średnica wymagana dla <span class="math inline">\(w \approx 12\)</span> m/s: <span class="math display">\[ d = \sqrt{\frac{4 \dot{V}}{\pi w}} = \sqrt{\frac{4 \cdot 0.135}{\pi \cdot 12}} = 0.120 \text{ m} \approx \mathbf{120 \text{ mm}} \]</span></p>
 </div>
 </section>
 <section id="zadanie-domowe-raport-6" class="slide level2">
-<h2>🏠 Zadanie Domowe (Raport 6)</h2>
-<p><strong>Temat:</strong> Rzeczywisty Obieg Chłodniczy.</p>
+<h2><i class="bi bi-house-door"></i> Zadanie Domowe (Raport 6)</h2>
+<p><strong>Temat:</strong> Rzeczywisty obieg chłodniczy.</p>
 <p>W praktyce występują straty i dodatkowe procesy poprawiające efektywność.</p>
 <ol type="1">
-<li>Aby chronić sprężarkę przed cieczą, stosuje się <strong>Przegrzanie Par</strong> na ssaniu o <span class="math inline">\(\Delta T_{sh} = 5 K\)</span> (czyli <span class="math inline">\(t_1 = 2 + 5 = 7^\circ C\)</span>).</li>
-<li>Aby zwiększyć wydajność, stosuje się <strong>Dochłodzenie Cieczy</strong> przed dławieniem o <span class="math inline">\(\Delta T_{sc} = 5 K\)</span> (czyli <span class="math inline">\(t_3 = 40 - 5 = 35^\circ C\)</span>).</li>
+<li>Aby chronić sprężarkę przed cieczą, stosuje się <strong>przegrzanie par</strong> na ssaniu o <span class="math inline">\(\Delta T_{sh} = 5 \text{ K}\)</span> (czyli <span class="math inline">\(t_1 = 2 + 5 = 7\,^\circ\text{C}\)</span>).</li>
+<li>Aby zwiększyć wydajność, stosuje się <strong>dochłodzenie cieczy</strong> przed dławieniem o <span class="math inline">\(\Delta T_{sc} = 5 \text{ K}\)</span> (czyli <span class="math inline">\(t_3 = 40 - 5 = 35\,^\circ\text{C}\)</span>).</li>
 </ol>
-<p><strong>Zadanie:</strong> Narysuj nowy obieg na wykresie p-h i oblicz nowy wskaźnik EER. Czy dochłodzenie poprawia, czy pogarsza sprawność?</p>
+<p><strong>Zadanie:</strong> Narysuj nowy obieg na wykresie p-h i oblicz nowy wskaźnik EER. Czy dochłodzenie poprawia, czy pogarsza efektywność (EER)?</p>
+<div title="Wskazówka">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Wskazówka</strong></p>
 </div>
 <div class="callout-content">
-<p>Pamiętaj: Przegrzanie zwiększa pracę sprężania (<span class="math inline">\(l_k\)</span>), ale Dochłodzenie zwiększa chłodzenie użyteczne (<span class="math inline">\(q_o\)</span>). Jaki będzie bilans netto?</p>
+<p>Pamiętaj: przegrzanie w parowniku zwiększa nieco i <span class="math inline">\(q_o\)</span>, i <span class="math inline">\(l_k\)</span> (dla R134a efekt netto ≈ 0 – chodzi o ochronę sprężarki); dochłodzenie zwiększa <span class="math inline">\(q_o\)</span> bez zmiany <span class="math inline">\(l_k\)</span>. Jaki będzie bilans netto?</p>
+</div>
 </div>
 </div>
 </div>
@@ -540,9 +625,8 @@
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../img/kbig.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Termodynamika Techniczna - Ćwiczenia Projektowe</p>
+<p>Termodynamika Techniczna – Ćwiczenia (Ć6)</p>
 </div>
 </div></div>
 
@@ -702,7 +786,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -727,7 +811,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -778,12 +862,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Skopiowano!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Skopiowano!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

@@ -1,0 +1,18 @@
+/*-- scss:defaults --*/
+// Ćwiczenia: ten sam styl co wykłady (q-theme.scss), nieco mniejsza czcionka bazowa,
+// bo slajdy ćwiczeń zawierają więcej obliczeń krok po kroku.
+$presentation-font-size-root: 36px;
+
+/*-- scss:rules --*/
+// q-theme ustawia $presentation-font-smaller: 0.7rem, z czego Quarto robi niepoprawny CSS
+// („0.7remem”) — przeglądarka go odrzuca i ramki/.smaller nie są pomniejszane.
+// Tu odtwarzamy domyślne reguły Quarto z poprawną wartością 0.7.
+.reveal .slide aside, .reveal .slide div.aside { font-size: 0.7em; }
+.reveal .slide sup { font-size: 0.7em; }
+.reveal .slide figure > figcaption, .reveal .slide img.stretch + p.caption, .reveal .slide img.r-stretch + p.caption { font-size: 0.7em; }
+.reveal.smaller .slides section, .reveal .slides section.smaller, .reveal .slides section div.callout { font-size: 0.7em; }
+.reveal.smaller .slides h1, .reveal .slides section.smaller h1, .reveal .slides section div.callout h1 { font-size: calc(2.5em / 0.7); }
+.reveal.smaller .slides h2, .reveal .slides section.smaller h2, .reveal .slides section div.callout h2 { font-size: calc(1.6em / 0.7); }
+.reveal.smaller .slides h3, .reveal .slides section.smaller h3, .reveal .slides section div.callout h3 { font-size: calc(1.3em / 0.7); }
+
+.reveal .slide h2 { margin-bottom: 0.35em; }

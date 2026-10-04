@@ -18,14 +18,14 @@ Zakład "Termo-Tech" posiada przestarzałą infrastrukturę:
 
 ### Część 2: Modernizacja Źródła Ciepła (Para Wodna)
 *   **Ć3 (2h): Kocioł Parowy.** Przeliczanie zapotrzebowania na parę technologiczną. Korzystanie z tablic parowych (woda/para). Bilans kotła.
-*   **Ć4 (2h): Turbina i Kogneracja.** Opcjonalne dołożenie małej turbiny parowej (przeciwprężnej) do redukcji ciśnienia. Sprawność obiegu Rankine'a.
+*   **Ć4 (2h): Turbina i Kogeneracja.** Turbina parowa przeciwprężna zamiast zaworu dławiącego (para z kotła → ciśnienie technologiczne). Rozprężanie izentropowe, sprawność izentropowa, moc.
 
 ### Część 3: Efektywność Energetyczna (II Zasada)
-*   **Ć5 (2h): Odzysk Ciepła.** Analiza możliwości wykorzystania ciepła odpadowego ze sprężarek do podgrzewania wody (wymiennik ciepła). Obliczanie entropii i strat egzergii (jakości ciepła).
-*   **Ć6+7 (2h+2h): Projekt Pompy Ciepła.** Zaprojektowanie dolnego źródła (ścieki przemysłowe) i górnego (CO biura). Dobór czynnika chłodniczego (R134a/R290) i obliczenia na wykresie p-h.
+*   **Ć5 (2h): Odzysk Ciepła.** Wymiennik spaliny/woda za kotłem. Generacja entropii, strata egzergii (Gouy–Stodola), egzergia ciepła spalin, przeciwprąd i kaskada wymienników.
+*   **Ć6 (2h): Agregat Wody Lodowej.** Obieg chłodniczy R134a na wykresie p-h: wydajność, moc sprężarki, EER/COP, wpływ temperatury skraplania, porównanie z R290.
 
 ### Część 4: Komfort Pracy (HVAC)
-*   **Ć8 (2h): Klimatyzacja Hali.** Projekt centrali wentylacyjnej dla hali montażu precyzyjnego. Obliczenia na wykresie Molliera (h-X): Ogrzewanie, Nawilżanie, Chłodzenie.
+*   **Ć7 (2h): Klimatyzacja Hali.** Projekt centrali wentylacyjnej dla hali montażu precyzyjnego. Obliczenia na wykresie Molliera (h-X): Ogrzewanie, Nawilżanie, Chłodzenie.
 
 ## Materiały
 Dla każdego ćwiczenia przygotowana zostanie prezentacja Quarto oraz "Karta Projektowa" (Zadanie domowe/raport), którą studenci wypełniają i oddają jako element dokumentacji technicznej.

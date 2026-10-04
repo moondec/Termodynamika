@@ -1,26 +1,40 @@
 ---
-title: "Ćwiczenie 2: Bilans Sprężarkowni (kompresorowni)"
-format: 
+title: "Ćwiczenie 2: Bilans Sprężarkowni"
+subtitle: "Projekt Termo-Tech – Etap 2: Praca Sprężania, Moc Silnika i Chłodzenie"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/kbig.jpg" style="height: 200px;">
+  </div>
+lang: pl
+mermaid-format: svg
+format:
   revealjs:
-    slide-number: true
-    theme: simple
+    theme: ["../theme/q-theme.scss", "../theme/cw-theme.scss"]
+    include-in-header: ../theme/cw-header.html
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    footer: "Termodynamika Techniczna – Ćwiczenia (Ć2)"
     width: 1600
     height: 900
-    logo: "../img/kbig.jpg"
-    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
-    chalkboard: true
+    margin: 0.2
 ---
 
-## 🏭 Projekt: Etap 2 - Sprężarkownia
+## <i class="bi bi-buildings"></i> Projekt: Etap 2 – Sprężarkownia
 
-Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Musimy zweryfikować jej parametry energetyczne i dobrać system chłodzenia.
+Do napełniania naszego zbiornika ($V = 5 \text{ m}^3$) wybrano sprężarkę tłokową. Musimy zweryfikować jej parametry energetyczne i dobrać system chłodzenia.
 
 ::: {.columns}
 ::: {.column width="60%"}
 ### Założenia Projektowe:
-1.  **Powietrze ssane:** $p_1 = 1 \text{ bar}, t_1 = 20^\circ C$.
-2.  **Powietrze tłoczone:** $p_2 = 9.5 \text{ bar}$.
-3.  **Wydajność:** $\dot{V}_n = 100 \text{ m}^3/h$ (normalnych).
+1.  **Powietrze ssane:** $p_1 = p_{atm} = 750 \text{ mmHg} \approx 1 \text{ bar}$ (barometr – jak w Ćw. 1), $t_1 = 20^\circ\text{C}$ (temperatura hali).
+2.  **Powietrze tłoczone:** $p_2 = 9.5 \text{ bar}$ (ciśnienie absolutne).
+3.  **Wydajność:** $\dot{V}_n = 100 \text{ m}^3/\text{h}$ (normalnych).
 4.  **Proces sprężania:** Politropa z wykładnikiem $n = 1.35$.
 :::
 ::: {.column width="40%"}
@@ -30,7 +44,7 @@ Do napełniania naszego zbiornika ($V=5m^3$) wybrano sprężarkę tłokową. Mus
 
 ---
 
-## ⚙️ Zadanie 2.1: Praca Techniczna Sprężania
+## <i class="bi bi-gear"></i> Zadanie 2.1: Praca Techniczna Sprężania {.smaller}
 
 Oblicz jednostkową pracę techniczną $l_t$ potrzebną do sprężenia 1 kg powietrza.
 
@@ -42,7 +56,7 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ 1-\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n
 ::: {.column width="30%"}
 ### Obliczenia:
 
-*   $R = 287 \text{ J}/(\text{kg K})$
+*   $R = 287 \text{ J}/(\text{kg}\cdot\text{K})$
 *   $T_1 = 293.15 \text{ K}$
 *   $p_2/p_1 = 9.5$
 *   $n = 1.35$
@@ -50,8 +64,8 @@ $$ l_t = \frac{n}{n-1} R T_1 \left[ 1-\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n
 ::: {.column width="70%"}
 ::: {.fragment}
 $$ l_t = \frac{1.35}{0.35} \cdot 287 \cdot 293.15 \cdot \left[ 1-(9.5)^{\frac{0.35}{1.35}} \right] $$
-$$ l_t = 3.857 \cdot 84134 \cdot [ 1-1.795 ] $$
-$$ l_t \approx 324\,400 \cdot (-0.795) \approx \mathbf{-258\,000 \text{ J/kg} = -258 \text{ kJ/kg}} $$
+$$ l_t = 3.857 \cdot 84\,134 \cdot [ 1-1.7926 ] $$
+$$ l_t \approx 324\,500 \cdot (-0.7926) \approx -257\,200 \text{ J/kg} \approx \mathbf{-257 \text{ kJ/kg}} $$
 :::
 :::
 :::
@@ -62,31 +76,30 @@ Ujemna **praca techniczna** oznacza, że sprężarka pobiera pracę z zewnątrz!
 
 ---
 
-## ⚡ Zadanie 2.2: Moc Silnika Napędowego
+## <i class="bi bi-lightning-charge"></i> Zadanie 2.2: Moc Silnika Napędowego {.smaller}
 
-Jaka jest teoretyczna moc sprężarki ($N_t$)?
+Jakiej mocy silnik napędowy ($N$) trzeba zamówić?
 
 ::: {.fragment}
 1.  **Strumień masy:** $\dot{m} = ?$
 
     *   **Wzór:** $\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}$ (warunki normalne: $p_n = 101325$ Pa, $T_n = 273.15$ K).
-    *   $\dot{m} = \frac{101325 \cdot (100/3600)}{287 \cdot 273.15} = \frac{2814.5}{78394} \approx 0.0358 \text{ kg/s}$.
+    *   $\dot{m} = \frac{101325 \cdot (100/3600)}{287 \cdot 273.15} = \frac{2814.6}{78\,394} \approx 0.0359 \text{ kg/s}$.
 :::
 
 ::: {.fragment}
-2.  **Moc teoretyczna:**
-    $$ N_t = \dot{m} \cdot l_t $$
-    $$ N_t = 0.0358 \text{ kg/s} \cdot 258 \text{ kJ/kg} \approx \mathbf{9.24 \text{ kW}} $$
+2.  **Moc teoretyczna** (liczymy z wartości bezwzględnej $l_t$):
+    $$ N_t = \dot{m} \cdot |l_t| = 0.0359 \text{ kg/s} \cdot 257 \text{ kJ/kg} \approx 9.23 \text{ kW} $$
 :::
 
-::: {.fragment .callout-tip}
-Rzeczywista moc będzie wyższa przez sprawność mechaniczną ($\eta_m \approx 0.9$).
-$N_{silnika} = N_t / 0.9 \approx 10.3 \text{ kW}$.
+::: {.fragment}
+3.  **Moc silnika** – wyższa ze względu na sprawność mechaniczną ($\eta_m = 0.9$):
+    $$ N = \frac{\dot{m} \cdot |l_t|}{\eta_m} = \frac{9.23}{0.9} \approx \mathbf{10.3 \text{ kW}} $$
 :::
 
 ---
 
-## 🔥 Zadanie 2.3: Temperatura Tłoczenia
+## <i class="bi bi-fire"></i> Zadanie 2.3: Temperatura Tłoczenia
 
 Do jakiej temperatury nagrzeje się powietrze na wylocie?
 To kluczowe dla doboru oleju i chłodnicy!
@@ -94,42 +107,42 @@ To kluczowe dla doboru oleju i chłodnicy!
 $$ T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} $$
 
 ::: {.fragment}
-$$ T_2 = 293.15 \cdot (9.5)^{0.259} $$
-$$ T_2 = 293.15 \cdot 1.795 \approx \mathbf{526 \text{ K} = 253^\circ C} $$
+$$ T_2 = 293.15 \cdot (9.5)^{0.2593} $$
+$$ T_2 = 293.15 \cdot 1.7926 \approx \mathbf{525.5 \text{ K} = 252.4^\circ\text{C}} $$
 
-::: {.callout-error}
-**Uwaga!** $253^\circ C$ to bardzo wysoka temperatura! Grozi zapłonem par oleju. Konieczne jest **chłodzenie międzystopniowe** lub intensywne chłodzenie cylindra.
+::: {.callout-caution}
+**Uwaga!** $252^\circ\text{C}$ to bardzo wysoka temperatura (oleje sprężarkowe: typowo maks. ok. $180^\circ\text{C}$)! Grozi zapłonem par oleju. Konieczne jest **chłodzenie międzystopniowe** lub intensywne chłodzenie cylindra.
 :::
 :::
 
 ---
 
-## ❄️ Zadanie 2.4: Bilans Ciepła (I Zasada)
+## <i class="bi bi-snow"></i> Zadanie 2.4: Bilans Ciepła (I Zasada)
 
-Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do $30^\circ C$ przed podaniem na halę?
+Ile ciepła musimy odprowadzić w chłodnicy, aby schłodzić powietrze z powrotem do $30^\circ\text{C}$ przed podaniem na halę?
 
 ::: {.fragment}
-**I Zasada dla układu otwartego (chłodnica - ciśnienie stałe $p=const$):**
-$$ \dot{Q} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (t_{wyl} - t_{wl}) $$
+**I Zasada dla układu otwartego (chłodnica – ciśnienie stałe $p = \text{const}$):**
+$$ \dot{Q}_{chl} = \dot{m} \cdot (h_{wylot} - h_{wlot}) = \dot{m} \cdot c_p \cdot (T_{wylot} - T_{wlot}) $$
 :::
 
 ::: {.columns}
 ::: {.column width="50%"}
 ::: {.fragment}
 **Dane:**
- 
-*   $\dot{m} = 0.0358 \text{ kg/s}$
-*   $t_{wl} = 253^\circ C$ (z sprężarki)
-*   $t_{wyl} = 30^\circ C$ (wymagane)
-*   $c_p \approx 1005 \text{ J}/(\text{kg K})$
+
+*   $\dot{m} = 0.0359 \text{ kg/s}$
+*   $t_{wlot} = 252.4^\circ\text{C}$ (ze sprężarki)
+*   $t_{wylot} = 30^\circ\text{C}$ (wymagane)
+*   $c_p \approx 1005 \text{ J}/(\text{kg}\cdot\text{K})$
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {.fragment}
-**Obliczenia:**
-$$ \dot{Q} = 0.0358 \cdot 1005 \cdot (30 - 253) $$
-$$ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
+**Obliczenia** (różnica temperatur w K = różnica w °C):
+$$ \dot{Q}_{chl} = 0.0359 \cdot 1005 \cdot (30 - 252.4) $$
+$$ \dot{Q}_{chl} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
 
 (Minus oznacza ciepło odprowadzone **Z** układu).
 :::
@@ -138,65 +151,65 @@ $$ \dot{Q} \approx -8020 \text{ W} = \mathbf{-8.0 \text{ kW}} $$
 
 ---
 
-## 🔄 Zadanie 2.5: Sprężanie Dwustopniowe
+## <i class="bi bi-arrow-repeat"></i> Zadanie 2.5: Sprężanie Dwustopniowe {.smaller}
 
-$253^\circ C$ to za dużo! Rozważmy **sprężanie dwustopniowe** z chłodzeniem międzystopniowym do $30^\circ C$.
+$252^\circ\text{C}$ to za dużo! Rozważmy **sprężanie dwustopniowe** z chłodzeniem międzystopniowym do $30^\circ\text{C}$.
 
-**Optymalna proporcja stopni** (minimalna praca): $p_{pośr} = \sqrt{p_1 \cdot p_2}$.
+**Optymalne ciśnienie pośrednie** (minimalna suma prac obu stopni; ściśle – przy chłodzeniu do $T_1$): $p_{pośr} = \sqrt{p_1 \cdot p_2}$.
 
 $$ p_{pośr} = \sqrt{1 \cdot 9.5} \approx 3.08 \text{ bar} $$
 
 ::: {.fragment}
 **Temperatura po I stopniu** ($1 \rightarrow 3.08$ bar, $n=1.35$):
-$$ T_{I} = 293.15 \cdot (3.08)^{0.259} \approx 293.15 \cdot 1.333 \approx \mathbf{391 K = 118^\circ C} $$
+$$ T_{I} = 293.15 \cdot (3.08)^{0.2593} \approx 293.15 \cdot 1.339 \approx \mathbf{392.5 \text{ K}} \;\Rightarrow\; t_{I,out} \approx \mathbf{119^\circ\text{C}} $$
 
-**Temperatura po II stopniu** ($3.08 \rightarrow 9.5$ bar, start od $30^\circ C = 303K$):
-$$ T_{II} = 303 \cdot (9.5/3.08)^{0.259} = 303 \cdot (3.08)^{0.259} \approx 303 \cdot 1.333 \approx \mathbf{404 K = 131^\circ C} $$
+**Temperatura po II stopniu** ($3.08 \rightarrow 9.5$ bar, start od $30^\circ\text{C} = 303.15 \text{ K}$):
+$$ T_{II} = 303.15 \cdot (9.5/3.08)^{0.2593} \approx 303.15 \cdot 1.339 \approx \mathbf{405.9 \text{ K}} \;\Rightarrow\; t_{II,out} \approx \mathbf{133^\circ\text{C}} $$
 :::
 
-::: {.fragment .callout-success}
-$131^\circ C$ zamiast $253^\circ C$! Temperatura spadła prawie **dwukrotnie**. Jest to bezpieczne dla oleju i uszczelek.
+::: {.fragment .callout-tip}
+$133^\circ\text{C}$ zamiast $252^\circ\text{C}$! Temperatura tłoczenia niższa o ok. **120 K**. Jest to bezpieczne dla oleju i uszczelek.
 :::
 
 ---
 
-## 📊 Zadanie 2.6: Porównanie Procesów Sprężania
+## <i class="bi bi-bar-chart"></i> Zadanie 2.6: Porównanie Procesów Sprężania {.smaller}
 
-Oblicz pracę techniczną dla trzech różnych procesów sprężania ($p_1=1, p_2=9.5$ bar):
+Porównaj **co do wartości bezwzględnej** pracę techniczną $|l_t|$ (przy sprężaniu zawsze $l_t < 0$) dla trzech procesów ($p_1 = 1$ bar, $p_2 = 9.5$ bar, $T_1 = 293.15$ K):
 
 ::: {.columns}
 ::: {.column width="33%"}
 **Izotermiczny** ($n=1$):
-$$ l_t = R T_1 \ln\frac{p_2}{p_1} $$
-$$ l_t = 287 \cdot 293 \cdot \ln(9.5) $$
-$$ l_t \approx \mathbf{189 \text{ kJ/kg}} $$
+$$ |l_t| = R T_1 \ln\frac{p_2}{p_1} $$
+$$ |l_t| = 287 \cdot 293.15 \cdot \ln(9.5) $$
+$$ |l_t| \approx \mathbf{189 \text{ kJ/kg}} $$
 (Minimum teoretyczne)
 :::
 ::: {.column width="33%"}
 **Politropowy** ($n=1.35$):
-$$ l_t \approx \mathbf{258 \text{ kJ/kg}} $$
-(Obliczone wcześniej)
+$$ |l_t| \approx \mathbf{257 \text{ kJ/kg}} $$
+(Z Zadania 2.1)
 :::
 ::: {.column width="33%"}
-**Adiabatyczny** ($n=\kappa=1.4$):
-$$ l_t = \frac{1.4}{0.4} \cdot 287 \cdot 293 \cdot $$
+**Adiabatyczny** ($n=\kappa=1.4$, wzór z Zad. 2.1):
+$$ |l_t| = \frac{1.4}{0.4} \cdot 287 \cdot 293.15 \cdot $$
 $$ \cdot [(9.5)^{0.286}-1] $$
-$$ l_t \approx \mathbf{273 \text{ kJ/kg}} $$
-(Maksimum praktyczne)
+$$ |l_t| \approx \mathbf{266 \text{ kJ/kg}} $$
+(Bez chłodzenia)
 :::
 :::
 
 ::: {.fragment .callout-tip}
-**Wniosek:** Sprężanie izotermiczne wymaga o **31% mniej** pracy niż adiabatyczne. Dlatego chłodzimy sprężarki!
+**Wniosek:** Sprężanie izotermiczne wymaga o **29% mniej** pracy niż adiabatyczne ($1 - 189/266$) i o ok. **26% mniej** niż nasza politropa ($1 - 189/257$). Dlatego chłodzimy sprężarki!
 :::
 
 
-## 🧠 Dlaczego n=1 "psuje" wzór?{background-gradient="linear-gradient(to bottom, #bac3f1ff, #82d9e3ff)"}
+## <i class="bi bi-lightbulb"></i> Dlaczego n=1 „psuje” wzór?{background-gradient="linear-gradient(to bottom, #bac3f1ff, #82d9e3ff)"}
 
 **Problem:** Jeśli wstawisz $n=1$ do wzoru politropowego, otrzymasz dzielenie przez zero ($\frac{n}{n-1}$).
-Dlaczego? Bo zmienia się charakter funkcji matematycznej pod wykresem (całki):
+Dlaczego? Bo zmienia się postać funkcji podcałkowej:
 
-$$ l_t = \int v dp $$
+$$ l_t = -\int_{p_1}^{p_2} v \, dp $$
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -209,31 +222,32 @@ Stąd bierze się ułamek $\frac{n}{n-1}$.
 **Dla $n = 1$ (Izoterma):**
 Funkcja hiperboliczna $v = C/p$.
 Całka z $1/x$ to **logarytm naturalny** ($\ln x$)!
-$$ l_t = R T_1 \ln\frac{p_2}{p_1} $$
+$$ l_t = R T_1 \ln\frac{p_1}{p_2} = -R T_1 \ln\frac{p_2}{p_1} $$
 :::
 :::
 
 ::: {.callout-note title="Reguła de l'Hospitala"}
-Fizyka się nie "psuje". Granica wzoru ogólnego przy $n \to 1$ dąży właśnie do wzoru z logarytmem.
+Fizyka się nie „psuje”. Granica wzoru ogólnego przy $n \to 1$ dąży właśnie do wzoru z logarytmem.
 :::
 
 ---
 
 
-## 💧 Zadanie 2.7: Dobór Chłodnicy Wodnej
+## <i class="bi bi-droplet"></i> Zadanie 2.7: Dobór Chłodnicy Wodnej {.smaller}
 
-Musimy odprowadzić $\dot{Q} = 8$ kW z chłodnicy sprężarki. Dysponujemy wodą z sieci wodociągowej ($t_{w,in} = 15^\circ C$). Maksymalna dopuszczalna temperatura wody na wylocie to $40^\circ C$ (limit zrzutu do kanalizacji).
+Musimy odprowadzić $|\dot{Q}_{chl}| \approx 8$ kW z chłodnicy sprężarki (Zad. 2.4). Dysponujemy wodą z sieci wodociągowej ($t_{w,in} = 15^\circ\text{C}$). Maksymalna dopuszczalna temperatura wody na wylocie to $40^\circ\text{C}$ (założenie projektowe).
 
 **Oblicz wymagany strumień wody chłodzącej.**
 
 ::: {.fragment}
-$$ \dot{Q} = \dot{m}_w \cdot c_w \cdot (t_{w,out} - t_{w,in}) $$
+$$ |\dot{Q}_{chl}| = \dot{m}_w \cdot c_w \cdot (t_{w,out} - t_{w,in}) $$
+gdzie $c_w = 4190 \text{ J}/(\text{kg}\cdot\text{K})$ – ciepło właściwe wody.
 :::
 
 
 ::: {.fragment}
 $$ \dot{m}_w = \frac{8000}{4190 \cdot (40 - 15)} = \frac{8000}{104\,750} $$
-$$ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} $$
+$$ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} \quad (1 \text{ kg wody} \approx 1 \text{ l}) $$
 :::
 
 ::: {.fragment .callout-note}
@@ -242,12 +256,12 @@ $$ \dot{m}_w \approx \mathbf{0.076 \text{ kg/s} = 4.6 \text{ l/min}} $$
 
 ---
 
-## 🔬 Zadanie 2.8: Wyznaczanie Wykładnika Politropy {.smaller}
+## <i class="bi bi-search"></i> Zadanie 2.8: Wyznaczanie Wykładnika Politropy {.smaller}
 
-Serwisant zmierzył temperatury na sprężarce:
+Serwisant zmierzył parametry pracy sprężarki:
 
-*   Ssanie: $t_1 = 22^\circ C$, $p_1 = 1$ bar.
-*   Tłoczenie: $t_2 = 215^\circ C$, $p_2 = 8$ bar.
+*   Ssanie: $t_1 = 22^\circ\text{C}$, $p_1 = 1$ bar.
+*   Tłoczenie: $t_2 = 215^\circ\text{C}$, $p_2 = 8$ bar.
 
 **Jaki jest rzeczywisty wykładnik politropy $n$ tej sprężarki?**
 
@@ -271,22 +285,22 @@ $$ n = \frac{1}{1 - 0.242} \approx \mathbf{1.32} $$
 :::
 :::
 
-::: {.fragment .callout-tip style="font-size: 1.3em;"}
-$n = 1.32 < \kappa = 1.4$ — sprężarka jest dobrze chłodzona (bliżej procesu izotermicznego niż adiabatycznego).
+::: {.fragment .callout-tip appearance="simple" style="font-size: 1.3em;"}
+$n = 1.32 < \kappa = 1.4$ – sprężarka jest chłodzona, choć proces wciąż jest bliższy adiabacie niż izotermie.
 :::
 
 ---
 
-## 🏠 Zadanie Domowe (Raport 2)
+## <i class="bi bi-house-door"></i> Zadanie Domowe (Raport 2)
 
 **Temat:** Odzysk ciepła.
 
 Skoro wyrzucamy 8 kW ciepła do otoczenia, inżynier produkcji proponuje wykorzystać je do podgrzewania wody użytkowej w umywalniach.
 
-1.  Mamy strumień wody $\dot{m}_w$ o temp. wejściowej $10^\circ C$.
-2.  Chcemy ją podgrzać do $45^\circ C$.
+1.  Woda wodociągowa ma temperaturę $10^\circ\text{C}$.
+2.  Chcemy ją podgrzać do $45^\circ\text{C}$.
 3.  Zakładamy, że odzyskamy 80% ciepła z chłodnicy sprężarki ($0.8 \cdot 8 \text{ kW}$).
 
-**Zadanie:** Oblicz, jaki strumień wody [l/min] możemy podgrzać?
+**Zadanie:** Oblicz, jaki strumień wody $\dot{m}_w$ [l/min] możemy podgrzać.
 
-*   Ciepło właściwe wody: $c_w = 4190 \text{ J}/(\text{kg K})$.
+*   Ciepło właściwe wody: $c_w = 4190 \text{ J}/(\text{kg}\cdot\text{K})$.

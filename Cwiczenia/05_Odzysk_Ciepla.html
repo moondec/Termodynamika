@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="pl"><head>
 <script src="05_Odzysk_Ciepla_files/libs/clipboard/clipboard.min.js"></script>
 <script src="05_Odzysk_Ciepla_files/libs/quarto-html/tabby.min.js"></script>
 <script src="05_Odzysk_Ciepla_files/libs/quarto-html/popper.min.js"></script>
@@ -9,6 +9,7 @@
 <link href="05_Odzysk_Ciepla_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
+  <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>Ćwiczenie 5: Entropia i Jakość Ciepła</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="05_Odzysk_Ciepla_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="05_Odzysk_Ciepla_files/libs/revealjs/dist/theme/quarto-d4cf13167e7aae231ddf91befd63bd72.css">
   <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="05_Odzysk_Ciepla_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -122,6 +123,22 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+  body { background-color: #1a1a1a; }
+  .reveal .slide-background-content {
+      background-image: url("../img/background0.png") !important;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      opacity: 0.35 !important;
+  }
+  .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+      background-image: none !important;
+      background-color: white !important;
+      opacity: 1 !important;
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -129,32 +146,40 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Ćwiczenie 5: Entropia i Jakość Ciepła</h1>
+  <p class="subtitle">Projekt Termo-Tech – Etap 5: Odzysk Ciepła ze Spalin</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span style="font-size: 1.5em;"><strong>prof. UPP dr hab. inż. Marek Urbaniak</strong></span> 
+</div>
+        <p class="quarto-title-affiliation">
+            Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+            </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            </div>
+          <p></p>
+    </div>
 </div>
 
 </section>
-<section id="projekt-etap-5---wymienniki-ciepła" class="slide level2 smaller">
-<h2>🏭 Projekt: Etap 5 - Wymienniki Ciepła</h2>
-<p>W zakładzie “Termo-Tech” mamy strumień spalin o temperaturze <span class="math inline">\(300^\circ C\)</span>. Inżynier proponuje użyć go do podgrzewania wody zasilającej kocioł. Musimy przeanalizować ten proces pod kątem I i II Zasady Termodynamiki.</p>
+<section id="projekt-etap-5-odzysk-ciepła-ze-spalin" class="slide level2 smaller">
+<h2><i class="bi bi-buildings"></i> Projekt: Etap 5 – Odzysk Ciepła ze Spalin</h2>
+<p>W zakładzie „Termo-Tech” spaliny z kotła mają temperaturę 300 °C. Inżynier proponuje użyć ich do podgrzewania wody technologicznej. Musimy przeanalizować ten proces pod kątem I i II zasady termodynamiki.</p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <h3 id="twoje-zadanie">Twoje Zadanie:</h3>
 <ol type="1">
-<li>Obliczyć ilość ciepła przekazanego w wymienniku (Bilans Energii, I Zasada).</li>
-<li>Obliczyć generację entropii w procesie wymiany ciepła (Bilans Entropii, II Zasada).</li>
-<li>Zrozumieć, dlaczego wymiana ciepła jest nieodwracalna.</li>
+<li>Bilans energii wymiennika (I zasada) – Zad. 5.1.</li>
+<li>Generacja entropii i strata egzergii (II zasada) – Zad. 5.2–5.4.</li>
+<li>Przeciwprąd, kaskada, straty do otoczenia – Zad. 5.5–5.7.</li>
 </ol>
 <h3 id="dane">Dane:</h3>
-<div style="font-size: 1.5em;">
+<div style="font-size: 1.1em;">
 <ul>
-<li>Spaliny (gorące):
-<ul>
-<li><span class="math inline">\(\dot{m}_s = 1 \text{ kg/s}\)</span></li>
-<li><span class="math inline">\(t_{in}=300^\circ C\)</span></li>
-<li><span class="math inline">\(t_{out}=150^\circ C\)</span></li>
-</ul></li>
-<li>Woda (zimna): podgrzewana od <span class="math inline">\(20\)</span> do <span class="math inline">\(80^\circ C\)</span>.</li>
+<li>Spaliny (gorące): <span class="math inline">\(\dot{m}_s = 1\)</span> kg/s, <span class="math inline">\(t_{in} = 300\)</span>&nbsp;°C, <span class="math inline">\(t_{out} = 150\)</span>&nbsp;°C, <span class="math inline">\(c_s \approx 1.0\)</span>&nbsp;kJ/(kg·K)</li>
+<li>Woda (zimna): podgrzewana od 20 do 80 °C, <span class="math inline">\(c_w \approx 4.19\)</span> kJ/(kg·K)</li>
+<li>Otoczenie (hala): <span class="math inline">\(t = 20\)</span>&nbsp;°C → <span class="math inline">\(T_0 = 293.15\)</span>&nbsp;K</li>
 </ul>
 </div>
 </div><div class="column" style="width:40%;">
@@ -162,76 +187,73 @@
 </div></div>
 </section>
 <section id="zadanie-5.1-bilans-energii-i-zasada" class="slide level2">
-<h2>🔥 Zadanie 5.1: Bilans Energii (I Zasada)</h2>
+<h2><i class="bi bi-fire"></i> Zadanie 5.1: Bilans Energii (I Zasada)</h2>
 <p>Ile wody możemy podgrzać?</p>
 <div class="fragment">
-<p><span class="math display">\[ \dot{Q} = \dot{m}_s c_p (t_{in} - t_{out}) \]</span></p>
+<p><span class="math display">\[ \dot{Q} = \dot{m}_s \cdot c_s \cdot (T_{in} - T_{out}) \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \dot{Q} = \dot{m}_w c_w (t_{w,out} - t_{w,in}) \]</span></p>
+<p><span class="math display">\[ \dot{m}_w = \frac{\dot{Q}}{c_w \cdot \Delta t_w} \]</span></p>
 </div>
 <div class="fragment">
-<p><strong>Obliczenia:</strong></p>
+<p><strong>Obliczenia:</strong> <span class="math inline">\(c_s\)</span> (spaliny) <span class="math inline">\(\approx 1.0\)</span> kJ/(kg·K), <span class="math inline">\(c_w\)</span> (woda) <span class="math inline">\(\approx 4.19\)</span> kJ/(kg·K)</p>
 </div>
 <div class="fragment">
-<ul>
-<li><span class="math inline">\(c_p (spaliny) \approx 1000 \text{ J/kgK}\)</span></li>
-<li><span class="math inline">\(c_w (woda) \approx 4190 \text{ J/kgK}\)</span></li>
-</ul>
+<p><span class="math display">\[ \dot{Q} = 1 \cdot 1.0 \cdot (300 - 150) = \mathbf{150\ \text{kW}} \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \dot{Q} = 1 \cdot 1000 \cdot (300 - 150) = \mathbf{150 \text{ kW}} \]</span></p>
+<p><span class="math display">\[ \dot{m}_w = \frac{150}{4.19 \cdot (80 - 20)} = \frac{150}{251.4} \approx \mathbf{0.597\ \text{kg/s}} \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \dot{m}_w = \frac{150\,000}{4190 \cdot (80 - 20)} = \frac{150\,000}{251\,400} \approx \mathbf{0.60 \text{ kg/s}} \]</span></p>
+<p>Do bilansu entropii (bez zaokrągleń!): <span class="math inline">\(\dot{m}_w c_w = \dot{Q}/\Delta t_w = 150\,000/60 = 2500\)</span> W/K</p>
 </div>
 </section>
-<section id="zadanie-5.2-generacja-entropii-ii-zasada" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🎲 Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
+<section id="zadanie-5.2-generacja-entropii-ii-zasada" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><i class="bi bi-dice-5"></i> Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Ważne</strong></p>
 </div>
 <div class="callout-content">
-<p>Proces wymiany ciepła przy skończonej różnicy temperatur jest <strong>nieodwracalny</strong>, czyli generuje entropię (<span class="math inline">\(\Delta S_{gen} &gt; 0\)</span>).</p>
+<p>Wymiana ciepła przy skończonej różnicy temperatur jest <strong>nieodwracalna</strong>, czyli generuje entropię (<span class="math inline">\(\Delta \dot{S}_{\text{gen}} &gt; 0\)</span>).</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_{układu} = \Delta \dot{S}_{spaliny} + \Delta \dot{S}_{woda} \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{gen}} = \Delta \dot{S}_{\text{spalin}} + \Delta \dot{S}_{\text{wody}} \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta S = m \cdot c \cdot \ln(T_2/T_1) \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}} \]</span></p>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="fragment">
-<p><strong>Spaliny (Chłodzenie):</strong> <span class="math inline">\(T_1=573K, T_2=423K\)</span></p>
+<p><strong>Spaliny (chłodzenie):</strong> <span class="math inline">\(T_{in} = 573.15\)</span> K, <span class="math inline">\(T_{out} = 423.15\)</span> K, <span class="math inline">\(c_s = 1000\)</span> J/(kg·K)</p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_s = 1 \cdot 1000 \cdot \ln\left(\frac{423}{573}\right) \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{spalin}} = 1 \cdot 1000 \cdot \ln\left(\frac{423.15}{573.15}\right) \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_s = 1000 \cdot (-0.303) = \mathbf{-303 \text{ W/K}} \]</span> (Entropia spalin maleje, bo oddają ciepło).</p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{spalin}} = 1000 \cdot (-0.3034) = \mathbf{-303.4\ \text{W/K}} \]</span> (Entropia spalin maleje, bo oddają ciepło.)</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment">
-<p><strong>Woda (Grzanie):</strong> <span class="math inline">\(T_1=293K, T_2=353K\)</span></p>
+<p><strong>Woda (grzanie):</strong> <span class="math inline">\(T_{in} = 293.15\)</span> K, <span class="math inline">\(T_{out} = 353.15\)</span> K, <span class="math inline">\(\dot{m}_w c_w = 2500\)</span> W/K</p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_w = 0.60 \cdot 4190 \cdot \ln\left(\frac{353}{293}\right) \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{wody}} = 2500 \cdot \ln\left(\frac{353.15}{293.15}\right) \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_w = 2514 \cdot (0.186) = \mathbf{+468 \text{ W/K}} \]</span> (Entropia wody rośnie, bo pobiera ciepło).</p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{wody}} = 2500 \cdot 0.1862 = \mathbf{+465.5\ \text{W/K}} \]</span> (Entropia wody rośnie, bo pobiera ciepło.)</p>
 </div>
 </div></div>
 </section>
 <section id="zadanie-5.2-generacja-entropii-ii-zasada-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🎲 Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
+<h2 data-id="quarto-animate-title"><i class="bi bi-dice-5"></i> Zadanie 5.2: Generacja Entropii (II Zasada)</h2>
 <h3 id="bilans-całkowity">Bilans Całkowity:</h3>
 <div style="font-size: 1.5em;">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -240,32 +262,57 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Ważne</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[ \Delta \dot{S}_{gen} = -303 + 468 = \mathbf{+165 \text{ W/K}} &gt; 0 \]</span> Entropia całkowita wzrosła! Energia została “zdegradowana” (z wysokiej temperatury 300°C do niskiej 80°C).</p>
+<p><span class="math display">\[ \Delta \dot{S}_{\text{gen}} = -303.4 + 465.5 = \mathbf{+162.1\ \text{W/K}} &gt; 0 \]</span> Entropia całkowita wzrosła! Energia została „zdegradowana” (z wysokiej temperatury 300 °C do niskiej 80 °C).</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-5.3-jakość-energii-egzergia" class="slide level2">
-<h2>💎 Zadanie 5.3: Jakość Energii (Egzergia)</h2>
-<p>Czy to było mądre wykorzystanie ciepła? Mogliśmy użyć spalin 300°C do napędu silnika cieplnego, a użyliśmy ich tylko do grzania wody 80°C.</p>
-<p><strong>Strata Pracy (Twierdzenie Gouy-Stodoli):</strong> <span class="math display">\[ \dot{B}_{str} = T_0 \cdot \Delta \dot{S}_{gen} \]</span> Przyjmijmy <span class="math inline">\(T_0 = 293 K\)</span> (temp. otoczenia).</p>
-<p><span class="math display">\[ \dot{B}_{str} = 293 \cdot 165 = \mathbf{48\,345 \text{ W} \approx 48 \text{ kW}} \]</span></p>
-<div class="callout-error">
-<p>W procesie prostego podgrzewania wody straciliśmy bezpowrotnie <strong>48 kW</strong> potencjalnej mocy mechanicznej! To cena za nieodwracalność procesu.</p>
+<section id="zadanie-5.3-strata-egzergii-twierdzenie-gouystodoli" class="slide level2">
+<h2><i class="bi bi-gem"></i> Zadanie 5.3: Strata Egzergii (Twierdzenie Gouy–Stodoli)</h2>
+<p>Czy to było mądre wykorzystanie ciepła? Mogliśmy użyć spalin 300 °C do napędu silnika cieplnego, a użyliśmy ich tylko do podgrzania wody do 80 °C.</p>
+<p><strong>Strata egzergii (twierdzenie Gouy–Stodoli):</strong> <span class="math display">\[ \dot{B}_{\text{str}} = T_0 \cdot \Delta \dot{S}_{\text{gen}} \]</span> <span class="math inline">\(T_0\)</span> – temperatura otoczenia; w karcie: <strong>temperatura hali</strong> <span class="math inline">\(t\)</span>, czyli <span class="math inline">\(T_0 = t + 273.15\)</span>. Tu <span class="math inline">\(t = 20\)</span>&nbsp;°C → <span class="math inline">\(T_0 = 293.15\)</span>&nbsp;K.</p>
+<p><span class="math display">\[ \dot{B}_{\text{str}} = 293.15 \cdot 162.1 = 47\,520\ \text{W} \approx \mathbf{47.52\ \text{kW}} \]</span></p>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zagrożenie</strong></p>
+</div>
+<div class="callout-content">
+<p>W procesie prostego podgrzewania wody straciliśmy bezpowrotnie ok. <strong>47.5 kW</strong> potencjalnej mocy mechanicznej! To cena za nieodwracalność procesu.</p>
+</div>
+</div>
 </div>
 </section>
-<section id="zadanie-5.4-sprawność-carnota-wymiennika" class="slide level2">
-<h2>🔄 Zadanie 5.4: Sprawność Carnota Wymiennika</h2>
-<p>Ile pracy moglibyśmy <strong>teoretycznie</strong> uzyskać z naszego strumienia spalin (zamiast tylko grzać wodę)?</p>
-<p><strong>Silnik Carnota</strong> między <span class="math inline">\(T_{gor} = 573K\)</span> a <span class="math inline">\(T_{zim} = 293K\)</span>: <span class="math display">\[ \eta_C = 1 - \frac{T_{zim}}{T_{gor}} = 1 - \frac{293}{573} \approx \mathbf{48.9\%} \]</span></p>
+<section id="zadanie-5.4-egzergia-ciepła-spalin" class="slide level2 smaller">
+<h2><i class="bi bi-arrow-repeat"></i> Zadanie 5.4: Egzergia Ciepła Spalin</h2>
+<p>Ile pracy moglibyśmy <strong>teoretycznie</strong> uzyskać z ciepła spalin (zamiast tylko grzać wodę)?</p>
+<p>Spaliny oddają ciepło w zakresie <span class="math inline">\(573.15 \rightarrow 423.15\)</span> K, a nie w stałej temperaturze. Silnik Carnota liczymy więc dla <strong>średniej temperatury termodynamicznej</strong> spalin (tak samo liczy się ją dla każdego strumienia):</p>
+<p><span class="math display">\[ T_{m,s} = \frac{T_{in} - T_{out}}{\ln(T_{in}/T_{out})} = \frac{573.15 - 423.15}{\ln(573.15/423.15)} = \frac{150}{0.3034} \approx \mathbf{494.4\ \text{K}} \]</span></p>
 <div class="fragment">
-<p><strong>Maksymalna praca:</strong> <span class="math display">\[ \dot{B}_{max} = \eta_C \cdot \dot{Q}_{spalin} = 0.489 \cdot 150 \approx \mathbf{73.4 \text{ kW}} \]</span></p>
-<p>Straciliśmy z tego <span class="math inline">\(48 \text{ kW}\)</span> (egzergia zniszczona w wymienniku). Odzyskaliśmy <span class="math inline">\(0 \text{ kW}\)</span> pracy (bo wymiennik nie produkuje pracy!).</p>
-<p><strong>Sprawność egzergetyczna wymiennika:</strong> <span class="math display">\[ \psi = 1 - \frac{\dot{B}_{str}}{\dot{B}_{max}} = 1 - \frac{48}{73.4} \approx \mathbf{35\%} \]</span></p>
+<p><strong>Silnik Carnota</strong> między <span class="math inline">\(T_{m,s} = 494.4\)</span> K a otoczeniem <span class="math inline">\(T_0 = 293.15\)</span> K: <span class="math display">\[ \eta_C = 1 - \frac{T_0}{T_{m,s}} = 1 - \frac{293.15}{494.4} \approx \mathbf{40.7\%} \]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Maksymalna praca (egzergia ciepła spalin):</strong> <span class="math display">\[ \dot{B}_{\text{max}} = \eta_C \cdot \dot{Q} = 0.407 \cdot 150 \approx \mathbf{61.05\ \text{kW}} \]</span> To samo daje <span class="math inline">\(\dot{Q} - T_0 \, |\Delta \dot{S}_{\text{spalin}}| = 150 - 293.15 \cdot 0.30342 = 61.05\)</span> kW.</p>
+</div>
+</section>
+<section id="zadanie-5.4-cd.-sprawność-egzergetyczna-wymiennika" class="slide level2">
+<h2><i class="bi bi-arrow-repeat"></i> Zadanie 5.4 (cd.): Sprawność Egzergetyczna Wymiennika</h2>
+<p>Egzergia oddana przez spaliny: <span class="math inline">\(\dot{B}_{\text{max}} = 61.05\)</span> kW. Wymiennik nie produkuje pracy – ta egzergia albo trafia do wody, albo jest niszczona:</p>
+<div class="fragment">
+<ul>
+<li>zniszczona w wymienniku (Zad. 5.3): <span class="math inline">\(\dot{B}_{\text{str}} = 47.52\)</span> kW,</li>
+<li>przekazana do wody (egzergia ciepłej wody): <span class="math inline">\(61.05 - 47.52 \approx 13.5\)</span> kW.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Sprawność egzergetyczna wymiennika:</strong> <span class="math display">\[ \psi = 1 - \frac{\dot{B}_{\text{str}}}{\dot{B}_{\text{max}}} = 1 - \frac{47.52}{61.05} \approx \mathbf{22.2\%} \]</span></p>
 </div>
 <div class="fragment" title="Uwaga" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; z-index: 10; background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3); font-size: 1.3em;">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -277,45 +324,45 @@
 <p><strong>Uwaga</strong></p>
 </div>
 <div class="callout-content">
-<p>Tylko <strong>35%</strong> potencjału energetycznego spalin wykorzystujemy mądrze. Reszta jest tracona na nieodwracalność.</p>
+<p>Tylko ok. <strong>22%</strong> egzergii oddanej przez spaliny trafia do wody. Reszta jest niszczona przez nieodwracalność wymiany ciepła.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-5.5-wymiennik-przeciwprądowy-vs-współprądowy" class="slide level2">
-<h2>🏗️ Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy</h2>
-<p>Inżynier proponuje zmianę z wymiennika <strong>współprądowego</strong> na <strong>przeciwprądowy</strong>. Jak to wpływa na generację entropii?</p>
+<section id="zadanie-5.5-wymiennik-przeciwprądowy-vs-współprądowy" class="slide level2 smaller">
+<h2><i class="bi bi-building-gear"></i> Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy</h2>
+<p>Inżynier proponuje zmianę z wymiennika <strong>współprądowego</strong> na <strong>przeciwprądowy</strong>, który pozwala podgrzać wodę wyżej – do 130 °C – przy tym samym schłodzeniu spalin (ta sama moc <span class="math inline">\(\dot{Q} = 150\)</span> kW). Jak to wpływa na generację entropii?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="../img/he_temp_profile_wsp.png" class="quarto-figure quarto-figure-center" style="width:70.0%"> <strong>Współprądowy:</strong></p>
 <ul>
-<li>Spaliny: <span class="math inline">\(300 \rightarrow 150^\circ C\)</span></li>
-<li>Woda: <span class="math inline">\(20 \rightarrow 80^\circ C\)</span></li>
-<li><span class="math inline">\(\Delta T_{min}\)</span> (na wylocie): <span class="math inline">\(150 - 80 = 70 K\)</span></li>
-<li><span class="math inline">\(\Delta S_{gen} = 165 \text{ W/K}\)</span> (obliczone)</li>
+<li>Spaliny: 300 → 150 °C</li>
+<li>Woda: 20 → 80 °C</li>
+<li><span class="math inline">\(\Delta T\)</span> na końcach: <span class="math inline">\(300 - 20 = 280\)</span> K i <span class="math inline">\(150 - 80 = 70\)</span> K</li>
+<li><span class="math inline">\(\Delta \dot{S}_{\text{gen}} = 162.1\)</span> W/K (Zad. 5.2)</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="../img/he_temp_profile_pre.png" class="quarto-figure quarto-figure-center" style="width:70.0%"> <strong>Przeciwprądowy:</strong></p>
 <ul>
-<li>Spaliny: <span class="math inline">\(300 \rightarrow 150^\circ C\)</span></li>
-<li>Woda: <span class="math inline">\(20 \rightarrow 130^\circ C\)</span> (możliwa wyższa <span class="math inline">\(t_{out}\)</span>!)</li>
-<li><span class="math inline">\(\Delta T\)</span> na końcach: <span class="math inline">\(300 - 130 = 170 K\)</span> i <span class="math inline">\(150 - 20 = 130 K\)</span> (współprąd: <span class="math inline">\(280 K\)</span> i <span class="math inline">\(70 K\)</span>) — różnica temperatur bardziej wyrównana</li>
-<li>Strumień wody: <span class="math inline">\(\dot{m}_w = \frac{150\,000}{4190 \cdot 110} \approx 0.326\)</span> kg/s</li>
+<li>Spaliny: 300 → 150 °C</li>
+<li>Woda: 20 → 130 °C (woda pod ciśnieniem; w przeciwprądzie <span class="math inline">\(t_{w,out}\)</span> może nawet przekroczyć <span class="math inline">\(t_{s,out}\)</span>)</li>
+<li><span class="math inline">\(\Delta T\)</span> na końcach: <span class="math inline">\(300 - 130 = 170\)</span> K i <span class="math inline">\(150 - 20 = 130\)</span> K – różnica temperatur bardziej wyrównana</li>
+<li>Strumień wody: <span class="math inline">\(\dot{m}_w = \frac{150}{4.19 \cdot 110} \approx 0.325\)</span> kg/s</li>
 </ul>
 </div></div>
 </section>
-<section id="zadanie-5.5-cd.-entropia-wymiennika-przeciwprądowego" class="slide level2">
-<h2>🏗️ Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego</h2>
+<section id="zadanie-5.5-cd.-entropia-wymiennika-przeciwprądowego" class="slide level2 smaller">
+<h2><i class="bi bi-building-gear"></i> Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego</h2>
 <p><strong>Obliczenie entropii dla wymiennika przeciwprądowego:</strong></p>
 <div class="fragment">
-<p><span class="math display">\[ \Delta S = m \cdot c \cdot \ln(T_2/T_1) \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}}, \qquad \dot{m}_w c_w = \frac{\dot{Q}}{\Delta t_w} = \frac{150\,000}{110} = 1363.6\ \text{W/K} \]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(\Delta \dot{S}_w = 0.326 \cdot 4190 \cdot \ln(403/293) = 1366 \cdot 0.318 = +434\)</span> W/K</p>
+<p><span class="math inline">\(\Delta \dot{S}_{\text{wody}} = 1363.6 \cdot \ln(403.15/293.15) = 1363.6 \cdot 0.31862 = +434.5\)</span> W/K</p>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(\Delta \dot{S}_{gen} = -303 + 434 = \mathbf{+131 \text{ W/K}}\)</span></p>
+<p><span class="math inline">\(\Delta \dot{S}_{\text{gen}} = -303.4 + 434.5 = \mathbf{+131.1\ \text{W/K}}\)</span></p>
 </div>
 <div class="fragment" title="Wniosek">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -327,29 +374,73 @@
 <p><strong>Wniosek</strong></p>
 </div>
 <div class="callout-content">
-<p>Redukcja z <span class="math inline">\(165\)</span> do <span class="math inline">\(131\)</span> W/K → <strong>o 21% mniejsza generacja entropii!</strong></p>
-<p>Wymiennik przeciwprądowy jest termodynamicznie lepszy, bo utrzymuje mniejszą różnicę temperatur wzdłuż swojej długości.</p>
+<p>Redukcja ze 162.1 do 131.1 W/K → <strong>o 19% mniejsza generacja entropii</strong>, a strata egzergii spada do <span class="math inline">\(T_0 \cdot \Delta \dot{S}_{\text{gen}} = 293.15 \cdot 131.1 = 38.43\)</span> kW. Sprawność egzergetyczna rośnie: <span class="math inline">\(\psi = 1 - 38.43/61.05 \approx 37.1\%\)</span> (zamiast 22.2%).</p>
+<p>Uwaga: <span class="math inline">\(\Delta \dot{S}_{\text{gen}}\)</span> zależy tylko od temperatur na wlotach i wylotach – przy tej samej wodzie 20 → 80 °C oba układy dają 162.1 W/K. Przeciwprąd wygrywa, bo pozwala (przy rozsądnej powierzchni) podgrzać wodę wyżej, a im wyższa średnia temperatura wody, tym mniejsza generacja entropii.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <section id="zadanie-5.6-kaskada-wymienników" class="slide level2">
-<h2>📊 Zadanie 5.6: Kaskada Wymienników</h2>
+<h2><i class="bi bi-bar-chart"></i> Zadanie 5.6: Kaskada Wymienników</h2>
 <p>Zamiast jednego wymiennika, użyjmy <strong>dwóch kolejnych</strong> (kaskada):</p>
 <div class="fragment">
 <ol type="1">
-<li class="fragment"><strong>Wymiennik A:</strong> Spaliny <span class="math inline">\(300 \rightarrow 220^\circ C\)</span> → Podgrzewanie wody kotłowej do <span class="math inline">\(90^\circ C\)</span>.</li>
-<li class="fragment"><strong>Wymiennik B:</strong> Spaliny <span class="math inline">\(220 \rightarrow 150^\circ C\)</span> → Podgrzewanie wody użytkowej do <span class="math inline">\(50^\circ C\)</span>.</li>
+<li class="fragment"><strong>Wymiennik A:</strong> Spaliny 300 → 220 °C → podgrzewanie wody kotłowej od 20 do 90 °C.</li>
+<li class="fragment"><strong>Wymiennik B:</strong> Spaliny 220 → 150 °C → podgrzewanie wody użytkowej od 15 do 50 °C.</li>
 </ol>
 </div>
 <div class="fragment">
 <h3 id="bilans-wymiennika-a">Bilans Wymiennika A:</h3>
-<p><span class="math inline">\(\dot{Q}_A = 1 \cdot 1000 \cdot (300-220) = 80 \text{ kW}\)</span> | <span class="math inline">\(\dot{m}_{w,A} = \frac{80\,000}{4190 \cdot (90-20)} = 0.273\)</span> kg/s</p>
+<p><span class="math inline">\(\dot{Q}_A = 1 \cdot 1.0 \cdot (300-220) = 80\ \text{kW}\)</span> | <span class="math inline">\(\dot{m}_{w,A} = \frac{80}{4.19 \cdot (90-20)} = 0.273\)</span> kg/s</p>
 </div>
 <div class="fragment">
 <h3 id="bilans-wymiennika-b">Bilans Wymiennika B:</h3>
-<p><span class="math inline">\(\dot{Q}_B = 1 \cdot 1000 \cdot (220-150) = 70 \text{ kW}\)</span> | <span class="math inline">\(\dot{m}_{w,B} = \frac{70\,000}{4190 \cdot (50-15)} = 0.477\)</span> kg/s</p>
+<p><span class="math inline">\(\dot{Q}_B = 1 \cdot 1.0 \cdot (220-150) = 70\ \text{kW}\)</span> | <span class="math inline">\(\dot{m}_{w,B} = \frac{70}{4.19 \cdot (50-15)} = 0.477\)</span> kg/s</p>
+</div>
+</section>
+<section id="zadanie-5.6-cd.-entropia-kaskady" class="slide level2 smaller">
+<h2><i class="bi bi-bar-chart"></i> Zadanie 5.6 (cd.): Entropia Kaskady</h2>
+<p><strong>Czy kaskada zmniejsza generację entropii?</strong></p>
+<p>Generacja entropii w każdym stopniu (<span class="math inline">\(\dot{m}_w c_w = \dot{Q}/\Delta t_w\)</span>: A – 1142.9 W/K, B – 2000 W/K):</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stopień</th>
+<th style="text-align: center;"><span class="math inline">\(\Delta \dot{S}_{\text{spalin}}\)</span> [W/K]</th>
+<th style="text-align: center;"><span class="math inline">\(\Delta \dot{S}_{\text{wody}}\)</span> [W/K]</th>
+<th style="text-align: center;"><span class="math inline">\(\Delta \dot{S}_{\text{gen}}\)</span> [W/K]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;"><span class="math inline">\(1000 \ln\frac{493.15}{573.15} = -150.3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1142.9 \ln\frac{363.15}{293.15} = +244.7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(+94.4\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: center;"><span class="math inline">\(1000 \ln\frac{423.15}{493.15} = -153.1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2000 \ln\frac{323.15}{288.15} = +229.3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(+76.2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Kaskada</strong></td>
+<td style="text-align: center;"><span class="math inline">\(-303.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(+474.0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{+170.6}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Jeden wymiennik (Zad. 5.2): 162.1 W/K → kaskada generuje <strong>więcej</strong> entropii! Dlaczego? Średnia temperatura termodynamiczna ogrzewanej wody <span class="math inline">\(T_{m,w} = \frac{T_{out} - T_{in}}{\ln(T_{out}/T_{in})}\)</span> wynosi: jeden wymiennik 322.2 K, A – 326.9 K, <strong>B – tylko 305.3 K</strong>. Ponieważ <span class="math inline">\(\Delta \dot{S}_{\text{wody}} = \dot{Q}/T_{m,w}\)</span>, ciepło oddane wodzie o niskiej temperaturze (B: 15 → 50 °C) generuje dużo entropii.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -358,29 +449,29 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Wskazówka</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Kaskada zmniejsza różnice temperatur</strong> w każdym wymienniku → mniejsza generacja entropii → lepsze wykorzystanie egzergii spalin. To zasada stosowana w kotłach kondensacyjnych i systemach kogeneracyjnych.</p>
+<p><strong>Kaskada dopasowuje poziom temperatury do odbiorcy</strong> (woda kotłowa 90 °C, woda użytkowa 50 °C), ale sama z siebie nie zmniejsza generacji entropii. Generacja maleje dopiero, gdy rośnie średnia temperatura ogrzewanej wody – np. gdy ta sama woda płynie szeregowo przez B, a potem A (20 → 71.3 → 130 °C): <span class="math inline">\(\Delta \dot{S}_{\text{gen}} = 131.1\)</span> W/K, jak w przeciwprądzie.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="zadanie-5.7-entropia-a-otoczenie" class="slide level2">
-<h2>🌍 Zadanie 5.7: Entropia a Otoczenie</h2>
-<p>Na koniec: obliczmy, ile entropii “eksportuje” nasz zakład do otoczenia przez komin (spaliny <span class="math inline">\(150^\circ C\)</span> do powietrza <span class="math inline">\(20^\circ C\)</span>).</p>
+<section id="zadanie-5.7-entropia-a-otoczenie" class="slide level2 smaller">
+<h2><i class="bi bi-globe-europe-africa"></i> Zadanie 5.7: Entropia a Otoczenie</h2>
+<p>Na koniec: obliczmy, ile entropii „eksportuje” nasz zakład do otoczenia przez komin (spaliny 150 °C do powietrza o temperaturze otoczenia; w karcie: temperatura hali <span class="math inline">\(t\)</span>, tu 20 °C).</p>
 <div class="fragment">
-<p>Spaliny wychodzą z wymiennika: <span class="math inline">\(\dot{m}_s = 1\)</span> kg/s, <span class="math inline">\(t_{out} = 150^\circ C\)</span>. Chłodzą się do <span class="math inline">\(t_{atm} = 20^\circ C\)</span> w atmosferze.</p>
+<p>Spaliny wychodzą z wymiennika: <span class="math inline">\(\dot{m}_s = 1\)</span> kg/s, <span class="math inline">\(t_{out} = 150\)</span> °C. Stygną do <span class="math inline">\(t_{atm} = 20\)</span> °C w atmosferze.</p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \dot{Q}_{komin} = 1 \cdot 1000 \cdot (150 - 20) = \mathbf{130 \text{ kW}} \]</span></p>
+<p><span class="math display">\[ \dot{Q}_{komin} = 1 \cdot 1.0 \cdot (150 - 20) = \mathbf{130\ \text{kW}} \]</span></p>
 </div>
 <div class="fragment">
-<p>Ta energia jest <strong>bezpowrotnie tracona</strong> (za mała różnica temperatur do praktycznego odzysku).</p>
+<p>Ta energia jest tracona przez komin (strata wylotowa).</p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293} \approx \mathbf{444 \text{ W/K}} \]</span></p>
+<p><span class="math display">\[ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293.15} \approx \mathbf{443.5\ \text{W/K}} \]</span></p>
 </div>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -389,24 +480,24 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Ważne</strong></p>
 </div>
 <div class="callout-content">
-<p>Każda sekunda pracy kotła generuje <strong>444 W/K</strong> entropii w otoczeniu! To termoynamiczny koszt ogrzewania. Kotły kondensacyjne redukują <span class="math inline">\(t_{out}\)</span> do ~<span class="math inline">\(50^\circ C\)</span>, zmniejszając te straty o <strong>ponad 60%</strong>.</p>
+<p>Entropia atmosfery rośnie o <strong>443.5 W/K</strong> (co sekundę o 443.5 J/K). Część tej entropii wnoszą same spaliny – ich entropia maleje o <span class="math inline">\(1000 \cdot \ln(293.15/423.15) = -367.0\)</span> W/K – więc przy stygnięciu spalin w atmosferze <strong>generuje się</strong> ok. 76 W/K. Obniżenie <span class="math inline">\(t_{out}\)</span> do ~50 °C (kocioł kondensacyjny) zmniejsza <span class="math inline">\(\dot{Q}_{komin}\)</span> ze 130 do 30 kW, a <span class="math inline">\(\Delta \dot{S}_{atm}\)</span> do 102.3 W/K (o ok. 77%).</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <section id="zadanie-domowe-raport-5" class="slide level2">
-<h2>🏠 Zadanie Domowe (Raport 5)</h2>
+<h2><i class="bi bi-house-door"></i> Zadanie Domowe (Raport 5)</h2>
 <p><strong>Temat:</strong> Optymalizacja Wymiennika.</p>
 <p>Zaproponuj zmianę parametrów, aby zmniejszyć stratę egzergii (zbliżyć proces do odwracalnego).</p>
 <ol type="1">
-<li>Zwiększ temperaturę wody wylotowej do <span class="math inline">\(95^\circ C\)</span> (zamiast <span class="math inline">\(80^\circ C\)</span>).</li>
-<li>Oblicz nowy strumień pary wodnej.</li>
-<li>Oblicz nową generację entropii <span class="math inline">\(\Delta S_{gen}\)</span>.</li>
-<li>Wniosek: Czy zbliżenie temperatur czynników (<span class="math inline">\(T_{spalin} \approx T_{wody}\)</span>) zmniejsza generację entropii?</li>
+<li>Zwiększ temperaturę wody wylotowej do 95 °C (zamiast 80 °C).</li>
+<li>Oblicz nowy strumień wody.</li>
+<li>Oblicz nową generację entropii <span class="math inline">\(\Delta \dot{S}_{\text{gen}}\)</span> i stratę egzergii <span class="math inline">\(\dot{B}_{\text{str}}\)</span>.</li>
+<li>Wniosek: Czy zbliżenie temperatur czynników (<span class="math inline">\(T_{\text{spalin}} \approx T_{\text{wody}}\)</span>) zmniejsza generację entropii?</li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -414,10 +505,10 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Wskazówka</strong></p>
 </div>
 <div class="callout-content">
-<p>Im mniejsza różnica temperatur między czynnikami w wymienniku (<span class="math inline">\(\Delta T\)</span>), tym mniejsza generacja entropii i wyższa sprawność egzergetyczna (II Zasady).</p>
+<p>Im mniejsza różnica temperatur między czynnikami w wymienniku (<span class="math inline">\(\Delta T\)</span>), tym mniejsza generacja entropii i wyższa sprawność egzergetyczna (II zasada).</p>
 </div>
 </div>
 </div>
@@ -425,9 +516,8 @@
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../img/kbig.jpg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Termodynamika Techniczna - Ćwiczenia Projektowe</p>
+<p>Termodynamika Techniczna – Ćwiczenia (Ć5)</p>
 </div>
 </div></div>
 
@@ -587,7 +677,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -612,7 +702,7 @@
         height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 0.2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -663,12 +753,12 @@
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Skopiowano!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Skopiowano!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

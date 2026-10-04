@@ -1,29 +1,42 @@
 ---
-title: "Ćwiczenie 1: Projekt Fabryka - Wprowadzenie"
-format: 
+title: "Ćwiczenie 1: Parametry Stanu i Gazy Doskonałe"
+subtitle: "Projekt Termo-Tech – Etap 1: Inwentaryzacja Sieci Sprężonego Powietrza"
+author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbaniak**</span>"
+institute: |
+  Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
+  <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
+    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
+    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/kbig.jpg" style="height: 200px;">
+  </div>
+lang: pl
+mermaid-format: svg
+format:
   revealjs:
-    slide-number: true
-    theme: simple
+    theme: ["../theme/q-theme.scss", "../theme/cw-theme.scss"]
+    include-in-header: ../theme/cw-header.html
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    chalkboard: true
+    footer: "Termodynamika Techniczna – Ćwiczenia (Ć1)"
     width: 1600
     height: 900
-    logo: "../img/kbig.jpg"
-    footer: "Termodynamika Techniczna - Ćwiczenia Projektowe"
-    chalkboard: true
+    margin: 0.2
 ---
 
-## 🏭 Projekt: Modernizacja Hali Przemysłowej
+## <i class="bi bi-buildings"></i> Projekt: Modernizacja Hali Przemysłowej {.smaller}
 
 ::: {.columns}
 ::: {.column width="60%"}
 ### Twoje Zadanie:
-Zostajesz zatrudniony jako **Młodszy Inżynier Energetyk** w zakładzie produkcyjnym "Termo-Tech". 
+Zostajesz zatrudniony jako **Młodszy Inżynier Energetyk** w firmie audytowej „Termo-Tech Sp. z o.o.”. Twoje zlecenie na ten semestr: **audyt energetyczny hali produkcyjnej klienta** – analiza jej kluczowych węzłów energetycznych:
 
-Zarząd planuje modernizację starej hali produkcyjnej. Twoim celem w tym semestrze jest przeanalizowanie kluczowych węzłów energetycznych zakładu:
-
-1.  Sieć sprężonego powietrza (Gazy).
-2.  Siłownię parową zasilającą (Para Wodna).
-3.  Odzysk ciepła odpadowego (II Zasada).
-4.  Klimatyzację hali montażowej (Powietrze Wilgotne).
+1.  Sieć sprężonego powietrza i sprężarkownia (Gazy).
+2.  Kotłownia parowa z turbiną (Para Wodna).
+3.  Odzysk ciepła ze spalin (II Zasada).
+4.  Instalacja chłodnicza (Obiegi Lewobieżne).
+5.  Centrala klimatyzacyjna (Powietrze Wilgotne).
 :::
 ::: {.column width="40%"}
 ![](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000)
@@ -36,38 +49,38 @@ Większość zadań na ćwiczeniach będzie elementami tego dużego projektu.
 
 ---
 
-## 📋 Etap 1: Inwentaryzacja Zbiorników (Parametry Stanu)
+## <i class="bi bi-clipboard-data"></i> Etap 1: Inwentaryzacja Sieci Sprężonego Powietrza
 
-Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w "dziwnych" jednostkach ze starych manometrów.
+Dostajesz raport od technika dotyczący głównego zbiornika sprężonego powietrza. Dane są jednak niekompletne i w „dziwnych” jednostkach ze starych manometrów.
 
 ::: {.callout-note title="Dane z Raportu Technicznego"}
-*   **Objętość zbiornika:** $V = 5 m^3$
+*   **Objętość zbiornika:** $V = 5 \text{ m}^3$
 *   **Wskazanie manometru (nadciśnienie):** $p_{man} = 8.5 \text{ bar}$
-*   **Temperatura otoczenia/gazu:** $t = 25^\circ C$
+*   **Temperatura otoczenia/gazu:** $t = 25^\circ\text{C}$
 *   **Ciśnienie atmosferyczne:** $p_{atm} = 750 \text{ mmHg}$
 :::
 
 ### Zadanie Projektowe 1.1:
-Kierownik pyta: **"Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?"**
+Kierownik pyta: **„Jaka jest całkowita masa powietrza zgromadzona w tym zbiorniku?”**
 
 ---
 
-## 🛠️ Narzędzia: Ciśnienie Absolutne a Manometryczne
+## <i class="bi bi-tools"></i> Narzędzia: Ciśnienie Absolutne a Manometryczne {.smaller}
 
 Pamiętaj, że w równaniach termodynamiki (np. Clapeyrona) **ZAWSZE** używamy ciśnienia absolutnego!
 
 $$ p_{abs} = p_{man} + p_{atm} $$
 *(Dla podciśnienia: $p_{abs} = p_{atm} - p_{vac}$)*
 
-::: {columns}
+::: {.columns}
 ::: {.column width="50%"}
 
 ::: {.fragment}
 ### Przeliczanie jednostek (Krok 1):
-1.  **Atmosferyczne:** $750 \text{ mmHg} \rightarrow \text{Pa}$?
-    *   $1 \text{ atm} = 760 \text{ mmHg} = 101325 \text{ Pa}$
-    *   $p_{atm} = \frac{750}{760} \cdot 101325 \approx 99\,992 \text{ Pa} \approx 100 \text{ kPa}$
-2.  **Manometryczne:** $8.5 \text{ bar} \rightarrow \text{Pa}$?
+1.  **Atmosferyczne:** $750 \text{ mmHg} \rightarrow \text{kPa}$?
+    *   $1 \text{ mmHg} = \frac{101325}{760} \approx 133.32 \text{ Pa} = 0.13332 \text{ kPa}$
+    *   $p_{atm} = 750 \cdot 0.13332 \approx 99.99 \text{ kPa}$
+2.  **Manometryczne:** $8.5 \text{ bar} \rightarrow \text{kPa}$?
     *   $1 \text{ bar} = 100\,000 \text{ Pa} = 100 \text{ kPa}$
     *   $p_{man} = 850 \text{ kPa}$
 :::
@@ -75,14 +88,14 @@ $$ p_{abs} = p_{man} + p_{atm} $$
 ::: {.column width="50%"}
 ::: {.fragment}
 3.  **Absolutne:**
-    *   $p_{abs} = 850 + 100 = 950 \text{ kPa} = 950\,000 \text{ Pa}$
+    *   $p_{abs} = 850 + 99.99 \approx 950 \text{ kPa} = 950\,000 \text{ Pa}$
 :::
 :::
 :::
 
 ---
 
-## 🧮 Obliczenia: Masa Gazu
+## <i class="bi bi-calculator"></i> Obliczenia: Masa Gazu
 
 Traktując powietrze jako **Gaz Doskonały**, użyj równania stanu:
 
@@ -113,52 +126,68 @@ $$ m \approx 55.51 \text{ kg} $$
 
 ---
 
-## 💧 Zadanie Projektowe 1.2: Próba Hydrauliczna
+## <i class="bi bi-droplet"></i> Zadanie Projektowe 1.2: Próba Hydrauliczna {.smaller}
 
-Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu **wody**. 
+Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową zbiornika przy użyciu **wody** – zbiornik napełnia się wodą i podnosi w nim ciśnienie do **ciśnienia próbnego**.
 
-**Pytanie:** O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik ($V=5m^3$) wodą w temp. $20^\circ C$?
+**Pytanie:** O ile wzrośnie obciążenie fundamentu, jeśli napełnimy ten sam zbiornik ($V = 5 \text{ m}^3$) wodą o temperaturze $20^\circ\text{C}$?
 
 ::: {.fragment}
 ### Analiza:
-*   Gęstość wody $\rho \approx 1000 \frac{\text{kg}}{\text{m}^3}$ (niezależna od ciśnienia - ciecz nieściśliwa).
-*   Masa wody: $m_w = \rho \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ ton}$.
+*   Ciśnienie próbne: $p_{prob} = 1.5 \cdot p_{rob} = 1.5 \cdot 8.5 = \mathbf{12.75 \text{ bar}}$ (nadciśnienie; $p_{rob} = p_{man}$).
+*   Gęstość wody $\rho_w \approx 1000 \text{ kg/m}^3$ (w $20^\circ\text{C}$: $998 \text{ kg/m}^3$; praktycznie niezależna od ciśnienia – ciecz praktycznie nieściśliwa).
+*   Masa wody: $m_w = \rho_w \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ t}$.
 
 ::: {.fragment .callout-caution}
 ## Wniosek
-Masa wzrośnie z ~55 kg do 5000 kg! Fundament musi to wytrzymać.
+Obciążenie wzrośnie o $5000 - 55.5 \approx \mathbf{4945 \text{ kg}}$ ($\approx 48.5 \text{ kN}$) – z ~55 kg powietrza do 5000 kg wody! Fundament musi to wytrzymać.
+
+Ta sama objętość, a masa ok. **90×** większa ($5000/55.5$); w warunkach normalnych woda jest ok. $1000/1.29 \approx 775$× gęstsza od powietrza – tak różnią się ciecz i gaz.
 :::
 :::
 
 ---
 
-## 🔥 Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne
+## <i class="bi bi-fire"></i> Zadanie 1.2b: Pożar w Hali – Ciśnienie Awaryjne {.smaller}
 
-Podczas audytu BHP pada pytanie: **Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do $300^\circ C$?**
+Podczas audytu BHP pada pytanie: **Co się stanie z ciśnieniem w zamkniętym zbiorniku, jeśli wybuchnie pożar i temperatura wzrośnie do $300^\circ\text{C}$? Czy zbiornik wytrzyma?**
 
 ::: {.callout-note title="Dane"}
 *   Zbiornik zamknięty (zawór odcięty): $V = const$.
-*   Stan początkowy: $p_1 = 950 \text{ kPa}, T_1 = 298.15 \text{ K}$.
+*   Stan początkowy: $p_1 = 950 \text{ kPa (abs)}, T_1 = 298.15 \text{ K}$.
 *   Stan awaryjny: $T_2 = 300 + 273.15 = 573.15 \text{ K}$.
+*   Ciśnienie próbne (Zad. 1.2): $p_{prob} = 12.75 \text{ bar}$ (nadciśnienie).
 :::
 
+::: {.columns}
+::: {.column width="50%"}
 ::: {.fragment}
-**Prawo Gay-Lussaca** ($V = const, m = const$):
+**Prawo Charlesa** (przemiana izochoryczna, $V = const, m = const$):
 $$ \frac{p_1}{T_1} = \frac{p_2}{T_2} \quad \Rightarrow \quad p_2 = p_1 \cdot \frac{T_2}{T_1} $$
 $$ p_2 = 950 \cdot \frac{573.15}{298.15} \approx \mathbf{1826 \text{ kPa} = 18.3 \text{ bar (abs)}} $$
 :::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+**Czy zbiornik wytrzyma?** Porównujemy nadciśnienia:
+$$ p_{2,man} = p_2 - p_{atm} \approx 18.26 - 1.00 \approx \mathbf{17.3 \text{ bar}} $$
+$$ p_{2,man} = 17.3 \text{ bar} > p_{prob} = 12.75 \text{ bar} $$
+Przekroczone nawet ciśnienie próbne – zbiornik grozi rozerwaniem!
+:::
+:::
+:::
 
-::: {.fragment .callout-warning title="Ciśnienie prawie się **podwoi**! Zawór bezpieczeństwa musi otworzyć się przed osiągnięciem ciśnienia próbnego ($1.5 \cdot p_{rob}$)."}
-
+::: {.fragment .callout-warning title="Ciśnienie prawie się **podwoi** – i przekroczy nawet ciśnienie próbne!"}
+Zawór bezpieczeństwa nastawia się najwyżej na ciśnienie dopuszczalne zbiornika (niższe niż $p_{prob}$). Inne środki zaradcze: płytka bezpieczeństwa (membrana), zbiornik poza strefą zagrożenia pożarowego, zraszanie wodą. W $300^\circ\text{C}$ stal traci też część wytrzymałości.
 :::
 
 ---
 
-## 🧪 Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)
+## <i class="bi bi-intersect"></i> Zadanie 1.2c: Mieszanina Gazów (Prawo Daltona)
 
-W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ (objętościowo), przy $p = 5 \text{ bar (abs)}, t = 20^\circ C, V = 2 \text{ m}^3$.
+W drugim zbiorniku na hali przechowywana jest mieszanina: 80% $\text{N}_2$ + 20% $\text{O}_2$ (ułamki objętościowe = molowe dla gazu doskonałego), przy $p = 5 \text{ bar (abs)}, t = 20^\circ\text{C}, V = 2 \text{ m}^3$.
 
-:::{cloumns}
+::: {.columns}
 ::: {.column width="50%"}
 ### Oblicz:
 1.  Ciśnienie parcjalne każdego składnika.
@@ -174,9 +203,9 @@ W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ 
 
 ::: {.column width="50%"}
 ::: {.fragment}
-**Krok 2: Masy** ($m_i = \frac{p_i V}{R_i T}$, gdzie $R_{N_2}=297, R_{O_2}=260$ J/kgK)
+**Krok 2: Masy** ($m_i = \frac{p_i V}{R_i T}$, gdzie $R_{N_2} = 297$, $R_{O_2} = 260 \text{ J/(kg·K)}$)
 
-*   $m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,065} \approx \mathbf{9.19 \text{ kg}}$
+*   $m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,066} \approx \mathbf{9.19 \text{ kg}}$
 *   $m_{O_2} = \frac{100\,000 \cdot 2}{260 \cdot 293.15} = \frac{200\,000}{76\,219} \approx \mathbf{2.62 \text{ kg}}$
 
 :::
@@ -189,24 +218,24 @@ W drugim zbiorniku fabryki przechowywana jest mieszanina: 80% $N_2$ + 20% $O_2$ 
 
 ---
 
-## 📏 Zadanie 1.2d: Gęstość i Objętość Właściwa
+## <i class="bi bi-rulers"></i> Zadanie 1.2d: Gęstość i Objętość Właściwa {.smaller}
 
-Kierownik pyta: **"Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?"**
+Kierownik pyta: **„Jaka jest gęstość powietrza w naszym zbiorniku ciśnieniowym? A jaka w warunkach normalnych?”**
 
 To ważne przy doborze rurociągów (prędkość przepływu zależy od gęstości!).
 
 ::: {.columns}
 ::: {.column width="50%"}
-**W zbiorniku ($p = 950$ kPa, $T = 298$ K):**
+**W zbiorniku ($p = 950$ kPa, $T = 298.15$ K):**
 $$ \rho = \frac{p}{RT} = \frac{950\,000}{287 \cdot 298.15} $$
 $$ \rho \approx \mathbf{11.1 \text{ kg/m}^3} $$
 $$ v = 1/\rho \approx 0.090 \text{ m}^3/\text{kg} $$
 :::
 ::: {.fragment  .column width="50%"}
-**Warunki normalne ($p_n = 101.3$ kPa, $T_n = 273$ K):**
-$$ \rho_n = \frac{101\,300}{287 \cdot 273.15} $$
+**Warunki normalne ($p_n = 101\,325$ Pa, $T_n = 273.15$ K):**
+$$ \rho_n = \frac{101\,325}{287 \cdot 273.15} $$
 $$ \rho_n \approx \mathbf{1.29 \text{ kg/m}^3} $$
-$$ v_n \approx 0.775 \text{ m}^3/\text{kg} $$
+$$ v_n = 1/\rho_n \approx 0.774 \text{ m}^3/\text{kg} $$
 :::
 :::
 
@@ -216,16 +245,16 @@ Gęstość w zbiorniku jest **8.6×** większa niż w warunkach normalnych. Dlat
 
 ---
 
-## ⚖️ Zadanie 1.2e: Dobór Zbiornika na Azot {.smaller}
+## <i class="bi bi-sliders"></i> Zadanie 1.2e: Dobór Butli na Azot {.smaller}
 
-Dział spawalniczy potrzebuje zbiornika na **czysty azot** ($N_2$) o masie $m = 50$ kg, przechowywany w temperaturze $15^\circ C$ i ciśnieniu $200 \text{ bar (abs)}$.
+Dział spawalniczy potrzebuje butli na **czysty azot** ($\text{N}_2$) o masie $m = 50$ kg, przechowywany w temperaturze $15^\circ\text{C}$ i ciśnieniu $200 \text{ bar (abs)}$.
 
-**Oblicz wymaganą objętość zbiornika.**
+**Oblicz wymaganą objętość zbiornika (butli).**
 
 ::: {.fragment}
 $$ V = \frac{m R T}{p} $$
 
-*   $R_{N_2} = 297 \text{ J/(kgK)}$ (Indywidualna stała gazowa azotu: $R_{N_2} = 8314/28 = 297$)
+*   $R_{N_2} = \frac{8314}{28} \approx 297 \text{ J/(kg·K)}$ (indywidualna stała gazowa azotu)
 *   $T = 288.15 \text{ K}$
 *   $p = 200 \cdot 10^5 = 20\,000\,000 \text{ Pa}$
 
@@ -233,30 +262,32 @@ $$ V = \frac{50 \cdot 297 \cdot 288.15}{20\,000\,000} = \frac{4\,279\,027}{20\,0
 $$ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} $$
 :::
 
-::: {.fragment .callout-note style="font-size: 1.5em " title="**Uwaga:** Przy 200 bar azot nie jest idealnym gazem! Współczynnik ściśliwości $Z \approx 1.04$, co zwiększy wymaganą objętość o ~4%. W praktyce dobiera się butlę 250 l."}
+::: {.fragment .callout-note style="font-size: 1.5em " title="**Uwaga:** Przy 200 bar azot nie zachowuje się jak gaz doskonały! Współczynnik ściśliwości $Z \approx 1.05$ → objętość o ~5% większa (≈ 224 l). W praktyce: wiązka butli, np. 5 × 50 l = 250 l."}
 
 :::
 
 ---
 
-## 🌡️ Zadanie Projektowe 1.3: Skale Temperatur
+## <i class="bi bi-thermometer-half"></i> Zadanie Projektowe 1.3: Odczyt Dokumentacji Zagranicznej
 
-W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się przy $T = 250^\circ F$ (Fahrenheita).
-Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to $140^\circ C$?
+W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się (temperatura otwarcia) przy $t = 250^\circ\text{F}$ (Fahrenheita).
+Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to $140^\circ\text{C}$?
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Konwersja:**
-$$ T(^\circ C) = \frac{5}{9} \cdot (T(^\circ F) - 32) $$
+**Konwersja skal temperatur:**
+$$ t(^\circ\text{C}) = \frac{5}{9} \cdot (t(^\circ\text{F}) - 32) = \frac{t(^\circ\text{F}) - 32}{1.8} $$
 
-$$ T_{limit} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 $$
-$$ T_{limit} \approx 121.1^\circ C $$
+$$ t_{otw} = \frac{5}{9} \cdot (250 - 32) = \frac{5}{9} \cdot 218 $$
+$$ t_{otw} \approx 121.1^\circ\text{C} $$
+
+**Reguła:** zawór nadaje się, gdy $t_{otw} > t_{proces,max}$ – otwiera się dopiero powyżej temperatury normalnej pracy.
 :::
 
 ::: {.column width="50%"}
 ::: {.fragment .callout-warning}
-**Decyzja:** 
-$121.1^\circ C < 140^\circ C$
+**Decyzja:**
+$121.1^\circ\text{C} < 140^\circ\text{C}$
 
 **ZAWÓR NIE NADAJE SIĘ!** Otworzy się zbyt wcześnie podczas normalnej pracy instalacji. Należy dobrać nowy zawór.
 :::
@@ -265,16 +296,16 @@ $121.1^\circ C < 140^\circ C$
 
 ---
 
-## 🏠 Zadanie Domowe (Raport 1)
+## <i class="bi bi-house-door"></i> Zadanie Domowe (Raport 1)
 
 **Temat:** Dobór sprężarki.
 
-Aby napompować nasz zbiornik ($V=5m^3$) od ciśnienia atmosferycznego do roboczego ($8.5 \text{ bar}$ nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.
+Aby napompować nasz zbiornik ($V = 5 \text{ m}^3$) od ciśnienia atmosferycznego do roboczego ($8.5 \text{ bar}$ nadciśnienia) w czasie 1 godziny, potrzebujemy określonej wydajności masowej.
 
-1.  Oblicz masę powietrza w zbiorniku "pustym" ($p_{atm}, 25^\circ C$).
-2.  Oblicz masę powietrza w zbiorniku "pełnym" ($9.5 \text{ bar abs}, 40^\circ C$ - bo sprężanie podgrzewa!).
-3.  Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w $kg/h$ oraz $m^3/h$ (dla warunków ssania).
+1.  Oblicz masę powietrza w zbiorniku „pustym” ($p_{atm}, 25^\circ\text{C}$).
+2.  Oblicz masę powietrza w zbiorniku „pełnym” ($9.5 \text{ bar (abs)}, 40^\circ\text{C}$ – bo sprężanie podgrzewa!).
+3.  Różnica mas to ilość, którą musi dostarczyć sprężarka. Podaj wynik w $\text{kg/h}$ oraz $\text{m}^3\text{/h}$ (dla warunków ssania).
 
 ::: {.callout-tip}
-Przyjmij stałą gazową dla powietrza $R = 287 \text{ J}/(\text{kg K})$.
+Przyjmij stałą gazową dla powietrza $R = 287 \text{ J/(kg·K)}$.
 :::
