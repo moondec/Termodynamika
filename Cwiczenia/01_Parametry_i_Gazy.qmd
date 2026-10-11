@@ -134,7 +134,7 @@ Ze względów bezpieczeństwa (UDT) należy przeprowadzić próbę ciśnieniową
 
 ::: {.fragment}
 ### Analiza:
-*   Ciśnienie próbne: $p_{prob} = 1.5 \cdot p_{rob} = 1.5 \cdot 8.5 = \mathbf{12.75 \text{ bar}}$ (nadciśnienie; $p_{rob} = p_{man}$).
+*   Ciśnienie próbne liczy się od ciśnienia dopuszczalnego $PS$ (konstrukcyjnego), nie roboczego. Założenie: $PS = 8.5 \text{ bar}$ (zbiornik prosty, dyrektywa 2014/29/UE): $p_{prob} = 1.5 \cdot PS = 1.5 \cdot 8.5 = \mathbf{12.75 \text{ bar}}$ (nadciśnienie).
 *   Gęstość wody $\rho_w \approx 1000 \text{ kg/m}^3$ (w $20^\circ\text{C}$: $998 \text{ kg/m}^3$; praktycznie niezależna od ciśnienia – ciecz praktycznie nieściśliwa).
 *   Masa wody: $m_w = \rho_w \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ t}$.
 
@@ -270,7 +270,7 @@ $$ V \approx \mathbf{0.214 \text{ m}^3 = 214 \text{ litrów}} $$
 
 ## <i class="bi bi-thermometer-half"></i> Zadanie Projektowe 1.3: Odczyt Dokumentacji Zagranicznej
 
-W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się (temperatura otwarcia) przy $t = 250^\circ\text{F}$ (Fahrenheita).
+W starej dokumentacji z USA znaleziono informację, że termiczny zawór bezpieczeństwa (temperaturowo-ciśnieniowy, T&P) otwiera się przy $t = 250^\circ\text{F}$ (Fahrenheita).
 Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to $140^\circ\text{C}$?
 
 ::: {.columns}

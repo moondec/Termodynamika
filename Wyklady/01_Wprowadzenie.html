@@ -6,8 +6,8 @@
 <script src="01_Wprowadzenie_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="01_Wprowadzenie_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="01_Wprowadzenie_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_Wprowadzenie_files/libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="01_Wprowadzenie_files/libs/quarto-html/quarto-syntax-highlighting-b6e6edf6cb1293d7f667c2f39c143ab5.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W1: Wprowadzenie do Termodynamiki Technicznej</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Wprowadzenie_files/libs/revealjs/dist/theme/quarto-4e0c379bbdf6bbe6756f17c73a9da64f.css">
+  <link rel="stylesheet" href="01_Wprowadzenie_files/libs/revealjs/dist/theme/quarto-da19e45ea13bcae3f4415c21cf93994d.css">
   <link href="01_Wprowadzenie_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01_Wprowadzenie_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01_Wprowadzenie_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -169,8 +169,8 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
-            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"></p>
+            <p><img src="../img/logo_wisim.jpg" style="height: 200px;"></p>
             <p><img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
@@ -201,24 +201,17 @@
 <h2><i class="bi bi-fire"></i> Czym jest Termodynamika?</h2>
 <h3 id="definicja-i-zakres">Definicja i Zakres</h3>
 <p>Termodynamika to <strong>dział fizyki</strong> zajmujący się badaniem <strong>termicznych właściwości układów makroskopowych</strong>.</p>
-<p>Bada ona przemiany pomiędzy różnymi formami energii, <em>przede wszystkim</em> między:</p>
-<div style="text-align: left; margin-left: 150px;">
-<ul>
-<li><strong>Ciepłem</strong> (<span class="math inline">\(Q\)</span>)</li>
-<li><strong>Pracą</strong> (<span class="math inline">\(L\)</span>)</li>
-</ul>
-</div>
+<p>Bada ona przemiany pomiędzy różnymi formami energii, <em>przede wszystkim</em> między <strong>ciepłem</strong> (<span class="math inline">\(Q\)</span>) a <strong>pracą</strong> (<span class="math inline">\(L\)</span>).</p>
 <h3 class="fragment fade-up" id="termodynamika-techniczna-w-inżynierii">Termodynamika Techniczna w Inżynierii</h3>
-<div class="r-stack">
-<div style="text-align: left; margin-left: 150px;">
+<div style="margin-left: 150px;">
 <ul>
-<li class="fragment"><strong>Obliczanie właściwości par:</strong> Np. para wodna w turbinach.</li>
-<li class="fragment"><strong>Analiza obiegów:</strong> Silniki spalinowe, elektrownie.</li>
-<li class="fragment"><strong>Urządzenia:</strong> Sprężarki, pompy ciepła, chłodnictwo.</li>
+<li class="fragment"><strong>Obliczanie właściwości par:</strong> np. para wodna w turbinach.</li>
+<li class="fragment"><strong>Analiza obiegów:</strong> silniki spalinowe, elektrownie.</li>
+<li class="fragment"><strong>Urządzenia:</strong> sprężarki, pompy ciepła, chłodnictwo.</li>
 </ul>
 </div>
-<div class="fragment fade-up" title="Innymi słowy..." style="font-size: 1.3em; color: red; background-color: #e3f2fd;">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="fragment fade-up" title="Innymi słowy…">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -232,7 +225,6 @@
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="poziomy-opisu-układu" class="slide level2" style="font-size: 0.95em;">
 <h2>Poziomy Opisu Układu</h2>
@@ -240,7 +232,7 @@
 <p>Możemy patrzeć na układ z dwóch perspektyw:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="makrostan">📊 Makrostan</h3>
+<h3 id="makrostan"><i class="bi bi-bar-chart-line"></i> Makrostan</h3>
 <ul>
 <li class="fragment">Opis za pomocą wielkości <strong>mierzalnych</strong> i uśrednionych.</li>
 <li class="fragment">Zmienne: <span class="math inline">\(p, T, V, U\)</span> (<strong><em>Parametry stanu</em></strong>).</li>
@@ -248,7 +240,7 @@
 <li class="fragment"><strong>To tzw. metoda</strong> <em>fenomenologiczna</em></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h3 id="mikrostan">🔬 Mikrostan</h3>
+<h3 id="mikrostan"><i class="bi bi-zoom-in"></i> Mikrostan</h3>
 <ul>
 <li class="fragment">Opis stanu każdej pojedynczej cząstki.</li>
 <li class="fragment">Pędy i położenia miliardów atomów.</li>
@@ -266,7 +258,7 @@
 <p><strong>Wniosek</strong></p>
 </div>
 <div class="callout-content">
-<p>Makrostan o największej liczbie odpowiadających mu mikrostanów <span class="math inline">\(\Omega\)</span> jest <strong>najbardziej prawdopodobny</strong> i odpowiada stanowi równowagi.</p>
+<p>Makrostan o największej liczbie odpowiadających mu mikrostanów <span class="math inline">\(\Omega\)</span> jest <strong>najbardziej prawdopodobny</strong> i odpowiada stanowi równowagi (w układzie izolowanym).</p>
 </div>
 </div>
 </div>
@@ -330,10 +322,10 @@
 <div id="fig-przemiany" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-przemiany-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="01_Wprowadzenie_files/figure-revealjs/fig-przemiany-1.png" class="quarto-figure quarto-figure-center" width="960">
+<img data-src="01_Wprowadzenie_files/figure-revealjs/fig-przemiany-1.svg" class="quarto-figure quarto-figure-center" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-przemiany-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Rysunek&nbsp;1: Porównanie przemian termodynamicznych (rozprężanie izotermiczne i adiabatyczne, ochładzanie izochoryczne)
+Rysunek&nbsp;1: Porównanie przemian termodynamicznych (rozprężanie izotermiczne i adiabatyczne odwracalne, ochładzanie izochoryczne)
 </figcaption>
 </figure>
 </div>
@@ -356,7 +348,7 @@ Rysunek&nbsp;1: Porównanie przemian termodynamicznych (rozprężanie izotermicz
 <div id="fig-otto-cycle" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-otto-cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="01_Wprowadzenie_files/figure-revealjs/fig-otto-cycle-1.png" class="quarto-figure quarto-figure-center" width="960">
+<img data-src="01_Wprowadzenie_files/figure-revealjs/fig-otto-cycle-1.svg" class="quarto-figure quarto-figure-center" style="width:95.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-otto-cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
@@ -370,22 +362,23 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <section id="proces-i-równowaga-2" class="slide level2">
 <h2>Proces i Równowaga</h2>
 <div class="columns">
-<div class="column" style="width:30%;">
+<div class="column" style="width:34%;">
 <p><strong>Stan Równowagi:</strong></p>
 <ul>
-<li>Stan, w którym parametry są jednorodne i nie zmieniają się w czasie (równowaga termiczna, mechaniczna, chemiczna).</li>
+<li>Parametry <strong>nie zmieniają się w czasie</strong> i <strong>nie występują przepływy</strong> (ciepła, masy) – także po odizolowaniu układu od otoczenia.</li>
+<li>W obrębie każdej fazy parametry intensywne są jednorodne.</li>
+<li>Obejmuje równowagę <strong>termiczną</strong>, <strong>mechaniczną</strong> i <strong>chemiczną</strong>.</li>
 </ul>
-<p><span style="font-size: 0.6em; color: #555;"><em>Wykres obok (na dole): wizualizacja istoty równowagi termodynamicznej — zanik gradientów.</em></span></p>
-</div><div class="column" style="width:70%;">
-<div class="mmd-fit" style="height: 410px;">
+</div><div class="column" style="width:66%;">
+<div class="mmd-fit" style="height: 300px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 748.796875 309" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973465896_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973465896_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973465896_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973465896_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973465896_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973465896_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g transform="translate(0, 22)" class="root"><g class="clusters"><g data-look="classic" id="Rownowaga" class="cluster"><rect height="293" width="732.796875" y="-3" x="8" style="fill:#f9f9f9 !important;stroke:#333 !important;stroke-width:2px !important"></rect><g transform="translate(310.109375, 3)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Pełna</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Równowaga</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Termodynamiczna</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_A_0" d="M137.188,105.5L137.188,113.667C137.188,121.833,137.188,138.167,137.188,154.5C137.188,170.833,137.188,187.167,137.188,195.333L137.188,203.5"></path><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_B_0" d="M381.477,105.5L381.477,113.667C381.477,121.833,381.477,138.167,381.477,154.5C381.477,170.833,381.477,187.167,381.477,195.333L381.477,203.5"></path><path style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_0" d="M618.688,105.5L618.688,113.667C618.688,121.833,618.688,138.167,618.688,154.5C618.688,170.833,618.688,187.167,618.688,195.333L618.688,203.5"></path></g><g class="edgeLabels"><g transform="translate(137.1875, 154.5)" class="edgeLabel"><g transform="translate(-28.5625, -11.5)" class="label"><g><rect height="23" width="57.125" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">T1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> T2</tspan></tspan></text></g></g></g><g transform="translate(381.4765625, 154.5)" class="edgeLabel"><g transform="translate(-28.328125, -11.5)" class="label"><g><rect height="23" width="56.65625" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">p1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> p2</tspan></tspan></text></g></g></g><g transform="translate(618.6875, 154.5)" class="edgeLabel"><g transform="translate(-28.15625, -11.5)" class="label"><g><rect height="23" width="56.3125" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">μ1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> μ2</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(137.1875, 81)" id="flowchart-T-0" class="node default"><rect height="49" width="132.75" y="-24.5" x="-66.375" style="fill:#ffcccc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Termiczna</tspan></tspan></text></g></g></g><g transform="translate(137.1875, 228)" id="flowchart-A-1" class="node default"><rect height="49" width="188.375" y="-24.5" x="-94.1875" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> przepływu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepła</tspan></tspan></text></g></g></g><g transform="translate(381.4765625, 81)" id="flowchart-M-2" class="node default"><rect height="49" width="151.125" y="-24.5" x="-75.5625" style="fill:#ccffcc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Mechaniczna</tspan></tspan></text></g></g></g><g transform="translate(381.4765625, 228)" id="flowchart-B-3" class="node default"><rect height="49" width="200.203125" y="-24.5" x="-100.1015625" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ruchu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> granic/tłoka</tspan></tspan></text></g></g></g><g transform="translate(618.6875, 81)" id="flowchart-C-4" class="node default"><rect height="49" width="137.546875" y="-24.5" x="-68.7734375" style="fill:#ccccff !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Chemiczna</tspan></tspan></text></g></g></g><g transform="translate(618.6875, 228)" id="flowchart-D-5" class="node default"><rect height="49" width="174.21875" y="-24.5" x="-87.109375" ry="5" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> dyfuzji/reakcji</tspan></tspan></text></g></g></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 749.9765625 309" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751458585_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751458585_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751458585_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751458585_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791751458585_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791751458585_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g transform="translate(0, 22)" class="root"><g class="clusters"><g data-look="classic" id="Rownowaga" class="cluster"><rect height="293" width="733.9765625" y="-3" x="8" style="fill:#f9f9f9 !important;stroke:#333 !important;stroke-width:2px !important"></rect><g transform="translate(309.90625, 3)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Pełna</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Równowaga</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Termodynamiczna</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1791751458585_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_T_A_0" d="M137.48,105.5L137.48,113.667C137.48,121.833,137.48,138.167,137.48,150.417C137.48,162.667,137.48,170.833,137.48,178.333C137.48,185.833,137.48,192.667,137.48,196.083L137.48,199.5"></path><path marker-end="url(#mermaid-1791751458585_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_B_1" d="M382.359,105.5L382.359,113.667C382.359,121.833,382.359,138.167,382.359,150.417C382.359,162.667,382.359,170.833,382.359,178.333C382.359,185.833,382.359,192.667,382.359,196.083L382.359,199.5"></path><path marker-end="url(#mermaid-1791751458585_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_2" d="M619.867,105.5L619.867,113.667C619.867,121.833,619.867,138.167,619.867,150.417C619.867,162.667,619.867,170.833,619.867,178.333C619.867,185.833,619.867,192.667,619.867,196.083L619.867,199.5"></path></g><g class="edgeLabels"><g transform="translate(137.48046875, 154.5)" class="edgeLabel"><g transform="translate(-29.0625, -11.5)" class="label"><g><rect height="23" width="58.125" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">T1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> T2</tspan></tspan></text></g></g></g><g transform="translate(382.359375, 154.5)" class="edgeLabel"><g transform="translate(-28.328125, -11.5)" class="label"><g><rect height="23" width="56.65625" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">p1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> p2</tspan></tspan></text></g></g></g><g transform="translate(619.8671875, 154.5)" class="edgeLabel"><g transform="translate(-28.15625, -11.5)" class="label"><g><rect height="23" width="56.3125" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">μ1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> μ2</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(137.48046875, 81)" id="flowchart-T-0" class="node default"><rect height="49" width="134.34375" y="-24.5" x="-67.171875" data-et="node" data-id="abc" style="fill:#ffcccc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Termiczna</tspan></tspan></text></g></g></g><g transform="translate(137.48046875, 228)" id="flowchart-A-1" class="node default"><rect height="49" width="188.9609375" y="-24.5" x="-94.48046875" ry="5" data-et="node" data-id="abc" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> przepływu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepła</tspan></tspan></text></g></g></g><g transform="translate(382.359375, 81)" id="flowchart-M-2" class="node default"><rect height="49" width="152.7109375" y="-24.5" x="-76.35546875" data-et="node" data-id="abc" style="fill:#ccffcc !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Mechaniczna</tspan></tspan></text></g></g></g><g transform="translate(382.359375, 228)" id="flowchart-B-3" class="node default"><rect height="49" width="200.796875" y="-24.5" x="-100.3984375" ry="5" data-et="node" data-id="abc" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ruchu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> granic/tłoka</tspan></tspan></text></g></g></g><g transform="translate(619.8671875, 81)" id="flowchart-C-4" class="node default"><rect height="49" width="138.140625" y="-24.5" x="-69.0703125" data-et="node" data-id="abc" style="fill:#ccccff !important;stroke:#333 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Chemiczna</tspan></tspan></text></g></g></g><g transform="translate(619.8671875, 228)" id="flowchart-D-5" class="node default"><rect height="49" width="174.21875" y="-24.5" x="-87.109375" ry="5" data-et="node" data-id="abc" rx="5" style="" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Brak</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> dyfuzji/reakcji</tspan></tspan></text></g></g></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -397,7 +390,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="01_Wprowadzenie_files/figure-revealjs/equilibrium-1.png" width="1152"></p>
+<p><img data-src="01_Wprowadzenie_files/figure-revealjs/equilibrium-1.svg" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -407,25 +400,51 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <section id="proces-kwazistatyczny" class="slide level2">
 <h2>Proces Kwazistatyczny</h2>
 <h3 id="ideał-termodynamiki">Ideał Termodynamiki</h3>
-<div style="font-size: 0.85em;">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Proces kwazistatyczny (równowagowy):</strong></p>
 <ul>
-<li><strong>Proces Kwazistatyczny (Równowagowy):</strong>
-<ul>
-<li>Proces nieskończenie powolny, który w każdej chwili znajduje się nieskończenie blisko stanu równowagi termodynamicznej.</li>
-<li>Proces kwazistatyczny bez tarcia i innych zjawisk dyssypacyjnych jest <strong>odwracalny</strong> – może być odwrócony przez nieskończenie małą zmianę parametrów układu i otoczenia (kwazistatyczny ≠ odwracalny: np. bardzo powolne sprężanie z tarciem tłoka jest nieodwracalne).</li>
-</ul></li>
+<li>Proces nieskończenie powolny – ciąg stanów nieskończenie bliskich równowagi termodynamicznej.</li>
+<li>Jest <strong>odwracalny</strong>: można go odwrócić przez nieskończenie małą zmianę parametrów układu i otoczenia.</li>
 </ul>
-<ul>
-<li class="fragment"><strong>Znaczenie Inżynierskie:</strong>
-<ul>
-<li class="fragment">Procesy kwazistatyczne są często używane jako <strong>idealny model porównawczy</strong> dla rzeczywistych (nieodwracalnych) maszyn cieplnych i chłodniczych.</li>
-</ul></li>
-<li class="fragment"><strong>Przykłady</strong>
-<ul>
-<li class="fragment">Rozprężanie adiabatyczne przy braku tarcia; obiegi teoretyczne (Carnota, Otta, Diesla, Rankine’a) złożone z przemian kwazistatycznych.</li>
-</ul></li>
-</ul>
+<div class="fragment" title="Uwaga na tarcie">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<p><strong>Uwaga na tarcie</strong></p>
+</div>
+<div class="callout-content">
+<p>Nawet bardzo powolne sprężanie z tarciem tłoka <strong>nie jest</strong> procesem kwazistatycznym – tarcie rozprasza energię i proces jest nieodwracalny. Nie każdy proces powolny jest więc kwazistatyczny.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="panel panel-blue fragment">
+<p><strong>Znaczenie inżynierskie</strong></p>
+<p>Procesy kwazistatyczne są <strong>idealnym modelem porównawczym</strong> dla rzeczywistych (nieodwracalnych) maszyn cieplnych i chłodniczych.</p>
+</div>
+<div class="panel panel-amber fragment">
+<p><strong>Przykłady</strong></p>
+<p>Rozprężanie adiabatyczne bez tarcia; obiegi teoretyczne (Carnota, Otta, Diesla, Rankine’a) złożone z przemian kwazistatycznych.</p>
+</div>
+</div></div>
+<aside class="notes">
+<p>W materiałach kursu (MT_01) proces kwazistatyczny jest z definicji odwracalny, a powolny proces z tarciem nie jest kwazistatyczny. Część literatury (np. Callen) dopuszcza pojęcie „kwazistatyczny nieodwracalny” – warto uprzedzić studentów o tej różnicy terminologicznej.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="parametry-stanu" class="slide level2">
 <h2><i class="bi bi-speedometer2"></i> Parametry Stanu</h2>
@@ -471,7 +490,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <p><img data-src="../img/zerowa.png" class="quarto-figure quarto-figure-left" style="width:100.0%"></p>
 </figure>
 </div>
-<div class="fragment fade-up" style="font-size: 0.7em; color: red;" title="Prostym językiem">
+<div class="fragment fade-up" style="font-size: 0.7em;" title="Prostym językiem">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -490,11 +509,13 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </section>
 <section id="energia-układu-jako-funkcja-stanu" class="slide level2">
 <h2><i class="bi bi-lightning-charge"></i> Energia układu jako <strong><em>funkcja stanu</em></strong></h2>
+<div class="columns">
+<div class="column" style="width:52%;">
 <p>Energia wewnętrzna układu jest jego immanentną cechą, zależną wyłącznie od parametrów określających aktualny stan systemu.</p>
 <ul>
 <li>Spadek energii układu adiabatycznego jest równy pracy wykonanej przez ten układ: <span class="math inline">\(U_1 - U_2 = L_{1-2}\)</span></li>
 </ul>
-<div title="**Wniosek:**">
+<div class="fragment" title="**Wniosek:**">
 <div class="callout callout-warning callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -504,18 +525,36 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <p><strong><strong>Wniosek:</strong></strong></p>
 </div>
 <div class="callout-content">
-<p>Energia jest funkcją stanu, co oznacza, że jej zmiana nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.</p>
+<p>Energia jest funkcją stanu: jej zmiana nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego. Praca i ciepło na każdej z dróg są natomiast inne.</p>
 </div>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:48%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-funkcja-stanu" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-funkcja-stanu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="01_Wprowadzenie_files/figure-revealjs/fig-funkcja-stanu-1.svg" class="quarto-figure quarto-figure-center" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-funkcja-stanu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Rysunek&nbsp;3: Trzy drogi 1→2: różne L i Q, ta sama zmiana energii ΔU
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="praca-i-ciepło-formy-przekazu-energii" class="slide level2">
 <h2><i class="bi bi-gear-wide-connected"></i> Praca i Ciepło: Formy przekazu energii</h2>
-<p>W przeciwieństwie do energii, praca (<span class="math inline">\(L\)</span>) i ciepło (<span class="math inline">\(Q\)</span>) <strong>nie są postaciami energii</strong> ani funkcjami stanu.</p>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p>W przeciwieństwie do energii, praca (<span class="math inline">\(L\)</span>) i ciepło (<span class="math inline">\(Q\)</span>) <strong>nie są postaciami energii</strong> ani funkcjami stanu – to sposoby <strong>przekazywania</strong> energii przez granicę układu.</p>
 <ul>
-<li><strong>Praca (<span class="math inline">\(L\)</span>):</strong> Oddziaływanie, którego jedynym skutkiem zewnętrznym mogłoby być podniesienie ciężaru.</li>
-<li><strong>Ciepło (<span class="math inline">\(Q\)</span>):</strong> Przekazywanie energii wynikające wyłącznie z różnicy temperatur między układami.</li>
+<li><strong>Praca (<span class="math inline">\(L\)</span>):</strong> oddziaływanie, którego jedynym skutkiem zewnętrznym mogłoby być podniesienie ciężaru.</li>
+<li><strong>Ciepło (<span class="math inline">\(Q\)</span>):</strong> przekazywanie energii wynikające wyłącznie z różnicy temperatur między układami.</li>
 </ul>
 <div class="fragment fade-up" title="Spostrzeżenie">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -532,22 +571,82 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div>
 </div>
 </div>
+</div><div class="column" style="width:42%;">
+<div class="mmd-fit" style="height: 200px;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 525.05859375 67" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
+<style>#mermaid-figure-2{font-size:18px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:18px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751460780_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751460780_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751460780_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791751460780_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791751460780_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791751460780_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791751460780_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Z_U_0" d="M174.284,33.5L179.951,33.5C185.618,33.5,196.951,33.5,205.451,33.5C213.951,33.5,219.618,33.5,224.618,33.5C229.618,33.5,233.951,33.5,236.118,33.5L238.284,33.5"></path><path marker-end="url(#mermaid-1791751460780_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_U_O_1" d="M311.894,33.5L317.227,33.5C322.56,33.5,333.227,33.5,341.227,33.5C349.227,33.5,354.56,33.5,359.227,33.5C363.894,33.5,367.894,33.5,369.894,33.5L371.894,33.5"></path></g><g class="edgeLabels"><g transform="translate(208.2841796875, 33.5)" class="edgeLabel"><g transform="translate(-9, -12.5)" class="label"><g><rect height="25" width="18" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Q</tspan></tspan></text></g></g></g><g transform="translate(343.8935546875, 33.5)" class="edgeLabel"><g transform="translate(-7, -12.5)" class="label"><g><rect height="25" width="14" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">L</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(91.14208984375, 33.5)" id="flowchart-Z-0" class="node default"><rect height="51" width="166.2841796875" y="-25.5" x="-83.14208984375" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -10.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Źródło</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepła</tspan></tspan></text></g></g></g><g transform="translate(277.0888671875, 33.5)" id="flowchart-U-1" class="node default"><rect height="36" width="69.609375" y="-18" x="-34.8046875" ry="18" rx="18" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -10.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Układ</tspan></tspan></text></g></g></g><g transform="translate(446.47607421875, 33.5)" id="flowchart-O-3" class="node default"><rect height="51" width="141.1650390625" y="-25.5" x="-70.58251953125" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -10.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Otoczenie</tspan></tspan></text></g></g></g></g></g></g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="panel panel-blue" style="font-size: 0.8em;">
+<p><strong>Konwencja znaków</strong> (termodynamika techniczna): <span class="math inline">\(Q &gt; 0\)</span> – ciepło <strong>doprowadzone</strong> do układu; <span class="math inline">\(L &gt; 0\)</span> – praca <strong>wykonana przez</strong> układ.</p>
+</div>
+</div></div>
 </section>
 <section id="jednostki-miary" class="slide level2">
-<h2>Jednostki miary</h2>
+<h2><i class="bi bi-rulers"></i> Jednostki miary</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <p>W układzie SI podstawową jednostką pracy, ciepła i energii jest <strong>dżul (J)</strong>.</p>
 <ul>
 <li><span class="math inline">\(1 \text{ J} = 1 \text{ N} \cdot \text{m} = 1 \text{ W} \cdot \text{s}\)</span></li>
-<li>W technice często stosujemy wielokrotności: <span class="math inline">\(1 \text{ kJ} = 10^3 \text{ J}\)</span>.</li>
-<li>Jednostki pozaukładowe dopuszczone:
-<ul>
-<li>Kilowatogodzina: <span class="math inline">\(1 \text{ kWh} = 3{,}6 \cdot 10^6 \text{ J}\)</span></li>
-</ul></li>
-<li>Jednostki dawne (niedopuszczone w UE, spotykane w starszej literaturze):
-<ul>
-<li>Koniogodzina: <span class="math inline">\(1 \text{ KMh} \approx 2{,}648 \text{ MJ}\)</span> (praca silnika o mocy 1 KM w ciągu 1 h).</li>
-</ul></li>
+<li>W technice często stosujemy wielokrotności: <span class="math inline">\(1 \text{ kJ} = 10^3 \text{ J}\)</span>, <span class="math inline">\(1 \text{ MJ} = 10^6 \text{ J}\)</span>.</li>
+<li>Jednostka pozaukładowa dopuszczona: <strong>kilowatogodzina</strong> (kWh).</li>
+<li>Jednostki dawne (niedopuszczone w UE, spotykane w starszej literaturze): kaloria, kilogramometr, koniogodzina.</li>
 </ul>
+</div><div class="column" style="width:45%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Jednostka</th>
+<th style="text-align: right;">Wartość w SI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 kWh</td>
+<td style="text-align: right;">3,6 MJ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1 kcal</td>
+<td style="text-align: right;">4,1868 kJ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1 kG·m (kpm)</td>
+<td style="text-align: right;">9,80665 J</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1 KMh</td>
+<td style="text-align: right;">2,648 MJ</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment" title="Skąd 2,648 MJ?">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Skąd 2,648 MJ?</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(1 \text{ KM} = 75 \text{ kG·m/s} = 735{,}5 \text{ W}\)</span>, więc <span class="math inline">\(1 \text{ KMh} = 735{,}5 \text{ W} \cdot 3600 \text{ s} \approx 2{,}648 \text{ MJ}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="temperatura-i-skale" class="slide level2">
 <h2><i class="bi bi-thermometer"></i> Temperatura i Skale</h2>
@@ -573,10 +672,9 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <h2><i class="bi bi-speedometer"></i> Ciśnienie i Energia Cząstek</h2>
 <h3 id="makroskopowe-p-a-mikroskopowe-w">Makroskopowe <span class="math inline">\(p\)</span> a Mikroskopowe <span class="math inline">\(w\)</span></h3>
 <p>Ciśnienie makroskopowe (<span class="math inline">\(p\)</span>) jest bezpośrednio związane z <strong>ruchami cząstek</strong> w mikroskali.</p>
-<p><br></p>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<div class="panel panel-blue">
 <p><strong>Równanie kinetyczne gazów:</strong></p>
 <p>Ciśnienie zależy od liczby cząstek <span class="math inline">\(N\)</span>, masy pojedynczej cząsteczki <span class="math inline">\(m\)</span> i średniej kwadratu prędkości <span class="math inline">\(\overline{w^2}\)</span>.</p>
 <p><span class="math display">\[ p V = \frac{1}{3} N m \overline{w^2} \]</span></p>
@@ -584,7 +682,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div><div class="column" style="width:4%;">
 <!-- Spacer -->
 </div><div class="column" style="width:48%;">
-<div style="background-color: #fff3e0; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<div class="panel panel-amber">
 <p><strong>Właściwości ciśnienia:</strong></p>
 <ul>
 <li>W gazie jako całości rozkład prędkości jest <strong>izotropowy</strong> (taki sam w każdym kierunku).</li>
@@ -594,26 +692,56 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div></div>
 </section>
 <section id="manometr-u-rurkowy" class="slide level2">
-<h2>Manometr U-rurkowy</h2>
-<p>Proste urządzenie do pomiaru małych różnic ciśnień.</p>
-
-<img data-src="01_Wprowadzenie_files/figure-revealjs/manometer-1.png" width="576" class="r-stretch"><p><span class="math display">\[ \Delta p = \rho_{\text{cieczy}} \cdot g \cdot \Delta h \]</span></p>
+<h2><i class="bi bi-speedometer"></i> Manometr U-rurkowy</h2>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01_Wprowadzenie_files/figure-revealjs/manometer-1.svg" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:66%;">
+<p>Proste urządzenie do pomiaru <strong>małych różnic ciśnień</strong> – różnica poziomów cieczy manometrycznej równoważy różnicę ciśnień:</p>
+<p><span class="math display">\[ p_1 - p_2 = \Delta p = \rho_{\text{cieczy}} \cdot g \cdot \Delta h \]</span></p>
+<div class="panel panel-blue">
+<p><strong>Przykład:</strong> woda (<span class="math inline">\(\rho = 1000 \text{ kg/m}^3\)</span>), <span class="math inline">\(\Delta h = 0{,}30 \text{ m}\)</span>: <span class="math inline">\(\Delta p = 1000 \cdot 9{,}81 \cdot 0{,}30 \approx 2{,}94 \text{ kPa} \approx 29{,}4 \text{ mbar}\)</span>.</p>
+</div>
+<div class="fragment" title="Nadciśnienie i podciśnienie">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nadciśnienie i podciśnienie</strong></p>
+</div>
+<div class="callout-content">
+<p>Manometr mierzy <strong>różnicę</strong> względem otoczenia (<span class="math inline">\(p_{atm}\)</span>). Ciśnienie absolutne: <span class="math inline">\(p_{abs} = p_{atm} + p_{man}\)</span> (nadciśnienie) lub <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span> (podciśnienie).</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="współczynniki-termiczne" class="slide level2">
 <h2>Współczynniki Termiczne</h2>
 <h3 id="jak-układy-reagują-na-p-i-t">Jak układy reagują na <span class="math inline">\(p\)</span> i <span class="math inline">\(T\)</span>?</h3>
 <div class="columns">
 <div class="column" style="width:33%;">
-<div style="background-color: #c7f76dff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<div class="panel panel-green">
 <p><strong>1. Współczynnik Objętościowej Rozszerzalności Cieplnej <br>(</strong><span class="math inline">\(\alpha\)</span>): Mierzy względną zmianę objętości przy stałym ciśnieniu. <span class="math display">\[ \alpha = \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p \]</span></p>
 </div>
 </div><div class="column" style="width:33%;">
-<div style="background-color: #f6ce94ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
-<p><strong>2. Współczynnik rozprężliwości (</strong><span class="math inline">\(\beta\)</span>): Mierzy względną zmianę ciśnienia przy stałej objętości. <span class="math display">\[ \beta = \frac{1}{p} \left(\frac{\partial p}{\partial T}\right)_v \]</span></p>
+<div class="panel panel-amber">
+<p><strong>2. Współczynnik Prężności Cieplnej (</strong><span class="math inline">\(\beta\)</span>): Mierzy względną zmianę ciśnienia przy stałej objętości. <span class="math display">\[ \beta = \frac{1}{p} \left(\frac{\partial p}{\partial T}\right)_v \]</span></p>
 </div>
 </div><div class="column" style="width:33%;">
-<div style="background-color: #e3f2fd; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
-<p><strong>3. Współczynnik Ściśliwości Izotermicznej <br>(</strong><span class="math inline">\(\gamma\)</span>): Mierzy względną zmianę objętości przy stałej temperaturze. <span class="math display">\[ \gamma = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T \]</span></p>
+<div class="panel panel-blue">
+<p><strong>3. Współczynnik Ściśliwości Izotermicznej <br>(</strong><span class="math inline">\(\kappa_T\)</span>): Mierzy względną zmianę objętości przy stałej temperaturze. <span class="math display">\[ \kappa_T = -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_T \]</span></p>
 </div>
 </div></div>
 <div title="Korelacja" style="font-size: 70%;">
@@ -626,7 +754,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <p><strong>Korelacja</strong></p>
 </div>
 <div class="callout-content">
-<p>Istnienie równania stanu implikuje, że wszystkie te trzy wielkości (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) są ze sobą powiązane.</p>
+<p>Istnienie równania stanu implikuje, że wszystkie te trzy wielkości są ze sobą powiązane: <span class="math inline">\(\alpha = p \, \beta \, \kappa_T\)</span>.</p>
 </div>
 </div>
 </div>
@@ -653,21 +781,19 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div>
 </div>
 </section>
-<section id="modele-gazu-idealny-vs.-rzeczywisty" class="slide level2" style="font-size: 0.9em; color: #7f2d2dff">
-<h2>Modele Gazu: Idealny vs.&nbsp;Rzeczywisty</h2>
+<section id="modele-gazu-idealny-vs.-rzeczywisty" class="slide level2" style="font-size: 0.9em;">
+<h2><i class="bi bi-diagram-2"></i> Modele Gazu: Idealny vs.&nbsp;Rzeczywisty</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="model-idealny-gaz-doskonały"><span style="color: #422ef4ff">Model Idealny: Gaz Doskonały</span></h3>
-<h3 id="równanie-clapeyrona"><span style="color: #5865c6ff">Równanie Clapeyrona</span></h3>
-<div style="background-color: #b3b9f4ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<h3 id="gaz-doskonały-równanie-clapeyrona">Gaz doskonały – równanie Clapeyrona</h3>
+<div class="panel panel-blue">
 <p>Równanie stanu dla 1 mola gazu doskonałego (<span class="math inline">\(V_m\)</span> – objętość molowa, <span class="math inline">\(R_u\)</span> – uniwersalna stała gazowa): <span class="math display">\[ \frac{pV_m}{R_u T} = 1 \]</span></p>
-<p><strong>Kiedy działa?</strong> - Dla małych ciśnień i wysokich temperatur.</p>
-<p><strong>Ograniczenia:</strong> - Gazy rzeczywiste (He, N<span class="math inline">\(_2\)</span>, CH<span class="math inline">\(_4\)</span>, Ar) odbiegają od tego idealnego zachowania, szczególnie przy <strong>dużych ciśnieniach</strong> i <strong>niskich temperaturach</strong>.</p>
+<p><strong>Kiedy działa?</strong> Dla małych ciśnień i wysokich temperatur.</p>
+<p><strong>Ograniczenia:</strong> gazy rzeczywiste (He, <span class="nowrap">N<sub>2</sub></span>, <span class="nowrap">CH<sub>4</sub></span>, Ar) odbiegają od tego idealnego zachowania, szczególnie przy <strong>dużych ciśnieniach</strong> i <strong>niskich temperaturach</strong>.</p>
 </div>
 </div><div class="column" style="width: 50%; font-size: 0.95em;">
-<h3 id="model-rzeczywisty-gaz-rzeczywisty"><span style="color: #25560dff">Model Rzeczywisty: Gaz Rzeczywisty</span></h3>
-<h3 id="równanie-van-der-waalsa"><span style="color: #468826ff">Równanie Van der Waalsa</span></h3>
-<div style="background-color: #47a542ff; border-radius: 10px; padding: 15px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);">
+<h3 id="gaz-rzeczywisty-równanie-van-der-waalsa">Gaz rzeczywisty – równanie van der Waalsa</h3>
+<div class="panel panel-green">
 <p>Równanie van der Waalsa koryguje model idealny, uwzględniając:</p>
 <p><span class="math display">\[ \left(p + \frac{a}{V_m^2}\right) (V_m - b) = R_u T \]</span></p>
 <p><strong>Poprawki Fizyczne:</strong></p>
@@ -690,7 +816,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="01_Wprowadzenie_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="01_Wprowadzenie_files/figure-revealjs/unnamed-chunk-3-1.svg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -698,8 +824,8 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div><div class="column" style="width:50%;">
 <div style="font-size: 0.9em;">
 <ul>
-<li class="fragment"><span class="math inline">\(V_1\)</span>: Objętość 1 mola <strong>cieczy</strong>.</li>
-<li class="fragment"><span class="math inline">\(V_2\)</span>: Objętość 1 mola <strong>pary nasyconej</strong>.</li>
+<li class="fragment"><span class="math inline">\(V_1\)</span>: Objętość 1 mola <strong>cieczy nasyconej</strong> (przy <span class="math inline">\(p = p_s\)</span>).</li>
+<li class="fragment"><span class="math inline">\(V_2\)</span>: Objętość 1 mola <strong>pary nasyconej</strong> (przy <span class="math inline">\(p = p_s\)</span>).</li>
 <li class="fragment"><span class="math inline">\(V_3\)</span>: Rozwiązanie bez znaczenia fizycznego.</li>
 </ul>
 </div>
@@ -722,7 +848,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <p><strong>Uzasadnienie fizyczne “wyciętej” części (Reguła Maxwella):</strong></p>
 <ul>
 <li>Równanie van der Waalsa zakłada jednorodność materii również pod kopułą nasycenia.</li>
-<li>W rzeczywistości w tym obszarze (dla izobar poniżej ciśnienia pary nasyconej) faza staje się heterogeniczna - czynnik rozwarstwia się na ciecz i parę wrząc/skraplając się izobaryczno-izotermicznie (linia przerywana z czerwoną barwą na wykresie). Rzeczywista objętość mieszaniny leży na prostej pomiędzy V1 a V2, a układ “ścina” esowate wygięcie w ten sposób, by wyrównać pola pod i nad linią stałego ciśnienia (tzw. konstrukcja Maxwella).</li>
+<li>W rzeczywistości w tym obszarze (ciśnienie równe ciśnieniu nasycenia <span class="math inline">\(p_s\)</span> danej izotermy) układ staje się heterogeniczny - czynnik rozwarstwia się na ciecz i parę wrząc/skraplając się izobaryczno-izotermicznie (linia przerywana z czerwoną barwą na wykresie). Rzeczywista objętość mieszaniny leży na prostej pomiędzy V1 a V2, a układ “ścina” esowate wygięcie w ten sposób, by wyrównać pola pod i nad linią stałego ciśnienia (tzw. konstrukcja Maxwella).</li>
 <li>Zakres rosnący izotermy między minimum a maksimum (V3) opisuje stany niestabilne mechanicznie, które w przyrodzie makroskopowej się nie zdarzają (układ natychmiast wrze/skrapla się na stałym ciśnieniu p_{sat}).</li>
 </ul>
 <style type="text/css">
@@ -794,9 +920,17 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="../img/phase_diagram_h2o.png" style="width:72.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/phase_diagram_h2o.png" class="quarto-figure quarto-figure-center" style="width:88.0%"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
-<p><img data-src="../img/phase_diagram_he4.png" style="width:72.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/phase_diagram_he4.png" class="quarto-figure quarto-figure-center" style="width:88.0%"></p>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="pytania-kontrolne" class="slide level2">
@@ -805,7 +939,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
 <li><p>Czy zamknięta puszka z napojem w lodówce to układ otwarty czy zamknięty?</p></li>
 <li><p>Czy temperatura w <span class="math inline">\(^\circ C\)</span> jest parametrem intensywnym czy ekstensywnym?</p></li>
 <li><p>Jeśli manometr na oponie pokazuje 2,2 bara, a ciśnienie otoczenia to 1 bar, jakie jest ciśnienie absolutne w oponie?</p>
-<p><span class="fragment" style="color: #7f2d2dff">Odp: <span class="math inline">\(2{,}2 + 1{,}0 = 3{,}2\)</span> bara.</span></p></li>
+<p><span class="fragment answer">Odp: <span class="math inline">\(2{,}2 + 1{,}0 = 3{,}2\)</span> bara.</span></p></li>
 </ol>
 <p>Dziękuję za uwagę!</p>
 
@@ -1005,7 +1139,7 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1032,42 +1166,80 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1117,14 +1289,13 @@ Rysunek&nbsp;2: Teoretyczny Obieg Otta (p-V) dla silnika spalinowego
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

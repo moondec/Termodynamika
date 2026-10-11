@@ -4,6 +4,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import CoolProp.CoolProp as CP
 
+# Styl zgodny ze slajdami (theme/ggtheme.R): paleta, stonowana siatka, przezroczyste tło
+INK, INK2, GRID, ACCENT = '#1d1d1b', '#5a5753', '#dedbd5', '#8b1e2d'
+BLUE, ORANGE, AQUA, VIOLET = '#2a78d6', '#eb6834', '#1baf7a', '#6250d6'
+plt.rcParams.update({
+    'font.size': 14, 'axes.titlesize': 16, 'axes.titleweight': 'bold',
+    'axes.labelsize': 14, 'legend.fontsize': 12,
+    'text.color': INK, 'axes.labelcolor': INK2, 'xtick.color': INK2, 'ytick.color': INK2,
+    'axes.edgecolor': GRID, 'axes.spines.top': False, 'axes.spines.right': False,
+    'grid.color': GRID, 'grid.linewidth': 0.6,
+    'figure.facecolor': 'none', 'axes.facecolor': 'none',
+    'legend.frameon': False, 'savefig.transparent': True,
+})
+
 def plot_h2o():
     fluid = 'Water'
     
@@ -41,29 +54,29 @@ def plot_h2o():
     plt.figure(figsize=(8, 6))
     
     # Plotting
-    plt.plot(T_sat, P_sat, 'b-', linewidth=2, label='Wrzenie (L-G)')
-    plt.plot(T_melt, P_melt, 'k-', linewidth=2, label='Topnienie (S-L)')
-    plt.plot(T_sub, P_sub, 'g--', linewidth=2, label='Sublimacja (S-G)')
-    
+    plt.plot(T_sat, P_sat, color=BLUE, linewidth=2.2, label='Wrzenie (L-G)')
+    plt.plot(T_melt, P_melt, color=INK, linewidth=2.2, label='Topnienie (S-L)')
+    plt.plot(T_sub, P_sub, color=AQUA, linestyle='--', linewidth=2.2, label='Sublimacja (S-G)')
+
     # Critical Point
-    plt.plot(Tc, Pc, 'ro', markersize=8)
-    plt.text(Tc+5, Pc, 'Punkt Krytyczny', verticalalignment='center')
-    
+    plt.plot(Tc, Pc, 'o', color=ACCENT, markersize=9)
+    plt.text(Tc+8, Pc, 'Punkt krytyczny', verticalalignment='center', color=ACCENT, fontweight='bold')
+
     # Triple Point
-    plt.plot(Tt, Pt, 'ko', markersize=8)
-    plt.text(Tt+5, Pt, 'Punkt Potrójny', verticalalignment='top')
-    
+    plt.plot(Tt, Pt, 'o', color=INK, markersize=9)
+    plt.text(Tt+8, Pt, 'Punkt potrójny', verticalalignment='top', fontweight='bold')
+
     # Labels
-    plt.text(350, 1e4, 'GAZ (Para)', fontsize=14, color='blue', alpha=0.6)
-    plt.text(300, 1e7, 'CIECZ', fontsize=14, color='blue', alpha=0.6)
-    plt.text(240, 1e5, 'CIAŁO STAŁE\n(Lód)', fontsize=14, color='blue', alpha=0.6)
-    
+    plt.text(400, 3e4, 'GAZ (para)', fontsize=15, color=INK2)
+    plt.text(320, 1e7, 'CIECZ', fontsize=15, color=INK2)
+    plt.text(215, 1e5, 'CIAŁO STAŁE\n(lód)', fontsize=15, color=INK2)
+
     plt.yscale('log')
     plt.xlabel('Temperatura [K]')
     plt.ylabel('Ciśnienie [Pa]')
-    plt.title('Diagram Fazowy Wody (p-T)')
-    plt.grid(True, which="both", ls="-", alpha=0.2)
-    plt.legend()
+    plt.title('Diagram fazowy wody (p–T)')
+    plt.grid(True, which="major", ls="-")
+    plt.legend(loc='lower right')
     
     output_path = 'img/phase_diagram_h2o.png'
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
@@ -119,30 +132,30 @@ def plot_he4():
     plt.figure(figsize=(8, 6))
     
     # Plotting
-    plt.plot(T_sat, P_sat, 'b-', linewidth=2, label='Wrzenie He I')
-    plt.plot(T_sat_II, P_sat_II, color='darkcyan', linestyle='-', linewidth=2, label='Wrzenie He II')
-    plt.plot(T_melt, P_melt, 'k-', linewidth=2, label='Topnienie (Crystal)')
-    plt.plot(T_lambda_line, P_lambda_line, 'r--', linewidth=2, label='Linia Lambda')
-    
-    # Critical Point
-    plt.plot(Tc, Pc, 'ro', markersize=8)
-    plt.text(Tc+0.1, Pc, 'Punkt Krytyczny', verticalalignment='center')
-    
-    # Lambda Point
-    plt.plot(2.17, 5040, 'mo', markersize=8)
-    plt.text(2.2, 6000, 'Punkt Lambda', verticalalignment='bottom')
+    plt.plot(T_sat, P_sat, color=BLUE, linewidth=2.2, label='Wrzenie He I')
+    plt.plot(T_sat_II, P_sat_II, color=VIOLET, linestyle='-', linewidth=2.2, label='Wrzenie He II')
+    plt.plot(T_melt, P_melt, color=INK, linewidth=2.2, label='Topnienie (S-L)')
+    plt.plot(T_lambda_line, P_lambda_line, color=ORANGE, linestyle='--', linewidth=2.2, label='Linia λ')
 
-    # Move GAZ label up and changing color of He II
-    plt.text(4, 1e5, 'GAZ', fontsize=14, color='blue', alpha=0.6)
-    plt.text(3, 1e5, 'CIECZ (He I)\nNormalna', fontsize=12, color='blue', alpha=0.6)
-    plt.text(1.2, 1e5, 'CIECZ (He II)\nNadciekła', fontsize=12, color='darkcyan', alpha=0.8)
-    plt.text(1.5, 40e5, 'CIAŁO STAŁE', fontsize=14, color='black', alpha=0.6)
-    
+    # Critical Point
+    plt.plot(Tc, Pc, 'o', color=ACCENT, markersize=9)
+    plt.text(Tc+0.1, Pc, 'Punkt krytyczny', verticalalignment='center', color=ACCENT, fontweight='bold')
+
+    # Lambda Point
+    plt.plot(2.17, 5040, 'o', color=ORANGE, markersize=9)
+    plt.text(2.25, 4200, 'Punkt λ', verticalalignment='top', color=ORANGE, fontweight='bold')
+
+    plt.text(4.2, 1e5, 'GAZ', fontsize=15, color=INK2)
+    plt.text(2.6, 2e5, 'CIECZ He I\n(normalna)', fontsize=13, color=INK2)
+    plt.text(1.05, 2e5, 'CIECZ He II\n(nadciekła)', fontsize=13, color=VIOLET)
+    plt.text(3.2, 6e6, 'CIAŁO STAŁE', fontsize=15, color=INK2)
+
     plt.yscale('log')
     plt.xlabel('Temperatura [K]')
     plt.ylabel('Ciśnienie [Pa]')
-    plt.title('Diagram Fazowy Hel-4 (p-T)')
-    plt.grid(True, which="both", ls="-", alpha=0.2)
+    plt.title('Diagram fazowy helu-4 (p–T)')
+    plt.ylim(2e3, 1.5e7)
+    plt.grid(True, which="major", ls="-")
     plt.legend(loc='lower right')
     
     output_path = 'img/phase_diagram_he4.png'

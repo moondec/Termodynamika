@@ -6,8 +6,8 @@
 <script src="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="01_Parametry_i_Gazy_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="01_Parametry_i_Gazy_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_Parametry_i_Gazy_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="01_Parametry_i_Gazy_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>Ćwiczenie 1: Parametry Stanu i Gazy Doskonałe</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-d4cf13167e7aae231ddf91befd63bd72.css">
+  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-09f1e2816b0e521301f231100972f65d.css">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -124,21 +124,37 @@
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   <style>
+
   body { background-color: #1a1a1a; }
+
   .reveal .slide-background-content {
+
       background-image: url("../img/background0.png") !important;
+
       background-size: contain !important;
+
       background-repeat: no-repeat !important;
+
       background-position: center center !important;
+
       opacity: 0.35 !important;
+
   }
+
   .reveal .backgrounds .slide-background:nth-child(1) .slide-background-content {
+
       background-image: none !important;
+
       background-color: white !important;
+
       opacity: 1 !important;
+
   }
+
   </style>
+
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -294,7 +310,7 @@
 <div class="fragment">
 <h3 id="analiza">Analiza:</h3>
 <ul>
-<li>Ciśnienie próbne: <span class="math inline">\(p_{prob} = 1.5 \cdot p_{rob} = 1.5 \cdot 8.5 = \mathbf{12.75 \text{ bar}}\)</span> (nadciśnienie; <span class="math inline">\(p_{rob} = p_{man}\)</span>).</li>
+<li>Ciśnienie próbne liczy się od ciśnienia dopuszczalnego <span class="math inline">\(PS\)</span> (konstrukcyjnego), nie roboczego. Założenie: <span class="math inline">\(PS = 8.5 \text{ bar}\)</span> (zbiornik prosty, dyrektywa 2014/29/UE): <span class="math inline">\(p_{prob} = 1.5 \cdot PS = 1.5 \cdot 8.5 = \mathbf{12.75 \text{ bar}}\)</span> (nadciśnienie).</li>
 <li>Gęstość wody <span class="math inline">\(\rho_w \approx 1000 \text{ kg/m}^3\)</span> (w <span class="math inline">\(20^\circ\text{C}\)</span>: <span class="math inline">\(998 \text{ kg/m}^3\)</span>; praktycznie niezależna od ciśnienia – ciecz praktycznie nieściśliwa).</li>
 <li>Masa wody: <span class="math inline">\(m_w = \rho_w \cdot V = 1000 \cdot 5 = 5000 \text{ kg} = 5 \text{ t}\)</span>.</li>
 </ul>
@@ -464,7 +480,7 @@
 </section>
 <section id="zadanie-projektowe-1.3-odczyt-dokumentacji-zagranicznej" class="slide level2">
 <h2><i class="bi bi-thermometer-half"></i> Zadanie Projektowe 1.3: Odczyt Dokumentacji Zagranicznej</h2>
-<p>W starej dokumentacji z USA znaleziono informację, że zawór bezpieczeństwa otwiera się (temperatura otwarcia) przy <span class="math inline">\(t = 250^\circ\text{F}\)</span> (Fahrenheita). Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to <span class="math inline">\(140^\circ\text{C}\)</span>?</p>
+<p>W starej dokumentacji z USA znaleziono informację, że termiczny zawór bezpieczeństwa (temperaturowo-ciśnieniowy, T&amp;P) otwiera się przy <span class="math inline">\(t = 250^\circ\text{F}\)</span> (Fahrenheita). Czy ten zawór nadaje się do instalacji, gdzie maksymalna temperatura procesu to <span class="math inline">\(140^\circ\text{C}\)</span>?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Konwersja skal temperatur:</strong> <span class="math display">\[ t(^\circ\text{C}) = \frac{5}{9} \cdot (t(^\circ\text{F}) - 32) = \frac{t(^\circ\text{F}) - 32}{1.8} \]</span></p>
@@ -704,7 +720,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -778,14 +794,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

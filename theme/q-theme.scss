@@ -9,14 +9,23 @@ $font-family-sans-serif: "Lato", sans-serif !default;
 $font-family-serif: "Lato", serif !default;
 $font-family-monospace: "Fira Mono", monospace !default;
 
+// paleta prezentacji (jasna; tła slajdów z teksturą pozostają w nagłówku .qmd)
+$accent:   #8b1e2d;   // bordo – akcent (ikony nagłówków, linki, odpowiedzi)
+$ink:      #1d1d1b;   // tekst główny
+$ink-2:    #5a5753;   // tekst pomocniczy
+$rule:     rgba(139, 30, 45, 0.28);
+
 // colors
 $body-bg: #fff !default;
-$body-color: #000 !default;
-$link-color: #00008b !default;
+$body-color: $ink !default;
+$link-color: $accent !default;
+$presentation-heading-color: $ink !default;
+$presentation-h3-font-size: 1.15em !default;
 $code-block-bg: #f2f2f2;
 $code-block-font-size: 0.7em;
 
-$presentation-font-smaller: 0.7rem;
+// 0.7 (bez jednostki) – Quarto mnoży tę wartość przez em; "0.7rem" dawało błędny CSS
+$presentation-font-smaller: 0.7;
 
 /*-- scss:rules --*/
 
@@ -28,6 +37,42 @@ h1 {
 .author, .date {
   font-size: 34px;
 }
+
+/* Nagłówki slajdów: cienka bordowa linia, ikona w kolorze akcentu */
+.reveal .slide h2 {
+  padding-bottom: 0.12em;
+  border-bottom: 3px solid $rule;
+  margin-bottom: 0.45em;
+}
+.reveal .slide h2 .bi { color: $accent; margin-right: 0.15em; }
+.reveal .slide h3 { font-weight: 700; margin-bottom: 0.3em; }
+.reveal .slide h3 .bi { color: $accent; margin-right: 0.1em; }
+
+/* Panele informacyjne: jasna podkładka + kolorowa krawędź z lewej (bez cieni) */
+.reveal .panel {
+  background: #f7f6f3;
+  border-left: 6px solid $accent;
+  border-radius: 6px;
+  padding: 0.45em 0.7em;
+  margin: 0.3em 0;
+}
+.reveal .panel-blue   { background: #eef4fb; border-left-color: #2a78d6; }
+.reveal .panel-amber  { background: #fff4e3; border-left-color: #eb6834; }
+.reveal .panel-green  { background: #ecf7ee; border-left-color: #1f9d55; }
+.reveal .panel-violet { background: #f1effb; border-left-color: #6250d6; }
+.reveal .panel > :last-child { margin-bottom: 0; }
+
+/* Odpowiedzi do pytań kontrolnych, drobne notatki, podpisy rysunków */
+.reveal .answer { color: $accent; font-weight: 700; }
+.reveal .small-note { font-size: 0.65em; color: $ink-2; }
+.reveal .nowrap { white-space: nowrap; }
+.reveal .slide figure > figcaption,
+.reveal .slide .quarto-figure figcaption { font-size: 0.6em; color: $ink-2; text-align: center; }
+
+/* Tabele: lekkie linie, wyrównane liczby */
+.reveal table { font-size: 0.8em; }
+.reveal table th { border-bottom: 2px solid $rule; }
+.reveal table td, .reveal table th { padding: 0.25em 0.6em; font-variant-numeric: tabular-nums; }
 
 /* Diagramy mermaid: ramka .mmd-fit o zadanej wysokości, SVG skaluje się do niej (proporcjonalnie) */
 .mmd-fit { margin: 0.2em auto; }
