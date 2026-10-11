@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -45,12 +45,14 @@ format:
         </style>
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: concave
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W10)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -61,25 +63,22 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(ggplot2)
+#| label: setup
+#| include: false
 library(ggplot2)
 library(patchwork)
 library(reticulate)
 use_virtualenv("~/.virtualenvs/termo", required = TRUE)
 
-# --- GLOBAL STYLING FOR PLOTS ---
-theme_thermo <- function() {
-  theme_minimal(base_size = 18) +
-  theme(
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 20),
-    axis.title = element_text(face = "italic", size = 16),
-    panel.grid.minor = element_blank()
-  )
-}
-theme_set(theme_thermo())
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+
+# Kolory semantyczne obiegu: praca (turbina/pompa), ciepło doprowadzone, ciepło odprowadzone
+col_work <- pal_slides[1]
+col_qin  <- pal_slides[2]
+col_qout <- pal_slides[3]
+col_dome <- "#9a9690"
 ```
 
 
@@ -92,11 +91,9 @@ theme_set(theme_thermo())
 5.  **Regeneracja Podgrzewaczowa** (Regeneration)
 6.  **Układy Gazowo-Parowe** (CCGT)
 
----
+## <i class="bi bi-cloud-fog"></i> 1. Dlaczego Para Wodna?
 
-## <i class="bi bi-cloud-fog"></i> 1. Dlaczego Para Wodna? 
- 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Siłownie parowe produkują ok. 55–60% elektryczności na świecie (węgiel, atom, biomasa, część parowa bloków gazowo-parowych; Ember 2023).
 Woda jest tania, nietoksyczna i ma **ogromne ciepło parowania**.
 :::
@@ -133,39 +130,41 @@ Generuje pracę *lₜ*`"]
 Oddaje ciepło *qₒᵤₜ*`"]
     S --> P
     
-    style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
-    style T fill:#fff3e0,stroke:#f39c12,stroke-width:2px
-    style S fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
-    style P fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
-    
-    linkStyle default stroke-width:2px,fill:none,stroke:black
+    style K fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style T fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style S fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style P fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+
+    linkStyle default stroke-width:2px,fill:none,stroke:#5a5753
 ```
 :::
 
 :::
 :::
 
----
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota dla Pary Wodnej
 
-## <i class="bi bi-arrow-repeat"></i> Obieg Carnota dla Pary Wodnej 
-
-> Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.
+::::: columns
+::: {.column width="58%"}
+::: {.panel .panel-amber}
+Obieg Carnota jest teoretycznym maksimum sprawności, ale w praktyce jest niemożliwy do zrealizowania dla pary wodnej.
+:::
 
 W teorii para musiałaby być skraplana tylko częściowo, **a następnie para mokra (mieszanina dwufazowa) sprężana izentropowo do cieczy nasyconej przy ciśnieniu kotła** (pkt $3' \to 4'$), co jest niemożliwe w praktyce. Sprężanie samej cieczy w pompie to już obieg Rankine'a.
-
-::: {style="text-align: center;"}
-![](../img/carnot_pw.png){width=22%}
-
-::: {style="font-size: 0.6em; color: gray;"}
-Źródło: "Termodynamika Techniczna" Wiśniewski (2017)
-:::
 :::
 
----
+::: {.column width="42%"}
+::: {.center-text}
+![](../img/carnot_pw.png){width="62%"}
+
+[Źródło: "Termodynamika Techniczna" Wiśniewski (2017)]{.small-note}
+:::
+:::
+:::::
 
 ## <i class="bi bi-arrow-repeat"></i> 2. Obieg Clausiusa-Rankine'a (C-R) {style="font-size: 0.95em;"}
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieństwie do Otto/Diesla, zachodzi tu **zmiana fazy** czynnika.
 :::
 
@@ -173,7 +172,7 @@ Jest to obieg porównawczy dla elektrowni parowych i jądrowych. W przeciwieńst
 Jest to praktyczna modyfikacja obiegu Carnota dla pary: para jest skraplana całkowicie, a pompa spręża samą ciecz.
 :::
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber .fragment}
 Wykres h-s (Molliera) jest kluczowy do analizy tego obiegu, ponieważ praca techniczna i ciepło są odcinkami entalpii ($\Delta h$).
 
 ::: incremental
@@ -183,11 +182,9 @@ Wykres h-s (Molliera) jest kluczowy do analizy tego obiegu, ponieważ praca tech
 :::
 :::
 
-::: {.fragment .callout-note appearance="simple" style="font-size: 1.1em; color: navy;"}
+::: {.fragment .callout-note appearance="simple"}
 Praca pompy jest zwykle pomijalnie mała.
 :::
-
----
 
 ## <i class="bi bi-graph-up"></i> Wykres T-s dla C-R {style="font-size: 0.9em;"}
 
@@ -358,10 +355,13 @@ cycle_lines = pd.concat([proc_12, proc_23, proc_34, proc_41])
 ```
 
 ```{r}
-#| label: rankine-ts
+#| label: fig-rankine-ts
+#| fig-cap: "Rzeczywisty obieg Rankine'a na wykresie T-s (CoolProp)"
 #| echo: false
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 5.3
+#| out-width: "95%"
+#| fig-align: center
 #| warning: false
 #| message: false
 
@@ -378,47 +378,41 @@ p4 <- points[points$point == "4", ]
 
 ggplot() +
     # Krzywa nasycenia (Dzwon)
-    geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1, linetype = "solid") +
-    annotate("text", x = 4.43, y = 647 + 20, label = "Punkt Krytyczny", size = 6, fontface = "italic") +
+    geom_line(data = dome, aes(x = s, y = T), color = col_dome, linewidth = 1, linetype = "solid") +
+    annotate("text", x = 4.43, y = 647 + 20, label = "Punkt Krytyczny", size = 6, fontface = "italic", color = col_ink2) +
 
     # Linie Obiegu
-    geom_path(data = cycle, aes(x = s, y = T, color = id, group = id), size = 1.5) +
-    
+    geom_path(data = cycle, aes(x = s, y = T, color = id, group = id), linewidth = 1.4) +
+
     # Strzałki (ręcznie dla kluczowych procesów)
     # Turbina
-    annotate("segment", x = p3$s, y = p3$T, xend = p4$s, yend = p4$T, 
-             color = "orange", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+    annotate("segment", x = p3$s, y = p3$T, xend = p4$s, yend = p4$T,
+             color = col_work, linewidth = 1.4, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
     # Skraplacz
-    annotate("segment", x = p4$s, y = p4$T, xend = p1$s, yend = p1$T, 
-             color = "cyan3", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+    annotate("segment", x = p4$s, y = p4$T, xend = p1$s, yend = p1$T,
+             color = col_qout, linewidth = 1.4, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
 
     # Punkty węzłowe
-    geom_point(data = points, aes(x = s, y = T), size = 4) +
+    geom_point(data = points, aes(x = s, y = T), size = 4, color = col_ink) +
 
     # Opisy punktów
-    annotate("text", x = p1$s - 0.2, y = p1$T - 10, label = "1", size = 5, fontface = "bold") +
-    annotate("text", x = p2$s - 0.2, y = p2$T + 15, label = "2", size = 5, fontface = "bold") +
-    annotate("text", x = p3$s, y = p3$T + 20, label = "3", size = 5, fontface = "bold") +
-    annotate("text", x = p4$s + 0.2, y = p4$T, label = "4", size = 5, fontface = "bold") +
+    annotate("text", x = p1$s - 0.2, y = p1$T - 10, label = "1", size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p2$s - 0.2, y = p2$T + 15, label = "2", size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p3$s, y = p3$T + 20, label = "3", size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p4$s + 0.2, y = p4$T, label = "4", size = 5, fontface = "bold", color = col_ink) +
 
     # Opisy Procesów
-    annotate("text", x = 3.5, y = 600, label = "Kocioł (q['in'])", color = "red", size = 6, fontface = "bold", parse = TRUE) +
-    annotate("text", x = (p3$s + p4$s)/2 + 0.3, y = (p3$T + p4$T)/2, label = "Turbina", color = "orange", size = 6, fontface = "bold", angle = -90) +
-    annotate("text", x = (p1$s + p4$s)/2, y = p1$T - 40, label = "Skraplacz (q['out'])", color = "cyan3", size = 6, fontface = "bold", parse = TRUE) +
+    annotate("text", x = 3.5, y = 600, label = "Kocioł (q['in'])", color = col_qin, size = 6, fontface = "bold", parse = TRUE) +
+    annotate("text", x = (p3$s + p4$s)/2 + 0.3, y = (p3$T + p4$T)/2, label = "Turbina", color = col_work, size = 6, fontface = "bold", angle = -90) +
+    annotate("text", x = (p1$s + p4$s)/2, y = p1$T - 40, label = "Skraplacz (q['out'])", color = col_qout, size = 6, fontface = "bold", parse = TRUE) +
 
-    scale_color_manual(values = c("1-2" = "blue", "2-3" = "red", "3-4" = "orange", "4-1" = "cyan3")) +
+    scale_color_manual(values = c("1-2" = col_work, "2-3" = col_qin, "3-4" = col_work, "4-1" = col_qout)) +
     guides(color = "none") +
-    
-    theme_thermo() +
     labs(
-        title = "Rzeczywisty Obieg Rankine'a (T-s)",
-        subtitle = "Z uwzględnieniem podgrzewania, wrzenia i przegrzewania (CoolProp)",
         x = expression(s ~ "[kJ/(kg·K)]"),
         y = expression(T ~ "[K]")
     ) +
-    theme(
-        axis.title = element_text(size = 20), axis.text = element_text(size = 14)
-    )
+    theme_slides(18)
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
@@ -442,7 +436,6 @@ $$ \eta_{\text{C-R}} = \frac{l_{\text{turbiny}} - l_{\text{pompy}}}{q_{\text{dos
 :::
 ::::
 
----
 
 ## <i class="bi bi-graph-up"></i> Wykres h-s (Molliera) dla C-R 
 
@@ -451,14 +444,15 @@ $$ \eta_{\text{C-R}} = \frac{l_{\text{turbiny}} - l_{\text{pompy}}}{q_{\text{dos
 ::: {.column width="60%"}
 
 ```{r}
-#| label: rankine-hs
+#| label: fig-rankine-hs
+#| fig-cap: "Obieg Rankine'a na wykresie h-s (praca pompy 1-2 przeskalowana)"
 #| echo: false
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 5.3
+#| out-width: "95%"
+#| fig-align: center
 #| warning: false
 #| message: false
-
-library(ggplot2)
 
 # --- 1. DOME (REALISTIC) ---
 s_liq_real <- c(0.0, 1.3, 2.3, 3.25, 4.43)
@@ -548,46 +542,44 @@ df_41 <- rbind(p4, p1)
 
 ggplot() +
     # Dome
-    geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
-    geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
-    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
-    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = "gray50") + # Adjusted label pos
+    geom_line(data = dome_liq_df, aes(x = s, y = h), color = col_dome, linewidth = 1) +
+    geom_line(data = dome_vap_df, aes(x = s, y = h), color = col_dome, linewidth = 1) +
+    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = col_ink2) +
+    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = col_ink2) + # Adjusted label pos
 
     # 1-2 Pump
-    geom_path(data = df_12, aes(x = s, y = h), color = "blue", size = 2, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+    geom_path(data = df_12, aes(x = s, y = h), color = col_work, linewidth = 1.6, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
 
     # 2-3 Boiler (Heating + Evap + Superheat)
-    geom_path(data = df_22p, aes(x = s, y = h), color = "red", size = 1.5) +
-    geom_path(data = df_2p3pp, aes(x = s, y = h), color = "red", size = 1.5) +
-    geom_path(data = df_3pp3, aes(x = s, y = h), color = "red", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
+    geom_path(data = df_22p, aes(x = s, y = h), color = col_qin, linewidth = 1.4) +
+    geom_path(data = df_2p3pp, aes(x = s, y = h), color = col_qin, linewidth = 1.4) +
+    geom_path(data = df_3pp3, aes(x = s, y = h), color = col_qin, linewidth = 1.4, arrow = arrow(length = unit(0.3, "cm"), ends = "last")) +
 
     # 3-4 Turbine
-    geom_path(data = df_34, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.5, "cm"), ends = "last")) +
+    geom_path(data = df_34, aes(x = s, y = h), color = col_work, linewidth = 1.6, arrow = arrow(length = unit(0.5, "cm"), ends = "last")) +
 
     # 4-1 Condenser
-    geom_path(data = df_41, aes(x = s, y = h), color = "cyan3", size = 1.5) + # Arrow at end usually overlaps with 1
+    geom_path(data = df_41, aes(x = s, y = h), color = col_qout, linewidth = 1.4) + # Arrow at end usually overlaps with 1
 
     # Points
     annotate("point",
         x = c(p1$s, p2$s, p3$s, p4$s),
-        y = c(p1$h, p2$h, p3$h, p4$h), size = 4
+        y = c(p1$h, p2$h, p3$h, p4$h), size = 4, color = col_ink
     ) +
 
     # Labels
-    annotate("text", x = p1$s - 0.2, y = p1$h, label = "1", size = 6, fontface = "bold") +
-    annotate("text", x = p2$s - 0.2, y = p2$h, label = "2", size = 6, fontface = "bold") +
-    annotate("text", x = p3$s, y = p3$h + 150, label = "3", size = 6, fontface = "bold") +
-    annotate("text", x = p4$s, y = p4$h - 150, label = "4", size = 6, fontface = "bold") +
+    annotate("text", x = p1$s - 0.2, y = p1$h, label = "1", size = 6, fontface = "bold", color = col_ink) +
+    annotate("text", x = p2$s - 0.2, y = p2$h, label = "2", size = 6, fontface = "bold", color = col_ink) +
+    annotate("text", x = p3$s, y = p3$h + 150, label = "3", size = 6, fontface = "bold", color = col_ink) +
+    annotate("text", x = p4$s, y = p4$h - 150, label = "4", size = 6, fontface = "bold", color = col_ink) +
 
     # process labels
-    annotate("text", x = (p2$s + p3pp$s) / 2, y = (p2$h + p3pp$h) / 2 + 200, label = "'q'['in']~'(Izobara)'", color = "red", angle = 25, parse = TRUE) +
-    annotate("text", x = (p4$s + p1$s) / 2, y = (p4$h + p1$h) / 2 - 100, label = "'q'['out']~'(Izobara)'", color = "cyan3", angle = 15, parse = TRUE) +
+    annotate("text", x = (p2$s + p3pp$s) / 2, y = (p2$h + p3pp$h) / 2 + 200, label = "'q'['in']~'(Izobara)'", color = col_qin, size = 5, angle = 25, parse = TRUE) +
+    annotate("text", x = (p4$s + p1$s) / 2, y = (p4$h + p1$h) / 2 - 100, label = "'q'['out']~'(Izobara)'", color = col_qout, size = 5, angle = 15, parse = TRUE) +
     labs(
-        title = "Obieg Rankine'a: Wykres h-s (Molliera)",
-        # subtitle="Wyraźnie widoczna praca pompy (przeskalowana) i krzywizny izobar",
         x = expression(s ~ "[kJ/(kg·K)]"), y = expression(h ~ "[kJ/kg]")
     ) +
-    theme_thermo()
+    theme_slides(18)
 ```
 
 ::: {.fragment .callout-warning .pulsing-warning title="Uwaga" style="font-size: 0.95em;"}
@@ -605,7 +597,7 @@ Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ wo
 
 2.  **Rozprężanie (Ekspansja) w turbinie:**
     W przypadku idealnym ($s=const$) proces w turbinie jest linią pionową skierowaną w dół.
-    
+
 3.  **Łatwy odczyt spadku entalpii:**
     $$ l_t = h_3 - h_4 $$
     To jest kluczowa wielkość dla projektanta turbiny.
@@ -614,8 +606,6 @@ Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ wo
 :::
 ::::
 
----
-
 ## <i class="bi bi-arrow-repeat"></i> Rzeczywisty obieg Rankine'a {style="font-size: 0.9em;"}
 
 ::: {.columns}
@@ -623,15 +613,13 @@ Punkty **1-2** w rzeczywistości niemal nakładają się na siebie, ponieważ wo
 ::: {.column width="50%"}
 ![](../img/rankine_rzeczywisty.png)
 
-::: {style="font-size: 0.6em; color: gray;"}
-Źródło: "Termodynamika Techniczna" Wiśniewski (2017). Oznaczenia na rysunku → w wykładzie: 1 → 3, 2s → 4s, 2 → 4, (3,4) → (1,2).
-:::
+[Źródło: "Termodynamika Techniczna" Wiśniewski (2017). Oznaczenia na rysunku → w wykładzie: 1 → 3, 2s → 4s, 2 → 4, (3,4) → (1,2).]{.small-note}
 :::
 
 ::: {.column width="50%"}
 ::: {.fragment}
 
-::: {.mmd-fit style="height: 720px;"}
+::: {.mmd-fit style="height: 640px;"}
 ```{mermaid}
 %%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
 
@@ -651,18 +639,17 @@ h = 2291 kJ/kg`"]
     A -->|"Rozprężanie<br>Rzeczywiste<br>(w prawo)"| C
     B -.->|"Strata pracy<br>(wzrost Δs)"| C
     
-    style A fill:#ffcccc,stroke:#e74c3c,stroke-width:2px
-    style B fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,stroke-dasharray: 5 5
-    style C fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    style A fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style B fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px,stroke-dasharray: 5 5
+    style C fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
 ```
 :::
 
 :::
 :::
 :::
----
 
-## <i class="bi bi-percent"></i> Sprawność Izentropowa Turbiny ($\eta_{is}$) 
+## <i class="bi bi-percent"></i> Sprawność Izentropowa Turbiny ($\eta_{is}$)
 
 Rzeczywista turbina nie jest idealna — występują tarcie, straty cieplne i turbulencje. Definiujemy sprawność izentropową jako stosunek pracy rzeczywistej do idealnej:
 
@@ -686,8 +673,6 @@ Na wykresie h-s linia rozprężania **odchyla się w prawo** (wzrost entropii), 
 :::
 :::
 
----
-
 ## <i class="bi bi-bookmark"></i> 3. Problem Wilgotności (Erozja) {style="font-size: 0.9em;"}
 
 ::: {.callout-caution title="Ograniczenia"}
@@ -710,19 +695,15 @@ Musimy przesunąć punkt 4 w prawo. Jak?
 2.  Zastosować **Przegrzew Wtórny**.
 :::
 
----
-
 ## <i class="bi bi-arrow-repeat"></i> 4. Przegrzew Wtórny (Reheat) {style="font-size: 0.9em;"}
- 
- 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+
+::: {.panel .panel-blue}
 1.  Para rozpręża się w turbinie Wysokoprężnej (HP) tylko częściowo (nie wchodzi głęboko pod kopułę).
 2.  Wracamy z parą do kotła i podgrzewamy ją ponownie do $T_{max}$.
 3.  Para wraca do turbiny Niskoprężnej (LP) i rozpręża się do ciśnienia skraplacza.
 :::
 
-
-::: {.mmd-fit style="height: 200px;"}
+::: {.mmd-fit style="height: 220px;"}
 ```{mermaid}
 %%| fig-align: center
 %%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
@@ -742,25 +723,23 @@ Ciepło *qₒᵤₜ*`"]
 Praca *lₚ*`"]
     P --> K
     
-    style K fill:#ffebee,stroke:#e74c3c,stroke-width:2px
-    style K2 fill:#ffebee,stroke:#e74c3c,stroke-width:2px
-    style HP fill:#fff3e0,stroke:#f39c12,stroke-width:2px
-    style LP fill:#fff3e0,stroke:#f39c12,stroke-width:2px
-    style S fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
-    style P fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
-    
-    linkStyle default stroke-width:2px,fill:none,stroke:black
+    style K fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style K2 fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style HP fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style LP fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style S fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style P fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+
+    linkStyle default stroke-width:2px,fill:none,stroke:#5a5753
 ```
 :::
 
-::: {.fragment .callout-tip title="**Zalety:**" style="font-size: 0.6em; color: navy;"}
+::: {.fragment .callout-tip title="**Zalety:**"}
 *   Punkt końcowy przesuwa się w prawo (para suchsza).
 *   Zwiększa się średnia temperatura dostarczania ciepła ($\eta \uparrow$).
 *   Większa praca z 1 kg pary (dwa etapy ekspansji).
 
 :::
-
----
 
 ## <i class="bi bi-graph-up"></i> Wykres h-s: Przegrzew Wtórny {style="font-size: 0.95em;"}
 
@@ -769,14 +748,15 @@ Praca *lₚ*`"]
 ::: {.column width="60%"}
 
 ```{r}
-#| label: reheat-hs
+#| label: fig-reheat-hs
+#| fig-cap: "Obieg z przegrzewem wtórnym na wykresie h-s: punkt 4 przesuwa się w prawo (wzrost x)"
 #| echo: false
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 5.3
+#| out-width: "95%"
+#| fig-align: center
 #| warning: false
 #| message: false
-
-library(ggplot2)
 
 # --- 1. DOME (SAME AS BEFORE) ---
 s_liq_real <- c(0.0, 1.3, 2.3, 3.25, 4.43)
@@ -830,43 +810,41 @@ df_no_rh <- rbind(p3a, p4_old)
 
 ggplot() +
     # Dome
-    geom_line(data = dome_liq_df, aes(x = s, y = h), color = "gray50", size = 1) +
-    geom_line(data = dome_vap_df, aes(x = s, y = h), color = "gray50", size = 1) +
-    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = "gray50") +
-    annotate("point", x = 4.43, y = 2100, size = 3, color = "gray50") +
-    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = "gray50") +
+    geom_line(data = dome_liq_df, aes(x = s, y = h), color = col_dome, linewidth = 1) +
+    geom_line(data = dome_vap_df, aes(x = s, y = h), color = col_dome, linewidth = 1) +
+    annotate("text", x = 8.0, y = 2750, label = "x=1", size = 5, fontface = "italic", color = col_ink2) +
+    annotate("point", x = 4.43, y = 2100, size = 3, color = col_ink2) +
+    annotate("text", x = 4.43, y = 1900, label = "P. Krytyczny", size = 4, fontface = "italic", color = col_ink2) +
 
     # HP Turbine
-    geom_path(data = df_3_3a, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+    geom_path(data = df_3_3a, aes(x = s, y = h), color = col_work, linewidth = 1.6, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
 
     # Reheat
-    geom_path(data = df_3a_3b, aes(x = s, y = h), color = "red", size = 1.5, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+    geom_path(data = df_3a_3b, aes(x = s, y = h), color = col_qin, linewidth = 1.4, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
 
     # LP Turbine
-    geom_path(data = df_3b_4, aes(x = s, y = h), color = "orange", size = 2, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
+    geom_path(data = df_3b_4, aes(x = s, y = h), color = col_work, linewidth = 1.6, arrow = arrow(length = unit(0.4, "cm"), ends = "last")) +
 
     # No Reheat (Comparison)
-    geom_path(data = df_no_rh, aes(x = s, y = h), color = "gray60", size = 1, linetype = "dashed") +
+    geom_path(data = df_no_rh, aes(x = s, y = h), color = col_ink2, linewidth = 1, linetype = "dashed") +
 
     # Labels
     annotate("point",
         x = c(p3$s, p3a$s, p3b$s, p4$s, p4_old$s),
-        y = c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size = 4
+        y = c(p3$h, p3a$h, p3b$h, p4$h, p4_old$h), size = 4, color = col_ink
     ) +
-    annotate("text", x = p3$s + 0.1, y = p3$h + 150, label = "3 (wlot HP)", hjust = 1, size = 5, fontface = "bold") +
-    annotate("text", x = p3a$s - 0.15, y = p3a$h, label = "3a (wylot HP)", hjust = 1, size = 5, fontface = "bold") +
-    annotate("text", x = p3b$s - 0.15, y = p3b$h + 150, label = "3b (wlot LP)", hjust = 0, size = 5, fontface = "bold") +
-    annotate("text", x = p4$s, y = p4$h - 150, label = "4 (wylot LP)", size = 5, fontface = "bold") +
-    annotate("text", x = p4_old$s - 0.1, y = p4_old$h - 150, label = "4'", size = 5, fontface = "bold", color = "gray60") +
-    annotate("text", x = 4.8, y = p3b$h - 200, label = "Przegrzew Wtórny", color = "red", fontface = "bold") +
-    annotate("segment", x = 6.1, y = p3b$h - 200, xend = (p3a$s + p3b$s) / 2 - 0.1, yend = (p3a$h + p3b$h) / 2 - 50, color = "red", size = 1) +
-    annotate("text", x = 1.5, y = 3500, label = "HP – część wysokoprężna\nLP – część niskoprężna", hjust = 0, size = 4, color = "gray30", fontface = "italic") +
+    annotate("text", x = p3$s + 0.1, y = p3$h + 150, label = "3 (wlot HP)", hjust = 1, size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p3a$s - 0.15, y = p3a$h, label = "3a (wylot HP)", hjust = 1, size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p3b$s - 0.15, y = p3b$h + 150, label = "3b (wlot LP)", hjust = 0, size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p4$s, y = p4$h - 150, label = "4 (wylot LP)", size = 5, fontface = "bold", color = col_ink) +
+    annotate("text", x = p4_old$s - 0.1, y = p4_old$h - 150, label = "4'", size = 5, fontface = "bold", color = col_ink2) +
+    annotate("text", x = 4.8, y = p3b$h - 200, label = "Przegrzew Wtórny", color = col_qin, size = 5, fontface = "bold") +
+    annotate("segment", x = 6.1, y = p3b$h - 200, xend = (p3a$s + p3b$s) / 2 - 0.1, yend = (p3a$h + p3b$h) / 2 - 50, color = col_qin, linewidth = 0.9) +
+    annotate("text", x = 1.5, y = 3500, label = "HP – część wysokoprężna\nLP – część niskoprężna", hjust = 0, size = 4.5, color = col_ink2, fontface = "italic") +
     labs(
-        title = "Cykl z Przegrzewem Wtórnym",
-        subtitle = expression("Dodatkowe ciepło" ~ q[rh] ~ "i przesunięcie punktu 4 w prawo (" * italic(x) %up% "" * ")"),
         x = expression(s ~ "[kJ/(kg·K)]"), y = expression(h ~ "[kJ/kg]")
     ) +
-    theme_thermo()
+    theme_slides(18)
 ```
 
 :::
@@ -890,16 +868,14 @@ Suchość pary $x_4 > x_{4'}$ (ok. 0,92 vs 0,81).
 :::
 ::::
 
----
-
-
-## <i class="bi bi-recycle"></i> 5. Regeneracja (Podgrzewanie Wody) 
+## <i class="bi bi-recycle"></i> 5. Regeneracja (Podgrzewanie Wody)
 
 ::: {.callout-note appearance="simple"}
 W zwykłym obiegu Rankine'a do kotła trafia zimna woda ze skraplacza (ok. 46 °C przy 0,1 bar).
 To marnotrawstwo spalać węgiel, żeby podgrzewać ją aż do temperatury wrzenia w kotle (ok. 264 °C przy 50 bar).
 :::
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+
+::: {.panel .panel-green}
 **Rozwiązanie:** Upuszczamy część pary z turbiny (zanim wykona pełną pracę) i używamy jej ciepła skraplania do podgrzania wody zasilającej kocioł.
 :::
 
@@ -1050,10 +1026,13 @@ pts = pd.DataFrame({
 
 
 ```{r}
-#| label: regen-ts
+#| label: fig-regen-ts
+#| fig-cap: "Obieg z regeneracją (ideowy): schodkowa ekspansja z oddawaniem ciepła q~r~ przez skraplającą się parę do wody zasilającej"
 #| echo: false
 #| fig-width: 10
-#| fig-height: 7
+#| fig-height: 6.5
+#| out-width: "95%"
+#| fig-align: center
 #| warning: false
 #| message: false
 
@@ -1064,51 +1043,55 @@ sar <- py$df_s_arr
 war <- py$df_w_arr
 p <- py$pts
 
+# Mapowanie nazw kolorów z Pythona na paletę slajdów
+col_map <- c("orange" = col_work, "red" = col_qin, "cyan3" = col_qout)
+dst$color <- unname(col_map[dst$color])
+dwa$color <- unname(col_map[dwa$color])
+col_regen <- pal_slides[6]
+
 ggplot() +
     # Dome
-    geom_line(data = dome, aes(x = s, y = T), color = "gray50", size = 1) +
+    geom_line(data = dome, aes(x = s, y = T), color = col_dome, linewidth = 1) +
 
     # Dome Labels (x=0, x=1)
-    annotate("text", x = 3.4, y = 620, label = "italic(x) == 0", parse = TRUE, color = "gray50", size = 5, angle = 45) +
-    annotate("text", x = 8.5, y = 320, label = "italic(x) == 1", parse = TRUE, color = "gray50", size = 5, angle = -25) +
+    annotate("text", x = 3.4, y = 620, label = "italic(x) == 0", parse = TRUE, color = col_ink2, size = 5, angle = 45) +
+    annotate("text", x = 8.5, y = 320, label = "italic(x) == 1", parse = TRUE, color = col_ink2, size = 5, angle = -25) +
 
     # Critical Point
-    annotate("point", x = 4.43, y = 647.1, size = 3, color = "red") +
-    annotate("text", x = 4.43, y = 670, label = "P. Krytyczny", size = 5, fontface = "bold") +
+    annotate("point", x = 4.43, y = 647.1, size = 3, color = col_accent) +
+    annotate("text", x = 4.43, y = 670, label = "P. Krytyczny", size = 5, fontface = "bold", color = col_ink) +
 
-    # Steam Segments (Orange Sawtooth) - No Arrowheads
-    geom_segment(data = dst, aes(x = x, y = y, xend = xend, yend = yend, color = color), size = 1.5, linetype = "solid") +
+    # Steam Segments (Sawtooth) - No Arrowheads
+    geom_segment(data = dst, aes(x = x, y = y, xend = xend, yend = yend, color = color), linewidth = 1.4, linetype = "solid") +
 
-    # Water Segments (Red Line) - No Arrowheads
-    geom_segment(data = dwa, aes(x = x, y = y, xend = xend, yend = yend, color = color), size = 2, linetype = "solid") +
+    # Water Segments - No Arrowheads
+    geom_segment(data = dwa, aes(x = x, y = y, xend = xend, yend = yend, color = color), linewidth = 1.6, linetype = "solid") +
     scale_color_identity() +
 
     # Green Arrows (Steam Side) - Pointing Down
     geom_segment(
         data = sar, aes(x = x, y = y, xend = xend, yend = yend),
-        color = "chartreuse4", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
+        color = col_regen, linewidth = 1.2, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
     ) +
 
     # Green Arrows (Water Side) - Pointing Down onto line
     geom_segment(
         data = war, aes(x = x, y = y, xend = xend, yend = yend),
-        color = "chartreuse4", size = 1.5, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
+        color = col_regen, linewidth = 1.2, arrow = arrow(length = unit(0.3, "cm"), ends = "last")
     ) +
 
     # Points Labels
-    geom_text(data = p, aes(x = s + c(0, 0, 0, 0.2), y = T + c(20, -20, -20, -15), label = label), size = 6, fontface = "bold") +
+    geom_text(data = p, aes(x = s + c(0, 0, 0, 0.2), y = T + c(20, -20, -20, -15), label = label), size = 6, fontface = "bold", color = col_ink) +
 
     # q_r Labels (Steam Side) - Next to arrows
-    geom_text(data = sar, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = "chartreuse4", size = 6, fontface = "bold") +
+    geom_text(data = sar, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = col_regen, size = 6, fontface = "bold") +
 
     # q_r Labels (Water Side) - Next to arrows
-    geom_text(data = war, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = "chartreuse4", size = 6, fontface = "bold") +
-    theme_thermo() +
+    geom_text(data = war, aes(x = x + 0.2, y = (y + yend) / 2, label = "q[r]"), parse = TRUE, color = col_regen, size = 6, fontface = "bold") +
     labs(
-        title = "Obieg z Regeneracją (Ideowy)",
-        subtitle = expression(atop("Schodkowa ekspansja z oddawaniem ciepła (" * q[r] * ") przez", "skraplającą się parę do wody zasilającej (wzrost entropii).")),
         x = expression(s ~ "[kJ/(kg·K)]"), y = expression(T ~ "[K]")
-    )
+    ) +
+    theme_slides(18)
 ```
 
 
@@ -1127,13 +1110,9 @@ ggplot() +
 :::
 ::::
 
+## <i class="bi bi-fire"></i> 6. Układy Gazowo-Parowe (CCGT)
 
-
----
-
-## <i class="bi bi-fire"></i> 6. Układy Gazowo-Parowe (CCGT) 
-
-##### Combined-cycle power plant
+### Combined-cycle power plant
 
 Połączenie Braytona (W9) i Rankine'a (W10).
 
@@ -1154,20 +1133,11 @@ To obecnie najczystsza technologia spalania paliw kopalnych.
 :::
 
 ::: {.column width="40%"}
-![](../img/coges_diagram.svg.png){width="150%" style="background: white;"}
+![](../img/coges_diagram.svg.png){width="78%" fig-align="center" style="background: white;"}
 
-::: {style="font-size: 0.6em; color: gray;"}
-Źródło: <a href="https://commons.wikimedia.org/wiki/File:COGES-diagram.png">COGES-diagram</a>, <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>, via Wikimedia Commons
-
-:::
-
-::: {style="border: 2px solid #1596ea; padding: 5px; border-radius: 10px; background-color: #30b1e6; font-size: 0.55em;"}
-Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Skraplacz, 4-Pompa, 5-Kocioł/wymiennik ciepła, 6-Turbina gazowa
-:::
+[1 – generatory elektryczne, 2 – turbina parowa, 3 – skraplacz, 4 – pompa, 5 – kocioł odzyskowy (wymiennik ciepła), 6 – turbina gazowa. Źródło: <a href="https://commons.wikimedia.org/wiki/File:COGES-diagram.png">COGES-diagram</a>, <a href="https://en.wikipedia.org/wiki/Public_domain">Public domain</a>, via Wikimedia Commons]{.small-note}
 :::
 ::::
-
----
 
 ## <i class="bi bi-clipboard-check"></i> Podsumowanie W10 {style="font-size: 0.95em;"}
 
@@ -1183,25 +1153,29 @@ Legenda: 1-Generatory elektryczne, 2-Turbina parowa, 3-Skraplacz, 4-Pompa, 5-Koc
 Dlaczego nie stosujemy wprost obiegu Carnota dla pary wodnej? (Dlaczego nie sprężamy pary mokrej w pompie?).
 :::
 
-::: fragment
-**Odpowiedź:** Pompy źle znoszą bąbelki gazu (kawitacja), a sprężanie dwufazowe jest technicznie trudne i energochłonne. Łatwiej skroplić całość i sprężać samą ciecz.
+::: {.fragment .callout-tip title="Odpowiedź"}
+Pompy źle znoszą bąbelki gazu (kawitacja), a sprężanie dwufazowe jest technicznie trudne i energochłonne. Łatwiej skroplić całość i sprężać samą ciecz.
 :::
-  
----
 
-## <i class="bi bi-bookmark"></i> W następnym odcinku (W11)... 
+## <i class="bi bi-bookmark"></i> W następnym odcinku (W11)...
 
-### <span style="color: #2a9d8f;">Chłodnictwo i Pompy Ciepła</span>
+### Chłodnictwo i Pompy Ciepła
 
+::::: columns
+::: {.column width="55%"}
 ::: {.incremental}
 *   **Obiegi Lewobieżne:** Odwracamy strzałki na wykresach!
 *   **II Zasada Termodynamiki w praktyce:** Jak zmusić ciepło do przepływu od ciała zimniejszego do cieplejszego?
 *   **Lodówka vs Pompa Ciepła:** Dlaczego to (termodynamicznie) to samo urządzenie?
 *   Nowe narzędzie inżyniera: **Wykres log p-h**.
 :::
-
-![](../img/pump_v5.gif){width="30%" fig-align="center"}
-
-::: {style="font-size: 0.6em; color: gray;"}
-Źródło: <a href="https://commons.wikimedia.org/wiki/File:Pump_v5.gif">Timpet</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons
 :::
+
+::: {.column width="45%"}
+::: {.center-text}
+![](../img/pump_v5.gif){width="85%"}
+
+[Źródło: <a href="https://commons.wikimedia.org/wiki/File:Pump_v5.gif">Timpet</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons]{.small-note}
+:::
+:::
+:::::

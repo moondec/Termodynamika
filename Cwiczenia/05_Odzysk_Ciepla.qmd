@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -17,7 +17,8 @@ format:
     include-in-header: ../theme/cw-header.html
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: fade
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna – Ćwiczenia (Ć5)"
     width: 1600
@@ -25,23 +26,24 @@ format:
     margin: 0.2
 ---
 
-## <i class="bi bi-buildings"></i> Projekt: Etap 5 – Odzysk Ciepła ze Spalin{.smaller}
+## <i class="bi bi-buildings"></i> Projekt: Etap 5 – Odzysk Ciepła ze Spalin
 
-W zakładzie „Termo-Tech” spaliny z kotła mają temperaturę 300 °C. Inżynier proponuje użyć ich do podgrzewania wody technologicznej.
-Musimy przeanalizować ten proces pod kątem I i II zasady termodynamiki.
+W zakładzie „Termo-Tech” spaliny z kotła mają temperaturę 300 °C. Inżynier proponuje użyć ich do podgrzewania wody technologicznej. Musimy przeanalizować ten proces pod kątem **I i II zasady termodynamiki**.
 
 ::: {.columns}
 ::: {.column width="60%"}
-### Twoje Zadanie:
-1.  Bilans energii wymiennika (I zasada) – Zad. 5.1.
-2.  Generacja entropii i strata egzergii (II zasada) – Zad. 5.2–5.4.
-3.  Przeciwprąd, kaskada, straty do otoczenia – Zad. 5.5–5.7.
+::: {.panel .panel-amber}
+[Twoje zadanie (jak w karcie projektowej)]{.panel-title}
 
-### Dane:
-::: {style="font-size: 1.1em;"}
-*   Spaliny (gorące): $\dot{m}_s = 1$ kg/s, $t_{in} = 300$ °C, $t_{out} = 150$ °C, $c_s \approx 1.0$ kJ/(kg·K)
-*   Woda (zimna): podgrzewana od 20 do 80 °C, $c_w \approx 4.19$ kJ/(kg·K)
-*   Otoczenie (hala): $t = 20$ °C → $T_0 = 293.15$ K
+1.  **5.1** – bilans energii wymiennika (I zasada)
+2.  **5.2–5.4** – generacja entropii i strata egzergii (II zasada)
+3.  **5.5–5.7** – przeciwprąd, kaskada, straty do otoczenia
+:::
+
+::: {.callout-note title="Dane"}
+*   Spaliny (gorące): $\dot{m}_s = 1\ \text{kg/s}$, $t_{in} = 300\ \text{°C}$, $t_{out} = 150\ \text{°C}$, $c_s \approx 1.0\ \text{kJ/(kg·K)}$
+*   Woda (zimna): podgrzewana od 20 do 80 °C, $c_w \approx 4.19\ \text{kJ/(kg·K)}$
+*   Otoczenie (hala): $t = 20\ \text{°C}$ → $T_0 = 293.15\ \text{K}$
 :::
 :::
 ::: {.column width="40%"}
@@ -49,278 +51,323 @@ Musimy przeanalizować ten proces pod kątem I i II zasady termodynamiki.
 :::
 :::
 
----
-
 ## <i class="bi bi-fire"></i> Zadanie 5.1: Bilans Energii (I Zasada)
 
-Ile wody możemy podgrzać?
+Ile wody możemy podgrzać ciepłem odebranym spalinom?
 
-::: {.fragment}
+::: {.columns}
+::: {.column width="45%"}
+::: {.callout-note title="Wzory i dane"}
 $$ \dot{Q} = \dot{m}_s \cdot c_s \cdot (T_{in} - T_{out}) $$
-:::
-
-::: {.fragment}
 $$ \dot{m}_w = \frac{\dot{Q}}{c_w \cdot \Delta t_w} $$
+
+$c_s$ (spaliny) $\approx 1.0\ \text{kJ/(kg·K)}$, $c_w$ (woda) $\approx 4.19\ \text{kJ/(kg·K)}$
+:::
 :::
 
-::: {.fragment}
-**Obliczenia:** $c_s$ (spaliny) $\approx 1.0$ kJ/(kg·K), $c_w$ (woda) $\approx 4.19$ kJ/(kg·K)
+::: {.column width="55%"}
+::: {.panel .panel-blue .fragment}
+[Moc cieplna wymiennika]{.panel-title}
+$$ \dot{Q} = 1 \cdot 1.0 \cdot (300 - 150) $$
+
+[$\dot{Q} = 150\ \text{kW}$]{.answer}
 :::
 
-::: {.fragment}
-$$ \dot{Q} = 1 \cdot 1.0 \cdot (300 - 150) = \mathbf{150\ \text{kW}} $$
+::: {.panel .panel-blue .fragment}
+[Strumień podgrzewanej wody]{.panel-title}
+$$ \dot{m}_w = \frac{150}{4.19 \cdot (80 - 20)} = \frac{150}{251.4} $$
+
+[$\dot{m}_w \approx 0.597\ \text{kg/s}$]{.answer}
+:::
+:::
 :::
 
-::: {.fragment}
-$$ \dot{m}_w = \frac{150}{4.19 \cdot (80 - 20)} = \frac{150}{251.4} \approx \mathbf{0.597\ \text{kg/s}} $$
+::: {.fragment .callout-tip title="Do bilansu entropii (bez zaokrągleń!)"}
+$\dot{m}_w c_w = \dot{Q}/\Delta t_w = 150\,000/60 = 2500\ \text{W/K}$
 :::
 
-::: {.fragment}
-Do bilansu entropii (bez zaokrągleń!): $\dot{m}_w c_w = \dot{Q}/\Delta t_w = 150\,000/60 = 2500$ W/K
-:::
-
----
-
-## <i class="bi bi-dice-5"></i> Zadanie 5.2: Generacja Entropii (II Zasada){.smaller auto-animate="true"}
+## <i class="bi bi-dice-5"></i> Zadanie 5.2: Generacja Entropii (II Zasada) {.small}
 
 ::: {.callout-important}
 Wymiana ciepła przy skończonej różnicy temperatur jest **nieodwracalna**, czyli generuje entropię ($\Delta \dot{S}_{\text{gen}} > 0$).
 :::
 
-::: {.fragment}
-$$ \Delta \dot{S}_{\text{gen}} = \Delta \dot{S}_{\text{spalin}} + \Delta \dot{S}_{\text{wody}} $$
-:::
-
-::: {.fragment}
-$$ \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}} $$
-:::
+$$ \Delta \dot{S}_{\text{gen}} = \Delta \dot{S}_{\text{spalin}} + \Delta \dot{S}_{\text{wody}}, \qquad \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}} $$
 
 ::: {.columns}
 ::: {.column width="50%"}
-::: {.fragment}
-**Spaliny (chłodzenie):**
-$T_{in} = 573.15$ K, $T_{out} = 423.15$ K, $c_s = 1000$ J/(kg·K)
-:::
+::: {.panel .panel-amber .fragment}
+[Spaliny (chłodzenie)]{.panel-title}
+$T_{in} = 573.15\ \text{K}$, $T_{out} = 423.15\ \text{K}$, $c_s = 1000\ \text{J/(kg·K)}$
+$$ \Delta \dot{S}_{\text{spalin}} = 1 \cdot 1000 \cdot \ln\left(\frac{423.15}{573.15}\right) = 1000 \cdot (-0.3034) $$
 
-::: {.fragment}
-$$ \Delta \dot{S}_{\text{spalin}} = 1 \cdot 1000 \cdot \ln\left(\frac{423.15}{573.15}\right) $$
-:::
+[$\Delta \dot{S}_{\text{spalin}} = -303.4\ \text{W/K}$]{.answer}
 
-::: {.fragment}
-$$ \Delta \dot{S}_{\text{spalin}} = 1000 \cdot (-0.3034) = \mathbf{-303.4\ \text{W/K}} $$
-(Entropia spalin maleje, bo oddają ciepło.)
+[Entropia spalin maleje, bo oddają ciepło.]{.small-note}
 :::
 :::
 
 ::: {.column width="50%"}
-::: {.fragment}
-**Woda (grzanie):**
-$T_{in} = 293.15$ K, $T_{out} = 353.15$ K, $\dot{m}_w c_w = 2500$ W/K
-:::
+::: {.panel .panel-blue .fragment}
+[Woda (grzanie)]{.panel-title}
+$T_{in} = 293.15\ \text{K}$, $T_{out} = 353.15\ \text{K}$, $\dot{m}_w c_w = 2500\ \text{W/K}$
+$$ \Delta \dot{S}_{\text{wody}} = 2500 \cdot \ln\left(\frac{353.15}{293.15}\right) = 2500 \cdot 0.1862 $$
 
-::: {.fragment}
-$$ \Delta \dot{S}_{\text{wody}} = 2500 \cdot \ln\left(\frac{353.15}{293.15}\right) $$
-:::
+[$\Delta \dot{S}_{\text{wody}} = +465.5\ \text{W/K}$]{.answer}
 
-::: {.fragment}
-$$ \Delta \dot{S}_{\text{wody}} = 2500 \cdot 0.1862 = \mathbf{+465.5\ \text{W/K}} $$
-(Entropia wody rośnie, bo pobiera ciepło.)
+[Entropia wody rośnie, bo pobiera ciepło.]{.small-note}
 :::
 :::
 :::
 
-## <i class="bi bi-dice-5"></i> Zadanie 5.2: Generacja Entropii (II Zasada){auto-animate="true"}
+## <i class="bi bi-dice-5"></i> Zadanie 5.2 (cd.): Bilans Całkowity
 
-### Bilans Całkowity:
+::: {.panel .panel-blue .panel-center}
+[Generacja entropii w wymienniku]{.panel-title}
+$$ \Delta \dot{S}_{\text{gen}} = \Delta \dot{S}_{\text{spalin}} + \Delta \dot{S}_{\text{wody}} = -303.4 + 465.5 $$
 
-::: {.callout-important style="font-size: 1.5em;"}
-$$ \Delta \dot{S}_{\text{gen}} = -303.4 + 465.5 = \mathbf{+162.1\ \text{W/K}} > 0 $$
-Entropia całkowita wzrosła! Energia została „zdegradowana” (z wysokiej temperatury 300 °C do niskiej 80 °C).
-:::
-
----
-
-## <i class="bi bi-gem"></i> Zadanie 5.3: Strata Egzergii (Twierdzenie Gouy–Stodoli)
-
-Czy to było mądre wykorzystanie ciepła?
-Mogliśmy użyć spalin 300 °C do napędu silnika cieplnego, a użyliśmy ich tylko do podgrzania wody do 80 °C.
-
-**Strata egzergii (twierdzenie Gouy–Stodoli):**
-$$ \dot{B}_{\text{str}} = T_0 \cdot \Delta \dot{S}_{\text{gen}} $$
-$T_0$ – temperatura otoczenia; w karcie: **temperatura hali** $t$, czyli $T_0 = t + 273.15$. Tu $t = 20$ °C → $T_0 = 293.15$ K.
-
-$$ \dot{B}_{\text{str}} = 293.15 \cdot 162.1 = 47\,520\ \text{W} \approx \mathbf{47.52\ \text{kW}} $$
-
-::: {.callout-caution}
-W procesie prostego podgrzewania wody straciliśmy bezpowrotnie ok. **47.5 kW** potencjalnej mocy mechanicznej!
-To cena za nieodwracalność procesu.
-:::
-
----
-
-## <i class="bi bi-arrow-repeat"></i> Zadanie 5.4: Egzergia Ciepła Spalin{.smaller}
-
-Ile pracy moglibyśmy **teoretycznie** uzyskać z ciepła spalin (zamiast tylko grzać wodę)?
-
-Spaliny oddają ciepło w zakresie $573.15 \rightarrow 423.15$ K, a nie w stałej temperaturze. Silnik Carnota liczymy więc dla **średniej temperatury termodynamicznej** spalin (tak samo liczy się ją dla każdego strumienia):
-
-$$ T_{m,s} = \frac{T_{in} - T_{out}}{\ln(T_{in}/T_{out})} = \frac{573.15 - 423.15}{\ln(573.15/423.15)} = \frac{150}{0.3034} \approx \mathbf{494.4\ \text{K}} $$
-
-::: {.fragment}
-**Silnik Carnota** między $T_{m,s} = 494.4$ K a otoczeniem $T_0 = 293.15$ K:
-$$ \eta_C = 1 - \frac{T_0}{T_{m,s}} = 1 - \frac{293.15}{494.4} \approx \mathbf{40.7\%} $$
-:::
-
-::: {.fragment}
-**Maksymalna praca (egzergia ciepła spalin):**
-$$ \dot{B}_{\text{max}} = \eta_C \cdot \dot{Q} = 0.407 \cdot 150 \approx \mathbf{61.05\ \text{kW}} $$
-To samo daje $\dot{Q} - T_0 \, |\Delta \dot{S}_{\text{spalin}}| = 150 - 293.15 \cdot 0.30342 = 61.05$ kW.
-:::
-
----
-
-## <i class="bi bi-arrow-repeat"></i> Zadanie 5.4 (cd.): Sprawność Egzergetyczna Wymiennika
-
-Egzergia oddana przez spaliny: $\dot{B}_{\text{max}} = 61.05$ kW. Wymiennik nie produkuje pracy – ta egzergia albo trafia do wody, albo jest niszczona:
-
-::: {.fragment}
-*   zniszczona w wymienniku (Zad. 5.3): $\dot{B}_{\text{str}} = 47.52$ kW,
-*   przekazana do wody (egzergia ciepłej wody): $61.05 - 47.52 \approx 13.5$ kW.
-:::
-
-::: {.fragment}
-**Sprawność egzergetyczna wymiennika:**
-$$ \psi = 1 - \frac{\dot{B}_{\text{str}}}{\dot{B}_{\text{max}}} = 1 - \frac{47.52}{61.05} \approx \mathbf{22.2\%} $$
-:::
-
-::: {.fragment .callout-warning title="Uwaga" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; z-index: 10; background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3); font-size: 1.3em;"}
-Tylko ok. **22%** egzergii oddanej przez spaliny trafia do wody. Reszta jest niszczona przez nieodwracalność wymiany ciepła.
-:::
-
----
-
-## <i class="bi bi-building-gear"></i> Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy{.smaller}
-
-Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprądowy**, który pozwala podgrzać wodę wyżej – do 130 °C – przy tym samym schłodzeniu spalin (ta sama moc $\dot{Q} = 150$ kW). Jak to wpływa na generację entropii?
-
-::: {.columns}
-::: {.column width="50%"}
-![](../img/he_temp_profile_wsp.png){width="70%" fig-align="center"}
-**Współprądowy:**
-
-*   Spaliny: 300 → 150 °C
-*   Woda: 20 → 80 °C
-*   $\Delta T$ na końcach: $300 - 20 = 280$ K i $150 - 80 = 70$ K
-*   $\Delta \dot{S}_{\text{gen}} = 162.1$ W/K (Zad. 5.2)
-:::
-::: {.column width="50%"}
-![](../img/he_temp_profile_pre.png){width="70%" fig-align="center"}
-**Przeciwprądowy:**
-
-*   Spaliny: 300 → 150 °C
-*   Woda: 20 → 130 °C (woda pod ciśnieniem; w przeciwprądzie $t_{w,out}$ może nawet przekroczyć $t_{s,out}$)
-*   $\Delta T$ na końcach: $300 - 130 = 170$ K i $150 - 20 = 130$ K – różnica temperatur bardziej wyrównana
-*   Strumień wody: $\dot{m}_w = \frac{150}{4.19 \cdot 110} \approx 0.325$ kg/s
-:::
-:::
-
----
-
-## <i class="bi bi-building-gear"></i> Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego{.smaller}
-
-**Obliczenie entropii dla wymiennika przeciwprądowego:**
-
-::: {.fragment}
-$$ \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}}, \qquad \dot{m}_w c_w = \frac{\dot{Q}}{\Delta t_w} = \frac{150\,000}{110} = 1363.6\ \text{W/K} $$
-:::
-
-::: {.fragment}
-$\Delta \dot{S}_{\text{wody}} = 1363.6 \cdot \ln(403.15/293.15) = 1363.6 \cdot 0.31862 = +434.5$ W/K
-:::
-
-::: {.fragment}
-$\Delta \dot{S}_{\text{gen}} = -303.4 + 434.5 = \mathbf{+131.1\ \text{W/K}}$
+[$\Delta \dot{S}_{\text{gen}} = +162.1\ \text{W/K} > 0$]{.answer}
 :::
 
 ::: {.fragment .callout-important title="Wniosek"}
-Redukcja ze 162.1 do 131.1 W/K → **o 19% mniejsza generacja entropii**, a strata egzergii spada do $T_0 \cdot \Delta \dot{S}_{\text{gen}} = 293.15 \cdot 131.1 = 38.43$ kW. Sprawność egzergetyczna rośnie: $\psi = 1 - 38.43/61.05 \approx 37.1\%$ (zamiast 22.2%).
-
-Uwaga: $\Delta \dot{S}_{\text{gen}}$ zależy tylko od temperatur na wlotach i wylotach – przy tej samej wodzie 20 → 80 °C oba układy dają 162.1 W/K. Przeciwprąd wygrywa, bo pozwala (przy rozsądnej powierzchni) podgrzać wodę wyżej, a im wyższa średnia temperatura wody, tym mniejsza generacja entropii.
+Entropia całkowita wzrosła! Energia została „zdegradowana” (z wysokiej temperatury 300 °C do niskiej 80 °C).
 :::
 
----
+## <i class="bi bi-gem"></i> Zadanie 5.3: Strata Egzergii (Twierdzenie Gouy–Stodoli)
+
+Czy to było mądre wykorzystanie ciepła? Mogliśmy użyć spalin 300 °C do napędu silnika cieplnego, a użyliśmy ich tylko do podgrzania wody do 80 °C.
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.callout-note title="Twierdzenie Gouy–Stodoli"}
+$$ \dot{B}_{\text{str}} = T_0 \cdot \Delta \dot{S}_{\text{gen}} $$
+
+$T_0$ – temperatura otoczenia; w karcie: **temperatura hali** $t$, czyli $T_0 = t + 273.15$. Tu $t = 20\ \text{°C}$ → $T_0 = 293.15\ \text{K}$.
+:::
+:::
+
+::: {.column width="55%"}
+::: {.panel .panel-blue .fragment}
+[Strata egzergii]{.panel-title}
+$$ \dot{B}_{\text{str}} = 293.15 \cdot 162.1 = 47\,520\ \text{W} $$
+
+[$\dot{B}_{\text{str}} \approx 47.52\ \text{kW}$]{.answer}
+:::
+:::
+:::
+
+::: {.fragment .callout-caution}
+W procesie prostego podgrzewania wody straciliśmy bezpowrotnie ok. **47.5 kW** potencjalnej mocy mechanicznej! To cena za nieodwracalność procesu.
+:::
+
+## <i class="bi bi-arrow-repeat"></i> Zadanie 5.4: Egzergia Ciepła Spalin {.small}
+
+Ile pracy moglibyśmy **teoretycznie** uzyskać z ciepła spalin (zamiast tylko grzać wodę)?
+
+Spaliny oddają ciepło w zakresie $573.15 \rightarrow 423.15\ \text{K}$, a nie w stałej temperaturze. Silnik Carnota liczymy więc dla **średniej temperatury termodynamicznej** spalin (tak samo liczy się ją dla każdego strumienia):
+
+::: {.panel .panel-blue}
+[Średnia temperatura termodynamiczna spalin]{.panel-title}
+$$ T_{m,s} = \frac{T_{in} - T_{out}}{\ln(T_{in}/T_{out})} = \frac{573.15 - 423.15}{\ln(573.15/423.15)} = \frac{150}{0.3034} \approx 494.4\ \text{K} $$
+:::
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.panel .panel-blue .fragment}
+[Silnik Carnota między $T_{m,s} = 494.4\ \text{K}$ a $T_0 = 293.15\ \text{K}$]{.panel-title}
+$$ \eta_C = 1 - \frac{T_0}{T_{m,s}} = 1 - \frac{293.15}{494.4} $$
+
+[$\eta_C \approx 40.7\%$]{.answer}
+:::
+:::
+
+::: {.column width="55%"}
+::: {.panel .panel-blue .fragment}
+[Maksymalna praca (egzergia ciepła spalin)]{.panel-title}
+$$ \dot{B}_{\text{max}} = \eta_C \cdot \dot{Q} = 0.407 \cdot 150 $$
+
+[$\dot{B}_{\text{max}} \approx 61.05\ \text{kW}$]{.answer}
+
+[To samo daje $\dot{Q} - T_0 \, |\Delta \dot{S}_{\text{spalin}}| = 150 - 293.15 \cdot 0.30342 = 61.05\ \text{kW}$.]{.small-note}
+:::
+:::
+:::
+
+## <i class="bi bi-arrow-repeat"></i> Zadanie 5.4 (cd.): Sprawność Egzergetyczna Wymiennika
+
+Egzergia oddana przez spaliny: $\dot{B}_{\text{max}} = 61.05\ \text{kW}$. Wymiennik nie produkuje pracy – ta egzergia albo trafia do wody, albo jest niszczona:
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.callout-note title="Podział egzergii spalin"}
+*   zniszczona w wymienniku (Zad. 5.3): $\dot{B}_{\text{str}} = 47.52\ \text{kW}$,
+*   przekazana do wody (egzergia ciepłej wody): $61.05 - 47.52 \approx 13.5\ \text{kW}$.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.panel .panel-blue .fragment}
+[Sprawność egzergetyczna wymiennika]{.panel-title}
+$$ \psi = 1 - \frac{\dot{B}_{\text{str}}}{\dot{B}_{\text{max}}} = 1 - \frac{47.52}{61.05} $$
+
+[$\psi \approx 22.2\%$]{.answer}
+:::
+:::
+:::
+
+::: {.fragment .callout-warning title="Uwaga"}
+Tylko ok. **22%** egzergii oddanej przez spaliny trafia do wody. Reszta jest niszczona przez nieodwracalność wymiany ciepła.
+:::
+
+## <i class="bi bi-building-gear"></i> Zadanie 5.5: Wymiennik Przeciwprądowy vs Współprądowy {.small}
+
+Inżynier proponuje zmianę z wymiennika **współprądowego** na **przeciwprądowy**, który pozwala podgrzać wodę wyżej – do 130 °C – przy tym samym schłodzeniu spalin (ta sama moc $\dot{Q} = 150\ \text{kW}$). Jak to wpływa na generację entropii?
+
+::: {.columns}
+::: {.column width="50%"}
+![](../img/he_temp_profile_wsp.png){width="48%" fig-align="center"}
+
+::: {.panel .panel-amber}
+[Współprądowy]{.panel-title}
+
+*   Spaliny: 300 → 150 °C, woda: 20 → 80 °C
+*   $\Delta T$ na końcach: $300 - 20 = 280\ \text{K}$ i $150 - 80 = 70\ \text{K}$
+*   $\Delta \dot{S}_{\text{gen}} = 162.1\ \text{W/K}$ (Zad. 5.2)
+:::
+:::
+::: {.column width="50%"}
+![](../img/he_temp_profile_pre.png){width="48%" fig-align="center"}
+
+::: {.panel .panel-green}
+[Przeciwprądowy]{.panel-title}
+
+*   Spaliny: 300 → 150 °C, woda: 20 → 130 °C (pod ciśnieniem)
+*   $\Delta T$ na końcach: $300 - 130 = 170\ \text{K}$ i $150 - 20 = 130\ \text{K}$ – bardziej wyrównane
+*   Strumień wody: $\dot{m}_w = \frac{150}{4.19 \cdot 110} \approx 0.325\ \text{kg/s}$
+:::
+:::
+:::
+
+[Woda pod ciśnieniem: w przeciwprądzie $t_{w,out}$ może nawet przekroczyć $t_{s,out}$.]{.small-note}
+
+## <i class="bi bi-building-gear"></i> Zadanie 5.5 (cd.): Entropia Wymiennika Przeciwprądowego {.small}
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.callout-note title="Wzory i dane"}
+$$ \Delta \dot{S}_i = \dot{m}_i \, c_i \, \ln\frac{T_{out}}{T_{in}} $$
+$$ \dot{m}_w c_w = \frac{\dot{Q}}{\Delta t_w} = \frac{150\,000}{110} = 1363.6\ \text{W/K} $$
+
+Spaliny jak w Zad. 5.2: $\Delta \dot{S}_{\text{spalin}} = -303.4\ \text{W/K}$.
+:::
+:::
+
+::: {.column width="55%"}
+::: {.panel .panel-blue .fragment}
+[Woda 20 → 130 °C]{.panel-title}
+$$ \Delta \dot{S}_{\text{wody}} = 1363.6 \cdot \ln\frac{403.15}{293.15} = 1363.6 \cdot 0.31862 $$
+
+[$\Delta \dot{S}_{\text{wody}} = +434.5\ \text{W/K}$]{.answer}
+:::
+
+::: {.panel .panel-blue .fragment}
+[Generacja entropii]{.panel-title}
+$$ \Delta \dot{S}_{\text{gen}} = -303.4 + 434.5 $$
+
+[$\Delta \dot{S}_{\text{gen}} = +131.1\ \text{W/K}$]{.answer}
+:::
+:::
+:::
+
+::: {.fragment .callout-tip title="Wniosek"}
+Redukcja ze 162.1 do 131.1 W/K → **o 19% mniejsza generacja entropii**, a strata egzergii spada do $T_0 \cdot \Delta \dot{S}_{\text{gen}} = 293.15 \cdot 131.1 = 38.43\ \text{kW}$. Sprawność egzergetyczna rośnie: $\psi = 1 - 38.43/61.05 \approx 37.1\%$ (zamiast 22.2%).
+
+[Uwaga: $\Delta \dot{S}_{\text{gen}}$ zależy tylko od temperatur na wlotach i wylotach – przy tej samej wodzie 20 → 80 °C oba układy dają 162.1 W/K. Przeciwprąd wygrywa, bo pozwala (przy rozsądnej powierzchni) podgrzać wodę wyżej, a im wyższa średnia temperatura wody, tym mniejsza generacja entropii.]{.small-note}
+:::
 
 ## <i class="bi bi-bar-chart"></i> Zadanie 5.6: Kaskada Wymienników
 
 Zamiast jednego wymiennika, użyjmy **dwóch kolejnych** (kaskada):
 
-::: {.fragment .incremental}
+::: {.callout-note title="Układ kaskady"}
 1.  **Wymiennik A:** Spaliny 300 → 220 °C → podgrzewanie wody kotłowej od 20 do 90 °C.
 2.  **Wymiennik B:** Spaliny 220 → 150 °C → podgrzewanie wody użytkowej od 15 do 50 °C.
 :::
 
-::: {.fragment .incremental}
-### Bilans Wymiennika A:
-$\dot{Q}_A = 1 \cdot 1.0 \cdot (300-220) = 80\ \text{kW}$ |
-$\dot{m}_{w,A} = \frac{80}{4.19 \cdot (90-20)} = 0.273$ kg/s
+::: {.columns}
+::: {.column width="50%"}
+::: {.panel .panel-blue .fragment}
+[Bilans wymiennika A]{.panel-title}
+$$ \dot{Q}_A = 1 \cdot 1.0 \cdot (300 - 220) = 80\ \text{kW} $$
+$$ \dot{m}_{w,A} = \frac{80}{4.19 \cdot (90 - 20)} $$
+
+[$\dot{m}_{w,A} \approx 0.273\ \text{kg/s}$]{.answer}
+:::
 :::
 
-::: {.fragment .incremental}
-### Bilans Wymiennika B:
-$\dot{Q}_B = 1 \cdot 1.0 \cdot (220-150) = 70\ \text{kW}$ |
-$\dot{m}_{w,B} = \frac{70}{4.19 \cdot (50-15)} = 0.477$ kg/s
+::: {.column width="50%"}
+::: {.panel .panel-blue .fragment}
+[Bilans wymiennika B]{.panel-title}
+$$ \dot{Q}_B = 1 \cdot 1.0 \cdot (220 - 150) = 70\ \text{kW} $$
+$$ \dot{m}_{w,B} = \frac{70}{4.19 \cdot (50 - 15)} $$
+
+[$\dot{m}_{w,B} \approx 0.477\ \text{kg/s}$]{.answer}
+:::
+:::
 :::
 
----
+## <i class="bi bi-bar-chart"></i> Zadanie 5.6 (cd.): Entropia Kaskady {.small}
 
-## <i class="bi bi-bar-chart"></i> Zadanie 5.6 (cd.): Entropia Kaskady{.smaller}
+**Czy kaskada zmniejsza generację entropii?** Generacja entropii w każdym stopniu ($\dot{m}_w c_w = \dot{Q}/\Delta t_w$: A – 1142.9 W/K, B – 2000 W/K):
 
-**Czy kaskada zmniejsza generację entropii?**
-
-Generacja entropii w każdym stopniu ($\dot{m}_w c_w = \dot{Q}/\Delta t_w$: A – 1142.9 W/K, B – 2000 W/K):
-
+::: {.panel .panel-blue}
 | Stopień | $\Delta \dot{S}_{\text{spalin}}$ [W/K] | $\Delta \dot{S}_{\text{wody}}$ [W/K] | $\Delta \dot{S}_{\text{gen}}$ [W/K] |
 |:--|:--:|:--:|:--:|
 | A | $1000 \ln\frac{493.15}{573.15} = -150.3$ | $1142.9 \ln\frac{363.15}{293.15} = +244.7$ | $+94.4$ |
 | B | $1000 \ln\frac{423.15}{493.15} = -153.1$ | $2000 \ln\frac{323.15}{288.15} = +229.3$ | $+76.2$ |
-| **Kaskada** | $-303.4$ | $+474.0$ | $\mathbf{+170.6}$ |
+| **Kaskada** | $-303.4$ | $+474.0$ | [$+170.6$]{.answer} |
+:::
 
 ::: {.fragment}
-Jeden wymiennik (Zad. 5.2): 162.1 W/K → kaskada generuje **więcej** entropii! Dlaczego? Średnia temperatura termodynamiczna ogrzewanej wody $T_{m,w} = \frac{T_{out} - T_{in}}{\ln(T_{out}/T_{in})}$ wynosi: jeden wymiennik 322.2 K, A – 326.9 K, **B – tylko 305.3 K**. Ponieważ $\Delta \dot{S}_{\text{wody}} = \dot{Q}/T_{m,w}$, ciepło oddane wodzie o niskiej temperaturze (B: 15 → 50 °C) generuje dużo entropii.
+Jeden wymiennik (Zad. 5.2): 162.1 W/K → kaskada generuje [więcej entropii]{.answer}! Dlaczego? Średnia temperatura termodynamiczna ogrzewanej wody $T_{m,w} = \frac{T_{out} - T_{in}}{\ln(T_{out}/T_{in})}$ wynosi: jeden wymiennik 322.2 K, A – 326.9 K, **B – tylko 305.3 K**. Ponieważ $\Delta \dot{S}_{\text{wody}} = \dot{Q}/T_{m,w}$, ciepło oddane wodzie o niskiej temperaturze (B: 15 → 50 °C) generuje dużo entropii.
 :::
 
 ::: {.fragment .callout-tip}
-**Kaskada dopasowuje poziom temperatury do odbiorcy** (woda kotłowa 90 °C, woda użytkowa 50 °C), ale sama z siebie nie zmniejsza generacji entropii. Generacja maleje dopiero, gdy rośnie średnia temperatura ogrzewanej wody – np. gdy ta sama woda płynie szeregowo przez B, a potem A (20 → 71.3 → 130 °C): $\Delta \dot{S}_{\text{gen}} = 131.1$ W/K, jak w przeciwprądzie.
+**Kaskada dopasowuje poziom temperatury do odbiorcy** (woda kotłowa 90 °C, woda użytkowa 50 °C), ale sama z siebie nie zmniejsza generacji entropii. Generacja maleje dopiero, gdy rośnie średnia temperatura ogrzewanej wody – np. gdy ta sama woda płynie szeregowo przez B, a potem A (20 → 71.3 → 130 °C): $\Delta \dot{S}_{\text{gen}} = 131.1\ \text{W/K}$, jak w przeciwprądzie.
 :::
 
----
-
-## <i class="bi bi-globe-europe-africa"></i> Zadanie 5.7: Entropia a Otoczenie{.smaller}
+## <i class="bi bi-globe-europe-africa"></i> Zadanie 5.7: Entropia a Otoczenie {.small}
 
 Na koniec: obliczmy, ile entropii „eksportuje” nasz zakład do otoczenia przez komin (spaliny 150 °C do powietrza o temperaturze otoczenia; w karcie: temperatura hali $t$, tu 20 °C).
 
-::: {.fragment}
-Spaliny wychodzą z wymiennika: $\dot{m}_s = 1$ kg/s, $t_{out} = 150$ °C.
-Stygną do $t_{atm} = 20$ °C w atmosferze.
+::: {.columns}
+::: {.column width="45%"}
+::: {.callout-note title="Dane"}
+Spaliny wychodzą z wymiennika: $\dot{m}_s = 1\ \text{kg/s}$, $t_{out} = 150\ \text{°C}$.
+Stygną do $t_{atm} = 20\ \text{°C}$ w atmosferze.
+:::
 :::
 
-::: {.fragment}
-$$ \dot{Q}_{komin} = 1 \cdot 1.0 \cdot (150 - 20) = \mathbf{130\ \text{kW}} $$
+::: {.column width="55%"}
+::: {.panel .panel-blue .fragment}
+[Strata wylotowa (ciepło tracone przez komin)]{.panel-title}
+$$ \dot{Q}_{komin} = 1 \cdot 1.0 \cdot (150 - 20) $$
+
+[$\dot{Q}_{komin} = 130\ \text{kW}$]{.answer}
 :::
 
-::: {.fragment}
-Ta energia jest tracona przez komin (strata wylotowa).
-:::
+::: {.panel .panel-blue .fragment}
+[Przyrost entropii atmosfery]{.panel-title}
+$$ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293.15} $$
 
-::: {.fragment}
-$$ \Delta \dot{S}_{atm} = \frac{\dot{Q}_{komin}}{T_{atm}} = \frac{130\,000}{293.15} \approx \mathbf{443.5\ \text{W/K}} $$
+[$\Delta \dot{S}_{atm} \approx 443.5\ \text{W/K}$]{.answer}
+:::
+:::
 :::
 
 ::: {.fragment .callout-important}
-Entropia atmosfery rośnie o **443.5 W/K** (co sekundę o 443.5 J/K). Część tej entropii wnoszą same spaliny – ich entropia maleje o $1000 \cdot \ln(293.15/423.15) = -367.0$ W/K – więc przy stygnięciu spalin w atmosferze **generuje się** ok. 76 W/K. Obniżenie $t_{out}$ do ~50 °C (kocioł kondensacyjny) zmniejsza $\dot{Q}_{komin}$ ze 130 do 30 kW, a $\Delta \dot{S}_{atm}$ do 102.3 W/K (o ok. 77%).
+Entropia atmosfery rośnie o **443.5 W/K** (co sekundę o 443.5 J/K). Część tej entropii wnoszą same spaliny – ich entropia maleje o $1000 \cdot \ln(293.15/423.15) = -367.0\ \text{W/K}$ – więc przy stygnięciu spalin w atmosferze **generuje się** ok. 76 W/K. Obniżenie $t_{out}$ do ~50 °C (kocioł kondensacyjny) zmniejsza $\dot{Q}_{komin}$ ze 130 do 30 kW, a $\Delta \dot{S}_{atm}$ do 102.3 W/K (o ok. 77%).
 :::
-
----
 
 ## <i class="bi bi-house-door"></i> Zadanie Domowe (Raport 5)
 
@@ -328,10 +375,12 @@ Entropia atmosfery rośnie o **443.5 W/K** (co sekundę o 443.5 J/K). Część t
 
 Zaproponuj zmianę parametrów, aby zmniejszyć stratę egzergii (zbliżyć proces do odwracalnego).
 
+::: {.panel .panel-amber}
 1.  Zwiększ temperaturę wody wylotowej do 95 °C (zamiast 80 °C).
 2.  Oblicz nowy strumień wody.
 3.  Oblicz nową generację entropii $\Delta \dot{S}_{\text{gen}}$ i stratę egzergii $\dot{B}_{\text{str}}$.
 4.  Wniosek: Czy zbliżenie temperatur czynników ($T_{\text{spalin}} \approx T_{\text{wody}}$) zmniejsza generację entropii?
+:::
 
 ::: {.callout-tip}
 Im mniejsza różnica temperatur między czynnikami w wymienniku ($\Delta T$), tym mniejsza generacja entropii i wyższa sprawność egzergetyczna (II zasada).

@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-09f1e2816b0e521301f231100972f65d.css">
+  <link rel="stylesheet" href="01_Parametry_i_Gazy_files/libs/revealjs/dist/theme/quarto-95d2c1062b979986c5d1d0ea5f4ca3dd.css">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="01_Parametry_i_Gazy_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -172,7 +172,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"> <img src="../img/logo_wisim.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -243,7 +243,7 @@
 <p><span class="math display">\[ p_{abs} = p_{man} + p_{atm} \]</span> <em>(Dla podciśnienia: <span class="math inline">\(p_{abs} = p_{atm} - p_{vac}\)</span>)</em></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="fragment">
+<div class="fragment panel panel-blue">
 <h3 id="przeliczanie-jednostek-krok-1">Przeliczanie jednostek (Krok 1):</h3>
 <ol type="1">
 <li><strong>Atmosferyczne:</strong> <span class="math inline">\(750 \text{ mmHg} \rightarrow \text{kPa}\)</span>?
@@ -259,7 +259,7 @@
 </ol>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment">
+<div class="fragment panel panel-amber">
 <ol start="3" type="1">
 <li><strong>Absolutne:</strong>
 <ul>
@@ -283,9 +283,11 @@
 <li><span class="math inline">\(R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}\)</span> (Indywidualna stała gazowa)</li>
 </ul>
 </div><div class="column" style="width:50%;">
+<div class="panel panel-blue">
 <p><strong>Rozwiązanie:</strong> <span class="math display">\[ m = \frac{p \cdot V}{R \cdot T} \]</span></p>
 <p><span class="math display">\[ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} \]</span></p>
 <p><span class="math display">\[ m \approx 55.51 \text{ kg} \]</span></p>
+</div>
 </div></div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -399,7 +401,7 @@
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment">
+<div class="fragment panel panel-blue">
 <p><strong>Krok 2: Masy</strong> (<span class="math inline">\(m_i = \frac{p_i V}{R_i T}\)</span>, gdzie <span class="math inline">\(R_{N_2} = 297\)</span>, <span class="math inline">\(R_{O_2} = 260 \text{ J/(kg·K)}\)</span>)</p>
 <ul>
 <li><span class="math inline">\(m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,066} \approx \mathbf{9.19 \text{ kg}}\)</span></li>
@@ -453,7 +455,7 @@
 <h2><i class="bi bi-sliders"></i> Zadanie 1.2e: Dobór Butli na Azot</h2>
 <p>Dział spawalniczy potrzebuje butli na <strong>czysty azot</strong> (<span class="math inline">\(\text{N}_2\)</span>) o masie <span class="math inline">\(m = 50\)</span> kg, przechowywany w temperaturze <span class="math inline">\(15^\circ\text{C}\)</span> i ciśnieniu <span class="math inline">\(200 \text{ bar (abs)}\)</span>.</p>
 <p><strong>Oblicz wymaganą objętość zbiornika (butli).</strong></p>
-<div class="fragment">
+<div class="fragment panel panel-blue">
 <p><span class="math display">\[ V = \frac{m R T}{p} \]</span></p>
 <ul>
 <li><span class="math inline">\(R_{N_2} = \frac{8314}{28} \approx 297 \text{ J/(kg·K)}\)</span> (indywidualna stała gazowa azotu)</li>
@@ -692,14 +694,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,

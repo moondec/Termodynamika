@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -21,7 +21,7 @@ format:
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
             background-image: url("../img/background_red.png") !important;
-            background-size: contain !important; 
+            background-size: contain !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.2 !important;
@@ -34,12 +34,14 @@ format:
         </style>
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: convex
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W7)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -50,11 +52,13 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
+#| label: setup
+#| include: false
+
 library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
 ```
 
 
@@ -66,16 +70,14 @@ theme_set(theme_minimal(base_size = 18))
 4.  **Obliczanie Zmian Entropii** (Gazy, Ciecze)
 5.  **III Zasada Termodynamiki** (Zero Bezwzględne)
 
----
+## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa {auto-animate="true"}
 
-## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa{auto-animate="true"}
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Dla dowolnego cyklu termodynamicznego (odwracalnego lub nie) zachodzi relacja:
 
 $$ \oint \frac{đ Q}{T} \le 0 $$
 
->Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.
+Całka okrężna z ilorazu ciepła do temperatury (na granicy układu) jest zawsze niedodatnia.
 :::
 
 ::: {.fragment .callout-note title="Interpretacja"}
@@ -84,58 +86,48 @@ $$ \oint \frac{đ Q}{T} \le 0 $$
 3.  **$> 0$**: Cykl jest **niemożliwy** (łamie II Zasadę).
 :::
 
----
-
 ## <i class="bi bi-bookmark"></i> 1. Nierówność Clausiusa {auto-animate="true"}
 
-::: {.mmd-fit style="height: 720px;"}
+::: {.mmd-fit style="height: 680px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#f7f6f3'}, 'htmlLabels': false}}%%
 graph TD
     A[Nierówność<br>Clausiusa] --> B{Wynik<br>całkowania}
     B -- "Równe 0" --> C[Obieg<br>Odwracalny<br>Idealny]
     B -- "Mniejsze od 0" --> D[Obieg<br>Nieodwracalny<br>Rzeczywisty]
     B -- "Większe od 0" --> E[Obieg<br>Niemożliwy]
 
-    style A fill:#e3f2fd,stroke:#2196f3,stroke-width:4px
-    style C fill:#eafaf1,stroke:#27ae60,stroke-width:4px
-    style D fill:#fff3e0,stroke:#f57c00,stroke-width:4px
-    style E fill:#ffebee,stroke:#c62828,stroke-width:4px
-    
-    linkStyle 0,1,2,3 stroke-width:4px,fill:none,stroke:black
+    style A fill:#eef4fb,stroke:#2a78d6,stroke-width:3px
+    style B fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style C fill:#ecf7ee,stroke:#1f9d55,stroke-width:3px
+    style D fill:#fff4e3,stroke:#eb6834,stroke-width:3px
+    style E fill:#f7f6f3,stroke:#5a5753,stroke-width:3px
+
+    linkStyle 0,1,2,3 stroke-width:2px,fill:none,stroke:#5a5753
 ```
 :::
 
+## <i class="bi bi-shuffle"></i> 2. Entropia ($S$)
 
----
-
-## <i class="bi bi-shuffle"></i> 2. Entropia ($S$) 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Skoro dla obiegu odwracalnego $\oint \frac{đ Q_{rev}}{T} = 0$, to całka $\int_1^2 \frac{đ Q_{rev}}{T}$ nie zależy od drogi przemiany, a jedynie od stanu początkowego i końcowego.
 :::
 
 ::: {.fragment}
->Definiujemy nową funkcję stanu - **Entropię ($S$)**:
-
-
+Definiujemy nową funkcję stanu - **Entropię ($S$)**:
 
 $$ dS = \left( \frac{đ Q}{T} \right)_{rev} $$
 
-:::
-
-::: {.fragment style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
 Jednostka: $[\text{J/K}]$ (lub dla entropii właściwej $s$: $[\text{J/(kg}\cdot\text{K)}]$).
 :::
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-### Co to oznacza fizycznie?
+::: {.panel .panel-amber .fragment}
+**Co to oznacza fizycznie?**
+
 Entropia jest miarą **nieuporządkowania** układu (statystycznie) oraz miarą **niezdolności energii do wykonania pracy**.
 :::
 
----
-
-## <i class="bi bi-shuffle"></i> Entropia a Kierunek Przekazu Ciepła 
+## <i class="bi bi-shuffle"></i> Entropia a Kierunek Przekazu Ciepła
 
 Dlaczego ciepło płynie od gorącego do zimnego?
 
@@ -143,17 +135,17 @@ Dlaczego ciepło płynie od gorącego do zimnego?
 
 ::: {.column width="40%"}
 
-1.  Zbiornik ciepła A ($T_H = const$) oddaje ciepło $Q$: 
+1.  Zbiornik ciepła A ($T_H = const$) oddaje ciepło $Q$:
 
-    $$ \Delta S_A = \frac{-Q}{T_H} $$ 
-    
-    [ (Spadek entropii) ]{.fragment .highlight-red}
-2.  Zbiornik ciepła B ($T_L = const$) pobiera ciepło $Q$: 
+    $$ \Delta S_A = \frac{-Q}{T_H} $$
 
-    $$ \Delta S_B = \frac{+Q}{T_L} $$ 
-    
-    [ (Wzrost entropii) ]{.fragment .highlight-red}
-    
+    [(spadek entropii)]{.fragment .answer}
+2.  Zbiornik ciepła B ($T_L = const$) pobiera ciepło $Q$:
+
+    $$ \Delta S_B = \frac{+Q}{T_L} $$
+
+    [(wzrost entropii)]{.fragment .answer}
+
 :::
 
 ::: {.column width="60%"}
@@ -161,55 +153,48 @@ Dlaczego ciepło płynie od gorącego do zimnego?
 ```{r}
 #| label: heat-entropy-flow
 #| echo: false
-#| fig-width: 6
-#| fig-height: 4
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 3.2
+#| out-width: "82%"
 
-# Dane do wykresu przypływu ciepła
-flow_data <- data.frame(
-  x = c(0, 5, 10),
-  y = c(5, 5, 5),
-  label = c("Ciało Gorące\n(Th)", "Przepływ Q", "Ciało Zimne\n(Tl)")
-)
+col_hot  <- pal_slides[2]   # ciało gorące (ciepło oddawane przez A)
+col_cold <- pal_slides[1]   # ciało zimne (ciepło pobierane przez B)
 
 ggplot() +
   # Blok A (Gorący)
-  geom_rect(aes(xmin=0, xmax=3, ymin=3, ymax=7), fill="#e74c3c", color="black", size=1) +
+  geom_rect(aes(xmin=0, xmax=3, ymin=3, ymax=7), fill=col_hot, color=col_ink, linewidth=0.6) +
   annotate("text", x=1.5, y=5, label="bold(T[H])", parse=TRUE, size=8, color="white") +
-  
-  # Blok B (Zimny)
-  geom_rect(aes(xmin=7, xmax=10, ymin=3, ymax=7), fill="#3498db", color="black", size=1) +
-  annotate("text", x=8.5, y=5, label="bold(T[L])", parse=TRUE, size=8, color="white") +
-  
-  # Strzałka Q
-  geom_segment(aes(x=3.1, xend=6.9, y=5, yend=5), arrow=arrow(length=unit(0.5,"cm")), color="#d35400", size=3) +
-  annotate("text", x=5, y=5.5, label="Q", size=6, fontface="bold", color="#d35400") +
-  
-  # Strzałki Entropii (Zmiany)
-  # A: Spadek
-  annotate("text", x=1.5, y=2.5, label="Delta*S[A] == -Q/T[H]", parse=TRUE, size=5, color="#c0392b", fontface="bold") +
-  
-  # B: Wzrost
-  annotate("text", x=8.5, y=2.5, label="Delta*S[B] == +Q/T[L]", parse=TRUE, size=5, color="#2980b9", fontface="bold") +
-  
-  # Suma
-  annotate("text", x=5, y=1.5, label="'Suma: ' * Delta*S[A] + Delta*S[B] > 0", parse=TRUE, size=6, color="#27ae60", fontface="bold") +
 
-  xlim(-1, 11) + ylim(0, 8) +
+  # Blok B (Zimny)
+  geom_rect(aes(xmin=7, xmax=10, ymin=3, ymax=7), fill=col_cold, color=col_ink, linewidth=0.6) +
+  annotate("text", x=8.5, y=5, label="bold(T[L])", parse=TRUE, size=8, color="white") +
+
+  # Strzałka Q
+  geom_segment(aes(x=3.1, xend=6.9, y=5, yend=5), arrow=arrow(length=unit(0.5,"cm")),
+               color=col_ink2, linewidth=2) +
+  annotate("text", x=5, y=5.6, label="Q", size=7, fontface="bold", color=col_ink2) +
+
+  # Zmiany entropii
+  annotate("text", x=1.5, y=2.3, label="Delta*S[A] == -Q/T[H]", parse=TRUE, size=5.5, color=col_hot, fontface="bold") +
+  annotate("text", x=8.5, y=2.3, label="Delta*S[B] == +Q/T[L]", parse=TRUE, size=5.5, color=col_cold, fontface="bold") +
+
+  # Suma
+  annotate("text", x=5, y=1.1, label="'Suma: ' * Delta*S[A] + Delta*S[B] > 0", parse=TRUE, size=6, color=pal_slides[6], fontface="bold") +
+
+  xlim(-0.5, 10.5) + ylim(0.5, 7.5) +
   theme_void()
 ```
 
 ::: {.fragment .callout-note title="Suma zmian:" style="font-size: 0.9em;"}
-$$\Delta S_{tot} = \Delta S_A + \Delta S_B = Q (\frac{1}{T_L} - \frac{1}{T_H})$$
-Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! Proces spontaniczny.
+$\Delta S_{tot} = \Delta S_A + \Delta S_B = Q \left(\frac{1}{T_L} - \frac{1}{T_H}\right)$. Ponieważ $T_H > T_L$, to wynik jest **DODATNI**. Całkowita entropia rośnie! Proces spontaniczny.
 :::
 :::
 ::::
 
----
+## <i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii
 
-## <i class="bi bi-bookmark"></i> 3. Zasada Wzrostu Entropii 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Dla układu izolowanego (bez wymiany energii i masy z otoczeniem; sama adiabatyczność nie wystarcza):
 
 $$ \Delta S_{\text{izol}} \ge 0 $$
@@ -223,66 +208,57 @@ $$ \Delta S_{\text{izol}} \ge 0 $$
 :::
 
 ::: {.fragment .callout-note}
-Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza "Strzałkę Czasu" [ i być może uniemożliwia podróże w czasie (w przeszłość).]{.fragment .highlight-red}
+Traktując Wszechświat jako układ izolowany, jego entropia nieustannie rośnie. To wyznacza "Strzałkę Czasu" [i być może uniemożliwia podróże w czasie (w przeszłość).]{.fragment}
 :::
 
----
+## <i class="bi bi-bookmark"></i> Generacja Entropii ($S_{gen}$)
 
-## <i class="bi bi-bookmark"></i> Generacja Entropii ($S_{gen}$) 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Bilans entropii dla układu zamkniętego (dowolny proces):
-:::
 
 $$ \Delta S_{\text{układu}} = \int \frac{đ Q}{T_{\text{granicy}}} + S_{gen} $$
+:::
 
 *   $S_{gen}$: Entropia generowana wewnątrz układu przez nieodwracalności (tarcie, mieszanie, spalanie).
 *   **$S_{gen}$ nigdy nie może być ujemne!**
     *   $S_{gen} > 0$: Proces rzeczywisty.
     *   $S_{gen} = 0$: Proces odwracalny.
 
----
+## <i class="bi bi-bookmark"></i> 4. Obliczanie Zmian Entropii
 
-## <i class="bi bi-bookmark"></i> 4. Obliczanie Zmian Entropii 
-
-### Dla ciał nieściśliwych (Ciecze, Ciała stałe)
-
-$v \approx const$, $c_p \approx c_v = c$.
+::: {.panel .panel-green}
+**Dla ciał nieściśliwych (ciecze, ciała stałe):** $v \approx const$, $c_p \approx c_v = c$.
 
 $$ \Delta s = c \cdot \ln \left( \frac{T_2}{T_1} \right) $$
-
-### Dla Gazów Doskonałych
+:::
 
 :::: {.columns}
 
-::: {.column width="40%"}
-
-Mamy dwa wzory (zależnie od znanych zmiennych):
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**Dla gazów doskonałych** – dwa wzory (zależnie od znanych zmiennych):
 
 1.  $$ \Delta s = c_p \ln \left( \frac{T_2}{T_1} \right) - R \ln \left( \frac{p_2}{p_1} \right) $$
 2.  $$ \Delta s = c_v \ln \left( \frac{T_2}{T_1} \right) + R \ln \left( \frac{v_2}{v_1} \right) $$
 :::
-::: {.column width="60%"}
-
-::: {.fragment .fade-up .callout-warning appearance="simple"}
-**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. <br>Wzory te wtedy służą do wyprowadzenia $$pv^\kappa=const$$
 :::
 
+::: {.column width="50%"}
+::: {.fragment .fade-up .callout-warning appearance="simple"}
+**Uwaga:** W procesie adiabatycznym odwracalnym (izentropowym), $\Delta s = 0$. Wzory te wtedy służą do wyprowadzenia $$pv^\kappa=const$$
+:::
 :::
 ::::
 
----
-
-## <i class="bi bi-fire"></i> Wykres T-s i Ciepło 
-
-Dla procesu odwracalnego:
-$$ Q_{rev} = \int_{1}^{2} T \, dS $$
+## <i class="bi bi-fire"></i> Wykres T-s i Ciepło
 
 :::: {.columns}
 
-::: {.column width="55%"}
+::: {.column width="50%"}
+Dla procesu odwracalnego:
+$$ Q_{rev} = \int_{1}^{2} T \, dS $$
 
-::: {.fragment .fade-left style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue .fragment .fade-left}
 Na wykresie T-s pole powierzchni pod krzywą przemiany reprezentuje **ciepło wymienione** w procesie (podobnie jak pole na p-v reprezentuje pracę).
 :::
 
@@ -290,24 +266,21 @@ Na wykresie T-s pole powierzchni pod krzywą przemiany reprezentuje **ciepło wy
 *   Proces w prawo ($ds > 0$): Pobieranie ciepła.
 *   Proces w lewo ($ds < 0$): Oddawanie ciepła.
 *   Proces pionowy ($ds = 0$): Adiabata (brak ciepła).
-
+:::
 :::
 
-:::
-
-::: {.column width="45%"}
-
+::: {.column width="50%"}
 ::: {.fragment}
 
 ```{r}
 #| label: carnot-ts
+#| fig-cap: "Obieg Carnota na wykresie T-s"
 #| echo: false
-#| fig-width: 6
+#| fig-align: center
+#| fig-width: 7
 #| fig-height: 5
+#| out-width: "95%"
 
-library(ggplot2)
-
-# Dane do wykresu (bez zmian)
 df_carnot <- data.frame(
   s = c(1, 4, 4, 1, 1),
   T = c(600, 600, 300, 300, 600),
@@ -315,67 +288,53 @@ df_carnot <- data.frame(
 )
 
 ggplot(df_carnot, aes(x=s, y=T)) +
-  # Obszar cyklu
-  # Zmiana: size -> linewidth (nowy standard ggplot2)
-  geom_polygon(fill="lightgreen", alpha=0.5, color="darkgreen", linewidth=2) +
-  
+  # Obszar cyklu = praca obiegu
+  geom_polygon(fill=pal_slides[1], alpha=0.15, color=pal_slides[1], linewidth=1.1) +
+
   # Oznaczenia punktów 1-4
-  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold") +
-  
-  # --- OPISY Z FORMATOWANIEM MATEMATYCZNYM (parse = TRUE) ---
-  
-  # 1. Środek (Praca = Ciepło Netto)
-  # Używamy atop(), żeby zrobić dwie linijki tekstu matematycznego
-  annotate("text", x=2.5, y=450, 
-           label = "atop('Praca obiegu', L[ob] == Q[H] - Q[L])", 
-           fontface="bold", color="darkgreen", size=5, parse=TRUE) +
-  
-  # 2. Góra (Pobieranie ciepła)
-  # 'Text' * Zmienna skleja napis z symbolem
-  annotate("text", x=2.5, y=630, 
-           label = "'Pobieranie ' * Q[H] * ' (Izoterma ' * T[H] * ')'", 
-           color="red", size=4.5, parse=TRUE) +
-  
-  # 3. Dół (Oddawanie ciepła)
-  annotate("text", x=2.5, y=270, 
-           label = "'Oddawanie ' * Q[L] * ' (Izoterma ' * T[L] * ')'", 
-           color="blue", size=4.5, parse=TRUE) +
-  
-  # --- ESTETYKA ---
-  theme_minimal() +
-  # Formatowanie osi z jednostkami w nawiasach
+  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold", color=col_ink) +
+
+  # Środek (Praca = Ciepło Netto)
+  annotate("text", x=2.5, y=450,
+           label = "atop('Praca obiegu', L[ob] == Q[H] - Q[L])",
+           fontface="bold", color=pal_slides[1], size=5, parse=TRUE) +
+
+  # Góra (Pobieranie ciepła)
+  annotate("text", x=2.5, y=640,
+           label = "'Pobieranie ' * Q[H] * ' (Izoterma ' * T[H] * ')'",
+           color=pal_slides[2], size=4.5, parse=TRUE) +
+
+  # Dół (Oddawanie ciepła)
+  annotate("text", x=2.5, y=265,
+           label = "'Oddawanie ' * Q[L] * ' (Izoterma ' * T[L] * ')'",
+           color=pal_slides[3], size=4.5, parse=TRUE) +
+
   labs(
-    title = expression(paste("Obieg Carnota na wykresie ", T-s)),
-    x = expression("Entropia " * s ~ bgroup("[", kJ/kgK, "]")),
+    x = expression("Entropia " * s ~ bgroup("[", kJ/(kg %.% K), "]")),
     y = expression("Temperatura " * T ~ bgroup("[", K, "]"))
   ) +
-  theme(
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
-    axis.title = element_text(size = 12)
-  )
+  theme_slides(16)
 ```
 :::
 :::
 ::::
 
----
-
-## <i class="bi bi-1-circle"></i> 5. III Zasada Termodynamiki 
+## <i class="bi bi-1-circle"></i> 5. III Zasada Termodynamiki
 
 Sformułowanie Plancka (na podstawie twierdzenia cieplnego Nernsta):
 
-> Entropia doskonałego kryształu czystej substancji w temperaturze zera bezwzględnego ($0\text{ K}$) jest równa **ZERO**.
+::: {.panel .panel-blue}
+Entropia doskonałego kryształu czystej substancji w temperaturze zera bezwzględnego ($0\text{ K}$) jest równa **ZERO**.
 
 $$ \lim_{T \to 0} S = 0 $$
+:::
 
 ::: {.fragment .callout-warning title="Konsekwencje:"}
 1.  Daje "punkt odniesienia" dla entropii. W przeciwieństwie do energii wewnętrznej $U$ (gdzie znamy tylko $\Delta U$), dla entropii możemy wyznaczyć wartość bezwzględną.
 2.  Nie da się osiągnąć zera bezwzględnego w skończonej liczbie kroków.
 :::
 
----
-
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W7 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W7
 
 1.  **Nierówność Clausiusa:** Podstawa matematyczna II Zasady.
 2.  **Entropia:** Funkcja stanu. Entropia układu izolowanego rośnie w procesach nieodwracalnych i jest stała w odwracalnych ($S_{gen} > 0$ / $S_{gen} = 0$).
@@ -384,5 +343,6 @@ $$ \lim_{T \to 0} S = 0 $$
     $$ \Delta s = c_p \ln(T_2/T_1) - R \ln(p_2/p_1) $$
 5.  **III Zasada:** W $0\text{ K}$ entropia doskonałego kryształu czystej substancji wynosi 0 (stan idealnego porządku).
 
-## <i class="bi bi-bookmark"></i> Zapowiedź W8 
+## <i class="bi bi-bookmark"></i> Zapowiedź W8
+
 Uzbrojeni w wiedzę o gazach (W4), I Zasadzie (W2) i entropii (W7), przeanalizujemy wszystkie **Przemiany Gazowe** (izobary, izochory, adiabaty) w jednym, kompleksowym wykładzie.

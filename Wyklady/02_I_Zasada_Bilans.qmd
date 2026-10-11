@@ -5,16 +5,16 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" 
+
+    <img src="../img/logo_upp.png"
          style="height: 200px;">
-    
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
+
+    <img src="../img/logo_wisim.jpg"
          style="height: 200px;">
-         
-    <img src="../img/kbig.jpg" 
+
+    <img src="../img/kbig.jpg"
          style="height: 200px;">
-         
+
   </div>
 lang: pl
 format:
@@ -32,10 +32,10 @@ format:
         /* 2. Tło slajdu - DOPASOWANE, a nie rozciągnięte */
         .reveal .slide-background-content {
             background-image: url("../img/background_vi.png") !important;
-            
+
             /* KLUCZOWA ZMIANA: contain = "zmieść się w całości, zachowaj proporcje" */
-            background-size: contain !important; 
-            
+            background-size: contain !important;
+
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.2 !important;
@@ -50,15 +50,16 @@ format:
         </style>
     slide-number: c/t       # Numeracja: slajd obecny / wszystkich
     show-slide-number: all
-    transition: slide       # Animacja przejścia
+    transition: convex
+    background-transition: fade
     chalkboard: true        # WŁĄCZA PISANIE PO EKRANIE (ikona ołówka)
     footer: "Termodynamika Techniczna (W2)" # Stopka na każdym slajdzie
     center: false           # Tekst od góry (nie wyśrodkowany pionowo)
     code-overflow: wrap
+    fig-format: svg
     highlight-style: a11y
     width: 1600             # Szerokość (Full HD) 1600x900, Mac Pro: 1512x982
     height: 900
-    margin: 0.2
     revealjs-plugins:
       - appearance
       - pointer            # <--- Aktywacja pluginu
@@ -69,36 +70,43 @@ format:
 editor: source
 ---
 
+```{r}
+#| label: setup
+#| include: false
+
+library(ggplot2)
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+```
+
 ## <i class="bi bi-file-earmark-text"></i> Wstęp do I Zasady Termodynamiki
 
 ### Zasada Zachowania Energii
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-**Pierwsza Zasada Termodynamiki** to sformułowanie zasady `zachowania energii` dla zjawisk termicznych.
+::: {.panel .panel-blue}
+**Pierwsza Zasada Termodynamiki** to sformułowanie zasady **zachowania energii** dla zjawisk termicznych.
 :::
 
-::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
-
 ::: incremental
 *   Postuluje ona równoważność **pracy ($L$)** i **ciepła ($Q$)** jako sposobów przekazywania energii.
 *   Dla układu izolowanego zmiana energii wewnętrznej wynosi zero: $dU = 0$.
 *   Niemożliwe jest zbudowanie **perpetuum mobile pierwszego rodzaju** (maszyny wykonującej pracę bez zasilania energią z zewnątrz).
 :::
-
 :::
 
 ::: {.column width="40%"}
-![](../img/pierwsza.png){width="100%" fig-align="center"}
+![](../img/pierwsza.png){width="90%" fig-align="center"}
 :::
-:::
+:::::
 
 ## <i class="bi bi-battery-charging"></i> Energia Wewnętrzna ($U$)
 
 ### Definicja i Charakterystyka
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 **Energia wewnętrzna ($U$)** to suma energii kinetycznej chaotycznego (mikroskopowego) ruchu składników układu i energii potencjalnej ich wzajemnego oddziaływania. Nie obejmuje makroskopowej energii kinetycznej i potencjalnej układu jako całości.
 :::
 
@@ -106,10 +114,9 @@ editor: source
 *   Jest **funkcją stanu**: jej zmiana zależy tylko od stanu początkowego i końcowego, a nie od drogi procesu.
 *   Jest wielkością **ekstensywną** (addytywną).
 *   Dla **gazu doskonałego** $U$ zależy wyłącznie od temperatury: $U = f(T)$.
-
 :::
 
-## <i class="bi bi-calculator"></i> Różniczki Zupełne i Niezupełne
+## <i class="bi bi-calculator"></i> Różniczki Zupełne i Niezupełne {.smaller}
 
 ### d vs. đ
 
@@ -120,116 +127,102 @@ W termodynamice kluczowe jest rozróżnienie matematyczne:
 2.  **Różniczka niezupełna ($đ$):** Dotyczy wielkości procesowych ($Q, L$) – jest to forma Pfaffa, która nie jest różniczką zupełną żadnej funkcji stanu. Ich wartość zależy od drogi przejścia: $\oint đQ \neq 0$.
 :::
 
-::: {.fragment .fade-up .callout-warning title="Ciekawe" style="font-size: 0.75em; color: blue;"}
+::: {.fragment .fade-up .callout-warning title="Ciekawe"}
 *Czynnik całkujący ($1/T$) pozwala zamienić $đQ$ w różniczkę zupełną entropii $dS = đQ_{\text{odwr}}/T$ (dla procesu odwracalnego)*.
 :::
 
-::: {.fragment .fade-up .callout-note title="Do tego wrócimy..." style="font-size: 0.6em; color: red;"}
+::: {.fragment .fade-up .callout-note title="Do tego wrócimy..."}
 W tym momencie wchodzimy w podstawy II zasady termodynamiki...
 :::
 
-## <i class="bi bi-fire"></i> Ciepło ($Q$)
+## <i class="bi bi-fire"></i> Ciepło ($Q$) {.smaller}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-
 ### Definicja i Konwencja Znaków
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber}
 **Ciepło** to energia przekazywana przez granicę układu na skutek **różnicy temperatur**.
 :::
 
 ::: incremental
-
 *   Nie jest funkcją stanu (zależy od drogi procesu).
 *   **$đQ > 0$:** układ pobiera ciepło z otoczenia.
 *   **$đQ < 0$:** układ oddaje ciepło do otoczenia.
-
 :::
 
+::: {.fragment .fade-up .panel .panel-blue}
+**I Zasada Termodynamiki (postać różniczkowa):**
+$$ dU = đQ - đL $$
+:::
 :::
 
 ::: {.column width="50%"}
-
-::: {style="text-align: center;"}
-
 ```{r}
 #| label: fig-sign-convention
 #| fig-cap: "Konwencja znaków dla ciepła (Q) i pracy (L)"
 #| echo: false
+#| fig-align: center
 #| fig-width: 8
 #| fig-height: 5
+#| out-width: "95%"
 
-library(ggplot2)
+col_q <- pal_slides[2]   # ciepło – pomarańcz
+col_l <- pal_slides[1]   # praca – niebieski
 
 ggplot() +
-  # 1. System (Central Box)
-  geom_rect(aes(xmin = -2, xmax = 2, ymin = -1.5, ymax = 1.5), 
-            fill = "white", color = "black", size = 1.5) +
-  annotate("text", x = 0, y = 0, label = "UKŁAD", size = 8, fontface = "bold") +
-  
-  # 2. Boundary (Dashed Box) - Osłona Bilansowa
-  # Używamy geom_rect z linią przerywaną (symulacja osłony)
-  geom_rect(aes(xmin = -3, xmax = 3, ymin = -2.5, ymax = 2.5), 
-            fill = NA, color = "black", linetype = "dashed", size = 1) +
-  
-  # 3. Arrows (Green)
-  # Q > 0 (Doprowadzone od góry)
-  geom_segment(aes(x = 0, xend = 0, y = 3.5, yend = 1.6), 
-               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
-               color = "#27ae60", size = 2) +
-  annotate("text", x = 0, y = 3.9, label = "Q > 0", color = "#27ae60", size = 6, fontface = "bold") +
-  
-  # Q < 0 (Odprowadzone do dołu)
-  geom_segment(aes(x = 0, xend = 0, y = -1.6, yend = -3.5), 
-               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
-               color = "#27ae60", size = 2) +
-  annotate("text", x = 0, y = -3.9, label = "Q < 0", color = "#27ae60", size = 6, fontface = "bold") +
-  
-  # L < 0 (Doprowadzona z lewej - Praca nad układem)
-  geom_segment(aes(x = -4.5, xend = -2.1, y = 0, yend = 0), 
-               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
-               color = "#27ae60", size = 2) +
-  annotate("text", x = -5.0, y = 0, label = "L < 0", color = "#27ae60", size = 6, fontface = "bold", hjust=1) +
+  # 1. Układ (ramka centralna)
+  geom_rect(aes(xmin = -2, xmax = 2, ymin = -1.5, ymax = 1.5),
+            fill = "white", color = col_ink, linewidth = 1.2) +
+  annotate("text", x = 0, y = 0, label = "UKŁAD", size = 8, fontface = "bold", color = col_ink) +
 
-  # L > 0 (Wykonana w prawo - Praca przez układ)
-  geom_segment(aes(x = 2.1, xend = 4.5, y = 0, yend = 0), 
-               arrow = arrow(length = unit(0.5, "cm"), type = "closed"), 
-               color = "#27ae60", size = 2) +
-  annotate("text", x = 5.0, y = 0, label = "L > 0", color = "#27ae60", size = 6, fontface = "bold", hjust=0) +
-  
-  # Formatting
+  # 2. Osłona bilansowa (ramka przerywana)
+  geom_rect(aes(xmin = -3, xmax = 3, ymin = -2.5, ymax = 2.5),
+            fill = NA, color = col_ink2, linetype = "dashed", linewidth = 0.8) +
+
+  # 3. Ciepło: Q > 0 (doprowadzone od góry)
+  geom_segment(aes(x = 0, xend = 0, y = 3.5, yend = 1.6),
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+               color = col_q, linewidth = 1.6) +
+  annotate("text", x = 0, y = 3.9, label = "Q > 0", color = col_q, size = 6, fontface = "bold") +
+
+  # Q < 0 (odprowadzone do dołu)
+  geom_segment(aes(x = 0, xend = 0, y = -1.6, yend = -3.5),
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+               color = col_q, linewidth = 1.6) +
+  annotate("text", x = 0, y = -3.9, label = "Q < 0", color = col_q, size = 6, fontface = "bold") +
+
+  # 4. Praca: L < 0 (doprowadzona z lewej – praca nad układem)
+  geom_segment(aes(x = -4.5, xend = -2.1, y = 0, yend = 0),
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+               color = col_l, linewidth = 1.6) +
+  annotate("text", x = -5.0, y = 0, label = "L < 0", color = col_l, size = 6, fontface = "bold", hjust = 1) +
+
+  # L > 0 (wykonana w prawo – praca przez układ)
+  geom_segment(aes(x = 2.1, xend = 4.5, y = 0, yend = 0),
+               arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
+               color = col_l, linewidth = 1.6) +
+  annotate("text", x = 5.0, y = 0, label = "L > 0", color = col_l, size = 6, fontface = "bold", hjust = 0) +
+
   coord_fixed() +
   theme_void() +
+  theme(plot.background = element_rect(fill = "transparent", colour = NA)) +
   xlim(-6.5, 6.5) + ylim(-4.5, 4.5)
 ```
-  
 :::
-:::
+:::::
 
-::::
-
-::: {.fragment .fade-up}
-**I Zasada Termodynamiki (postać różniczkowa):**
-$$ dU = đQ - đL $$
-:::
-
-## <i class="bi bi-gear-wide-connected"></i> Praca ($L$) {style="font-size: 0.9em;"}
+## <i class="bi bi-gear-wide-connected"></i> Praca ($L$) {.smaller}
 
 ### Praca Objętościowa
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.7em;"}
+::: {.panel .panel-blue}
 Praca makroskopowa jest określona przez zmianę parametrów układu pod wpływem sił uogólnionych.
-
-**Czyli, przykładowo: Praca gazu zależy od tego, jak duże jest ciśnienie i o ile zmieniła się objętość.**
-
+**Czyli, przykładowo: praca gazu zależy od tego, jak duże jest ciśnienie i o ile zmieniła się objętość.**
 :::
 
-:::: {.columns}
-
-::: {.column width="50%"}
-
+::::: columns
+::: {.column width="45%"}
 **Elementarna praca objętościowa (bezwzględna):**
 $$ đL = p \cdot dV $$
 *(Gdzie $p$ to ciśnienie, a $dV$ to zmiana objętości)*.
@@ -241,112 +234,64 @@ $$ đL = p \cdot dV $$
 :::
 :::
 
-::: {.column width="50%"}
-
+::: {.column width="55%"}
 ::: {.fragment .fade-up}
-
 ```{r}
-#| fig-height: 8
-#| fig-width: 10
+#| label: fig-praca-droga
+#| fig-cap: "Praca zależy od drogi: pole pod wykresem jest inne mimo tych samych punktów A i B – L1 (izobara + izochora) < L2 (przemiana ciągła)"
 #| echo: false
 #| warning: false
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 4.6
+#| out-width: "95%"
 
-library(ggplot2)
-
-# 1. Definicja Punktów
+# 1. Definicja punktów
 p1 <- 1; v1 <- 1  # Punkt A
 p2 <- 4; v2 <- 4  # Punkt B
 
-# 2. Generowanie danych dla Drogi 1 (Izobara + Izochora - Czerwona)
-path1_x <- c(v1, v2, v2)
-path1_y <- c(p1, p1, p2)
-df_path1 <- data.frame(v = path1_x, p = path1_y)
+# 2. Droga 1 (izobara + izochora)
+df_path1 <- data.frame(v = c(v1, v2, v2), p = c(p1, p1, p2))
+poly1 <- data.frame(v = c(v1, v2, v2, v1), p = c(0, 0, p1, p1))
 
-# Pole pod Drogą 1 (Prostokąt)
-poly1 <- data.frame(
-  v = c(v1, v2, v2, v1),
-  p = c(0,  0,  p1, p1) 
-)
-
-# 3. Generowanie danych dla Drogi 2 (Politropa/Quasi-izoterma - Niebieska)
+# 3. Droga 2 (przemiana ciągła – prosta p = v dla jasności wizualnej)
 seq_v <- seq(v1, v2, length.out = 100)
-path2_y <- seq_v # Prosta p=v dla jasności wizualnej
-df_path2 <- data.frame(v = seq_v, p = path2_y)
+df_path2 <- data.frame(v = seq_v, p = seq_v)
+poly2 <- rbind(data.frame(v = v1, p = 0), df_path2,
+               data.frame(v = v2, p = 0), data.frame(v = v1, p = 0))
 
-# Pole pod Drogą 2 (Trapez)
-poly2 <- rbind(
-  data.frame(v = v1, p = 0),
-  df_path2,
-  data.frame(v = v2, p = 0),
-  data.frame(v = v1, p = 0)
-)
+col_1 <- pal_slides[3]   # droga 1
+col_2 <- pal_slides[1]   # droga 2 (praca główna)
 
-# 4. Rysowanie wykresu
 ggplot() +
-  # --- POLA POWIERZCHNI (PRACA) ---
-  # Pole dla Drogi 2 (Duże - Niebieskie)
-  geom_polygon(data = poly2, aes(x = v, y = p), 
-               fill = "#3498db", alpha = 0.3) +
-  
-  # Pole dla Drogi 1 (Małe - Czerwone)
-  geom_polygon(data = poly1, aes(x = v, y = p), 
-               fill = "#e74c3c", alpha = 0.5) +
-  
-  # --- LINIE PRZEMIAN ---
-  # Droga 1 (Czerwona)
-  geom_path(data = df_path1, aes(x = v, y = p), 
-            color = "#c0392b", linewidth = 2.5, linetype = "solid") +
-  
-  # Droga 2 (Niebieska)
-  geom_path(data = df_path2, aes(x = v, y = p), 
-            color = "#2980b9", linewidth = 2.5, linetype = "solid") +
-  
-  # --- PUNKTY I OPISY ---
-  geom_point(aes(x = c(v1, v2), y = c(p1, p2)), size = 6) +
-  
-  # Etykiety punktów A i B (Powiększone)
-  geom_text(aes(x = v1, y = p1, label = "A"), 
-            vjust = 1.5, hjust = 1.5, size = 10, fontface = "bold") +
-  geom_text(aes(x = v2, y = p2, label = "B"), 
-            vjust = -0.8, hjust = -0.5, size = 10, fontface = "bold") +
-  
-  # Strzałki (Pogrubione)
-  geom_segment(aes(x = 2.5, y = 1, xend = 2.6, yend = 1), 
-               arrow = arrow(length = unit(0.5, "cm")), color = "#c0392b", linewidth=1.5) +
-  geom_segment(aes(x = 2.5, y = 2.5, xend = 2.6, yend = 2.6), 
-               arrow = arrow(length = unit(0.5, "cm")), color = "#2980b9", linewidth=1.5) +
-  
-  # Opisy pól (Powiększone)
-  annotate("text", x = 3.5, y = 0.5, label = "Praca L1\n(Małe pole)", 
-           color = "#c0392b", fontface = "bold", size = 8) +
-  annotate("text", x = 3.0, y = 2.0, label = "Praca L2\n(Duże pole)", 
-           color = "#2980b9", fontface = "bold", size = 8) +
-  
-  # --- ESTETYKA ---
-  scale_x_continuous(expand = c(0, 0), limits = c(0, 5), name = "Objętość właściwa (v)") +
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 5), name = "Ciśnienie (p)") +
-  
-  labs(
-    title = "Dlaczego praca zależy od drogi procesu?",
-    subtitle = "Porównanie dwóch dróg przejścia z punktu A do B",
-    caption = "Wniosek: Pole pod wykresem (całka) jest inne, mimo że punkty A i B są te same.\nL1 (Izobara+Izochora) < L2 (Przemiana ciągła)"
-  ) +
-  
-  theme_classic(base_size = 20) + # Baza wielkości czcionki zwiększona do 20
-  theme(
-    plot.title = element_text(size = 26, face = "bold", margin = margin(b = 15)),
-    plot.subtitle = element_text(size = 20, margin = margin(b = 20)),
-    axis.title = element_text(size = 22, face = "bold"),
-    axis.text = element_text(size = 18),
-    plot.caption = element_text(size = 16, color = "gray40", margin = margin(t = 20))
-  )
+  # Pola powierzchni = praca
+  geom_polygon(data = poly2, aes(x = v, y = p), fill = col_2, alpha = 0.25) +
+  geom_polygon(data = poly1, aes(x = v, y = p), fill = col_1, alpha = 0.45) +
+  # Linie przemian
+  geom_path(data = df_path1, aes(x = v, y = p), color = col_1, linewidth = 1.6) +
+  geom_path(data = df_path2, aes(x = v, y = p), color = col_2, linewidth = 1.6) +
+  # Punkty i opisy
+  geom_point(aes(x = c(v1, v2), y = c(p1, p2)), size = 4.5, color = col_ink) +
+  annotate("text", x = v1 - 0.15, y = p1 + 0.25, label = "A", size = 7, fontface = "bold", color = col_ink) +
+  annotate("text", x = v2 + 0.15, y = p2 + 0.25, label = "B", size = 7, fontface = "bold", color = col_ink) +
+  # Strzałki kierunku
+  geom_segment(aes(x = 2.5, y = 1, xend = 2.6, yend = 1),
+               arrow = arrow(length = unit(0.4, "cm")), color = col_1, linewidth = 1.1) +
+  geom_segment(aes(x = 2.5, y = 2.5, xend = 2.6, yend = 2.6),
+               arrow = arrow(length = unit(0.4, "cm")), color = col_2, linewidth = 1.1) +
+  # Opisy pól
+  annotate("text", x = 3.2, y = 0.5, label = "Praca L1\n(małe pole)",
+           color = col_1, fontface = "bold", size = 5.5, lineheight = 0.9) +
+  annotate("text", x = 3.0, y = 2.0, label = "Praca L2\n(duże pole)",
+           color = col_2, fontface = "bold", size = 5.5, lineheight = 0.9) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 5)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 5)) +
+  labs(x = "Objętość właściwa v", y = "Ciśnienie p") +
+  theme_slides(16)
 ```
-
 :::
 :::
-::::
-
----
+:::::
 
 ## <i class="bi bi-box-seam"></i> I Zasada dla Układów Zamkniętych
 
@@ -359,65 +304,55 @@ $$ dU = đQ - p \cdot dV $$
 ### Po scałkowaniu:
 $$ \Delta U = Q - L $$
 
-::: {style="text-align: left; margin-left: 150px;"}
-::: {.fragment .fade-up}
+::: {.fragment .fade-up .panel .panel-blue}
 Gdzie:
 
 *   $\Delta U = U_2 - U_1 = m \cdot c_v(T_2 - T_1)$ – dla gazu doskonałego przy $c_v = \text{const}$.
 *   $L = \int_{V_1}^{V_2} p(V) dV$.
-
-:::
 :::
 
-::::: {.r-stack .fragment .fade-up style="position: absolute; top: 0.1%; right: 10%; width: 100%;"}
+## <i class="bi bi-box-seam"></i> I Zasada dla Układów Zamkniętych – ilustracja
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-  <img src="../img/tlok2.png" style="margin-top: 10px; width: 95%;">
-
+![](../img/tlok2.png){width="78%" fig-align="center"}
 :::
 
 ::: {.column width="50%"}
+![](../img/praca2.png){width="70%" fig-align="center"}
 
-  <img src="../img/praca2.png" style="width: 100%;"> 
-
-::: {style="font-size: 0.5em; color: gray; margin-top: -5px;"}
-  Źródło: J. Szargut, *Termodynamika techniczna*, PWN, (2000).
-  
-:::  
-  
+[Źródło: J. Szargut, *Termodynamika techniczna*, PWN, (2000).]{.small-note}
 :::
-
-::::
-
 :::::
 
+## <i class="bi bi-question-circle"></i> A co jeśli mamy układ otwarty – przepływowy?
 
-# A co jeśli mamy układ otwarty - przepływowy {style="text-align: center;"}
+::: {.panel .panel-amber}
+W układzie zamkniętym czynnik „siedzi” w miejscu. W układzie otwartym czynnik **płynie** przez granicę układu – potrzebujemy wielkości, która uwzględni także pracę wprowadzenia go do układu.
+:::
 
-## <i class="bi bi-speedometer2"></i> Entalpia ($H$) {style="font-size: 0.9em;"}
+## <i class="bi bi-speedometer2"></i> Entalpia ($H$) {.smaller}
 
 ### Definicja i Znaczenie
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 **Entalpia ($H$ lub $I$)** jest funkcją stanu zdefiniowaną jako suma energii wewnętrznej i iloczynu ciśnienia oraz objętości.
-:::
 
 $$ H = U + p \cdot V $$
+:::
 
 ::: incremental
 *   Jest wielkością **ekstensywną**.
 *   Dla gazów doskonałych zależy tylko od temperatury.
 *   Różniczka entalpii: $dH = dU + p dV + V dp$
-
 :::
 
-::: {.fragment .fade-up .callout-note title="Znaczenie" style="font-size: 0.8em;"}
+::: {.fragment .fade-up .callout-note title="Znaczenie"}
 Człon $p \cdot V$ można rozumieć jako (Pracę Przetłaczania) = Koszt dostawy / Opłata za miejsce. Aby ten gaz mógł w ogóle istnieć w danym miejscu w przestrzeni, musi sobie to miejsce "rozepchać" przeciwko ciśnieniu panującemu w danym przekroju (ciśnieniu czynnika $p$), zajmując objętość ($V$).
 :::
 
 ## <i class="bi bi-music-note-beamed"></i> Analogia dla ___entalpii___ z życia: "Impreza w Klubie"
+
 Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnieniem).
 
 1.  **Twoja energia ($U$):** To jak dobrze tańczysz.
@@ -425,11 +360,13 @@ Wyobraź sobie, że chcesz wejść na zatłoczony parkiet (układ pod ciśnienie
     * Im większy ścisk w klubie (wyższe $p$), tym więcej energii zużywasz na samo wejście.
     * Im jesteś "szerszy" (większe $V$), tym więcej miejsca zajmujesz.
 
+::: {.panel .panel-amber}
 **Entalpia ($H$)** to suma twojej energii tanecznej i energii zużytej na rozpychanie tłumu.
+:::
 
 ## <i class="bi bi-signpost-split"></i> Kiedy używamy $U$, a kiedy $H$?
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber}
 To jest najważniejszy slajd dla inżyniera!
 :::
 
@@ -438,41 +375,39 @@ To jest najważniejszy slajd dla inżyniera!
 | **Układ Zamknięty**<br>(Garnek, Tłok) | **$U$** | Gaz nigdzie nie idzie. "Siedzi" w miejscu. Nie musi się wpychać do rury. |
 | **Układ Otwarty**<br>(Turbina, Kocioł) | **$H$** | Gaz płynie. Musi wykonać pracę przetłaczania ($pV$), żeby wpłynąć i wypłynąć. |
 
-## <i class="bi bi-buildings"></i> Entalpia w Technice {style="font-size: 0.85em;"}
+## <i class="bi bi-buildings"></i> Entalpia w Technice {.smaller}
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 W nawiązaniu do **I zasady termodynamiki**, zmiana energii wewnętrznej wynosi: $dU=đQ − p dV$.
-Zatem: $đQ = dU + p dV$, a w procesach **izobarycznych<br>($p = const, dp = 0$)**, dlatego:
-
-:::
+Zatem: $đQ = dU + p dV$, a w procesach **izobarycznych ($p = const, dp = 0$)**, dlatego:
 
 $$ đQ = dU + p dV = d(U + pV) = dH $$
+:::
 
-
-::: {.fragment .fade-up .callout-warning appearance="simple" title="**Wniosek:**" style="background-color: #fff5cc; font-size: 0.8em;"}
+::: {.fragment .fade-up .callout-warning appearance="simple" title="**Wniosek:**"}
 W przemianie przy stałym ciśnieniu doprowadzone ciepło jest równe przyrostowi entalpii. Jest to kluczowe przy projektowaniu kotłów i wymienników ciepła.
 
 $$Q_{p=const} =\Delta H$$
 To sprawia, że liczenie kotłów (gdzie ciśnienie jest stałe) jest banalnie proste: $Q=H_{\text{wylot}} − H_{\text{wlot}}$. Żadnego całkowania! (Kocioł to układ przepływowy – ścisłe uzasadnienie daje bilans układu otwartego przy $L_t = 0$, zob. W3).
 :::
 
-[A co się dzieje z energią dostarczaną przy stałej objętości?]{.fragment style="font-size: 1.5em; color: #e60000; font-weight: bold; background-color: #fff0f0; border: 2px solid #e60000; padding: 20px; border-radius: 10px;"}
+::: {.fragment .panel .panel-amber}
+**A co się dzieje z energią dostarczaną przy stałej objętości?**
+:::
 
 ## <i class="bi bi-arrow-left-right"></i> Entalpia (H) a Energia Wewnętrzna (U)
 
-### Ponieważ: [$Q = \Delta U + L$]{style="border: 3px solid #e60000; padding: 20px; border-radius: 10px;"} - I zasada termodynamiki, z której wynika, że jeżeli:
+### Ponieważ $Q = \Delta U + L$ (I zasada termodynamiki), to jeżeli:
 
 1. Zachodzi przemiana izochoryczna: **V=const**.
 2. Skoro objętość się nie zmienia (**dV=0**), to tłok się nie przesuwa.
-3. Praca objętościowa: [$L = \int pdV = 0$]{.highlight-red}.
+3. Praca objętościowa: [$L = \int pdV = 0$]{.answer}.
 
 To:
 $$ Q_{V=const} = \Delta U + 0 $$
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-
+::: {.fragment .panel .panel-blue}
 Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest większe i dlaczego?]{.fragment}
-
 :::
 
 ## <i class="bi bi-thermometer-half"></i> Pojemność Cieplna
@@ -488,13 +423,12 @@ Stąd wynikają różnice w cieple właściwym $c_p$ i $c_v$. [Które jest więk
 
 ## <i class="bi bi-graph-up-arrow"></i> $c_p$ > $c_v$ (Zastosowanie praktyczne)
 
-* Przy $v=const \ (c_v)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz TYLKO się ogrzewa.]{.fragment .highlight-blue}
-* Przy $p=const \ (c_p)$: [Dostarczamy energię]{.fragment .highlight-red} [→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.]{.fragment .highlight-blue} 
+* Przy $v=const \ (c_v)$: [Dostarczamy energię]{.fragment} [→ Gaz TYLKO się ogrzewa.]{.fragment .answer}
+* Przy $p=const \ (c_p)$: [Dostarczamy energię]{.fragment} [→ Gaz się ogrzewa ORAZ musi wykonać pracę przesunięcia tłoka.]{.fragment .answer}
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.fragment .panel .panel-green}
 Dlatego, żeby ogrzać gaz o 1 stopień przy stałym ciśnieniu, musimy dostarczyć więcej ciepła (bo część ucieka na pracę). Stąd wynika wzór Mayera:
 $$ C_p - C_v = n \cdot R_u \quad (\text{na 1 kg: } c_p - c_v = R) $$
-
 :::
 
 ## <i class="bi bi-eye-slash"></i> $c_v$ oraz $c_p$ {visibility="hidden"}
@@ -503,13 +437,14 @@ $$ C_p - C_v = n \cdot R_u \quad (\text{na 1 kg: } c_p - c_v = R) $$
 $$ c_v = \left(\frac{\partial u}{\partial T}\right)_V $$
 
 **Ciepło właściwe przy stałym ciśnieniu ($c_p$):**
-$$ c_p = \left(\frac{\partial h}{\partial T}\right)_p $$ 
+$$ c_p = \left(\frac{\partial h}{\partial T}\right)_p $$
 
 Dla gazów doskonałych zachodzi **Równanie Mayera**:
 $$ C_p - C_v = n \cdot R_u $$, lub
 $$ c_p - c_v = R $$
 
 ## <i class="bi bi-exclamation-triangle"></i> Uwaga na oznaczenia!
+
 Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
@@ -518,10 +453,9 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 | **Molowa** (kmol) | $C_{p,m} - C_{v,m} = R_u$ | $\frac{J}{kmol \cdot K}$ | **Uniwersalna** ($MR$) |
 | **Całkowita** (Cały układ) | $C_p - C_v = n \cdot R_u$ | $\frac{J}{K}$ | Uniwersalna |
 
-> **Zasada na Egzamin:**
-> Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
-> Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
-
+::: {.panel .panel-amber}
+**Zasada na Egzamin:** Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**! Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
+:::
 
 ## <i class="bi bi-card-checklist"></i> Podsumowanie W2
 
@@ -533,5 +467,3 @@ Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 3.  **Praca Objętościowa ($L$):** Zależy od zmiany objętości ($pdV$) i drogi procesu.
 4.  **Entalpia ($H$):** Suma energii wewnętrznej i pracy przetłaczania ($U+pV$).
 5.  **Ciepła Właściwe:** $c_p > c_v$, ponieważ przy stałym ciśnieniu gaz wykonuje pracę.
-
-

@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -21,7 +21,7 @@ format:
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
             background-image: url("../img/background_green.png") !important;
-            background-size: contain !important; 
+            background-size: contain !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.3 !important;
@@ -34,12 +34,14 @@ format:
         </style>
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: fade
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W6)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -50,13 +52,14 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
-```
+#| label: setup
+#| include: false
 
+library(ggplot2)
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+```
 
 ## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
@@ -67,10 +70,7 @@ theme_set(theme_minimal(base_size = 18))
 5.  **Obieg Carnota** (Silnik Idealny)
 6.  **Skala Termodynamiczna Temperatury**
 
-
----
-
-## <i class="bi bi-1-circle"></i> 1. Dlaczego I Zasada to za mało? 
+## <i class="bi bi-1-circle"></i> 1. Dlaczego I Zasada to za mało?
 
 ### Kierunek Procesów
 
@@ -94,11 +94,9 @@ I Zasada nie zabrania procesom biec "wstecz", o ile energia się zgadza. Jednak 
 
 ::::
 
----
+## <i class="bi bi-film"></i> Przykłady Procesów Nieodwracalnych
 
-## <i class="bi bi-calculator"></i> Przykłady Procesów Nieodwracalnych 
-
-::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+::: {.panel .panel-blue}
 Dlaczego film puszczony od tyłu wygląda nienaturalnie?
 :::
 
@@ -109,17 +107,15 @@ Dlaczego film puszczony od tyłu wygląda nienaturalnie?
 4.  **Przepływ ciepła:** Ciepło płynie samorzutnie tylko od ciała cieplejszego do zimniejszego ($\Delta T > 0$).
 :::
 
-::: {.fragment  .callout-note}
+::: {.fragment .callout-note}
 Wszystkie te procesy generują **Entropię** (miarę nieporządku), o czym powiemy w W7.
 :::
 
----
+## <i class="bi bi-fire"></i> 2. Źródła Ciepła (Rezerwuary)
 
-## <i class="bi bi-fire"></i> 2. Źródła Ciepła (Rezerwuary) 
-
-::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+::: {.panel .panel-blue}
 Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):
-::: 
+:::
 
 :::: {.columns}
 
@@ -128,7 +124,7 @@ Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności
 1.  **Źródło górne ($T_H$):** Piec, Reaktor Jądrowy, Słońce. Dostarcza ciepło $Q_H$ (High).
 2.  **Źródło dolne ($T_L$):** Rzeka, Atmosfera, Grunt. Odbiera ciepło odpadowe $Q_L$ (Low).
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber .fragment}
 Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zachodzą one od stanu o wyższym potencjale do stanów o potencjale niższym.
 :::
 
@@ -136,105 +132,84 @@ Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zach
 
 ::: {.column width="40%"}
 
-```{R}
-#| fig-height: 6
-#| fig-width: 5
+```{r}
+#| label: silnik-schemat
 #| echo: false
 #| warning: false
+#| fig-width: 5
+#| fig-height: 5.6
+#| out-width: "80%"
+#| fig-align: center
 
-library(ggplot2)
-
-# --- Definicja elementów graficznych ---
-
-# 1. Źródła (Prostokąty)
-# Zmiana: Używamy składni plotmath (atop zamiast \n, T[H] zamiast $T_H$)
+# 1. Źródła (prostokąty) – etykiety w składni plotmath
 reservoirs <- data.frame(
   xmin = c(1, 1),
   xmax = c(9, 9),
   ymin = c(8.5, 0.5),
   ymax = c(10, 2),
-  fill = c("#e74c3c", "#3498db"),
-  # UWAGA: To są napisy sformatowane pod parse = TRUE
+  fill = c(pal_slides[2], pal_slides[3]),
   label = c(
-    "atop('GÓRNE ŹRÓDŁO CIEPŁA', '(Temp. '*T[H]*')')", 
+    "atop('GÓRNE ŹRÓDŁO CIEPŁA', '(Temp. '*T[H]*')')",
     "atop('DOLNE ŹRÓDŁO CIEPŁA', '(Temp. '*T[L]*')')"
   )
 )
 
-# 2. Silnik (Koło centralne)
+# 2. Silnik (koło centralne)
 engine_center <- data.frame(x = 5, y = 5.25)
 
-# 3. Strzałki przepływu
+# 3. Strzałki przepływu: Q_H (dostarczone), Q_L (odprowadzone), L (praca)
 arrows_data <- data.frame(
   x    = c(5,   5,   6.2),
   xend = c(5,   5,   8.5),
   y    = c(8.5, 3.5, 5.25),
   yend = c(7,   2,   5.25),
-  color = c("#e74c3c", "#3498db", "#27ae60"),
-  size = c(4, 2.5, 3)
+  color = c(pal_slides[2], pal_slides[3], pal_slides[1]),
+  lw    = c(3, 2, 2.5)
 )
 
 # 4. Etykiety przepływów
-# Zmiana: Składnia plotmath dla Q[H], Q[C], L
 labels_flow <- data.frame(
   x = c(5.5, 5.5, 8.8),
   y = c(7.8, 2.8, 5.7),
-  # atop układa tekst w dwóch liniach, * skleja elementy
   label = c(
-    "atop('Ciepło dodane', '(' * Q[H] * ')')", 
-    "atop('Ciepło oddane', '(' * Q[L] * ')')", 
+    "atop('Ciepło dodane', '(' * Q[H] * ')')",
+    "atop('Ciepło oddane', '(' * Q[L] * ')')",
     "atop('Praca', '(' * L * ')')"
   ),
-  color = c("#e74c3c", "#3498db", "#27ae60")
+  color = c(pal_slides[2], pal_slides[3], pal_slides[1])
 )
 
-
-# --- Rysowanie ---
 ggplot() +
-  # 1. Źródła
-  geom_rect(data = reservoirs, 
+  geom_rect(data = reservoirs,
             aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
-            color = "black", size = 1, show.legend = FALSE) +
-  # WAŻNE: parse = TRUE interpretuje napisy jako wyrażenia matematyczne
+            color = col_ink, linewidth = 0.8, show.legend = FALSE) +
   geom_text(data = reservoirs,
-            aes(x = (xmin+xmax)/2, y = (ymin+ymax)/2, label = label),
+            aes(x = (xmin + xmax) / 2, y = (ymin + ymax) / 2, label = label),
             color = "white", fontface = "bold", size = 5, parse = TRUE) +
-  
-  # 2. Strzałki
   geom_segment(data = arrows_data,
-               aes(x = x, xend = xend, y = y, yend = yend, color = color, size = size),
+               aes(x = x, xend = xend, y = y, yend = yend, color = color, linewidth = lw),
                arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
                show.legend = FALSE) +
-  
-  # 3. Silnik
-  geom_point(data = engine_center, aes(x = x, y = y), 
-             size = 50, shape = 21, fill = "white", color = "black", stroke = 2) +
-  # Tutaj prosty tekst bez matematyki, więc parse nie jest konieczne, ale można użyć
-  annotate("text", x = 5, y = 5.25, label = "atop('SILNIK', atop('CIEPLNY', '(Cykl)'))", 
-           fontface = "bold", size = 5, parse = TRUE) +
-  
-  # 4. Etykiety przepływów (z parse = TRUE)
+  geom_point(data = engine_center, aes(x = x, y = y),
+             size = 50, shape = 21, fill = "white", color = col_ink, stroke = 1.5) +
+  annotate("text", x = 5, y = 5.25, label = "atop('SILNIK', atop('CIEPLNY', '(Cykl)'))",
+           fontface = "bold", size = 5, parse = TRUE, color = col_ink) +
   geom_text(data = labels_flow, aes(x = x, y = y, label = label, color = color),
             hjust = 0, fontface = "bold", size = 4.5, show.legend = FALSE, parse = TRUE) +
-  
-  # --- Estetyka ---
   scale_fill_identity() +
   scale_color_identity() +
-  scale_size_identity() +
-  xlim(0, 10) + ylim(0, 10.5) +
-  theme_void() + 
-  theme(plot.margin = margin(1, 1, 1, 1, "cm"))
+  scale_linewidth_identity() +
+  xlim(0, 10.5) + ylim(0, 10.5) +
+  theme_void()
 ```
 
 :::
 
 ::::
 
----
+## <i class="bi bi-gear-wide-connected"></i> Silnik Cieplny
 
-## <i class="bi bi-gear-wide-connected"></i> Silnik Cieplny 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Urządzenie cykliczne, które zamienia ciepło na pracę.
 :::
 
@@ -247,41 +222,45 @@ Urządzenie cykliczne, które zamienia ciepło na pracę.
 ::: {.fragment}
 ### Sprawność Termiczna
 
+::: {.panel .panel-amber}
 $$ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{L}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} $$
-
+:::
 :::
 
----
+## <i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła
 
-## <i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła {style="font-size: 0.9em;"}
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 To "odwrócony" silnik cieplny.
 :::
 
+:::: {.columns}
+
+::: {.column width="50%"}
 ::: incremental
 1.  Pobiera ciepło $Q_L$ z zimnego wnętrza ($T_L$).
 2.  Wymaga dostarczenia pracy $L$ (sprężarka).
 3.  Oddaje ciepło $Q_H$ do ciepłego otoczenia ($T_H$).
 :::
+:::
 
+::: {.column width="50%"}
 ::: {.fragment}
 ### Współczynniki Efektywności (COP)
 
-::: incremental
+::: {.panel .panel-amber}
 *   **Chłodziarka:** Cel to $Q_L$.
     $$ \text{COP}_R = \frac{Q_L}{L} $$
 *   **Pompa Ciepła:** Cel to $Q_H$ (ogrzewanie).
     $$ \text{COP}_{HP} = \frac{Q_H}{L} = \text{COP}_R + 1 $$
 :::
-
+:::
 :::
 
----
+::::
 
-## <i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik {style="font-size: 0.95em;"}
+## <i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik
 
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
+::: {.panel .panel-green}
 Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje $L = 30 \text{ kJ}$ pracy.
 :::
 
@@ -293,19 +272,15 @@ Załóżmy, że silnik pobiera $Q_H = 100 \text{ kJ}$ ciepła z pieca i wykonuje
     $$ \eta_{th} = \frac{L}{Q_H} = \frac{30}{100} = 0{,}30 = 30\% $$
 :::
 
-::: {.fragment .callout-tip title= "**Wniosek:**"}
+::: {.fragment .callout-tip title="**Wniosek:**"}
 Większość energii (70%) jest marnowana jako ciepło odpadowe! To typowa wartość dla silników spalinowych.
 :::
 
----
+## <i class="bi bi-speedometer2"></i> Analiza COP (Współczynnik Wydajności)
 
-## <i class="bi bi-speedometer2"></i> Analiza COP (Współczynnik Wydajności) 
-
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
-
+::: {.panel .panel-green}
 Dlaczego $\text{COP}$ może być większe od 1 (np. 3 lub 4)?
-Czy to perpetuum mobile? [**NIE!**]{.fragment style="color: #e60000; font-weight: bold;"}
-
+Czy to perpetuum mobile? [**NIE!**]{.fragment .answer}
 :::
 
 ::: incremental
@@ -314,41 +289,45 @@ Czy to perpetuum mobile? [**NIE!**]{.fragment style="color: #e60000; font-weight
 $$ \text{COP}_{HP} = \frac{Q_H}{L} = \frac{Q_L + L}{L} = \frac{Q_L}{L} + 1 = \text{COP}_R + 1 $$
 :::
 
-::: {.fragment .callout-tip title= "**Wniosek:**"}
+::: {.fragment .callout-tip title="**Wniosek:**"}
 Jeśli $\text{COP}_{HP} = 4$, to za każde 1 kWh prądu otrzymujemy 4 kWh ciepła w domu (1 kWh z prądu + 3 kWh z darmowego powietrza na zewnątrz).
 :::
 
----
+## <i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady {.smaller}
 
-## <i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady {style="font-size: 0.85em;"}
+:::: {.columns}
 
-### Sformułowanie Kelvina-Plancka{style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
+::: {.column width="50%"}
+### Sformułowanie Kelvina-Plancka
 
-::: {.fragment style="font-size: .8em;"}
+::: {.panel .panel-blue .fragment}
 > Nie jest możliwy proces cykliczny, którego **jedynym** wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.
 :::
 
-::: {.fragment .callout-tip title= "**Wniosek:**" style="font-size: .8em;"}
+::: {.fragment .callout-tip title="**Wniosek:**"}
 **Silnik o sprawności 100% jest niemożliwy.**
+
+Musimy oddać część ciepła $Q_L$ do chłodnicy: [$Q_L \neq 0$.]{.answer}
+:::
 :::
 
-[Musimy oddać część ciepła $Q_L$ do chłodnicy. $Q_L \neq 0$.]{.fragment style="color: #65210d; font-weight: bold;"}
+::: {.column width="50%"}
+### Sformułowanie Clausiusa
 
-### Sformułowanie Clausiusa{.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
-
-::: {.fragment style="font-size: .8em;"}
+::: {.panel .panel-blue .fragment}
 > Nie jest możliwe zbudowanie urządzenia, którego **jedynym** skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.
 :::
 
-::: {.fragment .callout-tip title= "**Wniosek:**" style="font-size: .8em;"}
+::: {.fragment .callout-tip title="**Wniosek:**"}
 **Chłodziarka wymaga doprowadzenia energii z zewnątrz** — pracy (sprężarka) lub ciepła o wysokiej temperaturze (chłodziarka absorpcyjna). Ciepło nie popłynie "pod górę" samoistnie.
 :::
+:::
 
----
+::::
 
-## <i class="bi bi-arrow-left-right"></i> Równoważność Sformułowań 
+## <i class="bi bi-arrow-left-right"></i> Równoważność Sformułowań
 
-::: {style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;"}
+::: {.panel .panel-green}
 Te dwa twierdzenia brzmią różnie, ale są równoważne.
 
 Złamanie jednego oznacza złamanie też drugiego.
@@ -361,11 +340,9 @@ Złamanie jednego oznacza złamanie też drugiego.
 
 :::
 
----
+## <i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju
 
-## <i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju {style="font-size: 0.9em;"}
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).
 :::
 
@@ -377,29 +354,25 @@ Wyobraźmy sobie statek, który pobiera ciepło z oceanu ($T \approx 15^\circ\te
 *   I Zasada? **Spełniona** (Energia z wody $\to$ Praca).
 *   II Zasada? **Złamana** (Brak $Q_L$, $\eta = 100\%$).
 
-::: {style="border: 2px solid red; padding: 10px; text-align: center;"}
-**NIEMOŻLIWE**
-$$ Q_H \to [\text{SILNIK}] \to L $$
-(Brak strzałki $Q_L$)
+::: {.panel .panel-amber}
+**NIEMOŻLIWE:** $Q_H \to [\text{SILNIK}] \to L$ (brak strzałki $Q_L$).
 :::
 :::
 
 ::: {.column width="60%"}
 
-```{R}
-#| fig-height: 6
-#| fig-width: 8
+```{r}
+#| label: statek
 #| echo: false
 #| warning: false
+#| fig-width: 8
+#| fig-height: 4.6
+#| out-width: "85%"
+#| fig-align: center
 
-library(ggplot2)
-
-# --- 1. Definicja Geometrii ---
-
-# Ocean
+# --- 1. Geometria ---
 ocean <- data.frame(xmin = 0, xmax = 12, ymin = 0, ymax = 3.5)
 
-# Statek
 # kadłub nieco nad linią wody (y = 3.5), żeby horyzont nie pokrywał się z pokładem
 ship_hull <- data.frame(
   x = c(1, 11, 10, 2),
@@ -408,86 +381,65 @@ ship_hull <- data.frame(
 ship_cabin <- data.frame(xmin = 3, xmax = 6, ymin = 4.1, ymax = 6.1)
 ship_stack <- data.frame(xmin = 4, xmax = 5, ymin = 6.1, ymax = 7.1)
 
-# --- 2. Definicja Strzałek Energetycznych ---
-
+# --- 2. Strzałki energetyczne: ciepło pobrane (pomarańcz), praca (niebieski) ---
 arrows <- data.frame(
-  x_start = c(6, 8),   
+  x_start = c(6, 8),
   y_start = c(2.1, 5.1),
   x_end   = c(6, 13),
   y_end   = c(4.1, 5.1),
-  color   = c("#e74c3c", "#27ae60"), 
-  lw      = c(2, 2) # Zmieniono nazwę kolumny na 'lw' (linewidth) dla porządku
+  color   = c(pal_slides[2], pal_slides[1]),
+  lw      = c(2, 2)
 )
 
 labels_arrows <- data.frame(
   x = c(6.2, 10.5),
   y = c(3.1, 5.8),
-  label = c("Pobór Ciepła\n(Q z Oceanu)", "Całkowita zamiana\nna NAPĘD (L = Q)"),
-  color = c("#e74c3c", "#27ae60")
+  label = c("Pobór ciepła\n(Q z oceanu)", "Całkowita zamiana\nna NAPĘD (L = Q)"),
+  color = c(pal_slides[2], pal_slides[1])
 )
 
-# --- 3. Elementy "Zakazu" ---
-
+# --- 3. Znak zakazu ---
 forbidden_mark <- data.frame(
   x = c(1, 1), xend = c(11, 11),
   y = c(1, 8), yend = c(8, 1)
 )
 
-title_text <- data.frame(
-  x = 6, y = 8.5,
-  label = "PERPETUUM MOBILE II RODZAJU"
-)
-
-subtitle_text <- data.frame(
-  x = 6, y = 7.8,
-  label = "(Niemożliwe wg II Zasady Termodynamiki:\nBrak dolnego źródła ciepła!)"
-)
-
-
-# --- RYSOWANIE ---
-
 ggplot() +
-  # 1. Tło - Ocean
-  geom_rect(data = ocean, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax),
-            fill = "#3498db", alpha = 0.6) +
-  annotate("text", x = 2, y = 0.5, label = "OCEAN (T \u2248 15\u00B0C)\n(Jedyne źródło ciepła)", 
-           color = "white", fontface = "bold", hjust = 0, size = 5) +
-  
-  # 2. Statek
-  geom_polygon(data = ship_hull, aes(x=x, y=y), fill = "#95a5a6", color = "black") +
-  geom_rect(data = ship_cabin, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), fill = "white", color = "black") +
-  geom_rect(data = ship_stack, aes(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax), fill = "#7f8c8d", color = "black") +
-  annotate("text", x = 4.5, y = 5.1, label = "SILNIK\nSTATKU", fontface = "bold", size = 4) +
-
-  # 3. Strzałki przepływu (POPRAWIONE)
-  # Zmiana 1: xend = x_end (poprawna nazwa kolumny)
-  # Zmiana 2: linewidth zamiast size
-  geom_segment(data = arrows, aes(x=x_start, xend=x_end, y=y_start, yend=y_end, color=color, linewidth=lw),
+  # Ocean
+  geom_rect(data = ocean, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = pal_slides[1], alpha = 0.3) +
+  annotate("text", x = 2, y = 0.6, label = "OCEAN (T ≈ 15°C)\n(jedyne źródło ciepła)",
+           color = col_ink, fontface = "bold", hjust = 0, size = 5, lineheight = 0.9) +
+  # Statek
+  geom_polygon(data = ship_hull, aes(x = x, y = y), fill = "#bdb9b2", color = col_ink) +
+  geom_rect(data = ship_cabin, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = "white", color = col_ink) +
+  geom_rect(data = ship_stack, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            fill = col_ink2, color = col_ink) +
+  annotate("text", x = 4.5, y = 5.1, label = "SILNIK\nSTATKU", fontface = "bold", size = 4,
+           color = col_ink, lineheight = 0.9) +
+  # Strzałki przepływu
+  geom_segment(data = arrows,
+               aes(x = x_start, xend = x_end, y = y_start, yend = y_end, color = color, linewidth = lw),
                arrow = arrow(length = unit(0.6, "cm"), type = "closed"), show.legend = FALSE) +
-  
-  geom_text(data = labels_arrows, aes(x=x, y=y, label=label, color=color), 
-            fontface = "bold", size = 5, hjust = 0, show.legend = FALSE) +
-  
-  # 4. Wielki Znak Zakazu (POPRAWIONE)
-  # Tutaj kolumny nazywały się x i xend, więc było ok, ale zmieniamy size na linewidth
-  geom_segment(data = forbidden_mark, aes(x=x, xend=xend, y=y, yend=yend),
-               color = "red", linewidth = 3, alpha = 0.5, lineend = "round") +
-  
-  # 5. Tytuły
-  geom_text(data = title_text, aes(x=x, y=y, label=label), 
-            color = "red", fontface = "bold", size = 7) +
-  geom_text(data = subtitle_text, aes(x=x, y=y, label=label), 
-            color = "darkred", fontface = "italic", size = 5) +
-
-  # Estetyka
+  geom_text(data = labels_arrows, aes(x = x, y = y, label = label, color = color),
+            fontface = "bold", size = 5, hjust = 0, show.legend = FALSE, lineheight = 0.9) +
+  # Znak zakazu
+  geom_segment(data = forbidden_mark, aes(x = x, xend = xend, y = y, yend = yend),
+               color = pal_slides[8], linewidth = 3, alpha = 0.5, lineend = "round") +
+  # Tytuły
+  annotate("text", x = 6, y = 8.6, label = "PERPETUUM MOBILE II RODZAJU",
+           color = pal_slides[8], fontface = "bold", size = 7) +
+  annotate("text", x = 6, y = 7.8,
+           label = "(niemożliwe wg II Zasady Termodynamiki:\nbrak dolnego źródła ciepła!)",
+           color = col_ink2, fontface = "italic", size = 5, lineheight = 0.9) +
   scale_color_identity() +
-  scale_linewidth_identity() + # Skala dla linewidth
+  scale_linewidth_identity() +
   xlim(0, 14) + ylim(0, 9) +
-  theme_void() +
-  theme(plot.background = element_rect(fill = "white", color = NA))
+  theme_void()
 ```
 
-::: {.fragment .callout-caution appearance="simple" style="font-size: 0.8em;"}
+::: {.fragment .callout-caution appearance="simple"}
 Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.
 :::
 
@@ -495,63 +447,57 @@ Takie urządzenie nie narusza bilansu energii, ale jest niemożliwe fizycznie.
 
 ::::
 
----
-
-## <i class="bi bi-recycle"></i> 4. Procesy Odwracalne i Nieodwracalne 
+## <i class="bi bi-recycle"></i> 4. Procesy Odwracalne i Nieodwracalne
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 ### Proces Odwracalny
-::: {style="border: 2px solid #27ae60; padding: 15px; border-radius: 10px; background-color: #eafaf1; font-size: 0.8em; text-align: center; margin-bottom: 20px;"}
+
+::: {.panel .panel-green}
 Można go cofnąć bez śladu w otoczeniu.
 :::
 
-<div style="text-align: center; zoom: 1.5;">
 ::: {.mmd-fit style="height: 320px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff4e3'}, 'htmlLabels': false}}%%
 flowchart LR
     A((Stan 1)) <==> B((Stan 2))
 
-    style A fill:#eafaf1,stroke:#27ae60,stroke-width:4px
-    style B fill:#eafaf1,stroke:#27ae60,stroke-width:4px
-    linkStyle 0 stroke:#27ae60,stroke-width:4px
+    style A fill:#ecf7ee,stroke:#1f9d55,stroke-width:4px
+    style B fill:#ecf7ee,stroke:#1f9d55,stroke-width:4px
+    linkStyle 0 stroke:#1f9d55,stroke-width:4px
 ```
 :::
-</div>
 :::
 
 ::: {.column width="50%"}
 ### Proces Nieodwracalny
-::: {style="border: 2px solid #e60000; padding: 15px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em; text-align: center; margin-bottom: 20px;"}
+
+::: {.panel .panel-amber}
 Układ można przywrócić do stanu początkowego tylko kosztem trwałych zmian w otoczeniu (np. zużycia pracy).
 :::
 
-<div style="text-align: center; zoom: 1.5;">
-::: {.mmd-fit style="height: 260px;"}
+::: {.mmd-fit style="height: 320px;"}
 ```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff0f0'}, 'htmlLabels': false}}%%
+%%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'curve': 'basis', 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif', 'primaryColor': '#ffffff', 'edgeLabelBackground': '#ffffff', 'tertiaryColor': '#fff4e3'}, 'htmlLabels': false}}%%
 flowchart LR
     C((Stan 1)) ==> D((Stan 2))
     D -.-> |Praca| C
 
-    style C fill:#fff0f0,stroke:#e60000,stroke-width:4px
-    style D fill:#fff0f0,stroke:#e60000,stroke-width:4px
-    linkStyle 0 stroke:#e60000,stroke-width:4px
-    linkStyle 1 stroke:#e60000,stroke-width:3px
+    style C fill:#fff4e3,stroke:#eb6834,stroke-width:4px
+    style D fill:#fff4e3,stroke:#eb6834,stroke-width:4px
+    linkStyle 0 stroke:#eb6834,stroke-width:4px
+    linkStyle 1 stroke:#eb6834,stroke-width:3px
 ```
 :::
-</div>
 :::
 
 ::::
 
----
+## <i class="bi bi-exclamation-triangle"></i> Źródła Nieodwracalności
 
-## <i class="bi bi-exclamation-triangle"></i> Źródła Nieodwracalności 
-
-::: {style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;"}
+::: {.panel .panel-amber}
 Co sprawia, że procesu nie da się cofnąć bez strat?
 :::
 
@@ -563,18 +509,16 @@ Co sprawia, że procesu nie da się cofnąć bez strat?
 5.  **Opór elektryczny** - przepływ prądu zawsze generuje ciepło Joule'a.
 :::
 
----
+## <i class="bi bi-clock-history"></i> Proces Kwazistatyczny i Warunki Odwracalności
 
-## <i class="bi bi-clock-history"></i> Proces Kwazistatyczny i Warunki Odwracalności 
-
-::: {style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;"}
-Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi (proces kwazistatyczny). To warunek konieczny, ale niewystarczający — potrzebny jest też brak dyssypacji.
+::: {.panel .panel-amber}
+Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi (proces kwazistatyczny) **bez dyssypacji** (tarcia). Powolny proces z tarciem nie jest kwazistatyczny (por. W1).
 :::
 
-::: incremental 
+::: incremental
 
 *   Dzieje się to "nieskończenie powoli" — w każdym momencie $p_{\text{układu}} \approx p_{\text{otoczenia}}$ (równowaga mechaniczna).
-*   **Odwracalność wewnętrzna:** proces kwazistatyczny bez tarcia i innych efektów dyssypacyjnych wewnątrz układu.
+*   **Odwracalność wewnętrzna:** brak tarcia i innych efektów dyssypacyjnych wewnątrz układu.
 *   **Odwracalność zewnętrzna:** wymiana ciepła przy $T_{\text{układu}} \approx T_{\text{otoczenia}}$ (nieskończenie małe $\Delta T$), brak tarcia poza układem.
 *   Proces **całkowicie odwracalny** jest odwracalny wewnętrznie i zewnętrznie.
 
@@ -584,175 +528,138 @@ Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równow
 Taki proces to **idealizacja** (jak punkt materialny w mechanice). Służy do wyznaczenia teoretycznych granic wydajności.
 :::
 
----
+## <i class="bi bi-arrow-repeat"></i> 5. Obieg Carnota: Wzorzec Doskonałości
 
-## <i class="bi bi-arrow-repeat"></i> 5. Obieg Carnota: Wzorzec Doskonałości 
+Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami $T_H$ i $T_L$. Składa się z 4 procesów **odwracalnych**:
 
-Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami $T_H$ i $T_L$.
+:::: {.columns}
 
-::::: {.columns}
-
-:::: {.column width="50%"}
-
-Składa się z 4 procesów **odwracalnych**:
-
-::: {.fragment .highlight-red style="font-size: 0.6em;"}
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+::: incremental
 1.  **Izotermiczne rozprężanie** (w $T_H$): Pobranie ciepła $Q_H$.
-:::
-::: {.fragment .highlight-red style="font-size: 0.6em;"}
 2.  **Adiabatyczne rozprężanie:** Temperatura spada z $T_H$ do $T_L$. Praca wykonana kosztem energii wewn.
-
-:::
-::::
-
-:::: {.column width="50%"}
-::: {.fragment .highlight-red style="font-size: 0.6em;"}
-
 3.  **Izotermiczne sprężanie** (w $T_L$): Oddanie ciepła $Q_L$.
-:::
-::: {.fragment .highlight-red style="font-size: 0.6em;"}
 4.  **Adiabatyczne sprężanie:** Temperatura rośnie z $T_L$ do $T_H$.
-
 :::
+:::
+:::
+
+::: {.column width="50%"}
+![](../img/carnot_p_v.png){fig-align="center" width="100%"}
+
+::: {.small-note}
+Źródło: *Termodynamika techniczna*, 2000, J. Szargut.
+Oznaczenia na rysunku: $T_{\text{I}} = T_H$, $T_{\text{II}} = T_L$; $\dot{Q}_d$, $q_d$ — ciepło doprowadzone ($Q_H$); $\dot{Q}_w$, $q_w$ — ciepło wyprowadzone ($Q_L$); $N$ — moc (praca $L$ w jednostce czasu).
+:::
+:::
+
 ::::
-:::::
 
-::: {style="text-align: center;"}
-![](../img/carnot_p_v.png){fig-align="center" width="62%"}
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota – 1-2: Rozprężanie Izotermiczne
 
-::: {style="font-size: 0.5em; color: gray; margin-top: -60px;"}
-  Źródło: *Termodynamika techniczna*, 2000, J. Szargut.<br>
-  Oznaczenia na rysunku: $T_{\text{I}} = T_H$, $T_{\text{II}} = T_L$; $\dot{Q}_d$, $q_d$ — ciepło doprowadzone ($Q_H$); $\dot{Q}_w$, $q_w$ — ciepło wyprowadzone ($Q_L$); $N$ — moc (praca $L$ w jednostce czasu).
-:::
-
-:::
-
----
-
-## <i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (1-2) 
-
-::: {.panel-tabset}
-
-### 1-2: Rozprężanie Izotermiczne
+::: {.panel .panel-amber}
 *   **Stan:** Kontakt ze źródłem górnym $T_H$.
 *   **Proces:** Gaz rozpręża się powoli, wykonując pracę na tłoku.
 *   **Energia:** Aby $T=const$, gaz musi pobrać ciepło $Q_H$.
 *   **Entropia:** Rośnie (dostarczamy ciepło).
+:::
 
-### 2-3: Rozprężanie Adiabatyczne
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota – 2-3: Rozprężanie Adiabatyczne
+
+::: {.panel .panel-blue}
 *   **Stan:** Izolacja termiczna (brak wymiany ciepła).
 *   **Proces:** Dalsze rozprężanie kosztem energii wewnętrznej.
 *   **Efekt:** Temperatura spada z $T_H$ do $T_L$.
 *   **Entropia:** Stała ($dQ=0$, proces odwracalny).
 :::
 
----
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota – 3-4: Sprężanie Izotermiczne
 
-## <i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (3-4) 
-
-::: {.panel-tabset}
-
-### 3-4: Sprężanie Izotermiczne
+::: {.panel .panel-green}
 *   **Stan:** Kontakt ze źródłem dolnym $T_L$.
 *   **Proces:** Tłok spręża gaz (praca zewnętrzna).
 *   **Energia:** Aby $T=const$ (gaz nie ogrzewa się), musimy oddać ciepło $Q_L$.
 *   **Entropia:** Maleje (oddajemy ciepło).
+:::
 
-### 4-1: Sprężanie Adiabatyczne
+## <i class="bi bi-arrow-repeat"></i> Obieg Carnota – 4-1: Sprężanie Adiabatyczne
+
+::: {.panel .panel-blue}
 *   **Stan:** Izolacja termiczna.
 *   **Proces:** Dalsze sprężanie podnosi temperaturę.
 *   **Efekt:** Temperatura wraca z $T_L$ do $T_H$. Zamykamy cykl.
 *   **Entropia:** Stała.
 :::
 
----
-
-## <i class="bi bi-graph-up"></i> Wizualizacja Obiegu Carnota (T-s) 
+## <i class="bi bi-graph-up"></i> Wizualizacja Obiegu Carnota (T-s)
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="45%"}
 Na wykresie T-s (Temperatura-Entropia) obieg Carnota to idealny **prostokąt**.
 
 *   Izotermy ($T=const$): Poziome.
 *   Adiabaty odwracalne ($s=const$): Pionowe.
 
-::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;"}
-
+::: {.panel .panel-amber style="text-align: center;"}
 $$ \eta_{\text{Carnot}} = 1 - \frac{T_L}{T_H} $$
-
 :::
 
 To maksymalna teoretyczna sprawność maszyny cieplnej.
 :::
 
-::: {.column width="50%"}
+::: {.column width="55%"}
 ```{r}
-#| label: carnot-ts
+#| label: fig-carnot-ts
+#| fig-cap: "Obieg Carnota na wykresie T-s"
 #| echo: false
-#| fig-width: 6
+#| warning: false
+#| fig-width: 7.5
 #| fig-height: 5
+#| out-width: "95%"
+#| fig-align: center
 
-library(ggplot2)
-
-# Dane do wykresu (bez zmian)
 df_carnot <- data.frame(
-  s = c(1, 4, 4, 1, 1),
-  T = c(600, 600, 300, 300, 600),
-  Label = c("1", "2", "3", "4", "1")
+  s = c(1, 4, 4, 1),
+  T = c(600, 600, 300, 300),
+  Label = c("1", "2", "3", "4")
 )
 
-ggplot(df_carnot, aes(x=s, y=T)) +
-  # Obszar cyklu
-  # Zmiana: size -> linewidth (nowy standard ggplot2)
-  geom_polygon(fill="lightgreen", alpha=0.5, color="darkgreen", linewidth=2) +
-  
-  # Oznaczenia punktów 1-4
-  geom_text(aes(label=Label), vjust=-1, size=6, fontface="bold") +
-  
-  # --- OPISY Z FORMATOWANIEM MATEMATYCZNYM (parse = TRUE) ---
-  
-  # 1. Środek (Praca = Ciepło Netto)
-  # Używamy atop(), żeby zrobić dwie linijki tekstu matematycznego
-  annotate("text", x=2.5, y=450, 
-           label = "atop('Ciepło zamienione na pracę', L == Q[H] - Q[L])", 
-           fontface="bold", color="darkgreen", size=5, parse=TRUE) +
-  
-  # 2. Góra (Pobieranie ciepła)
-  # 'Text' * Zmienna skleja napis z symbolem
-  annotate("text", x=2.5, y=630, 
-           label = "'Pobieranie ' * Q[H] * ' (Izoterma ' * T[H] * ')'", 
-           color="red", size=4.5, parse=TRUE) +
-  
-  # 3. Dół (Oddawanie ciepła)
-  annotate("text", x=2.5, y=270, 
-           label = "'Oddawanie ' * Q[L] * ' (Izoterma ' * T[L] * ')'", 
-           color="blue", size=4.5, parse=TRUE) +
-  
-  # --- ESTETYKA ---
-  theme_minimal() +
-  # Formatowanie osi z jednostkami w nawiasach
+ggplot(df_carnot, aes(x = s, y = T)) +
+  # Pole obiegu = praca (podkładka w kolorze pracy)
+  geom_polygon(fill = pal_slides[1], alpha = 0.12, color = col_ink, linewidth = 1.1) +
+  # Izoterma górna: ciepło dostarczone; izoterma dolna: ciepło odprowadzone
+  annotate("segment", x = 1, xend = 4, y = 600, yend = 600, color = pal_slides[2], linewidth = 1.8) +
+  annotate("segment", x = 4, xend = 1, y = 300, yend = 300, color = pal_slides[3], linewidth = 1.8) +
+  # Punkty 1–4
+  geom_text(aes(label = Label), nudge_x = c(-0.15, 0.15, 0.15, -0.15),
+            nudge_y = c(22, 22, -22, -22), size = 6, fontface = "bold", color = col_ink) +
+  annotate("text", x = 2.5, y = 450,
+           label = "atop('Ciepło zamienione na pracę', L == Q[H] - Q[L])",
+           fontface = "bold", color = pal_slides[1], size = 5.5, parse = TRUE) +
+  annotate("text", x = 2.5, y = 640,
+           label = "'Pobieranie ' * Q[H] * ' (izoterma ' * T[H] * ')'",
+           color = pal_slides[2], size = 5, parse = TRUE) +
+  annotate("text", x = 2.5, y = 260,
+           label = "'Oddawanie ' * Q[L] * ' (izoterma ' * T[L] * ')'",
+           color = pal_slides[3], size = 5, parse = TRUE) +
+  scale_x_continuous(limits = c(0.5, 4.5)) +
+  scale_y_continuous(limits = c(220, 680)) +
   labs(
-    title = expression(paste("Obieg Carnota na wykresie ", T-s)),
-    x = expression("Entropia " * s ~ bgroup("[", kJ/kgK, "]")),
-    y = expression("Temperatura " * T ~ bgroup("[", K, "]"))
+    x = expression("Entropia " * s ~ "[kJ/(kg·K)]"),
+    y = expression("Temperatura " * T ~ "[K]")
   ) +
-  theme(
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
-    axis.title = element_text(size = 12)
-  )
+  theme_slides(16)
 ```
 :::
 
 ::::
 
----
+## <i class="bi bi-lightbulb"></i> Wnioski z Carnota
 
-## <i class="bi bi-lightbulb"></i> Wnioski z Carnota 
-
-::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;"}
-
-$$ \eta = 1 - \frac{T_L}{T_H} $$ 
+::: {.panel .panel-amber style="text-align: center;"}
+$$ \eta = 1 - \frac{T_L}{T_H} $$
 :::
 
 ::: incremental
@@ -762,11 +669,9 @@ $$ \eta = 1 - \frac{T_L}{T_H} $$
 4.  **$\eta < 100\%$:** Aby mieć $\eta=1$, musielibyśmy mieć $T_L = 0\text{ K}$ (niemożliwe).
 :::
 
----
+## <i class="bi bi-thermometer-sun"></i> Potrzeba Niezależnej Skali Temperatury
 
-## <i class="bi bi-thermometer-sun"></i> Potrzeba Niezależnej Skali Temperatury 
-
-::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;"}
+::: {.panel .panel-blue}
 Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.
 :::
 
@@ -781,15 +686,13 @@ Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substan
 Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.
 :::
 
----
+## <i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina)
 
-## <i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina) {style="font-size: 0.95em;"}
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:
 :::
 
-::: {style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;"}
+::: {.panel .panel-amber style="text-align: center;"}
 $$ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} $$
 :::
 
@@ -804,9 +707,7 @@ $$ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} $$
 Kelwin (K) jest jednostką podstawową układu SI. $T(\text{K}) = t(^\circ\text{C}) + 273{,}15$.
 :::
 
----
-
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W6 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W6
 
 1.  **II Zasada:** Energia ma jakość. Procesy rzeczywiste są nieodwracalne (tarcie, $\Delta T$).
 2.  **Silniki:** Nie ma silnika o sprawności 100% (Kelvin-Planck).

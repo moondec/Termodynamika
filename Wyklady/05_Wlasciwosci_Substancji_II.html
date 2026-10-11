@@ -6,8 +6,8 @@
 <script src="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="05_Wlasciwosci_Substancji_II_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W5: Właściwości Substancji Czystych - II</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/theme/quarto-de9354c8cd4fbc190d194296254da49a.css">
+  <link rel="stylesheet" href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/dist/theme/quarto-4953c6c1d8f81f9d270ec2ff669a6b96.css">
   <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="05_Wlasciwosci_Substancji_II_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +159,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"> <img src="../img/logo_wisim.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -177,10 +177,9 @@
 <li><strong>Para Przegrzana</strong></li>
 </ol>
 </section>
-<section id="termodynamika-przemian-fazowych" class="slide level2" style="font-size: 0.9em;">
+<section id="termodynamika-przemian-fazowych" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych</h2>
 <h3 id="rodzaje-przemian">Rodzaje Przemian</h3>
-<div class="fragment">
 <ul>
 <li class="fragment"><strong>I Rodzaju:</strong> Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała (<span class="math inline">\(T=const\)</span>).
 <ul>
@@ -192,28 +191,33 @@
 <li class="fragment">Przejście w nadciekłość (Hel).</li>
 </ul></li>
 </ul>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="panel panel-amber fragment fade-up">
+<p><strong>Ciepło Utajone (Latent Heat)</strong></p>
+<p>Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.</p>
 </div>
-<div class="fragment fade-up">
-<h3 id="ciepło-utajone-latent-heat">Ciepło Utajone (Latent Heat)</h3>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;">
-<p><strong>Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.</strong></p>
-</div>
-</div>
-<h4 class="fragment fade-up" style="font-size: 0.8em;" id="dla-wody">Dla wody:</h4>
+</div><div class="column" style="width:45%;">
+<div class="panel panel-blue fragment fade-up">
+<p><strong>Dla wody:</strong></p>
 <ul>
-<li class="fragment">Ciepło parowania (<span class="math inline">\(r\)</span>): <span class="math inline">\(2257 \text{ kJ/kg}\)</span> (ogromne!)</li>
-<li class="fragment">Ciepło topnienia: <span class="math inline">\(333 \text{ kJ/kg}\)</span></li>
+<li>Ciepło parowania (<span class="math inline">\(r\)</span>): <span class="math inline">\(2257 \text{ kJ/kg}\)</span> (ogromne!)</li>
+<li>Ciepło topnienia: <span class="math inline">\(333 \text{ kJ/kg}\)</span></li>
 </ul>
+</div>
+</div></div>
 </section>
 <section id="równanie-clapeyrona-clausiusa" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Równanie Clapeyrona-Clausiusa</h2>
 <p>Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:</p>
+<div class="panel panel-blue">
 <p><span class="math display">\[ \frac{dp}{dT} = \frac{r}{T (v'' - v')} \]</span></p>
 <ul>
 <li><span class="math inline">\(r\)</span>: Ciepło przemiany fazowej (ciepło parowania lub topnienia) [J/kg]</li>
 <li><span class="math inline">\(v''\)</span>: Objętość właściwa fazy powstającej (przy wrzeniu: pary)</li>
 <li><span class="math inline">\(v'\)</span>: Objętość właściwa fazy zanikającej (przy wrzeniu: cieczy)</li>
 </ul>
+</div>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -231,73 +235,90 @@
 </div>
 </section>
 <section id="wyjątek-wody-topnienie" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Wyjątek Wody: Topnienie</h2>
+<h2><i class="bi bi-snow"></i> Wyjątek Wody: Topnienie</h2>
 <p>Woda ma rzadką cechę (podobnie m.in. Bi, Ga, Si, Ge): <span class="math inline">\(v_{\text{lód}} &gt; v_{\text{woda}}\)</span> (lód pływa!). Zatem dla topnienia <span class="math inline">\(v'' - v' = v_{\text{woda}} - v_{\text{lód}} &lt; 0\)</span>.</p>
+<div class="panel panel-blue">
 <p><span class="math display">\[ \frac{dp}{dT} &lt; 0 \]</span></p>
 <p>Wzrost ciśnienia <strong>obniża</strong> temperaturę topnienia lodu.</p>
-<div class="fragment fade-up">
-<ul>
-<li>Efekt jest jednak mały: ok. <span class="math inline">\(-0{,}0074\)</span> K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.</li>
-</ul>
+</div>
+<div class="fragment fade-up" title="Efekt jest jednak mały">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Efekt jest jednak mały</strong></p>
+</div>
+<div class="callout-content">
+<p>Ok. <span class="math inline">\(-0{,}0074\)</span> K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="wykres-stanów-faz-wody-we-współrzędnych-p-t" class="slide level2 center">
+<section id="wykres-stanów-faz-wody-we-współrzędnych-p-t" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych <span class="math inline">\(p\)</span>-<span class="math inline">\(T\)</span></h2>
 
-<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
-<section id="para-nasycona---struktura" class="slide level2" style="font-size: 0.85em;">
+<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/fig-pt-woda-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:85.0%" id="fig-pt-woda"><p class="caption">
+Rysunek&nbsp;1: Krzywe sublimacji, topnienia i parowania wody (skala logarytmiczna ciśnienia)
+</p></section>
+<section id="para-nasycona---struktura" class="slide level2 smaller">
 <h2><i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura</h2>
 <p>Gdy podgrzewamy wodę pod stałym ciśnieniem:</p>
-<div class="fragment" style="font-size: 0.98em;">
 <ol type="1">
 <li class="fragment"><strong>Ciecz Dochłodzona (Sprężona):</strong> <span class="math inline">\(T &lt; T_{\text{wrzenia}}\)</span>.
 <ul>
-<li class="fragment">💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
+<li class="fragment">Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, “tłok” jest nisko.</li>
 </ul></li>
 <li class="fragment"><strong>Ciecz Nasycona (<span class="math inline">\(x=0\)</span>):</strong> <span class="math inline">\(T = T_{\text{wrzenia}}\)</span>. Pierwszy bąbel pary.
 <ul>
-<li class="fragment">💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
+<li class="fragment">Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.</li>
 </ul></li>
 <li class="fragment"><strong>Mieszanina Dwufazowa (Para Mokra):</strong> Ciecz + Para. <span class="math inline">\(T\)</span> stoi w miejscu!
 <ul>
-<li class="fragment">☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka <span class="math inline">\(p(v''-v')\)</span>).</li>
+<li class="fragment">Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka <span class="math inline">\(p(v''-v')\)</span>).</li>
 </ul></li>
 <li class="fragment"><strong>Para Nasycona Sucha (<span class="math inline">\(x=1\)</span>):</strong> Ostatnia kropla wyparowała.
 <ul>
-<li class="fragment">☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
+<li class="fragment">Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze “gęsta”.</li>
 </ul></li>
 <li class="fragment"><strong>Para Przegrzana:</strong> Dalszy wzrost <span class="math inline">\(T &gt; T_{\text{wrzenia}}\)</span>.
 <ul>
-<li class="fragment">💨🔥 Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
+<li class="fragment">Gaz, który zachowuje się jak “szalony”. Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!</li>
 </ul></li>
 </ol>
-</div>
 </section>
 <section id="para-nasycona---jak-to-działa-w-maszynie" class="slide level2">
 <h2><i class="bi bi-cloud-fog"></i> 2. Para Nasycona - jak to działa w maszynie</h2>
 
-<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/fig-tlok-stany-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%" id="fig-tlok-stany"><p class="caption">
+Rysunek&nbsp;2: Ewolucja czynnika w cylindrze z tłokiem (p = const): od cieczy dochłodzonej do pary przegrzanej
+</p></section>
 <section id="wykres-t-s-dla-wody-kopuła" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła)</h2>
 <div class="columns">
-<div class="column" style="width:30%;">
+<div class="column" style="width:28%;">
 <p>Obszar pod dzwonem to mieszanina (Para Mokra).</p>
-</div><div class="column" style="width:70%;">
-<div class="cell">
+<p>Linie przerywane: stały stopień suchości <span class="math inline">\(x\)</span>.</p>
+<p>Izobary: <span class="math inline">\(p = 1\)</span> atm i <span class="math inline">\(p = 100\)</span> bar.</p>
+<p><span class="small-note">źródło: <a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
+</div><div class="column" style="width:72%;">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.png" width="1152"></p>
+<p><img data-src="05_Wlasciwosci_Substancji_II_files/figure-revealjs/steam-dome-1.svg" style="width:100.0%"></p>
+<figcaption>Wykres T-s dla wody (dane NIST + IAPWS-95) z liniami stałego stopnia suchości x</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><span style="font-size: 0.6em; color: gray;">źródło: <a href="https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&amp;THigh=373.946&amp;TInc=50&amp;Digits=5&amp;ID=C7732185&amp;Action=Load&amp;Type=SatP&amp;TUnit=C&amp;PUnit=atm&amp;DUnit=kg%2Fm3&amp;HUnit=kJ%2Fkg&amp;WUnit=m%2Fs&amp;VisUnit=uPa*s&amp;STUnit=N%2Fm&amp;RefState=DEF" target="_blank">NIST Chemistry WebBook, SRD 69</a></span></p>
 </div></div>
 </section>
 <section id="stopień-suchości-x" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<h2><i class="bi bi-droplet-half"></i> 3. Stopień Suchości (<span class="math inline">\(x\)</span>)</h2>
+<div class="panel panel-blue">
 <p>Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.</p>
 <p><span class="math display">\[ x = \frac{m_{\text{pary}}}{m_{\text{mieszaniny}}} = \frac{m''}{m' + m''} \]</span></p>
 </div>
@@ -309,19 +330,27 @@
 </section>
 <section id="obliczanie-właściwości-pary-mokrej" class="slide level2">
 <h2><i class="bi bi-list-check"></i> Obliczanie Właściwości Pary Mokrej</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <p>Jeśli znamy <span class="math inline">\(x\)</span>, możemy obliczyć dowolny parametr właściwy (<span class="math inline">\(y\)</span>), znając wartości graniczne z tablic:</p>
 <ul>
 <li><span class="math inline">\(y'\)</span> (dla cieczy nasyconej)</li>
 <li><span class="math inline">\(y''\)</span> (dla pary suchej)</li>
 </ul>
-<p>Wzór ogólny:</p>
+<div class="panel panel-blue">
+<p><strong>Wzór ogólny:</strong></p>
 <p><span class="math display">\[ y_x = y' + x \cdot (y'' - y') \]</span></p>
-<p>Zastosowanie:</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-green">
+<p><strong>Zastosowanie:</strong></p>
 <ul>
 <li><span class="math inline">\(v_x = v' + x(v'' - v')\)</span> (Objętość)</li>
 <li><span class="math inline">\(h_x = h' + x(h'' - h')\)</span> (Entalpia - do bilansu energii!)</li>
 <li><span class="math inline">\(s_x = s' + x(s'' - s')\)</span> (Entropia - do sprawności)</li>
 </ul>
+</div>
+</div></div>
 </section>
 <section id="tablice-pary-wodnej" class="slide level2">
 <h2><i class="bi bi-table"></i> 4. Tablice Pary Wodnej</h2>
@@ -387,19 +416,22 @@
 </tr>
 </tbody>
 </table>
-<p>Wnioski:</p>
+<div class="panel panel-blue">
+<p><strong>Wnioski:</strong></p>
 <ol type="1">
 <li>Temp. wrzenia to <span class="math inline">\(99{,}6^\circ\text{C}\)</span>.</li>
 <li>Para zajmuje ok. 1620 razy więcej miejsca niż woda (<span class="math inline">\(1{,}694 / 0{,}001043\)</span>). Wybuchowe rozszerzanie!</li>
-<li>Żeby odparować wodę, trzeba dostarczyć <span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span>.</li>
+<li>Żeby odparować wodę, trzeba dostarczyć <span class="answer"><span class="math inline">\(2675 - 417 = 2258 \text{ kJ/kg}\)</span></span>.</li>
 </ol>
+</div>
 </section>
-<section id="interpolacja-liniowa-w-tablicach" class="slide level2" style="font-size: 0.9em;">
+<section id="interpolacja-liniowa-w-tablicach" class="slide level2 smaller">
 <h2><i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach</h2>
 <p>Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży <strong>między</strong> wartościami tablicowymi, stosujemy <strong>interpolację liniową</strong>.</p>
-<h3 id="wzór">Wzór:</h3>
-<p><span class="math display">\[ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) \]</span></p>
-<div class="fragment" title="Przykład" style="font-size: 0.7em;">
+<div class="panel panel-blue">
+<p><strong>Wzór:</strong> <span class="math display">\[ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) \]</span></p>
+</div>
+<div class="fragment" title="Przykład">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -409,14 +441,13 @@
 <p><strong>Przykład</strong></p>
 </div>
 <div class="callout-content">
-<p>Szukamy entalpii pary przegrzanej przy <span class="math inline">\(p = 10\)</span> bar i <span class="math inline">\(t = 275^\circ\text{C}\)</span>.</p>
-<p>Z tablic: <span class="math inline">\(h(250^\circ\text{C}) = 2943\)</span>, <span class="math inline">\(h(300^\circ\text{C}) = 3052\)</span> kJ/kg.</p>
+<p>Szukamy entalpii pary przegrzanej przy <span class="math inline">\(p = 10\)</span> bar i <span class="math inline">\(t = 275^\circ\text{C}\)</span>. Z tablic: <span class="math inline">\(h(250^\circ\text{C}) = 2943\)</span>, <span class="math inline">\(h(300^\circ\text{C}) = 3052\)</span> kJ/kg.</p>
 <p><span class="math display">\[ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0{,}5 \cdot 109 \approx \mathbf{2997{,}5 \text{ kJ/kg}} \]</span></p>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: 0.8em;">
+<div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -432,11 +463,10 @@
 </div>
 </div>
 </section>
-<section id="wykresy-termodynamiczne" class="slide level2" style="font-size: 0.85em;">
-<h2><i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne</h2>
+<section id="wykres-h-s-molliera" class="slide level2 smaller">
+<h2><i class="bi bi-graph-up"></i> 5. Wykres h-s (Molliera)</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<h3 id="wykres-h-s-molliera">Wykres h-s (Molliera)</h3>
 <ul>
 <li>Oś Y: Entalpia <span class="math inline">\(h\)</span> (Energia).</li>
 <li>Oś X: Entropia <span class="math inline">\(s\)</span>.</li>
@@ -444,26 +474,25 @@
 <li>Rozprężanie adiabatyczne odwracalne (izentropowe, idealna turbina) to linia <strong>pionowa w dół</strong> (<span class="math inline">\(\Delta s = 0\)</span>).</li>
 <li>Różnica wysokości na wykresie (<span class="math inline">\(h_1 - h_2\)</span>) to uzyskana PRACA.</li>
 </ul>
-<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-amber fragment">
 <p>Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T-s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz <strong>praca techniczna</strong> (w przemianach adiabatycznych) są na nim przedstawiane <strong>jako odcinki</strong>, a nie pola powierzchni.</p>
 </div>
 </div><div class="column" style="width:40%;">
-<p><img data-src="../img/mollier-chart.png" style="width:88.0%"></p>
+<p><img data-src="../img/mollier-chart.png" style="width:80.0%"></p>
 </div></div>
 </section>
 <section id="mollier-w-praktyce" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Mollier w Praktyce</h2>
 <p>Turbina pobiera parę: <span class="math inline">\(p_1 = 100\)</span> bar, <span class="math inline">\(T_1 = 500^\circ\text{C}\)</span>. Rozpręża do <span class="math inline">\(p_2 = 0{,}1\)</span> bar.</p>
-<div style="width: 100%; margin: 0 auto;">
-<div class="mmd-fit" style="height: 585px;">
+<div class="mmd-fit" style="height: 540px;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 1286.796875 571.3203125" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:20px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974947657_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974947657_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974947657_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974947657_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974947657_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974947657_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_G_H_0" d="M715.391,383.578L703.52,396.435C691.65,409.292,667.909,435.005,656.038,453.612C644.168,472.219,644.168,483.719,644.168,489.469L644.168,495.219"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_G_I_0" d="M793.672,383.578L805.376,396.435C817.079,409.292,840.487,435.005,852.191,453.612C863.895,472.219,863.895,483.719,863.895,489.469L863.895,495.219"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ODCZYT_F_0" d="M555.911,208L552.053,212.167C548.196,216.333,540.481,224.667,536.623,239.768C532.766,254.87,532.766,276.74,532.766,287.674L532.766,298.609"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ODCZYT_G_0" d="M730.886,208L734.744,212.167C738.601,216.333,746.316,224.667,750.174,232.333C754.031,240,754.031,247,754.031,250.5L754.031,254"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g transform="translate(644.16796875, 460.71875)" class="edgeLabel"><g transform="translate(-16.859375, -13.5)" class="label"><g><rect height="27" width="33.71875" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Tak</tspan></tspan></text></g></g></g><g transform="translate(863.89453125, 460.71875)" class="edgeLabel"><g transform="translate(-16.6875, -13.5)" class="label"><g><rect height="27" width="33.375" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Nie</tspan></tspan></text></g></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(0, 22)" class="root"><g class="clusters"><g data-look="classic" id="ODCZYT" class="cluster"><rect height="189" width="1270.796875" y="-3" x="8" style="fill:#f4f8fb !important;stroke:#90a4ae !important;stroke-width:1px !important"></rect><g transform="translate(549.234375, 3)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczyt</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> z</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> wykresu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h–s</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M223.047,102.5L229.297,102.5C235.547,102.5,248.047,102.5,259.88,102.5C271.714,102.5,282.88,102.5,288.464,102.5L294.047,102.5"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_0" d="M465.156,102.5L471.406,102.5C477.656,102.5,490.156,102.5,501.99,102.5C513.823,102.5,524.99,102.5,530.573,102.5L536.156,102.5"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_0" d="M729.578,102.5L735.828,102.5C742.078,102.5,754.578,102.5,766.411,102.5C778.245,102.5,789.411,102.5,794.995,102.5L800.578,102.5"></path><path marker-end="url(#mermaid-1790974947657_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_E_0" d="M999.188,102.5L1005.438,102.5C1011.688,102.5,1024.188,102.5,1036.021,102.5C1047.854,102.5,1059.021,102.5,1064.604,102.5L1070.188,102.5"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(134.2734375, 102.5)" id="flowchart-A-0" class="node default"><rect height="75.1015625" width="177.546875" y="-37.55078125" x="-88.7734375" style="fill:#a4d4f4ff !important;stroke:#2980b9 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Start:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Znajdź</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">punkt</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(381.6015625, 102.5)" id="flowchart-B-1" class="node default"><rect height="53.1015625" width="167.109375" y="-26.55078125" x="-83.5546875" style="" class="basic label-container"></rect><g transform="translate(0, -11.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczytaj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h1</tspan></tspan></text></g></g></g><g transform="translate(634.8671875, 102.5)" id="flowchart-C-3" class="node default"><rect height="97" width="189.421875" y="-48.5" x="-94.7109375" style="" class="basic label-container"></rect><g transform="translate(0, -33.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Rysuj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> linię</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">pionową</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> w</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> dół</tspan></tspan><tspan dy="1.1em" y="2.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">s</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> const</tspan></tspan></text></g></g></g><g transform="translate(901.8828125, 102.5)" id="flowchart-D-5" class="node default"><rect height="53.1015625" width="194.609375" y="-26.55078125" x="-97.3046875" style="" class="basic label-container"></rect><g transform="translate(0, -11.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Przecięcie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> z</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> p2</tspan></tspan></text></g></g></g><g transform="translate(1157.7421875, 102.5)" id="flowchart-E-7" class="node default"><rect height="53.1015625" width="167.109375" y="-26.55078125" x="-83.5546875" style="" class="basic label-container"></rect><g transform="translate(0, -11.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczytaj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h2</tspan></tspan></text></g></g></g></g></g><g transform="translate(532.765625, 340.109375)" id="flowchart-F-9" class="node default"><rect height="75" width="178.3125" y="-37.5" x="-89.15625" style="fill:#2ecc71 !important;stroke:#27ae60 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Oblicz</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Pracę:</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">L</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> −</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h2</tspan></tspan></text></g></g></g><g transform="translate(754.03125, 340.109375)" id="flowchart-G-11" class="node default"><polygon transform="translate(-82.109375,82.109375)" class="label-container" points="82.109375,0 164.21875,-82.109375 82.109375,-164.21875 0,-82.109375"></polygon><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sprawdź</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">x2</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ≥</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 0,85?</tspan></tspan></text></g></g></g><g transform="translate(644.16796875, 536.76953125)" id="flowchart-H-13" class="node default"><rect height="75.1015625" width="164.015625" y="-37.55078125" x="-82.0078125" style="" class="basic label-container"></rect><g transform="translate(0, -22.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">OK:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Turbina</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">bezpieczna</tspan></tspan></text></g></g></g><g transform="translate(863.89453125, 536.76953125)" id="flowchart-I-15" class="node default"><rect height="75.1015625" width="175.4375" y="-37.55078125" x="-87.71875" style="fill:#e74c3c !important;stroke:#c0392b !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.55078125)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">BŁĄD:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Erozja</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">łopatek!</tspan></tspan></text></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 1287.34375 572.865234375" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:20px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:20px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755409726_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755409726_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755409726_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755409726_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755409726_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755409726_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_G_H_6" d="M715.824,384.973L703.996,397.872C692.167,410.77,668.51,436.568,656.682,452.675C644.853,468.782,644.853,475.199,644.853,480.949C644.853,486.699,644.853,491.782,644.853,494.324L644.853,496.865"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_G_I_7" d="M794.608,384.973L806.27,397.872C817.932,410.77,841.256,436.568,852.918,452.675C864.58,468.782,864.58,475.199,864.58,480.949C864.58,486.699,864.58,491.782,864.58,494.324L864.58,496.865"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ODCZYT_F_4" d="M555.858,208L551.987,212.167C548.115,216.333,540.371,224.667,536.499,234.703C532.627,244.739,532.627,256.478,532.627,267.55C532.627,278.622,532.627,289.027,532.627,294.23L532.627,299.433"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ODCZYT_G_5" d="M731.485,208L735.357,212.167C739.229,216.333,746.973,224.667,750.844,230.917C754.716,237.167,754.716,241.333,754.716,244.833C754.716,248.333,754.716,251.167,754.716,252.583L754.716,254"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g transform="translate(644.85302734375, 462.365234375)" class="edgeLabel"><g transform="translate(-17.814453125, -13.5)" class="label"><g><rect height="27" width="35.62890625" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Tak</tspan></tspan></text></g></g></g><g transform="translate(864.57958984375, 462.365234375)" class="edgeLabel"><g transform="translate(-16.7333984375, -13.5)" class="label"><g><rect height="27" width="33.466796875" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Nie</tspan></tspan></text></g></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(0, 22)" class="root"><g class="clusters"><g data-look="classic" id="ODCZYT" class="cluster"><rect height="189" width="1271.34375" y="-3" x="8" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:1px !important"></rect><g transform="translate(549.5078125, 3)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczyt</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> z</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> wykresu</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h–s</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M223.553,102.5L229.803,102.5C236.053,102.5,248.553,102.5,257.928,102.5C267.303,102.5,273.553,102.5,279.136,102.5C284.719,102.5,289.636,102.5,292.094,102.5L294.553,102.5"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M465.662,102.5L471.912,102.5C478.162,102.5,490.662,102.5,500.037,102.5C509.412,102.5,515.662,102.5,521.245,102.5C526.829,102.5,531.745,102.5,534.204,102.5L536.662,102.5"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_2" d="M730.125,102.5L736.375,102.5C742.625,102.5,755.125,102.5,764.5,102.5C773.875,102.5,780.125,102.5,785.708,102.5C791.292,102.5,796.208,102.5,798.667,102.5L801.125,102.5"></path><path marker-end="url(#mermaid-1791755409726_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_E_3" d="M999.734,102.5L1005.984,102.5C1012.234,102.5,1024.734,102.5,1034.109,102.5C1043.484,102.5,1049.734,102.5,1055.318,102.5C1060.901,102.5,1065.818,102.5,1068.276,102.5L1070.734,102.5"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(134.5263671875, 102.5)" id="flowchart-A-0" class="node default"><rect height="75" width="178.052734375" y="-37.5" x="-89.0263671875" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Start:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Znajdź</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">punkt</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(382.107421875, 102.5)" id="flowchart-B-1" class="node default"><rect height="53" width="167.109375" y="-26.5" x="-83.5546875" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczytaj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h1</tspan></tspan></text></g></g></g><g transform="translate(635.3935546875, 102.5)" id="flowchart-C-3" class="node default"><rect height="97" width="189.462890625" y="-48.5" x="-94.7314453125" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(0, -33.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Rysuj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> linię</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">pionową</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> w</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> dół</tspan></tspan><tspan dy="1.1em" y="2.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">s</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> const</tspan></tspan></text></g></g></g><g transform="translate(902.4296875, 102.5)" id="flowchart-D-5" class="node default"><rect height="53" width="194.609375" y="-26.5" x="-97.3046875" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Przecięcie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> z</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> p2</tspan></tspan></text></g></g></g><g transform="translate(1158.2890625, 102.5)" id="flowchart-E-7" class="node default"><rect height="53" width="167.109375" y="-26.5" x="-83.5546875" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Odczytaj</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h2</tspan></tspan></text></g></g></g></g></g><g transform="translate(532.62744140625, 340.9326171875)" id="flowchart-F-9" class="node default"><rect height="75" width="178.3125" y="-37.5" x="-89.15625" data-et="node" data-id="abc" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Oblicz</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Pracę:</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">L</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> =</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h1</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> −</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> h2</tspan></tspan></text></g></g></g><g transform="translate(754.71630859375, 340.9326171875)" id="flowchart-G-11" class="node default"><polygon transform="translate(-82.9326171875,82.9326171875)" class="label-container" points="82.9326171875,0 165.865234375,-82.9326171875 82.9326171875,-165.865234375 0,-82.9326171875"></polygon><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sprawdź</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">x2</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ≥</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 0,85?</tspan></tspan></text></g></g></g><g transform="translate(644.85302734375, 538.365234375)" id="flowchart-H-13" class="node default"><rect height="75" width="164.015625" y="-37.5" x="-82.0078125" data-et="node" data-id="abc" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">OK:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Turbina</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">bezpieczna</tspan></tspan></text></g></g></g><g transform="translate(864.57958984375, 538.365234375)" id="flowchart-I-15" class="node default"><rect height="75" width="175.4375" y="-37.5" x="-87.71875" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">BŁĄD:</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Erozja</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">łopatek!</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -471,8 +500,7 @@
 </div>
 </div>
 </div>
-</div>
-<div class="fragment" style="font-size: 0.8em;">
+<div class="fragment">
 <div class="callout callout-warning callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -485,11 +513,10 @@
 </div>
 </div>
 </section>
-<section id="wykresy-termodynamiczne-1" class="slide level2">
-<h2><i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne</h2>
+<section id="wykres-p-h-logarytmiczny" class="slide level2">
+<h2><i class="bi bi-graph-up"></i> 5. Wykres p-h (logarytmiczny)</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
-<h3 id="wykres-p-h-logarytmiczny">Wykres p-h (Logarytmiczny)</h3>
 <ul>
 <li>Oś Y: Ciśnienie absolutne <span class="math inline">\(p\)</span> (skala logarytmiczna).</li>
 <li>Oś X: Entalpia właściwa <span class="math inline">\(h\)</span>.</li>
@@ -499,31 +526,61 @@
 </div><div class="column" style="width:60%;">
 <p><img data-src="../img/p_h_diagram.png" style="width:100.0%"></p>
 </div></div>
-<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.6em; position: absolute; top: 60%;">
-<p>Analiza typowego obiegu chłodniczego:</p>
+</section>
+<section id="obieg-chłodniczy-na-wykresie-p-h" class="slide level2 smaller">
+<h2><i class="bi bi-snow2"></i> Obieg chłodniczy na wykresie p-h</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="panel panel-blue">
+<p><strong>Analiza typowego obiegu chłodniczego:</strong></p>
 <ol type="1">
 <li>Parowanie: Pozioma linia w prawo (pobieranie ciepła <span class="math inline">\(q_d = \Delta h\)</span>).</li>
 <li>Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca techniczna <span class="math inline">\(l_t = -\Delta h\)</span>; praca napędowa sprężarki <span class="math inline">\(|l_t| = \Delta h\)</span>).</li>
 <li>Skraplanie: Pozioma linia w lewo (oddawanie ciepła <span class="math inline">\(q_w=\Delta h\)</span>).</li>
 <li>Dławienie: Pionowa linia w dół (stała entalpia).</li>
 </ol>
+</div>
+<div class="fragment" title="Dlaczego p-h?">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Dlaczego p-h?</strong></p>
+</div>
+<div class="callout-content">
 <p>Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X.</p>
 </div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<p><img data-src="../img/p_h_diagram.png" style="width:100.0%"></p>
+</div></div>
 </section>
 <section id="para-przegrzana" class="slide level2">
 <h2><i class="bi bi-cloud-fog"></i> 6. Para Przegrzana</h2>
 <h3 id="powyżej-linii-nasycenia">Powyżej Linii Nasycenia</h3>
 <p>Para o temperaturze wyższej niż temperatura nasycenia <strong>przy danym ciśnieniu</strong> (<span class="math inline">\(T &gt; T_s\)</span>).</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-amber">
 <p><strong>Zastosowanie w energetyce (Obieg Rankine’a):</strong></p>
 <ol type="1">
 <li>Zwiększenie sprawności (wyższa średnia temp. doprowadzania ciepła).</li>
 <li>Ochrona turbiny (mniejsze zawilgocenie w ostatnich stopniach).</li>
 </ol>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-blue">
 <p><strong>Cechy fizyczne:</strong></p>
 <ul>
 <li>Zachowuje się coraz bardziej jak <strong>gaz doskonały</strong> im <strong>wyższa temperatura</strong> i <strong>niższe ciśnienie</strong>.</li>
 <li>W obszarze dalekim od nasycenia: <span class="math inline">\(\Delta h \approx c_p \Delta T\)</span> (jak dla gazu doskonałego). Sama wartość <span class="math inline">\(h\)</span> z tablic zależy od przyjętego stanu odniesienia, więc <span class="math inline">\(h \neq c_p T\)</span>.</li>
 </ul>
+</div>
+</div></div>
 </section>
 <section id="podsumowanie-w5" class="slide level2">
 <h2><i class="bi bi-clipboard-check"></i> Podsumowanie W5</h2>
@@ -534,8 +591,21 @@
 <li><strong>Tablice:</strong> Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.</li>
 <li><strong>Mollier (h-s):</strong> Niezastąpiony do szybkiej analizy procesów w turbinach.</li>
 </ol>
-<h3 id="zadanie-do-samodzielnego-wykonania">Zadanie Do Samodzielnego Wykonania</h3>
+<div title="Zadanie Do Samodzielnego Wykonania">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Zadanie Do Samodzielnego Wykonania</strong></p>
+</div>
+<div class="callout-content">
 <p>Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: <span class="math inline">\(p=1\)</span> bar, <span class="math inline">\(x=0{,}9\)</span>. Odczytaj entalpię.</p>
+</div>
+</div>
+</div>
+</div>
 
 </section>
     </div>
@@ -705,14 +775,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'concave',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -733,7 +803,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -760,42 +830,80 @@
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -845,14 +953,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

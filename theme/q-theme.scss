@@ -24,8 +24,9 @@ $presentation-h3-font-size: 1.15em !default;
 $code-block-bg: #f2f2f2;
 $code-block-font-size: 0.7em;
 
-// 0.7 (bez jednostki) – Quarto mnoży tę wartość przez em; "0.7rem" dawało błędny CSS
-$presentation-font-smaller: 0.7;
+// bez jednostki – Quarto mnoży tę wartość przez em; "0.7rem" dawało błędny CSS.
+// 0.8 zamiast domyślnego 0.7: slajdy .smaller były nieczytelne z sali.
+$presentation-font-smaller: 0.8;
 
 /*-- scss:rules --*/
 
@@ -61,6 +62,9 @@ h1 {
 .reveal .panel-green  { background: #ecf7ee; border-left-color: #1f9d55; }
 .reveal .panel-violet { background: #f1effb; border-left-color: #6250d6; }
 .reveal .panel > :last-child { margin-bottom: 0; }
+.reveal .panel-center, .reveal .center-text { text-align: center; }
+.reveal .panel-title { display: block; font-weight: 700; margin-bottom: 0.2em; }
+.reveal .slides section.small { font-size: 0.88em; }
 
 /* Odpowiedzi do pytań kontrolnych, drobne notatki, podpisy rysunków */
 .reveal .answer { color: $accent; font-weight: 700; }

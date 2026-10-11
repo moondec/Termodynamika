@@ -6,8 +6,8 @@
 <script src="04_Wlasciwosci_Substancji_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="04_Wlasciwosci_Substancji_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W4: Właściwości Substancji Czystych - I</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="04_Wlasciwosci_Substancji_files/libs/revealjs/dist/theme/quarto-de9354c8cd4fbc190d194296254da49a.css">
+  <link rel="stylesheet" href="04_Wlasciwosci_Substancji_files/libs/revealjs/dist/theme/quarto-4953c6c1d8f81f9d270ec2ff669a6b96.css">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="04_Wlasciwosci_Substancji_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,8 +159,8 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"></p>
-            <p><img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"></p>
+            <p><img src="../img/logo_wisim.jpg" style="height: 200px;"></p>
             <p><img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
@@ -170,6 +170,8 @@
 </section>
 <section id="agenda-wykładu" class="slide level2" data-menu-title="Agenda">
 <h2><i class="bi bi-list-ol"></i> Agenda Wykładu</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <ol type="1">
 <li><strong>Substancje Czyste</strong> (Definicje, Fazy)</li>
 <li><strong>Gaz Doskonały</strong> (Założenia modelu)</li>
@@ -178,52 +180,66 @@
 <li><strong>Mieszaniny Gazowe</strong> (Prawo Daltona)</li>
 <li><strong>Gazy Rzeczywiste</strong> (Van der Waals, Andrews)</li>
 </ol>
-
-<img data-src="../img/substancja_vs_mieszanina.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/substancja_vs_mieszanina.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
 <section id="wprowadzenie-do-substancji-czystych" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> 1. Wprowadzenie do Substancji Czystych</h2>
 <h3 id="definicja">Definicja</h3>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p><strong>Substancja czysta</strong> to substancja, która ma stały i jednorodny skład chemiczny w całej swojej objętości.</p>
 </div>
 <ul>
-<li><strong>Przykłady:</strong> Woda (<span class="math inline">\(H_2O\)</span>), Azot (<span class="math inline">\(N_2\)</span>), Hel (<span class="math inline">\(He\)</span>), Dwutlenek węgla (<span class="math inline">\(CO_2\)</span>).</li>
+<li><strong>Przykłady:</strong> Woda (<span class="nowrap">H<sub>2</sub>O</span>), Azot (<span class="nowrap">N<sub>2</sub></span>), Hel (He), Dwutlenek węgla (<span class="nowrap">CO<sub>2</sub></span>).</li>
 </ul>
-<div class="fragment">
-<ul>
-<li><strong>A co z powietrzem?</strong> Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako <em>jednorodną</em> substancję zastępczą (dopóki nie skraplamy tlenu/azotu).</li>
-</ul>
+<div class="fragment panel panel-amber">
+<p><strong>A co z powietrzem?</strong> Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako <em>jednorodną</em> substancję zastępczą (dopóki nie skraplamy tlenu/azotu).</p>
 </div>
 </section>
 <section id="fazy-materii" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Fazy Materii</h2>
 <p>Substancja czysta może występować w różnych fazach (stanach skupienia):</p>
-<ol type="1">
-<li><i class="bi bi-box-seam"></i> <strong>Ciało Stałe (Solid):</strong> Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.</li>
-<li><i class="bi bi-cup-hot"></i> <strong>Ciecz (Liquid):</strong> Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).</li>
-<li><i class="bi bi-cloud"></i> <strong>Gaz (Gas/Vapor):</strong> Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.</li>
-</ol>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="panel panel-blue">
+<p><strong><i class="bi bi-box-seam"></i> Ciało Stałe</strong></p>
+<p>Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.</p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="panel panel-green">
+<p><strong><i class="bi bi-cup-hot"></i> Ciecz</strong></p>
+<p>Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).</p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="panel panel-amber">
+<p><strong><i class="bi bi-cloud"></i> Gaz (para)</strong></p>
+<p>Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.</p>
+</div>
+</div></div>
 </section>
 <section id="równowaga-fazowa" class="slide level2">
 <h2><i class="bi bi-bookmark"></i> Równowaga Fazowa</h2>
 <ul>
-<li class="fragment">Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w <span class="math inline">\(0^\circ C\)</span>).</li>
+<li class="fragment">Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w 0 °C).</li>
 <li class="fragment">Podczas przemiany fazowej (dla substancji czystej), przy stałym ciśnieniu, temperatura pozostaje <strong>STAŁA</strong>.</li>
 </ul>
-<div style="text-align: center;">
-<div class="mmd-fit" style="height: 220px;">
+<div class="mmd-fit" style="height: 260px;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 879.78125 122" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973474404_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973474404_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973474404_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973474404_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973474404_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973474404_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790973474404_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1790973474404_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_L_0" d="M148.581,64.808L166.661,61.257C184.742,57.705,220.902,50.603,265.123,47.051C309.344,43.5,361.625,43.5,387.766,43.5L413.906,43.5"></path><path marker-end="url(#mermaid-1790973474404_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1790973474404_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_L_G_0" d="M520.281,43.5L546.04,43.5C571.799,43.5,623.318,43.5,666.78,47.593C710.243,51.687,745.649,59.874,763.353,63.967L781.056,68.061"></path><path marker-end="url(#mermaid-1790973474404_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1790973474404_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_G_0" d="M148.581,93.192L166.661,96.743C184.742,100.295,220.902,107.397,273.988,110.949C327.073,114.5,397.083,114.5,466.712,114.5C536.341,114.5,605.589,114.5,657.916,110.407C710.243,106.313,745.649,98.126,763.353,94.033L781.056,89.939"></path></g><g class="edgeLabels"><g transform="translate(257.0625, 43.5)" class="edgeLabel"><g transform="translate(-87.40625, -11.5)" class="label"><g><rect height="23" width="174.8125" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Topnienie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Krzepnięcie</tspan></tspan></text></g></g></g><g transform="translate(674.8359375, 43.5)" class="edgeLabel"><g transform="translate(-85.1171875, -11.5)" class="label"><g><rect height="23" width="170.234375" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Parowanie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Skraplanie</tspan></tspan></text></g></g></g><g transform="translate(467.09375, 114.5)" class="edgeLabel"><g transform="translate(-97.625, -11.5)" class="label"><g><rect height="23" width="195.25" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sublimacja</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Resublimacja</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(76.328125, 79)" id="flowchart-S-0" class="node default"><rect height="49" width="136.65625" y="-24.5" x="-68.328125" style="fill:#dfe6e9 !important;stroke:#636e72 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Ciało</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Stałe</tspan></tspan></text></g></g></g><g transform="translate(467.09375, 43.5)" id="flowchart-L-1" class="node default"><rect height="49" width="98.375" y="-24.5" x="-49.1875" style="fill:#74b9ff !important;stroke:#0984e3 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Ciecz</tspan></tspan></text></g></g></g><g transform="translate(828.3671875, 79)" id="flowchart-G-3" class="node default"><rect height="49" width="86.828125" y="-24.5" x="-43.4140625" style="fill:#dfe6e9 !important;stroke:#636e72 !important;stroke-width:2px !important;stroke-dasharray:5 5 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Gaz</tspan></tspan></text></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 882.5703125 121" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755401999_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755401999_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755401999_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755401999_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755401999_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755401999_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755401999_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1791755401999_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_L_0" d="M148.847,64.842L167.033,61.285C185.219,57.728,221.59,50.614,253.239,47.057C284.889,43.5,311.816,43.5,338.077,43.5C364.339,43.5,389.933,43.5,402.73,43.5L415.527,43.5"></path><path marker-end="url(#mermaid-1791755401999_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1791755401999_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_L_G_1" d="M522.309,43.5L548.105,43.5C573.902,43.5,625.496,43.5,660.481,45.62C695.465,47.74,713.841,51.979,731.567,56.069C749.293,60.159,766.37,64.099,774.908,66.068L783.446,68.038"></path><path marker-end="url(#mermaid-1791755401999_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1791755401999_flowchart-v2-pointStart)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_G_2" d="M148.847,93.158L167.033,96.715C185.219,100.272,221.59,107.386,274.935,110.943C328.28,114.5,398.599,114.5,468.454,114.5C538.309,114.5,607.699,114.5,651.582,112.38C695.465,110.26,713.841,106.021,731.567,101.931C749.293,97.841,766.37,93.901,774.908,91.932L783.446,89.962"></path></g><g class="edgeLabels"><g transform="translate(257.9609375, 43.5)" class="edgeLabel"><g transform="translate(-88.0390625, -11.5)" class="label"><g><rect height="23" width="176.078125" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Topnienie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Krzepnięcie</tspan></tspan></text></g></g></g><g transform="translate(677.08984375, 43.5)" class="edgeLabel"><g transform="translate(-85.25390625, -11.5)" class="label"><g><rect height="23" width="170.5078125" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Parowanie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Skraplanie</tspan></tspan></text></g></g></g><g transform="translate(468.91796875, 114.5)" class="edgeLabel"><g transform="translate(-97.91796875, -11.5)" class="label"><g><rect height="23" width="195.8359375" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sublimacja</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Resublimacja</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(76.4609375, 79)" id="flowchart-S-0" class="node default"><rect height="49" width="136.921875" y="-24.5" x="-68.4609375" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Ciało</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Stałe</tspan></tspan></text></g></g></g><g transform="translate(468.91796875, 43.5)" id="flowchart-L-1" class="node default"><rect height="49" width="98.78125" y="-24.5" x="-49.390625" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Ciecz</tspan></tspan></text></g></g></g><g transform="translate(830.95703125, 79)" id="flowchart-G-3" class="node default"><rect height="49" width="87.2265625" y="-24.5" x="-43.61328125" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important;stroke-dasharray:5 5 !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Gaz</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
-</div>
 </div>
 </div>
 </div>
@@ -235,28 +251,41 @@
 <p>Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia (Kinetyczna Teoria Gazów):</p>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="panel panel-blue">
 <p><strong>Założenia:</strong></p>
 <ol type="1">
 <li class="fragment"><strong>Objętość cząsteczek = 0</strong></li>
 <li class="fragment"><strong>Brak oddziaływań</strong></li>
 <li class="fragment"><strong>Zderzenia sprężyste</strong></li>
 </ol>
+</div>
 </div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
 <p><strong>Rzeczywistość:</strong></p>
 <ol type="1">
-<li class="fragment"><strong>Cząsteczki mają średnicę.</strong></li>
-<li class="fragment"><strong>Przyciągają się (van der Waals).</strong></li>
-<li class="fragment"><strong>Przy zderzeniach wymieniają energię także z ruchem obrotowym i drganiami (energia całkowita jest zachowana).</strong></li>
+<li class="fragment">Cząsteczki mają średnicę.</li>
+<li class="fragment">Przyciągają się (van der Waals).</li>
+<li class="fragment">Przy zderzeniach wymieniają energię także z ruchem obrotowym i drganiami (energia całkowita jest zachowana).</li>
 </ol>
+</div>
 </div></div>
 </section>
 <section id="kiedy-stosować-gaz-doskonały" class="slide level2">
 <h2><i class="bi bi-question-circle"></i> Kiedy stosować Gaz Doskonały?</h2>
 <p>Model ten jest zadziwiająco dokładny dla większości gazów rzeczywistych, JEŚLI:</p>
-<ol type="1">
-<li><strong>Ciśnienie jest niskie:</strong> Cząsteczki są daleko od siebie (siły pomijalne).</li>
-<li><strong>Temperatura jest wysoka:</strong> Energia kinetyczna dominuje nad energią potencjalną oddziaływań.</li>
-</ol>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong>1. Ciśnienie jest niskie</strong></p>
+<p>Cząsteczki są daleko od siebie (siły pomijalne).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
+<p><strong>2. Temperatura jest wysoka</strong></p>
+<p>Energia kinetyczna dominuje nad energią potencjalną oddziaływań.</p>
+</div>
+</div></div>
+<div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -266,7 +295,8 @@
 <p><strong>Adnotacja</strong></p>
 </div>
 <div class="callout-content">
-<p>Dla powietrza w warunkach otoczenia (<span class="math inline">\(p \approx 1\)</span> bar, <span class="math inline">\(T \approx 20^\circ C\)</span>), błąd modelu gazu doskonałego wynosi poniżej 1%.</p>
+<p>Dla powietrza w warunkach otoczenia (<span class="math inline">\(p \approx 1\)</span> bar, <span class="math inline">\(T \approx 20\ ^\circ\text{C}\)</span>), błąd modelu gazu doskonałego wynosi poniżej 1%.</p>
+</div>
 </div>
 </div>
 </div>
@@ -274,56 +304,92 @@
 <section id="równanie-stanu-clapeyron" class="slide level2">
 <h2><i class="bi bi-calculator"></i> 3. Równanie Stanu (Clapeyron)</h2>
 <p>Związek między ciśnieniem (<span class="math inline">\(p\)</span>), temperaturą (<span class="math inline">\(T\)</span>) i objętością (<span class="math inline">\(v\)</span>) dla gazu doskonałego:</p>
-<p><span class="math display">\[ p \cdot v = R \cdot T \]</span></p>
-<p>Mnożąc przez masę <span class="math inline">\(m\)</span> (gdzie <span class="math inline">\(V = m \cdot v\)</span>):</p>
-<p><span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong>Postać właściwa</strong> (na 1 kg): <span class="math display">\[ p \cdot v = R \cdot T \]</span></p>
+<p>Mnożąc przez masę <span class="math inline">\(m\)</span> (gdzie <span class="math inline">\(V = m \cdot v\)</span>): <span class="math display">\[ p \cdot V = m \cdot R \cdot T \]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
 <ul>
-<li><span class="math inline">\(p\)</span> – Ciśnienie absolutne <span class="math inline">\([Pa]\)</span></li>
-<li><span class="math inline">\(V\)</span> – Objętość <span class="math inline">\([m^3]\)</span></li>
-<li><span class="math inline">\(T\)</span> – Temperatura absolutna <span class="math inline">\([K]\)</span> (<span class="math inline">\(T_{\text{Kelvin}} = T_{\text{Celsjusz}} + 273{,}15\)</span>)</li>
-<li><span class="math inline">\(m\)</span> – Masa <span class="math inline">\([kg]\)</span></li>
-<li><span class="math inline">\(R\)</span> – Indywidualna stała gazowa <span class="math inline">\([J/(kg\cdot K)]\)</span></li>
+<li><span class="math inline">\(p\)</span> – Ciśnienie absolutne <span class="math inline">\([\text{Pa}]\)</span></li>
+<li><span class="math inline">\(V\)</span> – Objętość <span class="math inline">\([\text{m}^3]\)</span></li>
+<li><span class="math inline">\(T\)</span> – Temperatura absolutna <span class="math inline">\([\text{K}]\)</span> (<span class="math inline">\(T_{\text{Kelvin}} = T_{\text{Celsjusz}} + 273{,}15\)</span>)</li>
+<li><span class="math inline">\(m\)</span> – Masa <span class="math inline">\([\text{kg}]\)</span></li>
+<li><span class="math inline">\(R\)</span> – Indywidualna stała gazowa <span class="math inline">\([\text{J}/(\text{kg}\cdot \text{K})]\)</span></li>
 </ul>
+</div></div>
 </section>
 <section id="stała-gazowa-uniwersalna-czy-indywidualna" class="slide level2">
 <h2><i class="bi bi-exclamation-triangle"></i> Stała Gazowa Uniwersalna czy Indywidualna?</h2>
 <p>Tu studenci najczęściej robią błędy!</p>
-<h3 id="uniwersalna-stała-gazowa-r_u-lub-mathcalr-lub-r_m-lub-mr">Uniwersalna Stała Gazowa (<span class="math inline">\(R_u\)</span> lub <span class="math inline">\(\mathcal{R}\)</span>, lub <span class="math inline">\(R_m\)</span>, lub <span class="math inline">\(MR\)</span>)</h3>
-<p>Stała fizyczna, niezależna od rodzaju gazu: <span class="math display">\[ R_u \approx 8314{,}46 \quad \frac{J}{kmol \cdot K} \]</span> Używana w chemii w równaniu dla moli: <span class="math inline">\(pV = n R_u T\)</span>.</p>
-<div class="fragment">
-<h3 id="indywidualna-stała-gazowa-r">Indywidualna Stała Gazowa (<span class="math inline">\(R\)</span>)</h3>
-<p>Zależy od masy molowej (<span class="math inline">\(M\)</span>) konkretnego gazu: <span class="math display">\[ R = \frac{R_u}{M} \]</span> Używana w technice w równaniu dla masy: <span class="math inline">\(pV = m R T\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong>Uniwersalna Stała Gazowa</strong> (<span class="math inline">\(R_u\)</span> lub <span class="math inline">\(\mathcal{R}\)</span>, lub <span class="math inline">\(R_m\)</span>, lub <span class="math inline">\(MR\)</span>)</p>
+<p>Stała fizyczna, niezależna od rodzaju gazu: <span class="math display">\[ R_u \approx 8314{,}46 \quad \frac{\text{J}}{\text{kmol} \cdot \text{K}} \]</span></p>
+<p>Używana w chemii w równaniu dla moli: <span class="math inline">\(pV = n R_u T\)</span>.</p>
 </div>
+</div><div class="column" style="width:50%;">
+<div class="fragment panel panel-green">
+<p><strong>Indywidualna Stała Gazowa</strong> (<span class="math inline">\(R\)</span>)</p>
+<p>Zależy od masy molowej (<span class="math inline">\(M\)</span>) konkretnego gazu: <span class="math display">\[ R = \frac{R_u}{M} \]</span></p>
+<p>Używana w technice w równaniu dla masy: <span class="math inline">\(pV = m R T\)</span>.</p>
+</div>
+</div></div>
 </section>
-<section id="przykłady-stałej-gazowej-r" class="slide level2 smaller" style="font-size: 0.9em;">
+<section id="przykłady-stałej-gazowej-r" class="slide level2">
 <h2><i class="bi bi-calculator"></i> Przykłady Stałej Gazowej <span class="math inline">\(R\)</span></h2>
 <p><span class="math display">\[ R = \frac{8314}{M} \]</span></p>
-<ol type="1">
-<li><p><strong>Powietrze</strong> (<span class="math inline">\(M \approx 29\)</span> kg/kmol): <span class="math display">\[ R_{\text{pow}} = \frac{8314}{29} \approx 287 \quad \frac{J}{kg \cdot K} \]</span></p></li>
-<li><p><strong>Wodór <span class="math inline">\(H_2\)</span></strong> (<span class="math inline">\(M \approx 2\)</span> kg/kmol): <span class="math display">\[ R_{H2} = \frac{8314}{2} \approx 4157 \quad \frac{J}{kg \cdot K} \]</span></p></li>
-<li><p><strong>Dwutlenek węgla <span class="math inline">\(CO_2\)</span></strong> (<span class="math inline">\(M \approx 44\)</span> kg/kmol): <span class="math display">\[ R_{CO2} = \frac{8314}{44} \approx 189 \quad \frac{J}{kg \cdot K} \]</span></p></li>
-</ol>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="panel panel-blue">
+<p><strong>1. Powietrze</strong> (<span class="math inline">\(M \approx 29\)</span> kg/kmol): <span class="math display">\[ R_{\text{pow}} = \frac{8314}{29} \approx 287 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} \]</span></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="panel panel-blue">
+<p><strong>2. Wodór</strong> <span class="nowrap">H<sub>2</sub></span> (<span class="math inline">\(M \approx 2\)</span> kg/kmol): <span class="math display">\[ R_{H2} = \frac{8314}{2} \approx 4157 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} \]</span></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="panel panel-blue">
+<p><strong>3. Dwutlenek węgla</strong> <span class="nowrap">CO<sub>2</sub></span> (<span class="math inline">\(M \approx 44\)</span> kg/kmol): <span class="math display">\[ R_{CO2} = \frac{8314}{44} \approx 189 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} \]</span></p>
+</div>
+</div></div>
 </section>
 <section id="ciepła-właściwe" class="slide level2">
 <h2><i class="bi bi-thermometer-half"></i> 4. Ciepła Właściwe</h2>
 <p>Ilość ciepła potrzebna do podgrzania 1 kg substancji o 1 K. Dla gazów zależy to od sposobu ogrzewania!</p>
-<ul>
-<li><p><strong><span class="math inline">\(c_v\)</span> (przy stałej objętości):</strong> Całe ciepło idzie na wzrost energii wewnętrznej <span class="math inline">\(u\)</span>. <span class="math display">\[ c_v = \left( \frac{\partial u}{\partial T} \right)_v \]</span></p></li>
-<li><p><strong><span class="math inline">\(c_p\)</span> (przy stałym ciśnieniu):</strong> Ciepło idzie na wzrost <span class="math inline">\(u\)</span> ORAZ na wykonanie pracy objętościowej (rozpychanie tłoka). <span class="math display">\[ c_p = \left( \frac{\partial h}{\partial T} \right)_p \]</span></p></li>
-</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong><span class="math inline">\(c_v\)</span> (przy stałej objętości):</strong> Całe ciepło idzie na wzrost energii wewnętrznej <span class="math inline">\(u\)</span>. <span class="math display">\[ c_v = \left( \frac{\partial u}{\partial T} \right)_v \]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
+<p><strong><span class="math inline">\(c_p\)</span> (przy stałym ciśnieniu):</strong> Ciepło idzie na wzrost <span class="math inline">\(u\)</span> ORAZ na wykonanie pracy objętościowej (rozpychanie tłoka). <span class="math display">\[ c_p = \left( \frac{\partial h}{\partial T} \right)_p \]</span></p>
+</div>
+</div></div>
 </section>
 <section id="relacja-mayera-wyprowadzenie" class="slide level2">
 <h2><i class="bi bi-pencil-square"></i> Relacja Mayera (Wyprowadzenie)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <p>Dla gazu doskonałego entalpia <span class="math inline">\(h\)</span> zależy tylko od temperatury. Definicja entalpii: <span class="math display">\[ h = u + p \cdot v \]</span></p>
 <p>Podstawiając z Clapeyrona (<span class="math inline">\(pv = RT\)</span>): <span class="math display">\[ h = u + R \cdot T \]</span></p>
+</div><div class="column" style="width:50%;">
 <p>Różniczkując obie strony po temperaturze <span class="math inline">\(T\)</span>: <span class="math display">\[ \frac{dh}{dT} = \frac{du}{dT} + R \]</span></p>
 <p>Ponieważ dla g.d. <span class="math inline">\(dh/dT = c_p\)</span> oraz <span class="math inline">\(du/dT = c_v\)</span>:</p>
+<div class="panel panel-green">
 <p><span class="math display">\[ c_p = c_v + R \]</span></p>
+</div>
+</div></div>
 </section>
 <section id="co-wynika-z-relacji-mayera" class="slide level2">
 <h2><i class="bi bi-lightbulb"></i> Co wynika z Relacji Mayera?</h2>
+<div class="panel panel-blue">
 <p><span class="math display">\[ c_p &gt; c_v \]</span></p>
 <p>Ogrzewanie przy stałym ciśnieniu wymaga <strong>więcej</strong> energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji (<span class="math inline">\(L = p \Delta V\)</span>).</p>
+</div>
 <p>Ciepło dostarczone (<span class="math inline">\(Q_p\)</span>) rozdziela się na:</p>
 <ol type="1">
 <li>Wzrost energii wewnętrznej (temperatury).</li>
@@ -353,34 +419,45 @@
 <tr class="odd">
 <td style="text-align: left;"><strong>Techniczna</strong> (kg)</td>
 <td style="text-align: left;"><span class="math inline">\(c_p - c_v = R\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{J}{kg \cdot K}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\text{J}}{\text{kg} \cdot \text{K}}\)</span></td>
 <td style="text-align: left;"><strong>Indywidualna</strong> (<span class="math inline">\(R\)</span>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Molowa</strong> (kmol)</td>
 <td style="text-align: left;"><span class="math inline">\(C_{p,m} - C_{v,m} = R_u\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{J}{kmol \cdot K}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\text{J}}{\text{kmol} \cdot \text{K}}\)</span></td>
 <td style="text-align: left;"><strong>Uniwersalna</strong> (<span class="math inline">\(MR\)</span>)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Całkowita</strong> (Cały układ)</td>
 <td style="text-align: left;"><span class="math inline">\(C_p - C_v = n \cdot R_u\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac{J}{K}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\text{J}}{\text{K}}\)</span></td>
 <td style="text-align: left;">Uniwersalna</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
+<div class="panel panel-amber">
 <p><strong>Zasada na Egzamin:</strong> Jeśli widzisz małe <span class="math inline">\(c\)</span> i <span class="math inline">\(R\)</span>, <strong>nie wstawiaj tam <span class="math inline">\(n\)</span></strong>! Inżynierowie w elektrowniach liczą na kilogramy (<span class="math inline">\(R\)</span>), a nie na mole (<span class="math inline">\(n \cdot R_u\)</span>).</p>
-</blockquote>
+</div>
 </section>
 <section id="mikro-vs-makro-równanie-clapeyrona" class="slide level2">
 <h2><i class="bi bi-arrows-collapse"></i> Mikro vs Makro: Równanie Clapeyrona</h2>
 <p>Równanie stanu gazu doskonałego można interpretować na dwa sposoby:</p>
-<p><strong>1. Interpretacja Makroskopowa (Termodynamika Klasyczna):</strong> <span class="math display">\[ pV = nR_uT \]</span> Wskazuje, że iloczyn <span class="math inline">\(pV\)</span> – wielkość o wymiarze <strong>energii</strong> (praca przetłaczania) – jest proporcjonalny do ilości substancji i temperatury.</p>
-<p><strong>2. Interpretacja Mikroskopowa (Kinetyczna Teoria Gazów):</strong> Z kinetostatystyki wiemy, że ciśnienie wynika ze zderzeń cząsteczek ze ściankami naczynia. Ostateczny wzór to: <span class="math display">\[ pV = \frac{2}{3} E_{k,\text{post}} \]</span> <em>Gdzie <span class="math inline">\(E_{k,\text{post}}\)</span> to całkowita energia kinetyczna chaotycznego ruchu postępowego wszystkich cząsteczek (równa <span class="math inline">\(U\)</span> tylko dla gazu jednoatomowego).</em></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong>1. Interpretacja Makroskopowa</strong> (Termodynamika Klasyczna): <span class="math display">\[ pV = nR_uT \]</span> Wskazuje, że iloczyn <span class="math inline">\(pV\)</span> – wielkość o wymiarze <strong>energii</strong> (praca przetłaczania) – jest proporcjonalny do ilości substancji i temperatury.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
+<p><strong>2. Interpretacja Mikroskopowa</strong> (Kinetyczna Teoria Gazów): Z kinetostatystyki wiemy, że ciśnienie wynika ze zderzeń cząsteczek ze ściankami naczynia. Ostateczny wzór to: <span class="math display">\[ pV = \frac{2}{3} E_{k,\text{post}} \]</span></p>
+</div>
+</div></div>
+<div class="small-note">
+<p>Gdzie <span class="math inline">\(E_{k,\text{post}}\)</span> to całkowita energia kinetyczna chaotycznego ruchu postępowego wszystkich cząsteczek (równa <span class="math inline">\(U\)</span> tylko dla gazu jednoatomowego).</p>
+</div>
 </section>
-<section id="pełne-wyprowadzenie-pv-frac23-e_ktextpost-12" class="slide level2 smaller">
+<section id="pełne-wyprowadzenie-pv-frac23-e_ktextpost-12" class="slide level2">
 <h2><i class="bi bi-calculator"></i> Pełne wyprowadzenie <span class="math inline">\(pV = \frac{2}{3} E_{k,\text{post}}\)</span> (1/2)</h2>
 <p>Rozważmy cząsteczkę o masie <span class="math inline">\(m\)</span> i prędkości <span class="math inline">\(w\)</span> w sześcianie o boku <span class="math inline">\(L\)</span> (symbol <span class="math inline">\(w\)</span>, bo <span class="math inline">\(v\)</span> oznacza objętość właściwą):</p>
 <ol type="1">
@@ -389,19 +466,24 @@
 <li><strong>Ciśnienie (dla N cząsteczek):</strong> <span class="math inline">\(p = \frac{\sum F}{A} = \frac{N m \langle w_x^2 \rangle}{V}\)</span>.</li>
 </ol>
 </section>
-<section id="pełne-wyprowadzenie-pv-frac23-e_ktextpost-22" class="slide level2 smaller">
+<section id="pełne-wyprowadzenie-pv-frac23-e_ktextpost-22" class="slide level2">
 <h2><i class="bi bi-calculator"></i> Pełne wyprowadzenie <span class="math inline">\(pV = \frac{2}{3} E_{k,\text{post}}\)</span> (2/2)</h2>
 <ol start="4" type="1">
-<li><strong>Izotropia przestrzeni (mikroświat):</strong> Kinetostatystyka zakłada równy rozdział ruchu na 3 wymiary (<span class="math inline">\(x,y,z\)</span>), dlatego <span class="math inline">\(\langle w_x^2 \rangle = \frac{1}{3} \langle w^2 \rangle\)</span>: <span class="math display">\[ pV = \frac{1}{3} N m \langle w^2 \rangle \]</span></li>
+<li><strong>Izotropia przestrzeni (mikroświat):</strong> Kinetostatystyka zakłada równy rozdział ruchu na 3 wymiary (<span class="math inline">\(x,y,z\)</span>), dlatego <span class="math inline">\(\langle w_x^2 \rangle = \frac{1}{3} \langle w^2 \rangle\)</span>, a stąd <span class="math inline">\(pV = \frac{1}{3} N m \langle w^2 \rangle\)</span>.</li>
 <li><strong>Energia kinetyczna ruchu postępowego (<span class="math inline">\(E_{k,\text{post}}\)</span>):</strong> Ponieważ <span class="math inline">\(E_{k,\text{post}} = N \cdot (\frac{1}{2} m \langle w^2 \rangle)\)</span>, to widać, że <span class="math inline">\(N m \langle w^2 \rangle = 2E_{k,\text{post}}\)</span>.</li>
-<li><strong>Finał (połączenie 4 i 5):</strong> Podstawiając to do równania ciśnienia, otrzymujemy <span class="math inline">\(pV = \frac{1}{3} (2E_{k,\text{post}}) = \frac{2}{3} E_{k,\text{post}}\)</span>. Liczba <span class="math inline">\(3\)</span> to wymiary przestrzeni, a <span class="math inline">\(2\)</span> bierze się ze wzoru na energię kinetyczną. Ostatecznie <strong>równanie Clapeyrona bezpośrednio wiąże ze sobą ujęcie makro (iloczyn <span class="math inline">\(pV\)</span> o wymiarze energii) i ujęcie mikro (energię cząsteczek)</strong>. Dla gazu jednoatomowego <span class="math inline">\(E_{k,\text{post}} = U\)</span>.</li>
+<li><strong>Finał (połączenie 4 i 5):</strong> Podstawiając to do równania ciśnienia, otrzymujemy <span class="math inline">\(pV = \frac{1}{3} (2E_{k,\text{post}}) = \frac{2}{3} E_{k,\text{post}}\)</span>. Liczba <span class="math inline">\(3\)</span> to wymiary przestrzeni, a <span class="math inline">\(2\)</span> bierze się ze wzoru na energię kinetyczną.</li>
 </ol>
+<div class="panel panel-green">
+<p>Ostatecznie <strong>równanie Clapeyrona bezpośrednio wiąże ze sobą ujęcie makro (iloczyn <span class="math inline">\(pV\)</span> o wymiarze energii) i ujęcie mikro (energię cząsteczek)</strong>. Dla gazu jednoatomowego <span class="math inline">\(E_{k,\text{post}} = U\)</span>.</p>
+</div>
 </section>
 <section id="zasada-ekwipartycji-energii" class="slide level2">
 <h2><i class="bi bi-share"></i> Zasada Ekwipartycji Energii</h2>
 <h3 id="teoria-ciepła-właściwego">Teoria Ciepła Właściwego</h3>
 <p>Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej.</p>
+<div class="panel panel-blue">
 <p>Średnia energia na jeden stopień swobody: <span class="math display">\[ \langle E_i \rangle = \frac{1}{2} k T \]</span></p>
+</div>
 <ul>
 <li><strong>Ruch postępowy:</strong> 3 stopnie (<span class="math inline">\(3 \cdot \frac{1}{2} kT\)</span>).</li>
 <li><strong>Ruch obrotowy:</strong> +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).</li>
@@ -414,6 +496,12 @@
 <p>Wartość molowego ciepła właściwego zależy od liczby stopni swobody (<span class="math inline">\(f\)</span>):</p>
 <p><span class="math display">\[ (C_{v,m}) = \frac{f}{2} (R_u) \]</span></p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Typ Gazu</th>
@@ -433,37 +521,39 @@
 <td style="text-align: left;"><strong>Dwuatomowy</strong></td>
 <td style="text-align: left;">5</td>
 <td style="text-align: left;"><span class="math inline">\(2{,}5 R_u\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(N_2, O_2\)</span></td>
+<td style="text-align: left;"><span class="nowrap">N<sub>2</sub></span>, <span class="nowrap">O<sub>2</sub></span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Wieloatomowy</strong></td>
 <td style="text-align: left;">6</td>
 <td style="text-align: left;"><span class="math inline">\(3{,}0 R_u\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(H_2O, CH_4\)</span></td>
+<td style="text-align: left;"><span class="nowrap">H<sub>2</sub>O</span>, <span class="nowrap">CH<sub>4</sub></span></td>
 </tr>
 </tbody>
 </table>
-<p><em>Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)</em>.</p>
+<div class="small-note">
+<p>Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody).</p>
+</div>
 </section>
 <section id="mikro-vs-makro-zagadka-wodoru" class="slide level2">
 <h2><i class="bi bi-search"></i> Mikro vs Makro: Zagadka Wodoru</h2>
-<p>Dlaczego wodór (<span class="math inline">\(H_2\)</span>) ma <strong>największe masowe ciepło właściwe</strong> ze wszystkich substancji (<span class="math inline">\(c_p \approx 14{,}3 \frac{kJ}{kg \cdot K}\)</span>), mimo że ma mniej stopni swobody niż woda (<span class="math inline">\(H_2O\)</span>)?</p>
+<p>Dlaczego wodór (<span class="nowrap">H<sub>2</sub></span>) ma <strong>największe masowe ciepło właściwe</strong> ze wszystkich substancji (<span class="math inline">\(c_p \approx 14{,}3 \ \frac{\text{kJ}}{\text{kg} \cdot \text{K}}\)</span>), mimo że ma mniej stopni swobody niż woda (<span class="nowrap">H<sub>2</sub>O</span>)?</p>
 <ul>
 <li><strong>Podejście Mikro (Molowe):</strong> Zasada ekwipartycji mówi, że więcej stopni swobody to większe ciepło molowe. Faktycznie, <span class="math inline">\(C_{p,m}\)</span> (wody) &gt; <span class="math inline">\(C_{p,m}\)</span> (wodoru).</li>
 <li><strong>Podejście Makro (Masowe):</strong> Przechodząc na kilogramy (<span class="math inline">\(c_p = \frac{C_{p,m}}{M}\)</span>), dzielimy przez masę molową.</li>
-<li><strong>Klucz do zagadki:</strong> Wodór jest ekstremalnie lekki (<span class="math inline">\(M \approx 2 \frac{g}{mol}\)</span>). W 1 kg wodoru jest <strong>9 razy więcej cząsteczek</strong> niż w 1 kg wody (<span class="math inline">\(M \approx 18 \frac{g}{mol}\)</span>)! To ogromna liczba cząsteczek, które sumarycznie magazynują tak gigantyczną ilość energii cieplnej na kilogram.</li>
 </ul>
+<div class="fragment panel panel-green">
+<p><strong>Klucz do zagadki:</strong> Wodór jest ekstremalnie lekki (<span class="math inline">\(M \approx 2 \ \frac{\text{g}}{\text{mol}}\)</span>). W 1 kg wodoru jest <strong>9 razy więcej cząsteczek</strong> niż w 1 kg wody (<span class="math inline">\(M \approx 18 \ \frac{\text{g}}{\text{mol}}\)</span>)! To ogromna liczba cząsteczek, które sumarycznie magazynują tak gigantyczną ilość energii cieplnej na kilogram.</p>
+</div>
 </section>
-<section id="porównanie-stała-boltzmanna-k-vs-wykładnik-adiabaty-kappa" class="slide level2">
-<h2><i class="bi bi-arrow-left-right"></i> Porównanie: Stała Boltzmanna (<span class="math inline">\(k\)</span>) vs Wykładnik Adiabaty (<span class="math inline">\(\kappa\)</span>)</h2>
+<section id="stała-boltzmanna-k-vs-wykładnik-adiabaty-kappa" class="slide level2">
+<h2><i class="bi bi-arrow-left-right"></i> Stała Boltzmanna (<span class="math inline">\(k\)</span>) vs Wykładnik Adiabaty (<span class="math inline">\(\kappa\)</span>)</h2>
 <p>Obie wielkości łatwo pomylić ze względu na podobne oznaczenia.</p>
-<div style="font-size: 0.9em;">
 <table class="caption-top">
-<caption>Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty</caption>
 <colgroup>
-<col style="width: 25%">
-<col style="width: 35%">
-<col style="width: 40%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -505,73 +595,96 @@
 </tr>
 </tbody>
 </table>
-</div>
 </section>
 <section id="energia-i-entalpia-gazu-doskonałego" class="slide level2">
 <h2><i class="bi bi-lightning-charge"></i> Energia i Entalpia Gazu Doskonałego</h2>
 <p>Pamiętamy z I Zasady, że dla g.d. te parametry zależą <strong>tylko</strong> od temperatury (Eksperyment Joule’a).</p>
 <p>Dlatego zmiany tych parametrów liczymy zawsze tak samo, niezależnie od procesu (nawet jeśli <span class="math inline">\(p\)</span> czy <span class="math inline">\(v\)</span> się zmieniają!) – przy stałych (lub średnich w danym zakresie temperatur) ciepłach właściwych:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
 <p><span class="math display">\[ \Delta u = c_v \cdot (T_2 - T_1) \]</span></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
 <p><span class="math display">\[ \Delta h = c_p \cdot (T_2 - T_1) \]</span></p>
+</div>
+</div></div>
 <p>To potężne uproszczenie w obliczeniach inżynierskich.</p>
 </section>
 <section id="mieszaniny-gazowe" class="slide level2">
 <h2><i class="bi bi-collection"></i> 5. Mieszaniny Gazowe</h2>
 <p>W technice rzadko pracujemy z czystym tlenem czy azotem. Zazwyczaj mamy mieszaninę (np. spaliny w silniku, powietrze w wentylacji).</p>
 <p>Model Daltona pozwala traktować mieszaninę gazów doskonałych jak <strong>jeden gaz zastępczy</strong>.</p>
+<div class="panel panel-blue">
 <p>Potrzebujemy tylko obliczyć zastępczą stałą gazową <span class="math inline">\(R_{\text{miesz}}\)</span> i zastępcze ciepło właściwe:</p>
 <p><span class="math display">\[ R_{\text{miesz}} = \sum g_i R_i = \frac{R_u}{M_{\text{miesz}}}, \qquad M_{\text{miesz}} = \sum y_i M_i \]</span></p>
 <p>gdzie <span class="math inline">\(g_i\)</span> – udziały masowe, <span class="math inline">\(y_i\)</span> – udziały molowe składników.</p>
+</div>
 </section>
 <section id="prawo-daltona-ciśnienia" class="slide level2">
 <h2><i class="bi bi-layers"></i> Prawo Daltona (Ciśnienia)</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p>Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.</p>
-</div>
 <p><span class="math display">\[ p_{\text{całk}} = p_1 + p_2 + ... + p_n = \sum p_i \]</span></p>
+</div>
+<div class="panel panel-amber">
 <p><strong>Ciśnienie cząstkowe (<span class="math inline">\(p_i\)</span>):</strong> To ciśnienie, jakie wywierałby dany składnik, gdyby <strong>SAM</strong> zajmował całą objętość zbiornika <span class="math inline">\(V\)</span> w tej samej temperaturze <span class="math inline">\(T\)</span>.</p>
+</div>
 </section>
 <section id="wizualizacja-prawa-daltona" class="slide level2">
 <h2><i class="bi bi-bar-chart-steps"></i> Wizualizacja Prawa Daltona</h2>
 
-<img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/dalton-viz-1.png" width="960" class="r-stretch"></section>
+<img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/dalton-viz-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="udziały-molowe-y_i-i-obliczanie-p_i" class="slide level2">
 <h2><i class="bi bi-pie-chart"></i> Udziały Molowe (<span class="math inline">\(y_i\)</span>) i Obliczanie <span class="math inline">\(p_i\)</span></h2>
 <p>W g.d. ciśnienie wynika z liczby uderzeń cząsteczek. Zatem ciśnienie cząstkowe zależy wprost od ilości moli danego gazu:</p>
 <p><span class="math display">\[ y_i = \frac{n_i}{n_{\text{całk}}} \quad (\text{Ułamek molowy}) \]</span></p>
+<div class="panel panel-blue">
 <p>Z Prawa Daltona wynika prosta zależność:</p>
 <p><span class="math display">\[ p_i = y_i \cdot p_{\text{całk}} \]</span></p>
-<p>Dlaczego w atmosferze (<span class="math inline">\(p \approx 100\)</span> kPa) ciśnienie tlenu (“ciśnienie parcjalne”) wynosi ok. 21 kPa? Bo tlen stanowi 21% cząsteczek powietrza (<span class="math inline">\(y_{O2} = 0{,}21\)</span>).</p>
+</div>
+<p>Dlaczego w atmosferze (<span class="math inline">\(p \approx 100\)</span> kPa) ciśnienie tlenu (“ciśnienie parcjalne”) wynosi ok. 21 kPa?</p>
+<p><span class="fragment answer">Bo tlen stanowi 21% cząsteczek powietrza (<span class="math inline">\(y_{O2} = 0{,}21\)</span>).</span></p>
 </section>
 <section id="gazy-rzeczywiste---granice-modelu" class="slide level2">
 <h2><i class="bi bi-cloud"></i> 6. Gazy Rzeczywiste - Granice Modelu</h2>
 <p>Gdy ciśnienie jest bardzo wysokie (np. w butli z tlenem 200 bar) lub temperatura niska (skraplanie), założenia g.d. przestają działać.</p>
+<div class="panel panel-amber">
 <ol type="1">
 <li>Cząsteczki są upakowane ciasno <span class="math inline">\(\to\)</span> ich własna objętość zaczyna mieć znaczenie.</li>
 <li>Siły przyciągania (van der Waalsa) zaczynają sklejać cząsteczki.</li>
 <li><strong>Efekt Joule’a-Thomsona:</strong> Dławienie (<span class="math inline">\(h=const\)</span>) powoduje zmianę temperatury.</li>
 </ol>
+</div>
 <p>Potrzebujemy lepszego równania stanu.</p>
 </section>
 <section id="równanie-van-der-waalsa" class="slide level2">
 <h2><i class="bi bi-bricks"></i> Równanie Van der Waalsa</h2>
 <p><span class="math display">\[ \left( p + \frac{a}{v^2} \right) (v - b) = R T \]</span></p>
 <p>Dwie poprawki względem Clapeyrona (<span class="math inline">\(pv=RT\)</span>):</p>
-<ol type="1">
-<li><strong>Człon kohezji (<span class="math inline">\(a/v^2\)</span>):</strong> Uwzględnia przyciąganie między cząsteczkami. Zmniejsza efektywne ciśnienie wywierane na ścianki (bo cząsteczki są “ściągane” do środka przez sąsiadów).</li>
-<li><strong>Kowolumen (<span class="math inline">\(b\)</span>):</strong> Uwzględnia objętość własną cząsteczek. Dostępna przestrzeń ruchu to nie całe <span class="math inline">\(v\)</span>, ale <span class="math inline">\((v-b)\)</span>.</li>
-</ol>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="panel panel-blue">
+<p><strong>1. Człon kohezji (<span class="math inline">\(a/v^2\)</span>):</strong> Uwzględnia przyciąganie między cząsteczkami. Zmniejsza efektywne ciśnienie wywierane na ścianki (bo cząsteczki są “ściągane” do środka przez sąsiadów).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="panel panel-amber">
+<p><strong>2. Kowolumen (<span class="math inline">\(b\)</span>):</strong> Uwzględnia objętość własną cząsteczek. Dostępna przestrzeń ruchu to nie całe <span class="math inline">\(v\)</span>, ale <span class="math inline">\((v-b)\)</span>.</p>
+</div>
+</div></div>
 </section>
 <section id="izotermy-andrewsa-gaz-rzeczywisty" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Izotermy Andrewsa (Gaz Rzeczywisty)</h2>
 <p>Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu doskonałego (<span class="math inline">\(p \sim 1/v\)</span>).</p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/andrews-1.png" width="816"></p>
+<p><img data-src="04_Wlasciwosci_Substancji_files/figure-revealjs/andrews-1.svg" style="width:100.0%"></p>
+<figcaption>Izotermy Andrewsa (model van der Waalsa, parametry zredukowane)</figcaption>
 </figure>
 </div>
 </div>
@@ -587,7 +700,9 @@
 <section id="zasada-stanów-odpowiednich" class="slide level2">
 <h2><i class="bi bi-aspect-ratio"></i> Zasada Stanów Odpowiednich</h2>
 <p>Inżynierowie poradzili sobie z różnorodnością gazów, wprowadzając <strong>Współczynnik Ściśliwości <span class="math inline">\(Z\)</span></strong>:</p>
+<div class="panel panel-blue">
 <p><span class="math display">\[ Z = \frac{pv}{RT} \]</span></p>
+</div>
 <ul>
 <li>Dla gazu doskonałego: <span class="math inline">\(Z = 1\)</span>.</li>
 <li>Dla gazu rzeczywistego: <span class="math inline">\(Z \neq 1\)</span> (może być 0,8, może być 1,2).</li>
@@ -597,7 +712,7 @@
 <h2><i class="bi bi-cloud-fog"></i> Parametry Zredukowane</h2>
 <p>Sprowadzamy różne gazy do “wspólnego mianownika”, dzieląc ich parametry przez parametry w punkcie krytycznym:</p>
 <p><span class="math display">\[ p_r = \frac{p}{p_{\text{kryt}}}, \quad v_r = \frac{v}{v_{\text{kryt}}}, \quad T_r = \frac{T}{T_{\text{kryt}}} \]</span></p>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p><strong>Zasada:</strong> Różne gazy w tych samych stanach zredukowanych (<span class="math inline">\(p_r, T_r\)</span>) mają w przybliżeniu to samo <span class="math inline">\(Z\)</span>.</p>
 </div>
 <div title="Analogia">
@@ -625,8 +740,10 @@
 <li><strong>Mieszaniny:</strong> Ciśnienia cząstkowe sumują się (Dalton).</li>
 <li><strong>Rzeczywistość:</strong> Siły międzycząsteczkowe (Van der Waals) powodują efekty takie jak skraplanie czy zmiana temperatury przy dławieniu (Joule-Thomson).</li>
 </ol>
-<h3 id="zapowiedź-w5">Zapowiedź W5</h3>
+<div class="panel panel-green">
+<p><strong>Zapowiedź W5</strong></p>
 <p>W kolejnym wykładzie wejdziemy w obszar <strong>Pary Wodnej</strong>: wrzenie, tablice parowe, turbiny!</p>
+</div>
 
 </section>
     </div>
@@ -803,7 +920,7 @@
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -824,7 +941,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -851,42 +968,80 @@
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -936,14 +1091,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

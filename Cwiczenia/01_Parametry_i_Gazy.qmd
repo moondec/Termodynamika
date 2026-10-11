@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -17,7 +17,8 @@ format:
     include-in-header: ../theme/cw-header.html
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: fade
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna – Ćwiczenia (Ć1)"
     width: 1600
@@ -75,7 +76,7 @@ $$ p_{abs} = p_{man} + p_{atm} $$
 ::: {.columns}
 ::: {.column width="50%"}
 
-::: {.fragment}
+::: {.fragment .panel .panel-blue}
 ### Przeliczanie jednostek (Krok 1):
 1.  **Atmosferyczne:** $750 \text{ mmHg} \rightarrow \text{kPa}$?
     *   $1 \text{ mmHg} = \frac{101325}{760} \approx 133.32 \text{ Pa} = 0.13332 \text{ kPa}$
@@ -86,7 +87,7 @@ $$ p_{abs} = p_{man} + p_{atm} $$
 :::
 :::
 ::: {.column width="50%"}
-::: {.fragment}
+::: {.fragment .panel .panel-amber}
 3.  **Absolutne:**
     *   $p_{abs} = 850 + 99.99 \approx 950 \text{ kPa} = 950\,000 \text{ Pa}$
 :::
@@ -111,12 +112,14 @@ $$ p \cdot V = m \cdot R \cdot T $$
 *   $R_{pow} = 287 \frac{\text{J}}{\text{kg}\cdot\text{K}}$ (Indywidualna stała gazowa)
 :::
 ::: {.column width="50%"}
+::: {.panel .panel-blue}
 **Rozwiązanie:**
 $$ m = \frac{p \cdot V}{R \cdot T} $$
 
 $$ m = \frac{950\,000 \cdot 5}{287 \cdot 298.15} = \frac{4\,750\,000}{85\,569.05} $$
 
 $$ m \approx 55.51 \text{ kg} $$
+:::
 :::
 :::
 
@@ -202,7 +205,7 @@ W drugim zbiorniku na hali przechowywana jest mieszanina: 80% $\text{N}_2$ + 20%
 :::
 
 ::: {.column width="50%"}
-::: {.fragment}
+::: {.fragment .panel .panel-blue}
 **Krok 2: Masy** ($m_i = \frac{p_i V}{R_i T}$, gdzie $R_{N_2} = 297$, $R_{O_2} = 260 \text{ J/(kg·K)}$)
 
 *   $m_{N_2} = \frac{400\,000 \cdot 2}{297 \cdot 293.15} = \frac{800\,000}{87\,066} \approx \mathbf{9.19 \text{ kg}}$
@@ -251,7 +254,7 @@ Dział spawalniczy potrzebuje butli na **czysty azot** ($\text{N}_2$) o masie $m
 
 **Oblicz wymaganą objętość zbiornika (butli).**
 
-::: {.fragment}
+::: {.fragment .panel .panel-blue}
 $$ V = \frac{m R T}{p} $$
 
 *   $R_{N_2} = \frac{8314}{28} \approx 297 \text{ J/(kg·K)}$ (indywidualna stała gazowa azotu)

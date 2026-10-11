@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -21,7 +21,7 @@ format:
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
             background-image: url("../img/background_red.png") !important;
-            background-size: contain !important; 
+            background-size: contain !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.2 !important;
@@ -34,12 +34,14 @@ format:
         </style>
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: convex
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W12)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -50,13 +52,27 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
-```
+#| label: setup
+#| include: false
 
+library(ggplot2)
+library(dplyr)
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+
+# Krzywe stałej wilgotności względnej: jedna rodzina (odcienie niebieskiego),
+# krzywa nasycenia (φ = 100 %) najciemniejsza.
+pal_rh <- setNames(colorRampPalette(c("#b9d0ee", pal_slides[1]))(4),
+                   c("0.4", "0.6", "0.8", "1"))
+lab_rh <- c("0.4" = "40 %", "0.6" = "60 %", "0.8" = "80 %", "1" = "100 %")
+
+# Kolory przemian na wykresie h-X (spójne na wszystkich slajdach):
+col_heat  <- pal_slides[2]   # ogrzewanie (ciepło doprowadzone)
+col_cool  <- pal_slides[3]   # ochładzanie (ciepło odprowadzone)
+col_adiab <- pal_slides[7]   # nawilżanie adiabatyczne / suszenie (h ≈ const)
+col_isoh  <- pal_slides[6]   # izentalpy
+```
 
 ## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
@@ -68,33 +84,28 @@ theme_set(theme_minimal(base_size = 18))
 6.  **Pomiary i Aparatura** (Psychrometry, Nawilżacze)
 7.  **Bilans Masy i Energii**
 
----
+## <i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego {.small}
 
-## <i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego {style="font-size: 0.95em;"}
-
-::: {.callout-note appearance="simple" style="font-size: .9em;"}
-**Powietrze wilgotne** to jednorodna mieszanina gazów zbliżonych do doskonałych ($N_2, O_2, Ar$) oraz **pary wodnej**.
+::: {.callout-note appearance="simple"}
+**Powietrze wilgotne** to jednorodna mieszanina gazów zbliżonych do doskonałych ([N~2~]{.nowrap}, [O~2~]{.nowrap}, Ar) oraz **pary wodnej**.
 :::
 
-::: {.fragment .callout-important title="Prawo Daltona" style="font-size: .9em;"}
+::: {.fragment .callout-important title="Prawo Daltona"}
 Ciśnienie całkowite (barometryczne) jest sumą ciśnień cząstkowych:
 $$ p = p_g + p_p $$
-Gdzie:
 
-$p_g$ – ciśnienie cząstkowe powietrza suchego;    $p_p$ – ciśnienie cząstkowe pary wodnej.
+$p_g$ – ciśnienie cząstkowe powietrza suchego; $p_p$ – ciśnienie cząstkowe pary wodnej.
 :::
 
-::: {.fragment style="font-size: .9em;"}
-### Stan pary wodnej:
+::: {.fragment .panel .panel-blue}
+**Stan pary wodnej:**
 
-*   **Para przegrzana:** $p_p < p_{\text{nasycenia}}$ (Typowy stan w pomieszczeniu).
+*   **Para przegrzana:** $p_p < p_{\text{nasycenia}}$ (typowy stan w pomieszczeniu).
 *   **Para nasycona:** $p_p = p_{\text{nasycenia}}$ ($\varphi = 100\%$).
-*   **Mgła:** Powietrze przesycone (zawiera kropelki cieczy).
+*   **Mgła:** powietrze przesycone (zawiera kropelki cieczy).
 :::
 
----
-
-## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out" style="font-size: 0.85em;"}
+## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {.small auto-animate=true auto-animate-easing="ease-in-out"}
 
 Inżynierowie (i nie tylko) opisują wilgotność powietrza za pomocą trzech wielkości: $\varphi$, $g$ i $X$.
 
@@ -102,35 +113,30 @@ Inżynierowie (i nie tylko) opisują wilgotność powietrza za pomocą trzech wi
 Określa, jak blisko jesteśmy stanu nasycenia (mgły).
 $$ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% $$
 
-::: {style="font-size: .7em;"}
-*   $\varphi = 0\%$: Powietrze suche.
-*   $\varphi = 100\%$: Powietrze nasycone ($t = t_r$, temperatura punktu rosy).
-:::
+*   $\varphi = 0\%$: powietrze suche.
+*   $\varphi = 100\%$: powietrze nasycone ($t = t_r$, temperatura punktu rosy).
 :::
 
-:::{.fragment .callout-note title="Wilgotność Bezwzględna" style="font-size: .9em;"}
+::: {.fragment .callout-note title="Wilgotność Bezwzględna"}
 Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza.
-$$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{\mathrm{H_2O}}}{m^3}] $$
+$$ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad \left[\frac{\text{kg}_{\mathrm{H_2O}}}{\text{m}^3}\right] $$
 :::
----
 
 ## <i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ::: {.callout-important title="Stopień Zawilżenia (Mixing Ratio)"}
-
 Stosunek masy pary ($m_p$) do masy powietrza **suchego** ($m_g$).
-$$ X = \frac{m_p}{m_g} = 0{,}622 \frac{p_p}{p - p_p} \quad [\frac{kg_{\mathrm{H_2O}}}{kg_{\text{suchego}}}] $$
+$$ X = \frac{m_p}{m_g} = 0{,}622 \frac{p_p}{p - p_p} \quad \left[\frac{\text{kg}_{\mathrm{H_2O}}}{\text{kg}_{\text{suchego}}}\right] $$
 
-*   **Kluczowe:** W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc **$X = const$** (jeśli nie nawilżamy).
-
-0,622 to stosunek mas molowych pary wodnej do powietrza suchego:
-$$ \frac{M_{H_2O}}{M_{\text{powietrza}}} = \frac{18{,}015}{28{,}97} \approx 0{,}622$$
-
+*   **Kluczowe:** w procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc **$X = const$** (jeśli nie nawilżamy).
 :::
 
----
+::: {.fragment .panel .panel-blue}
+0,622 to stosunek mas molowych pary wodnej do powietrza suchego:
+$$ \frac{M_{\mathrm{H_2O}}}{M_{\text{powietrza}}} = \frac{18{,}015}{28{,}97} \approx 0{,}622 $$
+:::
 
-## <i class="bi bi-thermometer-half"></i> 3. Entalpia ($h$) 
+## <i class="bi bi-thermometer-half"></i> 3. Entalpia ($h$)
 
 ::: {.callout-warning appearance="simple"}
 Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
@@ -138,60 +144,68 @@ Entalpia powietrza wilgotnego odniesiona jest do **1 kg powietrza suchego**.
 
 $$ h = h_{\text{powietrza}} + X \cdot h_{\text{pary}} $$
 
-::: {.fragment .callout-note appearance="minimal"}
-Przyjmując $0^\circ C$ jako punkt odniesienia ($t$ w $^\circ C$):
-$$ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad [\frac{kJ}{kg}] $$
+::: {.fragment .panel .panel-blue}
+Przyjmując $0\,^\circ\text{C}$ jako punkt odniesienia ($t$ w $^\circ\text{C}$):
+$$ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad \left[\frac{\text{kJ}}{\text{kg}}\right] $$
 :::
 
-::: {.fragment}
+::: {.fragment .panel .panel-amber}
 **Składniki:**
 
-1.  **1,005:** Ciepło właściwe powietrza suchego ($c_p$) $[kJ/(kg \cdot K)]$.
-2.  **2501:** Ciepło parowania wody ($r$) w $0^\circ C$ $[kJ/kg]$.
-3.  **1,86:** Ciepło właściwe pary wodnej ($c_{p,p}$) $[kJ/(kg \cdot K)]$.
+1.  **1,005:** ciepło właściwe powietrza suchego ($c_p$) $[\text{kJ}/(\text{kg} \cdot \text{K})]$.
+2.  **2501:** ciepło parowania wody ($r$) w $0\,^\circ\text{C}$ $[\text{kJ}/\text{kg}]$.
+3.  **1,86:** ciepło właściwe pary wodnej ($c_{p,p}$) $[\text{kJ}/(\text{kg} \cdot \text{K})]$.
 :::
 
----
-
-## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X {style="font-size: 0.85em;"}
+## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X {.small}
 
 Standard w Europie Środkowej. Układ **ukośnokątny** (rozciąga obszar nienasycony).
 
-::: { }
-*   **Oś pionowa ($X = 0$):** Entalpia $h$ (układ ukośnokątny); dla powietrza suchego $h = c_p t$, dlatego opisuje się ją pomocniczą skalą temperatury $t$ [°C].
-:::
-::: {.fragment .fade-in}
-*   **Oś pozioma:** Stopień zawilżenia $X$ [g/kg].
-:::
-::: {.fragment .fade-in}
-*   **Izentalpy ($h=const$):** Linie ukośne (biegną pod kątem ~135°, stąd "ukośność wykresu").
-:::
-::: {.fragment .fade-in}
-*   **Krzywa graniczna ($\varphi=100\%$):** Oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).
+::: {.panel .panel-blue}
+*   **Oś pionowa ($X = 0$):** entalpia $h$ (układ ukośnokątny); dla powietrza suchego $h = c_p t$, dlatego opisuje się ją pomocniczą skalą temperatury $t$ [°C].
 :::
 
-### Interpretacja Linii:{.fragment}
-::: {.fragment style="font-size: .8em;"}
-1.  **Izotermy ($t$):** Lekko wznoszą się w prawo, a po zetknięciu z krzywą $\varphi = 100\%$ opadają niemal równolegle do izentalp.
-2.  **Krzywe $\varphi$:** Układają się "bananowo" nad krzywą graniczną.
+::: {.fragment .fade-in .panel .panel-blue}
+*   **Oś pozioma:** stopień zawilżenia $X$ [g/kg].
+:::
+
+::: {.fragment .fade-in .panel .panel-green}
+*   **Izentalpy ($h = const$):** linie ukośne (biegną pod kątem ~135°, stąd „ukośność" wykresu).
+:::
+
+::: {.fragment .fade-in .panel .panel-amber}
+*   **Krzywa graniczna ($\varphi = 100\%$):** oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).
+:::
+
+## <i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X – interpretacja linii {.small}
+
+::: {.panel .panel-amber}
+1.  **Izotermy ($t$):** lekko wznoszą się w prawo, a po zetknięciu z krzywą $\varphi = 100\%$ opadają niemal równolegle do izentalp.
+:::
+
+::: {.fragment .panel .panel-blue}
+2.  **Krzywe $\varphi$:** układają się „bananowo" nad krzywą graniczną.
+:::
+
+::: {.fragment .panel .panel-green}
 3.  **Izentalpy ($h$):** nachylone pod kątem ~135°.
-4.  **Podziałka brzegowa (kątowa)** $\varepsilon = \Delta h/\Delta X$ na obrzeżu wykresu: prosta z "bieguna" do danej wartości $\varepsilon$ wyznacza kierunek wektora przemiany (zależny m.in. od medium nawilżającego).
 :::
 
----
+::: {.fragment .panel .panel-violet}
+4.  **Podziałka brzegowa (kątowa)** $\varepsilon = \Delta h/\Delta X$ na obrzeżu wykresu: prosta z „bieguna" do danej wartości $\varepsilon$ wyznacza kierunek wektora przemiany (zależny m.in. od medium nawilżającego).
+:::
 
-## <i class="bi bi-graph-up"></i> Wizualizacja: Wykres h-X 
+## <i class="bi bi-graph-up"></i> Wizualizacja: Wykres h-X
 
 ```{r}
 #| label: ix-diagram-all
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-align: center
-#| fig-width: 14        # Duża szerokość "źródłowa" (w calach)
-#| fig-height: 8        # Duża wysokość "źródłowa"
-#| out-width: "100%"    # Rozciągnij do granic kontenera
-
-library(ggplot2)
-library(dplyr)
+#| fig-width: 14
+#| fig-height: 7.6
+#| out-width: "100%"
 
 # --- 1. KONFIGURACJA I STAŁE ---
 CONSTANTS <- list(
@@ -235,8 +249,6 @@ generate_mollier_data <- function() {
 
     # A. Krzywe wilgotności (RH)
     t_seq <- seq(t_min, t_max, by = 0.5)
-    # Zwiększamy zakres t_seq, bo przy transformacji t maleje w dół? Nie, t rośnie.
-    # Musimy uważać na zakresy
 
     rh_levels <- c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
 
@@ -249,7 +261,7 @@ generate_mollier_data <- function() {
         ) %>%
         filter(!is.na(x_kg), x_g <= x_max_g) %>%
         # Nadpisujemy t, żeby ggplot używał t_vis, ale zachowujemy t_real
-        mutate(t_real = t, t = t_vis) # Teraz t to t_vis
+        mutate(t_real = t, t = t_vis)
 
     # B. Linie Entalpii (Izentalpy)
     h_levels <- seq(0, 160, by = 10)
@@ -261,7 +273,7 @@ generate_mollier_data <- function() {
             t_phys = get_t_from_h_x(h_val, x_kg),
             t = transform_t(t_phys, x_g) # t wizualne
         ) %>%
-        filter(t >= t_min, t <= t_max + 10) # Szerszy zakres filtra
+        filter(t >= t_min, t <= t_max + 10)
 
     # C. Przygotowanie etykiet entalpii
     h_labels <- df_h %>%
@@ -277,42 +289,30 @@ generate_mollier_data <- function() {
     df_iso_list <- lapply(t_iso_levels, function(temp) {
         # 1. Punkt nasycenia
         x_sat_kg <- get_x_from_rh(temp, 1.0)
-        # Jeśli NA (poza wykresem), to cała linia jest w obszarze pary przegrzanej lub mgły (teoretycznie)
-        if (is.na(x_sat_kg)) x_sat_kg <- 100 # Duża wartość
+        if (is.na(x_sat_kg)) x_sat_kg <- 100
         x_sat_g <- x_sat_kg * 1000
 
         # Segment 1: Przegrzana (lekko wznosząca się - cecha wykresu ukośnokątnego)
         s1_x_max <- min(x_sat_g, x_max_g)
         x_vals_s1 <- seq(0, s1_x_max, length.out = 10)
 
-        # Tutaj t = temp + slope * x (transformacja)
         seg1 <- data.frame(
             x_g = x_vals_s1,
             t = transform_t(temp, x_vals_s1),
             group = paste0("t", temp, "_dry")
         )
 
-        # Jeśli saturacja jest poza wykresem, zwracamy tylko segment 1
         if (x_sat_g >= x_max_g) {
             return(seg1)
         }
 
         # Segment 2: Mgła (spadek wzdłuż izentalpy)
-        # Punkt Nasycenia (fizyczny) -> t = temp, x = x_sat_g
-        # Punkt Nasycenia (wizualny) -> t_vis = temp + slope * x_sat_g
-        # To jest ZAPEWNIONE przez transform_t(temp, x_vals_s1) na końcu s1.
-
-        # Fizyczna entalpia w punkcie nasycenia
         h_sat <- CONSTANTS$cp_dry * temp + x_sat_kg * (CONSTANTS$r_0 + CONSTANTS$cp_vap * temp)
 
-        # Zakres x we mgle
         x_fog_g <- seq(x_sat_g, x_max_g, length.out = 10)
         x_fog_kg <- x_fog_g / 1000
 
-        # Fizyczna temperatura we mgle (dla h_vis = const)
         t_fog_phys <- (h_sat - x_fog_kg * CONSTANTS$r_0) / (CONSTANTS$cp_dry + x_fog_kg * CONSTANTS$cp_vap)
-
-        # Wizualna temperatura we mgle (transformowana!)
         t_fog_vis <- transform_t(t_fog_phys, x_fog_g)
 
         seg2 <- data.frame(
@@ -325,14 +325,13 @@ generate_mollier_data <- function() {
     })
     df_iso <- do.call(rbind, df_iso_list)
 
-    # E. Pęk Linii (Wykres tła - skala h_w) - "Biegun" w (0, 25 st. C)
+    # E. Pęk Linii (podziałka brzegowa) - "Biegun" w (0, 25 st. C)
     # Epsilon = (dh/dx) ~ cp * dt/dx + r0
     # Slope dt/dx_kg = (Epsilon - r0) / cp
 
     pole_x <- 0
-    pole_y <- 25 # Przesunięty biegun
+    pole_y <- 25
 
-    # Lista wartości ze skrajnymi zakresami
     eps_values <- sort(unique(c(
         -1000, # epsilon < 0 (np. dodawanie lodu)
         seq(0, 1500, 500),
@@ -343,62 +342,42 @@ generate_mollier_data <- function() {
     )))
 
     fan_list <- lapply(eps_values, function(eps) {
-        # Nachylenie fizyczne
         slope_phys_kg <- (eps - CONSTANTS$r_0) / CONSTANTS$cp_dry
-        
-        # Nachylenie wizualne (uwzględnia skrzywienie wykresu)
-        # slope_vis = slope_phys + vis_slope
-        # vis_slope_val jest w [deg/g], wiec *1000 aby miec [deg/kg]
         slope_vis_kg <- slope_phys_kg + vis_slope_val * 1000
-        
-        # Równanie linii wizualnej: y_vis = pole_y + slope_vis_kg * x_kg
-        # gdzie x_kg in [0, 0.045], y_vis in [-10, 55]
-        
+
         x1 <- 0; y1 <- 0; side <- "none"
-        
-        # 1. Sprawdzamy prawą ścianę (x_max)
+
         x_right_kg <- x_max_g / 1000
         y_at_right <- pole_y + slope_vis_kg * x_right_kg
-        
+
         if (y_at_right <= t_max && y_at_right >= t_min) {
-            # Trafia w prawą krawędź wizualną
             x1 <- x_max_g
             y1 <- y_at_right
             side <- "right"
         } else {
-            # 2. Trafia w górę lub dół
             if (slope_vis_kg > 0) {
-                 # Góra (y_vis = 55)
                  x_top_kg <- (t_max - pole_y) / slope_vis_kg
                  x1 <- x_top_kg * 1000
                  y1 <- t_max
                  side <- "top"
             } else {
-                 # Dół (y_vis = -10)
                  x_bot_kg <- (t_min - pole_y) / slope_vis_kg
                  x1 <- x_bot_kg * 1000
                  y1 <- t_min
                  side <- "bottom"
             }
         }
-        
-        # Zabezpieczenie zakresów
-        if (x1 > x_max_g) x1 <- x_max_g 
+
+        if (x1 > x_max_g) x1 <- x_max_g
         if (x1 < 0) x1 <- 0
-        
-        # Kąt rotacji (bazujemy na wizualnym nachyleniu)
-        # Vis slope na wykresie (jednostki osi: 1 st C / 1 g)
-        # slope_vis_kg to [deg/kg]. slope_vis_g = slope_vis_kg / 1000
+
         vis_slope_plot <- slope_vis_kg / 1000
-        
-        # Uwzględniamy coord_fixed(ratio = 0.5)
         angle <- atan(0.5 * vis_slope_plot) * 180 / pi
-        
-        # Pozycjonowanie etykiety
+
         factor <- 0.92
         lab_x <- pole_x + (x1 - pole_x) * factor
         lab_y <- pole_y + (y1 - pole_y) * factor
-        
+
         data.frame(x0=pole_x, y0=pole_y, x1=x1, y1=y1, eps=eps, side=side, lab_x=lab_x, lab_y=lab_y, angle=angle)
     })
     df_fan <- do.call(rbind, fan_list)
@@ -408,58 +387,56 @@ generate_mollier_data <- function() {
 
 data <- generate_mollier_data()
 
-# --- 4. RYSOWANIE ---
+# Rodzina krzywych φ: 10 odcieni niebieskiego (nasycenie najciemniejsze)
+pal_rh10 <- colorRampPalette(c("#cbdcf2", pal_slides[1]))(10)
 
+# --- 4. RYSOWANIE ---
 p <- ggplot() +
 
     # 0. TŁO - PĘK LINII (podziałka brzegowa) dla epsilon
     geom_segment(
         data = data$fan,
         aes(x = x0, y = y0, xend = x1, yend = y1),
-        color = "gray60", size = 0.5, linetype = "longdash"
+        color = col_ink2, linewidth = 0.4, linetype = "longdash", alpha = 0.6
     ) +
     geom_text(
         data = data$fan,
         aes(x = lab_x, y = lab_y, label = eps, angle = angle),
         hjust = 0.5, vjust = -0.3,
-        size = 3.2, color = "gray60", fontface = "bold"
+        size = 3.2, color = col_ink2, fontface = "bold"
     ) +
-    # Opis jednostki podziałki brzegowej
-    annotate("text", x = 35, y = 53, label = "[\u0394h/\u0394X kJ/kg]", color = "gray60", size = 5.5, fontface = "italic", hjust = 1) +
+    annotate("text", x = 35, y = 53, label = "ε = Δh/ΔX [kJ/kg]", color = col_ink2,
+             size = 5.5, fontface = "italic", hjust = 1) +
 
     # 1. LINIE ENTALPII
     geom_line(
         data = data$h_lines, aes(x = x_g, y = t, group = h_val),
-        color = "darkgreen", size = 1, linetype = "dotted"
+        color = col_isoh, linewidth = 0.8, linetype = "dotted"
     ) +
-
-    # Etykiety Entalpii (Inteligentne pozycjonowanie)
     geom_text(
         data = data$h_labels,
         aes(x = x_g, y = t, label = h_val, hjust = ifelse(label_pos == "top", 0.5, 0)),
         vjust = -0.5,
         nudge_x = 0.5,
-        size = 5, color = "darkgreen", fontface = "italic"
+        size = 5, color = col_isoh, fontface = "italic"
     ) +
 
-    # 2. IZOTERMY (Custom Grid)
+    # 2. IZOTERMY
     geom_line(
         data = data$isotherms,
         aes(x = x_g, y = t, group = group),
-        color = "orange", size = 0.9, linetype = "solid", alpha = 0.6
+        color = pal_slides[2], linewidth = 0.8, linetype = "solid", alpha = 0.6
     ) +
 
     # 3. KRZYWE WILGOTNOŚCI
     geom_line(
         data = data$rh, aes(x = x_g, y = t, group = rh, color = factor(rh)),
-        size = 0.8
+        linewidth = 0.8
     ) +
     geom_line(
         data = data$rh %>% filter(rh == 1.0),
-        aes(x = x_g, y = t), color = "darkblue", size = 1.2
+        aes(x = x_g, y = t), color = pal_slides[1], linewidth = 1.4
     ) +
-
-    # Etykiety RH (ZMNIEJSZONE do 4, Kolor dopasowany do linii)
     geom_text(
         data = data$rh %>% filter(t > 25) %>% group_by(rh) %>% slice(round(n() / 2)),
         aes(x = x_g, y = t, label = paste0(rh * 100, "%"), color = factor(rh)),
@@ -467,75 +444,61 @@ p <- ggplot() +
         show.legend = FALSE
     ) +
     # 4. STYL I KOLORY
-    scale_color_viridis_d(option = "C", direction = -1) +
+    scale_color_manual(values = pal_rh10) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 45), breaks = seq(0, 45, 5)) +
     scale_y_continuous(expand = c(0, 0), limits = c(-10, 55), breaks = seq(-10, 55, 5)) +
     labs(
-        title = "Wykres h-X (Molliera)",
-        subtitle = NULL, # Usunąłem podtytuł, by zyskać miejsce
         x = "Stopień zawilżenia X [g/kg]",
-        y = "Temperatura [°C]"
+        y = "Temperatura t [°C]"
     ) +
-    theme_bw(base_size = 22) + # Duża czcionka bazowa
-
+    theme_slides(18) +
     theme(
-        # Marginesy: Góra, Prawa, Dół, Lewa (Zmniejszone, bo etykiety są wewnątrz)
-        plot.margin = margin(t = 0.5, r = 0.5, b = 0.5, l = 0.5, "cm"),
-
-        # Izotermy (Custom) i Oś Y (Pomarańczowe)
-        panel.grid.major.y = element_blank(), # Wyłączamy standardową siatkę Y, bo mamy własne izotermy
+        plot.margin = margin(t = 0.3, r = 0.5, b = 0.3, l = 0.3, "cm"),
+        panel.grid.major.y = element_blank(),   # własne izotermy zamiast siatki
         panel.grid.minor.y = element_blank(),
-        panel.grid.major.x = element_line(color = "gray90"),
-        axis.text.y = element_text(color = "orange", face = "bold"),
-        axis.title.y = element_text(color = "orange", face = "bold"),
-        axis.ticks.y = element_line(color = "orange"),
-
-        # Tytuł
-        plot.title = element_text(size = 18, face = "bold"),
+        panel.border = element_rect(colour = col_grid, fill = NA, linewidth = 0.6),
+        axis.text.y = element_text(color = pal_slides[2], face = "bold"),
+        axis.title.y = element_text(color = pal_slides[2], face = "bold"),
+        axis.ticks.y = element_line(color = pal_slides[2]),
         legend.position = "none"
     ) +
-
-    # Clip = "off" pozwala pisać po marginesach
     coord_fixed(ratio = 0.5, clip = "off")
 
 print(p)
 ```
 
----
+## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {.small auto-animate=true auto-animate-easing="ease-in-out"}
 
-## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out" style="font-size: 0.9em;"}
-
-::: {.callout-warning title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;"}
-*   **Proces:** Nagrzewnica.
-*   **Wykres:** Pionowo do góry.
-*   **Efekt:** Temperatura rośnie, **wilgotność względna $\varphi$ maleje** (powietrze "schnie").
+::: {.callout-warning title="1. Ogrzewanie izobaryczne (X = const)"}
+*   **Proces:** nagrzewnica.
+*   **Wykres:** pionowo do góry.
+*   **Efekt:** temperatura rośnie, **wilgotność względna $\varphi$ maleje** (powietrze „schnie").
 :::
 
-::: {.fragment .callout-tip title="2. Ochładzanie (X=const)" style="font-size: .9em;"}
-*   **Proces:** Chłodnica (powyżej punktu rosy).
-*   **Wykres:** Pionowo w dół.
-*   **Efekt:** $\varphi$ rośnie aż do 100% (Punkt Rosy $t_r$).
+::: {.fragment .callout-tip title="2. Ochładzanie (X = const)"}
+*   **Proces:** chłodnica (powyżej punktu rosy).
+*   **Wykres:** pionowo w dół.
+*   **Efekt:** $\varphi$ rośnie aż do 100% (punkt rosy $t_r$).
 :::
 
-::: {.fragment .callout-note title="3. Nawilżanie adiabatyczne (h ≈ const)" style="font-size: .9em;"}
-*   **Proces:** Kontakt powietrza z wodą (komora zraszania, nawilżacz wodny, suszenie materiału).
-*   **Wykres:** Skośnie w dół (w stronę wyższego X).
-*   **Efekt:** Powietrze się nawilża i ochładza (energia zostaje w układzie).
+::: {.fragment .callout-note title="3. Nawilżanie adiabatyczne (h ≈ const)"}
+*   **Proces:** kontakt powietrza z wodą (komora zraszania, nawilżacz wodny, suszenie materiału).
+*   **Wykres:** skośnie w dół (w stronę wyższego X).
+*   **Efekt:** powietrze się nawilża i ochładza (energia zostaje w układzie).
 :::
-
---- 
 
 ## <i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne {auto-animate=true auto-animate-easing="ease-in-out"}
 
 ```{r}
-#| label: ix-diagram-advanced
+#| label: fig-ix-diagram-advanced
+#| fig-cap: "Wykres h-X z trzema przemianami charakterystycznymi (stan początkowy 20 °C, φ = 50 %)"
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-align: center
-#| fig-width: 14        # Duża szerokość "źródłowa" (w calach)
-#| fig-height: 8        # Duża wysokość "źródłowa"
-#| out-width: "100%"    # Rozciągnij do granic kontenera
-
-library(ggplot2)
+#| fig-width: 14
+#| fig-height: 7.2
+#| out-width: "100%"
 
 # ===== FUNKCJE POMOCNICZE (fizyka powietrza wilgotnego) =====
 
@@ -577,10 +540,8 @@ df_phi <- df_phi[df_phi$x < 30 & df_phi$x > 0, ]
 # Izotermy (t = const) - z załamaniem na linii saturacji
 temp_levels <- seq(5, 45, 5)
 df_iso_t <- do.call(rbind, lapply(temp_levels, function(temp) {
-    # Punkt saturacji dla danej temperatury
     x_sat <- x_calc(temp, 100)
 
-    # Segment 1: Obszar pary przegrzanej (poziomy, od x=0 do x_sat)
     segment1 <- data.frame(
         t = temp,
         x = seq(0, x_sat, length.out = 30),
@@ -588,15 +549,11 @@ df_iso_t <- do.call(rbind, lapply(temp_levels, function(temp) {
         segment = "przegrzana"
     )
 
-    # Segment 2: Obszar mgły (izotermy równoległe do izentalp)
     # W obszarze mgły na wykresie h-X izotermy biegną niemal równolegle do izentalp.
-    # Obliczamy "entalpię nasycenia" w punkcie załamania, używając tych samych współczynników co przy rysowaniu izentalp.
     h_sat_approx <- 1.005 * temp + x_sat * (2.5 + 0.00186 * temp)
 
-    x_max_fog <- min(x_sat + 5, 30) # Zasięg we mgle
+    x_max_fog <- min(x_sat + 5, 30)
     x_fog <- seq(x_sat, x_max_fog, length.out = 20)
-
-    # Wyznaczamy przebieg temperatury dla stałej entalpii (pseudo-izoterma we mgle)
     t_fog <- (h_sat_approx - 2.5 * x_fog) / (1.005 + 0.00186 * x_fog)
 
     segment2 <- data.frame(
@@ -612,11 +569,9 @@ df_iso_t <- do.call(rbind, lapply(temp_levels, function(temp) {
 # Izentalpy (h = const)
 h_levels <- seq(20, 100, 20)
 df_isenth <- do.call(rbind, lapply(h_levels, function(h_val) {
-    # Dla danej entalpii h, mamy: t = (h - 2.5*x) / (1 + 0.00186*x) (przybliżenie)
     x_vals <- seq(0, 25, 0.5)
     t_vals <- (h_val - 2.5 * x_vals) / (1.005 + 0.00186 * x_vals)
     df_temp <- data.frame(t = t_vals, x = x_vals, h = h_val)
-    # Ogranicz do obszaru fizycznego
     df_temp <- df_temp[df_temp$t >= -10 & df_temp$t <= 50 & df_temp$x >= 0 & df_temp$x <= 25, ]
     df_temp
 }))
@@ -630,16 +585,13 @@ x0 <- x_calc(t0, phi0)
 h0 <- h_calc(t0, x0)
 
 # 1. OGRZEWANIE (X=const, w górę)
-t1_heat <- 35 # Ogrzanie do 35°C
-x1_heat <- x0 # X stałe!
-h1_heat <- h_calc(t1_heat, x1_heat)
+t1_heat <- 35
 heating <- data.frame(
     t = seq(t0, t1_heat, length.out = 20),
     x = x0
 )
 
 # 2. OCHŁADZANIE (X=const, w dół do punktu rosy)
-# Punkt rosy: temp przy której phi=100% dla danego X
 t_dew <- uniroot(function(t) x_calc(t, 100) - x0, interval = c(-10, t0))$root
 cooling <- data.frame(
     t = seq(t0, t_dew, length.out = 20),
@@ -647,7 +599,6 @@ cooling <- data.frame(
 )
 
 # 3. NAWILŻANIE ADIABATYCZNE (h=const, ukośnie w dół-prawo)
-# Dla h=const: nawilżamy wodą, temp spada, x rośnie
 x_humid_max <- 9.6 # Koniec tuż przed krzywą nasycenia (izentalpa przecina φ = 100% przy X ≈ 9.8 g/kg, t_m ≈ 13.7°C)
 df_humid_temp <- data.frame(x = seq(x0, x_humid_max, length.out = 30))
 df_humid_temp$t <- (h0 - 2.5 * df_humid_temp$x) / (1.005 + 0.00186 * df_humid_temp$x)
@@ -656,144 +607,131 @@ humidification <- df_humid_temp[df_humid_temp$t >= 10, ]
 # ===== WYKRES =====
 ggplot() +
     # Krzywa nasycenia
-    geom_line(data = df_sat, aes(x = x, y = t), color = "#0066cc", linewidth = 2) +
+    geom_line(data = df_sat, aes(x = x, y = t), color = pal_slides[1], linewidth = 1.8) +
     annotate("text",
         x = max(df_sat$x) - 10, y = max(df_sat$t) + 2,
-        label = "φ = 100% (Nasycenie)", color = "#0066cc", fontface = "bold", size = 8
+        label = "φ = 100% (nasycenie)", color = pal_slides[1], fontface = "bold", size = 6.5
     ) +
 
     # Linie stałej wilgotności względnej
     geom_line(
         data = df_phi, aes(x = x, y = t, group = phi),
-        color = "#66b3ff", linetype = "dotted", linewidth = 1.6, alpha = 0.7
+        color = pal_slides[1], linetype = "dotted", linewidth = 1.1, alpha = 0.45
     ) +
 
     # Izotermy
     geom_line(
         data = df_iso_t, aes(x = x, y = t, group = temp_label),
-        color = "#cc0000", linetype = "dashed", linewidth = 1.0, alpha = 0.5
+        color = col_ink2, linetype = "dashed", linewidth = 0.7, alpha = 0.5
     ) +
 
     # Izentalpy
     geom_line(
         data = df_isenth, aes(x = x, y = t, group = h),
-        color = "#009900", linetype = "dotdash", linewidth = 1.6, alpha = 0.6
+        color = col_isoh, linetype = "dotdash", linewidth = 1.1, alpha = 0.7
     ) +
 
     # === PRZEMIANY ===
 
-    # Ogrzewanie (czerwona strzałka w górę)
+    # Ogrzewanie (w górę)
     geom_path(
         data = heating, aes(x = x, y = t),
-        color = "#ff3300", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+        color = col_heat, linewidth = 2.2, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
     ) +
     annotate("text",
         x = x0 + .5, y = (t0 + t1_heat * 1.2) / 2,
-        label = "1. Ogrzewanie\n(X=const)", color = "#ff3300", fontface = "bold", size = 8, hjust = 0
+        label = "1. Ogrzewanie\n(X = const)", color = col_heat, fontface = "bold", size = 6.5, hjust = 0
     ) +
 
-    # Ochładzanie (niebieska strzałka w dół)
+    # Ochładzanie (w dół)
     geom_path(
         data = cooling, aes(x = x, y = t),
-        color = "#0033cc", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+        color = col_cool, linewidth = 2.2, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
     ) +
     annotate("text",
         x = x0 - 1, y = (t0 + t_dew) / 2,
-        label = "2. Ochładzanie\n(X=const)", color = "#0033cc", fontface = "bold", size = 8, hjust = 1
+        label = "2. Ochładzanie\n(X = const)", color = col_cool, fontface = "bold", size = 6.5, hjust = 1
     ) +
 
-    # Nawilżanie adiabatyczne (zielona strzałka ukośna)
+    # Nawilżanie adiabatyczne (ukośnie)
     geom_path(
         data = humidification, aes(x = x, y = t),
-        color = "#00aa00", linewidth = 3, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
+        color = col_adiab, linewidth = 2.2, arrow = arrow(length = unit(0.3, "cm"), type = "closed")
     ) +
     annotate("text",
         x = x0 + 0.8, y = humidification$t[10] + 5,
-        label = "3. Nawilżanie\nadiabatyczne (h=const)", color = "#00aa00", fontface = "bold", size = 8, hjust = 0
+        label = "3. Nawilżanie\nadiabatyczne (h = const)", color = col_adiab, fontface = "bold", size = 6.5, hjust = 0
     ) +
 
     # Punkt początkowy
-    geom_point(aes(x = x0, y = t0), size = 5, color = "black", shape = 21, fill = "yellow", stroke = 2) +
+    geom_point(aes(x = x0, y = t0), size = 5, color = col_ink, shape = 21, fill = pal_slides[4], stroke = 2) +
     annotate("text",
         x = x0 - .3, y = t0 + 3, label = sprintf("Start\n(%s°C, %.0f%%)", format(t0, nsmall = 1, decimal.mark = ","), phi0),
-        fontface = "bold", size = 8, hjust = 1
+        fontface = "bold", size = 6.5, hjust = 1, color = col_ink
     ) +
 
-    # Opisy
     labs(
-        title = "Wykres Molliera h-X dla Powietrza Wilgotnego",
-        subtitle = "Z naniesionymi kluczowymi przemianami termodynamicznymi",
         x = "Stopień zawilżenia X [g/kg suchego powietrza]",
         y = "Temperatura t [°C]"
     ) +
-    theme_minimal(base_size = 13) +
-    theme(
-        plot.title = element_text(face = "bold", size = 16),
-        axis.text = element_text(size = 26), # 2x większe etykiety osi (było 13)
-        axis.title = element_text(size = 28), # 2x większe tytuły osi
-        panel.grid.minor = element_line(color = "gray90", linewidth = 0.3),
-        panel.grid.major = element_line(color = "gray80", linewidth = 0.5)
-    ) +
+    theme_slides(22) +
     coord_cartesian(xlim = c(0, 25), ylim = c(0, 50)) +
     scale_x_continuous(breaks = seq(0, 25, 5)) +
     scale_y_continuous(breaks = seq(0, 50, 5))
 ```
 
----
+## <i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {.smaller}
 
-## <i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany ($\varepsilon$) {style="font-size: 0.75em;"}
-
-::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple" style="font-size: 0.85em;"}
+::: {.callout-important title="Współczynnik kierunkowy $\varepsilon$" appearance="simple"}
 $\varepsilon$ określa nachylenie wektora przemiany na wykresie h-X:
-$$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] $$
+$$ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{\mathrm{H_2O}}}\right] $$
 :::
 
 ::: {.columns}
-::: {.column width="60%"}
-**Interpretacja fizyczna:**
-
-Bez doprowadzenia ciepła ($\dot{Q} = 0$): $\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
-
-::: {.fragment style="font-size: 0.85em;"}
-| Medium | $\varepsilon$ | Kierunek na wykresie |
-|----------------------------|---------------------------|--------------------------------|
-| Lód (0 °C) | ≈ −335 | nieco poniżej izentalpy (↘) |
-| Chłodzenie z osuszaniem | > 0, duże (ok. 5000–15000) | w lewo w dół (↙) |
-| Woda ciekła (~20°C) | ≈ 0–100 | wzdłuż izentalpy ↘ |
-| Para nasycona (100°C) | ≈ 2676 | prawie poziomo (lekko w górę) → |
-| Para przegrzana | > 2676 (np. 2800–3000) | lekko w górę ↗ |
-| Czyste ciepło (bez wilgoci) | ∞ | pionowo ↑ |
-
-Temperatura rośnie, gdy $\varepsilon > 2501 + 1{,}86\,t$ (nachylenie izotermy).
-:::
-:::
-::: {.column width="40%"}
-::: {.fragment}
+::: {.column width="58%"}
+::: {.fragment .panel .panel-blue}
 **Bilans energii:**
 $$ \dot{m}_g (h_2 - h_1) = \dot{Q} + \dot{m}_w \cdot h_w, \quad \dot{m}_w = \dot{m}_g (X_2 - X_1) $$
 
 **Stąd:**
 $$ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = \frac{\dot{Q} + \dot{m}_w h_w}{\dot{m}_w} $$
 
-Dla $\dot{Q} = 0$: $\varepsilon = h_w$.
-:::
-
-::: {.fragment .callout-tip title="Podziałka brzegowa (kątowa)" style="font-size: 0.85em;"}
-Kierunek o danym $\varepsilon = \Delta h/\Delta X$ wyznacza prosta z "bieguna" do odpowiedniej wartości na **podziałce brzegowej (kątowej)** na obrzeżu wykresu h-X (**pęk promieni**).
+Dla $\dot{Q} = 0$: $\varepsilon = h_w$ – entalpia właściwa medium dodawanego do powietrza.
 :::
 :::
+::: {.column width="42%"}
+::: {.fragment .callout-tip title="Podziałka brzegowa (kątowa)"}
+Kierunek o danym $\varepsilon = \Delta h/\Delta X$ wyznacza prosta z „bieguna" do odpowiedniej wartości na **podziałce brzegowej (kątowej)** na obrzeżu wykresu h-X (**pęk promieni**).
+:::
+:::
 :::
 
----
+## <i class="bi bi-compass"></i> Współczynnik kierunkowy $\varepsilon$ – interpretacja {.smaller}
 
-## <i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza {style="font-size: 0.75em;"}
+Bez doprowadzenia ciepła ($\dot{Q} = 0$): $\varepsilon$ = entalpia właściwa medium dodawanego do powietrza ($h_w$).
 
-::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
-Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
+| Medium | $\varepsilon$ [kJ/kg] | Kierunek na wykresie |
+|----------------------------|---------------------------|--------------------------------|
+| Lód (0 °C) | ≈ −335 | nieco poniżej izentalpy (↘) |
+| Chłodzenie z osuszaniem | > 0, duże (ok. 5000–15000) | w lewo w dół (↙) |
+| Woda ciekła (~20 °C) | ≈ 0–100 | wzdłuż izentalpy ↘ |
+| Para nasycona (100 °C) | ≈ 2676 | prawie poziomo (lekko w górę) → |
+| Para przegrzana | > 2676 (np. 2800–3000) | lekko w górę ↗ |
+| Czyste ciepło (bez wilgoci) | ∞ | pionowo ↑ |
+
+::: {.fragment .panel .panel-amber .panel-center}
+Temperatura rośnie, gdy $\varepsilon > 2501 + 1{,}86\,t$ (nachylenie izotermy).
+:::
+
+## <i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza {.smaller}
+
+::: {.callout-note title="Zasada" appearance="simple"}
+Stan wynikowy (M) leży **na odcinku 1-2**. Położenie zależy od stosunku masowego: $\dfrac{\overline{1M}}{\overline{M2}} = \dfrac{\dot{m}_{g,2}}{\dot{m}_{g,1}}$
 :::
 
 ::: {.columns}
-::: {.column width="35%"}
+::: {.column width="44%"}
+::: {.panel .panel-blue}
 **Bilanse:**
 
 $$ \dot{m}_{g,M} = \dot{m}_{g,1} + \dot{m}_{g,2} $$
@@ -801,18 +739,22 @@ $$ \dot{m}_{g,M} = \dot{m}_{g,1} + \dot{m}_{g,2} $$
 $$ X_M = \frac{\dot{m}_{g,1} X_1 + \dot{m}_{g,2} X_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
 
 $$ h_M = \frac{\dot{m}_{g,1} h_1 + \dot{m}_{g,2} h_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} $$
+:::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
-**Klimatyzacja:** Mieszanie powietrza świeżego z recyrkulowanym w komorze mieszania centrali. **Wentylacja:** Rozcieńczanie zanieczyszczeń. *(Uwaga: rekuperacja to nie mieszanie — w rekuperatorze strumienie wymieniają ciepło przez przegrodę.)*
+::: {.fragment .callout-tip title="Zastosowania"}
+**Klimatyzacja:** mieszanie powietrza świeżego z recyrkulowanym w komorze mieszania centrali. **Wentylacja:** rozcieńczanie zanieczyszczeń.
 :::
 :::
-::: {.column width="65%"}
+::: {.column width="56%"}
 ```{r}
 #| label: mix-two-streams
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-width: 9
-#| fig-height: 7
+#| fig-height: 5.2
 #| fig-align: center
+#| out-width: "92%"
 
 # Stałe i funkcje
 vis_slope <- 0.08
@@ -833,68 +775,67 @@ rh_levels <- c(0.4, 0.6, 0.8, 1.0)
 t_seq <- seq(5, 45, by = 0.5)
 df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
     x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
-    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>%
         filter(!is.na(x_g), x_g <= 25) %>%
         mutate(t_vis = transform_vis(t, x_g))
 }))
 
 ggplot() +
     # Krzywe RH
-    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
-    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), linewidth = 1.1) +
+    scale_color_manual(values = pal_rh, labels = lab_rh, name = "φ") +
     # Linia mieszania
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
-                 color = "purple", size = 2, linetype = "dashed") +
+                 color = col_adiab, linewidth = 1.6, linetype = "dashed") +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 8) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "red", size = 8) +
-    geom_point(aes(x = pMv$x, y = pMv$t), color = "green4", size = 10, shape = 18) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = col_cool, size = 7) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = col_heat, size = 7) +
+    geom_point(aes(x = pMv$x, y = pMv$t), color = col_accent, size = 9, shape = 18) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "blue", size = 10, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = "red", size = 10, fontface = "bold") +
-    annotate("text", x = pMv$x + 2, y = pMv$t - 3, label = "M", color = "green4", size = 10, fontface = "bold") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = col_cool, size = 9, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = col_heat, size = 9, fontface = "bold") +
+    annotate("text", x = pMv$x + 2, y = pMv$t - 3, label = "M", color = col_accent, size = 9, fontface = "bold") +
     # Osie
     scale_x_continuous(limits = c(0, 25), breaks = seq(0, 25, 5)) +
     scale_y_continuous(limits = c(10, 50), breaks = seq(10, 50, 5)) +
     labs(x = "X [g/kg]", y = "t [°C]") +
-    theme_minimal(base_size = 22) +
+    theme_slides(20) +
     theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
+
+[Uwaga: rekuperacja to nie mieszanie — w rekuperatorze strumienie wymieniają ciepło przez przegrodę.]{.small-note}
 :::
 :::
 
+## <i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną {.smaller}
 
-
----
-
-## <i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną {style="font-size: 0.9em;"}
-
-::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+::: {.callout-note title="Zasada" appearance="simple"}
 Przy nawilżaniu **parą** ($h_w \approx 2676$ kJ/kg dla pary nasyconej 100 °C) przemiana biegnie **prawie poziomo** (niemal wzdłuż izotermy; $t$ lekko rośnie, bo $h_w > 2501 + 1{,}86\,t$). $\varepsilon = h_w \approx 2676$ kJ/kg.
 :::
 
 ::: {.columns}
-::: {.column width="38%"}
+::: {.column width="44%"}
+::: {.panel .panel-blue}
 **Bilanse:**
 
 $$ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} $$
 
 $$ \Delta h = h_w \cdot \Delta X $$
+:::
 
-::: {.fragment}
-Temperatura prawie stała!
-:::
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.65em;"}
-**Klimatyzacja zimowa:** Nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** Utrzymanie wilgotności włókien. **Drukarnie:** Zapobieganie elektryzowaniu papieru.
+::: {.fragment .callout-tip title="Zastosowania"}
+**Klimatyzacja zimowa:** nawilżanie pomieszczeń ogrzewanych. **Przemysł tekstylny:** utrzymanie wilgotności włókien. **Drukarnie:** zapobieganie elektryzowaniu papieru.
 :::
 :::
-::: {.column width="62%"}
+::: {.column width="56%"}
 ```{r}
 #| label: steam-humidification
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-width: 9
-#| fig-height: 5
+#| fig-height: 4.6
 #| fig-align: center
 #| out-width: "95%"
 
@@ -910,7 +851,7 @@ rh_levels <- c(0.4, 0.6, 0.8, 1.0)
 t_seq <- seq(10, 45, by = 0.5)
 df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
     x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
-    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>%
         filter(!is.na(x_g), x_g <= 30) %>%
         mutate(t_vis = transform_vis(t, x_g))
 }))
@@ -922,43 +863,43 @@ df_iso <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t, iso_x))
 
 ggplot() +
     # Izoterma
-    geom_line(data = df_iso, aes(x = x_g, y = t_vis), color = "orange", size = 1.2, linetype = "dotted") +
-    annotate("text", x = 22, y = transform_vis(iso_t, 22) - 2, label = "t = 25°C", color = "orange", size = 6) +
+    geom_line(data = df_iso, aes(x = x_g, y = t_vis), color = col_ink2, linewidth = 1.1, linetype = "dotted") +
+    annotate("text", x = 22, y = transform_vis(iso_t, 22) - 2, label = "t = 25°C", color = col_ink2, size = 6) +
     # Krzywe RH
-    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
-    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), linewidth = 1.1) +
+    scale_color_manual(values = pal_rh, labels = lab_rh, name = "φ") +
     # Strzałka przemiany
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
                  arrow = arrow(length = unit(0.5, "cm")),
-                 color = "darkgreen", size = 2) +
+                 color = col_heat, linewidth = 1.6) +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "blue", size = 8) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "green4", size = 8) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = col_ink, size = 7) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = col_heat, size = 7) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "blue", size = 10, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = "green4", size = 10, fontface = "bold") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = col_ink, size = 9, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t + 4, label = "2", color = col_heat, size = 9, fontface = "bold") +
     # Osie
     scale_x_continuous(limits = c(0, 30), breaks = seq(0, 30, 5)) +
     scale_y_continuous(limits = c(15, 45), breaks = seq(15, 45, 5)) +
     labs(x = "X [g/kg]", y = "t [°C]") +
-    theme_minimal(base_size = 22) +
+    theme_slides(20) +
     theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
+
+::: {.fragment .panel .panel-amber .panel-center}
+Temperatura prawie stała!
 :::
 :::
-
-
-
----
-
-## <i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy {style="font-size: 0.75em;"}
-
-::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
-**(A)** Podgrzanie powietrza ($X=const$, pionowo). **(B)** Suszenie materiału ($h \approx const$, wzdłuż izentalpy).
 :::
 
-::: {.mmd-fit style="height: 150px;"}
+## <i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy {.smaller}
+
+::: {.callout-note title="Zasada" appearance="simple"}
+**(A)** Podgrzanie powietrza ($X_A = X_0$, $t \uparrow$ – pionowo). **(B)** Suszenie materiału ($h_B \approx h_A$, $X \uparrow$, $t \downarrow$ – wzdłuż izentalpy).
+:::
+
+::: {.mmd-fit style="height: 130px;"}
 ```{mermaid}
 %%| fig-align: center
 
@@ -969,36 +910,36 @@ t=20°C, φ=50%`"] -->|"Nagrzewnica<br>X=const ↑t"| PA["`**Punkt A**
 t=60°C, φ↓`"]
     PA -->|"Suszarnia<br>h≈const ↑X"| PB["`**Punkt B**
 t=28°C, φ↑`"]
-    
-    style P0 fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
-    style PA fill:#ffebee,stroke:#e74c3c,stroke-width:2px
-    style PB fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
-    linkStyle default stroke-width:2px,fill:none,stroke:black
+
+    style P0 fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style PA fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style PB fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:#1d1d1b
 ```
 :::
 
 ::: {.columns}
-::: {.column width="35%"}
-**Etap A:** $X_A = X_0$, $t \uparrow$
-
-**Etap B:** $h_B \approx h_A$, $X \uparrow$, $t \downarrow$
-
-::: {.fragment}
+::: {.column width="44%"}
+::: {.panel .panel-green}
 Odparowana woda: $\dot{m}_w = \dot{m}_g (X_B - X_0)$
 
-Jednostkowe zużycie powietrza: $l = \frac{\dot{m}_g}{\dot{m}_w} = \frac{1}{X_B - X_0}$ [kg pow. suchego/kg wody], $X$ w kg/kg
+Jednostkowe zużycie powietrza: $l = \dfrac{\dot{m}_g}{\dot{m}_w} = \dfrac{1}{X_B - X_0}$ [kg pow. suchego/kg wody], $X$ w kg/kg
 :::
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
-**Suszarnie przemysłowe:** Drewno, zboże, owoce. **Przemysł spożywczy:** Makaron, mąka, mleko w proszku. **Budownictwo:** Suszenie tynków i wylewek.
+
+::: {.fragment .callout-tip title="Zastosowania"}
+**Suszarnie przemysłowe:** drewno, zboże, owoce. **Przemysł spożywczy:** makaron, mąka, mleko w proszku. **Budownictwo:** suszenie tynków i wylewek.
 :::
 :::
-::: {.column width="65%"}
+::: {.column width="56%"}
 ```{r}
 #| label: drying-cycle
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-width: 9
 #| fig-height: 5
 #| fig-align: center
+#| out-width: "92%"
 
 # Stany
 p0 <- list(x = 8, t = 20)
@@ -1014,7 +955,7 @@ rh_levels <- c(0.4, 0.6, 0.8, 1.0)
 t_seq <- seq(10, 70, by = 0.5)
 df_rh <- do.call(rbind, lapply(rh_levels, function(rh) {
     x_kg <- sapply(t_seq, function(t) get_x_from_rh(t, rh))
-    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>% 
+    data.frame(t = t_seq, x_g = x_kg * 1000, rh = rh) %>%
         filter(!is.na(x_g), x_g <= 40) %>%
         mutate(t_vis = transform_vis(t, x_g))
 }))
@@ -1027,67 +968,68 @@ df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
 
 ggplot() +
     # Izentalpa
-    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
-    annotate("text", x = 26, y = df_isoH$t_vis[df_isoH$x_g == 25] + 2, label = "h = const", color = "darkgreen", size = 6, hjust = 0) +
+    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = col_isoh, linewidth = 1.1, linetype = "dashed") +
+    annotate("text", x = 26, y = df_isoH$t_vis[df_isoH$x_g == 25] + 2, label = "h = const", color = col_isoh, size = 6, hjust = 0) +
     # Krzywe RH
-    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
-    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), linewidth = 1.1) +
+    scale_color_manual(values = pal_rh, labels = lab_rh, name = "φ") +
     # Etap A
     geom_segment(aes(x = p0v$x, y = p0v$t, xend = pAv$x, yend = pAv$t),
-                 arrow = arrow(length = unit(0.4, "cm")), color = "red", size = 2) +
+                 arrow = arrow(length = unit(0.4, "cm")), color = col_heat, linewidth = 1.6) +
     # Etap B
     geom_segment(aes(x = pAv$x, y = pAv$t, xend = pBv$x, yend = pBv$t),
-                 arrow = arrow(length = unit(0.4, "cm")), color = "blue", size = 2) +
+                 arrow = arrow(length = unit(0.4, "cm")), color = col_adiab, linewidth = 1.6) +
     # Punkty
-    geom_point(aes(x = p0v$x, y = p0v$t), color = "gray30", size = 8) +
-    geom_point(aes(x = pAv$x, y = pAv$t), color = "red", size = 8) +
-    geom_point(aes(x = pBv$x, y = pBv$t), color = "blue", size = 8) +
+    geom_point(aes(x = p0v$x, y = p0v$t), color = col_ink2, size = 7) +
+    geom_point(aes(x = pAv$x, y = pAv$t), color = col_heat, size = 7) +
+    geom_point(aes(x = pBv$x, y = pBv$t), color = col_adiab, size = 7) +
     # Etykiety
-    annotate("text", x = p0v$x - 1, y = p0v$t, label = "0", color = "gray30", size = 10, fontface = "bold", hjust = 1) +
-    annotate("text", x = pAv$x - 1, y = pAv$t, label = "A", color = "red", size = 10, fontface = "bold", hjust = 1) +
-    annotate("text", x = pBv$x + 1, y = pBv$t, label = "B", color = "blue", size = 10, fontface = "bold", hjust = 0) +
+    annotate("text", x = p0v$x - 1, y = p0v$t, label = "0", color = col_ink2, size = 9, fontface = "bold", hjust = 1) +
+    annotate("text", x = pAv$x - 1, y = pAv$t, label = "A", color = col_heat, size = 9, fontface = "bold", hjust = 1) +
+    annotate("text", x = pBv$x + 1, y = pBv$t, label = "B", color = col_adiab, size = 9, fontface = "bold", hjust = 0) +
     # Osie
     scale_x_continuous(limits = c(0, 40), breaks = seq(0, 40, 5)) +
     scale_y_continuous(limits = c(15, 75), breaks = seq(15, 75, 10)) +
     labs(x = "X [g/kg]", y = "t [°C]") +
-    theme_minimal(base_size = 22) +
+    theme_slides(20) +
     theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
 :::
 
+## <i class="bi bi-droplet-half"></i> Nawilżanie Adiabatyczne (Wodą) {.small}
 
-
----
-
-## <i class="bi bi-droplet-half"></i> Nawilżanie Adiabatyczne (Wodą) 
-
-::: {.callout-note title="Zasada" appearance="simple" style="font-size: 0.85em;"}
+::: {.callout-note title="Zasada" appearance="simple"}
 Nawilżanie **wodą** ($h_w \approx 0$) → przemiana **wzdłuż izentalpy** ($\varepsilon \approx 0$). Temperatura spada do $t_m$ (mokry termometr).
 :::
 
 ::: {.columns}
 ::: {.column width="35%"}
+::: {.panel .panel-blue}
 **Bilans:**
 
 $$ h_1 \approx h_2 $$
+:::
 
-::: {.fragment}
+::: {.fragment .panel .panel-amber .panel-center}
 Chłodzenie ewaporacyjne!
 :::
 
-::: {.fragment .callout-tip title="Zastosowania" style="font-size: 0.7em;"}
-**Chłodnie kominowe:** Odprowadzanie ciepła z elektrowni. **Klimatyzatory ewaporacyjne:** Tanie chłodzenie w suchym klimacie. **Przemysł tekstylny:** Nawilżanie hal produkcyjnych.
+::: {.fragment .callout-tip title="Zastosowania"}
+**Chłodnie kominowe:** odprowadzanie ciepła z elektrowni. **Klimatyzatory ewaporacyjne:** tanie chłodzenie w suchym klimacie. **Przemysł tekstylny:** nawilżanie hal produkcyjnych.
 :::
 :::
 ::: {.column width="65%"}
 ```{r}
 #| label: adiabatic-humidification
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-width: 9
-#| fig-height: 6
+#| fig-height: 5.6
 #| fig-align: center
+#| out-width: "92%"
 
 # Stany
 p1 <- list(x = 8, t = 40)
@@ -1114,74 +1056,72 @@ df_isoH <- data.frame(x_g = iso_x, t_vis = transform_vis(iso_t_phys, iso_x))
 
 ggplot() +
     # Izentalpa
-    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = "darkgreen", size = 1.2, linetype = "dashed") +
-    annotate("text", x = 18, y = df_isoH$t_vis[df_isoH$x_g == 17] + 2, label = "h = const", color = "darkgreen", size = 6, hjust = 0) +
+    geom_line(data = df_isoH, aes(x = x_g, y = t_vis), color = col_isoh, linewidth = 1.1, linetype = "dashed") +
+    annotate("text", x = 18, y = df_isoH$t_vis[df_isoH$x_g == 17] + 2, label = "h = const", color = col_isoh, size = 6, hjust = 0) +
     # Krzywe RH
-    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), size = 1) +
-    scale_color_viridis_d(option = "C", direction = -1, name = "φ") +
+    geom_line(data = df_rh, aes(x = x_g, y = t_vis, group = rh, color = factor(rh)), linewidth = 1.1) +
+    scale_color_manual(values = pal_rh, labels = lab_rh, name = "φ") +
     # Strzałka przemiany
     geom_segment(aes(x = p1v$x, y = p1v$t, xend = p2v$x, yend = p2v$t),
         arrow = arrow(length = unit(0.5, "cm")),
-        color = "steelblue", size = 2
+        color = col_adiab, linewidth = 1.6
     ) +
     # Punkty
-    geom_point(aes(x = p1v$x, y = p1v$t), color = "red", size = 8) +
-    geom_point(aes(x = p2v$x, y = p2v$t), color = "blue", size = 8) +
+    geom_point(aes(x = p1v$x, y = p1v$t), color = col_heat, size = 7) +
+    geom_point(aes(x = p2v$x, y = p2v$t), color = col_cool, size = 7) +
     # Etykiety
-    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = "red", size = 10, fontface = "bold") +
-    annotate("text", x = p2v$x, y = p2v$t - 4, label = "2", color = "blue", size = 10, fontface = "bold") +
+    annotate("text", x = p1v$x, y = p1v$t + 4, label = "1", color = col_heat, size = 9, fontface = "bold") +
+    annotate("text", x = p2v$x, y = p2v$t - 4, label = "2", color = col_cool, size = 9, fontface = "bold") +
     # Osie
     scale_x_continuous(limits = c(0, 35), breaks = seq(0, 35, 5)) +
     scale_y_continuous(limits = c(15, 55), breaks = seq(15, 55, 5)) +
     labs(x = "X [g/kg]", y = "t [°C]") +
-    theme_minimal(base_size = 22) +
+    theme_slides(20) +
     theme(legend.position = "right") +
     coord_fixed(ratio = 0.5)
 ```
 :::
 :::
 
----
-
-## <i class="bi bi-cloud-fog"></i> 6. Pomiar Parametrów Powietrza 
+## <i class="bi bi-thermometer"></i> 6. Pomiar Parametrów Powietrza
 
 ::: {.columns}
 ::: {.column width="50%"}
-### Psychrometr Augusta/Assmanna
+::: {.panel .panel-blue}
+[Psychrometr Augusta/Assmanna]{.panel-title}
+
 Dwa termometry:
 
-1.  **Suchy ($t$):** Mierzy temp. powietrza.
-2.  **Zwilżony ($t_m$):** Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.
+1.  **Suchy ($t$):** mierzy temperaturę powietrza.
+2.  **Zwilżony ($t_m$):** owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.
 
-*   **Zasada:** Im suchsze powietrze, tym intensywniejsze parowanie i niższa $t_m$.
+*   **Zasada:** im suchsze powietrze, tym intensywniejsze parowanie i niższa $t_m$.
 *   Różnica psychrometryczna $(t - t_m)$ pozwala odczytać $\varphi$.
+:::
 :::
 
 ::: {.column width="50%"}
-### Higrometry
+::: {.fragment .panel .panel-amber}
+[Higrometry]{.panel-title}
 
-::: {.fragment}
-*   **Włosowe:** (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.
-*   **Pojemnościowe:** Zmiana stałej dielektrycznej polimeru.
-*   **Punktu rosy:** Lusterko schładzane aż do pojawienia się rosy.
+*   **Włosowe:** (historyczne) włos ludzki wydłuża się pod wpływem wilgoci.
+*   **Pojemnościowe:** zmiana stałej dielektrycznej polimeru.
+*   **Punktu rosy:** lusterko schładzane aż do pojawienia się rosy.
 :::
 :::
 :::
 
----
-
-## <i class="bi bi-cloud-fog"></i> Aparaty i Zastosowania 
-
+## <i class="bi bi-fan"></i> Aparaty i Zastosowania
 
 ### Urządzenia (AHU — Air Handling Unit)
 
-::: {.mmd-fit style="height: 150px;"}
+::: {.mmd-fit style="height: 230px;"}
 ```{mermaid}
 %%| fig-align: center
 
 %%{init: {'theme': 'default', 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false}}%%
 flowchart LR
-    IN["🌬️ Powietrze<br>zewnętrzne"] --> F["`**Filtr**`"]
+    IN["Powietrze<br>zewnętrzne"] --> F["`**Filtr**`"]
     F --> N["`**Nagrzewnica**
 ↑t (zima)`"]
     N --> CH["`**Chłodnica**
@@ -1189,38 +1129,40 @@ flowchart LR
     CH --> NAW["`**Nawilżacz**
 ↑X (zima)`"]
     NAW --> W["`**Wentylator**`"]
-    W --> OUT["🏢 Kanał<br>nawiewny"]
-    
-    style IN fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    style F fill:#f5f5f5,stroke:#9e9e9e,stroke-width:2px
-    style N fill:#ffebee,stroke:#e74c3c,stroke-width:2px
-    style CH fill:#e0f7fa,stroke:#00bcd4,stroke-width:2px
-    style NAW fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
-    style W fill:#fff3e0,stroke:#f39c12,stroke-width:2px
-    style OUT fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
-    linkStyle default stroke-width:2px,fill:none,stroke:black
+    W --> OUT["Kanał<br>nawiewny"]
+
+    style IN fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style F fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style N fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style CH fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style NAW fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style W fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style OUT fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    linkStyle default stroke-width:2px,fill:none,stroke:#1d1d1b
 ```
 :::
 
-::: {.fragment}
-### Zastosowania
-*   **Klimatyzacja komfortu:** $t \approx 20\text{–}24^\circ C$, $\varphi \approx 40\text{–}60\%$.
-*   **Technologia:** Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
-*   **Wentylacja:** Usuwanie zanieczyszczeń i wilgoci.
-*   **Medycyna / Ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
+::: {.fragment .panel .panel-blue}
+[Zastosowania]{.panel-title}
+
+*   **Klimatyzacja komfortu:** $t \approx 20\text{–}24\,^\circ\text{C}$, $\varphi \approx 40\text{–}60\%$.
+*   **Technologia:** przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).
+*   **Wentylacja:** usuwanie zanieczyszczeń i wilgoci.
+*   **Medycyna / ochrona zdrowia:** sale operacyjne, inkubatory, sterylizacja.
 :::
 
-::: {.fragment .absolute top=0% left=22% width=56% style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;"}
-![](../img/small-air-handling-units-senv-1591216654.jpg)
-::: 
+## <i class="bi bi-fan"></i> Centrale wentylacyjne – przykłady
 
-::: {.fragment .absolute top=10% left=10% width=80% style="box-shadow: 0 0 30px rgba(0,0,0,0.8); z-index: 100;"}
-![](../img/IMG_0202.png)
+::: {.columns}
+::: {.column width="50%"}
+![Kompaktowa centrala wentylacyjna (AHU)](../img/small-air-handling-units-senv-1591216654.jpg){width="100%"}
+:::
+::: {.column width="50%"}
+![Centrala dachowa na budynku](../img/IMG_0202.png){width="100%"}
+:::
 :::
 
----
-
-## <i class="bi bi-scale"></i> 7. Bilans Masy i Energii 
+## <i class="bi bi-scale"></i> 7. Bilans Masy i Energii
 
 Dla mieszania dwóch strumieni powietrza (1 i 2 → M) obowiązują zasady zachowania:
 
@@ -1235,41 +1177,46 @@ $$ \dot{m}_{g,1} \cdot h_1 + \dot{m}_{g,2} \cdot h_2 = \dot{m}_{g,M} \cdot h_M $
 Energia całkowita układu zostaje zachowana (proces adiabatyczny).
 :::
 
----
+## <i class="bi bi-calculator"></i> Przykłady Obliczeniowe {.smaller}
 
-## <i class="bi bi-calculator"></i> Przykłady Obliczeniowe {style="font-size: 0.8em;"}
-
+::: {.columns}
+::: {.column width="50%"}
 ::: {.callout-note title="Zadanie 1: Ogrzewanie Powietrza"}
-**Dane:** Powietrze $t_1=25^\circ C$, $\varphi_1=50\%$ ogrzewamy do $t_2=35^\circ C$.
+**Dane:** powietrze $t_1 = 25\,^\circ\text{C}$, $\varphi_1 = 50\%$ ogrzewamy do $t_2 = 35\,^\circ\text{C}$.
+:::
 
+::: {.panel .panel-blue}
 1.  Z tablic $p_s(25) = 3{,}17$ kPa $\rightarrow p_p = 0{,}5 \cdot 3{,}17 = 1{,}585$ kPa.
-2.  Ponieważ $X=const$, to $p_p$ się nie zmienia!
+2.  Ponieważ $X = const$, to $p_p$ się nie zmienia!
 3.  Z tablic $p_s(35) = 5{,}63$ kPa.
-4.  Nowa wilgotność: $\varphi_2 = \frac{1{,}585}{5{,}63} \approx 28{,}2\%$.
-
-**Wniosek:** Ogrzewanie silnie wysusza powietrze (względnie).
+4.  Nowa wilgotność: [$\varphi_2 = \dfrac{1{,}585}{5{,}63} \approx 28{,}2\%$]{.answer}.
 :::
 
-::: {.fragment .callout-tip title="Zadanie 2: Parametry Powietrza"}
-**Dane:** $p=110$ kPa, $t=30^\circ C$, $\varphi=60\%$.
-
-*   $p_s=4{,}24$ kPa $\rightarrow p_p = 0{,}6 \cdot 4{,}24 = 2{,}54$ kPa.
-*   $X = 0{,}622 \frac{2{,}54}{110-2{,}54} \approx 0{,}0147$ kg/kg $= 14{,}7$ g/kg.
+::: {.fragment .callout-tip title="Wniosek"}
+Ogrzewanie silnie wysusza powietrze (względnie).
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment .callout-note title="Zadanie 2: Parametry Powietrza"}
+**Dane:** $p = 110$ kPa, $t = 30\,^\circ\text{C}$, $\varphi = 60\%$.
 :::
 
+::: {.fragment .panel .panel-blue}
+*   $p_s = 4{,}24$ kPa $\rightarrow p_p = 0{,}6 \cdot 4{,}24 = 2{,}54$ kPa.
+*   $X = 0{,}622 \dfrac{2{,}54}{110 - 2{,}54} \approx 0{,}0147$ kg/kg [$= 14{,}7$ g/kg]{.answer .nowrap}.
+:::
+:::
+:::
 
----
-
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W12 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W12
 
 ::: {.incremental}
-1.  **Wilgotność:** Rozróżniamy wilgotność względną ($\varphi$, komfort) i stopień zawilżenia ($X$, bilanse masy).
-2.  **Entalpia:** Para wodna niesie ogromną energię (ciepło utajone).
-3.  **Psychrometr:** Różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.
-4.  **Procesy:** Ogrzewanie obniża $\varphi$, nawilżanie wodne obniża $t$.
+1.  **Wilgotność:** rozróżniamy wilgotność względną ($\varphi$, komfort) i stopień zawilżenia ($X$, bilanse masy).
+2.  **Entalpia:** para wodna niesie ogromną energię (ciepło utajone).
+3.  **Psychrometr:** różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.
+4.  **Procesy:** ogrzewanie obniża $\varphi$, nawilżanie wodne obniża $t$.
 :::
 
-
-::: {.fragment .callout-tip title="Zadanie dla chętnych" style="font-size: 0.9em;"}
-Latem ($30^\circ C$) pijesz zimne piwo ($4^\circ C$). Dlaczego butelka "poci się"? Wyjaśnij zjawisko, używając pojęć **Punkt Rosy** i **Ciśnienie Cząstkowe**.
+::: {.fragment .callout-tip title="Zadanie dla chętnych"}
+Latem ($30\,^\circ\text{C}$) pijesz zimne piwo ($4\,^\circ\text{C}$). Dlaczego butelka „poci się"? Wyjaśnij zjawisko, używając pojęć **Punkt Rosy** i **Ciśnienie Cząstkowe**.
 :::

@@ -6,10 +6,10 @@ institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
     
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" 
+    <img src="../img/logo_upp.png" 
          style="height: 200px;">
     
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
+    <img src="../img/logo_wisim.jpg" 
          style="height: 200px;">
          
     <img src="../img/kbig.jpg" 
@@ -51,11 +51,13 @@ format:
         </style>
     slide-number: c/t       # Numeracja: slajd obecny / wszystkich
     show-slide-number: all
-    transition: slide       # Animacja przejścia
+    transition: zoom
+    background-transition: fade
     chalkboard: true        # WŁĄCZA PISANIE PO EKRANIE (ikona ołówka)
     footer: "Termodynamika Techniczna (W3) " # Stopka na każdym slajdzie
     center: false           # Tekst od góry (nie wyśrodkowany pionowo)
     code-overflow: wrap
+    fig-format: svg
     highlight-style: a11y
     width: 1600             # Szerokość (Full HD) 1600x900, Mac Pro: 1512x982
     height: 900
@@ -71,26 +73,30 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
+#| label: setup
+#| include: false
+
 library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
 ```
 
-
-
-## <i class="bi bi-bookmark"></i> Pojęcie Pracy Technicznej 
+## <i class="bi bi-bookmark"></i> Pojęcie Pracy Technicznej {style="font-size: 0.9em;"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-  
+
 ```{r}
-#| fig-height: 5.2
-#| fig-width: 9
+#| label: praca-techniczna
 #| echo: false
 #| warning: false
+#| message: false
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 4.0
+#| out-width: "92%"
 
 # Definicja punktów (1 -> 2)
 p1 <- 4; v1 <- 1
@@ -121,42 +127,32 @@ df_area <- data.frame(
 )
 
 ggplot() +
-  # Pole Pracy Technicznej
-  geom_polygon(data = df_area, aes(x = v, y = p), fill = "#d35400", alpha = 0.4) + # Kolor ceglasty
-  
-  # Krzywa procesu
-  geom_path(data = df_poly, aes(x = v, y = p), color = "#e67e22", size = 2) +
-  
-  # Punkty
-  geom_point(aes(x = c(v1, v2), y = c(p1, p2)), size = 5) +
-  geom_text(aes(x = v1, y = p1, label = "1"), hjust = -0.5, vjust = -0.5, size = 8) +
-  geom_text(aes(x = v2, y = p2, label = "2"), hjust = -0.5, vjust = 1.5, size = 8) +
-  
-  # Strzałka kierunku procesu
+  # Pole pracy technicznej (praca = kolor główny palety)
+  geom_polygon(data = df_area, aes(x = v, y = p), fill = pal_slides[1], alpha = 0.22) +
+  # Krzywa przemiany
+  geom_path(data = df_poly, aes(x = v, y = p), color = pal_slides[1], linewidth = 1.1) +
+  # Punkty 1 i 2
+  geom_point(aes(x = c(v1, v2), y = c(p1, p2)), size = 4, color = col_ink) +
+  geom_text(aes(x = v1, y = p1, label = "1"), hjust = -0.6, vjust = -0.4, size = 6.5,
+            fontface = "bold", color = col_ink) +
+  geom_text(aes(x = v2, y = p2, label = "2"), hjust = -0.6, vjust = 1.4, size = 6.5,
+            fontface = "bold", color = col_ink) +
+  # Strzałka kierunku przemiany
   geom_segment(aes(x = 2, y = func_p(2), xend = 2.1, yend = func_p(2.1)),
-               arrow = arrow(length = unit(0.5, "cm")), color = "#e67e22", size = 1.5) +
-
-  # Opis Pola (parse = TRUE dla formatowania matematycznego)
-  annotate("text", x = 1.0, y = 1.6, label = "L[t] == - integral(V * dp)", parse = TRUE, color = "#d35400", size = 8) +
-
-  # Etykiety osi i limity
-  labs(x = "Objętość (V)", y = "Ciśnienie (p)", title = "Praca Techniczna (Rozprężanie)") +
+               arrow = arrow(length = unit(0.4, "cm")), color = pal_slides[1], linewidth = 1.1) +
+  # Opis pola (parse = TRUE dla formatowania matematycznego)
+  annotate("text", x = 1.0, y = 1.6, label = "L[t] == - integral(V * dp)", parse = TRUE,
+           color = col_ink, size = 6.5) +
+  labs(x = "Objętość V", y = "Ciśnienie p") +
   scale_x_continuous(expand = c(0, 0), limits = c(0, 5)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 5)) +
-  
-  theme_classic(base_size = 20) +
-  theme(
-    axis.title = element_text(size = 24),
-    axis.text = element_text(size = 20)
-  )
-
+  theme_slides(16)
 ```
-  
+
 ::: incremental
 *   **Sprężanie ($dp > 0$):** praca jest wykonywana nad układem ($đL_t < 0$).
 *   **Rozprężanie ($dp < 0$):** praca jest wykonywana przez układ ($đL_t > 0$).
 *   **Nadal nie uwzględniamy tu tarcia**
-
 :::
 
 :::
@@ -167,13 +163,12 @@ $$L_t = L_{1-2} + L_n + L_w = L_{1-2} + p_1 V_1 - p_2 V_2$$
 
 gdzie: $L_n = p_1 V_1$ – praca napełniania (wprowadzenia czynnika), $L_w = -p_2 V_2$ – praca wytłaczania (wyprowadzenia czynnika).
 
-::: {style="border: 2px solid #e60000; padding: 8px 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
+::: {.panel .panel-amber}
 $$\begin{aligned} đL_t &= -V\,dp \\ L_t &= -\int_{p_1}^{p_2} V(p)\,dp \end{aligned}$$
 :::
 
-::: {.callout-note title="Definicja" style="font-size: 0.8em;"}
+::: {.callout-note title="Definicja"}
 W układzie $p-V$, pracę techniczną przedstawia pole pomiędzy krzywą przemiany a osią rzędnych ($p$).
-
 :::
 
 :::
@@ -191,12 +186,12 @@ Dla procesów z tarciem:
 $$ đL_t = - V \cdot dp - L_F$$
 $$ L_t = - \int_{p_1}^{p_2} V \cdot dp - L_F$$
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber}
 $L_F$ to praca tarcia, która jest stratą i **równa jest** ciepłu $Q_F$, w postaci którego jest rozpraszana w otoczenie.
 :::
 
 
-## <i class="bi bi-bookmark"></i> Układy Otwarte 
+## <i class="bi bi-box-arrow-right"></i> Układy Otwarte
 
 ### Kontrola Przepływu Materii
 
@@ -205,10 +200,7 @@ W układach otwartych (np. turbina, sprężarka) przez granice układu (osłonę
 *   Należy uwzględnić **pracę przetłaczania** (wprowadzenia i wyprowadzenia czynnika).
 *   Bilans energii musi uwzględniać strumienie entalpii wchodzące i wychodzące.
 
-
-<div style="width: 100%; margin: 0 auto; text-align: center;">
-
-::: {.mmd-fit style="height: 195px;"}
+::: {.mmd-fit style="height: 330px;"}
 ```{mermaid}
 %%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart LR
@@ -226,15 +218,16 @@ flowchart LR
     Q[Ciepło Q] -.-> System
     System -.-> W["Praca Techniczna Lₜ"]
 
-    style In fill:#2ecc71,stroke:#27ae60,stroke-width:2px
-    style Out fill:#e74c3c,stroke:#c0392b,stroke-width:2px
-    style Q fill:#f1c40f,stroke:#f39c12,stroke-width:2px,stroke-dasharray: 5 5
-    style W fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px,stroke-dasharray: 5 5
-    style System fill:#ecf0f1,stroke:#95a5a6,stroke-width:4px
+    style In fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style Out fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style Q fill:#fff4e3,stroke:#eb6834,stroke-width:2px,stroke-dasharray: 5 5
+    style W fill:#eef4fb,stroke:#2a78d6,stroke-width:2px,stroke-dasharray: 5 5
+    style K fill:#eef4fb,stroke:#2a78d6
+    style P fill:#eef4fb,stroke:#2a78d6
+    style H fill:#eef4fb,stroke:#2a78d6
+    style System fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
 ```
 :::
-
-</div>
 
 ## <i class="bi bi-calculator"></i> Równanie Przepływu Ustalonego {style="font-size: 0.9em;"}
 
@@ -243,16 +236,15 @@ flowchart LR
 Dla maszyny działającej w sposób ustalony (strumień masy $\dot{m} = const$):
 
 $$ \underbrace{\dot{Q} - \dot{L}_{t}}_{\substack{\text{Moc wymienna} \\ \text{z otoczeniem}}}
-= 
-\dot{m} 
-\left[ 
-  \underbrace{(h_2 - h_1)}_{\Delta \text{Entalpii}} 
-  + 
-  \underbrace{\frac{w_2^2 - w_1^2}{2}}_{\substack{\Delta \text{En. Kinetycznej} \\ (\text{tu } w \text{ to prędkość!})}} 
-  + 
-  \underbrace{g(z_2 - z_1)}_{\Delta \text{En. Potencjalnej}} 
+=
+\dot{m}
+\left[
+  \underbrace{(h_2 - h_1)}_{\Delta \text{Entalpii}}
+  +
+  \underbrace{\frac{w_2^2 - w_1^2}{2}}_{\substack{\Delta \text{En. Kinetycznej} \\ (\text{tu } w \text{ to prędkość!})}}
+  +
+  \underbrace{g(z_2 - z_1)}_{\Delta \text{En. Potencjalnej}}
 \right] $$
-
 
 ::: {style="font-size: 0.7em;"}
 
@@ -265,7 +257,6 @@ Gdzie:
 *   $\dot{L}_{t}$ – moc techniczna (na wale) [W]; $\dot{L}_{t} > 0$ – praca wykonana przez czynnik.
 *   $\dot{m}$ – strumień masy czynnika [kg/s]
 *   $h$ – entalpia właściwa [J/kg].
-
 :::
 
 ::: {.column width="50%"}
@@ -278,7 +269,7 @@ Gdzie:
 
 :::
 
-## <i class="bi bi-fan"></i> Zastosowanie: Turbina 
+## <i class="bi bi-fan"></i> Zastosowanie: Turbina
 
 ### Ekspansja Czynnika
 
@@ -287,16 +278,18 @@ W turbinach (parowych lub gazowych) czynnik rozpręża się, wykonując pracę t
 *   Zazwyczaj proces jest **adiabatyczny** ($\dot{Q} \approx 0$).
 *   Zmiany energii kinetycznej i potencjalnej są często pomijalne.
 
+::: {.panel .panel-blue}
 **Uproszczony bilans:**
 $$ P_i = \dot{L}_t = \dot{m} (h_1 - h_2) > 0 $$
 Gdzie $P_i$ to moc wewnętrzna turbiny (praca wykonana przez czynnik, więc $\dot{L}_t > 0$).
+:::
 
 ::: {.fragment .fade-up .callout-tip title="Wniosek"}
 Zmniejszenie entalpii czynnika ($h_1 > h_2$) zamienia się na pracę na wale.
 :::
 
 
-## <i class="bi bi-fan"></i> Zastosowanie: Sprężarka i Pompa 
+## <i class="bi bi-fan"></i> Zastosowanie: Sprężarka i Pompa
 
 ### Kompresja Czynnika
 
@@ -305,21 +298,25 @@ Urządzenia te wymagają dostarczenia pracy z zewnątrz, aby podnieść ciśnien
 *   Moc techniczna sprężarki jest ujemna: $\dot{L}_t < 0$ (praca jest doprowadzana do czynnika).
 *   W pompach (ciecz nieściśliwa) praca techniczna wynosi: $l_t = -v \Delta p$ (praca napędowa $|l_t| = v \Delta p$).
 
+::: {.panel .panel-blue}
 **Bilans dla sprężarki** (moc napędowa $P_d$)**:**
 $$ P_d = -\dot{L}_t = \dot{m} (h_2 - h_1) - \dot{Q} > 0 $$
+:::
 
 ::: {.fragment .fade-up .callout-tip title="Wniosek"}
 Musimy dostarczyć pracę ($h_2 > h_1$), aby zwiększyć entalpię (i ciśnienie) czynnika.
 :::
 
 
-## <i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego 
+## <i class="bi bi-gear-wide-connected"></i> Praca Sprężania Gazu Doskonałego
 
-W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę**<br>($pv^n=const$). Wzór inżynierski na pracę techniczną:
+W przypadku **powietrza** (gaz dosk.) często modelujemy sprężanie jako **politropę** ($pv^n=const$). Wzór inżynierski na pracę techniczną:
 
+::: {.panel .panel-blue}
 $$ l_t = \frac{n}{n-1} R T_1 \left[ 1 - \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} \right] $$
 
 Przy sprężaniu ($p_2 > p_1$) $l_t < 0$ – praca napędowa sprężarki wynosi $|l_t|$.
+:::
 
 ::: {.callout-tip title="Zastosowanie w Projekcie (Ćw. 2)"}
 *   Gdy $n = \kappa \approx 1{,}4$ $\rightarrow$ **Izentropa** (adiabata odwracalna: brak chłodzenia i tarcia).
@@ -328,41 +325,44 @@ Przy sprężaniu ($p_2 > p_1$) $l_t < 0$ – praca napędowa sprężarki wynosi 
 :::
 
 
-
-## <i class="bi bi-bookmark"></i> Zastosowanie: Wymiennik Ciepła 
+## <i class="bi bi-arrow-left-right"></i> Zastosowanie: Wymiennik Ciepła
 
 ### Przepływ Izobaryczny
 
-W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej<br>($L_t = 0$).
+W wymiennikach (np. chłodnica, nagrzewnica) nie wykonuje się pracy technicznej ($L_t = 0$).
 
+::: {.panel .panel-blue}
 **Bilans dla jednego czynnika:**
 $$ \dot{Q} = \dot{m} (h_2 - h_1) $$
+:::
 
+::: {.panel .panel-amber}
 Dla wymiennika dwupłynowego (adiabatycznego z zewnątrz):
 $$ \dot{m}_A \Delta h_A = -\dot{m}_B \Delta h_B $$
+:::
 
 
-## <i class="bi bi-wind"></i> Zastosowanie: Dławienie 
+## <i class="bi bi-wind"></i> Zastosowanie: Dławienie
 
 ### Proces Izentalpowy
 
 Dławienie zachodzi podczas przepływu przez zawór lub zwężkę bez wymiany ciepła i pracy.
 
+::: {.panel .panel-blue}
 $$ h_1 = h_2 $$
+:::
 
 *   Dla gazu doskonałego temperatura nie ulega zmianie.
 *   Dla gazów rzeczywistych występuje **efekt Joule'a-Thomsona** (zmiana temperatury).
 
 
-
-
-
-## <i class="bi bi-thermometer-snow"></i> Zjawisko Joule'a-Thomsona{.smaller}
+## <i class="bi bi-thermometer-snow"></i> Zjawisko Joule'a-Thomsona {.smaller}
 
 ### Dławienie Adiabatyczne
+
 Współczynnik Joule'a-Thomsona $\mu_{JT}$ określa zmianę temperatury przy dławieniu izentalpowym ($h = const$):
 
-::: {style="border: 2px solid #2980b9; padding: 15px; border-radius: 10px; background-color: #f0f8ff; text-align: center; margin-bottom: 20px; font-size: 0.8em;"}
+::: {.panel .panel-blue}
 $$ \mu_{JT} = \left(\frac{\partial T}{\partial p}\right)_h $$
 :::
 
@@ -370,29 +370,26 @@ $$ \mu_{JT} = \left(\frac{\partial T}{\partial p}\right)_h $$
 *   **$\mu_{JT} < 0$:** Gaz ogrzewa się (częsta cecha dla **wodoru** czy **helu** w temp. otoczenia).
 *   **Temp. inwersji ($T_{inv}$):** Miejsce, gdzie $\mu_{JT} = 0$. Oddziela obszar ochładzania od ogrzewania.
 
-::: {.fragment .fade-up .absolute top="25%" left="15%" width="70%"}
-::: {.callout-important title="Wodór vs Powietrze" style="font-size: 0.8em; box-shadow: 0 15px 40px rgba(0,0,0,0.4); z-index: 100; background-color: var(--bs-body-bg, #fff);"}
-W temp. $\approx 300$ K powietrze przy dławieniu **ochładza się** ($T_{inv} \approx 620$ K). Natomiast wodór się **ogrzewa** ($T_{inv} \approx 202$ K) – nawet przy dławieniu z 700 bar tylko o kilkadziesiąt kelwinów (ok. 30 K). Sam efekt J-T nie wywołuje więc samozapłonu wodoru ($T_{\text{samozapłonu}} \approx 858$ K).
-:::
+::: {.fragment .fade-up .callout-important title="Wodór vs Powietrze"}
+W temp. $\approx 300$ K powietrze przy dławieniu **ochładza się** (maksymalna temperatura inwersji $T_{inv} \approx 600$ K). Natomiast wodór się **ogrzewa** ($T_{inv} \approx 200$ K) – nawet przy dławieniu z 700 bar tylko o kilkadziesiąt kelwinów (ok. 30 K). Sam efekt J-T nie wywołuje więc samozapłonu wodoru ($T_{\text{samozapłonu}} \approx 858$ K).
 :::
 
 
 ## <i class="bi bi-graph-up"></i> Krzywa Inwersji (Zjawisko J-T)
 
-<div style="text-align: center; margin-bottom: 20px;">
 Krzywa inwersji (czerwona przerywana linia) łączy wierzchołki izentalp (niebieskie linie), rozdzielając obszar ochładzania gazu od ogrzewania.
-</div>
 
 ```{r}
-#| fig-height: 5.5
-#| fig-width: 8
+#| label: krzywa-inwersji
 #| echo: false
 #| warning: false
-#| fig-align: "center"
+#| message: false
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 5.4
+#| out-width: "62%"
 
 # Kod w R do wizualizacji izentalp symulujący klasyczny wykres T-p
-library(ggplot2)
-
 p_grid <- seq(0, 10, length.out = 200)
 T_grid <- seq(0, 10.5, length.out = 200)
 grid <- expand.grid(p = p_grid, T = T_grid)
@@ -410,87 +407,82 @@ df_inv <- data.frame(p = p_inv_line, T = T_inv_line)
 
 ggplot() +
   # Izentalpy (niebieskie)
-  geom_contour(data = grid, aes(x=p, y=T, z=H), color = "steelblue", bins = 20, linewidth = 0.4) +
+  geom_contour(data = grid, aes(x = p, y = T, z = H), color = pal_slides[1], bins = 20, linewidth = 0.5) +
   # Krzywa inwersji (czerwona przerywana) - geom_path łączy punkty w kolejności danych
-  geom_path(data = df_inv, aes(x=p, y=T), color = "red3", linewidth = 1.6, linetype = "dashed") +
+  geom_path(data = df_inv, aes(x = p, y = T), color = pal_slides[8], linewidth = 1.4, linetype = "dashed") +
   # Tekst
-  annotate("text", x = 3, y = 5, label = "mu > 0", parse = TRUE, size = 8) +
-  annotate("text", x = 9.3, y = 5, label = "mu < 0", parse = TRUE, size = 8) +
+  annotate("text", x = 3, y = 5, label = "mu[JT] > 0", parse = TRUE, size = 7, color = col_ink) +
+  annotate("text", x = 9.3, y = 5, label = "mu[JT] < 0", parse = TRUE, size = 7, color = col_ink) +
   # Ustawienia osi
-  scale_x_continuous(expand = c(0,0), limits = c(0, 10.5)) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 10.5)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 10.5)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 10.5)) +
   labs(x = "p", y = "T") +
-  theme_classic() +
+  theme_slides(16) +
   theme(
-    axis.line = element_line(arrow = arrow(type = "closed", length = unit(0.15, "inches"))),
+    panel.grid.major = element_blank(),
+    axis.line = element_line(colour = col_ink2, arrow = arrow(type = "closed", length = unit(0.15, "inches"))),
     axis.text = element_blank(),
     axis.ticks = element_blank(),
-    axis.title.y = element_text(angle = 0, vjust = 1.05, hjust = 0, size=24, face="italic"),
-    axis.title.x = element_text(hjust = 1.05, size=24, face="italic"),
+    axis.title.y = element_text(angle = 0, vjust = 1.05, hjust = 0, size = 22, face = "italic", colour = col_ink),
+    axis.title.x = element_text(hjust = 1.05, size = 22, face = "italic", colour = col_ink),
     plot.margin = margin(t = 20, r = 30, b = 10, l = 5)
   )
 ```
 
 
-## <i class="bi bi-fire"></i> I Zasada w Procesach Spalania{auto-animate=true}
+## <i class="bi bi-fire"></i> I Zasada w Procesach Spalania {auto-animate=true}
 
 :::: {.columns}
 
-::: {.column width="55%"}
+::: {.column width="55%" style="font-size: 0.9em;"}
 ### Przemiana Energii Chemicznej
+
 Komora spalania to najczęściej układ otwarty izobaryczny, w którym nie wykonuje się pracy technicznej ($L_t = 0$), ale uwalnia ogromną ilość ciepła utleniania.
 
-**Wartość opałowa ($Q_i$):** <br>Ciepło wydzielone ze spalenia jednostki paliwa (kg lub $m^3$), przy założeniu, że para wodna w spalinach nie skrapla się. *Uwaga praktyczna: brak kondensacji pary wodnej w spalinach chroni kanały spalinowe przed korozją.*
+**Wartość opałowa ($Q_i$):** Ciepło wydzielone ze spalenia jednostki paliwa (kg lub $m^3$), przy założeniu, że para wodna w spalinach nie skrapla się.
 
-::: {style="border: 2px solid #f39c12; padding: 15px; border-radius: 10px; background-color: #fdf5e6; margin-bottom: 20px;"}
+::: {.small-note}
+*Uwaga praktyczna:* brak kondensacji pary wodnej w spalinach chroni kanały spalinowe przed korozją.
+:::
+
+::: {.panel .panel-amber}
 **Bilans energii komory spalania:**
 $$ \dot{H}_{\text{substr.}} + \dot{m}_{\text{pal}} \cdot Q_i = \dot{H}_{\text{spalin}} + \dot{Q}_{\text{strat}} $$
 :::
-
-
 :::
 
 ::: {.column width="45%"}
-<br>
-<div style="text-align: center;">
-
-::: {.mmd-fit style="height: 700px;"}
+::: {.mmd-fit style="height: 600px;"}
 ```{mermaid}
 %%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart TB
     A["Powietrze"] -->|Entalpia wlotowa| C
     B["Paliwo (Qᵢ)"] --> C{"Komora<br>Spalania"}
-    
+
     C -->|"Straty ciepła Qₛₜᵣₐₜ"| D((Otoczenie))
     C -->|Entalpia wylotowa| E["Gorące Spaliny"]
 
-    style C fill:#e74c3c,stroke:#c0392b,stroke-width:3px,color:#fff
-    style A fill:#3498db,stroke:#2980b9,color:#fff
-    style B fill:#2ecc71,stroke:#27ae60,color:#fff
-    style E fill:#f39c12,stroke:#d35400,color:#fff
-    style D fill:#bdc3c7,stroke:#95a5a6
+    style C fill:#fff4e3,stroke:#eb6834,stroke-width:3px
+    style A fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style B fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style E fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style D fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
 ```
 :::
-
-</div>
-
-
-
 :::
 
 ::::
 
-## <i class="bi bi-fire"></i> I Zasada w Procesach Spalania{auto-animate=true}
+## <i class="bi bi-fire"></i> I Zasada w Procesach Spalania {auto-animate=true}
 
 *Kontekst praktyczny:*
 Zasada ta jest fundamentem podczas projektowania **kotłów**, **turbin gazowych** i samochodowych **silników spalinowych**, pozwalając na precyzyjne wyliczenie temperatury spalania roboczego.
 
-::: {.fragment .callout-note}
-### Rola Powietrza jako Chłodziwa
+::: {.fragment .callout-note title="Rola Powietrza jako Chłodziwa"}
 W układach silnikowych (np. turbina odrzutowa) komora spalania wykorzystuje **ogromny nadmiar powietrza** ($\lambda \approx 3\text{–}4$), aby chłodzić elementy płomieniówki i chronić łopatki wirnika przed stopieniem od gorących gazów!
 :::
 
-## <i class="bi bi-door-open"></i> Analiza Egzergetyczna (Wstęp) 
+## <i class="bi bi-door-open"></i> Analiza Egzergetyczna (Wstęp)
 
 ### Energia Dostępna
 
@@ -498,10 +490,13 @@ Egzergia to maksymalna praca, jaką układ może wykonać, przechodząc do stanu
 
 *   I Zasada mówi o ilości energii (zachowanie).
 *   II Zasada mówi o jakości energii (degradacja).
-*   **Strata egzergii ($\delta B$):** Jest proporcjonalna do przyrostu entropii układu izolowanego (prawo Gouy–Stodoli): $\delta B = T_{\text{ot}} \cdot \Delta S_{\text{iz}}$.
+
+::: {.panel .panel-violet}
+**Strata egzergii ($\delta B$):** Jest proporcjonalna do przyrostu entropii układu izolowanego (prawo Gouy–Stodoli): $\delta B = T_{\text{ot}} \cdot \Delta S_{\text{iz}}$.
+:::
 
 
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W3 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W3
 
 ### Kluczowe Wnioski
 
@@ -511,7 +506,7 @@ Egzergia to maksymalna praca, jaką układ może wykonać, przechodząc do stanu
 *   **Dławienie:** Proces izentalpowy ($h=const$), któremu może towarzyszyć zmiana temperatury (J-T).
 
 
-## <i class="bi bi-bookmark"></i> Przejście do W4 
+## <i class="bi bi-arrow-right-circle"></i> Przejście do W4
 
 ### Właściwości Substancji Czystych
 

@@ -5,8 +5,8 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;">
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;">
+    <img src="../img/logo_upp.png" style="height: 200px;">
+    <img src="../img/logo_wisim.jpg" style="height: 200px;">
     <img src="../img/kbig.jpg" style="height: 200px;">
   </div>
 lang: pl
@@ -21,7 +21,7 @@ format:
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
             background-image: url("../img/background_red.png") !important;
-            background-size: contain !important; 
+            background-size: contain !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.1 !important;
@@ -34,12 +34,14 @@ format:
         </style>
     slide-number: c/t
     show-slide-number: all
-    transition: slide
+    transition: concave
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W5)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -50,14 +52,14 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
+#| label: setup
+#| include: false
 library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
 options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
 ```
-
 
 ## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
@@ -68,13 +70,11 @@ options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
 5.  **Wykresy Termodynamiczne** (T-s, h-s, p-h)
 6.  **Para Przegrzana**
 
----
-
-## <i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych {style="font-size: 0.9em;"}
+## <i class="bi bi-bookmark"></i> 1. Termodynamika Przemian Fazowych
 
 ### Rodzaje Przemian
 
-::: {.fragment .incremental}
+::: {.incremental}
 *   **I Rodzaju:** Skokowa zmiana entalpii (ciepło utajone) i objętości. Temperatura jest stała ($T=const$).
     *   Wrzenie (Ciecz $\to$ Gaz)
     *   Topnienie (Ciało stałe $\to$ Ciecz)
@@ -82,63 +82,67 @@ options(OutDec = ",") # przecinek dziesiętny na osiach wykresów
     *   Przejście w nadciekłość (Hel).
 :::
 
-::: {.fragment .fade-up}
-### Ciepło Utajone (Latent Heat)
+::::: columns
+::: {.column width="55%"}
+::: {.panel .panel-amber .fragment .fade-up}
+**Ciepło Utajone (Latent Heat)**
 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;"}
-**Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.**
+Energia potrzebna do zerwania wiązań międzycząsteczkowych, bez zmiany temperatury.
 :::
 :::
 
-#### Dla wody:{.fragment .fade-up style="font-size: 0.8em;"}
+::: {.column width="45%"}
+::: {.panel .panel-blue .fragment .fade-up}
+**Dla wody:**
 
-::: incremental
 *   Ciepło parowania ($r$): $2257 \text{ kJ/kg}$ (ogromne!)
 *   Ciepło topnienia: $333 \text{ kJ/kg}$
 :::
+:::
+:::::
 
----
-
-## <i class="bi bi-bookmark"></i> Równanie Clapeyrona-Clausiusa 
+## <i class="bi bi-bookmark"></i> Równanie Clapeyrona-Clausiusa
 
 Opisuje krzywą równowagi fazowej (np. krzywą wrzenia) na wykresie p-T:
 
+::: {.panel .panel-blue}
 $$ \frac{dp}{dT} = \frac{r}{T (v'' - v')} $$
 
 *   $r$: Ciepło przemiany fazowej (ciepło parowania lub topnienia) [J/kg]
 *   $v''$: Objętość właściwa fazy powstającej (przy wrzeniu: pary)
 *   $v'$: Objętość właściwa fazy zanikającej (przy wrzeniu: cieczy)
+:::
 
 ::: {.callout-note .fragment}
 Ponieważ zazwyczaj $v'' > v'$ (gaz większy od cieczy) i $r > 0$ (trzeba grzać), to $dp/dT > 0$.
 Wzrost ciśnienia podnosi temperaturę wrzenia (dlatego w szybkowarze woda wrze np. w $120^\circ\text{C}$, co przyspiesza gotowanie).
 :::
 
----
-
-## <i class="bi bi-bookmark"></i> Wyjątek Wody: Topnienie 
+## <i class="bi bi-snow"></i> Wyjątek Wody: Topnienie
 
 Woda ma rzadką cechę (podobnie m.in. Bi, Ga, Si, Ge): $v_{\text{lód}} > v_{\text{woda}}$ (lód pływa!).
 Zatem dla topnienia $v'' - v' = v_{\text{woda}} - v_{\text{lód}} < 0$.
 
+::: {.panel .panel-blue}
 $$ \frac{dp}{dT} < 0 $$
 
 Wzrost ciśnienia **obniża** temperaturę topnienia lodu.
-
-::: {.fragment .fade-up}
-*   Efekt jest jednak mały: ok. $-0{,}0074$ K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.
 :::
 
----
+::: {.fragment .fade-up .callout-warning title="Efekt jest jednak mały"}
+Ok. $-0{,}0074$ K/bar (obniżenie o 2 K wymaga ok. 270 bar). Popularne wyjaśnienie poślizgu łyżew „topnieniem pod naciskiem” to mit — poślizg zawdzięczamy głównie ciepłu tarcia i cienkiej quasi-ciekłej warstwie na powierzchni lodu.
+:::
 
-## <i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych $p$-$T$ {.center}
+## <i class="bi bi-graph-up"></i> Wykres stanów faz wody we współrzędnych $p$-$T$
 
 ```{r}
+#| label: fig-pt-woda
+#| fig-cap: "Krzywe sublimacji, topnienia i parowania wody (skala logarytmiczna ciśnienia)"
 #| echo: false
 #| warning: false
-#| fig-width: 6
-#| fig-height: 6
+#| fig-width: 10
+#| fig-height: 5.4
+#| out-width: "85%"
 #| fig-align: center
 library(ggplot2)
 library(ggrepel)
@@ -154,7 +158,7 @@ P_atm <- 101325       # Pa
 A_vap <- log(P_c / P_tp) / (1 - T_tp / T_c)
 p_vap <- function(temp) P_tp * exp(A_vap * (1 - T_tp / temp))
 # Sublimacja
-A_sub <- 22.5 
+A_sub <- 22.5
 p_sub <- function(temp) P_tp * exp(A_sub * (1 - T_tp / temp))
 
 # Topnienie (anomalia: dT/dp < 0); lód Ih istnieje do ok. 210 MPa
@@ -172,82 +176,81 @@ points <- data.frame(
   P = c(P_tp, P_c, P_atm),
   label = c("Punkt potrójny", "Punkt krytyczny", "Wrzenie (1 atm)")
 )
- 
+
+col_sub <- pal_slides[1]; col_vap <- pal_slides[2]; col_melt <- pal_slides[3]
+
 # 4. Wykres
 ggplot() +
   # Obszar nadkrytyczny (tło)
-  annotate("rect", xmin = T_c, xmax = 750, ymin = P_c, ymax = 1e9, fill = "grey90", alpha = 0.5) +
+  annotate("rect", xmin = T_c, xmax = 750, ymin = P_c, ymax = 1e9, fill = col_grid, alpha = 0.5) +
   # Linie fazowe
-  geom_line(data = df_sub, aes(x = T, y = P), color = "blue", size = 1) +
-  geom_line(data = df_vap, aes(x = T, y = P), color = "red", size = 1.2) +
-  geom_line(data = df_melt, aes(x = T, y = P), color = "darkgreen", size = 1) +
+  geom_line(data = df_sub, aes(x = T, y = P), color = col_sub, linewidth = 1.1) +
+  geom_line(data = df_vap, aes(x = T, y = P), color = col_vap, linewidth = 1.3) +
+  geom_line(data = df_melt, aes(x = T, y = P), color = col_melt, linewidth = 1.1) +
   # Punkty
-  geom_point(data = points, aes(x = T, y = P), size = 3) +
-  # Etykiety punktów (W dół i w lewo)
+  geom_point(data = points, aes(x = T, y = P), size = 3.5, color = col_ink) +
+  # Etykiety punktów (w dół i w prawo)
   geom_text_repel(data = points, aes(x = T, y = P, label = label),
                   nudge_x = 80, # Przesunięcie w prawo [K]
                   nudge_y = -0.5, # Przesunięcie w dół (w skali log10)
-                  segment.color = "grey50",
+                  segment.color = col_ink2,
                   arrow = arrow(length = unit(0.02, "npc")),
-                  fontface = "bold", size = 3.5) +
+                  fontface = "bold", size = 4.5, color = col_ink) +
   # Napisy obszarów (odsunięte od linii)
-  annotate("text", x = 240, y = 1e6, label = "LÓD", size = 5, fontface = "bold", color = "blue") +
-  annotate("text", x = 420, y = 1e8, label = "WODA CIEKŁA", size = 5, fontface = "bold", color = "darkgreen") +
-  annotate("text", x = 550, y = 1e4, label = "PARA", size = 5, fontface = "bold", color = "red") +
-  # FLUID NADKRYTYCZNY (tylko w dół względem poprzedniej pozycji)
-  annotate("text", x = 698, y = 8e7, label = "STAN\nNADKRYTYCZNY", 
-           fontface = "italic", color = "grey30", size = 3.3) +
+  annotate("text", x = 240, y = 1e6, label = "LÓD", size = 6, fontface = "bold", color = col_sub) +
+  annotate("text", x = 420, y = 1e8, label = "WODA CIEKŁA", size = 6, fontface = "bold", color = col_melt) +
+  annotate("text", x = 550, y = 1e4, label = "PARA", size = 6, fontface = "bold", color = col_vap) +
+  annotate("text", x = 698, y = 8e7, label = "STAN\nNADKRYTYCZNY",
+           fontface = "italic", color = col_ink2, size = 4) +
   # Konfiguracja osi
-  scale_y_log10(limits = c(10, 1e9), 
+  scale_y_log10(limits = c(10, 1e9),
                 breaks = c(P_tp, 101325, P_c),
                 labels = c("611,7 Pa", "101,3 kPa", "22,06 MPa")) +
   scale_x_continuous(limits = c(220, 750), breaks = seq(200, 800, 50)) +
-  labs(
-       x = "Temperatura T [K]", y = "Ciśnienie p [Pa]") +
-  theme_minimal() +
-  theme(plot.title = element_text(face = "bold", size = 14))
+  labs(x = "Temperatura T [K]", y = "Ciśnienie p [Pa]") +
+  theme_slides(16)
 ```
 
----
-
-## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura {style="font-size: 0.85em;"}
+## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - Struktura {.smaller}
 
 Gdy podgrzewamy wodę pod stałym ciśnieniem:
 
-::: {.fragment .incremental style="font-size: 0.98em;"}
-1.  **Ciecz Dochłodzona (Sprężona):** $T < T_{\text{wrzenia}}$. 
-    - 💧🧊 Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, "tłok" jest nisko.
+::: {.incremental}
+1.  **Ciecz Dochłodzona (Sprężona):** $T < T_{\text{wrzenia}}$.
+    - Spokojna woda w garnku, zanim włączysz gaz. Cząsteczki są blisko siebie, "tłok" jest nisko.
 2.  **Ciecz Nasycona ($x=0$):** $T = T_{\text{wrzenia}}$. Pierwszy bąbel pary.
-    - 💧🫧 Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.
-3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu! 
-    - ☁️💦 Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka $p(v''-v')$). 
-4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała. 
-    - ☁️✅ Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze "gęsta".
+    - Woda w 100°C. Na dnie pojawia się pierwszy bąbelek. To moment startu wyścigu.
+3.  **Mieszanina Dwufazowa (Para Mokra):** Ciecz + Para. $T$ stoi w miejscu!
+    - Wrzenie turbulentne. Tłok idzie w górę, ale temperatura nie rośnie (ok. 92% energii idzie na rozerwanie wiązań, reszta na pracę przesuwania tłoka $p(v''-v')$).
+4.  **Para Nasycona Sucha ($x=1$):** Ostatnia kropla wyparowała.
+    - Ostatnia kropelka wody właśnie zniknęła. Cały cylinder to para, ale jeszcze "gęsta".
 5.  **Para Przegrzana:** Dalszy wzrost $T > T_{\text{wrzenia}}$.
-    - 💨🔥 Gaz, który zachowuje się jak "szalony". Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!
+    - Gaz, który zachowuje się jak "szalony". Cząsteczki są daleko od siebie, mają ogromną energię. To ta para napędza turbiny!
 :::
 
----
-
-## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - jak to działa w maszynie 
+## <i class="bi bi-cloud-fog"></i> 2. Para Nasycona - jak to działa w maszynie
 
 ```{r}
+#| label: fig-tlok-stany
+#| fig-cap: "Ewolucja czynnika w cylindrze z tłokiem (p = const): od cieczy dochłodzonej do pary przegrzanej"
 #| fig-align: center
-#| fig-height: 4
-#| fig-width: 10
+#| fig-height: 4.8
+#| fig-width: 12
+#| out-width: "90%"
 #| echo: false
 #| warning: false
 
 library(ggplot2)
 library(dplyr)
+set.seed(5)
 
 # Tworzenie danych dla 5 stanów
 states <- data.frame(
-  State = factor(c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)", 
-                   "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)", 
+  State = factor(c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)",
+                   "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)",
                    "5. Para\nPrzegrzana"),
-                 levels = c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)", 
-                            "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)", 
+                 levels = c("1. Ciecz\nDochłodzona", "2. Ciecz\nNasycona (x=0)",
+                            "3. Mieszanina\n(Para Mokra)", "4. Para Nasycona\nSucha (x=1)",
                             "5. Para\nPrzegrzana")),
   Piston_Height = c(1.5, 1.8, 3.5, 5.5, 7.0), # Wysokość tłoka
   Water_Level = c(1.5, 1.8, 1.0, 0, 0)        # Poziom cieczy
@@ -258,10 +261,10 @@ generate_particles <- function(state_idx, n=50) {
   state_name <- levels(states$State)[state_idx]
   h_piston <- states$Piston_Height[state_idx]
   h_water <- states$Water_Level[state_idx]
-  
+
   points <- data.frame()
-  
-  # Cząsteczki Wody (Niebieskie, gęsto upakowane na dole)
+
+  # Cząsteczki Wody (gęsto upakowane na dole)
   if (h_water > 0) {
     water_pts <- data.frame(
       x = runif(n * h_water, 0, 1),
@@ -271,12 +274,12 @@ generate_particles <- function(state_idx, n=50) {
     )
     points <- rbind(points, water_pts)
   }
-  
-  # Cząsteczki Pary (Szare, rzadkie, powyżej wody)
+
+  # Cząsteczki Pary (rzadkie, powyżej wody)
   if (h_piston > h_water) {
     # Im wyższy stan, tym rzadsze cząsteczki (rozszerzalność)
-    density_factor <- if(state_idx == 5) 0.3 else 0.8 
-    
+    density_factor <- if(state_idx == 5) 0.3 else 0.8
+
     vapor_pts <- data.frame(
       x = runif(n * (h_piston - h_water) * density_factor, 0, 1),
       y = runif(n * (h_piston - h_water) * density_factor, h_water, h_piston),
@@ -293,50 +296,54 @@ all_particles <- do.call(rbind, lapply(1:5, generate_particles))
 # Rysowanie
 ggplot() +
   # --- ŚCIANKI CYLINDRA ---
-  geom_rect(data = states, aes(xmin = 0, xmax = 1, ymin = 0, ymax = 8), 
-            fill = NA, color = "black", size = 1) +
-  
+  geom_rect(data = states, aes(xmin = 0, xmax = 1, ymin = 0, ymax = 8),
+            fill = NA, color = col_ink, linewidth = 1) +
+
   # --- TŁOK (Linia pozioma) ---
   geom_segment(data = states, aes(x = 0, xend = 1, y = Piston_Height, yend = Piston_Height),
-               size = 2, color = "darkred") +
+               linewidth = 2, color = col_accent) +
   # Trzpień tłoka
   geom_segment(data = states, aes(x = 0.5, xend = 0.5, y = Piston_Height, yend = Piston_Height + 1),
-               size = 1, color = "darkred") +
-  
+               linewidth = 1, color = col_accent) +
+
   # --- CZĄSTECZKI ---
   geom_point(data = all_particles, aes(x = x, y = y, color = type), size = 3, alpha = 0.7) +
-  
+
   # --- FORMATOWANIE ---
   facet_wrap(~State, nrow = 1, strip.position = "bottom") +
-  scale_color_manual(values = c("Ciecz" = "#3498db", "Para" = "#95a5a6")) +
+  scale_color_manual(values = c("Ciecz" = pal_slides[1], "Para" = col_ink2)) +
   theme_void() +
   theme(
-    strip.text = element_text(size = 11, face = "bold", margin = margin(t = 10)),
+    strip.text = element_text(size = 13, face = "bold", colour = col_ink, margin = margin(t = 10)),
     legend.position = "none",
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 16)
-  ) +
-  labs(title = "Ewolucja czynnika: Od Cieczy do Pary Przegrzanej")
+    plot.background = element_rect(fill = "transparent", colour = NA)
+  )
 ```
 
----
-
-## <i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła) 
-
-
+## <i class="bi bi-graph-up"></i> Wykres T-s dla Wody (Kopuła)
 
 :::: {.columns}
 
-::: {.column width="30%"}
+::: {.column width="28%"}
 Obszar pod dzwonem to mieszanina (Para Mokra).
+
+Linie przerywane: stały stopień suchości $x$.
+
+Izobary: $p = 1$ atm i $p = 100$ bar.
+
+[źródło: [NIST Chemistry WebBook, SRD 69](https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&THigh=373.946&TInc=50&Digits=5&ID=C7732185&Action=Load&Type=SatP&TUnit=C&PUnit=atm&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=DEF){target="_blank"}]{.small-note}
 :::
 
-::: {.column width="70%"}
+::: {.column width="72%"}
 
 ```{r}
 #| label: steam-dome
+#| fig-cap: "Wykres T-s dla wody (dane NIST + IAPWS-95) z liniami stałego stopnia suchości x"
 #| echo: false
-#| fig-width: 12
-#| fig-height: 8
+#| fig-width: 11
+#| fig-height: 7
+#| out-width: "100%"
+#| fig-align: center
 
 library(ggplot2)
 
@@ -350,86 +357,16 @@ nist_dense <- data.frame(
         340.01, 350.01, 360.01, 370.01, 373.946
     ) + 273.15,
     s_l = c(
-        -2.95E-13,
-        0.15123,
-        0.29663,
-        0.43689,
-        0.57254,
-        0.70394,
-        0.83142,
-        0.95525,
-        1.0757,
-        1.193,
-        1.3073,
-        1.4189,
-        1.528,
-        1.6348,
-        1.7393,
-        1.8419,
-        1.9427,
-        2.0418,
-        2.1393,
-        2.2356,
-        2.3306,
-        2.4246,
-        2.5178,
-        2.6102,
-        2.7021,
-        2.7936,
-        2.885,
-        2.9766,
-        3.0686,
-        3.1613,
-        3.2553,
-        3.3511,
-        3.4495,
-        3.5519,
-        3.6602,
-        3.7785,
-        3.9168,
-        4.1114,
-        4.407
+        -2.95E-13, 0.15123, 0.29663, 0.43689, 0.57254, 0.70394, 0.83142, 0.95525, 1.0757,
+        1.193, 1.3073, 1.4189, 1.528, 1.6348, 1.7393, 1.8419, 1.9427, 2.0418, 2.1393,
+        2.2356, 2.3306, 2.4246, 2.5178, 2.6102, 2.7021, 2.7936, 2.885, 2.9766, 3.0686,
+        3.1613, 3.2553, 3.3511, 3.4495, 3.5519, 3.6602, 3.7785, 3.9168, 4.1114, 4.407
     ),
     s_v = c(
-        9.1555,
-        8.8995,
-        8.6658,
-        8.4518,
-        8.2554,
-        8.0747,
-        7.908,
-        7.7539,
-        7.6109,
-        7.478,
-        7.354,
-        7.238,
-        7.129,
-        7.0263,
-        6.9292,
-        6.837,
-        6.749,
-        6.6649,
-        6.584,
-        6.5058,
-        6.4301,
-        6.3562,
-        6.2839,
-        6.2127,
-        6.1422,
-        6.072,
-        6.0015,
-        5.9303,
-        5.8578,
-        5.7833,
-        5.7058,
-        5.6243,
-        5.5371,
-        5.4421,
-        5.3355,
-        5.2109,
-        5.0534,
-        4.8008,
-        4.407
+        9.1555, 8.8995, 8.6658, 8.4518, 8.2554, 8.0747, 7.908, 7.7539, 7.6109,
+        7.478, 7.354, 7.238, 7.129, 7.0263, 6.9292, 6.837, 6.749, 6.6649, 6.584,
+        6.5058, 6.4301, 6.3562, 6.2839, 6.2127, 6.1422, 6.072, 6.0015, 5.9303, 5.8578,
+        5.7833, 5.7058, 5.6243, 5.5371, 5.4421, 5.3355, 5.2109, 5.0534, 4.8008, 4.407
     )
 )
 
@@ -507,49 +444,43 @@ sp_sup_100 <- spline(T_sup_100, s_sup_100, n = 50, method = "hyman")
 iso_100_sup <- data.frame(T = sp_sup_100$x, s = sp_sup_100$y)
 df_iso_100 <- rbind(iso_100_liq, iso_100_sat, iso_100_sup)
 
+col_dome <- pal_slides[1]; col_iso1 <- pal_slides[2]; col_iso100 <- col_accent
+
 ggplot() +
     # Wielokąt Kopuły
-    geom_polygon(data = df_dome, aes(x = s, y = T), fill = "lightblue", alpha = 0.3, color = "blue", size = 1.5) +
+    geom_polygon(data = df_dome, aes(x = s, y = T), fill = col_dome, alpha = 0.12, color = col_dome, linewidth = 1.3) +
 
     # Linie suchości
-    geom_line(data = df_quality_lines, aes(x = s, y = T, group = label), color = "blue", linetype = "dotted", size = 0.8) +
+    geom_line(data = df_quality_lines, aes(x = s, y = T, group = label), color = col_dome, linetype = "dotted", linewidth = 0.8) +
     # Etykiety x (przy osi)
-    geom_text(data = df_quality_labels, aes(x = x - 0.5, y = y, label = label), color = "blue", size = 4, fontface = "bold") +
+    geom_text(data = df_quality_labels, aes(x = x - 0.5, y = y, label = label), color = col_dome, size = 4.5, fontface = "bold") +
 
     # Izobary
-    geom_line(data = df_iso_1, aes(x = s, y = T), color = "red", size = 1.5) +
-    annotate("text", x = 4.5, y = 410, label = "p = 1 atm", color = "red", fontface = "italic") +
-    geom_line(data = df_iso_100, aes(x = s, y = T), color = "darkred", size = 1.2, linetype = "longdash") +
-    annotate("text", x = 5.95, y = 690, label = "p = 100 bar", color = "darkred", fontface = "italic", angle = 72) +
+    geom_line(data = df_iso_1, aes(x = s, y = T), color = col_iso1, linewidth = 1.3) +
+    annotate("text", x = 4.5, y = 410, label = "p = 1 atm", color = col_iso1, fontface = "italic", size = 5) +
+    geom_line(data = df_iso_100, aes(x = s, y = T), color = col_iso100, linewidth = 1.1, linetype = "longdash") +
+    annotate("text", x = 5.95, y = 690, label = "p = 100 bar", color = col_iso100, fontface = "italic", angle = 72, size = 5) +
 
     # Punkt Krytyczny
-    annotate("point", x = sc, y = Tc, color = "black", size = 4) +
-    annotate("text", x = sc, y = 690, label = paste0("PK\n(s=", format(round(sc, 3)), ")"), fontface = "bold") +
+    annotate("point", x = sc, y = Tc, color = col_ink, size = 4) +
+    annotate("text", x = sc, y = 690, label = paste0("PK\n(s=", format(round(sc, 3)), ")"), fontface = "bold", color = col_ink, size = 4.5) +
 
     # x=0 / x=1
-    annotate("text", x = 0.3, y = 320, label = "x=0", color = "blue", fontface = "bold", angle = 46) +
-    annotate("text", x = 8.6, y = 320, label = "x=1", color = "blue", fontface = "bold", angle = -40) +
+    annotate("text", x = 0.3, y = 320, label = "x=0", color = col_dome, fontface = "bold", angle = 46, size = 4.5) +
+    annotate("text", x = 8.6, y = 320, label = "x=1", color = col_dome, fontface = "bold", angle = -40, size = 4.5) +
     scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, 1)) +
     scale_y_continuous(limits = c(273, 750), breaks = seq(273, 750, 50)) +
-    theme_minimal(base_size = 16) +
-    labs(
-        x = "Entropia właściwa s [kJ/(kg·K)]", y = "Temperatura T [K]",
-        title = "Wykres T-s dla Wody (Dane NIST + IAPWS-95)",
-        subtitle = "Linie stałego stopnia suchości x"
-    )
+    labs(x = "Entropia właściwa s [kJ/(kg·K)]", y = "Temperatura T [K]") +
+    theme_slides(16)
 ```
-
-[źródło: [NIST Chemistry WebBook, SRD 69](https://webbook.nist.gov/cgi/fluid.cgi?TLow=0&THigh=373.946&TInc=50&Digits=5&ID=C7732185&Action=Load&Type=SatP&TUnit=C&PUnit=atm&DUnit=kg%2Fm3&HUnit=kJ%2Fkg&WUnit=m%2Fs&VisUnit=uPa*s&STUnit=N%2Fm&RefState=DEF){target="_blank"}]{style="font-size: 0.6em; color: gray;"}
 
 :::
 
 ::::
 
----
+## <i class="bi bi-droplet-half"></i> 3. Stopień Suchości ($x$)
 
-## <i class="bi bi-bookmark"></i> 3. Stopień Suchości ($x$) 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 Kluczowy parametr w obszarze pary mokrej (pod kopułą). Określa masowy udział pary w mieszaninie.
 
 $$ x = \frac{m_{\text{pary}}}{m_{\text{mieszaniny}}} = \frac{m''}{m' + m''} $$
@@ -559,28 +490,34 @@ $$ x = \frac{m_{\text{pary}}}{m_{\text{mieszaniny}}} = \frac{m''}{m' + m''} $$
 *   $x = 1$: $100\%$ pary (linia prawa).
 *   $x = 0{,}9$: $90\%$ pary, $10\%$ wody (typowa para wylotowa z turbiny kondensacyjnej).
 
----
+## <i class="bi bi-list-check"></i> Obliczanie Właściwości Pary Mokrej
 
-## <i class="bi bi-list-check"></i> Obliczanie Właściwości Pary Mokrej 
-
+::::: columns
+::: {.column width="50%"}
 Jeśli znamy $x$, możemy obliczyć dowolny parametr właściwy ($y$), znając wartości graniczne z tablic:
 
 *   $y'$ (dla cieczy nasyconej)
 *   $y''$ (dla pary suchej)
 
-Wzór ogólny:
+::: {.panel .panel-blue}
+**Wzór ogólny:**
 
 $$ y_x = y' + x \cdot (y'' - y') $$
+:::
+:::
 
-Zastosowanie:
+::: {.column width="50%"}
+::: {.panel .panel-green}
+**Zastosowanie:**
 
 *   $v_x = v' + x(v'' - v')$  (Objętość)
 *   $h_x = h' + x(h'' - h')$  (Entalpia - do bilansu energii!)
 *   $s_x = s' + x(s'' - s')$  (Entropia - do sprawności)
+:::
+:::
+:::::
 
----
-
-## <i class="bi bi-table"></i> 4. Tablice Pary Wodnej 
+## <i class="bi bi-table"></i> 4. Tablice Pary Wodnej
 
 Inżynier nie "liczy" pary z równania gazu doskonałego. Inżynier **odczytuje** z tablic.
 
@@ -597,15 +534,13 @@ Rodzaje tablic:
     *   Używamy, gdy $T > T_{\text{nasycenia}}$ (dla danego $p$).
     *   Jest to macierz $(p, T) \to v, h, s$.
 :::
-    
-::: {.fragment}    
+
+::: {.fragment}
 3.  **Tablice Cieczy Sprężonej (Dochłodzonej):**
     *   Gdy $T < T_{\text{nasycenia}}$ (dla danego $p$). Zazwyczaj przyjmujemy $v \approx v'(T)$, $h \approx h'(T)$ — wartości dla cieczy nasyconej w tej samej temperaturze.
 :::
 
----
-
-## <i class="bi bi-calculator"></i> Przykład Odczytu (Nasycenie) 
+## <i class="bi bi-calculator"></i> Przykład Odczytu (Nasycenie)
 
 Mamy wodę wrzącą pod ciśnieniem atmosferycznym ($p=1$ bar $\approx 0{,}1$ MPa).
 Szukamy w Tablicy Nasycenia (wg ciśnienia):
@@ -614,69 +549,60 @@ Szukamy w Tablicy Nasycenia (wg ciśnienia):
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0,10 | **99,6** | 0,001043 | **1,694** | 417 | **2675** |
 
-Wnioski:
+::: {.panel .panel-blue}
+**Wnioski:**
 
 1.  Temp. wrzenia to $99{,}6^\circ\text{C}$.
 2.  Para zajmuje ok. 1620 razy więcej miejsca niż woda ($1{,}694 / 0{,}001043$). Wybuchowe rozszerzanie!
-3.  Żeby odparować wodę, trzeba dostarczyć $2675 - 417 = 2258 \text{ kJ/kg}$.
+3.  Żeby odparować wodę, trzeba dostarczyć [$2675 - 417 = 2258 \text{ kJ/kg}$]{.answer}.
+:::
 
----
-
-## <i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach {style="font-size: 0.9em;"}
+## <i class="bi bi-bookmark"></i> Interpolacja Liniowa w Tablicach {.smaller}
 
 Tablice podają wartości dla wybranych temperatur i ciśnień (np. co 25°C lub 50°C). Gdy szukany parametr leży **między** wartościami tablicowymi, stosujemy **interpolację liniową**.
 
-### Wzór:
+::: {.panel .panel-blue}
+**Wzór:**
 $$ y = y_1 + \frac{x - x_1}{x_2 - x_1} \cdot (y_2 - y_1) $$
+:::
 
-::: {.fragment .callout-tip title="Przykład" style="font-size: 0.7em;"}
-Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ\text{C}$.
-
-Z tablic: $h(250^\circ\text{C}) = 2943$, $h(300^\circ\text{C}) = 3052$ kJ/kg.
+::: {.fragment .callout-tip title="Przykład"}
+Szukamy entalpii pary przegrzanej przy $p = 10$ bar i $t = 275^\circ\text{C}$. Z tablic: $h(250^\circ\text{C}) = 2943$, $h(300^\circ\text{C}) = 3052$ kJ/kg.
 
 $$ h_{275} = 2943 + \frac{275 - 250}{300 - 250} \cdot (3052 - 2943) = 2943 + 0{,}5 \cdot 109 \approx \mathbf{2997{,}5 \text{ kJ/kg}} $$
 :::
 
-::: {.fragment .callout-warning style="font-size: 0.8em;"}
+::: {.fragment .callout-warning}
 Interpolacja działa dobrze tylko dla **małych przedziałów** (liniowa zależność). Dla dużych skoków ciśnienia lub w pobliżu punktu krytycznego dokładność maleje — wtedy lepiej użyć oprogramowania (np. CoolProp, NIST).
 :::
 
----
-
-## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne {style="font-size: 0.85em;"}
+## <i class="bi bi-graph-up"></i> 5. Wykres h-s (Molliera) {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-
-### Wykres h-s (Molliera)
-
 *   Oś Y: Entalpia $h$ (Energia).
 *   Oś X: Entropia $s$.
 *   **Zastosowanie:** Turbiny parowe.
 *   Rozprężanie adiabatyczne odwracalne (izentropowe, idealna turbina) to linia **pionowa w dół** ($\Delta s = 0$).
 *   Różnica wysokości na wykresie ($h_1 - h_2$) to uzyskana PRACA.
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-amber .fragment}
 Jest niezwykle użytecznym narzędziem inżynierskim, często wygodniejszym od wykresu T-s, ponieważ entalpia i ciepło (w przemianach izobarycznych) oraz __praca techniczna__ (w przemianach adiabatycznych) są na nim przedstawiane __jako odcinki__, a nie pola powierzchni.
 :::
 :::
 
 ::: {.column width="40%"}
-![](../img/mollier-chart.png){width="88%"}
-
+![](../img/mollier-chart.png){width="80%"}
 :::
 
 ::::
 
----
-
-## <i class="bi bi-bookmark"></i> Mollier w Praktyce 
+## <i class="bi bi-bookmark"></i> Mollier w Praktyce
 
 Turbina pobiera parę: $p_1 = 100$ bar, $T_1 = 500^\circ\text{C}$. Rozpręża do $p_2 = 0{,}1$ bar.
 
-<div style="width: 100%; margin: 0 auto;">
-::: {.mmd-fit style="height: 585px;"}
+::: {.mmd-fit style="height: 540px;"}
 ```{mermaid}
 %%{init: {'theme': 'default', 'themeVariables': {'fontSize': '20px', 'fontFamily': 'Arial, Helvetica, sans-serif'}, 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}}}%%
 flowchart TB
@@ -692,76 +618,87 @@ flowchart TB
     G -- Tak --> H["OK: Turbina<br>bezpieczna"]
     G -- Nie --> I["BŁĄD: Erozja<br>łopatek!"]
 
-    style A fill:#a4d4f4ff,stroke:#2980b9,stroke-width:2px
-    style F fill:#2ecc71,stroke:#27ae60,stroke-width:2px
-    style I fill:#e74c3c,stroke:#c0392b,stroke-width:2px
-    style ODCZYT fill:#f4f8fb,stroke:#90a4ae,stroke-width:1px
+    style A fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style F fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style H fill:#ecf7ee,stroke:#1f9d55,stroke-width:2px
+    style I fill:#fff4e3,stroke:#eb6834,stroke-width:2px
+    style ODCZYT fill:#f7f6f3,stroke:#5a5753,stroke-width:1px
 ```
 :::
-</div>
 
-::: {.fragment .callout-warning appearance="simple" style="font-size: 0.8em;"}
+::: {.fragment .callout-warning appearance="simple"}
 W tym przykładzie $x_{2s} \approx 0{,}79 < 0{,}85$ — trafiamy w gałąź „Erozja łopatek”. Dlatego w praktyce stosuje się m.in. przegrzew wtórny (W10).
 :::
 
----
-
-## <i class="bi bi-graph-up"></i> 5. Wykresy Termodynamiczne 
+## <i class="bi bi-graph-up"></i> 5. Wykres p-h (logarytmiczny)
 
 :::: {.columns}
 
 ::: {.column width="40%"}
-
-### Wykres p-h (Logarytmiczny)
-
 *   Oś Y: Ciśnienie absolutne $p$ (skala logarytmiczna).
 *   Oś X: Entalpia właściwa $h$.
 *   **Zastosowanie:** Chłodnictwo / Pompy Ciepła.
 *   "Kopuła" jest mocno przechylona w prawo.
-
 :::
 
 ::: {.column width="60%"}
-
 ![](../img/p_h_diagram.png){width="100%"}
-
 :::
 
 ::::
 
-::: {.fragment style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.6em; position: absolute; top: 60%;" }
-Analiza typowego obiegu chłodniczego:
+## <i class="bi bi-snow2"></i> Obieg chłodniczy na wykresie p-h {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+::: {.panel .panel-blue}
+**Analiza typowego obiegu chłodniczego:**
 
 1. Parowanie: Pozioma linia w prawo (pobieranie ciepła $q_d = \Delta h$).
 2. Sprężanie: Ukośna linia w górę wzdłuż izentropy (praca techniczna $l_t = -\Delta h$; praca napędowa sprężarki $|l_t| = \Delta h$).
 3. Skraplanie: Pozioma linia w lewo (oddawanie ciepła $q_w=\Delta h$).
 4. Dławienie: Pionowa linia w dół (stała entalpia).
-
-Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X.
 :::
 
----
+::: {.callout-tip .fragment title="Dlaczego p-h?"}
+Dzięki temu, że entalpia jest na osi poziomej, ilości ciepła i pracy (np. efekt chłodniczy, moc sprężarki) odczytuje się bezpośrednio jako długości odcinków na osi X.
+:::
+:::
 
-## <i class="bi bi-cloud-fog"></i> 6. Para Przegrzana 
+::: {.column width="45%"}
+![](../img/p_h_diagram.png){width="100%"}
+:::
+
+::::
+
+## <i class="bi bi-cloud-fog"></i> 6. Para Przegrzana
 
 ### Powyżej Linii Nasycenia
 
 Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu** ($T > T_s$).
 
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-amber}
 **Zastosowanie w energetyce (Obieg Rankine'a):**
 
 1.  Zwiększenie sprawności (wyższa średnia temp. doprowadzania ciepła).
 2.  Ochrona turbiny (mniejsze zawilgocenie w ostatnich stopniach).
+:::
+:::
 
+::: {.column width="50%"}
+::: {.panel .panel-blue}
 **Cechy fizyczne:**
 
 *   Zachowuje się coraz bardziej jak **gaz doskonały** im **wyższa temperatura** i **niższe ciśnienie**.
 *   W obszarze dalekim od nasycenia: $\Delta h \approx c_p \Delta T$ (jak dla gazu doskonałego). Sama wartość $h$ z tablic zależy od przyjętego stanu odniesienia, więc $h \neq c_p T$.
+:::
+:::
+:::::
 
-
----
-
-## <i class="bi bi-clipboard-check"></i> Podsumowanie W5 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie W5
 
 1.  **Przemiany fazowe:** I rodzaju (z $r$) i II rodzaju.
 2.  **Clapeyron-Clausius:** $dp/dT$ zależy od różnicy objętości faz.
@@ -769,6 +706,6 @@ Para o temperaturze wyższej niż temperatura nasycenia **przy danym ciśnieniu*
 4.  **Tablice:** Podstawowe narzędzie pracy. Trzeba umieć rozpoznać stan (ciecz/nasycenie/gaz) i wybrać odpowiednią tabelę.
 5.  **Mollier (h-s):** Niezastąpiony do szybkiej analizy procesów w turbinach.
 
-### Zadanie Do Samodzielnego Wykonania
-
+::: {.callout-note title="Zadanie Do Samodzielnego Wykonania"}
 Znajdź wykres h-s pary wodnej w internecie i znajdź punkt: $p=1$ bar, $x=0{,}9$. Odczytaj entalpię.
+:::

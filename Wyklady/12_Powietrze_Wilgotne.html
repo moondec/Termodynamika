@@ -6,8 +6,8 @@
 <script src="12_Powietrze_Wilgotne_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="12_Powietrze_Wilgotne_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="12_Powietrze_Wilgotne_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="12_Powietrze_Wilgotne_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="12_Powietrze_Wilgotne_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W12: Powietrze Wilgotne</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="12_Powietrze_Wilgotne_files/libs/revealjs/dist/theme/quarto-de9354c8cd4fbc190d194296254da49a.css">
+  <link rel="stylesheet" href="12_Powietrze_Wilgotne_files/libs/revealjs/dist/theme/quarto-4953c6c1d8f81f9d270ec2ff669a6b96.css">
   <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="12_Powietrze_Wilgotne_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +159,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"> <img src="../img/logo_wisim.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -178,21 +178,19 @@
 <li><strong>Bilans Masy i Energii</strong></li>
 </ol>
 </section>
-<section id="skład-powietrza-wilgotnego" class="slide level2" style="font-size: 0.95em;">
+<section id="skład-powietrza-wilgotnego" class="slide level2 small">
 <h2><i class="bi bi-droplet"></i> 1. Skład Powietrza Wilgotnego</h2>
-<div style="font-size: .9em;">
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-content">
-<p><strong>Powietrze wilgotne</strong> to jednorodna mieszanina gazów zbliżonych do doskonałych (<span class="math inline">\(N_2, O_2, Ar\)</span>) oraz <strong>pary wodnej</strong>.</p>
+<p><strong>Powietrze wilgotne</strong> to jednorodna mieszanina gazów zbliżonych do doskonałych (<span class="nowrap">N<sub>2</sub></span>, <span class="nowrap">O<sub>2</sub></span>, Ar) oraz <strong>pary wodnej</strong>.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="fragment" title="Prawo Daltona" style="font-size: .9em;">
+<div class="fragment" title="Prawo Daltona">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -202,22 +200,22 @@
 <p><strong>Prawo Daltona</strong></p>
 </div>
 <div class="callout-content">
-<p>Ciśnienie całkowite (barometryczne) jest sumą ciśnień cząstkowych: <span class="math display">\[ p = p_g + p_p \]</span> Gdzie:</p>
+<p>Ciśnienie całkowite (barometryczne) jest sumą ciśnień cząstkowych: <span class="math display">\[ p = p_g + p_p \]</span></p>
 <p><span class="math inline">\(p_g\)</span> – ciśnienie cząstkowe powietrza suchego; <span class="math inline">\(p_p\)</span> – ciśnienie cząstkowe pary wodnej.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: .9em;">
-<h3 id="stan-pary-wodnej">Stan pary wodnej:</h3>
+<div class="fragment panel panel-blue">
+<p><strong>Stan pary wodnej:</strong></p>
 <ul>
-<li><strong>Para przegrzana:</strong> <span class="math inline">\(p_p &lt; p_{\text{nasycenia}}\)</span> (Typowy stan w pomieszczeniu).</li>
+<li><strong>Para przegrzana:</strong> <span class="math inline">\(p_p &lt; p_{\text{nasycenia}}\)</span> (typowy stan w pomieszczeniu).</li>
 <li><strong>Para nasycona:</strong> <span class="math inline">\(p_p = p_{\text{nasycenia}}\)</span> (<span class="math inline">\(\varphi = 100\%\)</span>).</li>
-<li><strong>Mgła:</strong> Powietrze przesycone (zawiera kropelki cieczy).</li>
+<li><strong>Mgła:</strong> powietrze przesycone (zawiera kropelki cieczy).</li>
 </ul>
 </div>
 </section>
-<section id="parametry-wilgotności" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" style="font-size: 0.85em;">
+<section id="parametry-wilgotności" class="slide level2 small" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
 <h2 data-id="quarto-animate-title"><i class="bi bi-cloud-fog"></i> 2. Parametry Wilgotności</h2>
 <p>Inżynierowie (i nie tylko) opisują wilgotność powietrza za pomocą trzech wielkości: <span class="math inline">\(\varphi\)</span>, <span class="math inline">\(g\)</span> i <span class="math inline">\(X\)</span>.</p>
 <div title="Wilgotność Względna (Relative Humidity)">
@@ -231,17 +229,15 @@
 </div>
 <div class="callout-content">
 <p>Określa, jak blisko jesteśmy stanu nasycenia (mgły). <span class="math display">\[ \varphi = \frac{p_p}{p_{sat}(T)} \cdot 100\% \]</span></p>
-<div style="font-size: .7em;">
 <ul>
-<li><span class="math inline">\(\varphi = 0\%\)</span>: Powietrze suche.</li>
-<li><span class="math inline">\(\varphi = 100\%\)</span>: Powietrze nasycone (<span class="math inline">\(t = t_r\)</span>, temperatura punktu rosy).</li>
+<li><span class="math inline">\(\varphi = 0\%\)</span>: powietrze suche.</li>
+<li><span class="math inline">\(\varphi = 100\%\)</span>: powietrze nasycone (<span class="math inline">\(t = t_r\)</span>, temperatura punktu rosy).</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="fragment" title="Wilgotność Bezwzględna" style="font-size: .9em;">
+<div class="fragment" title="Wilgotność Bezwzględna">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -251,7 +247,7 @@
 <p><strong>Wilgotność Bezwzględna</strong></p>
 </div>
 <div class="callout-content">
-<p>Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza. <span class="math display">\[ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad [\frac{kg_{\mathrm{H_2O}}}{m^3}] \]</span></p>
+<p>Zdefiniowana jako stosunek masy pary wodnej do objętości powietrza. <span class="math display">\[ g = \frac{m_p}{V} = \frac{p_p}{R_p T} \quad \left[\frac{\text{kg}_{\mathrm{H_2O}}}{\text{m}^3}\right] \]</span></p>
 </div>
 </div>
 </div>
@@ -269,14 +265,16 @@
 <p><strong>Stopień Zawilżenia (Mixing Ratio)</strong></p>
 </div>
 <div class="callout-content">
-<p>Stosunek masy pary (<span class="math inline">\(m_p\)</span>) do masy powietrza <strong>suchego</strong> (<span class="math inline">\(m_g\)</span>). <span class="math display">\[ X = \frac{m_p}{m_g} = 0{,}622 \frac{p_p}{p - p_p} \quad [\frac{kg_{\mathrm{H_2O}}}{kg_{\text{suchego}}}] \]</span></p>
+<p>Stosunek masy pary (<span class="math inline">\(m_p\)</span>) do masy powietrza <strong>suchego</strong> (<span class="math inline">\(m_g\)</span>). <span class="math display">\[ X = \frac{m_p}{m_g} = 0{,}622 \frac{p_p}{p - p_p} \quad \left[\frac{\text{kg}_{\mathrm{H_2O}}}{\text{kg}_{\text{suchego}}}\right] \]</span></p>
 <ul>
-<li><strong>Kluczowe:</strong> W procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc <strong><span class="math inline">\(X = const\)</span></strong> (jeśli nie nawilżamy).</li>
+<li><strong>Kluczowe:</strong> w procesach ogrzewania/chłodzenia masa suchego powietrza jest stała, więc <strong><span class="math inline">\(X = const\)</span></strong> (jeśli nie nawilżamy).</li>
 </ul>
-<p>0,622 to stosunek mas molowych pary wodnej do powietrza suchego: <span class="math display">\[ \frac{M_{H_2O}}{M_{\text{powietrza}}} = \frac{18{,}015}{28{,}97} \approx 0{,}622\]</span></p>
 </div>
 </div>
 </div>
+</div>
+<div class="fragment panel panel-blue">
+<p>0,622 to stosunek mas molowych pary wodnej do powietrza suchego: <span class="math display">\[ \frac{M_{\mathrm{H_2O}}}{M_{\text{powietrza}}} = \frac{18{,}015}{28{,}97} \approx 0{,}622 \]</span></p>
 </div>
 </section>
 <section id="entalpia-h" class="slide level2">
@@ -292,102 +290,110 @@
 </div>
 </div>
 <p><span class="math display">\[ h = h_{\text{powietrza}} + X \cdot h_{\text{pary}} \]</span></p>
-<div class="fragment">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Przyjmując <span class="math inline">\(0^\circ C\)</span> jako punkt odniesienia (<span class="math inline">\(t\)</span> w <span class="math inline">\(^\circ C\)</span>): <span class="math display">\[ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad [\frac{kJ}{kg}] \]</span></p>
+<div class="fragment panel panel-blue">
+<p>Przyjmując <span class="math inline">\(0\,^\circ\text{C}\)</span> jako punkt odniesienia (<span class="math inline">\(t\)</span> w <span class="math inline">\(^\circ\text{C}\)</span>): <span class="math display">\[ h = (1{,}005 \cdot t) + X \cdot (2501 + 1{,}86 \cdot t) \quad \left[\frac{\text{kJ}}{\text{kg}}\right] \]</span></p>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment">
+<div class="fragment panel panel-amber">
 <p><strong>Składniki:</strong></p>
 <ol type="1">
-<li><strong>1,005:</strong> Ciepło właściwe powietrza suchego (<span class="math inline">\(c_p\)</span>) <span class="math inline">\([kJ/(kg \cdot K)]\)</span>.</li>
-<li><strong>2501:</strong> Ciepło parowania wody (<span class="math inline">\(r\)</span>) w <span class="math inline">\(0^\circ C\)</span> <span class="math inline">\([kJ/kg]\)</span>.</li>
-<li><strong>1,86:</strong> Ciepło właściwe pary wodnej (<span class="math inline">\(c_{p,p}\)</span>) <span class="math inline">\([kJ/(kg \cdot K)]\)</span>.</li>
+<li><strong>1,005:</strong> ciepło właściwe powietrza suchego (<span class="math inline">\(c_p\)</span>) <span class="math inline">\([\text{kJ}/(\text{kg} \cdot \text{K})]\)</span>.</li>
+<li><strong>2501:</strong> ciepło parowania wody (<span class="math inline">\(r\)</span>) w <span class="math inline">\(0\,^\circ\text{C}\)</span> <span class="math inline">\([\text{kJ}/\text{kg}]\)</span>.</li>
+<li><strong>1,86:</strong> ciepło właściwe pary wodnej (<span class="math inline">\(c_{p,p}\)</span>) <span class="math inline">\([\text{kJ}/(\text{kg} \cdot \text{K})]\)</span>.</li>
 </ol>
 </div>
 </section>
-<section id="wykres-molliera-h-x" class="slide level2" style="font-size: 0.85em;">
+<section id="wykres-molliera-h-x" class="slide level2 small">
 <h2><i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X</h2>
 <p>Standard w Europie Środkowej. Układ <strong>ukośnokątny</strong> (rozciąga obszar nienasycony).</p>
-<div>
+<div class="panel panel-blue">
 <ul>
-<li><strong>Oś pionowa (<span class="math inline">\(X = 0\)</span>):</strong> Entalpia <span class="math inline">\(h\)</span> (układ ukośnokątny); dla powietrza suchego <span class="math inline">\(h = c_p t\)</span>, dlatego opisuje się ją pomocniczą skalą temperatury <span class="math inline">\(t\)</span> [°C].</li>
+<li><strong>Oś pionowa (<span class="math inline">\(X = 0\)</span>):</strong> entalpia <span class="math inline">\(h\)</span> (układ ukośnokątny); dla powietrza suchego <span class="math inline">\(h = c_p t\)</span>, dlatego opisuje się ją pomocniczą skalą temperatury <span class="math inline">\(t\)</span> [°C].</li>
 </ul>
 </div>
-<div class="fragment fade-in">
+<div class="fragment fade-in panel panel-blue">
 <ul>
-<li><strong>Oś pozioma:</strong> Stopień zawilżenia <span class="math inline">\(X\)</span> [g/kg].</li>
+<li><strong>Oś pozioma:</strong> stopień zawilżenia <span class="math inline">\(X\)</span> [g/kg].</li>
 </ul>
 </div>
-<div class="fragment fade-in">
+<div class="fragment fade-in panel panel-green">
 <ul>
-<li><strong>Izentalpy (<span class="math inline">\(h=const\)</span>):</strong> Linie ukośne (biegną pod kątem ~135°, stąd “ukośność wykresu”).</li>
+<li><strong>Izentalpy (<span class="math inline">\(h = const\)</span>):</strong> linie ukośne (biegną pod kątem ~135°, stąd „ukośność” wykresu).</li>
 </ul>
 </div>
-<div class="fragment fade-in">
+<div class="fragment fade-in panel panel-amber">
 <ul>
-<li><strong>Krzywa graniczna (<span class="math inline">\(\varphi=100\%\)</span>):</strong> Oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).</li>
+<li><strong>Krzywa graniczna (<span class="math inline">\(\varphi = 100\%\)</span>):</strong> oddziela obszar pary przegrzanej (góra) od obszaru mgły (dół).</li>
 </ul>
 </div>
-<h3 class="fragment" id="interpretacja-linii">Interpretacja Linii:</h3>
-<div class="fragment" style="font-size: .8em;">
+</section>
+<section id="wykres-molliera-h-x-interpretacja-linii" class="slide level2 small">
+<h2><i class="bi bi-graph-up"></i> 4. Wykres Molliera h-X – interpretacja linii</h2>
+<div class="panel panel-amber">
 <ol type="1">
-<li><strong>Izotermy (<span class="math inline">\(t\)</span>):</strong> Lekko wznoszą się w prawo, a po zetknięciu z krzywą <span class="math inline">\(\varphi = 100\%\)</span> opadają niemal równolegle do izentalp.</li>
-<li><strong>Krzywe <span class="math inline">\(\varphi\)</span>:</strong> Układają się “bananowo” nad krzywą graniczną.</li>
+<li><strong>Izotermy (<span class="math inline">\(t\)</span>):</strong> lekko wznoszą się w prawo, a po zetknięciu z krzywą <span class="math inline">\(\varphi = 100\%\)</span> opadają niemal równolegle do izentalp.</li>
+</ol>
+</div>
+<div class="fragment panel panel-blue">
+<ol start="2" type="1">
+<li><strong>Krzywe <span class="math inline">\(\varphi\)</span>:</strong> układają się „bananowo” nad krzywą graniczną.</li>
+</ol>
+</div>
+<div class="fragment panel panel-green">
+<ol start="3" type="1">
 <li><strong>Izentalpy (<span class="math inline">\(h\)</span>):</strong> nachylone pod kątem ~135°.</li>
-<li><strong>Podziałka brzegowa (kątowa)</strong> <span class="math inline">\(\varepsilon = \Delta h/\Delta X\)</span> na obrzeżu wykresu: prosta z “bieguna” do danej wartości <span class="math inline">\(\varepsilon\)</span> wyznacza kierunek wektora przemiany (zależny m.in. od medium nawilżającego).</li>
+</ol>
+</div>
+<div class="fragment panel panel-violet">
+<ol start="4" type="1">
+<li><strong>Podziałka brzegowa (kątowa)</strong> <span class="math inline">\(\varepsilon = \Delta h/\Delta X\)</span> na obrzeżu wykresu: prosta z „bieguna” do danej wartości <span class="math inline">\(\varepsilon\)</span> wyznacza kierunek wektora przemiany (zależny m.in. od medium nawilżającego).</li>
 </ol>
 </div>
 </section>
 <section id="wizualizacja-wykres-h-x" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Wizualizacja: Wykres h-X</h2>
 
-<img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-all-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="przemiany-charakterystyczne" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out" style="font-size: 0.9em;">
+<img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-all-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="przemiany-charakterystyczne" class="slide level2 small" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
 <h2 data-id="quarto-animate-title"><i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne</h2>
-<div title="1. Ogrzewanie Izobaryczne (X=const)" style="font-size: .9em;">
+<div title="1. Ogrzewanie izobaryczne (X = const)">
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Ogrzewanie Izobaryczne (X=const)</strong></p>
+<p><strong>Ogrzewanie izobaryczne (X = const)</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>Proces:</strong> Nagrzewnica.</li>
-<li><strong>Wykres:</strong> Pionowo do góry.</li>
-<li><strong>Efekt:</strong> Temperatura rośnie, <strong>wilgotność względna <span class="math inline">\(\varphi\)</span> maleje</strong> (powietrze “schnie”).</li>
+<li><strong>Proces:</strong> nagrzewnica.</li>
+<li><strong>Wykres:</strong> pionowo do góry.</li>
+<li><strong>Efekt:</strong> temperatura rośnie, <strong>wilgotność względna <span class="math inline">\(\varphi\)</span> maleje</strong> (powietrze „schnie”).</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment" title="2. Ochładzanie (X=const)" style="font-size: .9em;">
+<div class="fragment" title="2. Ochładzanie (X = const)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Ochładzanie (X=const)</strong></p>
+<p><strong>Ochładzanie (X = const)</strong></p>
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>Proces:</strong> Chłodnica (powyżej punktu rosy).</li>
-<li><strong>Wykres:</strong> Pionowo w dół.</li>
-<li><strong>Efekt:</strong> <span class="math inline">\(\varphi\)</span> rośnie aż do 100% (Punkt Rosy <span class="math inline">\(t_r\)</span>).</li>
+<li><strong>Proces:</strong> chłodnica (powyżej punktu rosy).</li>
+<li><strong>Wykres:</strong> pionowo w dół.</li>
+<li><strong>Efekt:</strong> <span class="math inline">\(\varphi\)</span> rośnie aż do 100% (punkt rosy <span class="math inline">\(t_r\)</span>).</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment" title="3. Nawilżanie adiabatyczne (h ≈ const)" style="font-size: .9em;">
+<div class="fragment" title="3. Nawilżanie adiabatyczne (h ≈ const)">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -398,9 +404,9 @@
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>Proces:</strong> Kontakt powietrza z wodą (komora zraszania, nawilżacz wodny, suszenie materiału).</li>
-<li><strong>Wykres:</strong> Skośnie w dół (w stronę wyższego X).</li>
-<li><strong>Efekt:</strong> Powietrze się nawilża i ochładza (energia zostaje w układzie).</li>
+<li><strong>Proces:</strong> kontakt powietrza z wodą (komora zraszania, nawilżacz wodny, suszenie materiału).</li>
+<li><strong>Wykres:</strong> skośnie w dół (w stronę wyższego X).</li>
+<li><strong>Efekt:</strong> powietrze się nawilża i ochładza (energia zostaje w układzie).</li>
 </ul>
 </div>
 </div>
@@ -410,10 +416,12 @@
 <section id="przemiany-charakterystyczne-1" class="slide level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
 <h2 data-id="quarto-animate-title"><i class="bi bi-arrow-repeat"></i> 5. Przemiany Charakterystyczne</h2>
 
-<img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/ix-diagram-advanced-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="współczynnik-kierunkowy-przemiany-varepsilon" class="slide level2" style="font-size: 0.75em;">
+<img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/fig-ix-diagram-advanced-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" id="fig-ix-diagram-advanced"><p class="caption">
+Rysunek&nbsp;1: Wykres h-X z trzema przemianami charakterystycznymi (stan początkowy 20 °C, φ = 50 %)
+</p></section>
+<section id="współczynnik-kierunkowy-przemiany-varepsilon" class="slide level2 smaller">
 <h2><i class="bi bi-compass"></i> Współczynnik Kierunkowy Przemiany (<span class="math inline">\(\varepsilon\)</span>)</h2>
-<div title="Współczynnik kierunkowy $\varepsilon$" style="font-size: 0.85em;">
+<div title="Współczynnik kierunkowy $\varepsilon$">
 <div class="callout callout-important callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -423,16 +431,39 @@
 <p><strong>Współczynnik kierunkowy <span class="math inline">\(\varepsilon\)</span></strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(\varepsilon\)</span> określa nachylenie wektora przemiany na wykresie h-X: <span class="math display">\[ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{H_2O}}\right] \]</span></p>
+<p><span class="math inline">\(\varepsilon\)</span> określa nachylenie wektora przemiany na wykresie h-X: <span class="math display">\[ \varepsilon = \frac{\Delta h}{\Delta X} \quad \left[\frac{\text{kJ}}{\text{kg}_{\mathrm{H_2O}}}\right] \]</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Interpretacja fizyczna:</strong></p>
+<div class="column" style="width:58%;">
+<div class="fragment panel panel-blue">
+<p><strong>Bilans energii:</strong> <span class="math display">\[ \dot{m}_g (h_2 - h_1) = \dot{Q} + \dot{m}_w \cdot h_w, \quad \dot{m}_w = \dot{m}_g (X_2 - X_1) \]</span></p>
+<p><strong>Stąd:</strong> <span class="math display">\[ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = \frac{\dot{Q} + \dot{m}_w h_w}{\dot{m}_w} \]</span></p>
+<p>Dla <span class="math inline">\(\dot{Q} = 0\)</span>: <span class="math inline">\(\varepsilon = h_w\)</span> – entalpia właściwa medium dodawanego do powietrza.</p>
+</div>
+</div><div class="column" style="width:42%;">
+<div class="fragment" title="Podziałka brzegowa (kątowa)">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Podziałka brzegowa (kątowa)</strong></p>
+</div>
+<div class="callout-content">
+<p>Kierunek o danym <span class="math inline">\(\varepsilon = \Delta h/\Delta X\)</span> wyznacza prosta z „bieguna” do odpowiedniej wartości na <strong>podziałce brzegowej (kątowej)</strong> na obrzeżu wykresu h-X (<strong>pęk promieni</strong>).</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="współczynnik-kierunkowy-varepsilon-interpretacja" class="slide level2 smaller">
+<h2><i class="bi bi-compass"></i> Współczynnik kierunkowy <span class="math inline">\(\varepsilon\)</span> – interpretacja</h2>
 <p>Bez doprowadzenia ciepła (<span class="math inline">\(\dot{Q} = 0\)</span>): <span class="math inline">\(\varepsilon\)</span> = entalpia właściwa medium dodawanego do powietrza (<span class="math inline">\(h_w\)</span>).</p>
-<div class="fragment" style="font-size: 0.85em;">
 <table class="caption-top">
 <colgroup>
 <col style="width: 32%">
@@ -442,7 +473,7 @@
 <thead>
 <tr class="header">
 <th>Medium</th>
-<th><span class="math inline">\(\varepsilon\)</span></th>
+<th><span class="math inline">\(\varepsilon\)</span> [kJ/kg]</th>
 <th>Kierunek na wykresie</th>
 </tr>
 </thead>
@@ -458,12 +489,12 @@
 <td>w lewo w dół (↙)</td>
 </tr>
 <tr class="odd">
-<td>Woda ciekła (~20°C)</td>
+<td>Woda ciekła (~20 °C)</td>
 <td>≈ 0–100</td>
 <td>wzdłuż izentalpy ↘</td>
 </tr>
 <tr class="even">
-<td>Para nasycona (100°C)</td>
+<td>Para nasycona (100 °C)</td>
 <td>≈ 2676</td>
 <td>prawie poziomo (lekko w górę) →</td>
 </tr>
@@ -479,34 +510,13 @@
 </tr>
 </tbody>
 </table>
+<div class="fragment panel panel-amber panel-center">
 <p>Temperatura rośnie, gdy <span class="math inline">\(\varepsilon &gt; 2501 + 1{,}86\,t\)</span> (nachylenie izotermy).</p>
 </div>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<p><strong>Bilans energii:</strong> <span class="math display">\[ \dot{m}_g (h_2 - h_1) = \dot{Q} + \dot{m}_w \cdot h_w, \quad \dot{m}_w = \dot{m}_g (X_2 - X_1) \]</span></p>
-<p><strong>Stąd:</strong> <span class="math display">\[ \varepsilon = \frac{h_2 - h_1}{X_2 - X_1} = \frac{\dot{Q} + \dot{m}_w h_w}{\dot{m}_w} \]</span></p>
-<p>Dla <span class="math inline">\(\dot{Q} = 0\)</span>: <span class="math inline">\(\varepsilon = h_w\)</span>.</p>
-</div>
-<div class="fragment" title="Podziałka brzegowa (kątowa)" style="font-size: 0.85em;">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Podziałka brzegowa (kątowa)</strong></p>
-</div>
-<div class="callout-content">
-<p>Kierunek o danym <span class="math inline">\(\varepsilon = \Delta h/\Delta X\)</span> wyznacza prosta z “bieguna” do odpowiedniej wartości na <strong>podziałce brzegowej (kątowej)</strong> na obrzeżu wykresu h-X (<strong>pęk promieni</strong>).</p>
-</div>
-</div>
-</div>
-</div>
-</div></div>
 </section>
-<section id="przemiana-4-mieszanie-strumieni-powietrza" class="slide level2" style="font-size: 0.75em;">
+<section id="przemiana-4-mieszanie-strumieni-powietrza" class="slide level2 smaller">
 <h2><i class="bi bi-shuffle"></i> Przemiana 4: Mieszanie Strumieni Powietrza</h2>
-<div title="Zasada" style="font-size: 0.85em;">
+<div title="Zasada">
 <div class="callout callout-note callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -516,18 +526,20 @@
 <p><strong>Zasada</strong></p>
 </div>
 <div class="callout-content">
-<p>Stan wynikowy (M) leży <strong>na odcinku 1-2</strong>. Położenie zależy od stosunku masowego: <span class="math inline">\(\frac{\overline{1M}}{\overline{M2}} = \frac{\dot{m}_{g,2}}{\dot{m}_{g,1}}\)</span></p>
+<p>Stan wynikowy (M) leży <strong>na odcinku 1-2</strong>. Położenie zależy od stosunku masowego: <span class="math inline">\(\dfrac{\overline{1M}}{\overline{M2}} = \dfrac{\dot{m}_{g,2}}{\dot{m}_{g,1}}\)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:35%;">
+<div class="column" style="width:44%;">
+<div class="panel panel-blue">
 <p><strong>Bilanse:</strong></p>
 <p><span class="math display">\[ \dot{m}_{g,M} = \dot{m}_{g,1} + \dot{m}_{g,2} \]</span></p>
 <p><span class="math display">\[ X_M = \frac{\dot{m}_{g,1} X_1 + \dot{m}_{g,2} X_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} \]</span></p>
 <p><span class="math display">\[ h_M = \frac{\dot{m}_{g,1} h_1 + \dot{m}_{g,2} h_2}{\dot{m}_{g,1} + \dot{m}_{g,2}} \]</span></p>
-<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+</div>
+<div class="fragment" title="Zastosowania">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -537,26 +549,27 @@
 <p><strong>Zastosowania</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Klimatyzacja:</strong> Mieszanie powietrza świeżego z recyrkulowanym w komorze mieszania centrali. <strong>Wentylacja:</strong> Rozcieńczanie zanieczyszczeń. <em>(Uwaga: rekuperacja to nie mieszanie — w rekuperatorze strumienie wymieniają ciepło przez przegrodę.)</em></p>
+<p><strong>Klimatyzacja:</strong> mieszanie powietrza świeżego z recyrkulowanym w komorze mieszania centrali. <strong>Wentylacja:</strong> rozcieńczanie zanieczyszczeń.</p>
 </div>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:65%;">
+</div><div class="column" style="width:56%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/mix-two-streams-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/mix-two-streams-1.svg" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
 </figure>
 </div>
 </div>
 </div>
+<p><span class="small-note">Uwaga: rekuperacja to nie mieszanie — w rekuperatorze strumienie wymieniają ciepło przez przegrodę.</span></p>
 </div></div>
 </section>
-<section id="przemiana-5-nawilżanie-parą-wodną" class="slide level2" style="font-size: 0.9em;">
+<section id="przemiana-5-nawilżanie-parą-wodną" class="slide level2 smaller">
 <h2><i class="bi bi-moisture"></i> Przemiana 5: Nawilżanie Parą Wodną</h2>
-<div title="Zasada" style="font-size: 0.85em;">
+<div title="Zasada">
 <div class="callout callout-note callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -572,14 +585,13 @@
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:38%;">
+<div class="column" style="width:44%;">
+<div class="panel panel-blue">
 <p><strong>Bilanse:</strong></p>
 <p><span class="math display">\[ \Delta X = \frac{\dot{m}_p}{\dot{m}_g} \]</span></p>
 <p><span class="math display">\[ \Delta h = h_w \cdot \Delta X \]</span></p>
-<div class="fragment">
-<p>Temperatura prawie stała!</p>
 </div>
-<div class="fragment" title="Zastosowania" style="font-size: 0.65em;">
+<div class="fragment" title="Zastosowania">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -589,26 +601,29 @@
 <p><strong>Zastosowania</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Klimatyzacja zimowa:</strong> Nawilżanie pomieszczeń ogrzewanych. <strong>Przemysł tekstylny:</strong> Utrzymanie wilgotności włókien. <strong>Drukarnie:</strong> Zapobieganie elektryzowaniu papieru.</p>
+<p><strong>Klimatyzacja zimowa:</strong> nawilżanie pomieszczeń ogrzewanych. <strong>Przemysł tekstylny:</strong> utrzymanie wilgotności włókien. <strong>Drukarnie:</strong> zapobieganie elektryzowaniu papieru.</p>
 </div>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:62%;">
+</div><div class="column" style="width:56%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/steam-humidification-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/steam-humidification-1.svg" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="fragment panel panel-amber panel-center">
+<p>Temperatura prawie stała!</p>
+</div>
 </div></div>
 </section>
-<section id="przykład-cykl-suszarniczy" class="slide level2" style="font-size: 0.75em;">
+<section id="przykład-cykl-suszarniczy" class="slide level2 smaller">
 <h2><i class="bi bi-arrow-repeat"></i> Przykład: Cykl Suszarniczy</h2>
-<div title="Zasada" style="font-size: 0.85em;">
+<div title="Zasada">
 <div class="callout callout-note callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -618,20 +633,20 @@
 <p><strong>Zasada</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>(A)</strong> Podgrzanie powietrza (<span class="math inline">\(X=const\)</span>, pionowo). <strong>(B)</strong> Suszenie materiału (<span class="math inline">\(h \approx const\)</span>, wzdłuż izentalpy).</p>
+<p><strong>(A)</strong> Podgrzanie powietrza (<span class="math inline">\(X_A = X_0\)</span>, <span class="math inline">\(t \uparrow\)</span> – pionowo). <strong>(B)</strong> Suszenie materiału (<span class="math inline">\(h_B \approx h_A\)</span>, <span class="math inline">\(X \uparrow\)</span>, <span class="math inline">\(t \downarrow\)</span> – wzdłuż izentalpy).</p>
 </div>
 </div>
 </div>
 </div>
-<div class="mmd-fit" style="height: 150px;">
+<div class="mmd-fit" style="height: 130px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 736.890625 82.5999984741211" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510170_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510170_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510170_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510170_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973510170_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973510170_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790973510170_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P0_PA_0" d="M174.25,52.3L186.311,52.3C198.372,52.3,222.495,52.3,245.951,52.3C269.406,52.3,292.195,52.3,303.59,52.3L314.984,52.3"></path><path marker-end="url(#mermaid-1790973510170_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PA_PB_0" d="M458.469,52.3L469.38,52.3C480.292,52.3,502.115,52.3,523.271,52.3C544.427,52.3,564.917,52.3,575.161,52.3L585.406,52.3"></path></g><g class="edgeLabels"><g transform="translate(246.6171875, 52.29999923706055)" class="edgeLabel"><g transform="translate(-47.3671875, -20.299999237060547)" class="label"><g><rect height="40.599998474121094" width="94.734375" y="-1" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Nagrzewnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">X=const</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ↑t</tspan></tspan></text></g></g></g><g transform="translate(523.9375, 52.29999923706055)" class="edgeLabel"><g transform="translate(-40.46875, -20.299999237060547)" class="label"><g><rect height="40.599998474121094" width="80.9375" y="-1" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Suszarnia</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">h≈const</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ↑X</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(91.125, 52.29999923706055)" id="flowchart-P0-0" class="node default"><rect height="66.5999984741211" width="166.25" y="-33.29999923706055" x="-83.125" style="fill:#e8eaf6 !important;stroke:#3f51b5 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Powietrze</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> 0</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=20°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ=50%</tspan></tspan></text></g></g></g><g transform="translate(388.7265625, 52.29999923706055)" id="flowchart-PA-1" class="node default"><rect height="66.5999984741211" width="139.484375" y="-33.29999923706055" x="-69.7421875" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Punkt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> A</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=60°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ↓</tspan></tspan></text></g></g></g><g transform="translate(659.1484375, 52.29999923706055)" id="flowchart-PB-3" class="node default"><rect height="66.5999984741211" width="139.484375" y="-33.29999923706055" x="-69.7421875" style="fill:#e0f7fa !important;stroke:#00bcd4 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Punkt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> B</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=28°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ↑</tspan></tspan></text></g></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510170_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 739.9609375 82.5999984741211" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755476046_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755476046_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755476046_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755476046_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755476046_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755476046_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755476046_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P0_PA_0" d="M174.648,52.3L186.842,52.3C199.035,52.3,223.422,52.3,241.712,52.3C260.002,52.3,272.195,52.3,283.722,52.3C295.249,52.3,306.109,52.3,311.539,52.3L316.969,52.3"></path><path marker-end="url(#mermaid-1791755476046_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PA_PB_1" d="M460.453,52.3L471.455,52.3C482.457,52.3,504.461,52.3,520.964,52.3C537.467,52.3,548.469,52.3,558.804,52.3C569.139,52.3,578.808,52.3,583.642,52.3L588.477,52.3"></path></g><g class="edgeLabels"><g transform="translate(247.80859375, 52.29999923706055)" class="edgeLabel"><g transform="translate(-48.16015625, -20.299999237060547)" class="label"><g><rect height="40.599998474121094" width="96.3203125" y="-2" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Nagrzewnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">X=const</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ↑t</tspan></tspan></text></g></g></g><g transform="translate(526.46484375, 52.29999923706055)" class="edgeLabel"><g transform="translate(-41.01171875, -20.299999237060547)" class="label"><g><rect height="40.599998474121094" width="82.0234375" y="-2" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Suszarnia</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">h≈const</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ↑X</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(91.32421875, 52.29999923706055)" id="flowchart-P0-0" class="node default"><rect height="66.5999984741211" width="166.6484375" y="-33.29999923706055" x="-83.32421875" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Powietrze</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> 0</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=20°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ=50%</tspan></tspan></text></g></g></g><g transform="translate(390.7109375, 52.29999923706055)" id="flowchart-PA-1" class="node default"><rect height="66.5999984741211" width="139.484375" y="-33.29999923706055" x="-69.7421875" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Punkt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> A</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=60°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ↓</tspan></tspan></text></g></g></g><g transform="translate(662.21875, 52.29999923706055)" id="flowchart-PB-3" class="node default"><rect height="66.5999984741211" width="139.484375" y="-33.29999923706055" x="-69.7421875" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Punkt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> B</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">t=28°C,</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> φ↑</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -640,14 +655,12 @@
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:35%;">
-<p><strong>Etap A:</strong> <span class="math inline">\(X_A = X_0\)</span>, <span class="math inline">\(t \uparrow\)</span></p>
-<p><strong>Etap B:</strong> <span class="math inline">\(h_B \approx h_A\)</span>, <span class="math inline">\(X \uparrow\)</span>, <span class="math inline">\(t \downarrow\)</span></p>
-<div class="fragment">
+<div class="column" style="width:44%;">
+<div class="panel panel-green">
 <p>Odparowana woda: <span class="math inline">\(\dot{m}_w = \dot{m}_g (X_B - X_0)\)</span></p>
-<p>Jednostkowe zużycie powietrza: <span class="math inline">\(l = \frac{\dot{m}_g}{\dot{m}_w} = \frac{1}{X_B - X_0}\)</span> [kg pow. suchego/kg wody], <span class="math inline">\(X\)</span> w kg/kg</p>
+<p>Jednostkowe zużycie powietrza: <span class="math inline">\(l = \dfrac{\dot{m}_g}{\dot{m}_w} = \dfrac{1}{X_B - X_0}\)</span> [kg pow. suchego/kg wody], <span class="math inline">\(X\)</span> w kg/kg</p>
 </div>
-<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="fragment" title="Zastosowania">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -657,26 +670,26 @@
 <p><strong>Zastosowania</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Suszarnie przemysłowe:</strong> Drewno, zboże, owoce. <strong>Przemysł spożywczy:</strong> Makaron, mąka, mleko w proszku. <strong>Budownictwo:</strong> Suszenie tynków i wylewek.</p>
+<p><strong>Suszarnie przemysłowe:</strong> drewno, zboże, owoce. <strong>Przemysł spożywczy:</strong> makaron, mąka, mleko w proszku. <strong>Budownictwo:</strong> suszenie tynków i wylewek.</p>
 </div>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:65%;">
+</div><div class="column" style="width:56%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/drying-cycle-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/drying-cycle-1.svg" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="nawilżanie-adiabatyczne-wodą" class="slide level2">
+<section id="nawilżanie-adiabatyczne-wodą" class="slide level2 small">
 <h2><i class="bi bi-droplet-half"></i> Nawilżanie Adiabatyczne (Wodą)</h2>
-<div title="Zasada" style="font-size: 0.85em;">
+<div title="Zasada">
 <div class="callout callout-note callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -693,12 +706,14 @@
 </div>
 <div class="columns">
 <div class="column" style="width:35%;">
+<div class="panel panel-blue">
 <p><strong>Bilans:</strong></p>
 <p><span class="math display">\[ h_1 \approx h_2 \]</span></p>
-<div class="fragment">
+</div>
+<div class="fragment panel panel-amber panel-center">
 <p>Chłodzenie ewaporacyjne!</p>
 </div>
-<div class="fragment" title="Zastosowania" style="font-size: 0.7em;">
+<div class="fragment" title="Zastosowania">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -708,7 +723,7 @@
 <p><strong>Zastosowania</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Chłodnie kominowe:</strong> Odprowadzanie ciepła z elektrowni. <strong>Klimatyzatory ewaporacyjne:</strong> Tanie chłodzenie w suchym klimacie. <strong>Przemysł tekstylny:</strong> Nawilżanie hal produkcyjnych.</p>
+<p><strong>Chłodnie kominowe:</strong> odprowadzanie ciepła z elektrowni. <strong>Klimatyzatory ewaporacyjne:</strong> tanie chłodzenie w suchym klimacie. <strong>Przemysł tekstylny:</strong> nawilżanie hal produkcyjnych.</p>
 </div>
 </div>
 </div>
@@ -718,7 +733,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/adiabatic-humidification-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+<p><img data-src="12_Powietrze_Wilgotne_files/figure-revealjs/adiabatic-humidification-1.svg" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
 </figure>
 </div>
 </div>
@@ -726,42 +741,44 @@
 </div></div>
 </section>
 <section id="pomiar-parametrów-powietrza" class="slide level2">
-<h2><i class="bi bi-cloud-fog"></i> 6. Pomiar Parametrów Powietrza</h2>
+<h2><i class="bi bi-thermometer"></i> 6. Pomiar Parametrów Powietrza</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="psychrometr-augustaassmanna">Psychrometr Augusta/Assmanna</h3>
+<div class="panel panel-blue">
+<p><span class="panel-title">Psychrometr Augusta/Assmanna</span></p>
 <p>Dwa termometry:</p>
 <ol type="1">
-<li><strong>Suchy (<span class="math inline">\(t\)</span>):</strong> Mierzy temp. powietrza.</li>
-<li><strong>Zwilżony (<span class="math inline">\(t_m\)</span>):</strong> Owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.</li>
+<li><strong>Suchy (<span class="math inline">\(t\)</span>):</strong> mierzy temperaturę powietrza.</li>
+<li><strong>Zwilżony (<span class="math inline">\(t_m\)</span>):</strong> owinięty wilgotną tkaniną. Woda parując, chłodzi termometr.</li>
 </ol>
 <ul>
-<li><strong>Zasada:</strong> Im suchsze powietrze, tym intensywniejsze parowanie i niższa <span class="math inline">\(t_m\)</span>.</li>
+<li><strong>Zasada:</strong> im suchsze powietrze, tym intensywniejsze parowanie i niższa <span class="math inline">\(t_m\)</span>.</li>
 <li>Różnica psychrometryczna <span class="math inline">\((t - t_m)\)</span> pozwala odczytać <span class="math inline">\(\varphi\)</span>.</li>
 </ul>
+</div>
 </div><div class="column" style="width:50%;">
-<h3 id="higrometry">Higrometry</h3>
-<div class="fragment">
+<div class="fragment panel panel-amber">
+<p><span class="panel-title">Higrometry</span></p>
 <ul>
-<li><strong>Włosowe:</strong> (Historyczne) Włos ludzki wydłuża się pod wpływem wilgoci.</li>
-<li><strong>Pojemnościowe:</strong> Zmiana stałej dielektrycznej polimeru.</li>
-<li><strong>Punktu rosy:</strong> Lusterko schładzane aż do pojawienia się rosy.</li>
+<li><strong>Włosowe:</strong> (historyczne) włos ludzki wydłuża się pod wpływem wilgoci.</li>
+<li><strong>Pojemnościowe:</strong> zmiana stałej dielektrycznej polimeru.</li>
+<li><strong>Punktu rosy:</strong> lusterko schładzane aż do pojawienia się rosy.</li>
 </ul>
 </div>
 </div></div>
 </section>
 <section id="aparaty-i-zastosowania" class="slide level2">
-<h2><i class="bi bi-cloud-fog"></i> Aparaty i Zastosowania</h2>
+<h2><i class="bi bi-fan"></i> Aparaty i Zastosowania</h2>
 <h3 id="urządzenia-ahu-air-handling-unit">Urządzenia (AHU — Air Handling Unit)</h3>
-<div class="mmd-fit" style="height: 150px;">
+<div class="mmd-fit" style="height: 230px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 1261.734375 84.5999984741211" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
-<style>#mermaid-figure-2{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-2 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .rough-node .label,#mermaid-figure-2 .node .label,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 rect.text{fill:none;stroke-width:0;}#mermaid-figure-2 .icon-shape,#mermaid-figure-2 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .icon-shape p,#mermaid-figure-2 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-2 .icon-shape rect,#mermaid-figure-2 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510345_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510345_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510345_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510345_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973510345_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790973510345_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_IN_F_0" d="M164.656,53.3L168.823,53.3C172.99,53.3,181.323,53.3,188.99,53.3C196.656,53.3,203.656,53.3,207.156,53.3L210.656,53.3"></path><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_F_N_0" d="M306.672,53.3L310.839,53.3C315.005,53.3,323.339,53.3,331.005,53.3C338.672,53.3,345.672,53.3,349.172,53.3L352.672,53.3"></path><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_N_CH_0" d="M511.859,53.3L516.026,53.3C520.193,53.3,528.526,53.3,536.193,53.3C543.859,53.3,550.859,53.3,554.359,53.3L557.859,53.3"></path><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_CH_NAW_0" d="M695.125,53.3L699.292,53.3C703.458,53.3,711.792,53.3,719.458,53.3C727.125,53.3,734.125,53.3,737.625,53.3L741.125,53.3"></path><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_NAW_W_0" d="M879.984,53.3L884.151,53.3C888.318,53.3,896.651,53.3,904.318,53.3C911.984,53.3,918.984,53.3,922.484,53.3L925.984,53.3"></path><path marker-end="url(#mermaid-1790973510345_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_W_OUT_0" d="M1072.844,53.3L1077.01,53.3C1081.177,53.3,1089.51,53.3,1097.177,53.3C1104.844,53.3,1111.844,53.3,1115.344,53.3L1118.844,53.3"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(86.328125, 53.29999923706055)" id="flowchart-IN-0" class="node default"><rect height="68.5999984741211" width="156.65625" y="-34.29999923706055" x="-78.328125" style="fill:#e3f2fd !important;stroke:#1565c0 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -19.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">🌬️</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Powietrze</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">zewnętrzne</tspan></tspan></text></g></g></g><g transform="translate(260.6640625, 53.29999923706055)" id="flowchart-F-1" class="node default"><rect height="49" width="92.015625" y="-24.5" x="-46.0078125" style="fill:#f5f5f5 !important;stroke:#9e9e9e !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Filtr</tspan></tspan></text></g></g></g><g transform="translate(434.265625, 53.29999923706055)" id="flowchart-N-3" class="node default"><rect height="66.5999984741211" width="155.1875" y="-33.29999923706055" x="-77.59375" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Nagrzewnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↑t</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (zima)</tspan></tspan></text></g></g></g><g transform="translate(628.4921875, 53.29999923706055)" id="flowchart-CH-5" class="node default"><rect height="66.5999984741211" width="133.265625" y="-33.29999923706055" x="-66.6328125" style="fill:#e0f7fa !important;stroke:#00bcd4 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Chłodnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↓t</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (lato)</tspan></tspan></text></g></g></g><g transform="translate(812.5546875, 53.29999923706055)" id="flowchart-NAW-7" class="node default"><rect height="66.5999984741211" width="134.859375" y="-33.29999923706055" x="-67.4296875" style="fill:#e8f5e9 !important;stroke:#4caf50 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Nawilżacz</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↑X</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (zima)</tspan></tspan></text></g></g></g><g transform="translate(1001.4140625, 53.29999923706055)" id="flowchart-W-9" class="node default"><rect height="49" width="142.859375" y="-24.5" x="-71.4296875" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Wentylator</tspan></tspan></text></g></g></g><g transform="translate(1188.2890625, 53.29999923706055)" id="flowchart-OUT-11" class="node default"><rect height="68.5999984741211" width="130.890625" y="-34.29999923706055" x="-65.4453125" style="fill:#e8eaf6 !important;stroke:#3f51b5 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -19.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">🏢</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Kanał</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">nawiewny</tspan></tspan></text></g></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790973510345_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 1254.578125 82.5999984741211" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
+<style>#mermaid-figure-2{font-size:16px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755478240_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755478240_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755478240_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755478240_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755478240_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755478240_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_IN_F_0" d="M151.594,52.3L155.76,52.3C159.927,52.3,168.26,52.3,174.51,52.3C180.76,52.3,184.927,52.3,188.427,52.3C191.927,52.3,194.76,52.3,196.177,52.3L197.594,52.3"></path><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_F_N_1" d="M294.766,52.3L298.932,52.3C303.099,52.3,311.432,52.3,317.682,52.3C323.932,52.3,328.099,52.3,331.599,52.3C335.099,52.3,337.932,52.3,339.349,52.3L340.766,52.3"></path><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_N_CH_2" d="M500.43,52.3L504.596,52.3C508.763,52.3,517.096,52.3,523.346,52.3C529.596,52.3,533.763,52.3,537.263,52.3C540.763,52.3,543.596,52.3,545.013,52.3L546.43,52.3"></path><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_CH_NAW_3" d="M684.172,52.3L688.339,52.3C692.505,52.3,700.839,52.3,707.089,52.3C713.339,52.3,717.505,52.3,721.005,52.3C724.505,52.3,727.339,52.3,728.755,52.3L730.172,52.3"></path><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_NAW_W_4" d="M869.57,52.3L873.737,52.3C877.904,52.3,886.237,52.3,892.487,52.3C898.737,52.3,902.904,52.3,906.404,52.3C909.904,52.3,912.737,52.3,914.154,52.3L915.57,52.3"></path><path marker-end="url(#mermaid-1791755478240_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_W_OUT_5" d="M1064.586,52.3L1068.753,52.3C1072.919,52.3,1081.253,52.3,1087.503,52.3C1093.753,52.3,1097.919,52.3,1101.419,52.3C1104.919,52.3,1107.753,52.3,1109.169,52.3L1110.586,52.3"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(79.796875, 52.29999923706055)" id="flowchart-IN-0" class="node default"><rect height="66.5999984741211" width="143.59375" y="-33.29999923706055" x="-71.796875" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Powietrze</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">zewnętrzne</tspan></tspan></text></g></g></g><g transform="translate(248.1796875, 52.29999923706055)" id="flowchart-F-1" class="node default"><rect height="49" width="93.171875" y="-24.5" x="-46.5859375" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Filtr</tspan></tspan></text></g></g></g><g transform="translate(422.59765625, 52.29999923706055)" id="flowchart-N-3" class="node default"><rect height="66.5999984741211" width="155.6640625" y="-33.29999923706055" x="-77.83203125" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Nagrzewnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↑t</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (zima)</tspan></tspan></text></g></g></g><g transform="translate(617.30078125, 52.29999923706055)" id="flowchart-CH-5" class="node default"><rect height="66.5999984741211" width="133.7421875" y="-33.29999923706055" x="-66.87109375" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Chłodnica</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↓t</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (lato)</tspan></tspan></text></g></g></g><g transform="translate(801.87109375, 52.29999923706055)" id="flowchart-NAW-7" class="node default"><rect height="66.5999984741211" width="135.3984375" y="-33.29999923706055" x="-67.69921875" data-et="node" data-id="abc" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Nawilżacz</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">↑X</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (zima)</tspan></tspan></text></g></g></g><g transform="translate(992.078125, 52.29999923706055)" id="flowchart-W-9" class="node default"><rect height="49" width="145.015625" y="-24.5" x="-72.5078125" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Wentylator</tspan></tspan></text></g></g></g><g transform="translate(1180.58203125, 52.29999923706055)" id="flowchart-OUT-11" class="node default"><rect height="66.5999984741211" width="131.9921875" y="-33.29999923706055" x="-65.99609375" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Kanał</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">nawiewny</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -769,21 +786,34 @@
 </div>
 </div>
 </div>
-<div class="fragment">
-<h3 id="zastosowania">Zastosowania</h3>
+<div class="fragment panel panel-blue">
+<p><span class="panel-title">Zastosowania</span></p>
 <ul>
-<li><strong>Klimatyzacja komfortu:</strong> <span class="math inline">\(t \approx 20\text{–}24^\circ C\)</span>, <span class="math inline">\(\varphi \approx 40\text{–}60\%\)</span>.</li>
-<li><strong>Technologia:</strong> Przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).</li>
-<li><strong>Wentylacja:</strong> Usuwanie zanieczyszczeń i wilgoci.</li>
-<li><strong>Medycyna / Ochrona zdrowia:</strong> sale operacyjne, inkubatory, sterylizacja.</li>
+<li><strong>Klimatyzacja komfortu:</strong> <span class="math inline">\(t \approx 20\text{–}24\,^\circ\text{C}\)</span>, <span class="math inline">\(\varphi \approx 40\text{–}60\%\)</span>.</li>
+<li><strong>Technologia:</strong> przemysł papierniczy, tekstylny, spożywczy (suszarnie), pomieszczenia czyste (elektronika).</li>
+<li><strong>Wentylacja:</strong> usuwanie zanieczyszczeń i wilgoci.</li>
+<li><strong>Medycyna / ochrona zdrowia:</strong> sale operacyjne, inkubatory, sterylizacja.</li>
 </ul>
 </div>
-<div class="fragment absolute" style="box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 10;top: 0%; left: 22%; width: 56%; ">
-<p><img data-src="../img/small-air-handling-units-senv-1591216654.jpg"></p>
+</section>
+<section id="centrale-wentylacyjne-przykłady" class="slide level2">
+<h2><i class="bi bi-fan"></i> Centrale wentylacyjne – przykłady</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/small-air-handling-units-senv-1591216654.jpg" style="width:100.0%"></p>
+<figcaption>Kompaktowa centrala wentylacyjna (AHU)</figcaption>
+</figure>
 </div>
-<div class="fragment absolute" style="box-shadow: 0 0 30px rgba(0,0,0,0.8); z-index: 100;top: 10%; left: 10%; width: 80%; ">
-<p><img data-src="../img/IMG_0202.png"></p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../img/IMG_0202.png" style="width:100.0%"></p>
+<figcaption>Centrala dachowa na budynku</figcaption>
+</figure>
 </div>
+</div></div>
 </section>
 <section id="bilans-masy-i-energii" class="slide level2">
 <h2><i class="bi bi-scale"></i> 7. Bilans Masy i Energii</h2>
@@ -819,8 +849,10 @@
 </div>
 </div>
 </section>
-<section id="przykłady-obliczeniowe" class="slide level2" style="font-size: 0.8em;">
+<section id="przykłady-obliczeniowe" class="slide level2 smaller">
 <h2><i class="bi bi-calculator"></i> Przykłady Obliczeniowe</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div title="Zadanie 1: Ogrzewanie Powietrza">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -831,20 +863,37 @@
 <p><strong>Zadanie 1: Ogrzewanie Powietrza</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Dane:</strong> Powietrze <span class="math inline">\(t_1=25^\circ C\)</span>, <span class="math inline">\(\varphi_1=50\%\)</span> ogrzewamy do <span class="math inline">\(t_2=35^\circ C\)</span>.</p>
+<p><strong>Dane:</strong> powietrze <span class="math inline">\(t_1 = 25\,^\circ\text{C}\)</span>, <span class="math inline">\(\varphi_1 = 50\%\)</span> ogrzewamy do <span class="math inline">\(t_2 = 35\,^\circ\text{C}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="panel panel-blue">
 <ol type="1">
 <li>Z tablic <span class="math inline">\(p_s(25) = 3{,}17\)</span> kPa <span class="math inline">\(\rightarrow p_p = 0{,}5 \cdot 3{,}17 = 1{,}585\)</span> kPa.</li>
-<li>Ponieważ <span class="math inline">\(X=const\)</span>, to <span class="math inline">\(p_p\)</span> się nie zmienia!</li>
+<li>Ponieważ <span class="math inline">\(X = const\)</span>, to <span class="math inline">\(p_p\)</span> się nie zmienia!</li>
 <li>Z tablic <span class="math inline">\(p_s(35) = 5{,}63\)</span> kPa.</li>
-<li>Nowa wilgotność: <span class="math inline">\(\varphi_2 = \frac{1{,}585}{5{,}63} \approx 28{,}2\%\)</span>.</li>
+<li>Nowa wilgotność: <span class="answer"><span class="math inline">\(\varphi_2 = \dfrac{1{,}585}{5{,}63} \approx 28{,}2\%\)</span></span>.</li>
 </ol>
-<p><strong>Wniosek:</strong> Ogrzewanie silnie wysusza powietrze (względnie).</p>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment" title="Zadanie 2: Parametry Powietrza">
+<div class="fragment" title="Wniosek">
 <div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wniosek</strong></p>
+</div>
+<div class="callout-content">
+<p>Ogrzewanie silnie wysusza powietrze (względnie).</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment" title="Zadanie 2: Parametry Powietrza">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -853,25 +902,28 @@
 <p><strong>Zadanie 2: Parametry Powietrza</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Dane:</strong> <span class="math inline">\(p=110\)</span> kPa, <span class="math inline">\(t=30^\circ C\)</span>, <span class="math inline">\(\varphi=60\%\)</span>.</p>
+<p><strong>Dane:</strong> <span class="math inline">\(p = 110\)</span> kPa, <span class="math inline">\(t = 30\,^\circ\text{C}\)</span>, <span class="math inline">\(\varphi = 60\%\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment panel panel-blue">
 <ul>
-<li><span class="math inline">\(p_s=4{,}24\)</span> kPa <span class="math inline">\(\rightarrow p_p = 0{,}6 \cdot 4{,}24 = 2{,}54\)</span> kPa.</li>
-<li><span class="math inline">\(X = 0{,}622 \frac{2{,}54}{110-2{,}54} \approx 0{,}0147\)</span> kg/kg <span class="math inline">\(= 14{,}7\)</span> g/kg.</li>
+<li><span class="math inline">\(p_s = 4{,}24\)</span> kPa <span class="math inline">\(\rightarrow p_p = 0{,}6 \cdot 4{,}24 = 2{,}54\)</span> kPa.</li>
+<li><span class="math inline">\(X = 0{,}622 \dfrac{2{,}54}{110 - 2{,}54} \approx 0{,}0147\)</span> kg/kg <span class="answer nowrap"><span class="math inline">\(= 14{,}7\)</span> g/kg</span>.</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="podsumowanie-w12" class="slide level2">
 <h2><i class="bi bi-clipboard-check"></i> Podsumowanie W12</h2>
 <ol type="1">
-<li class="fragment"><strong>Wilgotność:</strong> Rozróżniamy wilgotność względną (<span class="math inline">\(\varphi\)</span>, komfort) i stopień zawilżenia (<span class="math inline">\(X\)</span>, bilanse masy).</li>
-<li class="fragment"><strong>Entalpia:</strong> Para wodna niesie ogromną energię (ciepło utajone).</li>
-<li class="fragment"><strong>Psychrometr:</strong> Różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.</li>
-<li class="fragment"><strong>Procesy:</strong> Ogrzewanie obniża <span class="math inline">\(\varphi\)</span>, nawilżanie wodne obniża <span class="math inline">\(t\)</span>.</li>
+<li class="fragment"><strong>Wilgotność:</strong> rozróżniamy wilgotność względną (<span class="math inline">\(\varphi\)</span>, komfort) i stopień zawilżenia (<span class="math inline">\(X\)</span>, bilanse masy).</li>
+<li class="fragment"><strong>Entalpia:</strong> para wodna niesie ogromną energię (ciepło utajone).</li>
+<li class="fragment"><strong>Psychrometr:</strong> różnica temperatur suchego i mokrego pozwala wyznaczyć wilgotność.</li>
+<li class="fragment"><strong>Procesy:</strong> ogrzewanie obniża <span class="math inline">\(\varphi\)</span>, nawilżanie wodne obniża <span class="math inline">\(t\)</span>.</li>
 </ol>
-<div class="fragment" title="Zadanie dla chętnych" style="font-size: 0.9em;">
+<div class="fragment" title="Zadanie dla chętnych">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -881,7 +933,7 @@
 <p><strong>Zadanie dla chętnych</strong></p>
 </div>
 <div class="callout-content">
-<p>Latem (<span class="math inline">\(30^\circ C\)</span>) pijesz zimne piwo (<span class="math inline">\(4^\circ C\)</span>). Dlaczego butelka “poci się”? Wyjaśnij zjawisko, używając pojęć <strong>Punkt Rosy</strong> i <strong>Ciśnienie Cząstkowe</strong>.</p>
+<p>Latem (<span class="math inline">\(30\,^\circ\text{C}\)</span>) pijesz zimne piwo (<span class="math inline">\(4\,^\circ\text{C}\)</span>). Dlaczego butelka „poci się”? Wyjaśnij zjawisko, używając pojęć <strong>Punkt Rosy</strong> i <strong>Ciśnienie Cząstkowe</strong>.</p>
 </div>
 </div>
 </div>
@@ -1055,14 +1107,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'convex',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -1083,7 +1135,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1110,42 +1162,80 @@
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1195,14 +1285,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

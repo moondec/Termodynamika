@@ -6,8 +6,8 @@
 <script src="06_II_Zasada_1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="06_II_Zasada_1_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="06_II_Zasada_1_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="06_II_Zasada_1_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="06_II_Zasada_1_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W6: II Zasada Termodynamiki - I</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="06_II_Zasada_1_files/libs/revealjs/dist/theme/quarto-de9354c8cd4fbc190d194296254da49a.css">
+  <link rel="stylesheet" href="06_II_Zasada_1_files/libs/revealjs/dist/theme/quarto-4953c6c1d8f81f9d270ec2ff669a6b96.css">
   <link href="06_II_Zasada_1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="06_II_Zasada_1_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="06_II_Zasada_1_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +159,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"> <img src="../img/logo_wisim.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -207,8 +207,8 @@
 </div></div>
 </section>
 <section id="przykłady-procesów-nieodwracalnych" class="slide level2">
-<h2><i class="bi bi-calculator"></i> Przykłady Procesów Nieodwracalnych</h2>
-<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<h2><i class="bi bi-film"></i> Przykłady Procesów Nieodwracalnych</h2>
+<div class="panel panel-blue">
 <p>Dlaczego film puszczony od tyłu wygląda nienaturalnie?</p>
 </div>
 <ol type="1">
@@ -235,7 +235,7 @@
 </section>
 <section id="źródła-ciepła-rezerwuary" class="slide level2">
 <h2><i class="bi bi-fire"></i> 2. Źródła Ciepła (Rezerwuary)</h2>
-<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<div class="panel panel-blue">
 <p>Aby zbudować silnik, potrzebujemy dwóch źródeł ciepła o dużej pojemności cieplnej (ich temperatura się nie zmienia mimo poboru ciepła):</p>
 </div>
 <div class="columns">
@@ -244,15 +244,15 @@
 <li><strong>Źródło górne (<span class="math inline">\(T_H\)</span>):</strong> Piec, Reaktor Jądrowy, Słońce. Dostarcza ciepło <span class="math inline">\(Q_H\)</span> (High).</li>
 <li><strong>Źródło dolne (<span class="math inline">\(T_L\)</span>):</strong> Rzeka, Atmosfera, Grunt. Odbiera ciepło odpadowe <span class="math inline">\(Q_L\)</span> (Low).</li>
 </ol>
-<div class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-amber fragment">
 <p>Podstawą II Zasady jest nieodwracalność samorzutnych procesów przyrody. Zachodzą one od stanu o wyższym potencjale do stanów o potencjale niższym.</p>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06_II_Zasada_1_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/silnik-schemat-1.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -261,7 +261,7 @@
 </section>
 <section id="silnik-cieplny" class="slide level2">
 <h2><i class="bi bi-gear-wide-connected"></i> Silnik Cieplny</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p>Urządzenie cykliczne, które zamienia ciepło na pracę.</p>
 </div>
 <ol type="1">
@@ -271,30 +271,38 @@
 </ol>
 <div class="fragment">
 <h3 id="sprawność-termiczna">Sprawność Termiczna</h3>
+<div class="panel panel-amber">
 <p><span class="math display">\[ \eta_{th} = \frac{\text{Korzyść}}{\text{Koszt}} = \frac{L}{Q_H} = \frac{Q_H - Q_L}{Q_H} = 1 - \frac{Q_L}{Q_H} \]</span></p>
 </div>
+</div>
 </section>
-<section id="chłodziarka-i-pompa-ciepła" class="slide level2" style="font-size: 0.9em;">
+<section id="chłodziarka-i-pompa-ciepła" class="slide level2">
 <h2><i class="bi bi-snow"></i> Chłodziarka i Pompa Ciepła</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p>To “odwrócony” silnik cieplny.</p>
 </div>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ol type="1">
 <li class="fragment">Pobiera ciepło <span class="math inline">\(Q_L\)</span> z zimnego wnętrza (<span class="math inline">\(T_L\)</span>).</li>
 <li class="fragment">Wymaga dostarczenia pracy <span class="math inline">\(L\)</span> (sprężarka).</li>
 <li class="fragment">Oddaje ciepło <span class="math inline">\(Q_H\)</span> do ciepłego otoczenia (<span class="math inline">\(T_H\)</span>).</li>
 </ol>
+</div><div class="column" style="width:50%;">
 <div class="fragment">
 <h3 id="współczynniki-efektywności-cop">Współczynniki Efektywności (COP)</h3>
+<div class="panel panel-amber">
 <ul>
-<li class="fragment"><strong>Chłodziarka:</strong> Cel to <span class="math inline">\(Q_L\)</span>. <span class="math display">\[ \text{COP}_R = \frac{Q_L}{L} \]</span></li>
-<li class="fragment"><strong>Pompa Ciepła:</strong> Cel to <span class="math inline">\(Q_H\)</span> (ogrzewanie). <span class="math display">\[ \text{COP}_{HP} = \frac{Q_H}{L} = \text{COP}_R + 1 \]</span></li>
+<li><strong>Chłodziarka:</strong> Cel to <span class="math inline">\(Q_L\)</span>. <span class="math display">\[ \text{COP}_R = \frac{Q_L}{L} \]</span></li>
+<li><strong>Pompa Ciepła:</strong> Cel to <span class="math inline">\(Q_H\)</span> (ogrzewanie). <span class="math display">\[ \text{COP}_{HP} = \frac{Q_H}{L} = \text{COP}_R + 1 \]</span></li>
 </ul>
 </div>
+</div>
+</div></div>
 </section>
-<section id="przykład-obliczeniowy-silnik" class="slide level2" style="font-size: 0.95em;">
+<section id="przykład-obliczeniowy-silnik" class="slide level2">
 <h2><i class="bi bi-calculator"></i> Przykład Obliczeniowy: Silnik</h2>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<div class="panel panel-green">
 <p>Załóżmy, że silnik pobiera <span class="math inline">\(Q_H = 100 \text{ kJ}\)</span> ciepła z pieca i wykonuje <span class="math inline">\(L = 30 \text{ kJ}\)</span> pracy.</p>
 </div>
 <ol type="1">
@@ -319,8 +327,8 @@
 </section>
 <section id="analiza-cop-współczynnik-wydajności" class="slide level2">
 <h2><i class="bi bi-speedometer2"></i> Analiza COP (Współczynnik Wydajności)</h2>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
-<p>Dlaczego <span class="math inline">\(\text{COP}\)</span> może być większe od 1 (np. 3 lub 4)? Czy to perpetuum mobile? <span class="fragment" style="color: #e60000; font-weight: bold;"><strong>NIE!</strong></span></p>
+<div class="panel panel-green">
+<p>Dlaczego <span class="math inline">\(\text{COP}\)</span> może być większe od 1 (np. 3 lub 4)? Czy to perpetuum mobile? <span class="fragment answer"><strong>NIE!</strong></span></p>
 </div>
 <ul>
 <li class="fragment">Pompujemy ciepło, a nie je wytwarzamy.</li>
@@ -342,15 +350,17 @@
 </div>
 </div>
 </section>
-<section id="sformułowania-ii-zasady" class="slide level2" style="font-size: 0.85em;">
+<section id="sformułowania-ii-zasady" class="slide level2 smaller">
 <h2><i class="bi bi-chat-quote"></i> 3. Sformułowania II Zasady</h2>
-<h3 style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;" id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
-<div class="fragment" style="font-size: .8em;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="sformułowanie-kelvina-plancka">Sformułowanie Kelvina-Plancka</h3>
+<div class="panel panel-blue fragment">
 <blockquote>
 <p>Nie jest możliwy proces cykliczny, którego <strong>jedynym</strong> wynikiem byłoby pobranie ciepła ze źródła i zamiana go w całości na pracę.</p>
 </blockquote>
 </div>
-<div class="fragment" title="**Wniosek:**" style="font-size: .8em;">
+<div class="fragment" title="**Wniosek:**">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -361,18 +371,19 @@
 </div>
 <div class="callout-content">
 <p><strong>Silnik o sprawności 100% jest niemożliwy.</strong></p>
+<p>Musimy oddać część ciepła <span class="math inline">\(Q_L\)</span> do chłodnicy: <span class="answer"><span class="math inline">\(Q_L \neq 0\)</span>.</span></p>
 </div>
 </div>
 </div>
 </div>
-<p><span class="fragment" style="color: #65210d; font-weight: bold;">Musimy oddać część ciepła <span class="math inline">\(Q_L\)</span> do chłodnicy. <span class="math inline">\(Q_L \neq 0\)</span>.</span></p>
-<h3 class="fragment" style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em;" id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
-<div class="fragment" style="font-size: .8em;">
+</div><div class="column" style="width:50%;">
+<h3 id="sformułowanie-clausiusa">Sformułowanie Clausiusa</h3>
+<div class="panel panel-blue fragment">
 <blockquote>
 <p>Nie jest możliwe zbudowanie urządzenia, którego <strong>jedynym</strong> skutkiem byłoby przeniesienie ciepła z ciała zimnego do ciała ciepłego.</p>
 </blockquote>
 </div>
-<div class="fragment" title="**Wniosek:**" style="font-size: .8em;">
+<div class="fragment" title="**Wniosek:**">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -387,10 +398,11 @@
 </div>
 </div>
 </div>
+</div></div>
 </section>
 <section id="równoważność-sformułowań" class="slide level2">
 <h2><i class="bi bi-arrow-left-right"></i> Równoważność Sformułowań</h2>
-<div style="background-color: #89e2aa; padding: 20px; border-radius: 10px; border: 1px solid #63bb81;">
+<div class="panel panel-green">
 <p>Te dwa twierdzenia brzmią różnie, ale są równoważne.</p>
 <p>Złamanie jednego oznacza złamanie też drugiego.</p>
 </div>
@@ -399,9 +411,9 @@
 <li class="fragment">I odwrotnie: gdyby urządzenie przenosiło ciepło z zimnego do ciepłego bez pracy (łamie Clausiusa), można by nim przenosić z powrotem do źródła górnego całe ciepło <span class="math inline">\(Q_L\)</span>, które zwykły silnik oddaje do źródła dolnego. Źródło dolne nie zmienia stanu, a ciepło netto <span class="math inline">\(Q_H - Q_L\)</span> pobrane ze źródła górnego zamienia się w całości na pracę (łamie K-P).</li>
 </ul>
 </section>
-<section id="perpetuum-mobile-ii-rodzaju" class="slide level2" style="font-size: 0.9em;">
+<section id="perpetuum-mobile-ii-rodzaju" class="slide level2">
 <h2><i class="bi bi-slash-circle"></i> Perpetuum Mobile II Rodzaju</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p>Urządzenie, które łamie II Zasadę Termodynamiki (Sformułowanie Kelvina-Plancka).</p>
 </div>
 <div class="columns">
@@ -411,20 +423,20 @@
 <li>I Zasada? <strong>Spełniona</strong> (Energia z wody <span class="math inline">\(\to\)</span> Praca).</li>
 <li>II Zasada? <strong>Złamana</strong> (Brak <span class="math inline">\(Q_L\)</span>, <span class="math inline">\(\eta = 100\%\)</span>).</li>
 </ul>
-<div style="border: 2px solid red; padding: 10px; text-align: center;">
-<p><strong>NIEMOŻLIWE</strong> <span class="math display">\[ Q_H \to [\text{SILNIK}] \to L \]</span> (Brak strzałki <span class="math inline">\(Q_L\)</span>)</p>
+<div class="panel panel-amber">
+<p><strong>NIEMOŻLIWE:</strong> <span class="math inline">\(Q_H \to [\text{SILNIK}] \to L\)</span> (brak strzałki <span class="math inline">\(Q_L\)</span>).</p>
 </div>
 </div><div class="column" style="width:60%;">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06_II_Zasada_1_files/figure-revealjs/unnamed-chunk-3-1.png" width="768"></p>
+<p><img data-src="06_II_Zasada_1_files/figure-revealjs/statek-1.svg" class="quarto-figure quarto-figure-center" style="width:85.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: 0.8em;">
+<div class="fragment">
 <div class="callout callout-caution callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -443,10 +455,9 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="proces-odwracalny">Proces Odwracalny</h3>
-<div style="border: 2px solid #27ae60; padding: 15px; border-radius: 10px; background-color: #eafaf1; font-size: 0.8em; text-align: center; margin-bottom: 20px;">
+<div class="panel panel-green">
 <p>Można go cofnąć bez śladu w otoczeniu.</p>
 </div>
-<div style="text-align: center; zoom: 1.5;">
 <div class="mmd-fit" style="height: 320px;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -454,35 +465,32 @@
 <p></p><figure class=""><p></p>
 <div>
 <svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 184.8125 75.40625" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff0f0;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:#ffffff;padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974835483_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974835483_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974835483_flowchart-v2-pointEnd__27ae60)" marker-start="url(#mermaid-1790974835483_flowchart-v2-pointStart__27ae60)" style="stroke:#27ae60;stroke-width:4px;fill:none;" class="edge-thickness-thick edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M71.406,48.703L74.906,48.703C78.406,48.703,85.406,48.703,92.406,48.703C99.406,48.703,106.406,48.703,109.906,48.703L113.406,48.703"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(37.703125, 48.703125)" id="flowchart-A-0" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#eafaf1 !important;stroke:#27ae60 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(147.109375, 48.703125)" id="flowchart-B-1" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#eafaf1 !important;stroke:#27ae60 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan></tspan></text></g></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-pointStart__27ae60"><path fill="#27ae60" stroke="#27ae60" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835483_flowchart-v2-pointEnd__27ae60"><path fill="#27ae60" stroke="#27ae60" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+<style>#mermaid-figure-1{font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-1 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff4e3;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755417177_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755417177_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755417177_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755417177_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755417177_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755417177_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755417177_flowchart-v2-pointEnd)" marker-start="url(#mermaid-1791755417177_flowchart-v2-pointStart)" style=";stroke:#1f9d55;stroke-width:4px;fill:none" class="edge-thickness-thick edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M71.406,48.703L74.906,48.703C78.406,48.703,85.406,48.703,90.99,48.703C96.573,48.703,100.74,48.703,104.24,48.703C107.74,48.703,110.573,48.703,111.99,48.703L113.406,48.703"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(37.703125, 48.703125)" id="flowchart-A-0" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(147.109375, 48.703125)" id="flowchart-B-1" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
-</div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="proces-nieodwracalny">Proces Nieodwracalny</h3>
-<div style="border: 2px solid #e60000; padding: 15px; border-radius: 10px; background-color: #fff0f0; font-size: 0.8em; text-align: center; margin-bottom: 20px;">
+<div class="panel panel-amber">
 <p>Układ można przywrócić do stanu początkowego tylko kosztem trwałych zmian w otoczeniu (np. zużycia pracy).</p>
 </div>
-<div style="text-align: center; zoom: 1.5;">
-<div class="mmd-fit" style="height: 260px;">
+<div class="mmd-fit" style="height: 320px;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 227.9375 75.40625" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
-<style>#mermaid-figure-2{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-2 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .rough-node .label,#mermaid-figure-2 .node .label,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-2 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff0f0;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 rect.text{fill:none;stroke-width:0;}#mermaid-figure-2 .icon-shape,#mermaid-figure-2 .image-shape{background-color:#ffffff;text-align:center;}#mermaid-figure-2 .icon-shape p,#mermaid-figure-2 .image-shape p{background-color:#ffffff;padding:2px;}#mermaid-figure-2 .icon-shape rect,#mermaid-figure-2 .image-shape rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835637_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835637_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835637_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835637_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974835637_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974835637_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974835637_flowchart-v2-pointEnd__e60000)" style="stroke:#e60000;stroke-width:4px;fill:none;" class="edge-thickness-thick edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_0" d="M66.792,42.696L74.655,41.072C82.518,39.448,98.243,36.201,113.316,36.066C128.388,35.931,142.808,38.909,150.018,40.398L157.228,41.887"></path><path marker-end="url(#mermaid-1790974835637_flowchart-v2-pointEnd__e60000)" style="stroke:#e60000;stroke-width:3px;fill:none;" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_C_0" d="M161.145,54.711L153.282,56.334C145.42,57.958,129.694,61.206,114.622,61.34C99.549,61.475,85.129,58.497,77.92,57.008L70.71,55.519"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g transform="translate(113.96875, 64.453125)" class="edgeLabel"><g transform="translate(-21.5625, -11.5)" class="label"><g><rect height="23" width="43.125" y="-1" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(37.703125, 48.703125)" id="flowchart-C-0" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#fff0f0 !important;stroke:#e60000 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(190.234375, 48.703125)" id="flowchart-D-1" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#fff0f0 !important;stroke:#e60000 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan></tspan></text></g></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974835637_flowchart-v2-pointEnd__e60000"><path fill="#e60000" stroke="#e60000" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 228.53125 75.40625" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
+<style>#mermaid-figure-2{font-size:16px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:#ffffff;text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:#ffffff;}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#mermaid-figure-2 .labelBkg{background-color:rgba(255, 255, 255, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:#fff4e3;border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755419354_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755419354_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755419354_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755419354_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755419354_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755419354_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755419354_flowchart-v2-pointEnd)" style=";stroke:#eb6834;stroke-width:4px;fill:none" class="edge-thickness-thick edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_C_D_0" d="M66.797,42.718L74.708,41.091C82.62,39.463,98.443,36.208,110.31,35.394C122.177,34.581,130.088,36.208,137.347,37.701C144.605,39.194,151.211,40.553,154.514,41.233L157.816,41.912"></path><path marker-end="url(#mermaid-1791755419354_flowchart-v2-pointEnd)" style=";stroke:#eb6834;stroke-width:3px;fill:none" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" id="L_D_C_1" d="M161.734,54.688L153.823,56.316C145.911,57.943,130.088,61.198,118.221,62.012C106.354,62.826,98.443,61.198,91.184,59.705C83.926,58.212,77.32,56.853,74.018,56.174L70.715,55.494"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g transform="translate(114.265625, 64.453125)" class="edgeLabel"><g transform="translate(-21.859375, -11.5)" class="label"><g><rect height="23" width="43.71875" y="-2" x="-2" style=";" class="background"></rect><text style=";" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(37.703125, 48.703125)" id="flowchart-C-0" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 1</tspan></tspan></text></g></g></g><g transform="translate(190.828125, 48.703125)" id="flowchart-D-1" class="node default"><circle cy="0" cx="0" r="29.703125" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:4px !important" class="basic label-container"></circle><g transform="translate(0, -9.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Stan</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> 2</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
-</div>
 </div>
 </div>
 </div>
@@ -491,7 +499,7 @@
 </section>
 <section id="źródła-nieodwracalności" class="slide level2">
 <h2><i class="bi bi-exclamation-triangle"></i> Źródła Nieodwracalności</h2>
-<div style="background-color: #f1a3a9; padding: 20px; border-radius: 10px; border: 1px solid #a94d4f;">
+<div class="panel panel-amber">
 <p>Co sprawia, że procesu nie da się cofnąć bez strat?</p>
 </div>
 <ol type="1">
@@ -504,12 +512,12 @@
 </section>
 <section id="proces-kwazistatyczny-i-warunki-odwracalności" class="slide level2">
 <h2><i class="bi bi-clock-history"></i> Proces Kwazistatyczny i Warunki Odwracalności</h2>
-<div style="background-color: #e9d795; padding: 20px; border-radius: 10px; border: 1px solid #d58e01;">
-<p>Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi (proces kwazistatyczny). To warunek konieczny, ale niewystarczający — potrzebny jest też brak dyssypacji.</p>
+<div class="panel panel-amber">
+<p>Aby proces był odwracalny, układ musi przechodzić przez ciąg stanów równowagi (proces kwazistatyczny) <strong>bez dyssypacji</strong> (tarcia). Powolny proces z tarciem nie jest kwazistatyczny (por. W1).</p>
 </div>
 <ul>
 <li class="fragment">Dzieje się to “nieskończenie powoli” — w każdym momencie <span class="math inline">\(p_{\text{układu}} \approx p_{\text{otoczenia}}\)</span> (równowaga mechaniczna).</li>
-<li class="fragment"><strong>Odwracalność wewnętrzna:</strong> proces kwazistatyczny bez tarcia i innych efektów dyssypacyjnych wewnątrz układu.</li>
+<li class="fragment"><strong>Odwracalność wewnętrzna:</strong> brak tarcia i innych efektów dyssypacyjnych wewnątrz układu.</li>
 <li class="fragment"><strong>Odwracalność zewnętrzna:</strong> wymiana ciepła przy <span class="math inline">\(T_{\text{układu}} \approx T_{\text{otoczenia}}\)</span> (nieskończenie małe <span class="math inline">\(\Delta T\)</span>), brak tarcia poza układem.</li>
 <li class="fragment">Proces <strong>całkowicie odwracalny</strong> jest odwracalny wewnętrznie i zewnętrznie.</li>
 </ul>
@@ -519,49 +527,31 @@
 </section>
 <section id="obieg-carnota-wzorzec-doskonałości" class="slide level2">
 <h2><i class="bi bi-arrow-repeat"></i> 5. Obieg Carnota: Wzorzec Doskonałości</h2>
-<p>Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami <span class="math inline">\(T_H\)</span> i <span class="math inline">\(T_L\)</span>.</p>
+<p>Sadi Carnot (1824) wymyślił najbardziej sprawny możliwy silnik, działający między dwoma temperaturami <span class="math inline">\(T_H\)</span> i <span class="math inline">\(T_L\)</span>. Składa się z 4 procesów <strong>odwracalnych</strong>:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Składa się z 4 procesów <strong>odwracalnych</strong>:</p>
-<div class="fragment highlight-red" style="font-size: 0.6em;">
+<div class="panel panel-blue">
 <ol type="1">
-<li><strong>Izotermiczne rozprężanie</strong> (w <span class="math inline">\(T_H\)</span>): Pobranie ciepła <span class="math inline">\(Q_H\)</span>.</li>
-</ol>
-</div>
-<div class="fragment highlight-red" style="font-size: 0.6em;">
-<ol start="2" type="1">
-<li><strong>Adiabatyczne rozprężanie:</strong> Temperatura spada z <span class="math inline">\(T_H\)</span> do <span class="math inline">\(T_L\)</span>. Praca wykonana kosztem energii wewn.</li>
+<li class="fragment"><strong>Izotermiczne rozprężanie</strong> (w <span class="math inline">\(T_H\)</span>): Pobranie ciepła <span class="math inline">\(Q_H\)</span>.</li>
+<li class="fragment"><strong>Adiabatyczne rozprężanie:</strong> Temperatura spada z <span class="math inline">\(T_H\)</span> do <span class="math inline">\(T_L\)</span>. Praca wykonana kosztem energii wewn.</li>
+<li class="fragment"><strong>Izotermiczne sprężanie</strong> (w <span class="math inline">\(T_L\)</span>): Oddanie ciepła <span class="math inline">\(Q_L\)</span>.</li>
+<li class="fragment"><strong>Adiabatyczne sprężanie:</strong> Temperatura rośnie z <span class="math inline">\(T_L\)</span> do <span class="math inline">\(T_H\)</span>.</li>
 </ol>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment highlight-red" style="font-size: 0.6em;">
-<ol start="3" type="1">
-<li><strong>Izotermiczne sprężanie</strong> (w <span class="math inline">\(T_L\)</span>): Oddanie ciepła <span class="math inline">\(Q_L\)</span>.</li>
-</ol>
-</div>
-<div class="fragment highlight-red" style="font-size: 0.6em;">
-<ol start="4" type="1">
-<li><strong>Adiabatyczne sprężanie:</strong> Temperatura rośnie z <span class="math inline">\(T_L\)</span> do <span class="math inline">\(T_H\)</span>.</li>
-</ol>
-</div>
-</div></div>
-<div style="text-align: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="../img/carnot_p_v.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+<p><img data-src="../img/carnot_p_v.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
-<div style="font-size: 0.5em; color: gray; margin-top: -60px;">
-<p>Źródło: <em>Termodynamika techniczna</em>, 2000, J. Szargut.<br> Oznaczenia na rysunku: <span class="math inline">\(T_{\text{I}} = T_H\)</span>, <span class="math inline">\(T_{\text{II}} = T_L\)</span>; <span class="math inline">\(\dot{Q}_d\)</span>, <span class="math inline">\(q_d\)</span> — ciepło doprowadzone (<span class="math inline">\(Q_H\)</span>); <span class="math inline">\(\dot{Q}_w\)</span>, <span class="math inline">\(q_w\)</span> — ciepło wyprowadzone (<span class="math inline">\(Q_L\)</span>); <span class="math inline">\(N\)</span> — moc (praca <span class="math inline">\(L\)</span> w jednostce czasu).</p>
+<div class="small-note">
+<p>Źródło: <em>Termodynamika techniczna</em>, 2000, J. Szargut. Oznaczenia na rysunku: <span class="math inline">\(T_{\text{I}} = T_H\)</span>, <span class="math inline">\(T_{\text{II}} = T_L\)</span>; <span class="math inline">\(\dot{Q}_d\)</span>, <span class="math inline">\(q_d\)</span> — ciepło doprowadzone (<span class="math inline">\(Q_H\)</span>); <span class="math inline">\(\dot{Q}_w\)</span>, <span class="math inline">\(q_w\)</span> — ciepło wyprowadzone (<span class="math inline">\(Q_L\)</span>); <span class="math inline">\(N\)</span> — moc (praca <span class="math inline">\(L\)</span> w jednostce czasu).</p>
 </div>
-</div>
+</div></div>
 </section>
-<section id="obieg-carnota-krok-po-kroku-1-2" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (1-2)</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">1-2: Rozprężanie Izotermiczne</a></li><li><a href="#tabset-1-2">2-3: Rozprężanie Adiabatyczne</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
+<section id="obieg-carnota-1-2-rozprężanie-izotermiczne" class="slide level2">
+<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota – 1-2: Rozprężanie Izotermiczne</h2>
+<div class="panel panel-amber">
 <ul>
 <li><strong>Stan:</strong> Kontakt ze źródłem górnym <span class="math inline">\(T_H\)</span>.</li>
 <li><strong>Proces:</strong> Gaz rozpręża się powoli, wykonując pracę na tłoku.</li>
@@ -569,7 +559,10 @@
 <li><strong>Entropia:</strong> Rośnie (dostarczamy ciepło).</li>
 </ul>
 </div>
-<div id="tabset-1-2">
+</section>
+<section id="obieg-carnota-2-3-rozprężanie-adiabatyczne" class="slide level2">
+<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota – 2-3: Rozprężanie Adiabatyczne</h2>
+<div class="panel panel-blue">
 <ul>
 <li><strong>Stan:</strong> Izolacja termiczna (brak wymiany ciepła).</li>
 <li><strong>Proces:</strong> Dalsze rozprężanie kosztem energii wewnętrznej.</li>
@@ -577,15 +570,10 @@
 <li><strong>Entropia:</strong> Stała (<span class="math inline">\(dQ=0\)</span>, proces odwracalny).</li>
 </ul>
 </div>
-</div>
-</div>
 </section>
-<section id="obieg-carnota-krok-po-kroku-3-4" class="slide level2">
-<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota: Krok po Kroku (3-4)</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">3-4: Sprężanie Izotermiczne</a></li><li><a href="#tabset-2-2">4-1: Sprężanie Adiabatyczne</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
+<section id="obieg-carnota-3-4-sprężanie-izotermiczne" class="slide level2">
+<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota – 3-4: Sprężanie Izotermiczne</h2>
+<div class="panel panel-green">
 <ul>
 <li><strong>Stan:</strong> Kontakt ze źródłem dolnym <span class="math inline">\(T_L\)</span>.</li>
 <li><strong>Proces:</strong> Tłok spręża gaz (praca zewnętrzna).</li>
@@ -593,7 +581,10 @@
 <li><strong>Entropia:</strong> Maleje (oddajemy ciepło).</li>
 </ul>
 </div>
-<div id="tabset-2-2">
+</section>
+<section id="obieg-carnota-4-1-sprężanie-adiabatyczne" class="slide level2">
+<h2><i class="bi bi-arrow-repeat"></i> Obieg Carnota – 4-1: Sprężanie Adiabatyczne</h2>
+<div class="panel panel-blue">
 <ul>
 <li><strong>Stan:</strong> Izolacja termiczna.</li>
 <li><strong>Proces:</strong> Dalsze sprężanie podnosi temperaturę.</li>
@@ -601,28 +592,31 @@
 <li><strong>Entropia:</strong> Stała.</li>
 </ul>
 </div>
-</div>
-</div>
 </section>
 <section id="wizualizacja-obiegu-carnota-t-s" class="slide level2">
 <h2><i class="bi bi-graph-up"></i> Wizualizacja Obiegu Carnota (T-s)</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:45%;">
 <p>Na wykresie T-s (Temperatura-Entropia) obieg Carnota to idealny <strong>prostokąt</strong>.</p>
 <ul>
 <li>Izotermy (<span class="math inline">\(T=const\)</span>): Poziome.</li>
 <li>Adiabaty odwracalne (<span class="math inline">\(s=const\)</span>): Pionowe.</li>
 </ul>
-<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;">
+<div class="panel panel-amber" style="text-align: center;">
 <p><span class="math display">\[ \eta_{\text{Carnot}} = 1 - \frac{T_L}{T_H} \]</span></p>
 </div>
 <p>To maksymalna teoretyczna sprawność maszyny cieplnej.</p>
-</div><div class="column" style="width:50%;">
-<div class="cell">
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="06_II_Zasada_1_files/figure-revealjs/carnot-ts-1.png" width="576"></p>
+<div id="fig-carnot-ts" class="quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-carnot-ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="06_II_Zasada_1_files/figure-revealjs/fig-carnot-ts-1.svg" class="quarto-figure quarto-figure-center" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-carnot-ts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Rysunek&nbsp;1: Obieg Carnota na wykresie T-s
+</figcaption>
 </figure>
 </div>
 </div>
@@ -631,7 +625,7 @@
 </section>
 <section id="wnioski-z-carnota" class="slide level2">
 <h2><i class="bi bi-lightbulb"></i> Wnioski z Carnota</h2>
-<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto;">
+<div class="panel panel-amber" style="text-align: center;">
 <p><span class="math display">\[ \eta = 1 - \frac{T_L}{T_H} \]</span></p>
 </div>
 <ol type="1">
@@ -643,7 +637,7 @@
 </section>
 <section id="potrzeba-niezależnej-skali-temperatury" class="slide level2">
 <h2><i class="bi bi-thermometer-sun"></i> Potrzeba Niezależnej Skali Temperatury</h2>
-<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; border: 1px solid #2196f3;">
+<div class="panel panel-blue">
 <p>Tradycyjne termometry (rtęciowe, alkoholowe) zależą od właściwości substancji.</p>
 </div>
 <ul>
@@ -654,12 +648,12 @@
 <p><strong>Potrzebujemy skali uniwersalnej</strong>, niezależnej od użytego materiału. Taką skalę daje nam II Zasada Termodynamiki i Silnik Carnota.</p>
 </div>
 </section>
-<section id="termodynamiczna-skala-temperatury-kelvina" class="slide level2" style="font-size: 0.95em;">
+<section id="termodynamiczna-skala-temperatury-kelvina" class="slide level2">
 <h2><i class="bi bi-thermometer-half"></i> Termodynamiczna Skala Temperatury (Kelvina)</h2>
-<div style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;">
+<div class="panel panel-blue">
 <p>Lord Kelvin zaproponował definicję temperatury opartą na sprawności silnika Carnota:</p>
 </div>
-<div style="border: 3px solid #e60000; background-color: #fff5f5; padding: 20px; border-radius: 10px; text-align: center; width: fit-content; margin: 0 auto; margin-top: 0; margin-bottom: 0;">
+<div class="panel panel-amber" style="text-align: center;">
 <p><span class="math display">\[ \frac{Q_H}{Q_L} = \frac{T_H}{T_L} \]</span></p>
 </div>
 <ul>
@@ -863,14 +857,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -891,7 +885,7 @@
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -918,42 +912,80 @@
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1003,14 +1035,13 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

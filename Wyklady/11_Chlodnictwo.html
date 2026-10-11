@@ -6,8 +6,8 @@
 <script src="11_Chlodnictwo_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="11_Chlodnictwo_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="11_Chlodnictwo_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="11_Chlodnictwo_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.27">
+<link href="11_Chlodnictwo_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
 
   <meta name="author" content="prof. UPP dr hab. inż. Marek Urbaniak">
   <title>W11: Chłodnictwo i Pompy Ciepła</title>
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="11_Chlodnictwo_files/libs/revealjs/dist/theme/quarto-de9354c8cd4fbc190d194296254da49a.css">
+  <link rel="stylesheet" href="11_Chlodnictwo_files/libs/revealjs/dist/theme/quarto-4953c6c1d8f81f9d270ec2ff669a6b96.css">
   <link href="11_Chlodnictwo_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="11_Chlodnictwo_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="11_Chlodnictwo_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -159,7 +159,7 @@
         <p class="quarto-title-affiliation">
             Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
             </p><div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-            <p><img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" style="height: 200px;"> <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
+            <p><img src="../img/logo_upp.png" style="height: 200px;"> <img src="../img/logo_wisim.jpg" style="height: 200px;"> <img src="../img/kbig.jpg" style="height: 200px;"></p>
             </div>
           <p></p>
     </div>
@@ -203,8 +203,8 @@
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>Proces wymuszony:</strong> Aby przenieść ciepło z temperatury niższej (<span class="math inline">\(T_L\)</span>) do wyższej <br>(<span class="math inline">\(T_H\)</span>), musimy dostarczyć energię z zewnątrz (pracę <span class="math inline">\(L\)</span>).</li>
-<li><strong>Kierunek:</strong> Obieg przebiega <strong>odwrotnie do ruchu wskazówek zegara</strong> <br>na wykresie p-v.</li>
+<li><strong>Proces wymuszony:</strong> Aby przenieść ciepło z temperatury niższej (<span class="math inline">\(T_L\)</span>) do wyższej (<span class="math inline">\(T_H\)</span>), musimy dostarczyć energię z zewnątrz (pracę <span class="math inline">\(L\)</span>).</li>
+<li><strong>Kierunek:</strong> Obieg przebiega <strong>odwrotnie do ruchu wskazówek zegara</strong> na wykresie p-v.</li>
 </ul>
 </div>
 </div>
@@ -230,7 +230,7 @@
 </div>
 </section>
 <section id="mierniki-efektywności-cop" class="slide level2" style="font-size: 0.9em;">
-<h2><i class="bi bi-bookmark"></i> Mierniki Efektywności (COP)</h2>
+<h2><i class="bi bi-speedometer2"></i> Mierniki Efektywności (COP)</h2>
 <div class="callout callout-important callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -245,29 +245,17 @@
 <div class="fragment column" style="width:50%;">
 <h3 id="chłodziarka-varepsilon_ch">Chłodziarka (<span class="math inline">\(\varepsilon_{ch}\)</span>)</h3>
 <p><span class="math display">\[ \text{COP}_{ch} = \frac{\text{Cel}}{\text{Koszt}} = \frac{Q_L}{|L|} \]</span></p>
-<div class="fragment">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Dla domowej lodówki <br><span class="math inline">\(\text{COP} \approx 2\text{–}3\)</span>. (1 kW prądu “przepompowuje” 3 kW ciepła).</p>
-</div>
-</div>
-</div>
+<div class="fragment panel panel-blue">
+<p>Dla domowej lodówki <span class="math inline">\(\text{COP} \approx 2\text{–}3\)</span> (1 kW prądu “przepompowuje” 3 kW ciepła).</p>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="pompa-ciepła-varepsilon_g">Pompa Ciepła (<span class="math inline">\(\varepsilon_{g}\)</span>)</h3>
-<p><span class="math inline">\(\text{COP}_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|}\)</span></p>
-<div class="fragment">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Zależność: <span class="math display">\[ \text{COP}_{g} = \text{COP}_{ch} + 1 \]</span></p>
-</div>
-</div>
-</div>
+<p><span class="math display">\[ \text{COP}_{g} = \frac{Q_H}{|L|} = \frac{Q_L + |L|}{|L|} \]</span></p>
+<div class="fragment panel panel-green">
+<p>Zależność: <span class="math inline">\(\text{COP}_{g} = \text{COP}_{ch} + 1\)</span></p>
 </div>
 </div></div>
-<div class="fragment" title="Terminologia: EER" style="font-size: 0.75em;">
+<div class="fragment" title="Terminologia: EER" style="font-size: 0.8em;">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -284,7 +272,7 @@
 </div>
 </section>
 <section id="dlaczego-nie-carnot" class="slide level2" style="font-size: 0.9em;">
-<h2><i class="bi bi-bookmark"></i> 2. Dlaczego nie Carnot?</h2>
+<h2><i class="bi bi-question-circle"></i> 2. Dlaczego nie Carnot?</h2>
 <div class="callout callout-note callout-style-simple">
 <div class="callout-body">
 <div class="callout-icon-container">
@@ -325,7 +313,7 @@
 </div>
 </div>
 </div>
-<div class="fragment" title="Rozwiązanie Inżynierskie" style="font-size: 0.9em;">
+<div class="fragment" title="Rozwiązanie Inżynierskie">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -349,34 +337,34 @@
 <h3 id="schemat-przemian">Schemat Przemian:</h3>
 <div class="fragment fade-in">
 <ol type="1">
-<li><strong>1-2 Sprężarka:</strong> Izentropowe (adiabatyczne odwracalne) sprężanie pary suchej (<span class="math inline">\(s=const\)</span>).</li>
+<li><strong>1-2 Sprężarka:</strong> Izentropowe (adiabatyczne odwracalne) sprężanie pary suchej <span class="nowrap">(<span class="math inline">\(s = const\)</span>)</span>.</li>
 </ol>
 </div>
 <div class="fragment fade-in">
 <ol start="2" type="1">
-<li><strong>2-3 Skraplacz:</strong> Izobaryczne oddawanie ciepła (<span class="math inline">\(p=const\)</span>). Czynnik skrapla się.</li>
+<li><strong>2-3 Skraplacz:</strong> Izobaryczne oddawanie ciepła <span class="nowrap">(<span class="math inline">\(p = const\)</span>)</span>. Czynnik skrapla się.</li>
 </ol>
 </div>
 <div class="fragment fade-in">
 <ol start="3" type="1">
-<li><strong>3-4 Zawór Rozprężny:</strong> Izentalpowe dławienie (<span class="math inline">\(h=const\)</span>).</li>
+<li><strong>3-4 Zawór Rozprężny:</strong> Izentalpowe dławienie <span class="nowrap">(<span class="math inline">\(h = const\)</span>)</span>.</li>
 </ol>
 </div>
 <div class="fragment fade-in">
 <ol start="4" type="1">
-<li><strong>4-1 Parownik:</strong> Izobaryczne wrzenie (<span class="math inline">\(p=const\)</span>). Pobranie ciepła <span class="math inline">\(Q_L\)</span>.</li>
+<li><strong>4-1 Parownik:</strong> Izobaryczne wrzenie <span class="nowrap">(<span class="math inline">\(p = const\)</span>)</span>. Pobranie ciepła <span class="math inline">\(Q_L\)</span>.</li>
 </ol>
 </div>
 </div><div class="column" style="width:45%;">
-<div class="mmd-fit" style="height: 685px;">
+<div class="mmd-fit" style="height: 640px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="8 19 244.3427734375 356.4000244140625" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .rough-node .label,#mermaid-figure-1 .node .label,#mermaid-figure-1 .image-shape .label,#mermaid-figure-1 .icon-shape .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 rect.text{fill:none;stroke-width:0;}#mermaid-figure-1 .icon-shape,#mermaid-figure-1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .icon-shape p,#mermaid-figure-1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-1 .icon-shape rect,#mermaid-figure-1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848142_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848142_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848142_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848142_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848142_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848142_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974848142_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_SK_0" d="M121.525,85.6L118.422,88.1C115.319,90.6,109.113,95.6,106.009,99.933C102.906,104.267,102.906,107.933,102.906,109.767L102.906,111.6"></path><path marker-end="url(#mermaid-1790974848142_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SK_Z_0" d="M102.906,182.2L102.906,184.7C102.906,187.2,102.906,192.2,102.906,196.533C102.906,200.867,102.906,204.533,102.906,206.367L102.906,208.2"></path><path marker-end="url(#mermaid-1790974848142_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Z_P_0" d="M102.906,278.8L102.906,281.3C102.906,283.8,102.906,288.8,105.49,293.382C108.074,297.964,113.242,302.127,115.826,304.209L118.41,306.291"></path><path marker-end="url(#mermaid-1790974848142_flowchart-v2-pointEnd_black)" style="stroke-width:2px;fill:none;stroke:black;" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P_S_0" d="M204.194,308.8L207.297,306.3C210.4,303.8,216.606,298.8,219.709,288.25C222.813,277.7,222.813,261.6,222.813,245.5C222.813,229.4,222.813,213.3,222.813,197.2C222.813,181.1,222.813,165,222.813,148.9C222.813,132.8,222.813,116.7,220.228,106.568C217.644,96.436,212.476,92.273,209.892,90.191L207.308,88.109"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(162.859375, 52.29999923706055)" id="flowchart-S-0" class="node default"><rect height="66.5999984741211" width="134.140625" y="-33.29999923706055" x="-67.0703125" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> lₛₚ</tspan></tspan></text></g></g></g><g transform="translate(102.90625, 148.89999771118164)" id="flowchart-SK-1" class="node default"><rect height="66.5999984741211" width="179.984375" y="-33.29999923706055" x="-89.9921875" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Skraplacz</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Oddaje</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepło</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> qₕ</tspan></tspan></text></g></g></g><g transform="translate(102.90625, 245.49999618530273)" id="flowchart-Z-3" class="node default"><rect height="66.5999984741211" width="189.8125" y="-33.29999923706055" x="-94.90625" style="fill:#f3e5f5 !important;stroke:#9c27b0 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Zawór</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Rozprężny</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="italic">h=const</tspan></tspan></text></g></g></g><g transform="translate(162.859375, 342.0999946594238)" id="flowchart-P-5" class="node default"><rect height="66.5999984741211" width="178.966796875" y="-33.29999923706055" x="-89.4833984375" style="fill:#e0f7fa !important;stroke:#00bcd4 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Parownik</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Pobiera</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepło</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> qₗ</tspan></tspan></text></g></g></g></g></g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848142_flowchart-v2-pointEnd_black"><path fill="black" stroke="black" style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="8 19 244.517578125 356.4000244140625" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-1" height="480">
+<style>#mermaid-figure-1{font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755460887_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755460887_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755460887_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755460887_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755460887_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755460887_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755460887_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_S_SK_0" d="M121.791,85.6L118.682,88.1C115.573,90.6,109.355,95.6,106.246,99.35C103.137,103.1,103.137,105.6,103.137,107.433C103.137,109.267,103.137,110.433,103.137,111.017L103.137,111.6"></path><path marker-end="url(#mermaid-1791755460887_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SK_Z_1" d="M103.137,182.2L103.137,184.7C103.137,187.2,103.137,192.2,103.137,195.95C103.137,199.7,103.137,202.2,103.137,204.033C103.137,205.867,103.137,207.033,103.137,207.617L103.137,208.2"></path><path marker-end="url(#mermaid-1791755460887_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_Z_P_2" d="M103.137,278.8L103.137,281.3C103.137,283.8,103.137,288.8,104.691,292.55C106.246,296.3,109.355,298.8,111.945,300.882C114.534,302.964,116.604,304.629,117.639,305.461L118.674,306.293"></path><path marker-end="url(#mermaid-1791755460887_flowchart-v2-pointEnd)" style=";stroke-width:2px;fill:none;stroke:#1d1d1b" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_P_S_3" d="M204.619,308.8L207.728,306.3C210.837,303.8,217.055,298.8,220.164,288.25C223.273,277.7,223.273,261.6,223.273,245.5C223.273,229.4,223.273,213.3,223.273,197.2C223.273,181.1,223.273,165,223.273,148.9C223.273,132.8,223.273,116.7,221.719,107.4C220.164,98.1,217.055,95.6,214.466,93.518C211.876,91.436,209.806,89.771,208.771,88.939L207.736,88.107"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(163.205078125, 52.29999923706055)" id="flowchart-S-0" class="node default"><rect height="66.5999984741211" width="134.609375" y="-33.29999923706055" x="-67.3046875" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> lₛₚ</tspan></tspan></text></g></g></g><g transform="translate(103.13671875, 148.89999771118164)" id="flowchart-SK-1" class="node default"><rect height="66.5999984741211" width="178.640625" y="-33.29999923706055" x="-89.3203125" data-et="node" data-id="abc" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Skraplacz</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Oddaje</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepło</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> qₕ</tspan></tspan></text></g></g></g><g transform="translate(103.13671875, 245.49999618530273)" id="flowchart-Z-3" class="node default"><rect height="66.5999984741211" width="190.2734375" y="-33.29999923706055" x="-95.13671875" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Zawór</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Rozprężny</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="italic">h=const</tspan></tspan></text></g></g></g><g transform="translate(163.205078125, 342.0999946594238)" id="flowchart-P-5" class="node default"><rect height="66.5999984741211" width="178.625" y="-33.29999923706055" x="-89.3125" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -18.299999237060547)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Parownik</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Pobiera</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ciepło</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> qₗ</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -387,7 +375,7 @@
 </div></div>
 </section>
 <section id="zjawisko-dławienia-joule-thomson" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> Zjawisko Dławienia (Joule-Thomson)</h2>
+<h2><i class="bi bi-arrow-down-right-circle"></i> Zjawisko Dławienia (Joule-Thomson)</h2>
 <p>W elemencie dławiącym (zawór rozprężny lub rurka kapilarna) wykorzystujemy efekt Joule’a-Thomsona.</p>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-style-simple">
@@ -432,46 +420,30 @@
 <h2><i class="bi bi-graph-up"></i> 4. Wykres log(p)-h</h2>
 <p>Podstawowe narzędzie inżyniera chłodnictwa i HVAC. Oś Y w skali logarytmicznej (log p) obejmuje szeroki zakres ciśnień, a izobary są na niej liniami poziomymi; oś X (h) pozwala odczytywać ciepło i pracę jako odcinki.</p>
 <p><strong>Kluczowe odległości na wykresie:</strong></p>
-<div class="fragment">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-blue">
 <ol type="1">
 <li><strong>Praca sprężania:</strong> <span class="math inline">\(l = h_2 - h_1\)</span> (Rzut poziomy krzywej sprężania).</li>
 </ol>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-amber">
 <ol start="2" type="1">
 <li><strong>Efekt chłodniczy:</strong> <span class="math inline">\(q_L = h_1 - h_4\)</span> (Długość odcinka parowania).</li>
 </ol>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-green">
 <ol start="3" type="1">
 <li><strong>Ciepło skraplania:</strong> <span class="math inline">\(q_H = h_2 - h_3\)</span> (Długość górnego odcinka).</li>
 </ol>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="wizualizacja-obieg-na-p-h" class="slide level2">
 <h2><i class="bi bi-arrow-repeat"></i> Wizualizacja: Obieg na p-h</h2>
 
-<img data-src="11_Chlodnictwo_files/figure-revealjs/ph-cycle-1.png" width="960" class="r-stretch"></section>
+<img data-src="11_Chlodnictwo_files/figure-revealjs/fig-ph-cycle-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:85.0%" id="fig-ph-cycle"><p class="caption">
+Rysunek&nbsp;1: Rzeczywisty obieg Lindego (R134a) na wykresie log(p)-h; dane nasycenia wg NIST WebBook
+</p></section>
 <section id="modyfikacje-rzeczywiste" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 5. Modyfikacje Rzeczywiste</h2>
+<h2><i class="bi bi-sliders"></i> 5. Modyfikacje Rzeczywiste</h2>
 <p>W praktyce punkty 1 i 3 wychodzą poza obszar mokry:</p>
 <div class="fragment" title="A. Przegrzanie Par (Superheating)">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -511,11 +483,19 @@
 </div>
 </div>
 </section>
-<section id="czynniki-chłodnicze" class="slide level2">
-<h2><i class="bi bi-bookmark"></i> 6. Czynniki Chłodnicze</h2>
+<section id="czynniki-chłodnicze" class="slide level2 smaller">
+<h2><i class="bi bi-droplet-half"></i> 6. Czynniki Chłodnicze</h2>
 <p>Substancja musi wrzeć w niskiej temperaturze (np. <span class="math inline">\(-20\,^\circ\text{C}\)</span>) i skraplać się w wysokiej (<span class="math inline">\(40\,^\circ\text{C}\)</span>) przy rozsądnych ciśnieniach.</p>
-<div class="fragment" style="font-size: 0.75em;">
+<div class="fragment">
 <table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 15%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Generacja</th>
@@ -585,11 +565,11 @@
 </tr>
 </tbody>
 </table>
-<div style="font-size: 0.8em; color: gray;">
+<div class="small-note">
 <p>GWP100 wg IPCC AR4 (dla HFO — AR6), jak w rozporządzeniu (UE) 2024/573.</p>
 </div>
 </div>
-<div class="fragment" title="Trend" style="font-size: 0.9em;">
+<div class="fragment" title="Trend">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -605,72 +585,43 @@
 </div>
 </div>
 </section>
-<section id="a.-metryki-ekologiczne-odp-i-gwp" class="slide level2" style="font-size: 0.95em;">
+<section id="a.-metryki-ekologiczne-odp-i-gwp" class="slide level2" style="font-size: 0.9em;">
 <h2><i class="bi bi-shield-exclamation"></i> 6a. Metryki Ekologiczne: ODP i GWP</h2>
 <p>Dwa parametry decydują o dopuszczalności stosowania czynnika chłodniczego.</p>
-<div class="columns" style="font-size: 0.9em;">
+<div class="columns">
 <div class="column" style="width:48%;">
 <h3 class="fragment" id="odp-potencjał-niszczenia-ozonu"><i class="bi bi-sun"></i> ODP — Potencjał Niszczenia Ozonu</h3>
-<div class="callout callout-warning no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Miara zdolności substancji do niszczenia stratosferycznej warstwy ozonowej.<br>
-Odniesienie: <strong>R11 (CFC-11) → ODP = 1,0</strong></p>
+<div class="panel panel-amber">
+<p>Miara zdolności substancji do niszczenia stratosferycznej warstwy ozonowej. Odniesienie: <strong>R11 (CFC-11) → ODP = 1,0</strong></p>
 </div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-blue">
 <ul>
 <li>Czynniki <strong>CFC</strong> (R12): ODP = 1,0 ⛔ <strong>Zakazane</strong> (Protokół z Montrealu)</li>
 <li>Czynniki <strong>HCFC</strong> (R22): ODP = 0,05 ⛔ <strong>Zakazane w UE (od 2015 r.)</strong></li>
 <li>Czynniki <strong>HFC, HFO, naturalne</strong>: ODP = <strong>0</strong> ✅</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
 </div><div class="column" style="width:4%;">
 
 </div><div class="column" style="width:48%;">
 <h3 class="fragment" id="gwp-potencjał-globalnego-ocieplenia"><i class="bi bi-thermometer-high"></i> GWP — Potencjał Globalnego Ocieplenia</h3>
-<div class="callout callout-warning no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Miara wpływu na efekt cieplarniany w horyzoncie <strong>100 lat</strong>.<br>
-Odniesienie: <strong>CO₂ → GWP = 1</strong></p>
+<div class="panel panel-amber">
+<p>Miara wpływu na efekt cieplarniany w horyzoncie <strong>100 lat</strong>. Odniesienie: <strong>CO₂ → GWP = 1</strong></p>
 </div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-blue">
 <ul>
 <li><strong>R410A:</strong> GWP = <strong>2 088</strong> → 1 kg wycieku ≈ 2 t CO₂ ⛔</li>
 <li><strong>R134a:</strong> GWP = <strong>1 430</strong> ⚠️</li>
 <li><strong>R290 (Propan):</strong> GWP = <strong>3</strong> → de facto neutralny ✅</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
 </div></div>
-<div class="fragment" style="font-size: 0.85em;">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-green">
 <p><strong>ODP</strong> rozwiązało problem ozonu (Protokół z Montrealu, 1987). Teraz walczymy z <strong>GWP</strong> — rezygnacja z HFC stała się koniecznością.</p>
-</div>
-</div>
-</div>
 </div>
 </section>
 <section id="b.-cztery-generacje-czynników-chłodniczych" class="slide level2">
 <h2><i class="bi bi-clock-history"></i> 6b. Cztery Generacje Czynników Chłodniczych</h2>
-<div style="font-size: 0.8em;">
 <table class="caption-top">
 <colgroup>
 <col style="width: 23%">
@@ -725,27 +676,21 @@ Odniesienie: <strong>CO₂ → GWP = 1</strong></p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="fragment" style="font-size: 0.88em;">
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p><strong>Historia zatoczyła koło:</strong> branża chłodnicza wraca do czynników naturalnych z I generacji,<br>
-wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</p>
-</div>
-</div>
-</div>
+<div class="fragment panel panel-green">
+<p><strong>Historia zatoczyła koło:</strong> branża chłodnicza wraca do czynników naturalnych z I generacji, wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</p>
 </div>
 </section>
 <section id="c.-gwp-wybranych-czynników-chłodniczych" class="slide level2">
 <h2><i class="bi bi-bar-chart-fill"></i> 6c. GWP Wybranych Czynników Chłodniczych</h2>
 
-<img data-src="11_Chlodnictwo_files/figure-revealjs/gwp-comparison-1.png" width="1152" class="r-stretch"></section>
+<img data-src="11_Chlodnictwo_files/figure-revealjs/fig-gwp-comparison-1.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%" id="fig-gwp-comparison"><p class="caption">
+Rysunek&nbsp;2: Globalny potencjał ocieplenia (GWP100) wybranych czynników; odniesienie: CO<sub>2</sub> = 1; GWP wg rozp. (UE) 2024/573 (HFC: AR4, HFO: AR6); linia przerywana — limit rozporządzenia
+</p></section>
 <section id="d.-parametry-techniczne-i-klasy-bezpieczeństwa" class="slide level2">
 <h2><i class="bi bi-table"></i> 6d. Parametry Techniczne i Klasy Bezpieczeństwa</h2>
 <div class="columns">
 <div class="column" style="width:62%;">
-<div style="font-size: 0.73em;">
+<div style="font-size: 0.78em;">
 <table class="table-striped table-hover caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 19%">
@@ -771,16 +716,16 @@ wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</
 <tr class="odd">
 <td>R410A</td>
 <td>HFC</td>
-<td style="text-align: right;">2 088</td>
+<td style="text-align: right;"><span class="nowrap">2 088</span></td>
 <td style="text-align: right;">49,0</td>
 <td style="text-align: right;">72,1</td>
 <td style="text-align: center;"><strong>A1</strong></td>
-<td>⛔ Zakaz w nowych klimatyzatorach single-split &lt; 3 kg od 2025 r.</td>
+<td>⛔ Zakaz w nowych single-split &lt; 3 kg od 2025 r.</td>
 </tr>
 <tr class="even">
 <td>R134a</td>
 <td>HFC</td>
-<td style="text-align: right;">1 430</td>
+<td style="text-align: right;"><span class="nowrap">1 430</span></td>
 <td style="text-align: right;">40,6</td>
 <td style="text-align: right;">101,1</td>
 <td style="text-align: center;"><strong>A1</strong></td>
@@ -824,15 +769,12 @@ wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</
 </tr>
 </tbody>
 </table>
-<div style="font-size: 0.8em; color: gray;">
+</div>
+<div class="small-note">
 <p>GWP100 wg IPCC AR4 (dla HFO — AR6), jak w rozporządzeniu (UE) 2024/573.</p>
 </div>
-</div>
 </div><div class="column" style="width:38%;">
-<div style="font-size: 0.82em;">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="panel panel-blue" style="font-size: 0.82em;">
 <p><strong>Klasy bezpieczeństwa ASHRAE 34:</strong></p>
 <table class="caption-top">
 <thead>
@@ -861,30 +803,18 @@ wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</
 </tbody>
 </table>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment" style="font-size: 0.8em;">
-<div class="callout callout-warning no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-amber" style="font-size: 0.82em;">
 <p><strong>A1</strong> (R134a, R410A) — bezpieczny, lecz GWP &gt; 1000 ⛔</p>
 <p><strong>A3</strong> (R290) — zwykle w monoblokach (ograniczenie napełnienia), ale GWP = 3 i <strong>COP porównywalny lub do ~10% wyższy</strong> niż R410A ✅</p>
 </div>
-</div>
-</div>
-</div>
 </div></div>
 </section>
-<section id="e.-r290-propan-jako-czynnik-przyszłości" class="slide level2">
+<section id="e.-r290-propan-jako-czynnik-przyszłości" class="slide level2 smaller">
 <h2><i class="bi bi-tree-fill"></i> 6e. R290 — Propan jako Czynnik Przyszłości</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="dlaczego-propan">Dlaczego Propan?</h3>
-<div style="font-size: 0.82em;">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="panel panel-green">
 <ul>
 <li><strong>GWP = 3</strong> — praktycznie neutralny klimatycznie</li>
 <li><strong>COP porównywalny lub do ~10% wyższy</strong> niż R410A</li>
@@ -893,41 +823,23 @@ wyposażona w nowoczesne technologie bezpieczeństwa (monobloki, strefa ATEX).</
 <li>Propan (R290 = propan o czystości chłodniczej) — powszechnie dostępny i tani</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="fragment" style="font-size: 0.82em;">
-<div class="callout callout-warning no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p><strong>Klasa A3 — wysoce palny:</strong><br>
-Dolna granica palności <strong>1,7% obj.</strong> w powietrzu.<br>
-Rozwiązanie: minimalne napełnienie + hermetyczność + detekcja.</p>
-</div>
-</div>
-</div>
+<div class="fragment panel panel-amber">
+<p><strong>Klasa A3 — wysoce palny:</strong> Dolna granica palności <strong>1,7% obj.</strong> w powietrzu. Rozwiązanie: minimalne napełnienie + hermetyczność + detekcja.</p>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 class="fragment" id="technologia-monobloku">Technologia Monobloku</h3>
-<div style="font-size: 0.8em;">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Cały obieg R290 hermetycznie zamknięty w <strong>zewnętrznej</strong> jednostce (strefa ATEX).<br>
-Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
+<div class="panel panel-blue">
+<p>Cały obieg R290 hermetycznie zamknięty w <strong>zewnętrznej</strong> jednostce (strefa ATEX). Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="mmd-fit" style="height: 515px;">
+<div class="mmd-fit" style="height: 470px;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 863.65625 570" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-4" height="480">
-<style>#mermaid-figure-4{font-size:24px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-4 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-4 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-4 .error-icon{fill:#552222;}#mermaid-figure-4 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-4 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-4 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-4 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-4 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-4 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-4 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-4 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-4 .marker.cross{stroke:#333333;}#mermaid-figure-4 svg{font-size:24px;}#mermaid-figure-4 p{margin:0;}#mermaid-figure-4 .label{color:#333;}#mermaid-figure-4 .cluster-label text{fill:#333;}#mermaid-figure-4 .cluster-label span{color:#333;}#mermaid-figure-4 .cluster-label span p{background-color:transparent;}#mermaid-figure-4 .label text,#mermaid-figure-4 span{fill:#333;color:#333;}#mermaid-figure-4 .node rect,#mermaid-figure-4 .node circle,#mermaid-figure-4 .node ellipse,#mermaid-figure-4 .node polygon,#mermaid-figure-4 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-4 .rough-node .label text,#mermaid-figure-4 .node .label text,#mermaid-figure-4 .image-shape .label,#mermaid-figure-4 .icon-shape .label{text-anchor:middle;}#mermaid-figure-4 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-4 .rough-node .label,#mermaid-figure-4 .node .label,#mermaid-figure-4 .image-shape .label,#mermaid-figure-4 .icon-shape .label{text-align:center;}#mermaid-figure-4 .node.clickable{cursor:pointer;}#mermaid-figure-4 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-4 .arrowheadPath{fill:#333333;}#mermaid-figure-4 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-4 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-4 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-4 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-4 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-4 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-4 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-4 .cluster text{fill:#333;}#mermaid-figure-4 .cluster span{color:#333;}#mermaid-figure-4 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-4 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-4 rect.text{fill:none;stroke-width:0;}#mermaid-figure-4 .icon-shape,#mermaid-figure-4 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-4 .icon-shape p,#mermaid-figure-4 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-4 .icon-shape rect,#mermaid-figure-4 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-4 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848686_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848686_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848686_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848686_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848686_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848686_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974848686_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_OUT_IN_0" d="M389.359,296L407.613,296C425.867,296,462.375,296,498.216,296C534.057,296,569.232,296,586.819,296L604.406,296"></path></g><g class="edgeLabels"><g transform="translate(498.8828125, 296)" class="edgeLabel"><g transform="translate(-84.5234375, -16)" class="label"><g><rect height="32" width="169.046875" y="-0.9999980926513672" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Woda</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> grzewcza</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(0, 22)" class="root"><g class="clusters"><g data-look="classic" id="OUT" class="cluster"><rect height="554" width="381.359375" y="-3" x="8" style="fill:#e8f5e9 !important;stroke:#27ae60 !important;stroke-width:2px !important"></rect><g transform="translate(108.984375, 3)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Zewnątrz</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> –</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">MONOBLOK</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> R290</tspan></tspan><tspan dy="1.1em" y="2.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">(ATEX)</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974848686_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SP_SK_0" d="M208.315,114.5L200.973,120.75C193.63,127,178.944,139.5,171.601,151.333C164.258,163.167,164.258,174.333,164.258,179.917L164.258,185.5"></path><path marker-end="url(#mermaid-1790974848686_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SK_ZR_0" d="M164.258,247.5L164.258,253.75C164.258,260,164.258,272.5,164.258,284.333C164.258,296.167,164.258,307.333,164.258,312.917L164.258,318.5"></path><path marker-end="url(#mermaid-1790974848686_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ZR_PA_0" d="M164.258,380.5L164.258,386.75C164.258,393,164.258,405.5,171.093,417.568C177.928,429.636,191.599,441.272,198.434,447.089L205.269,452.907"></path><path marker-end="url(#mermaid-1790974848686_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PA_SP_0" d="M276.458,455.5L283.801,449.25C291.144,443,305.83,430.5,313.173,413.167C320.516,395.833,320.516,373.667,320.516,351.5C320.516,329.333,320.516,307.167,320.516,285C320.516,262.833,320.516,240.667,320.516,218.5C320.516,196.333,320.516,174.167,313.68,157.265C306.845,140.364,293.175,128.728,286.339,122.911L279.504,117.093"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(242.38671875, 85.5)" id="flowchart-SP-0" class="node default"><rect height="58" width="165.375" y="-29" x="-82.6875" style="" class="basic label-container"></rect><g transform="translate(0, -14)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan></text></g></g></g><g transform="translate(164.2578125, 218.5)" id="flowchart-SK-1" class="node default"><rect height="58" width="161.921875" y="-29" x="-80.9609375" style="" class="basic label-container"></rect><g transform="translate(0, -14)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Skraplacz</tspan></tspan></text></g></g></g><g transform="translate(164.2578125, 351.5)" id="flowchart-ZR-3" class="node default"><rect height="58" width="242.515625" y="-29" x="-121.2578125" style="" class="basic label-container"></rect><g transform="translate(0, -14)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Zawór</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Rozprężny</tspan></tspan></text></g></g></g><g transform="translate(242.38671875, 484.5)" id="flowchart-PA-5" class="node default"><rect height="58" width="157" y="-29" x="-78.5" style="" class="basic label-container"></rect><g transform="translate(0, -14)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Parownik</tspan></tspan></text></g></g></g></g></g><g transform="translate(732.03125, 296)" id="flowchart-IN-9" class="node default"><rect height="58" width="247.25" y="-29" x="-123.625" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -14)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Wnętrze</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> budynku</tspan></tspan></text></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 22 690.2275390625 504" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-4" height="480">
+<style>#mermaid-figure-4{font-size:22px;fill:#333;}#mermaid-figure-4 .error-icon{fill:#552222;}#mermaid-figure-4 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-4 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-4 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-4 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-4 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-4 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-4 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-4 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-4 .marker.cross{stroke:#333333;}#mermaid-figure-4 svg{font-size:22px;}#mermaid-figure-4 p{margin:0;}#mermaid-figure-4 .label{color:#333;}#mermaid-figure-4 .cluster-label text{fill:#333;}#mermaid-figure-4 .cluster-label span{color:#333;}#mermaid-figure-4 .cluster-label span p{background-color:transparent;}#mermaid-figure-4 .label text,#mermaid-figure-4 span{fill:#333;color:#333;}#mermaid-figure-4 .node rect,#mermaid-figure-4 .node circle,#mermaid-figure-4 .node ellipse,#mermaid-figure-4 .node polygon,#mermaid-figure-4 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-4 .rough-node .label text,#mermaid-figure-4 .node .label text{text-anchor:middle;}#mermaid-figure-4 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-4 .node .label{text-align:center;}#mermaid-figure-4 .node.clickable{cursor:pointer;}#mermaid-figure-4 .arrowheadPath{fill:#333333;}#mermaid-figure-4 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-4 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-4 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-4 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-4 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-4 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-4 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-4 .cluster text{fill:#333;}#mermaid-figure-4 .cluster span{color:#333;}#mermaid-figure-4 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-4 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-4 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755467440_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755467440_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755467440_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755467440_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755467440_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755467440_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755467440_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_OUT_IN_4" d="M347.111,274L362.636,274C378.161,274,409.21,274,432.497,274C455.785,274,471.309,274,486.167,274C501.025,274,515.217,274,522.313,274L529.408,274"></path></g><g class="edgeLabels"><g transform="translate(440.259765625, 274)" class="edgeLabel"><g transform="translate(-78.1484375, -15)" class="label"><g><rect height="30" width="156.296875" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Woda</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> grzewcza</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(0, 44)" class="root"><g class="clusters"><g data-look="classic" id="OUT" class="cluster"><rect height="488" width="339.111328125" y="-14" x="8" style="fill:#ecf7ee !important;stroke:#1f9d55 !important;stroke-width:2px !important"></rect><g transform="translate(81.6728515625, -6)" class="cluster-label"><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Monoblok</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> R290</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">na</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> zewnątrz</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> (ATEX)</tspan></tspan></text></g></g></g></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755467440_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SP_SK_0" d="M181.102,113.5L175.373,118.083C169.645,122.667,158.188,131.833,152.46,138.708C146.731,145.583,146.731,150.167,146.731,154.083C146.731,158,146.731,161.25,146.731,162.875L146.731,164.5"></path><path marker-end="url(#mermaid-1791755467440_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_SK_ZR_1" d="M146.731,224.5L146.731,229.083C146.731,233.667,146.731,242.833,146.731,249.708C146.731,256.583,146.731,261.167,146.731,265.083C146.731,269,146.731,272.25,146.731,273.875L146.731,275.5"></path><path marker-end="url(#mermaid-1791755467440_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_ZR_PA_2" d="M146.731,335.5L146.731,340.083C146.731,344.667,146.731,353.833,149.596,360.708C152.46,367.583,158.188,372.167,163.396,376.334C168.604,380.5,173.291,384.251,175.635,386.126L177.979,388.001"></path><path marker-end="url(#mermaid-1791755467440_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_PA_SP_3" d="M251.092,390.5L256.821,385.917C262.549,381.333,274.006,372.167,279.734,358.333C285.463,344.5,285.463,326,285.463,307.5C285.463,289,285.463,270.5,285.463,252C285.463,233.5,285.463,215,285.463,196.5C285.463,178,285.463,159.5,282.599,147.958C279.734,136.417,274.006,131.833,268.798,127.666C263.59,123.5,258.903,119.749,256.559,117.874L254.216,115.999"></path></g><g class="edgeLabels"><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g><rect style="stroke: none" class="background"></rect></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><text y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"></tspan></text></g></g></g><g class="nodes"><g transform="translate(216.09716796875, 85.5)" id="flowchart-SP-0" class="node default"><rect height="56" width="156.59375" y="-28" x="-78.296875" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -13)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan></text></g></g></g><g transform="translate(146.7314453125, 196.5)" id="flowchart-SK-1" class="node default"><rect height="56" width="153.9833984375" y="-28" x="-76.99169921875" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -13)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Skraplacz</tspan></tspan></text></g></g></g><g transform="translate(146.7314453125, 307.5)" id="flowchart-ZR-3" class="node default"><rect height="56" width="227.462890625" y="-28" x="-113.7314453125" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -13)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Zawór</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Rozprężny</tspan></tspan></text></g></g></g><g transform="translate(216.09716796875, 418.5)" id="flowchart-PA-5" class="node default"><rect height="56" width="149.81640625" y="-28" x="-74.908203125" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -13)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Parownik</tspan></tspan></text></g></g></g></g></g><g transform="translate(607.81787109375, 274)" id="flowchart-IN-9" class="node default"><rect height="80.20000076293945" width="148.8193359375" y="-40.10000038146973" x="-74.40966796875" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -25.100000381469727)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Wnętrze</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">budynku</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -939,10 +851,8 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 </section>
 <section id="f.-harmonogram-f-gazów-ue-2024573" class="slide level2">
 <h2><i class="bi bi-calendar-check"></i> 6f. Harmonogram F-gazów (UE 2024/573)</h2>
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>📅 <strong>F-Gas UE 2024/573:</strong></p>
+<div class="panel panel-amber">
+<p><strong>F-Gas UE 2024/573:</strong></p>
 <ul>
 <li>od <strong>2025 r.</strong> — zakaz czynników o GWP ≥ 750 w nowych klimatyzatorach single-split &lt; 3 kg (np. R410A),</li>
 <li>zakaz F-gazów w nowych małych klimatyzatorach i pompach ciepła (z wyjątkami bezpieczeństwa):
@@ -953,33 +863,25 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 <li>stopniowe wycofanie HFC z rynku UE — do <strong>2050 r.</strong></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
+<div class="fragment panel panel-green">
 <p><strong>R290 i CO₂ — standard technologiczny dekady.</strong></p>
 </div>
-</div>
-</div>
-</div>
 </section>
-<section id="pompy-ciepła" class="slide level2" style="font-size: 0.75em;">
-<h2><i class="bi bi-bookmark"></i> 7. Pompy Ciepła</h2>
+<section id="pompy-ciepła" class="slide level2 smaller">
+<h2><i class="bi bi-house-heart"></i> 7. Pompy Ciepła</h2>
 <p>“Lodówka wywrócona na lewą stronę” — to samo urządzenie, inny <strong>cel</strong>.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 class="fragment" id="chłodziarka"><i class="bi bi-snow"></i> Chłodziarka</h3>
-<div class="mmd-fit" style="height: 460px;">
+<div class="mmd-fit" style="height: 400px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 283.53125 356" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-3" height="480">
-<style>#mermaid-figure-3{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-3 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-3 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-3 .error-icon{fill:#552222;}#mermaid-figure-3 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-3 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-3 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-3 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-3 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-3 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-3 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-3 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-3 .marker.cross{stroke:#333333;}#mermaid-figure-3 svg{font-size:20px;}#mermaid-figure-3 p{margin:0;}#mermaid-figure-3 .label{color:#333;}#mermaid-figure-3 .cluster-label text{fill:#333;}#mermaid-figure-3 .cluster-label span{color:#333;}#mermaid-figure-3 .cluster-label span p{background-color:transparent;}#mermaid-figure-3 .label text,#mermaid-figure-3 span{fill:#333;color:#333;}#mermaid-figure-3 .node rect,#mermaid-figure-3 .node circle,#mermaid-figure-3 .node ellipse,#mermaid-figure-3 .node polygon,#mermaid-figure-3 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-3 .rough-node .label text,#mermaid-figure-3 .node .label text,#mermaid-figure-3 .image-shape .label,#mermaid-figure-3 .icon-shape .label{text-anchor:middle;}#mermaid-figure-3 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-3 .rough-node .label,#mermaid-figure-3 .node .label,#mermaid-figure-3 .image-shape .label,#mermaid-figure-3 .icon-shape .label{text-align:center;}#mermaid-figure-3 .node.clickable{cursor:pointer;}#mermaid-figure-3 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-3 .arrowheadPath{fill:#333333;}#mermaid-figure-3 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-3 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-3 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-3 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-3 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-3 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-3 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-3 .cluster text{fill:#333;}#mermaid-figure-3 .cluster span{color:#333;}#mermaid-figure-3 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-3 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-3 rect.text{fill:none;stroke-width:0;}#mermaid-figure-3 .icon-shape,#mermaid-figure-3 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-3 .icon-shape p,#mermaid-figure-3 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-3 .icon-shape rect,#mermaid-figure-3 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-3 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848538_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848538_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848538_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848538_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848538_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848538_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974848538_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_TL_M_0" d="M141.766,74L141.766,80.417C141.766,86.833,141.766,99.667,141.766,111.833C141.766,124,141.766,135.5,141.766,141.25L141.766,147"></path><path marker-end="url(#mermaid-1790974848538_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_TH_0" d="M141.766,227L141.766,233.417C141.766,239.833,141.766,252.667,141.766,264.833C141.766,277,141.766,288.5,141.766,294.25L141.766,300"></path></g><g class="edgeLabels"><g transform="translate(141.765625, 112.5)" class="edgeLabel"><g transform="translate(-42.6484375, -13.5)" class="label"><g><rect height="27" width="85.296875" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₗ</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ←</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> CEL</tspan></tspan></text></g></g></g><g transform="translate(141.765625, 265.5)" class="edgeLabel"><g transform="translate(-12.5625, -13.5)" class="label"><g><rect height="27" width="25.125" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₕ</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(141.765625, 331.5)" id="flowchart-TH-0" class="node default"><rect height="55" width="208.796875" y="-27.5" x="-104.3984375" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -12.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">☀️</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Otoczenie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₕ</tspan></tspan></text></g></g></g><g transform="translate(141.765625, 46.5)" id="flowchart-TL-1" class="node default"><rect height="55" width="267.53125" y="-27.5" x="-133.765625" style="fill:#e3f2fd !important;stroke:#1565c0 !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(0, -12.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">❄️</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Wnętrze</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> lodówki</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₗ</tspan></tspan></text></g></g></g><g transform="translate(141.765625, 189)" id="flowchart-M-2" class="node default"><rect height="76" width="176.84375" y="-38" x="-88.421875" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -23)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">⚙️</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> L</tspan></tspan></text></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 256.572265625 311" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-3" height="480">
+<style>#mermaid-figure-3{font-size:20px;fill:#333;}#mermaid-figure-3 .error-icon{fill:#552222;}#mermaid-figure-3 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-3 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-3 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-3 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-3 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-3 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-3 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-3 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-3 .marker.cross{stroke:#333333;}#mermaid-figure-3 svg{font-size:20px;}#mermaid-figure-3 p{margin:0;}#mermaid-figure-3 .label{color:#333;}#mermaid-figure-3 .cluster-label text{fill:#333;}#mermaid-figure-3 .cluster-label span{color:#333;}#mermaid-figure-3 .cluster-label span p{background-color:transparent;}#mermaid-figure-3 .label text,#mermaid-figure-3 span{fill:#333;color:#333;}#mermaid-figure-3 .node rect,#mermaid-figure-3 .node circle,#mermaid-figure-3 .node ellipse,#mermaid-figure-3 .node polygon,#mermaid-figure-3 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-3 .rough-node .label text,#mermaid-figure-3 .node .label text{text-anchor:middle;}#mermaid-figure-3 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-3 .node .label{text-align:center;}#mermaid-figure-3 .node.clickable{cursor:pointer;}#mermaid-figure-3 .arrowheadPath{fill:#333333;}#mermaid-figure-3 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-3 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-3 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-3 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-3 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-3 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-3 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-3 .cluster text{fill:#333;}#mermaid-figure-3 .cluster span{color:#333;}#mermaid-figure-3 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-3 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-3 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755465256_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755465256_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755465256_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755465256_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755465256_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755465256_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755465256_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_TL_M_0" d="M128.286,72L128.286,76.75C128.286,81.5,128.286,91,128.286,98.125C128.286,105.25,128.286,110,128.286,114.083C128.286,118.167,128.286,121.583,128.286,123.292L128.286,125"></path><path marker-end="url(#mermaid-1791755465256_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_TH_1" d="M128.286,204L128.286,208.75C128.286,213.5,128.286,223,128.286,230.125C128.286,237.25,128.286,242,128.286,246.083C128.286,250.167,128.286,253.583,128.286,255.292L128.286,257"></path></g><g class="edgeLabels"><g transform="translate(128.2861328125, 100.5)" class="edgeLabel"><g transform="translate(-43.2958984375, -13.5)" class="label"><g><rect height="27" width="86.591796875" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₗ</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ←</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> CEL</tspan></tspan></text></g></g></g><g transform="translate(128.2861328125, 232.5)" class="edgeLabel"><g transform="translate(-12.2578125, -13.5)" class="label"><g><rect height="27" width="24.515625" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₕ</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(128.2861328125, 287.5)" id="flowchart-TH-0" class="node default"><rect height="53" width="179.150390625" y="-26.5" x="-89.5751953125" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Otoczenie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₕ</tspan></tspan></text></g></g></g><g transform="translate(128.2861328125, 45.5)" id="flowchart-TL-1" class="node default"><rect height="53" width="240.572265625" y="-26.5" x="-120.2861328125" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Wnętrze</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> lodówki</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₗ</tspan></tspan></text></g></g></g><g transform="translate(128.2861328125, 166.5)" id="flowchart-M-2" class="node default"><rect height="75" width="153.01171875" y="-37.5" x="-76.505859375" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> L</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -987,26 +889,20 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: 0.85em;">
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p><span class="math inline">\(\text{COP}_{ch} = \frac{Q_L}{L}\)</span> (typowo 2–3)</p>
-</div>
-</div>
-</div>
+<div class="fragment panel panel-blue panel-center">
+<p><span class="math inline">\(\text{COP}_{ch} = \dfrac{Q_L}{L}\)</span> (typowo 2–3)</p>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 class="fragment" id="pompa-ciepła"><i class="bi bi-fire"></i> Pompa Ciepła</h3>
-<div class="mmd-fit" style="height: 460px;">
+<div class="mmd-fit" style="height: 400px;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 292.421875 356" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
-<style>#mermaid-figure-2{font-size:20px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-figure-2 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:20px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .rough-node .label,#mermaid-figure-2 .node .label,#mermaid-figure-2 .image-shape .label,#mermaid-figure-2 .icon-shape .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 rect.text{fill:none;stroke-width:0;}#mermaid-figure-2 .icon-shape,#mermaid-figure-2 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .icon-shape p,#mermaid-figure-2 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaid-figure-2 .icon-shape rect,#mermaid-figure-2 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848383_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848383_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848383_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1790974848383_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848383_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1790974848383_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1790974848383_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_TL_M_0" d="M146.211,74L146.211,80.417C146.211,86.833,146.211,99.667,146.211,111.833C146.211,124,146.211,135.5,146.211,141.25L146.211,147"></path><path marker-end="url(#mermaid-1790974848383_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_TH_0" d="M146.211,227L146.211,233.417C146.211,239.833,146.211,252.667,146.211,264.833C146.211,277,146.211,288.5,146.211,294.25L146.211,300"></path></g><g class="edgeLabels"><g transform="translate(146.2109375, 112.5)" class="edgeLabel"><g transform="translate(-10.21875, -13.5)" class="label"><g><rect height="27" width="20.4375" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₗ</tspan></tspan></text></g></g></g><g transform="translate(146.2109375, 265.5)" class="edgeLabel"><g transform="translate(-44.9921875, -13.5)" class="label"><g><rect height="27" width="89.984375" y="-1" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₕ</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ←</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> CEL</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(146.2109375, 331.5)" id="flowchart-TH-0" class="node default"><rect height="55" width="251.4375" y="-27.5" x="-125.71875" style="fill:#ffebee !important;stroke:#e74c3c !important;stroke-width:3px !important" class="basic label-container"></rect><g transform="translate(0, -12.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">🏠</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Pomieszczenie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₕ</tspan></tspan></text></g></g></g><g transform="translate(146.2109375, 46.5)" id="flowchart-TL-1" class="node default"><rect height="55" width="276.421875" y="-27.5" x="-138.2109375" style="fill:#e3f2fd !important;stroke:#1565c0 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -12.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">🌍</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Grunt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Powietrze</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₗ</tspan></tspan></text></g></g></g><g transform="translate(146.2109375, 189)" id="flowchart-M-2" class="node default"><rect height="76" width="176.84375" y="-38" x="-88.421875" style="fill:#fff3e0 !important;stroke:#f39c12 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -23)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">⚙️</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> L</tspan></tspan></text></g></g></g></g></g></g>
+<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 11 264.462890625 311" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
+<style>#mermaid-figure-2{font-size:20px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-size:20px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755463077_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755463077_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755463077_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1791755463077_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755463077_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1791755463077_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1791755463077_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_TL_M_0" d="M132.231,72L132.231,76.75C132.231,81.5,132.231,91,132.231,98.125C132.231,105.25,132.231,110,132.231,114.083C132.231,118.167,132.231,121.583,132.231,123.292L132.231,125"></path><path marker-end="url(#mermaid-1791755463077_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_M_TH_1" d="M132.231,204L132.231,208.75C132.231,213.5,132.231,223,132.231,230.125C132.231,237.25,132.231,242,132.231,246.083C132.231,250.167,132.231,253.583,132.231,255.292L132.231,257"></path></g><g class="edgeLabels"><g transform="translate(132.2314453125, 100.5)" class="edgeLabel"><g transform="translate(-10.7578125, -13.5)" class="label"><g><rect height="27" width="21.515625" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₗ</tspan></tspan></text></g></g></g><g transform="translate(132.2314453125, 232.5)" class="edgeLabel"><g transform="translate(-44.6240234375, -13.5)" class="label"><g><rect height="27" width="89.248046875" y="-2" x="-2" style="" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Qₕ</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> ←</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> CEL</tspan></tspan></text></g></g></g></g><g class="nodes"><g transform="translate(132.2314453125, 287.5)" id="flowchart-TH-0" class="node default"><rect height="53" width="221.791015625" y="-26.5" x="-110.8955078125" data-et="node" data-id="abc" style="fill:#fff4e3 !important;stroke:#eb6834 !important;stroke-width:4px !important" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Pomieszczenie</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₕ</tspan></tspan></text></g></g></g><g transform="translate(132.2314453125, 45.5)" id="flowchart-TL-1" class="node default"><rect height="53" width="248.462890625" y="-26.5" x="-124.2314453125" data-et="node" data-id="abc" style="fill:#eef4fb !important;stroke:#2a78d6 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -11.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Grunt</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> /</tspan><tspan font-weight="bold" class="text-inner-tspan" font-style="normal"> Powietrze</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="normal"> Tₗ</tspan></tspan></text></g></g></g><g transform="translate(132.2314453125, 166.5)" id="flowchart-M-2" class="node default"><rect height="75" width="153.01171875" y="-37.5" x="-76.505859375" data-et="node" data-id="abc" style="fill:#f7f6f3 !important;stroke:#5a5753 !important;stroke-width:2px !important" class="basic label-container"></rect><g transform="translate(0, -22.5)" style="" class="label"><rect></rect><g><rect style="stroke: none" class="background"></rect><text style="" y="-10.1"><tspan dy="1.1em" y="-0.1em" x="0" class="text-outer-tspan"><tspan font-weight="bold" class="text-inner-tspan" font-style="normal">Sprężarka</tspan></tspan><tspan dy="1.1em" y="1em" x="0" class="text-outer-tspan"><tspan font-weight="normal" class="text-inner-tspan" font-style="normal">Praca</tspan><tspan font-weight="normal" class="text-inner-tspan" font-style="italic"> L</tspan></tspan></text></g></g></g></g></g></g>
 </svg>
 </div>
 <p></p></figure><p></p>
@@ -1014,18 +910,12 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 </div>
 </div>
 </div>
-<div class="fragment" style="font-size: 0.85em;">
-<div class="callout callout-tip no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p><span class="math inline">\(\text{COP}_{g} = \frac{Q_H}{L} = \text{COP}_{ch} + 1\)</span> (typowo 3–5)</p>
-</div>
-</div>
-</div>
+<div class="fragment panel panel-amber panel-center">
+<p><span class="math inline">\(\text{COP}_{g} = \dfrac{Q_H}{L} = \text{COP}_{ch} + 1\)</span> (typowo 3–5)</p>
 </div>
 </div></div>
-<div class="fragment" title="Obieg gazowy (Joule'a-Braytona)" style="font-size: 0.65em;">
-<div class="callout callout-important callout-titled callout-style-default">
+<div class="fragment" title="Obieg gazowy (Joule'a-Braytona)">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -1059,7 +949,7 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
 </ol>
 </div>
 <h3 class="fragment" id="zadanie-domowe">Zadanie Domowe</h3>
-<div class="fragment" title="Zadanie Dla Chętnych" style="font-size: 0.8em;">
+<div class="fragment" title="Zadanie Dla Chętnych">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1243,14 +1133,14 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -1271,7 +1161,7 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
         margin: 0.2,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1298,42 +1188,80 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1383,14 +1311,13 @@ Do wnętrza domu wchodzi tylko <strong>woda grzewcza</strong>.</p>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
             }
-          }
-          return codeEl.innerText;
+            return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

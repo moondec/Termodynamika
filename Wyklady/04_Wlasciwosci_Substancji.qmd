@@ -5,16 +5,16 @@ author: "<span style='font-size: 1.5em;'>**prof. UPP dr hab. inż. Marek Urbania
 institute: |
   Wydział Inżynierii Środowiska i Inżynierii Mechanicznej<br><br>
   <div style="display: flex; justify-content: left; align-items: center; gap: 40px;">
-    
-    <img src="https://www.up.poznan.pl/sites/default/files/2024-10/logo_zielone_polskie_uklad_poziomy.png" 
+
+    <img src="../img/logo_upp.png"
          style="height: 200px;">
-    
-    <img src="https://wisim.up.poznan.pl/sites/default/files/2023-02-13%2011%3A41/logo_wisim06.jpg" 
+
+    <img src="../img/logo_wisim.jpg"
          style="height: 200px;">
-         
-    <img src="../img/kbig.jpg" 
+
+    <img src="../img/kbig.jpg"
          style="height: 200px;">
-         
+
   </div>
 lang: pl
 mermaid-format: svg
@@ -28,7 +28,7 @@ format:
         body { background-color: #1a1a1a; }
         .reveal .slide-background-content {
             background-image: url("../img/background_red.png") !important;
-            background-size: contain !important; 
+            background-size: contain !important;
             background-repeat: no-repeat !important;
             background-position: center center !important;
             opacity: 0.2 !important;
@@ -42,11 +42,13 @@ format:
     slide-number: c/t
     show-slide-number: all
     transition: slide
+    background-transition: fade
     chalkboard: true
     footer: "Termodynamika Techniczna (W4)"
     width: 1600
     height: 900
     margin: 0.2
+    fig-format: svg
     revealjs-plugins:
       - appearance
       - pointer
@@ -57,62 +59,84 @@ editor: source
 ---
 
 ```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(ggplot2)
-theme_set(theme_minimal(base_size = 18))
-```
+#| label: setup
+#| include: false
 
+library(ggplot2)
+source("../theme/ggtheme.R")   # wspólny styl wykresów i paleta slajdów
+theme_set(theme_slides(16))
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
+```
 
 ## <i class="bi bi-list-ol"></i> Agenda Wykładu {data-menu-title="Agenda"}
 
+::::: columns
+::: {.column width="55%"}
 1.  **Substancje Czyste** (Definicje, Fazy)
 2.  **Gaz Doskonały** (Założenia modelu)
 3.  **Równanie Stanu** (Clapeyron, Stała Gazowa $R$)
 4.  **Ciepła Właściwe** (Relacja Mayera, Wykładnik $\kappa$)
 5.  **Mieszaniny Gazowe** (Prawo Daltona)
 6.  **Gazy Rzeczywiste** (Van der Waals, Andrews)
+:::
 
-![](../img/substancja_vs_mieszanina.png){width="50%" fig-align="center"}
+::: {.column width="45%"}
+![](../img/substancja_vs_mieszanina.png){width="80%" fig-align="center"}
+:::
+:::::
 
----
-
-## <i class="bi bi-bookmark"></i> 1. Wprowadzenie do Substancji Czystych 
+## <i class="bi bi-bookmark"></i> 1. Wprowadzenie do Substancji Czystych
 
 ### Definicja
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 **Substancja czysta** to substancja, która ma stały i jednorodny skład chemiczny w całej swojej objętości.
 :::
 
-*   **Przykłady:** Woda ($H_2O$), Azot ($N_2$), Hel ($He$), Dwutlenek węgla ($CO_2$).
+*   **Przykłady:** Woda ([H~2~O]{.nowrap}), Azot ([N~2~]{.nowrap}), Hel (He), Dwutlenek węgla ([CO~2~]{.nowrap}).
 
-::: {.fragment}
-*   **A co z powietrzem?** Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako *jednorodną* substancję zastępczą (dopóki nie skraplamy tlenu/azotu).
+::: {.fragment .panel .panel-amber}
+**A co z powietrzem?** Jest mieszaniną gazów, ale w obszarze gazowym traktujemy je jako *jednorodną* substancję zastępczą (dopóki nie skraplamy tlenu/azotu).
 :::
 
----
-
-## <i class="bi bi-bookmark"></i> Fazy Materii 
+## <i class="bi bi-bookmark"></i> Fazy Materii
 
 Substancja czysta może występować w różnych fazach (stanach skupienia):
 
-1.  <i class="bi bi-box-seam"></i> **Ciało Stałe (Solid):** Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.
-2.  <i class="bi bi-cup-hot"></i> **Ciecz (Liquid):** Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).
-3.  <i class="bi bi-cloud"></i> **Gaz (Gas/Vapor):** Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.
+::::: columns
+::: {.column width="33%"}
+::: {.panel .panel-blue}
+**<i class="bi bi-box-seam"></i> Ciało Stałe**
 
----
+Silne wiązania, ustalona struktura (sieć krystaliczna). Cząsteczki drgają wokół położeń równowagi.
+:::
+:::
 
-## <i class="bi bi-bookmark"></i> Równowaga Fazowa 
+::: {.column width="33%"}
+::: {.panel .panel-green}
+**<i class="bi bi-cup-hot"></i> Ciecz**
+
+Cząsteczki blisko siebie (siły międzycząsteczkowe wciąż silne), ale mogą się przemieszczać (płynność).
+:::
+:::
+
+::: {.column width="33%"}
+::: {.panel .panel-amber}
+**<i class="bi bi-cloud"></i> Gaz (para)**
+
+Cząsteczki daleko od siebie, poruszają się swobodnie i chaotycznie. Słabe oddziaływania.
+:::
+:::
+:::::
+
+## <i class="bi bi-bookmark"></i> Równowaga Fazowa
 
 ::: incremental
-*   Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w $0^\circ C$).
+*   Fazy mogą ze sobą współistnieć w równowadze (np. lód pływający w wodzie w 0 °C).
 *   Podczas przemiany fazowej (dla substancji czystej), przy stałym ciśnieniu, temperatura pozostaje **STAŁA**.
 :::
 
-::: {style="text-align: center;"}
-::: {.mmd-fit style="height: 220px;"}
+::: {.mmd-fit style="height: 260px;"}
 ```{mermaid}
 %%{init: {'theme': 'default', 'htmlLabels': false, 'flowchart': {'htmlLabels': false, 'wrappingWidth': 400, 'subGraphTitleMargin': {'top': 6, 'bottom': 16}}, 'themeVariables': {'fontSize': '16px', 'fontFamily': 'Arial, Helvetica, sans-serif'}}}%%
 flowchart LR
@@ -120,143 +144,201 @@ flowchart LR
     L <-->|Parowanie / Skraplanie| G[Gaz]
     S <-->|Sublimacja / Resublimacja| G
 
-    style S fill:#dfe6e9,stroke:#636e72,stroke-width:2px
-    style L fill:#74b9ff,stroke:#0984e3,stroke-width:2px
-    style G fill:#dfe6e9,stroke:#636e72,stroke-width:2px,stroke-dasharray: 5 5
+    style S fill:#f7f6f3,stroke:#5a5753,stroke-width:2px
+    style L fill:#eef4fb,stroke:#2a78d6,stroke-width:2px
+    style G fill:#fff4e3,stroke:#eb6834,stroke-width:2px,stroke-dasharray: 5 5
 ```
 :::
-:::
 
----
-
-## <i class="bi bi-box-seam"></i> 2. Model Gazu Doskonałego 
+## <i class="bi bi-box-seam"></i> 2. Model Gazu Doskonałego
 
 ### Abstrakcja vs Rzeczywistość
 
 Gaz doskonały to teoretyczny model, który przyjmuje następujące uproszczenia (Kinetyczna Teoria Gazów):
 
-::::: {.columns}
-
-::: {.column width="50%" .incremental}
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
 **Założenia:**
 
+::: incremental
 1.  **Objętość cząsteczek = 0**
 2.  **Brak oddziaływań**
 3.  **Zderzenia sprężyste**
 :::
-
-::: {.column width="50%" .incremental}
-**Rzeczywistość:**
-
-1.   **Cząsteczki mają średnicę.**
-2.   **Przyciągają się (van der Waals).**
-3.   **Przy zderzeniach wymieniają energię także z ruchem obrotowym i drganiami (energia całkowita jest zachowana).**
+:::
 :::
 
+::: {.column width="50%"}
+::: {.panel .panel-amber}
+**Rzeczywistość:**
+
+::: incremental
+1.  Cząsteczki mają średnicę.
+2.  Przyciągają się (van der Waals).
+3.  Przy zderzeniach wymieniają energię także z ruchem obrotowym i drganiami (energia całkowita jest zachowana).
+:::
+:::
+:::
 :::::
 
----
-
-## <i class="bi bi-question-circle"></i> Kiedy stosować Gaz Doskonały? 
+## <i class="bi bi-question-circle"></i> Kiedy stosować Gaz Doskonały?
 
 Model ten jest zadziwiająco dokładny dla większości gazów rzeczywistych, JEŚLI:
 
-1.  **Ciśnienie jest niskie:** Cząsteczki są daleko od siebie (siły pomijalne).
-2.  **Temperatura jest wysoka:** Energia kinetyczna dominuje nad energią potencjalną oddziaływań.
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**1. Ciśnienie jest niskie**
 
-::: {.callout-note}
-Dla powietrza w warunkach otoczenia ($p \approx 1$ bar, $T \approx 20^\circ C$), błąd modelu gazu doskonałego wynosi poniżej 1%.
+Cząsteczki są daleko od siebie (siły pomijalne).
+:::
 :::
 
----
+::: {.column width="50%"}
+::: {.panel .panel-amber}
+**2. Temperatura jest wysoka**
 
-## <i class="bi bi-calculator"></i> 3. Równanie Stanu (Clapeyron) 
+Energia kinetyczna dominuje nad energią potencjalną oddziaływań.
+:::
+:::
+:::::
+
+::: {.fragment .callout-note}
+Dla powietrza w warunkach otoczenia ($p \approx 1$ bar, $T \approx 20\ ^\circ\text{C}$), błąd modelu gazu doskonałego wynosi poniżej 1%.
+:::
+
+## <i class="bi bi-calculator"></i> 3. Równanie Stanu (Clapeyron)
 
 Związek między ciśnieniem ($p$), temperaturą ($T$) i objętością ($v$) dla gazu doskonałego:
 
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**Postać właściwa** (na 1 kg):
 $$ p \cdot v = R \cdot T $$
 
 Mnożąc przez masę $m$ (gdzie $V = m \cdot v$):
-
 $$ p \cdot V = m \cdot R \cdot T $$
+:::
+:::
 
-*   $p$ – Ciśnienie absolutne $[Pa]$
-*   $V$ – Objętość $[m^3]$
-*   $T$ – Temperatura absolutna $[K]$ ($T_{\text{Kelvin}} = T_{\text{Celsjusz}} + 273{,}15$)
-*   $m$ – Masa $[kg]$
-*   $R$ – Indywidualna stała gazowa $[J/(kg\cdot K)]$
+::: {.column width="50%"}
+*   $p$ – Ciśnienie absolutne $[\text{Pa}]$
+*   $V$ – Objętość $[\text{m}^3]$
+*   $T$ – Temperatura absolutna $[\text{K}]$ ($T_{\text{Kelvin}} = T_{\text{Celsjusz}} + 273{,}15$)
+*   $m$ – Masa $[\text{kg}]$
+*   $R$ – Indywidualna stała gazowa $[\text{J}/(\text{kg}\cdot \text{K})]$
+:::
+:::::
 
----
-
-## <i class="bi bi-exclamation-triangle"></i> Stała Gazowa Uniwersalna czy Indywidualna? 
+## <i class="bi bi-exclamation-triangle"></i> Stała Gazowa Uniwersalna czy Indywidualna?
 
 Tu studenci najczęściej robią błędy!
 
-### Uniwersalna Stała Gazowa ($R_u$ lub $\mathcal{R}$, lub $R_m$, lub $MR$)
-Stała fizyczna, niezależna od rodzaju gazu:
-$$ R_u \approx 8314{,}46 \quad \frac{J}{kmol \cdot K} $$
-Używana w chemii w równaniu dla moli: $pV = n R_u T$.
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**Uniwersalna Stała Gazowa** ($R_u$ lub $\mathcal{R}$, lub $R_m$, lub $MR$)
 
-::: {.fragment}
-### Indywidualna Stała Gazowa ($R$)
-Zależy od masy molowej ($M$) konkretnego gazu:
-$$ R = \frac{R_u}{M} $$
-Używana w technice w równaniu dla masy: $pV = m R T$.
+Stała fizyczna, niezależna od rodzaju gazu:
+$$ R_u \approx 8314{,}46 \quad \frac{\text{J}}{\text{kmol} \cdot \text{K}} $$
+
+Używana w chemii w równaniu dla moli: $pV = n R_u T$.
+:::
 :::
 
----
+::: {.column width="50%"}
+::: {.fragment .panel .panel-green}
+**Indywidualna Stała Gazowa** ($R$)
 
-## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$ {.smaller  style="font-size: 0.9em;"}
+Zależy od masy molowej ($M$) konkretnego gazu:
+$$ R = \frac{R_u}{M} $$
+
+Używana w technice w równaniu dla masy: $pV = m R T$.
+:::
+:::
+:::::
+
+## <i class="bi bi-calculator"></i> Przykłady Stałej Gazowej $R$
 
 $$ R = \frac{8314}{M} $$
 
-1.  **Powietrze** ($M \approx 29$ kg/kmol):
-    $$ R_{\text{pow}} = \frac{8314}{29} \approx 287 \quad \frac{J}{kg \cdot K} $$
+::::: columns
+::: {.column width="33%"}
+::: {.panel .panel-blue}
+**1. Powietrze** ($M \approx 29$ kg/kmol):
+$$ R_{\text{pow}} = \frac{8314}{29} \approx 287 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} $$
+:::
+:::
 
-2.  **Wodór $H_2$** ($M \approx 2$ kg/kmol):
-    $$ R_{H2} = \frac{8314}{2} \approx 4157 \quad \frac{J}{kg \cdot K} $$
+::: {.column width="33%"}
+::: {.panel .panel-blue}
+**2. Wodór** [H~2~]{.nowrap} ($M \approx 2$ kg/kmol):
+$$ R_{H2} = \frac{8314}{2} \approx 4157 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} $$
+:::
+:::
 
-3.  **Dwutlenek węgla $CO_2$** ($M \approx 44$ kg/kmol):
-    $$ R_{CO2} = \frac{8314}{44} \approx 189 \quad \frac{J}{kg \cdot K} $$
+::: {.column width="33%"}
+::: {.panel .panel-blue}
+**3. Dwutlenek węgla** [CO~2~]{.nowrap} ($M \approx 44$ kg/kmol):
+$$ R_{CO2} = \frac{8314}{44} \approx 189 \ \frac{\text{J}}{\text{kg} \cdot \text{K}} $$
+:::
+:::
+:::::
 
----
-
-## <i class="bi bi-thermometer-half"></i> 4. Ciepła Właściwe 
+## <i class="bi bi-thermometer-half"></i> 4. Ciepła Właściwe
 
 Ilość ciepła potrzebna do podgrzania 1 kg substancji o 1 K.
 Dla gazów zależy to od sposobu ogrzewania!
 
-*   **$c_v$ (przy stałej objętości):** Całe ciepło idzie na wzrost energii wewnętrznej $u$.
-    $$ c_v = \left( \frac{\partial u}{\partial T} \right)_v $$
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**$c_v$ (przy stałej objętości):** Całe ciepło idzie na wzrost energii wewnętrznej $u$.
+$$ c_v = \left( \frac{\partial u}{\partial T} \right)_v $$
+:::
+:::
 
-*   **$c_p$ (przy stałym ciśnieniu):** Ciepło idzie na wzrost $u$ ORAZ na wykonanie pracy objętościowej (rozpychanie tłoka).
-    $$ c_p = \left( \frac{\partial h}{\partial T} \right)_p $$
+::: {.column width="50%"}
+::: {.panel .panel-amber}
+**$c_p$ (przy stałym ciśnieniu):** Ciepło idzie na wzrost $u$ ORAZ na wykonanie pracy objętościowej (rozpychanie tłoka).
+$$ c_p = \left( \frac{\partial h}{\partial T} \right)_p $$
+:::
+:::
+:::::
 
----
+## <i class="bi bi-pencil-square"></i> Relacja Mayera (Wyprowadzenie)
 
-## <i class="bi bi-pencil-square"></i> Relacja Mayera (Wyprowadzenie) 
-
+::::: columns
+::: {.column width="50%"}
 Dla gazu doskonałego entalpia $h$ zależy tylko od temperatury.
 Definicja entalpii:
 $$ h = u + p \cdot v $$
 
 Podstawiając z Clapeyrona ($pv = RT$):
 $$ h = u + R \cdot T $$
+:::
 
+::: {.column width="50%"}
 Różniczkując obie strony po temperaturze $T$:
 $$ \frac{dh}{dT} = \frac{du}{dT} + R $$
 
 Ponieważ dla g.d. $dh/dT = c_p$ oraz $du/dT = c_v$:
 
+::: {.panel .panel-green}
 $$ c_p = c_v + R $$
+:::
+:::
+:::::
 
----
+## <i class="bi bi-lightbulb"></i> Co wynika z Relacji Mayera?
 
-## <i class="bi bi-lightbulb"></i> Co wynika z Relacji Mayera? 
-
+::: {.panel .panel-blue}
 $$ c_p > c_v $$
 
 Ogrzewanie przy stałym ciśnieniu wymaga **więcej** energii niż przy stałej objętości, ponieważ gaz wykonuje pracę ekspansji ($L = p \Delta V$).
+:::
 
 Ciepło dostarczone ($Q_p$) rozdziela się na:
 
@@ -265,39 +347,48 @@ Ciepło dostarczone ($Q_p$) rozdziela się na:
 
 Przy $V=const$, praca wynosi zero, więc całe ciepło idzie w temperaturę.
 
----
+## <i class="bi bi-exclamation-octagon"></i> Uwaga na oznaczenia!
 
-## <i class="bi bi-exclamation-octagon"></i> Uwaga na oznaczenia! 
 Wzór $c_p - c_v = ...$ ma różne postacie w zależności od jednostek.
 
 | Wersja | Wzór | Jednostka | Stała Gazowa |
 | :--- | :--- | :--- | :--- |
-| **Techniczna** (kg) | $c_p - c_v = R$ | $\frac{J}{kg \cdot K}$ | **Indywidualna** ($R$) |
-| **Molowa** (kmol) | $C_{p,m} - C_{v,m} = R_u$ | $\frac{J}{kmol \cdot K}$ | **Uniwersalna** ($MR$) |
-| **Całkowita** (Cały układ) | $C_p - C_v = n \cdot R_u$ | $\frac{J}{K}$ | Uniwersalna |
+| **Techniczna** (kg) | $c_p - c_v = R$ | $\frac{\text{J}}{\text{kg} \cdot \text{K}}$ | **Indywidualna** ($R$) |
+| **Molowa** (kmol) | $C_{p,m} - C_{v,m} = R_u$ | $\frac{\text{J}}{\text{kmol} \cdot \text{K}}$ | **Uniwersalna** ($MR$) |
+| **Całkowita** (Cały układ) | $C_p - C_v = n \cdot R_u$ | $\frac{\text{J}}{\text{K}}$ | Uniwersalna |
 
-> **Zasada na Egzamin:**
-> Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
-> Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
+::: {.panel .panel-amber}
+**Zasada na Egzamin:** Jeśli widzisz małe $c$ i $R$, **nie wstawiaj tam $n$**!
+Inżynierowie w elektrowniach liczą na kilogramy ($R$), a nie na mole ($n \cdot R_u$).
+:::
 
----
-
-## <i class="bi bi-arrows-collapse"></i> Mikro vs Makro: Równanie Clapeyrona 
+## <i class="bi bi-arrows-collapse"></i> Mikro vs Makro: Równanie Clapeyrona
 
 Równanie stanu gazu doskonałego można interpretować na dwa sposoby:
 
-**1. Interpretacja Makroskopowa (Termodynamika Klasyczna):**
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**1. Interpretacja Makroskopowa** (Termodynamika Klasyczna):
 $$ pV = nR_uT $$
 Wskazuje, że iloczyn $pV$ – wielkość o wymiarze **energii** (praca przetłaczania) – jest proporcjonalny do ilości substancji i temperatury.
+:::
+:::
 
-**2. Interpretacja Mikroskopowa (Kinetyczna Teoria Gazów):**
+::: {.column width="50%"}
+::: {.panel .panel-amber}
+**2. Interpretacja Mikroskopowa** (Kinetyczna Teoria Gazów):
 Z kinetostatystyki wiemy, że ciśnienie wynika ze zderzeń cząsteczek ze ściankami naczynia. Ostateczny wzór to:
 $$ pV = \frac{2}{3} E_{k,\text{post}} $$
-*Gdzie $E_{k,\text{post}}$ to całkowita energia kinetyczna chaotycznego ruchu postępowego wszystkich cząsteczek (równa $U$ tylko dla gazu jednoatomowego).*
+:::
+:::
+:::::
 
----
+::: {.small-note}
+Gdzie $E_{k,\text{post}}$ to całkowita energia kinetyczna chaotycznego ruchu postępowego wszystkich cząsteczek (równa $U$ tylko dla gazu jednoatomowego).
+:::
 
-## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} E_{k,\text{post}}$ (1/2){.smaller}
+## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} E_{k,\text{post}}$ (1/2)
 
 Rozważmy cząsteczkę o masie $m$ i prędkości $w$ w sześcianie o boku $L$ (symbol $w$, bo $v$ oznacza objętość właściwą):
 
@@ -305,33 +396,32 @@ Rozważmy cząsteczkę o masie $m$ i prędkości $w$ w sześcianie o boku $L$ (s
 2.  **Średnia siła uderzeń (Zasada Dynamiki Newtona):** $F = \frac{\Delta p_x}{\Delta t} = \frac{m w_{x}^2}{L}$.
 3.  **Ciśnienie (dla N cząsteczek):** $p = \frac{\sum F}{A} = \frac{N m \langle w_x^2 \rangle}{V}$.
 
----
+## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} E_{k,\text{post}}$ (2/2)
 
-## <i class="bi bi-calculator"></i> Pełne wyprowadzenie $pV = \frac{2}{3} E_{k,\text{post}}$ (2/2){.smaller}
+4.  **Izotropia przestrzeni (mikroświat):** Kinetostatystyka zakłada równy rozdział ruchu na 3 wymiary ($x,y,z$), dlatego $\langle w_x^2 \rangle = \frac{1}{3} \langle w^2 \rangle$, a stąd $pV = \frac{1}{3} N m \langle w^2 \rangle$.
+5.  **Energia kinetyczna ruchu postępowego ($E_{k,\text{post}}$):** Ponieważ $E_{k,\text{post}} = N \cdot (\frac{1}{2} m \langle w^2 \rangle)$, to widać, że $N m \langle w^2 \rangle = 2E_{k,\text{post}}$.
+6.  **Finał (połączenie 4 i 5):** Podstawiając to do równania ciśnienia, otrzymujemy $pV = \frac{1}{3} (2E_{k,\text{post}}) = \frac{2}{3} E_{k,\text{post}}$. Liczba $3$ to wymiary przestrzeni, a $2$ bierze się ze wzoru na energię kinetyczną.
 
-4.  **Izotropia przestrzeni (mikroświat):** Kinetostatystyka zakłada równy rozdział ruchu na 3 wymiary ($x,y,z$), dlatego $\langle w_x^2 \rangle = \frac{1}{3} \langle w^2 \rangle$:
-    $$ pV = \frac{1}{3} N m \langle w^2 \rangle $$
-5.  **Energia kinetyczna ruchu postępowego ($E_{k,\text{post}}$):** Ponieważ $E_{k,\text{post}} = N \cdot (\frac{1}{2} m \langle w^2 \rangle)$, to widać, że $N m \langle w^2 \rangle = 2E_{k,\text{post}}$. 
-6.  **Finał (połączenie 4 i 5):** Podstawiając to do równania ciśnienia, otrzymujemy $pV = \frac{1}{3} (2E_{k,\text{post}}) = \frac{2}{3} E_{k,\text{post}}$. Liczba $3$ to wymiary przestrzeni, a $2$ bierze się ze wzoru na energię kinetyczną. Ostatecznie **równanie Clapeyrona bezpośrednio wiąże ze sobą ujęcie makro (iloczyn $pV$ o wymiarze energii) i ujęcie mikro (energię cząsteczek)**. Dla gazu jednoatomowego $E_{k,\text{post}} = U$.
+::: {.panel .panel-green}
+Ostatecznie **równanie Clapeyrona bezpośrednio wiąże ze sobą ujęcie makro (iloczyn $pV$ o wymiarze energii) i ujęcie mikro (energię cząsteczek)**. Dla gazu jednoatomowego $E_{k,\text{post}} = U$.
+:::
 
----
-
-## <i class="bi bi-share"></i> Zasada Ekwipartycji Energii 
+## <i class="bi bi-share"></i> Zasada Ekwipartycji Energii
 
 ### Teoria Ciepła Właściwego
 
 Każdy stopień swobody cząsteczki wnosi wkład do energii wewnętrznej.
 
+::: {.panel .panel-blue}
 Średnia energia na jeden stopień swobody:
 $$ \langle E_i \rangle = \frac{1}{2} k T $$
+:::
 
 *   **Ruch postępowy:** 3 stopnie ($3 \cdot \frac{1}{2} kT$).
 *   **Ruch obrotowy:** +2 stopnie (cząsteczki liniowe) lub +3 stopnie (nieliniowe).
 *   **Drgania (oscylacje):** Wnoszą wkład energii kinetycznej i potencjalnej.
 
----
-
-## <i class="bi bi-fire"></i> Ciepło Właściwe Gazów 
+## <i class="bi bi-fire"></i> Ciepło Właściwe Gazów
 
 ### Wartości Teoretyczne $c_v$
 
@@ -342,31 +432,30 @@ $$ (C_{v,m}) = \frac{f}{2} (R_u) $$
 | Typ Gazu | $f$ | $(C_{v,m})$ | Przykład |
 | :--- | :--- | :--- | :--- |
 | **Jednoatomowy** | 3 | $1{,}5 R_u$ | Ar, He |
-| **Dwuatomowy** | 5 | $2{,}5 R_u$ | $N_2, O_2$ |
-| **Wieloatomowy** | 6 | $3{,}0 R_u$ | $H_2O, CH_4$ |
+| **Dwuatomowy** | 5 | $2{,}5 R_u$ | [N~2~]{.nowrap}, [O~2~]{.nowrap} |
+| **Wieloatomowy** | 6 | $3{,}0 R_u$ | [H~2~O]{.nowrap}, [CH~4~]{.nowrap} |
 
-*Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody)*.
+::: {.small-note}
+Wartości te zmieniają się z temperaturą z powodu efektów kwantowych („włączanie” stopni swobody).
+:::
 
----
+## <i class="bi bi-search"></i> Mikro vs Makro: Zagadka Wodoru
 
-## <i class="bi bi-search"></i> Mikro vs Makro: Zagadka Wodoru 
+Dlaczego wodór ([H~2~]{.nowrap}) ma **największe masowe ciepło właściwe** ze wszystkich substancji ($c_p \approx 14{,}3 \ \frac{\text{kJ}}{\text{kg} \cdot \text{K}}$), mimo że ma mniej stopni swobody niż woda ([H~2~O]{.nowrap})?
 
-Dlaczego wodór ($H_2$) ma **największe masowe ciepło właściwe** ze wszystkich substancji ($c_p \approx 14{,}3 \frac{kJ}{kg \cdot K}$), mimo że ma mniej stopni swobody niż woda ($H_2O$)?
-
-*   **Podejście Mikro (Molowe):** 
+*   **Podejście Mikro (Molowe):**
     Zasada ekwipartycji mówi, że więcej stopni swobody to większe ciepło molowe. Faktycznie, $C_{p,m}$ (wody) > $C_{p,m}$ (wodoru).
 *   **Podejście Makro (Masowe):**
-    Przechodząc na kilogramy ($c_p = \frac{C_{p,m}}{M}$), dzielimy przez masę molową. 
-*   **Klucz do zagadki:** 
-    Wodór jest ekstremalnie lekki ($M \approx 2 \frac{g}{mol}$). W 1 kg wodoru jest **9 razy więcej cząsteczek** niż w 1 kg wody ($M \approx 18 \frac{g}{mol}$)! To ogromna liczba cząsteczek, które sumarycznie magazynują tak gigantyczną ilość energii cieplnej na kilogram.
+    Przechodząc na kilogramy ($c_p = \frac{C_{p,m}}{M}$), dzielimy przez masę molową.
 
----
+::: {.fragment .panel .panel-green}
+**Klucz do zagadki:** Wodór jest ekstremalnie lekki ($M \approx 2 \ \frac{\text{g}}{\text{mol}}$). W 1 kg wodoru jest **9 razy więcej cząsteczek** niż w 1 kg wody ($M \approx 18 \ \frac{\text{g}}{\text{mol}}$)! To ogromna liczba cząsteczek, które sumarycznie magazynują tak gigantyczną ilość energii cieplnej na kilogram.
+:::
 
-## <i class="bi bi-arrow-left-right"></i> Porównanie: Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$) 
+## <i class="bi bi-arrow-left-right"></i> Stała Boltzmanna ($k$) vs Wykładnik Adiabaty ($\kappa$)
 
 Obie wielkości łatwo pomylić ze względu na podobne oznaczenia.
 
-::: {style="font-size: 0.9em;"}
 | Cecha | Stała Boltzmanna | Wykładnik Adiabaty |
 |:---|:---|:---|
 | **Symbol preferowany** | **$k$** (lub $k_B$) | **$\kappa$** (Kappa) lub $\gamma$ (Gamma) |
@@ -375,59 +464,66 @@ Obie wielkości łatwo pomylić ze względu na podobne oznaczenia.
 | **Wzór definicyjny** | $k = \frac{R_u}{N_A}$ ($N_A$ w kmol$^{-1}$) | $\kappa = \frac{c_p}{c_v}$ |
 | **Rząd wielkości** | $\approx 1{,}38 \cdot 10^{-23}$ (Bardzo mała) | $> 1$ (Dla powietrza $\approx 1{,}4$) |
 | **Jednostka** | $[\text{J}/\text{K}]$ | Brak (liczba bezwymiarowa) |
-: Porównanie: Stała Boltzmanna vs Wykładnik Adiabaty {tbl-colwidths="[25,35,40]"}
 
-:::
-
----
-
-## <i class="bi bi-lightning-charge"></i> Energia i Entalpia Gazu Doskonałego 
+## <i class="bi bi-lightning-charge"></i> Energia i Entalpia Gazu Doskonałego
 
 Pamiętamy z I Zasady, że dla g.d. te parametry zależą **tylko** od temperatury (Eksperyment Joule'a).
 
 Dlatego zmiany tych parametrów liczymy zawsze tak samo, niezależnie od procesu (nawet jeśli $p$ czy $v$ się zmieniają!) – przy stałych (lub średnich w danym zakresie temperatur) ciepłach właściwych:
 
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
 $$ \Delta u = c_v \cdot (T_2 - T_1) $$
+:::
+:::
 
+::: {.column width="50%"}
+::: {.panel .panel-amber}
 $$ \Delta h = c_p \cdot (T_2 - T_1) $$
+:::
+:::
+:::::
 
 To potężne uproszczenie w obliczeniach inżynierskich.
 
----
-
-## <i class="bi bi-collection"></i> 5. Mieszaniny Gazowe 
+## <i class="bi bi-collection"></i> 5. Mieszaniny Gazowe
 
 W technice rzadko pracujemy z czystym tlenem czy azotem. Zazwyczaj mamy mieszaninę (np. spaliny w silniku, powietrze w wentylacji).
 
 Model Daltona pozwala traktować mieszaninę gazów doskonałych jak **jeden gaz zastępczy**.
 
+::: {.panel .panel-blue}
 Potrzebujemy tylko obliczyć zastępczą stałą gazową $R_{\text{miesz}}$ i zastępcze ciepło właściwe:
 
 $$ R_{\text{miesz}} = \sum g_i R_i = \frac{R_u}{M_{\text{miesz}}}, \qquad M_{\text{miesz}} = \sum y_i M_i $$
 
 gdzie $g_i$ – udziały masowe, $y_i$ – udziały molowe składników.
-
----
-
-## <i class="bi bi-layers"></i> Prawo Daltona (Ciśnienia) 
-
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
-Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.
 :::
 
+## <i class="bi bi-layers"></i> Prawo Daltona (Ciśnienia)
+
+::: {.panel .panel-blue}
+Ciśnienie całkowite mieszaniny gazów doskonałych jest równe sumie ciśnień cząstkowych jej składników.
+
 $$ p_{\text{całk}} = p_1 + p_2 + ... + p_n = \sum p_i $$
+:::
 
+::: {.panel .panel-amber}
 **Ciśnienie cząstkowe ($p_i$):** To ciśnienie, jakie wywierałby dany składnik, gdyby **SAM** zajmował całą objętość zbiornika $V$ w tej samej temperaturze $T$.
+:::
 
----
-
-## <i class="bi bi-bar-chart-steps"></i> Wizualizacja Prawa Daltona 
+## <i class="bi bi-bar-chart-steps"></i> Wizualizacja Prawa Daltona
 
 ```{r}
 #| label: dalton-viz
 #| echo: false
-#| fig-width: 10
-#| fig-height: 4
+#| warning: false
+#| message: false
+#| fig-width: 12
+#| fig-height: 4.6
+#| out-width: "95%"
+#| fig-align: center
 
 library(ggplot2)
 library(patchwork)
@@ -437,80 +533,92 @@ set.seed(101)
 xA <- runif(30, 0, 10); yA <- runif(30, 0, 10)
 xB <- runif(15, 0, 10); yB <- runif(15, 0, 10)
 
-p1 <- ggplot() + 
-  geom_point(aes(xA, yA), color="blue", size=4) + 
-  ggtitle("Gaz A (p1)") + 
-  theme_void() + theme(plot.title = element_text(hjust=0.5)) +
-  geom_rect(aes(xmin=0, xmax=10, ymin=0, ymax=10), color="black", fill=NA)
+box_theme <- theme_void(base_size = 16) +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", colour = col_ink, size = 18),
+        plot.background = element_rect(fill = "transparent", colour = NA),
+        panel.background = element_rect(fill = "transparent", colour = NA))
+box <- geom_rect(aes(xmin = 0, xmax = 10, ymin = 0, ymax = 10), colour = col_ink2, fill = NA, linewidth = 0.8)
 
-p2 <- ggplot() + 
-  geom_point(aes(xB, yB), color="red", size=4) + 
-  ggtitle("Gaz B (p2)") + 
-  theme_void() + theme(plot.title = element_text(hjust=0.5)) +
-  geom_rect(aes(xmin=0, xmax=10, ymin=0, ymax=10), color="black", fill=NA)
+p1 <- ggplot() +
+  geom_point(aes(xA, yA), color = pal_slides[1], size = 4) +
+  ggtitle("Gaz A (p1)") + box + box_theme
 
-p3 <- ggplot() + 
-  geom_point(aes(xA, yA), color="blue", size=4, alpha=0.5) + 
-  geom_point(aes(xB, yB), color="red", size=4, alpha=0.5) + 
-  ggtitle("Mieszanina (p_całk = p1 + p2)") + 
-  theme_void() + theme(plot.title = element_text(hjust=0.5)) +
-  geom_rect(aes(xmin=0, xmax=10, ymin=0, ymax=10), color="black", fill=NA)
+p2 <- ggplot() +
+  geom_point(aes(xB, yB), color = pal_slides[2], size = 4) +
+  ggtitle("Gaz B (p2)") + box + box_theme
+
+p3 <- ggplot() +
+  geom_point(aes(xA, yA), color = pal_slides[1], size = 4, alpha = 0.6) +
+  geom_point(aes(xB, yB), color = pal_slides[2], size = 4, alpha = 0.6) +
+  ggtitle("Mieszanina (p = p1 + p2)") + box + box_theme
 
 p1 + p2 + p3
 ```
 
----
-
-## <i class="bi bi-pie-chart"></i> Udziały Molowe ($y_i$) i Obliczanie $p_i$ 
+## <i class="bi bi-pie-chart"></i> Udziały Molowe ($y_i$) i Obliczanie $p_i$
 
 W g.d. ciśnienie wynika z liczby uderzeń cząsteczek. Zatem ciśnienie cząstkowe zależy wprost od ilości moli danego gazu:
 
 $$ y_i = \frac{n_i}{n_{\text{całk}}} \quad (\text{Ułamek molowy}) $$
 
+::: {.panel .panel-blue}
 Z Prawa Daltona wynika prosta zależność:
 
 $$ p_i = y_i \cdot p_{\text{całk}} $$
+:::
 
 Dlaczego w atmosferze ($p \approx 100$ kPa) ciśnienie tlenu ("ciśnienie parcjalne") wynosi ok. 21 kPa?
-Bo tlen stanowi 21% cząsteczek powietrza ($y_{O2} = 0{,}21$).
 
----
+[Bo tlen stanowi 21% cząsteczek powietrza ($y_{O2} = 0{,}21$).]{.fragment .answer}
 
-## <i class="bi bi-cloud"></i> 6. Gazy Rzeczywiste - Granice Modelu 
+## <i class="bi bi-cloud"></i> 6. Gazy Rzeczywiste - Granice Modelu
 
 Gdy ciśnienie jest bardzo wysokie (np. w butli z tlenem 200 bar) lub temperatura niska (skraplanie), założenia g.d. przestają działać.
 
+::: {.panel .panel-amber}
 1.  Cząsteczki są upakowane ciasno $\to$ ich własna objętość zaczyna mieć znaczenie.
 2.  Siły przyciągania (van der Waalsa) zaczynają sklejać cząsteczki.
 3.  **Efekt Joule'a-Thomsona:** Dławienie ($h=const$) powoduje zmianę temperatury.
+:::
 
 Potrzebujemy lepszego równania stanu.
 
----
-
-## <i class="bi bi-bricks"></i> Równanie Van der Waalsa 
+## <i class="bi bi-bricks"></i> Równanie Van der Waalsa
 
 $$ \left( p + \frac{a}{v^2} \right) (v - b) = R T $$
 
 Dwie poprawki względem Clapeyrona ($pv=RT$):
 
-1.  **Człon kohezji ($a/v^2$):** Uwzględnia przyciąganie między cząsteczkami. Zmniejsza efektywne ciśnienie wywierane na ścianki (bo cząsteczki są "ściągane" do środka przez sąsiadów).
-2.  **Kowolumen ($b$):** Uwzględnia objętość własną cząsteczek. Dostępna przestrzeń ruchu to nie całe $v$, ale $(v-b)$.
+::::: columns
+::: {.column width="50%"}
+::: {.panel .panel-blue}
+**1. Człon kohezji ($a/v^2$):** Uwzględnia przyciąganie między cząsteczkami. Zmniejsza efektywne ciśnienie wywierane na ścianki (bo cząsteczki są "ściągane" do środka przez sąsiadów).
+:::
+:::
 
----
+::: {.column width="50%"}
+::: {.panel .panel-amber}
+**2. Kowolumen ($b$):** Uwzględnia objętość własną cząsteczek. Dostępna przestrzeń ruchu to nie całe $v$, ale $(v-b)$.
+:::
+:::
+:::::
 
-## <i class="bi bi-graph-up"></i> Izotermy Andrewsa (Gaz Rzeczywisty) 
+## <i class="bi bi-graph-up"></i> Izotermy Andrewsa (Gaz Rzeczywisty)
 
 Na wykresie p-v gaz rzeczywisty zachowuje się inaczej niż hiperbola gazu doskonałego ($p \sim 1/v$).
 
-::::: {.columns}
-
+::::: columns
 ::: {.column width="60%"}
 ```{r}
 #| label: andrews
+#| fig-cap: "Izotermy Andrewsa (model van der Waalsa, parametry zredukowane)"
 #| echo: false
+#| warning: false
+#| message: false
 #| fig-width: 8.5
-#| fig-height: 7
+#| fig-height: 5.6
+#| out-width: "100%"
+#| fig-align: center
 
 library(ggplot2)
 
@@ -549,7 +657,7 @@ df_iso <- data.frame()
 for(i in 1:length(t_vals)){
   t <- t_vals[i]
   v_t <- v
-  
+
   # Odcinek poziomy dla T < Tc (konstrukcja Maxwella - punkty binodalne v_l, v_g)
   if(t < 1){
     m <- maxwell(t)
@@ -559,11 +667,11 @@ for(i in 1:length(t_vals)){
   if(t < 1){
     p[v_t >= m["v_l"] & v_t <= m["v_g"]] <- m["p_sat"]
   }
-  
+
   # Przycinanie dla estetyki (żeby nie uciekało w nieskończoność przy v->0.33)
   p[p > 3] <- NA
   p[p < 0] <- NA
-  
+
   df_iso <- rbind(df_iso, data.frame(v=v_t, p=p, t=as.factor(t), label=labels[i]))
 }
 df_iso$label <- factor(df_iso$label, levels = labels)
@@ -578,60 +686,57 @@ df_dome <- data.frame(
 
 ggplot() +
   # Izotermy
-  geom_line(data=df_iso, aes(x=v, y=p, color=label, group=label), linewidth=1.5) +
+  geom_line(data=df_iso, aes(x=v, y=p, color=label, group=label), linewidth=1.1) +
   # Kopuła
-  geom_path(data=df_dome, aes(x=v, y=p), linetype="dotted", linewidth=1.2, color="navy") +
+  geom_path(data=df_dome, aes(x=v, y=p), linetype="dotted", linewidth=1.1, color=col_ink2) +
   # Punkt Krytyczny
-  geom_point(aes(x=1, y=1), size=5, color="black") +
+  geom_point(aes(x=1, y=1), size=4.5, color=col_ink) +
   annotate("segment", x=1.9, y=1.52, xend=1.05, yend=1.04,
-           arrow=arrow(length=unit(0.25, "cm")), color="black") +
-  annotate("text", x=1.9, y=1.6, label="Punkt Krytyczny", size=6, fontface="bold", hjust=0.3) +
-  annotate("text", x=0.8, y=0.3, label="Ciecz", color="navy") +
-  annotate("text", x=3.5, y=0.3, label="Gaz", color="navy") +
-  annotate("text", x=2, y=0.55, label="Ciecz + para", color="navy", size=4) +
-  
+           arrow=arrow(length=unit(0.25, "cm")), color=col_ink) +
+  annotate("text", x=1.9, y=1.6, label="Punkt Krytyczny", size=5.5, fontface="bold", hjust=0.3, color=col_ink) +
+  annotate("text", x=0.8, y=0.3, label="Ciecz", color=col_ink2, size=5) +
+  annotate("text", x=3.5, y=0.3, label="Gaz", color=col_ink2, size=5) +
+  annotate("text", x=2, y=0.55, label="Ciecz + para", color=col_ink2, size=4.5) +
+
   # Styling
-  ylim(0.2, 2.5) + xlim(0.4, 4) +
-  scale_color_viridis_d(name="Temperatura",
-                        labels=c(expression(T[r] == "0,85"), expression(T[r] == "0,90"),
-                                 expression(T[r] == "1,0" ~ "(krytyczna)"),
-                                 expression(T[r] == "1,1"), expression(T[r] == "1,2"))) +
-  labs(title="Izotermy Andrewsa (Model Van der Waalsa)", 
-       x=expression("Objętość zredukowana " * v[r]), 
-       y=expression("Ciśnienie zredukowane " * p[r])) +
-  theme_minimal(base_size = 18) +
-  theme(legend.position="right")
+  coord_cartesian(xlim = c(0.4, 4), ylim = c(0.2, 2.5)) +
+  scale_color_manual(values = c(pal_slides[1], pal_slides[3], col_accent, pal_slides[2], pal_slides[4]),
+                     labels=c(expression(T[r] == "0,85"), expression(T[r] == "0,90"),
+                              expression(T[r] == "1,0" ~ "(krytyczna)"),
+                              expression(T[r] == "1,1"), expression(T[r] == "1,2"))) +
+  labs(x=expression("Objętość zredukowana " * v[r]),
+       y=expression("Ciśnienie zredukowane " * p[r]),
+       color = NULL) +
+  theme_slides(16) +
+  theme(legend.position="right", legend.direction = "vertical")
 ```
 :::
-
 
 ::: {.column width="40%"}
 *   Dla $T > T_{\text{kryt}}$: Izotermy gładkie (jak g.d.).
 *   Dla $T < T_{\text{kryt}}$: Pojawia się poziomy odcinek. To **współistnienie cieczy i pary** (wrzenie przy stałym ciśnieniu).
 *   Gdybyśmy użyli tu modelu $pV=mRT$, dostalibyśmy błąd sięgający setek procent, a dla cieczy – rzędów wielkości!
 :::
-
 :::::
 
----
-
-## <i class="bi bi-aspect-ratio"></i> Zasada Stanów Odpowiednich 
+## <i class="bi bi-aspect-ratio"></i> Zasada Stanów Odpowiednich
 
 Inżynierowie poradzili sobie z różnorodnością gazów, wprowadzając **Współczynnik Ściśliwości $Z$**:
 
+::: {.panel .panel-blue}
 $$ Z = \frac{pv}{RT} $$
+:::
 
 *   Dla gazu doskonałego: $Z = 1$.
 *   Dla gazu rzeczywistego: $Z \neq 1$ (może być 0,8, może być 1,2).
 
----
+## <i class="bi bi-cloud-fog"></i> Parametry Zredukowane
 
-## <i class="bi bi-cloud-fog"></i> Parametry Zredukowane 
 Sprowadzamy różne gazy do "wspólnego mianownika", dzieląc ich parametry przez parametry w punkcie krytycznym:
 
 $$ p_r = \frac{p}{p_{\text{kryt}}}, \quad v_r = \frac{v}{v_{\text{kryt}}}, \quad T_r = \frac{T}{T_{\text{kryt}}} $$
 
-::: {style="border: 2px solid #e60000; padding: 20px; border-radius: 10px; background-color: #fff0f0;"}
+::: {.panel .panel-blue}
 **Zasada:** Różne gazy w tych samych stanach zredukowanych ($p_r, T_r$) mają w przybliżeniu to samo $Z$.
 :::
 
@@ -639,9 +744,7 @@ $$ p_r = \frac{p}{p_{\text{kryt}}}, \quad v_r = \frac{v}{v_{\text{kryt}}}, \quad
 Zasadę tę można porównać do przeliczania wieku psa na "ludzkie lata".
 :::
 
----
-
-## <i class="bi bi-clipboard-check"></i> Podsumowanie Wykładu 4 
+## <i class="bi bi-clipboard-check"></i> Podsumowanie Wykładu 4
 
 1.  **Gaz Doskonały:** Dobry dla niskich ciśnień. Równanie $pv=RT$.
 2.  **Stała $R$:** Pamiętaj o różnicy między uniwersalną ($8314$) a indywidualną ($R_u/M$).
@@ -649,5 +752,8 @@ Zasadę tę można porównać do przeliczania wieku psa na "ludzkie lata".
 4.  **Mieszaniny:** Ciśnienia cząstkowe sumują się (Dalton).
 5.  **Rzeczywistość:** Siły międzycząsteczkowe (Van der Waals) powodują efekty takie jak skraplanie czy zmiana temperatury przy dławieniu (Joule-Thomson).
 
-### Zapowiedź W5
+::: {.panel .panel-green}
+**Zapowiedź W5**
+
 W kolejnym wykładzie wejdziemy w obszar **Pary Wodnej**: wrzenie, tablice parowe, turbiny!
+:::
