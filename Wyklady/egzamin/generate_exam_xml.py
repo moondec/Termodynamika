@@ -134,6 +134,58 @@ def add_calculated_question(quiz, name, html, formula, grade, variables, decimal
 # ============================================================
 # 1. TEORIA — multichoice & truefalse (unchanged logic)
 # ============================================================
+# Informacja zwrotna ogólna: gdzie w wykładach jest omówione dane zagadnienie.
+TEORIA_ZRODLA = {
+    "P01_Uklad_zamkniety": "W1 „Zamknięty / Otwarty / Izolowany”",
+    "P02_Entalpia": "W2 „Definicja i Znaczenie” (H = U + pV)",
+    "P03_Praca_techniczna": "W8 „Praca absolutna, techniczna i bilans”; W3 „Praca Techniczna (L_t)”",
+    "P04_Energia_wewnetrzna": "W2 „Energia wewnętrzna”; W8 „Przypomnienie: gaz doskonały”",
+    "P05_Dlawienie": "W3 „Zastosowanie: Dławienie – Proces Izentalpowy”",
+    "P06_Punkt_krytyczny": "W1 „Punkt Krytyczny”; W4 „Gaz rzeczywisty – izotermy van der Waalsa”; W5 wykres p–T",
+    "P07_Stopien_suchosci": "W5 „3. Stopień Suchości (x)”",
+    "P08_Entalpia_pary_mokrej": "W5 „Obliczanie Właściwości Pary Mokrej”",
+    "P09_Izoterma": "W8 „2. Przemiana Izotermiczna”",
+    "P10_Izentropa": "W8 „Klasyfikacja Procesów Politropowych”; W3 „Praca Sprężania Gazu Doskonałego”",
+    "P11_Praca_izochory": "W8 „3. Przemiana Izochoryczna”",
+    "P12_Zwiazek_Mayera": "W2 „Ciepła właściwe – Równanie Mayera”; W4 „Relacja Mayera (Wyprowadzenie)”",
+    "P13_Kelvin_Planck": "W6 „3. Sformułowania II Zasady – Sformułowanie Kelvina-Plancka”",
+    "P14_Carnot": "W6 „Wnioski z Carnota”",
+    "P15_Chlodzenie": "W6 „Chłodziarka i pompa ciepła”; W11 „1. Idea Chłodzenia (Obieg Lewobieżny)”",
+    "P16_Otto": "W9 „3. Obieg Otto (Zapłon Iskrowy – ZI)”",
+    "P17_Diesel": "W9 „Obieg Diesla (ZS)”",
+    "P18_COP_pompa": "W6 „Współczynniki Efektywności (COP)”; W11 „Mierniki Efektywności (COP)”",
+    "P19_Entropia_izolat": "W7 „Zasada wzrostu entropii”",
+    "P20_Fourier": "W14 „2. Przewodzenie i Prawo Fouriera”",
+    "P21_Stefan_Boltzmann": "W14 „Promieniowanie – Prawo Stefana-Boltzmanna”",
+    "P22_Egzergia": "W15 „4. Egzergia: Ilość vs Jakość”; W3 „Analiza Egzergetyczna (Wstęp)”",
+    "P23_LHV_HHV": "W15 „3. Wartość Opałowa (W_d)”",
+    "P24_Nadmiar_powietrza": "W15 „Współczynnik Nadmiaru Powietrza (λ)”",
+    "P31_Rankine_skraplacz": "W10 „2. Obieg Clausiusa-Rankine'a”; „Podsumowanie W10”",
+    "P32_Mieszanie_hX": "W12 „Przemiana 4: Mieszanie Strumieni Powietrza”",
+    "P33_HHV_LHV": "W15 „3. Wartość Opałowa (W_d)”",
+    "P34_DeltaT_lm": "W14 „5. Wymienniki Ciepła”",
+    "P35_Kociol_kondensacyjny": "W15 „3. Wartość Opałowa (W_d)” – kotły kondensacyjne",
+    "P36_COP_PC_vs_ch": "W6 „Współczynniki Efektywności (COP)”; W11 „Mierniki Efektywności”",
+    "P37_Sublimacja": "W4 „Fazy i przemiany fazowe”; W5 wykres p–T wody",
+    "P38_Praca_izobary": "W8 „4. Przemiana Izobaryczna”",
+    "P39_Joule_Thomson": "W3 „Zjawisko Joule'a-Thomsona – Dławienie Adiabatyczne”",
+    "P40_Gouy_Stodola": "W15 „5. Prawo Gouy-Stodoli”; W3 „Analiza Egzergetyczna”",
+    "P25_PF_Ogrzewanie_phi": "W12 „5. Przemiany Charakterystyczne – 1. Ogrzewanie izobaryczne (X = const)”",
+    "P26_PF_Skraplacz": "W10 „Podsumowanie W10”",
+    "P27_PF_Przeciwprad": "W14 „Współprąd vs Przeciwprąd – Porównanie”",
+    "P28_PF_Dlawienie_odwr": "W11 „3-4 Zawór rozprężny”; W6 „Przykłady Procesów Nieodwracalnych”",
+    "P29_PF_Eta_Carnot": "W6 „Sprawność obiegu Carnota”; „Podsumowanie W6”",
+    "P30_PF_Kogeneracja": "W15 „6. Kogeneracja (CHP)”",
+}
+
+def zrodlo_feedback(name):
+    src = TEORIA_ZRODLA.get(name)
+    return f"<p>Zagadnienie omówione na wykładzie: {src}.</p>" if src else ""
+
+# Pytania dublujące wiedzę z innego pytania – osobna podkategoria, żeby przy
+# losowaniu z kategorii student nie dostał obu naraz.
+TEORIA_REZERWA = {"P33_HHV_LHV", "P36_COP_PC_vs_ch"}
+
 def make_teoria():
     quiz = ET.Element('quiz')
     cat = ET.SubElement(quiz, 'question', type='category')
@@ -315,14 +367,14 @@ def make_teoria():
          "<p><b>P30.</b> Kogeneracja (CHP) to jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.</p>", True),
     ]
 
-    for name, qtext, answers in questions:
+    def add_multichoice(name, qtext, answers):
         q = ET.SubElement(quiz, 'question', type='multichoice')
         q_name = ET.SubElement(q, 'name')
         ET.SubElement(q_name, 'text').text = name
         q_qt = ET.SubElement(q, 'questiontext', format='html')
         ET.SubElement(q_qt, 'text').text = qtext
         q_gf = ET.SubElement(q, 'generalfeedback', format='html')
-        ET.SubElement(q_gf, 'text')
+        ET.SubElement(q_gf, 'text').text = zrodlo_feedback(name)
         ET.SubElement(q, 'defaultgrade').text = '1.0000000'
         ET.SubElement(q, 'penalty').text = '0.3333333'
         ET.SubElement(q, 'hidden').text = '0'
@@ -342,6 +394,10 @@ def make_teoria():
             fb = ET.SubElement(a, 'feedback', format='html')
             ET.SubElement(fb, 'text')
 
+    for name, qtext, answers in questions:
+        if name not in TEORIA_REZERWA:
+            add_multichoice(name, qtext, answers)
+
     for name, qtext, correct in tf_questions:
         q = ET.SubElement(quiz, 'question', type='truefalse')
         q_name = ET.SubElement(q, 'name')
@@ -349,7 +405,7 @@ def make_teoria():
         q_qt = ET.SubElement(q, 'questiontext', format='html')
         ET.SubElement(q_qt, 'text').text = qtext
         q_gf = ET.SubElement(q, 'generalfeedback', format='html')
-        ET.SubElement(q_gf, 'text')
+        ET.SubElement(q_gf, 'text').text = zrodlo_feedback(name)
         ET.SubElement(q, 'defaultgrade').text = '1.0000000'
         ET.SubElement(q, 'penalty').text = '1.0000000'
         ET.SubElement(q, 'hidden').text = '0'
@@ -362,6 +418,17 @@ def make_teoria():
         ET.SubElement(a_false, 'text').text = 'false'
         fb_f = ET.SubElement(a_false, 'feedback', format='html')
         ET.SubElement(fb_f, 'text')
+
+    cat2 = ET.SubElement(quiz, 'question', type='category')
+    cat2_cat = ET.SubElement(cat2, 'category')
+    ET.SubElement(cat2_cat, 'text').text = '$course$/top/egzamin/teoria/rezerwa'
+    cat2_info = ET.SubElement(cat2, 'info', format='moodle_auto_format')
+    ET.SubElement(cat2_info, 'text').text = ('Warianty pytań z kategorii „teoria” sprawdzające tę samą wiedzę '
+                                             '(P33 ↔ P23, P36 ↔ P18). Nie losować razem z oryginałami.')
+    ET.SubElement(cat2, 'idnumber')
+    for name, qtext, answers in questions:
+        if name in TEORIA_REZERWA:
+            add_multichoice(name, qtext, answers)
 
     write_xml(quiz, 'egzamin_teoria.xml')
     print(f"  Total theory questions: {len(questions) + len(tf_questions)}")

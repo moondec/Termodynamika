@@ -21,7 +21,7 @@ Zasady oceniania (wspólne dla wszystkich pytań calculated):
   tylko dla wyników mogących być równe 0 (Ćw6);
 - correctanswerlength zgodne z poleceniem w treści (1 lub 2 miejsca po
   przecinku; Ćw2 Q1: 2 cyfry znaczące, correctanswerformat 2);
-- pytania "jak w poprzednim pytaniu" zawierają w treści wszystkie zmienne
+- pytania powiązane logicznie zawierają w treści komplet danych (losowania są niezależne)
   wzoru (zbiory są private i niesynchronizowane – student dostaje w każdym
   pytaniu inne losowanie).
 
@@ -417,7 +417,7 @@ def generate_cw01(global_data):
                 '(\\( p_{{atm}} = \\) <b>{patm_mmHg}</b> mmHg, '
                 '\\( t = \\) <b>{t1}</b>°C) do stanu „pełnego” '
                 '(\\( p = \\) <b>{p_full}</b> bar (abs), '
-                '\\( t = \\) <b>{t_full}</b>°C) – wydajność masowa jak w poprzednim zadaniu. '
+                '\\( t = \\) <b>{t_full}</b>°C). '
                 'Warunki ssania: \\( p_{{atm}} = \\) <b>{patm_mmHg}</b> mmHg, '
                 '\\( t = \\) <b>{t1}</b>°C. '
                 'Przyjmij \\( R = 287 \\text{{ J/(kg·K)}} \\).</p>'
@@ -596,8 +596,7 @@ def generate_cw03(global_data):
                 'przy spalaniu 1 m³ gazu powstaje ok. <b>{kgH2O}</b> kg wody w spalinach, '
                 'ciepło skraplania \\( r = \\) <b>{r_w}</b> kJ/kg. '
                 'Dodatkowy odzysk ciepła z kondensacji '
-                '\\( \\dot{{Q}}_{{kond}} \\) oblicz jak w poprzednim pytaniu '
-                '(skroplenie całej pary wodnej ze spalin).</p>'
+                '\\( \\dot{{Q}}_{{kond}} \\) wynika ze skroplenia całej pary wodnej ze spalin.</p>'
                 '<p>O ile <strong>punktów procentowych</strong> wzrośnie '
                 'sprawność kotłowni po zainstalowaniu kondensacji spalin?</p>'
                 '<p>\\( \\Delta\\eta = '
@@ -700,8 +699,7 @@ def generate_cw04(global_data):
         build_calculated_question(
             name="Ćw4 Zad. dom. – Roczny zysk [PLN]",
             question_html=(
-                '<p>Generator o mocy ' + nel + ' pracuje <b>{h_rok}</b> h/rok '
-                '(roczna produkcja energii – jak w poprzednim pytaniu). '
+                '<p>Generator o mocy ' + nel + ' pracuje <b>{h_rok}</b> h/rok. '
                 'Cena prądu: <b>{cena_kWh}</b> PLN/kWh.</p>'
                 '<p>Oblicz roczny zysk (oszczędność) w <strong>PLN</strong>.</p>'
                 '<p>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>'
@@ -716,8 +714,7 @@ def generate_cw04(global_data):
             name="Ćw4 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]",
             question_html=(
                 '<p>Koszt instalacji turbiny: <b>{koszt_inv}</b> PLN. '
-                'Roczny zysk wynika z produkcji energii i ceny prądu '
-                '(jak w poprzednim pytaniu): generator o mocy ' + nel + ' '
+                'Roczny zysk wynika z produkcji energii i ceny prądu: generator o mocy ' + nel + ' '
                 'pracuje <b>{h_rok}</b> h/rok, cena prądu <b>{cena_kWh}</b> PLN/kWh.</p>'
                 '<p>Oblicz prosty czas zwrotu inwestycji SPBT w <strong>latach</strong>.</p>'
                 '<p>\\( SPBT = \\frac{{\\text{{Koszt inwestycji}}}}'
@@ -1051,7 +1048,7 @@ def generate_cw07(global_data):
         build_calculated_question(
             name="Ćw7 Zad. dom. – Roczna oszczędność gazu [PLN]",
             question_html=(
-                '<p>Roczna oszczędność energii – jak w poprzednim pytaniu: ' + dane + '. '
+                '<p>Roczna oszczędność energii: ' + dane + '. '
                 'Ciepło dostarcza kocioł gazowy o sprawności '
                 '\\( \\eta_k = \\) <b>{eta_kotla}</b>%. '
                 'Cena gazu: <b>{cena_gaz}</b> PLN/kWh (energii chemicznej paliwa).</p>'
@@ -1071,7 +1068,7 @@ def generate_cw07(global_data):
             name="Ćw7 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]",
             question_html=(
                 '<p>Koszt rekuperatora: <b>{koszt_rek}</b> PLN. '
-                'Roczna oszczędność finansowa – jak w poprzednim pytaniu: ' + dane + ', '
+                'Roczna oszczędność finansowa: ' + dane + ', '
                 'sprawność kotła \\( \\eta_k = \\) <b>{eta_kotla}</b>%, '
                 'cena gazu <b>{cena_gaz}</b> PLN/kWh.</p>'
                 '<p>Oblicz prosty czas zwrotu inwestycji SPBT '

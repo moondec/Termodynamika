@@ -2348,7 +2348,7 @@
             <text>Ćw4 Zad. dom. – Roczny zysk [PLN]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;Generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok (roczna produkcja energii – jak w poprzednim pytaniu). Cena prądu: &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz roczny zysk (oszczędność) w &lt;strong&gt;PLN&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;Generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok. Cena prądu: &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz roczny zysk (oszczędność) w &lt;strong&gt;PLN&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -3517,7 +3517,7 @@
             <text>Ćw4 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;Koszt instalacji turbiny: &lt;b&gt;{koszt_inv}&lt;/b&gt; PLN. Roczny zysk wynika z produkcji energii i ceny prądu (jak w poprzednim pytaniu): generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok, cena prądu &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz prosty czas zwrotu inwestycji SPBT w &lt;strong&gt;latach&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( SPBT = \frac{{\text{{Koszt inwestycji}}}}{{\text{{Roczny zysk}}}} \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;Koszt instalacji turbiny: &lt;b&gt;{koszt_inv}&lt;/b&gt; PLN. Roczny zysk wynika z produkcji energii i ceny prądu: generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok, cena prądu &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz prosty czas zwrotu inwestycji SPBT w &lt;strong&gt;latach&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( SPBT = \frac{{\text{{Koszt inwestycji}}}}{{\text{{Roczny zysk}}}} \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>

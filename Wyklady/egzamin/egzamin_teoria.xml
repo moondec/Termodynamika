@@ -17,7 +17,7 @@
             <text>&lt;p&gt;&lt;b&gt;P1.&lt;/b&gt; Układ termodynamiczny zamknięty to układ, który:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W1 „Zamknięty / Otwarty / Izolowany”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -68,7 +68,7 @@
             <text>&lt;p&gt;&lt;b&gt;P2.&lt;/b&gt; Entalpia \(H\) jest zdefiniowana jako:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W2 „Definicja i Znaczenie” (H = U + pV).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -119,7 +119,7 @@
             <text>&lt;p&gt;&lt;b&gt;P3.&lt;/b&gt; Praca techniczna \(L_t\) jest równa:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W8 „Praca absolutna, techniczna i bilans”; W3 „Praca Techniczna (L_t)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -170,7 +170,7 @@
             <text>&lt;p&gt;&lt;b&gt;P4.&lt;/b&gt; Energia wewnętrzna gazu doskonałego zależy wyłącznie od:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W2 „Energia wewnętrzna”; W8 „Przypomnienie: gaz doskonały”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -221,7 +221,7 @@
             <text>&lt;p&gt;&lt;b&gt;P5.&lt;/b&gt; Dławienie (przepływ przez zawór dławiący) jest procesem:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W3 „Zastosowanie: Dławienie – Proces Izentalpowy”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -272,7 +272,7 @@
             <text>&lt;p&gt;&lt;b&gt;P6.&lt;/b&gt; Punkt krytyczny substancji to stan, powyżej którego:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W1 „Punkt Krytyczny”; W4 „Gaz rzeczywisty – izotermy van der Waalsa”; W5 wykres p–T.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -323,7 +323,7 @@
             <text>&lt;p&gt;&lt;b&gt;P7.&lt;/b&gt; Stopień suchości pary mokrej \(x = 0{,}85\) oznacza, że mieszanina zawiera:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W5 „3. Stopień Suchości (x)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -374,7 +374,7 @@
             <text>&lt;p&gt;&lt;b&gt;P8.&lt;/b&gt; Entalpia pary mokrej o stopniu suchości \(x\) wynosi:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W5 „Obliczanie Właściwości Pary Mokrej”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -425,7 +425,7 @@
             <text>&lt;p&gt;&lt;b&gt;P9.&lt;/b&gt; W przemianie izotermicznej gazu doskonałego całe dostarczone ciepło:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W8 „2. Przemiana Izotermiczna”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -476,7 +476,7 @@
             <text>&lt;p&gt;&lt;b&gt;P10.&lt;/b&gt; Wykładnik politropy \(n = \kappa\) odpowiada przemianie:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W8 „Klasyfikacja Procesów Politropowych”; W3 „Praca Sprężania Gazu Doskonałego”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -527,7 +527,7 @@
             <text>&lt;p&gt;&lt;b&gt;P11.&lt;/b&gt; Praca objętościowa przemiany izochorycznej wynosi:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W8 „3. Przemiana Izochoryczna”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -578,7 +578,7 @@
             <text>&lt;p&gt;&lt;b&gt;P12.&lt;/b&gt; Związek Mayera dla gazu doskonałego ma postać:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W2 „Ciepła właściwe – Równanie Mayera”; W4 „Relacja Mayera (Wyprowadzenie)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -629,7 +629,7 @@
             <text>&lt;p&gt;&lt;b&gt;P13.&lt;/b&gt; Sformułowanie Kelvina-Plancka II Zasady mówi, że:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „3. Sformułowania II Zasady – Sformułowanie Kelvina-Plancka”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -680,7 +680,7 @@
             <text>&lt;p&gt;&lt;b&gt;P14.&lt;/b&gt; Sprawność obiegu Carnota zależy wyłącznie od:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „Wnioski z Carnota”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -731,7 +731,7 @@
             <text>&lt;p&gt;&lt;b&gt;P15.&lt;/b&gt; Urządzenie chłodnicze to maszyna, która:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „Chłodziarka i pompa ciepła”; W11 „1. Idea Chłodzenia (Obieg Lewobieżny)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -782,7 +782,7 @@
             <text>&lt;p&gt;&lt;b&gt;P16.&lt;/b&gt; W obiegu Otto ciepło jest dostarczane do czynnika:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W9 „3. Obieg Otto (Zapłon Iskrowy – ZI)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -833,7 +833,7 @@
             <text>&lt;p&gt;&lt;b&gt;P17.&lt;/b&gt; W obiegu Diesla ciepło jest dostarczane do czynnika:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W9 „Obieg Diesla (ZS)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -884,7 +884,7 @@
             <text>&lt;p&gt;&lt;b&gt;P18.&lt;/b&gt; Współczynnik wydajności grzejnej pompy ciepła (COP) jest:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „Współczynniki Efektywności (COP)”; W11 „Mierniki Efektywności (COP)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -935,7 +935,7 @@
             <text>&lt;p&gt;&lt;b&gt;P19.&lt;/b&gt; Entropia układu izolowanego w procesie nieodwracalnym:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W7 „Zasada wzrostu entropii”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -986,7 +986,7 @@
             <text>&lt;p&gt;&lt;b&gt;P20.&lt;/b&gt; Przewodzenie ciepła (prawo Fouriera) polega na:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W14 „2. Przewodzenie i Prawo Fouriera”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1037,7 +1037,7 @@
             <text>&lt;p&gt;&lt;b&gt;P21.&lt;/b&gt; Strumień ciepła emitowanego przez ciało doskonale czarne jest proporcjonalny do:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W14 „Promieniowanie – Prawo Stefana-Boltzmanna”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1088,7 +1088,7 @@
             <text>&lt;p&gt;&lt;b&gt;P22.&lt;/b&gt; Egzergia to:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „4. Egzergia: Ilość vs Jakość”; W3 „Analiza Egzergetyczna (Wstęp)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1139,7 +1139,7 @@
             <text>&lt;p&gt;&lt;b&gt;P23.&lt;/b&gt; Wartość opałowa (LHV) różni się od ciepła spalania (HHV) tym, że:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „3. Wartość Opałowa (W_d)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1190,7 +1190,7 @@
             <text>&lt;p&gt;&lt;b&gt;P24.&lt;/b&gt; Współczynnik nadmiaru powietrza \(\lambda &gt; 1\) oznacza:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „Współczynnik Nadmiaru Powietrza (λ)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1241,7 +1241,7 @@
             <text>&lt;p&gt;&lt;b&gt;P31.&lt;/b&gt; W obiegu Rankine'a skraplacz służy do:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W10 „2. Obieg Clausiusa-Rankine'a”; „Podsumowanie W10”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1292,7 +1292,7 @@
             <text>&lt;p&gt;&lt;b&gt;P32.&lt;/b&gt; Przy mieszaniu dwóch strumieni powietrza wilgotnego punkt M na wykresie h-X leży:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W12 „Przemiana 4: Mieszanie Strumieni Powietrza”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1337,64 +1337,13 @@
     </question>
     <question type="multichoice">
         <name>
-            <text>P33_HHV_LHV</text>
-        </name>
-        <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;P33.&lt;/b&gt; Ciepło spalania (HHV) jest większe od wartości opałowej (LHV), ponieważ:&lt;/p&gt;</text>
-        </questiontext>
-        <generalfeedback format="html">
-            <text/>
-        </generalfeedback>
-        <defaultgrade>1.0000000</defaultgrade>
-        <penalty>0.3333333</penalty>
-        <hidden>0</hidden>
-        <idnumber/>
-        <single>true</single>
-        <shuffleanswers>1</shuffleanswers>
-        <answernumbering>abc</answernumbering>
-        <correctfeedback format="html">
-            <text>Poprawna odpowiedź.</text>
-        </correctfeedback>
-        <partiallycorrectfeedback format="html">
-            <text/>
-        </partiallycorrectfeedback>
-        <incorrectfeedback format="html">
-            <text>Niepoprawna odpowiedź.</text>
-        </incorrectfeedback>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;uwzględnia ciepło przegrzania spalin powyżej 100 °C&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="100" format="html">
-            <text>&lt;p&gt;uwzględnia ciepło skroplenia wody zawartej w spalinach&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;pomija straty kominowe&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;dotyczy wyłącznie paliw stałych&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-    </question>
-    <question type="multichoice">
-        <name>
             <text>P34_DeltaT_lm</text>
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;P34.&lt;/b&gt; Średnia logarytmiczna różnica temperatur stosowana jest do obliczeń:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W14 „5. Wymienniki Ciepła”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1445,7 +1394,7 @@
             <text>&lt;p&gt;&lt;b&gt;P35.&lt;/b&gt; Kocioł kondensacyjny osiąga sprawność &gt; 100% (w odniesieniu do LHV), ponieważ:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „3. Wartość Opałowa (W_d)” – kotły kondensacyjne.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1490,64 +1439,13 @@
     </question>
     <question type="multichoice">
         <name>
-            <text>P36_COP_PC_vs_ch</text>
-        </name>
-        <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;P36.&lt;/b&gt; Współczynnik wydajności grzejnej pompy ciepła \(COP_{PC}\) jest zawsze:&lt;/p&gt;</text>
-        </questiontext>
-        <generalfeedback format="html">
-            <text/>
-        </generalfeedback>
-        <defaultgrade>1.0000000</defaultgrade>
-        <penalty>0.3333333</penalty>
-        <hidden>0</hidden>
-        <idnumber/>
-        <single>true</single>
-        <shuffleanswers>1</shuffleanswers>
-        <answernumbering>abc</answernumbering>
-        <correctfeedback format="html">
-            <text>Poprawna odpowiedź.</text>
-        </correctfeedback>
-        <partiallycorrectfeedback format="html">
-            <text/>
-        </partiallycorrectfeedback>
-        <incorrectfeedback format="html">
-            <text>Niepoprawna odpowiedź.</text>
-        </incorrectfeedback>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;mniejszy od COP chłodziarki o 1&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="100" format="html">
-            <text>&lt;p&gt;większy od COP chłodziarki o 1&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;równy COP chłodziarki&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>&lt;p&gt;równy sprawności Carnota&lt;/p&gt;</text>
-            <feedback format="html">
-                <text/>
-            </feedback>
-        </answer>
-    </question>
-    <question type="multichoice">
-        <name>
             <text>P37_Sublimacja</text>
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;P37.&lt;/b&gt; Sublimacja to przemiana fazowa polegająca na:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W4 „Fazy i przemiany fazowe”; W5 wykres p–T wody.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1598,7 +1496,7 @@
             <text>&lt;p&gt;&lt;b&gt;P38.&lt;/b&gt; Praca objętościowa przemiany izobarycznej wynosi:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W8 „4. Przemiana Izobaryczna”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1649,7 +1547,7 @@
             <text>&lt;p&gt;&lt;b&gt;P39.&lt;/b&gt; Efekt Joule'a-Thomsona opisuje zmianę temperatury gazu podczas:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W3 „Zjawisko Joule'a-Thomsona – Dławienie Adiabatyczne”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1700,7 +1598,7 @@
             <text>&lt;p&gt;&lt;b&gt;P40.&lt;/b&gt; Prawo Gouy-Stodoli wiąże straty egzergii z:&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „5. Prawo Gouy-Stodoli”; W3 „Analiza Egzergetyczna”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1751,7 +1649,7 @@
             <text>&lt;p&gt;&lt;b&gt;P25.&lt;/b&gt; Ogrzewanie powietrza wilgotnego przy stałym ciśnieniu (bez dodawania wody) powoduje spadek jego wilgotności względnej \(\varphi\).&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W12 „5. Przemiany Charakterystyczne – 1. Ogrzewanie izobaryczne (X = const)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1778,7 +1676,7 @@
             <text>&lt;p&gt;&lt;b&gt;P26.&lt;/b&gt; Obniżenie ciśnienia w skraplaczu siłowni parowej zwiększa pracę użyteczną turbiny.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W10 „Podsumowanie W10”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1805,7 +1703,7 @@
             <text>&lt;p&gt;&lt;b&gt;P27.&lt;/b&gt; Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych temperaturach wlotowych i tych samych strumieniach płynów.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W14 „Współprąd vs Przeciwprąd – Porównanie”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1832,7 +1730,7 @@
             <text>&lt;p&gt;&lt;b&gt;P28.&lt;/b&gt; Proces dławienia w zaworze redukcyjnym jest odwracalny.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W11 „3-4 Zawór rozprężny”; W6 „Przykłady Procesów Nieodwracalnych”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1859,7 +1757,7 @@
             <text>&lt;p&gt;&lt;b&gt;P29.&lt;/b&gt; Sprawność termiczna rzeczywistego obiegu silnikowego może przekroczyć sprawność Carnota dla tych samych temperatur skrajnych.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „Sprawność obiegu Carnota”; „Podsumowanie W6”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1886,7 +1784,7 @@
             <text>&lt;p&gt;&lt;b&gt;P30.&lt;/b&gt; Kogeneracja (CHP) to jednoczesne wytwarzanie energii elektrycznej i ciepła użytkowego z tego samego paliwa.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „6. Kogeneracja (CHP)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>1.0000000</penalty>
@@ -1900,6 +1798,117 @@
         </answer>
         <answer fraction="0" format="moodle_auto_format">
             <text>false</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="category">
+        <category>
+            <text>$course$/top/egzamin/teoria/rezerwa</text>
+        </category>
+        <info format="moodle_auto_format">
+            <text>Warianty pytań z kategorii „teoria” sprawdzające tę samą wiedzę (P33 ↔ P23, P36 ↔ P18). Nie losować razem z oryginałami.</text>
+        </info>
+        <idnumber/>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P33_HHV_LHV</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P33.&lt;/b&gt; Ciepło spalania (HHV) jest większe od wartości opałowej (LHV), ponieważ:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W15 „3. Wartość Opałowa (W_d)”.&lt;/p&gt;</text>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;uwzględnia ciepło przegrzania spalin powyżej 100 °C&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;uwzględnia ciepło skroplenia wody zawartej w spalinach&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;pomija straty kominowe&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;dotyczy wyłącznie paliw stałych&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>P36_COP_PC_vs_ch</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;P36.&lt;/b&gt; Współczynnik wydajności grzejnej pompy ciepła \(COP_{PC}\) jest zawsze:&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text>&lt;p&gt;Zagadnienie omówione na wykładzie: W6 „Współczynniki Efektywności (COP)”; W11 „Mierniki Efektywności”.&lt;/p&gt;</text>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber/>
+        <single>true</single>
+        <shuffleanswers>1</shuffleanswers>
+        <answernumbering>abc</answernumbering>
+        <correctfeedback format="html">
+            <text>Poprawna odpowiedź.</text>
+        </correctfeedback>
+        <partiallycorrectfeedback format="html">
+            <text/>
+        </partiallycorrectfeedback>
+        <incorrectfeedback format="html">
+            <text>Niepoprawna odpowiedź.</text>
+        </incorrectfeedback>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;mniejszy od COP chłodziarki o 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="100" format="html">
+            <text>&lt;p&gt;większy od COP chłodziarki o 1&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;równy COP chłodziarki&lt;/p&gt;</text>
+            <feedback format="html">
+                <text/>
+            </feedback>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>&lt;p&gt;równy sprawności Carnota&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>

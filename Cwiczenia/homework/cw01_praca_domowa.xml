@@ -3517,7 +3517,7 @@
             <text>Ćw1 Zad. dom. – Wydajność objętościowa sprężarki [m³/h]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;Sprężarka ma w ciągu 1 godziny napełnić zbiornik o objętości \( V_{{zb}} = \) &lt;b&gt;{V_zb}&lt;/b&gt; m³ od stanu „pustego” (\( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C) do stanu „pełnego” (\( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar (abs), \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C) – wydajność masowa jak w poprzednim zadaniu. Warunki ssania: \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność objętościową sprężarki w warunkach ssania \( \dot{{V}} \) w &lt;strong&gt;m³/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;Sprężarka ma w ciągu 1 godziny napełnić zbiornik o objętości \( V_{{zb}} = \) &lt;b&gt;{V_zb}&lt;/b&gt; m³ od stanu „pustego” (\( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C) do stanu „pełnego” (\( p = \) &lt;b&gt;{p_full}&lt;/b&gt; bar (abs), \( t = \) &lt;b&gt;{t_full}&lt;/b&gt;°C). Warunki ssania: \( p_{{atm}} = \) &lt;b&gt;{patm_mmHg}&lt;/b&gt; mmHg, \( t = \) &lt;b&gt;{t1}&lt;/b&gt;°C. Przyjmij \( R = 287 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymaganą wydajność objętościową sprężarki w warunkach ssania \( \dot{{V}} \) w &lt;strong&gt;m³/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
