@@ -111,6 +111,9 @@ VARIABLES_SCHEMA = {
     "koszt_rek":        {"min": 15000, "max": 40000, "dec": 0},
     # średnia temperatura zewnętrzna w sezonie grzewczym
     "t_sr":             {"min": 5, "max": 13, "dec": 0, "seed": 2026},
+
+    # --- Cw05 (Egzergia) – temperatura otoczenia (hali) T0 = t_hali + 273,15 ---
+    "t_hali":           {"min": 15, "max": 25, "dec": 0, "seed": 2027},
 }
 
 
@@ -806,6 +809,47 @@ def generate_cw05(global_data):
                 "/ ({tw_out_new} - {tw_in}) - log({Tsp_in} / {Tsp_out}) / ({Tsp_in} - {Tsp_out}))"
             ),
             variables_map=var_map, global_data=global_data, defaultgrade=3
+        ),
+
+        # Gouy–Stodola jak w Zad. 5.3: B_str = T0 * S_gen, T0 = t_hali + 273,15 (temperatura
+        # hali z karty); S_gen z pełnych danych jak w pytaniu wyżej (losowania niezależne).
+        # Wynik 32–81 kW; 1 miejsce po przecinku, tolerancja 2 %.
+        build_calculated_question(
+            name="Ćw5 Zad. dom. – Strata egzergii [kW]",
+            question_html=(
+                '<p>Wymiennik ciepła: spaliny chłodzą się '
+                'z \\( T_{{sp,wej}} = \\) <b>{Tsp_in}</b> K '
+                'do \\( T_{{sp,wyj}} = \\) <b>{Tsp_out}</b> K, '
+                'woda grzeje się z \\( t_{{w,wej}} = \\) <b>{tw_in}</b>°C '
+                'do \\( t_{{w,wyj}} = \\) <b>{tw_out_new}</b>°C. '
+                'Strumień ciepła: \\( \\dot{{Q}} = \\) <b>{Qwym}</b> kW. '
+                'Temperatura otoczenia (hali): \\( t_0 = \\) <b>{t_hali}</b>°C.</p>'
+                '<p>Oblicz generację entropii w wymienniku jak w Zad. 5.2 '
+                '(\\( \\dot{{S}}_{{gen}} = \\dot{{m}}_s c_s \\ln\\frac{{T_{{sp,wyj}}}}{{T_{{sp,wej}}}} '
+                '+ \\dot{{m}}_w c_w \\ln\\frac{{T_{{w,wyj}}}}{{T_{{w,wej}}}} \\), '
+                'pojemności cieplne z bilansu energii: '
+                '\\( \\dot{{m}}_w c_w = \\dot{{Q}} / (t_{{w,wyj}} - t_{{w,wej}}) \\), '
+                '\\( \\dot{{m}}_s c_s = \\dot{{Q}} / (T_{{sp,wej}} - T_{{sp,wyj}}) \\), '
+                'temperatury wody w K), a następnie stratę egzergii '
+                'z twierdzenia Gouy–Stodoli (Zad. 5.3):</p>'
+                '<p>\\( \\dot{{B}}_{{str}} = T_0 \\cdot \\dot{{S}}_{{gen}}, '
+                '\\qquad T_0 = t_0 + 273{{,}}15 \\)</p>'
+                '<p>Wynik podaj w <strong>kW</strong> z dokładnością '
+                'do 1 miejsca po przecinku.</p>'
+            ),
+            formula=(
+                "({t_hali} + 273.15) * {Qwym} * (log(({tw_out_new} + 273.15) / ({tw_in} + 273.15)) "
+                "/ ({tw_out_new} - {tw_in}) - log({Tsp_in} / {Tsp_out}) / ({Tsp_in} - {Tsp_out}))"
+            ),
+            variables_map=dict(var_map, t_hali="t_hali"), global_data=global_data,
+            defaultgrade=3,
+            general_feedback_html=(
+                '<p>Tok rozwiązania: \\( \\dot{{S}}_{{gen}} \\) jak w Zad. 5.2 (W/K), '
+                '\\( T_0 = t_0 + 273{{,}}15 \\) K, '
+                '\\( \\dot{{B}}_{{str}} = T_0 \\cdot \\dot{{S}}_{{gen}} \\) (W → kW). '
+                'Slajd Ć5 „Zadanie 5.3: Strata Egzergii (Twierdzenie Gouy–Stodoli)”, '
+                'pkt 3 zadania domowego (Raport 5).</p>'
+            )
         ),
 
         build_multichoice_question(

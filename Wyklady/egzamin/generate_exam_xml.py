@@ -86,13 +86,14 @@ def add_dataset(parent, name, vmin, vmax, decimals, status='private'):
             ET.SubElement(di, 'value').text = f'{v:.{decimals}f}'
 
 def add_calculated_question(quiz, name, html, formula, grade, variables, decimals,
-                            tolerance=0.02, tol_type=1):
+                            tolerance=0.02, tol_type=1, feedback=None):
     """Add a calculated question with dataset definitions.
     variables: list of (varname, min, max, decimals)
     formula: Moodle formula string using {varname}
     decimals: liczba miejsc po przecinku poprawnej odpowiedzi (correctanswerlength);
         zdanie o dokładności jest wstawiane przed akapitem "Podaj ...".
     tolerance/tol_type: domyślnie 2 % względna (tolerancetype 1).
+    feedback: informacja zwrotna ogólna (HTML; tok rozwiązania + odsyłacz do wykładu).
     """
     assert html.count('<p><b>Podaj ') == 1, name
     html = html.replace('<p><b>Podaj ', precision_note(decimals) + '<p><b>Podaj ')
@@ -103,7 +104,9 @@ def add_calculated_question(quiz, name, html, formula, grade, variables, decimal
     q_qt = ET.SubElement(q, 'questiontext', format='html')
     ET.SubElement(q_qt, 'text').text = html
     q_gf = ET.SubElement(q, 'generalfeedback', format='html')
-    ET.SubElement(q_gf, 'text')
+    gf_text = ET.SubElement(q_gf, 'text')
+    if feedback:
+        gf_text.text = protect_latex_braces(feedback, variables)
     ET.SubElement(q, 'defaultgrade').text = f'{grade:.7f}'
     ET.SubElement(q, 'penalty').text = '0.3333333'
     ET.SubElement(q, 'hidden').text = '0'
@@ -643,6 +646,182 @@ def make_zadania():
         3.0, [("m1", 0.5, 1.5, 1), ("X1", 1.0, 3.0, 1),
          ("m2", 1.5, 3.5, 1), ("X2", 6.0, 10.0, 1)],
         decimals=2)
+
+    # ------------------------------------------------------------------
+    # Pytania dodane później (Baza_Pytan_Zadania.md: 3b, 4, 4b, 5, 5b, 10, 10b).
+    # Dopisane NA KOŃCU, żeby nie przesunąć sekwencji generatora losowego
+    # dla zbiorów Zad01–Zad13b.
+    # ------------------------------------------------------------------
+
+    # ---- Zad 3c: Elektrownia gazowa (Brayton) – strumień ciepła doprowadzonego ----
+    # eta_C = 0,73–0,82; eta_rzecz = efrac*eta_C = 0,33–0,49; Q_dop = Pel/eta_rzecz
+    add_calculated_question(quiz,
+        "Zad03c_Elektrownia_gazowa",
+        "<p><b>Zadanie 3c — Sprawność elektrowni gazowej</b></p>"
+        "<p>Turbina gazowa pracuje w obiegu Braytona między temperaturą spalin za komorą spalania "
+        "<b>{TH}</b> °C a temperaturą powietrza na wlocie do sprężarki <b>{TL}</b> °C. "
+        "Moc elektryczna bloku wynosi <b>{Pel}</b> MW, a jego sprawność rzeczywista stanowi "
+        "<b>{efrac}</b> sprawności Carnota dla tych temperatur. "
+        "Obliczyć strumień ciepła doprowadzonego w komorze spalania.</p>"
+        "<p><i>Wskazówka: Patrz Karta Wzorów — sprawności obiegów, związek moc–ciepło "
+        "(\\(\\dot{Q}_{dop} = P/\\eta\\)). Temperatury w kelwinach.</i></p>"
+        "<p><b>Podaj \\(\\dot{Q}_{dop}\\) [MW]:</b></p>",
+        "{Pel} / ({efrac} * (1 - ({TL} + 273.15) / ({TH} + 273.15)))",
+        4.0, [("TH", 900, 1300, 0), ("TL", 10, 30, 0),
+         ("Pel", 50, 300, 0), ("efrac", 0.45, 0.60, 2)],
+        decimals=1,
+        feedback="<p>Tok rozwiązania: \\(\\eta_C = 1 - T_L/T_H\\) (K), "
+                 "\\(\\eta_{rz} = {efrac} \\cdot \\eta_C\\), "
+                 "\\(\\dot{Q}_{dop} = P_{el}/\\eta_{rz}\\). "
+                 "Wykład W9 „6. Obieg Joule'a-Braytona”, W6 „Sprawność obiegu Carnota”.</p>")
+
+    # ---- Zad 4: Ściana dwuwarstwowa (U) ----
+    # R' = d1/1,30 + d2/0,035 (m2K/W) = 2,4–4,8 -> U = 0,21–0,42; zaokrąglenie do 2 miejsc
+    # daje do 2,4 % przy U ~0,21 -> tolerancja 3 %
+    add_calculated_question(quiz,
+        "Zad04_Sciana_dwuwarstwowa",
+        "<p><b>Zadanie 4 — Przenikanie ciepła przez ścianę dwuwarstwową</b></p>"
+        "<p>Ściana składa się z dwóch warstw:</p>"
+        "<ul>"
+        "<li>beton o grubości <b>{d1}</b> cm i \\(\\lambda_1\\) = 1,30 W/(m·K),</li>"
+        "<li>wełna mineralna o grubości <b>{d2}</b> cm i \\(\\lambda_2\\) = 0,035 W/(m·K).</li>"
+        "</ul>"
+        "<p>Pominąć opory przejmowania ciepła na powierzchniach "
+        "(\\(R'_{si} = R'_{se} = 0\\)). Obliczyć współczynnik przenikania ciepła \\(U\\) przegrody.</p>"
+        "<p><i>Wskazówka: opory warstw dodaje się szeregowo: "
+        "\\(U = 1 / \\sum(\\delta_i / \\lambda_i)\\). Grubości przelicz na metry.</i></p>"
+        "<p><b>Podaj \\(U\\) [W/(m²·K)]:</b></p>",
+        "1 / ({d1} / 100 / 1.30 + {d2} / 100 / 0.035)",
+        3.0, [("d1", 15, 30, 0), ("d2", 8, 16, 0)],
+        decimals=2, tolerance=0.03,
+        feedback="<p>Tok rozwiązania: \\(R' = \\delta_1/\\lambda_1 + \\delta_2/\\lambda_2\\) "
+                 "[m²·K/W], \\(U = 1/R'\\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)” "
+                 "i „Rozwiązanie Zadania” (cegła + styropian).</p>")
+
+    # ---- Zad 4b: Ściana trójwarstwowa (U) ----
+    # R' = d1/0,70 + d2/0,77 + d3/0,040 = 1,7–4,3 -> U = 0,23–0,60; tolerancja 3 % (jak Zad04)
+    add_calculated_question(quiz,
+        "Zad04b_Sciana_trojwarstwowa",
+        "<p><b>Zadanie 4b — Ściana trójwarstwowa</b></p>"
+        "<p>Ściana składa się z trzech warstw:</p>"
+        "<ul>"
+        "<li>tynk wewnętrzny o grubości <b>{d1}</b> cm i \\(\\lambda_1\\) = 0,70 W/(m·K),</li>"
+        "<li>cegła o grubości <b>{d2}</b> cm i \\(\\lambda_2\\) = 0,77 W/(m·K),</li>"
+        "<li>styropian o grubości <b>{d3}</b> cm i \\(\\lambda_3\\) = 0,040 W/(m·K).</li>"
+        "</ul>"
+        "<p>Pominąć opory przejmowania ciepła na powierzchniach. "
+        "Obliczyć współczynnik przenikania ciepła \\(U\\) przegrody.</p>"
+        "<p><i>Wskazówka: opory warstw dodaje się szeregowo: "
+        "\\(U = 1 / \\sum(\\delta_i / \\lambda_i)\\). Grubości przelicz na metry.</i></p>"
+        "<p><b>Podaj \\(U\\) [W/(m²·K)]:</b></p>",
+        "1 / ({d1} / 100 / 0.70 + {d2} / 100 / 0.77 + {d3} / 100 / 0.040)",
+        3.0, [("d1", 1, 3, 0), ("d2", 12, 38, 0), ("d3", 6, 15, 0)],
+        decimals=2, tolerance=0.03,
+        feedback="<p>Tok rozwiązania: \\(R' = \\sum \\delta_i/\\lambda_i\\) [m²·K/W], "
+                 "\\(U = 1/R'\\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)”.</p>")
+
+    # ---- Zad 5: Nawilżanie adiabatyczne (h = const) ----
+    # h = 1,005 t + X(2501 + 1,86 t) [kJ/kg, X w kg/kg]; h1 = h2 daje w postaci zamkniętej:
+    # X2 [g/kg] = X1 + dt*(1005 + 1,86*X1)/(2501 + 1,86*(t1 - dt)).
+    # Zakresy: gorące suche powietrze (phi1 = 10–27 %), stan 2 zawsze poniżej nasycenia
+    # (najgorzej t2 = 20 °C, X2 = 12,8 g/kg -> phi2 ~ 86 %). X2 = 7,2–12,7 g/kg.
+    # Tolerancja 5 %: odczyt X2 z wykresu h-X +-0,3 g/kg daje do ~4 % przy X2 ~7 g/kg.
+    add_calculated_question(quiz,
+        "Zad05_Nawilzanie_adiabatyczne",
+        "<p><b>Zadanie 5 — Nawilżanie adiabatyczne powietrza</b></p>"
+        "<p>Powietrze o temperaturze <b>{t1}</b> °C i zawilżeniu <b>{X1}</b> g/kg wpływa do komory "
+        "zraszania, gdzie jest nawilżane rozpyloną wodą (ciśnienie 0,1 MPa). W wyniku odparowania "
+        "wody temperatura powietrza spada o <b>{dt}</b> K. Obliczyć zawilżenie powietrza "
+        "po nawilżeniu \\(X_2\\).</p>"
+        "<p><i>Wskazówka: nawilżanie wodą przebiega przy \\(h\\) = const — stan 2 leży na "
+        "izentalpie \\(h_1 = h_2\\) przechodzącej przez stan 1, w temperaturze "
+        "\\(t_2 = t_1 - \\Delta t\\). Odczytaj \\(X_2\\) z wykresu h‑X (od punktu 1 wzdłuż "
+        "izentalpy do izotermy \\(t_2\\)) albo oblicz: zapisz \\(h_1 = h_2\\) ze wzoru na "
+        "entalpię (Karta Wzorów — powietrze wilgotne) i wyznacz \\(X_2\\).</i></p>"
+        "<p><b>Podaj \\(X_2\\) [g/kg]:</b></p>",
+        "{X1} + {dt} * (1005 + 1.86 * {X1}) / (2501 + 1.86 * ({t1} - {dt}))",
+        4.0, [("t1", 32, 40, 0), ("X1", 4.0, 8.0, 1), ("dt", 8, 12, 0)],
+        decimals=1, tolerance=0.05,
+        feedback="<p>Tok rozwiązania: \\(h_1 = 1{,}005\\,t_1 + X_1(2501 + 1{,}86\\,t_1)\\) "
+                 "(X w kg/kg), \\(t_2 = t_1 - \\Delta t\\), z \\(h_2 = h_1\\): "
+                 "\\(X_2 = (h_1 - 1{,}005\\,t_2)/(2501 + 1{,}86\\,t_2)\\) "
+                 "(na wykresie h‑X: punkt 2 na izentalpie przez punkt 1). Wykład W12 „Nawilżanie Adiabatyczne (Wodą)”.</p>")
+
+    # ---- Zad 5b: Ogrzewanie powietrza w nagrzewnicy (X = const) ----
+    # phi2 = phi1 * ps(t1)/ps(t2); ps z równania Magnusa (610,94*exp(17,625 t/(t+243,04)) Pa,
+    # błąd < 0,4 % w 0–50 °C). Wynik 8,6–47 %. Tolerancja 3 %: tablice p_s / wykres h-X.
+    add_calculated_question(quiz,
+        "Zad05b_Nagrzewnica",
+        "<p><b>Zadanie 5b — Ogrzewanie powietrza w nagrzewnicy</b></p>"
+        "<p>Powietrze wilgotne o temperaturze <b>{t1}</b> °C, wilgotności względnej "
+        "<b>{phi1}</b> % i ciśnieniu barometrycznym 1013 hPa przepływa przez nagrzewnicę "
+        "elektryczną, która podnosi jego temperaturę do <b>{t2}</b> °C. "
+        "Obliczyć wilgotność względną powietrza na wylocie z nagrzewnicy.</p>"
+        "<p><i>Wskazówka: ogrzewanie bez dodawania wody — zawilżenie \\(X\\) i ciśnienie "
+        "cząstkowe pary \\(p_w\\) nie zmieniają się; zmienia się tylko \\(\\varphi = p_w/p_s(t)\\), "
+        "bo rośnie ciśnienie nasycenia \\(p_s(t)\\). Ciśnienia nasycenia odczytaj z tablic "
+        "(lub \\(\\varphi_2\\) wprost z wykresu h‑X).</i></p>"
+        "<p><b>Podaj \\(\\varphi_2\\) [%]:</b></p>",
+        "{phi1} * exp(17.625 * {t1} / ({t1} + 243.04)) / exp(17.625 * {t2} / ({t2} + 243.04))",
+        3.0, [("t1", 0, 10, 0), ("phi1", 60, 90, 0), ("t2", 20, 30, 0)],
+        decimals=1, tolerance=0.03,
+        feedback="<p>Tok rozwiązania: \\(p_w = \\varphi_1 \\, p_s(t_1)\\) = const, "
+                 "\\(\\varphi_2 = p_w / p_s(t_2) = \\varphi_1 \\, p_s(t_1)/p_s(t_2)\\). "
+                 "Wykład W12 „Przykłady Obliczeniowe – Zadanie 1: Ogrzewanie Powietrza”, "
+                 "„Przemiana 1: Ogrzewanie izobaryczne (X = const)”.</p>")
+
+    # ---- Zad 10: Wymiennik przeciwprądowy (Q = U A dT_lm) ----
+    # Przeciwprąd: dT1 = t1g - t2z (koniec gorący) = 10–30 K, dT2 = t2g - t1z (koniec zimny)
+    # = 32–50 K – zakresy rozłączne, więc dT1 != dT2 (ln(1) = 0 nie wystąpi).
+    # Spadek t gorącej (30–50 K) < przyrost t zimnej (52–70 K) -> C_g > C_z, spójne z dT1 < dT2.
+    add_calculated_question(quiz,
+        "Zad10_Wymiennik_przeciwprad",
+        "<p><b>Zadanie 10 — Wymiennik ciepła przeciwprądowy (strumień ciepła)</b></p>"
+        "<p>W wymienniku przeciwprądowym woda jest ogrzewana od <b>{t1z}</b> °C do <b>{t2z}</b> °C "
+        "strumieniem gorącej wody, która wchodzi z temperaturą <b>{t1g}</b> °C i wychodzi "
+        "z temperaturą <b>{t2g}</b> °C. Współczynnik przenikania ciepła wymiennika wynosi "
+        "\\(U\\) = <b>{U}</b> W/(m²·K), a powierzchnia wymiany ciepła <b>{A}</b> m². "
+        "Obliczyć strumień ciepła wymienianego w wymienniku.</p>"
+        "<p><i>Wskazówka: \\(\\dot{Q} = U A \\, \\Delta T_{lm}\\), "
+        "\\(\\Delta T_{lm} = (\\Delta T_1 - \\Delta T_2) / \\ln(\\Delta T_1 / \\Delta T_2)\\); "
+        "w przeciwprądzie \\(\\Delta T_1 = t_{g,we} - t_{z,wy}\\), "
+        "\\(\\Delta T_2 = t_{g,wy} - t_{z,we}\\).</i></p>"
+        "<p><b>Podaj \\(\\dot{Q}\\) [kW]:</b></p>",
+        "{U} * {A} * (({t1g} - {t2z}) - ({t2g} - {t1z})) / log(({t1g} - {t2z}) / ({t2g} - {t1z})) / 1000",
+        4.0, [("t1z", 10, 18, 0), ("t2z", 70, 80, 0), ("t1g", 90, 100, 0), ("t2g", 50, 60, 0),
+         ("U", 800, 1500, 0), ("A", 5, 20, 0)],
+        decimals=1,
+        feedback="<p>Tok rozwiązania: \\(\\Delta T_1 = t_{g,we} - t_{z,wy}\\), "
+                 "\\(\\Delta T_2 = t_{g,wy} - t_{z,we}\\), "
+                 "\\(\\Delta T_{lm} = (\\Delta T_1 - \\Delta T_2)/\\ln(\\Delta T_1/\\Delta T_2)\\), "
+                 "\\(\\dot{Q} = U A \\Delta T_{lm}\\) (W → kW). "
+                 "Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.</p>")
+
+    # ---- Zad 10b: Wymiennik współprądowy olej–woda ----
+    # Współprąd: dT1 = t1g - t1z (wlot) = 75–105 K, dT2 = t2g - t2z (wylot) = 15–35 K
+    # – zakresy rozłączne, dT2 > 0 zawsze (we współprądzie t_g,wy > t_z,wy).
+    add_calculated_question(quiz,
+        "Zad10b_Wymiennik_wspolprad",
+        "<p><b>Zadanie 10b — Wymiennik współprądowy</b></p>"
+        "<p>W wymienniku współprądowym olej jest chłodzony od <b>{t1g}</b> °C do <b>{t2g}</b> °C "
+        "wodą wchodzącą z temperaturą <b>{t1z}</b> °C i wychodzącą z temperaturą <b>{t2z}</b> °C. "
+        "Współczynnik przenikania ciepła wynosi \\(U\\) = <b>{U}</b> W/(m²·K), "
+        "powierzchnia wymiany ciepła <b>{A}</b> m². "
+        "Obliczyć strumień ciepła wymienianego w wymienniku.</p>"
+        "<p><i>Wskazówka: dla wymiennika współprądowego \\(\\Delta T_1 = t_{g,we} - t_{z,we}\\), "
+        "\\(\\Delta T_2 = t_{g,wy} - t_{z,wy}\\). Dalej: "
+        "\\(\\dot{Q} = U A \\, \\Delta T_{lm}\\), "
+        "\\(\\Delta T_{lm} = (\\Delta T_1 - \\Delta T_2) / \\ln(\\Delta T_1 / \\Delta T_2)\\).</i></p>"
+        "<p><b>Podaj \\(\\dot{Q}\\) [kW]:</b></p>",
+        "{U} * {A} * (({t1g} - {t1z}) - ({t2g} - {t2z})) / log(({t1g} - {t1z}) / ({t2g} - {t2z})) / 1000",
+        4.0, [("t1g", 100, 120, 0), ("t2g", 60, 70, 0), ("t1z", 15, 25, 0), ("t2z", 35, 45, 0),
+         ("U", 200, 400, 0), ("A", 5, 15, 0)],
+        decimals=1,
+        feedback="<p>Tok rozwiązania: \\(\\Delta T_1 = t_{g,we} - t_{z,we}\\), "
+                 "\\(\\Delta T_2 = t_{g,wy} - t_{z,wy}\\), "
+                 "\\(\\Delta T_{lm} = (\\Delta T_1 - \\Delta T_2)/\\ln(\\Delta T_1/\\Delta T_2)\\), "
+                 "\\(\\dot{Q} = U A \\Delta T_{lm}\\) (W → kW). "
+                 "Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.</p>")
 
     write_xml(quiz, 'egzamin_zadania.xml')
     print(f"  Total calculated questions generated.")
