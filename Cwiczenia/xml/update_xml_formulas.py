@@ -3,36 +3,62 @@
 update_xml_formulas.py
 Update Moodle XML calculated question formulas with polynomial
 approximations from CoolProp. Also add missing questions.
+
+=== UWAGA: skrypt został już zastosowany ===
+Pliki Cw03/Cw04/Cw06/Cw07_*_Calculated.xml w tym katalogu zawierają już
+wzory z aproksymacjami podanymi niżej oraz pytania Cw03_Zad3_8, Cw06_Zad6_6
+i Cw07_Zad8_9. Ponowne uruchomienie na aktualnych plikach jest zbędne.
+
+Czy skrypt jest idempotentny?
+- Merytorycznie tak: wzory są ustawiane na te same napisy, które są już
+  w plikach, a pytania dodawane są tylko wtedy, gdy ich jeszcze nie ma
+  (sprawdzane po nazwie). Drugie uruchomienie nie zmienia żadnego pytania.
+- Technicznie NIE: zapis przez ElementTree reserializuje cały plik (inne
+  białe znaki, LF zamiast CRLF, inne kodowanie encji, usunięte komentarze),
+  więc plik po przebiegu różni się tekstowo od obecnego, choć jest z nim
+  semantycznie identyczny. Dlatego domyślnie skrypt pracuje w trybie
+  --dry-run (tylko raportuje); zapis wymaga jawnego --write.
+- Skrypt nie odtwarza aktualnych treści pytań (treści, feedback i zbiory
+  danych zostały później przepisane ręcznie w audycie), więc uruchomienie
+  na pierwotnych plikach też nie da dokładnie obecnej wersji – tylko wzory.
+
+Usage:
+    python update_xml_formulas.py            # dry-run: raport, bez zapisu
+    python update_xml_formulas.py --write    # zapis plików
 """
 import xml.etree.ElementTree as ET
-import os, copy, re
+import os, copy, sys
 
 XML_DIR = os.path.dirname(os.path.abspath(__file__))
+WRITE = '--write' in sys.argv
 
 # ============================================================
-# POLYNOMIAL COEFFICIENTS (from fit_polynomials.py)
+# POLYNOMIAL COEFFICIENTS (from fit_polynomials.py, CoolProp / IAPWS-95)
+# Szablony: {T} = temperatura [°C], {P} = ciśnienie [bar]; funkcja steam()
+# podstawia nazwy zmiennych Moodle. W Moodle potęgowanie to pow(), log() = ln.
 # ============================================================
 
-# --- Water/Steam superheated h(p,T) [kJ/kg], p in bar, T in °C ---
-# h = a0 + a1*T + a2*p + a3*T*p + a4*T² + a5*p²
-# Max err: 1.91 kJ/kg (0.065%)  Range: p=8..16, T=Tsat+5..300
-H_STEAM = "2401.59 + 2.7229*{tp} + (-11.4741)*{pk} + 0.032085*{tp}*{pk} + (-0.00163053)*pow({tp},2) + (-0.0237)*pow({pk},2)"
+# --- Water/Steam superheated h(p,T) [kJ/kg], cubic in (T-250, p-12.5) ---
+# Range: p = 10..15 bar, T = 200..300 °C; max err 0.03 kJ/kg
+HSH = ("2933.78 + 2.28353*({T}-250) + (-3.82234)*({P}-12.5) + 0.0351747*({T}-250)*({P}-12.5)"
+       " + (-0.00191809)*pow(({T}-250),2) + (-0.0381269)*pow(({P}-12.5),2)"
+       " + 1.49888e-05*pow(({T}-250),3) + (-0.000283354)*pow(({T}-250),2)*({P}-12.5)"
+       " + 0.000853504*({T}-250)*pow(({P}-12.5),2) + (-0.000769777)*pow(({P}-12.5),3)")
 
-# --- Water/Steam superheated s(p,T) [kJ/(kgK)] ---
-S_STEAM = "6.2457 + 0.007326*{tp} + (-0.101072)*{pk} + 0.00006159*{tp}*{pk} + (-0.0000073331)*pow({tp},2) + 0.001669*pow({pk},2)"
+# --- Water/Steam superheated s(p,T) [kJ/(kgK)], same form; max err 0.00005 ---
+SSH = ("6.80985 + 0.00436404*({T}-250) + (-0.042532)*({P}-12.5) + 6.85312e-05*({T}-250)*({P}-12.5)"
+       " + (-7.97314e-06)*pow(({T}-250),2) + 0.00143735*pow(({P}-12.5),2)"
+       " + 3.92716e-08*pow(({T}-250),3) + (-6.17443e-07)*pow(({T}-250),2)*({P}-12.5)"
+       " + 1.69356e-06*({T}-250)*pow(({P}-12.5),2) + (-8.27672e-05)*pow(({P}-12.5),3)")
 
-# --- Water saturated: Tsat(p) [°C], p in bar ---
-TSAT = "0.037213*pow({pk},3) + (-1.3287)*pow({pk},2) + 19.1052*{pk} + 84.8568"
+# --- Water saturation h'(p), h''(p), s'(p), s''(p); cubic in ln(p), p = 0.5..6 bar ---
+# max err: h' 0.1, h'' 0.1 kJ/kg; s' 0.0003, s'' 0.0001 kJ/(kgK)
+HP  = "417.546 + 117.783*log({P}) + 10.4073*pow(log({P}),2) + 1.44645*pow(log({P}),3)"
+HPP = "2674.9 + 44.2915*log({P}) + 1.87826*pow(log({P}),2) + (-0.70967)*pow(log({P}),3)"
+SP  = "1.3028 + 0.315898*log({P}) + 0.0162429*pow(log({P}),2) + 0.0017039*pow(log({P}),3)"
+SPP = "7.35879 + (-0.335785)*log({P}) + 0.00262104*pow(log({P}),2) + (-0.00108305)*pow(log({P}),3)"
 
-# --- Water saturated hf(p) [kJ/kg], p in bar, range 0.5..6 ---
-HF_P = "2.1757*pow({pdl},3) + (-29.9971)*pow({pdl},2) + 169.0692*{pdl} + 269.2620"
-HG_P = "0.9171*pow({pdl},3) + (-12.5552)*pow({pdl},2) + 65.5716*{pdl} + 2618.0251"
-SF_P = "0.006322*pow({p2t},3) + (-0.0862)*pow({p2t},2) + 0.4632*{p2t} + 0.8984"
-SG_P = "-0.007501*pow({p2t},3) + 0.1004*pow({p2t},2) + (-0.5079)*{p2t} + 7.8003"
-HF_P2 = "2.1757*pow({p2t},3) + (-29.9971)*pow({p2t},2) + 169.0692*{p2t} + 269.2620"
-HG_P2 = "0.9171*pow({p2t},3) + (-12.5552)*pow({p2t},2) + 65.5716*{p2t} + 2618.0251"
-
-# --- Water s_water(T) sat liquid [kJ/(kgK)], T in °C ---
+# --- Water s'(T) sat liquid [kJ/(kgK)], T in °C (40..80 °C, err 0.0001) ---
 S_WATER = "-0.00001826*pow({tz},2) + 0.014766*{tz} + 0.0111"
 
 # --- R134a ---
@@ -42,19 +68,30 @@ H2S_R134A = "398.7923 + (-0.152673)*{to6} + 0.722686*{tk6} + (-0.00060308)*{to6}
 V_R134A = "0.00005115*pow({to6},2) + (-0.002437)*{to6} + 0.069308"  # v_g(T)
 
 # --- R290 (Propane) ---
-H1_R290 = "-0.004186*pow({to6},2) + 1.1477*{to6} + 574.7918"
-H3_R290 = "0.005311*pow({to6},2) + 2.4687*{to6} + 200.0520"  # uses to6 for evaporator T range mapping
+H1_R290 = "-0.004186*pow({to6},2) + 1.1477*{to6} + 574.7918"           # h_g(t_o)
+H3_R290 = "0.005311*pow({tk6},2) + 2.4687*{tk6} + 200.0520"            # h_f(t_k)
 H2S_R290 = "575.1506 + (-0.298900)*{to6} + 1.381165*{tk6} + (-0.00118242)*{to6}*{tk6} + 0.00392480*pow({to6},2) + (-0.00371714)*pow({tk6},2)"
 
-# Watch: h3 for R290 should use tk6 (condenser temp) not to6
-H3_R290_TK = "0.005311*pow({tk6},2) + 2.4687*{tk6} + 200.0520"
+
+def steam(template, T=None, P=None):
+    """Substitute Moodle variable names into a {T}/{P} template."""
+    s = template
+    if T is not None:
+        s = s.replace('{T}', '{' + T + '}')
+    if P is not None:
+        s = s.replace('{P}', '{' + P + '}')
+    assert '{T}' not in s and '{P}' not in s, template
+    return s
 
 
 def update_answer(question, new_formula):
     """Update the answer formula text for a calculated question."""
     ans = question.find('.//answer/text')
     if ans is not None:
-        ans.text = new_formula
+        if ans.text != new_formula:
+            ans.text = new_formula
+            return True
+    return False
 
 
 def find_question(root, name_text):
@@ -66,146 +103,166 @@ def find_question(root, name_text):
     return None
 
 
-def get_dataset_def(question):
-    """Get the first dataset_definitions element."""
-    return question.find('.//dataset_definitions')
+def question_vars(question):
+    return [dd.find('name/text').text
+            for dd in question.findall('dataset_definitions/dataset_definition')]
 
 
-def copy_dataset_item(source_q, var_name, target_q):
-    """Copy a shared variable's dataset_definition from source to target question."""
-    src_defs = source_q.find('.//dataset_definitions')
-    if src_defs is None:
-        return
-    for dd in src_defs.findall('dataset_definition'):
-        status = dd.find('status')
-        name = dd.find('name/text')
-        if name is not None and name.text == var_name:
-            tgt_defs = target_q.find('.//dataset_definitions')
-            if tgt_defs is None:
-                tgt_defs = ET.SubElement(target_q, 'dataset_definitions')
-            tgt_defs.append(copy.deepcopy(dd))
-            return
+_SIBLING_ROOTS = None
 
 
-def make_calculated_question(name, questiontext, formula, tolerance, 
-                              tolerancetype=1, correctanswerformat=1, 
-                              correctanswerlength=2, vars_from=None):
-    """Create a new calculated question element."""
+def sibling_roots(xml_dir):
+    """Parsed roots of the other *_Calculated.xml files in the directory
+    (the shared variables tp/pk/md/... are defined in Cw01)."""
+    global _SIBLING_ROOTS
+    if _SIBLING_ROOTS is None:
+        _SIBLING_ROOTS = []
+        for fn in sorted(os.listdir(xml_dir)):
+            if fn.endswith('_Calculated.xml'):
+                try:
+                    _SIBLING_ROOTS.append(ET.parse(os.path.join(xml_dir, fn)).getroot())
+                except ET.ParseError:
+                    pass
+    return _SIBLING_ROOTS
+
+
+def copy_dataset_item(root, var_name, target_q, preferred=None, xml_dir=None):
+    """Copy a variable's dataset_definition into target_q.
+
+    Looks first in `preferred` question, then in every question of the file,
+    then in the other *_Calculated.xml files of `xml_dir` (same shared
+    variable = same 50 items), so that a variable missing in the template
+    (e.g. tp/pk in Cw03, rec8 in Cw07) is still found. Every {var} used in
+    the formula/text MUST have its own dataset_definition in the question,
+    otherwise the question does not work after import.
+    """
+    if var_name in question_vars(target_q):
+        return True
+    sources = ([preferred] if preferred is not None else []) + list(root.findall('question'))
+    if xml_dir:
+        for r in sibling_roots(xml_dir):
+            sources += list(r.findall('question'))
+    for src in sources:
+        for dd in src.findall('dataset_definitions/dataset_definition'):
+            name = dd.find('name/text')
+            if name is not None and name.text == var_name:
+                tgt_defs = target_q.find('dataset_definitions')
+                if tgt_defs is None:
+                    tgt_defs = ET.SubElement(target_q, 'dataset_definitions')
+                tgt_defs.append(copy.deepcopy(dd))
+                return True
+    print(f"  ! brak zbioru danych '{var_name}' - pytanie nie zadziała bez niego")
+    return False
+
+
+def make_calculated_question(name, questiontext, formula, tolerance=0.02,
+                             tolerancetype=1, correctanswerformat=1,
+                             correctanswerlength=1, generalfeedback='',
+                             defaultgrade='1.0000000'):
+    """Create a new calculated question element in the same layout as the
+    other questions of these files.
+
+    questiontext/generalfeedback: HTML as plain text - ElementTree escapes
+    < > & itself. Do NOT wrap in "<![CDATA[...]]>": the marker would be
+    escaped as text and Moodle would display a literal "]]>".
+    tolerance: default 2 % relative (tolerancetype 1).
+    """
     q = ET.Element('question', type='calculated')
-    
     n = ET.SubElement(q, 'name')
-    nt = ET.SubElement(n, 'text')
-    nt.text = name
-    
+    ET.SubElement(n, 'text').text = name
     qt = ET.SubElement(q, 'questiontext', format='html')
-    qtt = ET.SubElement(qt, 'text')
-    qtt.text = f'<![CDATA[<p>{questiontext}</p>]]>'
-    
+    ET.SubElement(qt, 'text').text = questiontext
     gf = ET.SubElement(q, 'generalfeedback', format='html')
-    gft = ET.SubElement(gf, 'text')
-    
-    dg = ET.SubElement(q, 'defaultgrade')
-    dg.text = '1.0000000'
-    pen = ET.SubElement(q, 'penalty')
-    pen.text = '0.3333333'
-    hid = ET.SubElement(q, 'hidden')
-    hid.text = '0'
-    syn = ET.SubElement(q, 'synchronize')
-    syn.text = '1'
-    single = ET.SubElement(q, 'single')
-    single.text = '0'
-    answernumbering = ET.SubElement(q, 'answernumbering')
-    answernumbering.text = 'abc'
-    shuffleanswers = ET.SubElement(q, 'shuffleanswers')
-    shuffleanswers.text = '0'
-    correctanswerformat_e = ET.SubElement(q, 'correctanswerformat')
-    correctanswerformat_e.text = str(correctanswerformat)
-    correctanswerlength_e = ET.SubElement(q, 'correctanswerlength')
-    correctanswerlength_e.text = str(correctanswerlength)
-    
+    ET.SubElement(gf, 'text').text = generalfeedback
+    ET.SubElement(q, 'defaultgrade').text = defaultgrade
+    ET.SubElement(q, 'penalty').text = '0.3333333'
+    ET.SubElement(q, 'hidden').text = '0'
+    ET.SubElement(q, 'idnumber')
+    ET.SubElement(q, 'synchronize').text = '1'
+    ET.SubElement(q, 'single').text = '0'
+    ET.SubElement(q, 'answernumbering').text = 'abc'
+    ET.SubElement(q, 'shuffleanswers').text = '0'
+    for tag in ('correctfeedback', 'partiallycorrectfeedback', 'incorrectfeedback'):
+        el = ET.SubElement(q, tag, format='html')
+        ET.SubElement(el, 'text')
+
     ans = ET.SubElement(q, 'answer', fraction='100', format='moodle_auto_format')
-    at = ET.SubElement(ans, 'text')
-    at.text = formula
-    tol = ET.SubElement(ans, 'tolerance')
-    tol.text = str(tolerance)
-    tt = ET.SubElement(ans, 'tolerancetype')
-    tt.text = str(tolerancetype)
-    caf = ET.SubElement(ans, 'correctanswerformat')
-    caf.text = str(correctanswerformat)
-    cal = ET.SubElement(ans, 'correctanswerlength')
-    cal.text = str(correctanswerlength)
+    ET.SubElement(ans, 'text').text = formula
+    ET.SubElement(ans, 'tolerance').text = str(tolerance)
+    ET.SubElement(ans, 'tolerancetype').text = str(tolerancetype)
+    ET.SubElement(ans, 'correctanswerformat').text = str(correctanswerformat)
+    ET.SubElement(ans, 'correctanswerlength').text = str(correctanswerlength)
     fb = ET.SubElement(ans, 'feedback', format='html')
-    fbt = ET.SubElement(fb, 'text')
-    
-    # Dataset definitions
-    dds = ET.SubElement(q, 'dataset_definitions')
-    
+    ET.SubElement(fb, 'text')
+
+    ET.SubElement(q, 'unitgradingtype').text = '0'
+    ET.SubElement(q, 'unitpenalty').text = '0.1000000'
+    ET.SubElement(q, 'showunits').text = '3'
+    ET.SubElement(q, 'unitsleft').text = '0'
+    ET.SubElement(q, 'dataset_definitions')
     return q
+
+
+def set_formula(root, name, formula):
+    q = find_question(root, name)
+    if q is None:
+        print(f"  - {name}: brak pytania")
+        return 0
+    changed = update_answer(q, formula)
+    print(f"  {'*' if changed else '='} {name}: wzór {'zmieniony' if changed else 'bez zmian'}")
+    return int(changed)
+
+
+def save(tree, filepath, changes):
+    if not changes:
+        print("  (bez zmian)")
+        return
+    if WRITE:
+        tree.write(filepath, encoding='unicode', xml_declaration=True)
+        print(f"  zapisano {os.path.basename(filepath)} ({changes} zmian)")
+    else:
+        print(f"  dry-run: {changes} zmian NIE zapisano (użyj --write)")
 
 
 def process_cw03(filepath):
     """Update Cw03 formulas and add missing questions."""
     tree = ET.parse(filepath)
     root = tree.getroot()
-    
-    # === Update existing formulas ===
-    
-    # Zad 3.2 — Moc kotła: use h_steam polynomial
-    q32 = find_question(root, 'Cw03_Zad3_2_Moc_kotla')
-    if q32:
-        formula = f"{{md}} * 1000 / 3600 * (({H_STEAM}) - 4.19 * {{tz}})"
-        update_answer(q32, formula)
-        print("  ✓ Updated Cw03_Zad3_2 formula (h_steam polynomial)")
-    
-    # Zad 3.3 — Zuzycie gazu: depends on 3.2's Q
-    q33 = find_question(root, 'Cw03_Zad3_3_Zuzycie_gazu')
-    if q33:
-        formula = f"{{md}} * 1000 / 3600 * (({H_STEAM}) - 4.19 * {{tz}}) / ({{ek}} * 50000 * 0.7) * 3600"
-        update_answer(q33, formula)
-        print("  ✓ Updated Cw03_Zad3_3 formula")
-    
-    # Zad 3.5 — Stopien suchosci: use hf(p), hg(p) polynomials
-    q35 = find_question(root, 'Cw03_Zad3_5_Stopien_suchosci')
-    if q35:
-        formula = f"({{hm}} - ({HF_P})) / (({HG_P}) - ({HF_P}))"
-        update_answer(q35, formula)
-        print("  ✓ Updated Cw03_Zad3_5 formula (hf/hg polynomials)")
-    
-    # Zad 3.7 — Entropia: use s_steam and s_water polynomials
-    q37 = find_question(root, 'Cw03_Zad3_7_Entropia_kotla')
-    if q37:
-        formula = f"{{md}} * 1000 / 3600 * (({S_STEAM}) - ({S_WATER}))"
-        update_answer(q37, formula)
-        print("  ✓ Updated Cw03_Zad3_7 formula (s polynomials)")
-    
-    # === Add missing question: Zad 3.4 (Dławienie) ===
-    # T after throttling ≈ Tsat if h_steam > hg, else T from superheat
-    # Simple approach: if the steam stays superheated after throttling,
-    # the answer is approximately h_steam(p1,T1) evaluated at p2
-    # We can express T_after_throttle using the inverse: T ≈ (h - a0 - a2*p2 - a5*p2^2) / (a1 + a3*p2)
-    # But this gets complex. Better to add as Tsat(p_dlaw) for the case when it becomes sat/superheat
-    # For now, add as a simple question with Tsat
-    
-    # === Add missing question: Zad 3.8 (Kondensat) ===
-    q_template = find_question(root, 'Cw03_Zad3_2_Moc_kotla')  # use as template for vars
-    
-    if not find_question(root, 'Cw03_Zad3_8_Bilans_kondensatu'):
+    changes = 0
+
+    h2 = steam(HSH, T='tp', P='pk')
+    changes += set_formula(root, 'Cw03_Zad3_2_Moc_kotla',
+                           f"{{md}} * 1000 / 3600 * (({h2}) - 4.19 * {{tz}})")
+    changes += set_formula(root, 'Cw03_Zad3_3_Zuzycie_gazu',
+                           f"{{md}} * 1000 / 3600 * (({h2}) - 4.19 * {{tz}}) / ({{ek}} * 50000 * 0.7) * 3600")
+    hp, hpp = steam(HP, P='pdl'), steam(HPP, P='pdl')
+    changes += set_formula(root, 'Cw03_Zad3_5_Stopien_suchosci',
+                           f"({{hm}} - ({hp})) / (({hpp}) - ({hp}))")
+    changes += set_formula(root, 'Cw03_Zad3_7_Entropia_kotla',
+                           f"{{md}} * 1000 / 3600 * (({steam(SSH, T='tp', P='pk')}) - ({S_WATER}))")
+
+    # Zad 3.8 (Kondensat): Q = m * (h(p,t) - h'(p_dl))
+    if find_question(root, 'Cw03_Zad3_8_Bilans_kondensatu') is None:
         q38 = make_calculated_question(
             'Cw03_Zad3_8_Bilans_kondensatu',
-            'Wymiennik ciepła skrapla parę z parametrów kotłowych do stanu cieczy nasyconej przy ciśnieniu dławienia {pdl} bar. '
-            'Oblicz moc cieplną wymiennika [kW].',
-            f"{{md}} * 1000 / 3600 * (({H_STEAM}) - ({HF_P}))",
-            5,  # tolerance 5 kW
-            tolerancetype=1, correctanswerlength=1
-        )
-        # Copy dataset vars from existing question
-        if q_template:
-            for var in ['md', 'pk', 'tp', 'tz', 'ek', 'pdl']:
-                copy_dataset_item(q_template, var, q38)
+            '<p><b>Ćw. 3 — Bilans Kondensatu</b></p>'
+            '<p>Para z kotła: \\(p =\\) <b>{pk}</b> bar, \\(t =\\) <b>{tp}</b> °C, '
+            '\\(\\dot{{m}} =\\) <b>{md}</b> t/h, jest dławiona (\\(h = const\\)) do ciśnienia '
+            '\\(p_{{dl}} =\\) <b>{pdl}</b> bar, a następnie w wymienniku ciepła skrapla się '
+            'do cieczy nasyconej przy tym ciśnieniu.</p>'
+            '<p><b>Oblicz moc cieplną wymiennika \\(\\dot{{Q}}_{{wym}} = \\dot{{m}} \\cdot (h_{{para}} - h\\prime)\\) [kW]:</b></p>'
+            '<p>Wynik podaj z dokładnością do 1 miejsca po przecinku.</p>',
+            f"{{md}} * 1000 / 3600 * (({h2}) - ({hp}))",
+            correctanswerlength=1)
+        template = find_question(root, 'Cw03_Zad3_2_Moc_kotla')
+        for var in ['md', 'tp', 'pk', 'pdl']:
+            copy_dataset_item(root, var, q38, preferred=template,
+                              xml_dir=os.path.dirname(filepath))
         root.append(q38)
+        changes += 1
         print("  + Added Cw03_Zad3_8_Bilans_kondensatu")
-    
-    tree.write(filepath, encoding='unicode', xml_declaration=True)
+
+    save(tree, filepath, changes)
     return True
 
 
@@ -213,45 +270,23 @@ def process_cw04(filepath):
     """Update Cw04 formulas with polynomial approximations."""
     tree = ET.parse(filepath)
     root = tree.getroot()
-    
-    # Use p1t/t1t for inlet steam, p2t for outlet
-    # h_steam at inlet uses pk→p1t, tp→t1t variable mapping
-    H_INLET = H_STEAM.replace('{pk}', '{p1t}').replace('{tp}', '{t1t}')
-    S_INLET = S_STEAM.replace('{pk}', '{p1t}').replace('{tp}', '{t1t}')
-    
-    # Zad 4.3 — Moc idealna
-    q43 = find_question(root, 'Cw04_Zad4_3_Moc_turbiny_idealna')
-    if q43:
-        # x_is = (s1 - sf(p2)) / (sg(p2) - sf(p2))
-        # h2s = hf(p2) + x_is * (hg(p2) - hf(p2))
-        # N = mdt * (h1 - h2s)
-        # Substitute directly:
-        # h2s = hf + (s1-sf)/(sg-sf) * (hg-hf)
-        formula = (
-            f"{{mdt}} * (({H_INLET}) - "
-            f"(({HF_P2}) + (({S_INLET}) - ({SF_P})) / (({SG_P}) - ({SF_P})) * (({HG_P2}) - ({HF_P2}))))"
-        )
-        update_answer(q43, formula)
-        print("  ✓ Updated Cw04_Zad4_3 formula (full polynomial)")
-    
-    # Zad 4.4 — Moc rzeczywista 
-    q44 = find_question(root, 'Cw04_Zad4_4_Moc_rzeczywista')
-    if q44:
-        # N_real = eis * N_ideal
-        h2s_expr = (f"(({HF_P2}) + (({S_INLET}) - ({SF_P})) / (({SG_P}) - ({SF_P})) * (({HG_P2}) - ({HF_P2})))")
-        formula = f"{{eis}} * {{mdt}} * (({H_INLET}) - {h2s_expr})"
-        update_answer(q44, formula)
-        print("  ✓ Updated Cw04_Zad4_4 formula")
-    
-    # Zad 4.4b — Entalpia rzeczywista
-    q44b = find_question(root, 'Cw04_Zad4_4b_Entalpia_rzeczywista')
-    if q44b:
-        h2s_expr = (f"(({HF_P2}) + (({S_INLET}) - ({SF_P})) / (({SG_P}) - ({SF_P})) * (({HG_P2}) - ({HF_P2})))")
-        formula = f"({H_INLET}) - {{eis}} * (({H_INLET}) - {h2s_expr})"
-        update_answer(q44b, formula)
-        print("  ✓ Updated Cw04_Zad4_4b formula")
-    
-    tree.write(filepath, encoding='unicode', xml_declaration=True)
+    changes = 0
+
+    h1 = steam(HSH, T='t1t', P='p1t')
+    s1 = steam(SSH, T='t1t', P='p1t')
+    hp, hpp = steam(HP, P='p2t'), steam(HPP, P='p2t')
+    sp, spp = steam(SP, P='p2t'), steam(SPP, P='p2t')
+    # x_2s = (s1 - s'(p2)) / (s''(p2) - s'(p2));  h_2s = h'(p2) + x_2s * (h''(p2) - h'(p2))
+    h2s = f"(({hp}) + (({s1}) - ({sp})) / (({spp}) - ({sp})) * (({hpp}) - ({hp})))"
+
+    changes += set_formula(root, 'Cw04_Zad4_3_Moc_turbiny_idealna',
+                           f"{{mdt}} * (({h1}) - {h2s})")
+    changes += set_formula(root, 'Cw04_Zad4_4_Moc_rzeczywista',
+                           f"{{eis}} * {{mdt}} * (({h1}) - {h2s})")
+    changes += set_formula(root, 'Cw04_Zad4_4b_Entalpia_rzeczywista',
+                           f"({h1}) - {{eis}} * (({h1}) - {h2s})")
+
+    save(tree, filepath, changes)
     return True
 
 
@@ -259,94 +294,71 @@ def process_cw06(filepath):
     """Update Cw06 R134a formulas with polynomial approximations."""
     tree = ET.parse(filepath)
     root = tree.getroot()
-    
-    # Zad 6.1 — EER
-    q61 = find_question(root, 'Cw06_Zad6_1_EER')
-    if q61:
-        formula = f"(({H1_R134A}) - ({H3_R134A})) / (({H2S_R134A}) - ({H1_R134A}))"
-        update_answer(q61, formula)
-        print("  ✓ Updated Cw06_Zad6_1 EER formula (R134a polynomials)")
-    
-    # Zad 6.2 — Moc sprężarki
-    q62 = find_question(root, 'Cw06_Zad6_2_Moc_sprezarki')
-    if q62:
-        formula = f"{{Qo6}} / ((({H1_R134A}) - ({H3_R134A})) / (({H2S_R134A}) - ({H1_R134A})))"
-        update_answer(q62, formula)
-        print("  ✓ Updated Cw06_Zad6_2")
-    
-    # Zad 6.3 — Strumien masy
-    q63 = find_question(root, 'Cw06_Zad6_3_Strumien_masy')
-    if q63:
-        formula = f"{{Qo6}} / (({H1_R134A}) - ({H3_R134A}))"
-        update_answer(q63, formula)
-        print("  ✓ Updated Cw06_Zad6_3")
-    
-    # Zad 6.4 — COP pompy ciepła
-    q64 = find_question(root, 'Cw06_Zad6_4_COP_pompa_ciepla')
-    if q64:
-        formula = f"(({H1_R134A}) - ({H3_R134A})) / (({H2S_R134A}) - ({H1_R134A})) + 1"
-        update_answer(q64, formula)
-        print("  ✓ Updated Cw06_Zad6_4")
-    
-    # Zad 6.7 — Prędkość rurociągu (now uses v polynomial instead of 0.08)
-    q67 = find_question(root, 'Cw06_Zad6_7_Predkosc_rurociagu')
-    if q67:
-        formula = f"({{Qo6}} / (({H1_R134A}) - ({H3_R134A}))) * ({V_R134A}) / (3.14159265 * pow({{dr6}} / 1000, 2) / 4)"
-        update_answer(q67, formula)
-        print("  ✓ Updated Cw06_Zad6_7 (v_g polynomial)")
-    
-    # Add missing: Zad 6.6 — R134a vs R290
-    if not find_question(root, 'Cw06_Zad6_6_EER_R290'):
+    changes = 0
+
+    eer = f"(({H1_R134A}) - ({H3_R134A})) / (({H2S_R134A}) - ({H1_R134A}))"
+    changes += set_formula(root, 'Cw06_Zad6_1_EER', eer)
+    changes += set_formula(root, 'Cw06_Zad6_2_Moc_sprezarki', f"{{Qo6}} / ({eer})")
+    changes += set_formula(root, 'Cw06_Zad6_3_Strumien_masy',
+                           f"{{Qo6}} / (({H1_R134A}) - ({H3_R134A}))")
+    changes += set_formula(root, 'Cw06_Zad6_4_COP_pompa_ciepla', f"{eer} + 1")
+    changes += set_formula(root, 'Cw06_Zad6_7_Predkosc_rurociagu',
+                           f"({{Qo6}} / (({H1_R134A}) - ({H3_R134A}))) * ({V_R134A}) / (3.14159265 * pow({{dr6}} / 1000, 2) / 4)")
+
+    # Zad 6.6 — R134a vs R290
+    if find_question(root, 'Cw06_Zad6_6_EER_R290') is None:
         q66 = make_calculated_question(
             'Cw06_Zad6_6_EER_R290',
-            'Porównaj EER obiegu chłodniczego z propanu (R290) pracującego między temperaturami '
-            'parowania {to6}°C a skraplania {tk6}°C. Oblicz EER dla R290.',
-            f"(({H1_R290}) - ({H3_R290_TK})) / (({H2S_R290}) - ({H1_R290}))",
-            0.3,
-            correctanswerlength=2
-        )
-        q_template = find_question(root, 'Cw06_Zad6_1_EER')
-        if q_template:
-            for var in ['to6', 'tk6', 'Qo6', 'dr6']:
-                copy_dataset_item(q_template, var, q66)
+            '<p><b>Ćw. 6 — Porównanie Czynników: EER dla R290 (propan)</b></p>'
+            '<p>Obieg chłodniczy teoretyczny z propanem (R290) pracuje między temperaturą '
+            'parowania \\(t_o =\\) <b>{to6}</b> °C a temperaturą skraplania \\(t_k =\\) <b>{tk6}</b> °C '
+            '(bez przegrzania i dochłodzenia, \\(h_4 = h_3\\)).</p>'
+            '<p><b>Oblicz EER = \\(q_o / l_k\\) dla R290:</b></p>'
+            '<p>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>',
+            f"(({H1_R290}) - ({H3_R290})) / (({H2S_R290}) - ({H1_R290}))",
+            correctanswerlength=2)
+        template = find_question(root, 'Cw06_Zad6_1_EER')
+        for var in ['to6', 'tk6']:
+            copy_dataset_item(root, var, q66, preferred=template,
+                              xml_dir=os.path.dirname(filepath))
         root.append(q66)
+        changes += 1
         print("  + Added Cw06_Zad6_6_EER_R290")
-    
-    tree.write(filepath, encoding='unicode', xml_declaration=True)
+
+    save(tree, filepath, changes)
     return True
 
 
 def process_cw07(filepath):
-    """Update Cw07 formulas — HVAC uses cp*ΔT approximation which is OK for dry air."""
+    """Cw07 — HVAC: existing cp*ΔT formulas are kept; add missing question."""
     tree = ET.parse(filepath)
     root = tree.getroot()
-    
-    # The existing formulas use cp*ΔT which is a reasonable approximation
-    # for dry air processes (Zad 7.1, 7.2 are heating/cooling without moisture change).
-    # HAPropsSI would be more accurate but the approximation error is < 5%.
-    # We keep current formulas but add missing questions.
-    
-    q_template = find_question(root, 'Cw07_Zad8_1_Moc_nagrzewnicy_zima')
-    
-    # Add Zad 7.9 Rekuperacja
-    if not find_question(root, 'Cw07_Zad8_9_Rekuperacja'):
-        # Q_rec = ṁ * cp * rec/100 * (t_wewn - t_zima) 
-        # This is the heat recovered from exhaust air
+    changes = 0
+
+    # Zad 7.9 Rekuperacja: Q_rec = ṁ * cp * η * (t_wewn - t_zima)
+    if find_question(root, 'Cw07_Zad8_9_Rekuperacja') is None:
         q79 = make_calculated_question(
             'Cw07_Zad8_9_Rekuperacja',
-            'W centrali wentylacyjnej zainstalowano rekuperator krzyżowy o sprawności temperaturowej {rec8}%. '
-            'Oblicz moc cieplną odzyskaną z powietrza wywiewanego zimą [kW].',
+            '<p><b>Ćw. 7 — Odzysk Ciepła (rekuperacja)</b></p>'
+            '<p>W centrali wentylacyjnej o strumieniu \\(\\dot{{V}} =\\) <b>{Vd8}</b> m³/h '
+            '(\\(\\rho = 1.2\\) kg/m³, \\(c_p = 1005\\) J/(kg·K)) zainstalowano rekuperator krzyżowy '
+            'o sprawności temperaturowej \\(\\eta =\\) <b>{rec8}</b> %.<br>'
+            'Powietrze zewnętrzne (zima): \\(t_Z =\\) <b>{tzz}</b> °C, powietrze wywiewane: '
+            '\\(t_W =\\) <b>{tw8}</b> °C.</p>'
+            '<p><b>Oblicz moc cieplną odzyskaną z powietrza wywiewanego '
+            '\\(\\Delta\\dot{{Q}} = \\dot{{m}} \\cdot c_p \\cdot \\eta \\cdot (t_W - t_Z)\\) [kW]:</b></p>'
+            '<p>Wynik podaj z dokładnością do 1 miejsca po przecinku.</p>',
             "1.2 * {Vd8} / 3600 * 1005 * {rec8} / 100 * ({tw8} - {tzz}) / 1000",
-            2,
-            correctanswerlength=1
-        )
-        if q_template:
-            for var in ['Vd8', 'tw8', 'tzz', 'rec8', 'tzl', 'tn8', 'Qj8']:
-                copy_dataset_item(q_template, var, q79)
+            correctanswerlength=1)
+        template = find_question(root, 'Cw07_Zad8_1_Moc_nagrzewnicy_zima')
+        for var in ['rec8', 'Vd8', 'tw8', 'tzz']:
+            copy_dataset_item(root, var, q79, preferred=template,
+                              xml_dir=os.path.dirname(filepath))
         root.append(q79)
+        changes += 1
         print("  + Added Cw07_Zad8_9_Rekuperacja")
-    
-    tree.write(filepath, encoding='unicode', xml_declaration=True)
+
+    save(tree, filepath, changes)
     return True
 
 
@@ -356,21 +368,25 @@ def process_cw07(filepath):
 if __name__ == '__main__':
     print("=" * 60)
     print("UPDATING XML FORMULAS WITH POLYNOMIAL APPROXIMATIONS")
+    print("tryb:", "zapis (--write)" if WRITE else "dry-run (bez zapisu)")
     print("=" * 60)
-    
+
     files = {
         'Cw03': os.path.join(XML_DIR, 'Cw03_Kociol_Parowy_Calculated.xml'),
         'Cw04': os.path.join(XML_DIR, 'Cw04_Obieg_Rankine_Calculated.xml'),
         'Cw06': os.path.join(XML_DIR, 'Cw06_Projekt_Chlodniczy_Calculated.xml'),
         'Cw07': os.path.join(XML_DIR, 'Cw07_Projekt_HVAC_Calculated.xml'),
     }
-    
+    if '--dir' in sys.argv:
+        d = sys.argv[sys.argv.index('--dir') + 1]
+        files = {k: os.path.join(d, os.path.basename(v)) for k, v in files.items()}
+
     for name, path in files.items():
         print(f"\n--- {name}: {os.path.basename(path)} ---")
         if not os.path.exists(path):
             print(f"  ✗ File not found!")
             continue
-        
+
         if name == 'Cw03':
             process_cw03(path)
         elif name == 'Cw04':
@@ -379,5 +395,5 @@ if __name__ == '__main__':
             process_cw06(path)
         elif name == 'Cw07':
             process_cw07(path)
-    
-    print("\n✓ All updates complete.")
+
+    print("\n✓ Done.")

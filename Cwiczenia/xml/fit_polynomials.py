@@ -1,12 +1,58 @@
 #!/usr/bin/env python3
 """Generate polynomial fits for Moodle calculated question formulas.
-Uses CoolProp for reference data, numpy for polynomial fitting."""
-import numpy as np
-import sys
+Uses CoolProp for reference data, numpy for polynomial fitting.
 
-# Use the virtualenv
-sys.path.insert(0, '/Users/marekurbaniak/.virtualenvs/termo/lib/python3.13/site-packages')
+Postacie aproksymacji dla pary wodnej (stałe użyte w update_xml_formulas.py
+i w plikach Cw03/Cw04_*_Calculated.xml):
+- nasycenie h'(p), h''(p), s'(p), s''(p): wielomian 3. stopnia w ln(p),
+  p = 0.5..6 bar (błąd h <= 0.1 kJ/kg, s <= 0.0003 kJ/(kgK));
+- para przegrzana h(p,T), s(p,T): pełny wielomian 3. stopnia w zmiennych
+  centrowanych (T-250, p-12.5), p = 10..15 bar, T = 200..300 °C
+  (błąd h 0.03 kJ/kg, s 0.00005 kJ/(kgK)).
+Poprzednie postacie (kwadratowe w T,p i sześcienne w p) dawały błąd mocy
+turbiny w Cw04 do 2.76 %, powyżej tolerancji 2 %.
+Wymaga: numpy, CoolProp (środowisko z tymi pakietami).
+"""
+import numpy as np
+import os, sys
+
+# Opcjonalna ścieżka do pakietów (jeśli CoolProp nie jest w aktywnym środowisku)
+_EXTRA = '/Users/marekurbaniak/.virtualenvs/termo/lib/python3.13/site-packages'
+if os.path.isdir(_EXTRA):
+    sys.path.insert(0, _EXTRA)
 from CoolProp.CoolProp import PropsSI, HAPropsSI
+
+
+def poly_ln_str(c, var="{P}"):
+    """Moodle string for a polynomial in ln(var); c from np.polyfit (hi->lo)."""
+    c = c[::-1]
+    parts = [f"{c[0]:.6g}"]
+    for i, ci in enumerate(c[1:], 1):
+        term = f"log({var})" if i == 1 else f"pow(log({var}),{i})"
+        parts.append(f"({ci:+.6g})*{term}" if ci < 0 else f"{ci:.6g}*{term}")
+    return " + ".join(parts)
+
+
+# pełny wielomian 3. stopnia w (tt, pp) = (T-250, p-12.5)
+SH_TERMS = [("1", lambda a, b: a * 0 + 1), ("tt", lambda a, b: a), ("pp", lambda a, b: b),
+            ("tt*pp", lambda a, b: a * b), ("pow(tt,2)", lambda a, b: a * a),
+            ("pow(pp,2)", lambda a, b: b * b), ("pow(tt,3)", lambda a, b: a ** 3),
+            ("pow(tt,2)*pp", lambda a, b: a * a * b), ("tt*pow(pp,2)", lambda a, b: a * b * b),
+            ("pow(pp,3)", lambda a, b: b ** 3)]
+
+
+def sh_design(T, P):
+    tt, pp = T - 250, P - 12.5
+    return np.column_stack([f(tt, pp) for _, f in SH_TERMS])
+
+
+def sh_str(c):
+    """Moodle string for the centered cubic; {T} in °C, {P} in bar."""
+    parts = []
+    for (name, _), ci in zip(SH_TERMS, c):
+        s = f"{ci:.6g}"
+        parts.append(s if name == "1" else (f"({s})*{name}" if ci < 0 else f"{s}*{name}"))
+    return " + ".join(parts).replace("tt", "({T}-250)").replace("pp", "({P}-12.5)")
 
 print("=" * 70)
 print("POLYNOMIAL FITS FOR MOODLE XML FORMULAS")
@@ -14,36 +60,38 @@ print("=" * 70)
 
 # ============================================================
 # 1. WATER/STEAM — h(p,T) superheated
-#    Range: p = 8..16 bar, T = 200..300 °C
+#    Range: p = 10..15 bar, T = 200..300 °C (zbiory Cw03/Cw04)
+#    Fit: full cubic in (T-250, p-12.5)
 # ============================================================
-print("\n--- h_steam(p, T) [kJ/kg] --- range: p=8..16 bar, T=200..300°C")
-pp = np.arange(8, 17, 1)  # bar
-tt = np.arange(200, 310, 10)  # °C
+print("\n--- h_steam(p, T) [kJ/kg] --- range: p=10..15 bar, T=200..300°C")
+pp = np.linspace(10, 15, 11)   # bar
+tt = np.linspace(200, 300, 21)  # °C
 P, T = np.meshgrid(pp, tt)
 P_flat = P.flatten()
 T_flat = T.flatten()
-h_flat = np.array([PropsSI("H", "P", p*1e5, "T", t+273.15, "Water")/1000 
+h_flat = np.array([PropsSI("H", "P", p*1e5, "T", t+273.15, "Water")/1000
                     for p, t in zip(P_flat, T_flat)])
 
-# Fit: h ≈ a0 + a1*T + a2*p + a3*T*p + a4*T² + a5*p²
-A = np.column_stack([np.ones_like(P_flat), T_flat, P_flat, T_flat*P_flat, T_flat**2, P_flat**2])
+A = sh_design(T_flat, P_flat)
 coef_h, res, _, _ = np.linalg.lstsq(A, h_flat, rcond=None)
 h_pred = A @ coef_h
 err = np.max(np.abs(h_flat - h_pred))
-print(f"  h = {coef_h[0]:.4f} + {coef_h[1]:.6f}*T + {coef_h[2]:.6f}*p + {coef_h[3]:.8f}*T*p + {coef_h[4]:.8f}*T^2 + {coef_h[5]:.8f}*p^2")
-print(f"  Max error: {err:.2f} kJ/kg ({err/np.mean(h_flat)*100:.3f}%)")
+HSH = sh_str(coef_h)
+print(f"  h = {HSH}")
+print(f"  Max error: {err:.3f} kJ/kg ({err/np.mean(h_flat)*100:.4f}%)")
 
 # ============================================================
-# 2. WATER/STEAM — s(p,T) superheated
+# 2. WATER/STEAM — s(p,T) superheated (same form)
 # ============================================================
-print("\n--- s_steam(p, T) [kJ/(kgK)] --- range: p=8..16 bar, T=200..300°C")
-s_flat = np.array([PropsSI("S", "P", p*1e5, "T", t+273.15, "Water")/1000 
+print("\n--- s_steam(p, T) [kJ/(kgK)] --- range: p=10..15 bar, T=200..300°C")
+s_flat = np.array([PropsSI("S", "P", p*1e5, "T", t+273.15, "Water")/1000
                     for p, t in zip(P_flat, T_flat)])
 coef_s, _, _, _ = np.linalg.lstsq(A, s_flat, rcond=None)
 s_pred = A @ coef_s
 err_s = np.max(np.abs(s_flat - s_pred))
-print(f"  s = {coef_s[0]:.6f} + {coef_s[1]:.8f}*T + {coef_s[2]:.8f}*p + {coef_s[3]:.10f}*T*p + {coef_s[4]:.10f}*T^2 + {coef_s[5]:.10f}*p^2")
-print(f"  Max error: {err_s:.5f} kJ/(kgK) ({err_s/np.mean(s_flat)*100:.3f}%)")
+SSH = sh_str(coef_s)
+print(f"  s = {SSH}")
+print(f"  Max error: {err_s:.6f} kJ/(kgK) ({err_s/np.mean(s_flat)*100:.4f}%)")
 
 # ============================================================
 # 3. WATER — h_water(T) saturated liquid
@@ -80,19 +128,23 @@ for p in [1, 2, 4, 8, 10, 12, 16]:
 # ============================================================
 # 5. WATER — h'(p), h''(p), s'(p), s''(p) saturation
 #    Range: p = 0.5..6 bar (for Cw03/04 p_dlaw / p2_turb)
+#    Fit: cubic in ln(p) (saturation curves are nearly linear in ln p)
 # ============================================================
-print("\n--- Saturation props h'/h''/s'/s'' vs p [bar] --- range: p=0.5..6")
-ps2 = np.arange(0.5, 6.5, 0.5)
+print("\n--- Saturation props h'/h''/s'/s'' vs p [bar] --- range: p=0.5..6, cubic in ln(p)")
+ps2 = np.linspace(0.5, 6, 111)
+u2 = np.log(ps2)
 hf = np.array([PropsSI("H", "P", p*1e5, "Q", 0, "Water")/1000 for p in ps2])
 hg = np.array([PropsSI("H", "P", p*1e5, "Q", 1, "Water")/1000 for p in ps2])
 sf = np.array([PropsSI("S", "P", p*1e5, "Q", 0, "Water")/1000 for p in ps2])
 sg = np.array([PropsSI("S", "P", p*1e5, "Q", 1, "Water")/1000 for p in ps2])
 
-for name, data in [("hf", hf), ("hg", hg), ("sf", sf), ("sg", sg)]:
-    c = np.polyfit(ps2, data, 3)
-    pred = np.polyval(c, ps2)
+SAT = {}
+for name, data in [("hp", hf), ("hpp", hg), ("sp", sf), ("spp", sg)]:
+    c = np.polyfit(u2, data, 3)
+    pred = np.polyval(c, u2)
     err = np.max(np.abs(data - pred))
-    print(f"  {name}(p) = {c[0]:.6f}*p^3 + {c[1]:.4f}*p^2 + {c[2]:.4f}*p + {c[3]:.4f}  (max err: {err:.2f})")
+    SAT[name] = poly_ln_str(c)
+    print(f"  {name}(p) = {SAT[name]}  (max err: {err:.4f})")
 
 # ============================================================
 # 6. R134a — h_sat_vapor(T), h_sat_liquid(T), s_sat_vapor(T)
@@ -138,7 +190,7 @@ print(f"  h2s = {c_h2s[0]:.4f} + {c_h2s[1]:.6f}*to + {c_h2s[2]:.6f}*tk + {c_h2s[
 print(f"  Max error: {err:.2f} kJ/kg ({err/np.mean(h2s_f)*100:.3f}%)")
 
 # ============================================================
-# 8. R134a — v (specific volume of sat. vapor) 
+# 8. R134a — v (specific volume of sat. vapor)
 # ============================================================
 print("\n--- R134a v_sat_vapor(T) [m³/kg] --- range: T=-5..5°C")
 to_v = np.arange(-5, 6, 1)
@@ -177,37 +229,29 @@ print(f"  Max error: {err_290:.2f} kJ/kg ({err_290/np.mean(h2s_290)*100:.3f}%)")
 
 print("\n\n=== MOODLE FORMULA TEMPLATES ===\n")
 
-# For Cw03 Zad 3.2 — Moc kotła
+# Szablony: {T} = temperatura [°C], {P} = ciśnienie [bar] -> w update_xml_formulas.py
+# podstawiane są nazwy zmiennych Moodle (tp/pk, t1t/p1t, pdl, p2t).
 print("Cw03_Zad3_2: h_steam(p,T) - h_water(T)")
-print(f"  h_steam = {coef_h[0]:.2f} + {coef_h[1]:.4f}*{{tp}} + ({coef_h[2]:.4f})*{{pk}} + ({coef_h[3]:.6f})*{{tp}}*{{pk}} + ({coef_h[4]:.8f})*pow({{tp}},2) + ({coef_h[5]:.6f})*pow({{pk}},2)")
+print(f"  HSH = {HSH}")
 print(f"  h_water ≈ 4.19*{{tz}}")
-print(f"  Formula: {{md}}*1000/3600 * (h_steam - 4.19*{{tz}})")
+print(f"  Formula: {{md}}*1000/3600 * ((HSH[tp,pk]) - 4.19*{{tz}})")
 
-# For Cw03 Zad 3.5 — Stopien suchosci  
-print(f"\nCw03_Zad3_5: x = (hm - hf(p)) / (hg(p) - hf(p))")
-c_hf3 = np.polyfit(ps2, hf, 3)
-c_hg3 = np.polyfit(ps2, hg, 3)
-print(f"  hf(p) = {c_hf3[0]:.4f}*p^3 + ({c_hf3[1]:.4f})*p^2 + {c_hf3[2]:.4f}*p + {c_hf3[3]:.4f}")
-print(f"  hg(p) = {c_hg3[0]:.4f}*p^3 + ({c_hg3[1]:.4f})*p^2 + {c_hg3[2]:.4f}*p + {c_hg3[3]:.4f}")
+print(f"\nCw03_Zad3_5: x = (hm - hp(p)) / (hpp(p) - hp(p))")
+print(f"  HP  = {SAT['hp']}")
+print(f"  HPP = {SAT['hpp']}")
 
-# For Cw03 Zad 3.7 — Entropia
 print(f"\nCw03_Zad3_7: ds = s_steam(p,T) - s_water(T)")
-print(f"  s_steam = {coef_s[0]:.4f} + {coef_s[1]:.6f}*{{tp}} + ({coef_s[2]:.6f})*{{pk}} + ({coef_s[3]:.8f})*{{tp}}*{{pk}} + ({coef_s[4]:.10f})*pow({{tp}},2) + ({coef_s[5]:.8f})*pow({{pk}},2)")
+print(f"  SSH = {SSH}")
 # s_water (sat liquid) fit
 sw = np.array([PropsSI("S", "T", t+273.15, "Q", 0, "Water")/1000 for t in tw])
 c_sw = np.polyfit(tw, sw, 2)
 print(f"  s_water(T) = {c_sw[0]:.8f}*T^2 + {c_sw[1]:.6f}*T + {c_sw[2]:.4f}")
 
-# Cw04 — turbine  
-c_hf4 = np.polyfit(ps2, hf, 3)
-c_hg4 = np.polyfit(ps2, hg, 3)
-c_sf4 = np.polyfit(ps2, sf, 3)
-c_sg4 = np.polyfit(ps2, sg, 3)
-print(f"\nCw04 saturation at p2:")
-print(f"  sf(p) = {c_sf4[0]:.6f}*p^3 + ({c_sf4[1]:.4f})*p^2 + {c_sf4[2]:.4f}*p + {c_sf4[3]:.4f}")
-print(f"  sg(p) = {c_sg4[0]:.6f}*p^3 + ({c_sg4[1]:.4f})*p^2 + {c_sg4[2]:.4f}*p + {c_sg4[3]:.4f}")
-print(f"  hf(p) = {c_hf4[0]:.4f}*p^3 + ({c_hf4[1]:.4f})*p^2 + {c_hf4[2]:.4f}*p + {c_hf4[3]:.4f}")
-print(f"  hg(p) = {c_hg4[0]:.4f}*p^3 + ({c_hg4[1]:.4f})*p^2 + {c_hg4[2]:.4f}*p + {c_hg4[3]:.4f}")
+print(f"\nCw04 saturation at p2 (x_2s = (s1 - SP)/(SPP - SP), h_2s = HP + x_2s*(HPP - HP)):")
+print(f"  SP  = {SAT['sp']}")
+print(f"  SPP = {SAT['spp']}")
+print(f"  HP  = {SAT['hp']}")
+print(f"  HPP = {SAT['hpp']}")
 
 # R134a
 print(f"\nCw06 R134a:")

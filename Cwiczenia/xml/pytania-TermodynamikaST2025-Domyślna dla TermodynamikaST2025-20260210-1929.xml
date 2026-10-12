@@ -17,10 +17,10 @@
       <text>#{ts}{t2}{t1}{m}#W4_Zad1_c_dS_zrodlo</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b> °C do <b>{t2}</b> °C (\(c_w = 4.19\) kJ/(kg·K)). Ciepło pochodzi ze źródła o stałej temperaturze <b>{ts}</b> °C.<br><br><b>c) Oblicz zmianę entropii źródła ciepła \(\Delta S_{source}\) [kJ/K]:</b><br>Wynik podaj ze znakiem, z dokładnością do 2 miejsc po przecinku.</p>]]></text>
+      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b> °C do <b>{t2}</b> °C (\(c_w = 4.19\) kJ/(kg·K)). Ciepło pochodzi ze źródła o stałej temperaturze <b>{ts}</b> °C.<br><br><b>c) Oblicz zmianę entropii źródła ciepła \(\Delta S_{{source}}\) [kJ/K]:</b><br>Wynik podaj ze znakiem, z dokładnością do 2 miejsc po przecinku.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><b>Wyjaśnienie:</b><br>Źródło o stałej temperaturze oddaje ciepło \(Q\) do wody. Zmianę jego entropii liczymy jako:<br>$$\Delta S_{source} = \frac{-Q}{T_{source}}$$<br>Wynik jest <b>ujemny</b>, ponieważ oddawanie ciepła powoduje spadek entropii (uporządkowanie) w źródle. Temperatura źródła (\(T_{source}\)) musi być wyrażona w Kelwinach.</p>]]></text>
+      <text><![CDATA[<p><b>Wyjaśnienie:</b><br>Źródło o stałej temperaturze oddaje ciepło \(Q\) do wody. Zmianę jego entropii liczymy jako:<br>$$\Delta S_{{source}} = \frac{-Q}{T_{source}}$$<br>Wynik jest <b>ujemny</b>, ponieważ oddawanie ciepła powoduje spadek entropii (uporządkowanie) w źródle. Temperatura źródła (\(T_{{source}}\)) musi być wyrażona w Kelwinach.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1.0000000</defaultgrade>
     <penalty>0.3333333</penalty>
@@ -939,10 +939,10 @@
       <text>W4_1a_EntropiaWody_Feedback</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b>°C do <b>{t2}</b>°C. Ciepło pochodzi ze źródła o temp. <b>{ts}</b> °C. \(c_w = 4.19\) kJ/(kg·K).<br><br><b>a) Oblicz zmianę entropii wody \(\Delta S_{water}\) [kJ/K]:</b><br>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>]]></text>
+      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b>°C do <b>{t2}</b>°C. Ciepło pochodzi ze źródła o temp. <b>{ts}</b> °C. \(c_w = 4.19\) kJ/(kg·K).<br><br><b>a) Oblicz zmianę entropii wody \(\Delta S_{{water}}\) [kJ/K]:</b><br>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><b>Wyjaśnienie:</b><br>Woda jest traktowana jako substancja nieściśliwa. Zmianę entropii obliczamy ze wzoru:<br>$$\Delta S_{water} = m \cdot c_p \cdot \ln\left(\frac{T_2}{T_1}\right)$$<br>Pamiętaj, że temperatury <b>muszą</b> być w Kelwinach: \(T[K] = t[^\circ C] + 273.15\).<br>Dodatni wynik oznacza, że nieład w cząsteczkach wody wzrósł wraz z temperaturą.</p>]]></text>
+      <text><![CDATA[<p><b>Wyjaśnienie:</b><br>Woda jest traktowana jako substancja nieściśliwa. Zmianę entropii obliczamy ze wzoru:<br>$$\Delta S_{{water}} = m \cdot c_p \cdot \ln\left(\frac{T_2}{T_1}\right)$$<br>Pamiętaj, że temperatury <b>muszą</b> być w Kelwinach: \(T[K] = t[^\circ C] + 273.15\).<br>Dodatni wynik oznacza, że nieład w cząsteczkach wody wzrósł wraz z temperaturą.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1.0000000</defaultgrade>
     <penalty>0.3333333</penalty>
@@ -2555,6 +2555,225 @@
     </dataset_items>
     <number_of_items>50</number_of_items>
 </dataset_definition>
+<dataset_definition>
+    <status><text>shared</text>
+</status>
+    <name><text>ts</text>
+</name>
+    <type>calculated</type>
+    <distribution><text>uniform</text>
+</distribution>
+    <minimum><text>80</text>
+</minimum>
+    <maximum><text>95</text>
+</maximum>
+    <decimals><text>1</text>
+</decimals>
+    <itemcount>50</itemcount>
+    <dataset_items>
+        <dataset_item>
+           <number>1</number>
+           <value>91.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>2</number>
+           <value>81</value>
+        </dataset_item>
+        <dataset_item>
+           <number>3</number>
+           <value>86.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>4</number>
+           <value>85.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>5</number>
+           <value>82.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>6</number>
+           <value>86.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>7</number>
+           <value>81.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>8</number>
+           <value>90.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>9</number>
+           <value>81.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>10</number>
+           <value>83.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>11</number>
+           <value>91.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>12</number>
+           <value>85.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>13</number>
+           <value>92.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>14</number>
+           <value>89.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>15</number>
+           <value>90</value>
+        </dataset_item>
+        <dataset_item>
+           <number>16</number>
+           <value>80.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>17</number>
+           <value>85.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>18</number>
+           <value>85.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>19</number>
+           <value>82.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>20</number>
+           <value>90.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>21</number>
+           <value>92.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>22</number>
+           <value>94.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>23</number>
+           <value>87.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>24</number>
+           <value>89.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>25</number>
+           <value>88.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>26</number>
+           <value>90</value>
+        </dataset_item>
+        <dataset_item>
+           <number>27</number>
+           <value>85.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>28</number>
+           <value>94.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>29</number>
+           <value>90.1</value>
+        </dataset_item>
+        <dataset_item>
+           <number>30</number>
+           <value>93</value>
+        </dataset_item>
+        <dataset_item>
+           <number>31</number>
+           <value>94</value>
+        </dataset_item>
+        <dataset_item>
+           <number>32</number>
+           <value>91.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>33</number>
+           <value>83.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>34</number>
+           <value>88</value>
+        </dataset_item>
+        <dataset_item>
+           <number>35</number>
+           <value>81.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>36</number>
+           <value>81.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>37</number>
+           <value>83.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>38</number>
+           <value>93.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>39</number>
+           <value>93.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>40</number>
+           <value>93.6</value>
+        </dataset_item>
+        <dataset_item>
+           <number>41</number>
+           <value>86.8</value>
+        </dataset_item>
+        <dataset_item>
+           <number>42</number>
+           <value>86.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>43</number>
+           <value>81.4</value>
+        </dataset_item>
+        <dataset_item>
+           <number>44</number>
+           <value>86.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>45</number>
+           <value>83.9</value>
+        </dataset_item>
+        <dataset_item>
+           <number>46</number>
+           <value>83.3</value>
+        </dataset_item>
+        <dataset_item>
+           <number>47</number>
+           <value>85.2</value>
+        </dataset_item>
+        <dataset_item>
+           <number>48</number>
+           <value>93.5</value>
+        </dataset_item>
+        <dataset_item>
+           <number>49</number>
+           <value>91.7</value>
+        </dataset_item>
+        <dataset_item>
+           <number>50</number>
+           <value>86.7</value>
+        </dataset_item>
+    </dataset_items>
+    <number_of_items>50</number_of_items>
+</dataset_definition>
 </dataset_definitions>
   </question>
 
@@ -2564,10 +2783,10 @@
       <text>W4_Zad1_d_dS_total</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b> °C do <b>{t2}</b> °C (\(c_w = 4.19\) kJ/(kg·K)). Ciepło pochodzi ze źródła o stałej temperaturze <b>{ts}</b> °C.<br><br><b>d) Wyznacz całkowitą generację entropii w procesie \(\Delta S_{total} = \Delta S_{water} + \Delta S_{source}\) [kJ/K]:</b><br>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>]]></text>
+      <text><![CDATA[<p><b>Zadanie: Bilans entropii</b><br>Woda o masie <b>{m}</b> kg jest nagrzewana od <b>{t1}</b> °C do <b>{t2}</b> °C (\(c_w = 4.19\) kJ/(kg·K)). Ciepło pochodzi ze źródła o stałej temperaturze <b>{ts}</b> °C.<br><br><b>d) Wyznacz całkowitą generację entropii w procesie \(\Delta S_{{total}} = \Delta S_{{water}} + \Delta S_{{source}}\) [kJ/K]:</b><br>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><b>Podsumowanie:</b><br>Całkowita zmiana entropii układu (woda + źródło) to:<br>$$\Delta S_{total} = \Delta S_{water} + \Delta S_{source}$$<br>Zgodnie z II Zasadą Termodynamiki, dla procesów rzeczywistych (nieodwracalnych), \(\Delta S_{total} &gt; 0\).<br>Wartość ta reprezentuje energię, która stała się bezużyteczna do wykonania pracy technicznej.</p>]]></text>
+      <text><![CDATA[<p><b>Podsumowanie:</b><br>Całkowita zmiana entropii układu (woda + źródło) to:<br>$$\Delta S_{{total}} = \Delta S_{{water}} + \Delta S_{{source}}$$<br>Zgodnie z II Zasadą Termodynamiki, dla procesów rzeczywistych (nieodwracalnych), \(\Delta S_{{total}} &gt; 0\).<br>Wartość ta reprezentuje energię, która stała się bezużyteczna do wykonania pracy technicznej.</p>]]></text>
     </generalfeedback>
     <defaultgrade>1.0000000</defaultgrade>
     <penalty>0.3333333</penalty>

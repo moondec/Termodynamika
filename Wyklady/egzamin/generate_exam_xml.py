@@ -3,13 +3,18 @@
 - egzamin_teoria.xml: multichoice + truefalse (40 questions)
 - egzamin_zadania.xml: calculated type with 50 dataset items (randomized)
 Category: egzamin
+
+Usage: python generate_exam_xml.py [--out DIR]
+(default output directory: the directory of this script)
 """
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-import os, random, math
+import os, random, math, re, sys
 
 random.seed(42)
 OUT_DIR = os.path.dirname(os.path.abspath(__file__))
+if '--out' in sys.argv:
+    OUT_DIR = sys.argv[sys.argv.index('--out') + 1]
 NUM_DATASETS = 50
 
 # ============================================================
@@ -25,6 +30,21 @@ def write_xml(root, filename):
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
     print(f"  Written: {path}")
+
+# Moodle traktuje każde {nazwa} w treści pytania calculated jako zmienną zbioru.
+# Nawiasy klamrowe w LaTeX, które nie są zmiennymi (np. \dot{Q}, Q_{odpr}),
+# trzeba podwoić ({{Q}}), inaczej Moodle zgłosi brak zbioru danych.
+_BRACE_RE = re.compile(r'(?<!\{)\{([^\W\d]\w*)\}(?!\})')
+
+def protect_latex_braces(text, variables):
+    """Double {name} braces that are not dataset variables (LaTeX subscripts etc.)."""
+    names = {v[0] for v in variables}
+    return _BRACE_RE.sub(
+        lambda m: m.group(0) if m.group(1) in names else '{{' + m.group(1) + '}}', text)
+
+def precision_note(decimals):
+    slowo = '1 miejsca' if decimals == 1 else f'{decimals} miejsc'
+    return f'<p><i>Wynik podaj z dokładnością do {slowo} po przecinku.</i></p>'
 
 def gen_values(vmin, vmax, decimals, n=NUM_DATASETS):
     """Generate n random values in [vmin, vmax] with given decimals."""
@@ -65,12 +85,18 @@ def add_dataset(parent, name, vmin, vmax, decimals, status='private'):
         else:
             ET.SubElement(di, 'value').text = f'{v:.{decimals}f}'
 
-def add_calculated_question(quiz, name, html, formula, tolerance, grade,
-                            variables, tol_type=2):
+def add_calculated_question(quiz, name, html, formula, grade, variables, decimals,
+                            tolerance=0.02, tol_type=1):
     """Add a calculated question with dataset definitions.
     variables: list of (varname, min, max, decimals)
     formula: Moodle formula string using {varname}
+    decimals: liczba miejsc po przecinku poprawnej odpowiedzi (correctanswerlength);
+        zdanie o dokładności jest wstawiane przed akapitem "Podaj ...".
+    tolerance/tol_type: domyślnie 2 % względna (tolerancetype 1).
     """
+    assert html.count('<p><b>Podaj ') == 1, name
+    html = html.replace('<p><b>Podaj ', precision_note(decimals) + '<p><b>Podaj ')
+    html = protect_latex_braces(html, variables)
     q = ET.SubElement(quiz, 'question', type='calculated')
     q_name = ET.SubElement(q, 'name')
     ET.SubElement(q_name, 'text').text = name
@@ -94,7 +120,7 @@ def add_calculated_question(quiz, name, html, formula, tolerance, grade,
     ET.SubElement(a, 'tolerance').text = str(tolerance)
     ET.SubElement(a, 'tolerancetype').text = str(tol_type)
     ET.SubElement(a, 'correctanswerformat').text = '1'
-    ET.SubElement(a, 'correctanswerlength').text = '4'
+    ET.SubElement(a, 'correctanswerlength').text = str(decimals)
     fb = ET.SubElement(a, 'feedback', format='html')
     ET.SubElement(fb, 'text')
     ET.SubElement(q, 'unitgradingtype').text = '0'
@@ -133,7 +159,7 @@ def make_teoria():
         ("P03_Praca_techniczna",
          "<p><b>P3.</b> Praca techniczna \\(L_t\\) jest równa:</p>",
          [("\\(\\int p \\, dV\\)", 0), ("\\(-\\int V \\, dp\\)", 100),
-          ("\\(\\Delta U\\)", 0), ("\\(Q - \\Delta H\\)", 0)]),
+          ("\\(\\Delta U\\)", 0), ("\\(\\int V \\, dp\\)", 0)]),
         ("P04_Energia_wewnetrzna",
          "<p><b>P4.</b> Energia wewnętrzna gazu doskonałego zależy wyłącznie od:</p>",
          [("ciśnienia", 0), ("objętości", 0), ("temperatury", 100),
@@ -146,10 +172,10 @@ def make_teoria():
          [("substancja istnieje wyłącznie w fazie stałej", 0),
           ("współistnieją trzy fazy (punkt potrójny)", 0),
           ("zanika rozróżnienie między cieczą a gazem", 100),
-          ("ciśnienie osiąga wartość maksymalną", 0)]),
+          ("temperatura wrzenia przestaje zależeć od ciśnienia", 0)]),
         ("P07_Stopien_suchosci",
          "<p><b>P7.</b> Stopień suchości pary mokrej \\(x = 0{,}85\\) oznacza, że mieszanina zawiera:</p>",
-         [("85% cieczy i 15% pary", 0), ("85% pary i 15% cieczy", 100),
+         [("85% cieczy i 15% pary (udziały masowe)", 0), ("85% pary i 15% cieczy (udziały masowe)", 100),
           ("parę przegrzaną o 85 K powyżej temperatury nasycenia", 0),
           ("parę o wilgotności względnej 85%", 0)]),
         ("P08_Entalpia_pary_mokrej",
@@ -280,7 +306,7 @@ def make_teoria():
         ("P26_PF_Skraplacz",
          "<p><b>P26.</b> Obniżenie ciśnienia w skraplaczu siłowni parowej zwiększa pracę użyteczną turbiny.</p>", True),
         ("P27_PF_Przeciwprad",
-         "<p><b>P27.</b> Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych warunkach brzegowych.</p>", True),
+         "<p><b>P27.</b> Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych temperaturach wlotowych i tych samych strumieniach płynów.</p>", True),
         ("P28_PF_Dlawienie_odwr",
          "<p><b>P28.</b> Proces dławienia w zaworze redukcyjnym jest odwracalny.</p>", False),
         ("P29_PF_Eta_Carnot",
@@ -363,8 +389,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — przemiany, izochora.</i></p>"
         "<p><b>Podaj \\(Q\\) [kJ]:</b></p>",
         "{m} * 0.718 * ({T2} - {T1})",
-        2, 3.0,
-        [("m", 1.0, 5.0, 1), ("T1", 5, 30, 0), ("T2", 200, 400, 0)])
+        3.0, [("m", 1.0, 5.0, 1), ("T1", 5, 30, 0), ("T2", 200, 400, 0)],
+        decimals=1)
 
     # ---- Zad 1b: Izochora metan ----
     add_calculated_question(quiz,
@@ -376,8 +402,8 @@ def make_zadania():
         "<p><i>Wskazówka: I Zasada dla układu zamkniętego przy V = const.</i></p>"
         "<p><b>Podaj \\(Q\\) [kJ]:</b></p>",
         "{m} * 1.708 * ({T2} - {T1})",
-        2, 3.0,
-        [("m", 0.5, 3.0, 1), ("T1", 10, 30, 0), ("T2", 200, 350, 0)])
+        3.0, [("m", 0.5, 3.0, 1), ("T1", 10, 30, 0), ("T2", 200, 350, 0)],
+        decimals=1)
 
     # ---- Zad 2: Turbina ----
     add_calculated_question(quiz,
@@ -390,9 +416,9 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.</i></p>"
         "<p><b>Podaj \\(P\\) [kW]:</b></p>",
         "{mdot} * (({h1} - {h2}) + ({c1}*{c1} - {c2}*{c2}) / 2000)",
-        2, 3.0,
-        [("mdot", 80, 160, 0), ("h1", 3200, 3500, 0),
-         ("h2", 2300, 2600, 0), ("c1", 30, 80, 0), ("c2", 5, 20, 0)])
+        3.0, [("mdot", 80, 160, 0), ("h1", 3200, 3500, 0),
+         ("h2", 2300, 2600, 0), ("c1", 30, 80, 0), ("c2", 5, 20, 0)],
+        decimals=1)
 
     # ---- Zad 2b: Sprężarka ----
     add_calculated_question(quiz,
@@ -404,8 +430,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.</i></p>"
         "<p><b>Podaj \\(P\\) [kW]:</b></p>",
         "{mdot} * ({h2} - {h1})",
-        2, 3.0,
-        [("mdot", 2.0, 6.0, 1), ("h1", 280, 320, 0), ("h2", 480, 560, 0)])
+        3.0, [("mdot", 2.0, 6.0, 1), ("h1", 280, 320, 0), ("h2", 480, 560, 0)],
+        decimals=1)
 
     # ---- Zad 3a: Carnot sprawność ----
     add_calculated_question(quiz,
@@ -417,22 +443,23 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — sprawności obiegów. Temperatury w kelwinach.</i></p>"
         "<p><b>Podaj \\(\\eta_C\\) [-]:</b></p>",
         "1 - ({TL} + 273.15) / ({TH} + 273.15)",
-        0.01, 2.0,
-        [("TH", 500, 900, 0), ("TL", 15, 35, 0)])
+        2.0, [("TH", 500, 900, 0), ("TL", 15, 35, 0)],
+        decimals=2)
 
     # ---- Zad 3b: Q_odpr w GJ ----
     add_calculated_question(quiz,
         "Zad03b_Q_odpr_GJ",
         "<p><b>Zadanie 3b — Straty ciepła w skraplaczu</b></p>"
-        "<p>(kontynuacja Zadania 3a) Moc elektryczna bloku wynosi <b>{Pel}</b> MW, "
+        "<p>(kontynuacja Zadania 3a) Siłownia parowa pracuje między temperaturą pary <b>{TH}</b> °C (kocioł) "
+        "a temperaturą wody chłodzącej <b>{TL}</b> °C (skraplacz). Moc elektryczna bloku wynosi <b>{Pel}</b> MW, "
         "a jego sprawność rzeczywista stanowi <b>{efrac}</b> sprawności Carnota. "
         "Obliczyć ilość ciepła odprowadzonego w skraplaczu w ciągu <b>{th}</b> godzin pracy.</p>"
         "<p><i>Wskazówka: Patrz Karta Wzorów — związek moc–ciepło. 1 MWh = 3,6 GJ.</i></p>"
         "<p><b>Podaj \\(Q_{odpr}\\) [GJ]:</b></p>",
         "({Pel} / ({efrac} * (1 - ({TL}+273.15)/({TH}+273.15))) - {Pel}) * {th} * 3.6",
-        5, 5.0,
-        [("TH", 500, 900, 0), ("TL", 15, 35, 0),
-         ("Pel", 200, 500, 0), ("efrac", 0.40, 0.55, 2), ("th", 8, 24, 0)])
+        5.0, [("TH", 500, 900, 0), ("TL", 15, 35, 0),
+         ("Pel", 200, 500, 0), ("efrac", 0.40, 0.55, 2), ("th", 8, 24, 0)],
+        decimals=1)
 
     # ---- Zad 6: Izentropa sprężanie ----
     add_calculated_question(quiz,
@@ -444,8 +471,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — przemiany, izentropa. Temperatury w kelwinach.</i></p>"
         "<p><b>Podaj \\(T_2\\) [°C]:</b></p>",
         "({T1} + 273.15) * pow({p2}/{p1}, 0.285714) - 273.15",
-        2, 3.0,
-        [("T1", 10, 30, 0), ("p1", 1, 2, 0), ("p2", 5, 12, 0)])
+        3.0, [("T1", 10, 30, 0), ("p1", 1, 2, 0), ("p2", 5, 12, 0)],
+        decimals=1)
 
     # ---- Zad 7: COP chłodziarki ----
     add_calculated_question(quiz,
@@ -458,8 +485,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — COP chłodziarki. Temperatury w kelwinach.</i></p>"
         "<p><b>Podaj \\(\\dot{Q}_L\\) [kW]:</b></p>",
         "{P} * ({TL} + 273.15) / (({TH} + 273.15) - ({TL} + 273.15))",
-        2, 3.0,
-        [("TL", -25, -10, 0), ("TH", 25, 40, 0), ("P", 0.3, 1.5, 1)])
+        3.0, [("TL", -25, -10, 0), ("TH", 25, 40, 0), ("P", 0.3, 1.5, 1)],
+        decimals=2)
 
     # ---- Zad 8: Izoterma rozprężanie ----
     add_calculated_question(quiz,
@@ -471,8 +498,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — przemiany, izoterma. Temperatury w kelwinach.</i></p>"
         "<p><b>Podaj \\(L\\) [kJ]:</b></p>",
         "{m} * 0.287 * ({T1} + 273.15) * log({p1}/{p2})",
-        2, 3.0,
-        [("m", 1.0, 4.0, 1), ("T1", 15, 35, 0), ("p1", 5, 12, 0), ("p2", 1, 2, 0)])
+        3.0, [("m", 1.0, 4.0, 1), ("T1", 15, 35, 0), ("p1", 5, 12, 0), ("p2", 1, 2, 0)],
+        decimals=1)
 
     # ---- Zad 9: Kocioł ----
     add_calculated_question(quiz,
@@ -485,8 +512,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — bilans kotła/wymiennika. Przelicz t/h na kg/s.</i></p>"
         "<p><b>Podaj \\(\\dot{Q}\\) [kW]:</b></p>",
         "({mdot} * 1000 / 3600) * ({h2} - 4.19 * {tw})",
-        5, 3.0,
-        [("mdot", 2.0, 6.0, 1), ("h2", 2900, 3200, 0), ("tw", 20, 40, 0)])
+        3.0, [("mdot", 2.0, 6.0, 1), ("h2", 2900, 3200, 0), ("tw", 20, 40, 0)],
+        decimals=1)
 
     # ---- Zad 11: Klimatyzator (pompa ciepła) ----
     add_calculated_question(quiz,
@@ -500,9 +527,9 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — COP pompy ciepła. Temperatury w kelwinach.</i></p>"
         "<p><b>Podaj \\(\\dot{Q}_H\\) [kW]:</b></p>",
         "{P} * {efrac} * ({TH}+273.15) / (({TH}+273.15) - ({TL}+273.15))",
-        2, 3.0,
-        [("TL", -10, 0, 0), ("TH", 18, 25, 0), ("P", 1.5, 4.0, 1),
-         ("efrac", 0.30, 0.50, 2)])
+        3.0, [("TL", -10, 0, 0), ("TH", 18, 25, 0), ("P", 1.5, 4.0, 1),
+         ("efrac", 0.30, 0.50, 2)],
+        decimals=2)
 
     # ---- Zad 12: Rekuperator ----
     add_calculated_question(quiz,
@@ -515,8 +542,8 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — sprawność rekuperatora.</i></p>"
         "<p><b>Podaj \\(t_{naw,wy}\\) [°C]:</b></p>",
         "{tzew} + {eta}/100 * ({twew} - {tzew})",
-        1, 3.0,
-        [("tzew", -20, -5, 0), ("twew", 18, 24, 0), ("eta", 60, 85, 0)])
+        3.0, [("tzew", -20, -5, 0), ("twew", 18, 24, 0), ("eta", 60, 85, 0)],
+        decimals=2)
 
     # ---- Zad 13a: Mieszanie — temperatura ----
     add_calculated_question(quiz,
@@ -531,9 +558,9 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.</i></p>"
         "<p><b>Podaj \\(t_M\\) [°C]:</b></p>",
         "({m1}*{t1} + {m2}*{t2}) / ({m1}+{m2})",
-        1, 3.0,
-        [("m1", 0.5, 1.5, 1), ("t1", -15, -5, 0),
-         ("m2", 1.5, 3.5, 1), ("t2", 18, 25, 0)])
+        3.0, [("m1", 0.5, 1.5, 1), ("t1", -15, -5, 0),
+         ("m2", 1.5, 3.5, 1), ("t2", 18, 25, 0)],
+        decimals=2)
 
     # ---- Zad 13b: Mieszanie — zawilżenie ----
     add_calculated_question(quiz,
@@ -546,9 +573,9 @@ def make_zadania():
         "<p><i>Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.</i></p>"
         "<p><b>Podaj \\(X_M\\) [g/kg]:</b></p>",
         "({m1}*{X1} + {m2}*{X2}) / ({m1}+{m2})",
-        0.5, 3.0,
-        [("m1", 0.5, 1.5, 1), ("X1", 1.0, 3.0, 1),
-         ("m2", 1.5, 3.5, 1), ("X2", 6.0, 10.0, 1)])
+        3.0, [("m1", 0.5, 1.5, 1), ("X1", 1.0, 3.0, 1),
+         ("m2", 1.5, 3.5, 1), ("X2", 6.0, 10.0, 1)],
+        decimals=2)
 
     write_xml(quiz, 'egzamin_zadania.xml')
     print(f"  Total calculated questions generated.")
