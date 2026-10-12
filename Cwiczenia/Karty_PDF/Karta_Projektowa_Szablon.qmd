@@ -1,6 +1,6 @@
 ---
 title: 'Termodynamika Techniczna'
-subtitle: 'Projekt: Modernizacja Hali Przemysłowej Termo-Tech'
+subtitle: 'Projekt: Audyt Energetyczny Hali Przemysłowej (Termo-Tech Sp. z o.o.)'
 author: "Prowadzący: dr hab. inż. prof. UPP Marek Urbaniak"
 date: today
 format:
@@ -298,13 +298,8 @@ dS_gen_kask <- dS_gen_A + dS_gen_B
 Q_komin <- p$m_spalin * 1 * (p$t_sp_out - p$t)
 dS_atm <- Q_komin * 1000 / (p$t + 273.15)
 
-# Zad 5.5 - LMTD i Entropia (Przeciwprąd)
-# Współprąd (Dane z Zad 5.1/5.2):
-dt1_wsp <- p$t_sp_in - p$t_w_in     # Gorący koniec
-dt2_wsp <- p$t_sp_out - p$t_w_out   # Zimny koniec
-LMTD_wsp <- (dt1_wsp - dt2_wsp) / log(dt1_wsp / dt2_wsp)
 
-# Przeciwprąd (Ulepszony):
+# Zad 5.5 - Przeciwprąd (ulepszony):
 # Zakładamy, że dzięki konfiguracji przeciwprądowej podgrzewamy wodę mocniej
 t_w_out_pre <- p$t_w_out + 50 # Np. 130C
 Q_wym_pre <- Q_wym # Zakładamy tę samą moc
@@ -314,10 +309,6 @@ m_w_pre <- Q_wym_pre * 1000 / (4190 * (t_w_out_pre - p$t_w_in))
 dS_w_pre <- m_w_pre * 4190 * log((t_w_out_pre + 273.15) / (p$t_w_in + 273.15))
 dS_gen_pre <- dS_sp + dS_w_pre # dS_sp bez zmian (spaliny tak samo chłodzone)
 
-# LMTD Przeciwprąd
-dt1_pre <- p$t_sp_in - t_w_out_pre # Gorący (Spalin) - Gorący (Wody)
-dt2_pre <- p$t_sp_out - p$t_w_in   # Zimny (Spalin) - Zimny (Wody)
-LMTD_pre <- (dt1_pre - dt2_pre) / log(dt1_pre / dt2_pre)
 
 # ---- Obliczenia Ćw.6 (CoolProp — R134a) ----
 To_K <- p$t_o + 273.15   # temp. parowania [K]
@@ -1515,7 +1506,7 @@ $t_s$ & \multicolumn{2}{c|}{\textit{99,6}} & \multicolumn{2}{c|}{\textit{120,2}}
 400 & 3278 & 8.544 & 3277 & 8.223 & 3272 & 7.795 \\
 500 & 3488 & 8.835 & 3487 & 8.515 & 3484 & 8.088 \\
 600 & 3705 & 9.098 & 3704 & 8.778 & 3702 & 8.354 \\
-800 & 4152 & 9.562 & 4152 & 9.243 & 4151 & 8.815 \\
+800 & 4160 & 9.568 & 4160 & 9.248 & 4158 & 8.824 \\
 \hline
 \end{tabular}
 \end{center}
@@ -1542,7 +1533,7 @@ $t_s$ & \multicolumn{2}{c|}{\textit{179,9}} & \multicolumn{2}{c|}{\textit{184,1}
 450 & 3371 & 7.620 & 3370 & 7.575 & 3369 & 7.533 & 3367 & 7.495 & 3366 & 7.459 & 3365 & 7.426 \\
 500 & 3479 & 7.764 & 3478 & 7.719 & 3477 & 7.678 & 3476 & 7.640 & 3475 & 7.605 & 3474 & 7.572 \\
 600 & 3698 & 8.031 & 3698 & 7.986 & 3697 & 7.946 & 3696 & 7.908 & 3695 & 7.873 & 3695 & 7.841 \\
-700 & 3921 & 8.276 & 3924 & 8.231 & 3923 & 8.190 & 3922 & 8.153 & 3922 & 8.118 & 3921 & 8.086 \\
+700 & 3924 & 8.276 & 3924 & 8.231 & 3923 & 8.190 & 3922 & 8.153 & 3922 & 8.118 & 3921 & 8.086 \\
 \hline
 \end{tabular}
 \end{center}
@@ -1567,7 +1558,7 @@ $t_s$ & \multicolumn{2}{c|}{\textit{201,4}} & \multicolumn{2}{c|}{\textit{204,3}
 400 & 3255 & 7.239 & 3253 & 7.210 & 3252 & 7.181 & 3250 & 7.155 & 3248 & 7.129 & 3196 & 6.648 \\
 450 & 3364 & 7.395 & 3362 & 7.366 & 3361 & 7.338 & 3360 & 7.312 & 3358 & 7.287 & 3317 & 6.822 \\
 500 & 3473 & 7.541 & 3472 & 7.512 & 3470 & 7.485 & 3469 & 7.459 & 3468 & 7.434 & 3434 & 6.978 \\
-600 & 3694 & 7.810 & 3693 & 7.781 & 3692 & 7.754 & 3692 & 7.729 & 3691 & 7.704 & 3666 & 7.257 \\
+600 & 3694 & 7.810 & 3693 & 7.781 & 3692 & 7.754 & 3692 & 7.729 & 3691 & 7.704 & 3666 & 7.261 \\
 700 & 3921 & 8.056 & 3920 & 8.027 & 3919 & 8.000 & 3919 & 7.975 & 3918 & 7.951 & 3900 & 7.513 \\
 \hline
 \end{tabular}
@@ -1586,10 +1577,10 @@ $t_s$ & \multicolumn{2}{c|}{\textit{311,0}} & \multicolumn{2}{c|}{\textit{342,2}
 \hline
 \textbf{$x{=}1$} & 2725 & 5.615 & 2611 & 5.310 & 2411 & 4.932 \\
 350 & 2923 & 5.944 & 2693 & 5.443 & --- & --- \\
-400 & 3097 & 6.213 & 2976 & 5.882 & 2819 & 5.554 \\
-500 & 3374 & 6.599 & 3310 & 6.350 & 3238 & 6.127 \\
-600 & 3625 & 6.903 & 3581 & 6.680 & 3537 & 6.504 \\
-800 & 4114 & 7.373 & 4092 & 7.176 & 4070 & 7.021 \\
+400 & 3097 & 6.213 & 2976 & 5.882 & 2817 & 5.554 \\
+500 & 3374 & 6.599 & 3310 & 6.350 & 3241 & 6.145 \\
+600 & 3625 & 6.903 & 3583 & 6.680 & 3539 & 6.507 \\
+800 & 4114 & 7.408 & 4092 & 7.204 & 4067 & 7.053 \\
 \hline
 \end{tabular}
 \end{center}
