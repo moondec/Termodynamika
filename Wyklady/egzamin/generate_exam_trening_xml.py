@@ -246,7 +246,7 @@ def make_trening():
          "{m} * ({R}/1000) * ({t}+273.15) * log({p2}/{p1})", 1, [("m", 1.0, 5.0, 1), ("R", 200, 350, 0), ("p1", 1, 3, 1), ("p2", 8, 20, 1), ("t", 15, 60, 0)]),
 
         # T17: Mieszanina udział masowy
-        ("Tr17_MieszUdziałyMo",
+        ("Tr17_MieszUdzialyMo",
          "<p><b>Tr 17.</b> W butli wymieszano <b>{m1}</b> kg tlenu O₂ z <b>{m2}</b> kg dwutlenku węgla CO₂. Oblicz udział masowy tlenu w procentach (np. 54,3%).</p><p><b>Podaj g_O2 [%]:</b></p>",
          "<div class='well'><b>Rozwiązanie — udział masowy w mieszaninie gazów:</b><br/><b>1. Definicja udziału masowego:</b> Udział masowy składnika 1 to \\( g_1 = \\frac{m_1}{m_1 + m_2} \\) (jako ułamek) lub \\( g_1 = \\frac{m_1}{m_1 + m_2} \\cdot 100\\% \\) w procentach.<br/><b>2. Tutaj:</b> Składnik 1 = tlen O₂, składnik 2 = CO₂. Szukamy g_O₂ [%].<br/><b>3. Podstawienie:</b> \\( g_{O_2} = \\frac{{m1}}{{m1} + {m2}} \\cdot 100 \\) %.</div>",
          "100 * {m1} / ({m1} + {m2})", 1, [("m1", 2.0, 10.0, 1), ("m2", 2.0, 10.0, 1)]),
@@ -300,7 +300,7 @@ def make_trening():
          "({lam} / ({d}/100)) * ({t1} - {t2})", 1, [("t1", 20, 90, 0), ("t2", -10, 5, 0), ("d", 5, 20, 1), ("lam", 0.04, 0.20, 2)]),
 
         # T26: Chłodnica (wymiennik ciepła)
-        ("Tr26_KondesatCieplo",
+        ("Tr26_KondensatCieplo",
          "<p><b>Tr 26.</b> W chłodnicy ciecz o strumieniu masy <b>{m}</b> kg/s i cieple właściwym <b>{c}</b> kJ/(kg·K) ochładza się z <b>{t1}</b> °C do <b>{t2}</b> °C. Oblicz strumień ciepła odprowadzonego w chłodnicy (moc w kW).</p><p><b>Podaj Q [kW]:</b></p>",
          "<div class='well'><b>Rozwiązanie — strumień ciepła w chłodnicy (wymiennik):</b><br/><b>1. Bilans ciepła:</b> Ciecz ochładza się z t₁ do t₂, oddając ciepło do chłodnicy. Strumień ciepła odprowadzonego (moc): \\( \\dot{Q} = \\dot{m} \\cdot c \\cdot (t_1 - t_2) \\) — przy spadku temperatury (t₁ &gt; t₂) wynik dodatni [kW].<br/><b>2. Jednostki:</b> \\( \\dot{m} \\) [kg/s], c [kJ/(kg·K)], (t₁ − t₂) [K lub °C] → \\( \\dot{Q} \\) [kW].<br/><b>3. Podstawienie:</b> \\( \\dot{Q} = {m} \\cdot {c} \\cdot ({t1} - {t2}) \\) kW.</div>",
          "{m} * {c} * ({t1} - {t2})", 1, [("t1", 80, 130, 0), ("t2", 40, 70, 0), ("m", 0.5, 4.0, 1), ("c", 2.0, 2.5, 2)]),
@@ -312,7 +312,7 @@ def make_trening():
          "{Qout} * ( ({tH}+273.15)/({tL}+273.15) - 1 )", 1, [("tH", 300, 700, 0), ("tL", 10, 40, 0), ("Qout", 100, 500, 0)]),
 
         # T28: Entalpia pary mokrej (stopień suchości x)
-        ("Tr28_EnatlpiaZSuchoscia",
+        ("Tr28_EntalpiaZSuchoscia",
          "<p><b>Tr 28.</b> Z tablic pary wodnej: entalpia cieczy wrzącej <b>{hw}</b> kJ/kg, ciepło parowania <b>{r}</b> kJ/kg. Dla stopnia suchości <b>{x}</b> oblicz entalpię pary mokrej.</p><p><b>Podaj h_x [kJ/kg]:</b></p>",
          "<div class='well'><b>Rozwiązanie — entalpia pary mokrej (wzór na h_x):</b><br/><b>1. Wzór na entalpię pary mokrej:</b> \\( h_x = h' + x \\cdot r \\), gdzie h′ — entalpia cieczy wrzącej (kJ/kg), r — ciepło parowania (kJ/kg), x — stopień suchości (ułamek masy pary). Wartości h′, r odczytuje się z tablic pary dla danego ciśnienia (lub temperatury nasycenia).<br/><b>2. Jednostki:</b> h′, r [kJ/kg], x [−] → h_x [kJ/kg].<br/><b>3. Podstawienie:</b> \\( h_x = {hw} + {x} \\cdot {r} \\) kJ/kg.</div>",
          "{hw} + {x} * {r}", 1, [("x", 0.60, 0.95, 2), ("hw", 500, 1000, 0), ("r", 1805, 2185, 0, TR28_R)]),

@@ -10614,7 +10614,7 @@
     </question>
     <question type="calculated">
         <name>
-            <text>Tr17_MieszUdziałyMo</text>
+            <text>Tr17_MieszUdzialyMo</text>
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;Tr 17.&lt;/b&gt; W butli wymieszano &lt;b&gt;{m1}&lt;/b&gt; kg tlenu O₂ z &lt;b&gt;{m2}&lt;/b&gt; kg dwutlenku węgla CO₂. Oblicz udział masowy tlenu w procentach (np. 54,3%).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj g_O2 [%]:&lt;/b&gt;&lt;/p&gt;</text>
@@ -15960,7 +15960,7 @@
     </question>
     <question type="calculated">
         <name>
-            <text>Tr26_KondesatCieplo</text>
+            <text>Tr26_KondensatCieplo</text>
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;Tr 26.&lt;/b&gt; W chłodnicy ciecz o strumieniu masy &lt;b&gt;{m}&lt;/b&gt; kg/s i cieple właściwym &lt;b&gt;{c}&lt;/b&gt; kJ/(kg·K) ochładza się z &lt;b&gt;{t1}&lt;/b&gt; °C do &lt;b&gt;{t2}&lt;/b&gt; °C. Oblicz strumień ciepła odprowadzonego w chłodnicy (moc w kW).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj Q [kW]:&lt;/b&gt;&lt;/p&gt;</text>
@@ -17623,7 +17623,7 @@
     </question>
     <question type="calculated">
         <name>
-            <text>Tr28_EnatlpiaZSuchoscia</text>
+            <text>Tr28_EntalpiaZSuchoscia</text>
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;Tr 28.&lt;/b&gt; Z tablic pary wodnej: entalpia cieczy wrzącej &lt;b&gt;{hw}&lt;/b&gt; kJ/kg, ciepło parowania &lt;b&gt;{r}&lt;/b&gt; kJ/kg. Dla stopnia suchości &lt;b&gt;{x}&lt;/b&gt; oblicz entalpię pary mokrej.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj h_x [kJ/kg]:&lt;/b&gt;&lt;/p&gt;</text>
