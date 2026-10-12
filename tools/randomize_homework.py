@@ -109,8 +109,8 @@ VARIABLES_SCHEMA = {
     "h_sezon":          {"min": 2500, "max": 4000, "dec": 0},
     "cena_gaz":         {"min": 0.20, "max": 0.35, "dec": 2},
     "koszt_rek":        {"min": 15000, "max": 40000, "dec": 0},
-    # średnia temperatura zewnętrzna w sezonie grzewczym (Zad. 7.9 cd.: +2 °C)
-    "t_sr":             {"min": 0, "max": 5, "dec": 0, "seed": 2026},
+    # średnia temperatura zewnętrzna w sezonie grzewczym
+    "t_sr":             {"min": 5, "max": 13, "dec": 0, "seed": 2026},
 }
 
 
