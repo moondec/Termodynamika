@@ -566,7 +566,7 @@ GWP100 wg IPCC AR4 (dla HFO — AR6), jak w rozporządzeniu (UE) 2024/573.
 
 ::: {.fragment .panel .panel-amber}
 **Klasa A3 — wysoce palny:**
-Dolna granica palności **1,7% obj.** w powietrzu.
+Dolna granica palności **2,1% obj.** (0,038 kg/m³) w powietrzu, górna 9,5% (ASHRAE 34 / ISO 817).
 Rozwiązanie: minimalne napełnienie + hermetyczność + detekcja.
 :::
 

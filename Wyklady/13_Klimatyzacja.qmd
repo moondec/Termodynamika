@@ -276,7 +276,7 @@ W systemach wentylacji i klimatyzacji rzadko uzdatnia się wyłącznie powietrze
 **Główne cele recyrkulacji (mieszania):**
 
 1.  **Oszczędność energii** – powietrze z pomieszczenia ma zazwyczaj temperaturę znacznie bliższą parametrom komfortu niż powietrze zewnętrzne (zarówno zimą, jak i latem). Jego ponowne użycie redukuje moc nagrzewnic i chłodnic.
-2.  **Utrzymanie minimalnego strumienia powietrza świeżego** – ze względów higienicznych do pomieszczenia musi trafiać określony strumień powietrza zewnętrznego na osobę, potrzebny do rozcieńczenia [CO~2~]{.nowrap}, zapachów i innych zanieczyszczeń (zawartość tlenu nie jest tu czynnikiem ograniczającym). Mieszając je z obiegowym, możemy dostarczyć wymaganą ilość powietrza świeżego, zachowując jednocześnie wysoki wydatek powietrza nawiewanego dla zapewnienia odpowiedniej cyrkulacji.
+2.  **Utrzymanie minimalnego strumienia powietrza świeżego** – ze względów higienicznych do pomieszczenia musi trafiać określony strumień powietrza zewnętrznego na osobę, potrzebny do rozcieńczenia [CO~2~]{.nowrap}, zapachów i innych zanieczyszczeń (zawartość tlenu nie jest tu czynnikiem ograniczającym). W Polsce minimum wyznacza PN-B-03430/Az3:2000 przywołana w Warunkach Technicznych: 20 m³/h na osobę, 30 m³/h w pomieszczeniach klimatyzowanych; PN-EN 16798-1 różnicuje je wg kategorii jakości powietrza. Mieszając je z obiegowym, możemy dostarczyć wymaganą ilość powietrza świeżego, zachowując jednocześnie wysoki wydatek powietrza nawiewanego dla zapewnienia odpowiedniej cyrkulacji.
 
 ## <i class="bi bi-diagram-3"></i> Mieszanie na wykresie h-X {.smaller}
 
