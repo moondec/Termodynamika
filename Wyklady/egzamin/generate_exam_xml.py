@@ -96,6 +96,15 @@ def add_calculated_question(quiz, name, html, formula, grade, variables, decimal
     feedback: informacja zwrotna ogólna (HTML; tok rozwiązania + odsyłacz do wykładu).
     """
     assert html.count('<p><b>Podaj ') == 1, name
+    # Wskazówki nie trafiają do treści pytania zaliczeniowego (student ma sobie
+    # poradzić sam); przenoszone są do informacji zwrotnej ogólnej, widocznej po
+    # zakończeniu podejścia. Wersja treningowa (generate_exam_trening_xml.py) ma
+    # własne treści.
+    hints = re.findall(r'<p><i>Wskazówka:\s*(.*?)</i></p>', html, flags=re.S)
+    html = re.sub(r'<p><i>Wskazówka:.*?</i></p>', '', html, flags=re.S)
+    if hints:
+        hint_html = ''.join(f'<p><i>Wskazówka: {h.strip()}</i></p>' for h in hints)
+        feedback = hint_html + (feedback or '')
     html = html.replace('<p><b>Podaj ', precision_note(decimals) + '<p><b>Podaj ')
     html = protect_latex_braces(html, variables)
     q = ET.SubElement(quiz, 'question', type='calculated')

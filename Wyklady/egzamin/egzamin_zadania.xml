@@ -14,10 +14,10 @@
             <text>Zad01_Izochora_powietrze</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 1 — Ogrzewanie gazu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Ciepło właściwe powietrza przy stałej objętości wynosi \(c_v\) = 0,718 kJ/(kg·K). Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izochora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 1 — Ogrzewanie gazu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Ciepło właściwe powietrza przy stałej objętości wynosi \(c_v\) = 0,718 kJ/(kg·K). Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izochora.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -733,10 +733,10 @@
             <text>Zad01b_Izochora_metan</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 1b — Ogrzewanie metanu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg metanu (\(CH_4\), \(c_v\) = 1,708 kJ/(kg·K)) o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: I Zasada dla układu zamkniętego przy V = const.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 1b — Ogrzewanie metanu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg metanu (\(CH_4\), \(c_v\) = 1,708 kJ/(kg·K)) o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: I Zasada dla układu zamkniętego przy V = const.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1452,10 +1452,10 @@
             <text>Zad02_Turbina</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 2 — Moc turbiny parowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Przez turbinę przepływa para wodna ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość pary na wlocie to \(\omega_1\) = &lt;b&gt;{c1}&lt;/b&gt; m/s, na wylocie \(\omega_2\) = &lt;b&gt;{c2}&lt;/b&gt; m/s. Turbina jest adiabatyczna. Obliczyć moc mechaniczną na wale turbiny.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 2 — Moc turbiny parowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Przez turbinę przepływa para wodna ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość pary na wlocie to \(\omega_1\) = &lt;b&gt;{c1}&lt;/b&gt; m/s, na wylocie \(\omega_2\) = &lt;b&gt;{c2}&lt;/b&gt; m/s. Turbina jest adiabatyczna. Obliczyć moc mechaniczną na wale turbiny.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -2621,10 +2621,10 @@
             <text>Zad02b_Sprezarka</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 2b — Moc sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Sprężarka adiabatyczna spręża powietrze ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Różnice energii kinetycznej pominąć. Obliczyć moc napędową sprężarki.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 2b — Moc sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Sprężarka adiabatyczna spręża powietrze ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Różnice energii kinetycznej pominąć. Obliczyć moc napędową sprężarki.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -3340,10 +3340,10 @@
             <text>Zad03a_Carnot_sprawnosc</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 3a — Sprawność obiegu Carnota&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Obliczyć sprawność obiegu Carnota (podać jako ułamek, np. 0,72).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\eta_C\) [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 3a — Sprawność obiegu Carnota&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Obliczyć sprawność obiegu Carnota (podać jako ułamek, np. 0,72).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\eta_C\) [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>2.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -3834,10 +3834,10 @@
             <text>Zad03b_Q_odpr_GJ</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 3b — Straty ciepła w skraplaczu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 3a) Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota. Obliczyć ilość ciepła odprowadzonego w skraplaczu w ciągu &lt;b&gt;{th}&lt;/b&gt; godzin pracy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — związek moc–ciepło. 1 MWh = 3,6 GJ.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q_{{odpr}}\) [GJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 3b — Straty ciepła w skraplaczu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 3a) Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota. Obliczyć ilość ciepła odprowadzonego w skraplaczu w ciągu &lt;b&gt;{th}&lt;/b&gt; godzin pracy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q_{{odpr}}\) [GJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — związek moc–ciepło. 1 MWh = 3,6 GJ.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>5.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -5003,10 +5003,10 @@
             <text>Zad06_Izentropa</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 6 — Izentropowe sprężanie powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar sprężono izentropowo do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć temperaturę końcową gazu po sprężeniu. Przyjąć \(\kappa\) = 1,40.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izentropa. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(T_2\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 6 — Izentropowe sprężanie powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar sprężono izentropowo do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć temperaturę końcową gazu po sprężeniu. Przyjąć \(\kappa\) = 1,40.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(T_2\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izentropa. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -5722,10 +5722,10 @@
             <text>Zad07_Chlodziarka</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 7 — Chłodziarka (obieg lewobieżny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Chłodziarka pracuje między temperaturą wnętrza &lt;b&gt;{TL}&lt;/b&gt; °C a temperaturą otoczenia &lt;b&gt;{TH}&lt;/b&gt; °C. Moc sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW. Obliczyć maksymalny (Carnota) współczynnik wydajności chłodniczej COP oraz maksymalny strumień ciepła odbieranego z wnętrza.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP chłodziarki. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_L\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 7 — Chłodziarka (obieg lewobieżny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Chłodziarka pracuje między temperaturą wnętrza &lt;b&gt;{TL}&lt;/b&gt; °C a temperaturą otoczenia &lt;b&gt;{TH}&lt;/b&gt; °C. Moc sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW. Obliczyć maksymalny (Carnota) współczynnik wydajności chłodniczej COP oraz maksymalny strumień ciepła odbieranego z wnętrza.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_L\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP chłodziarki. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -6441,10 +6441,10 @@
             <text>Zad08_Izoterma</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 8 — Rozprężanie izotermiczne gazu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W cylindrze z tłokiem znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar. Gaz rozprężono izotermicznie do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć pracę objętościową wykonaną przez gaz. Przyjąć \(R\) = 287 J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izoterma. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(L\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 8 — Rozprężanie izotermiczne gazu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W cylindrze z tłokiem znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar. Gaz rozprężono izotermicznie do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć pracę objętościową wykonaną przez gaz. Przyjąć \(R\) = 287 J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(L\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izoterma. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -7385,10 +7385,10 @@
             <text>Zad09_Kociol</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 9 — Kocioł parowy (bilans energii)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W kotle parowym wytwarzane jest izobarycznie &lt;b&gt;{mdot}&lt;/b&gt; t/h pary wodnej przegrzanej o entalpii &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Woda zasilająca kocioł ma temperaturę &lt;b&gt;{tw}&lt;/b&gt; °C (entalpia wody: \(h_1 \approx c_w \cdot t_w\), gdzie \(c_w\) = 4,19 kJ/(kg·K)). Obliczyć strumień ciepła, jaki powinien być doprowadzony do kotła.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans kotła/wymiennika. Przelicz t/h na kg/s.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 9 — Kocioł parowy (bilans energii)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W kotle parowym wytwarzane jest izobarycznie &lt;b&gt;{mdot}&lt;/b&gt; t/h pary wodnej przegrzanej o entalpii &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Woda zasilająca kocioł ma temperaturę &lt;b&gt;{tw}&lt;/b&gt; °C (entalpia wody: \(h_1 \approx c_w \cdot t_w\), gdzie \(c_w\) = 4,19 kJ/(kg·K)). Obliczyć strumień ciepła, jaki powinien być doprowadzony do kotła.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans kotła/wymiennika. Przelicz t/h na kg/s.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -8104,10 +8104,10 @@
             <text>Zad11_Klimatyzator</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 11 — Sprawność klimatyzatora (pompa ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Klimatyzator pracujący w trybie grzania pobiera ciepło z powietrza zewnętrznego o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C i oddaje je do pomieszczenia o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C. Moc elektryczna sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW, a rzeczywisty współczynnik COP urządzenia stanowi &lt;b&gt;{efrac}&lt;/b&gt; wartości COP Carnota. Obliczyć strumień ciepła dostarczanego do pomieszczenia.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP pompy ciepła. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_H\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 11 — Sprawność klimatyzatora (pompa ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Klimatyzator pracujący w trybie grzania pobiera ciepło z powietrza zewnętrznego o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C i oddaje je do pomieszczenia o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C. Moc elektryczna sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW, a rzeczywisty współczynnik COP urządzenia stanowi &lt;b&gt;{efrac}&lt;/b&gt; wartości COP Carnota. Obliczyć strumień ciepła dostarczanego do pomieszczenia.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_H\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP pompy ciepła. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -9048,10 +9048,10 @@
             <text>Zad12_Rekuperator</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 12 — Rekuperator powietrza (sprawność temperaturowa)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W rekuperatorze krzyżowym powietrze nawiewane (świeże) o temperaturze &lt;b&gt;{tzew}&lt;/b&gt; °C jest podgrzewane powietrzem wywiewanym (zużytym) o temperaturze &lt;b&gt;{twew}&lt;/b&gt; °C. Sprawność temperaturowa rekuperatora wynosi &lt;b&gt;{eta}&lt;/b&gt; %. Obliczyć temperaturę powietrza nawiewanego po przejściu przez rekuperator.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawność rekuperatora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_{naw,wy}\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 12 — Rekuperator powietrza (sprawność temperaturowa)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W rekuperatorze krzyżowym powietrze nawiewane (świeże) o temperaturze &lt;b&gt;{tzew}&lt;/b&gt; °C jest podgrzewane powietrzem wywiewanym (zużytym) o temperaturze &lt;b&gt;{twew}&lt;/b&gt; °C. Sprawność temperaturowa rekuperatora wynosi &lt;b&gt;{eta}&lt;/b&gt; %. Obliczyć temperaturę powietrza nawiewanego po przejściu przez rekuperator.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_{naw,wy}\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawność rekuperatora.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -9767,10 +9767,10 @@
             <text>Zad13a_Mieszanie_t</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 13a — Mieszanie strumieni powietrza wilgotnego&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W centrali wentylacyjnej miesza się dwa strumienie powietrza:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Strumień 1 (zewnętrzny): &lt;b&gt;{m1}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;/li&gt;&lt;li&gt;Strumień 2 (obiegowy): &lt;b&gt;{m2}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t2}&lt;/b&gt; °C.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Obliczyć temperaturę powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_M\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 13a — Mieszanie strumieni powietrza wilgotnego&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W centrali wentylacyjnej miesza się dwa strumienie powietrza:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Strumień 1 (zewnętrzny): &lt;b&gt;{m1}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;/li&gt;&lt;li&gt;Strumień 2 (obiegowy): &lt;b&gt;{m2}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t2}&lt;/b&gt; °C.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Obliczyć temperaturę powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_M\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -10711,10 +10711,10 @@
             <text>Zad13b_Mieszanie_X</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 13b — Mieszanie strumieni (zawilżenie)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 13a) Zawilżenie strumieni wynosi: \(X_1\) = &lt;b&gt;{X1}&lt;/b&gt; g/kg, \(X_2\) = &lt;b&gt;{X2}&lt;/b&gt; g/kg. Strumienie masy: &lt;b&gt;{m1}&lt;/b&gt; kg/s i &lt;b&gt;{m2}&lt;/b&gt; kg/s. Obliczyć zawilżenie powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_M\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 13b — Mieszanie strumieni (zawilżenie)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 13a) Zawilżenie strumieni wynosi: \(X_1\) = &lt;b&gt;{X1}&lt;/b&gt; g/kg, \(X_2\) = &lt;b&gt;{X2}&lt;/b&gt; g/kg. Strumienie masy: &lt;b&gt;{m1}&lt;/b&gt; kg/s i &lt;b&gt;{m2}&lt;/b&gt; kg/s. Obliczyć zawilżenie powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_M\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text/>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -11655,10 +11655,10 @@
             <text>Zad03c_Elektrownia_gazowa</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 3c — Sprawność elektrowni gazowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Turbina gazowa pracuje w obiegu Braytona między temperaturą spalin za komorą spalania &lt;b&gt;{TH}&lt;/b&gt; °C a temperaturą powietrza na wlocie do sprężarki &lt;b&gt;{TL}&lt;/b&gt; °C. Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota dla tych temperatur. Obliczyć strumień ciepła doprowadzonego w komorze spalania.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów, związek moc–ciepło (\(\dot{{Q}}_{{dop}} = P/\eta\)). Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_{{dop}}\) [MW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 3c — Sprawność elektrowni gazowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Turbina gazowa pracuje w obiegu Braytona między temperaturą spalin za komorą spalania &lt;b&gt;{TH}&lt;/b&gt; °C a temperaturą powietrza na wlocie do sprężarki &lt;b&gt;{TL}&lt;/b&gt; °C. Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota dla tych temperatur. Obliczyć strumień ciepła doprowadzonego w komorze spalania.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_{{dop}}\) [MW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(\eta_C = 1 - T_L/T_H\) (K), \(\eta_{{rz}} = {efrac} \cdot \eta_C\), \(\dot{{Q}}_{{dop}} = P_{{el}}/\eta_{{rz}}\). Wykład W9 „6. Obieg Joule'a-Braytona”, W6 „Sprawność obiegu Carnota”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów, związek moc–ciepło (\(\dot{{Q}}_{{dop}} = P/\eta\)). Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(\eta_C = 1 - T_L/T_H\) (K), \(\eta_{{rz}} = {efrac} \cdot \eta_C\), \(\dot{{Q}}_{{dop}} = P_{{el}}/\eta_{{rz}}\). Wykład W9 „6. Obieg Joule'a-Braytona”, W6 „Sprawność obiegu Carnota”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>4.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -12599,10 +12599,10 @@
             <text>Zad04_Sciana_dwuwarstwowa</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 4 — Przenikanie ciepła przez ścianę dwuwarstwową&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Ściana składa się z dwóch warstw:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;beton o grubości &lt;b&gt;{d1}&lt;/b&gt; cm i \(\lambda_1\) = 1,30 W/(m·K),&lt;/li&gt;&lt;li&gt;wełna mineralna o grubości &lt;b&gt;{d2}&lt;/b&gt; cm i \(\lambda_2\) = 0,035 W/(m·K).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Pominąć opory przejmowania ciepła na powierzchniach (\(R'_{{si}} = R'_{{se}} = 0\)). Obliczyć współczynnik przenikania ciepła \(U\) przegrody.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: opory warstw dodaje się szeregowo: \(U = 1 / \sum(\delta_i / \lambda_i)\). Grubości przelicz na metry.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(U\) [W/(m²·K)]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 4 — Przenikanie ciepła przez ścianę dwuwarstwową&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Ściana składa się z dwóch warstw:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;beton o grubości &lt;b&gt;{d1}&lt;/b&gt; cm i \(\lambda_1\) = 1,30 W/(m·K),&lt;/li&gt;&lt;li&gt;wełna mineralna o grubości &lt;b&gt;{d2}&lt;/b&gt; cm i \(\lambda_2\) = 0,035 W/(m·K).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Pominąć opory przejmowania ciepła na powierzchniach (\(R'_{{si}} = R'_{{se}} = 0\)). Obliczyć współczynnik przenikania ciepła \(U\) przegrody.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(U\) [W/(m²·K)]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(R' = \delta_1/\lambda_1 + \delta_2/\lambda_2\) [m²·K/W], \(U = 1/R'\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)” i „Rozwiązanie Zadania” (cegła + styropian).&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: opory warstw dodaje się szeregowo: \(U = 1 / \sum(\delta_i / \lambda_i)\). Grubości przelicz na metry.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(R' = \delta_1/\lambda_1 + \delta_2/\lambda_2\) [m²·K/W], \(U = 1/R'\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)” i „Rozwiązanie Zadania” (cegła + styropian).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -13093,10 +13093,10 @@
             <text>Zad04b_Sciana_trojwarstwowa</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 4b — Ściana trójwarstwowa&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Ściana składa się z trzech warstw:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;tynk wewnętrzny o grubości &lt;b&gt;{d1}&lt;/b&gt; cm i \(\lambda_1\) = 0,70 W/(m·K),&lt;/li&gt;&lt;li&gt;cegła o grubości &lt;b&gt;{d2}&lt;/b&gt; cm i \(\lambda_2\) = 0,77 W/(m·K),&lt;/li&gt;&lt;li&gt;styropian o grubości &lt;b&gt;{d3}&lt;/b&gt; cm i \(\lambda_3\) = 0,040 W/(m·K).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Pominąć opory przejmowania ciepła na powierzchniach. Obliczyć współczynnik przenikania ciepła \(U\) przegrody.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: opory warstw dodaje się szeregowo: \(U = 1 / \sum(\delta_i / \lambda_i)\). Grubości przelicz na metry.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(U\) [W/(m²·K)]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 4b — Ściana trójwarstwowa&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Ściana składa się z trzech warstw:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;tynk wewnętrzny o grubości &lt;b&gt;{d1}&lt;/b&gt; cm i \(\lambda_1\) = 0,70 W/(m·K),&lt;/li&gt;&lt;li&gt;cegła o grubości &lt;b&gt;{d2}&lt;/b&gt; cm i \(\lambda_2\) = 0,77 W/(m·K),&lt;/li&gt;&lt;li&gt;styropian o grubości &lt;b&gt;{d3}&lt;/b&gt; cm i \(\lambda_3\) = 0,040 W/(m·K).&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Pominąć opory przejmowania ciepła na powierzchniach. Obliczyć współczynnik przenikania ciepła \(U\) przegrody.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(U\) [W/(m²·K)]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(R' = \sum \delta_i/\lambda_i\) [m²·K/W], \(U = 1/R'\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: opory warstw dodaje się szeregowo: \(U = 1 / \sum(\delta_i / \lambda_i)\). Grubości przelicz na metry.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(R' = \sum \delta_i/\lambda_i\) [m²·K/W], \(U = 1/R'\). Wykład W14 „Przenikanie Ciepła (Współczynnik U)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -13812,10 +13812,10 @@
             <text>Zad05_Nawilzanie_adiabatyczne</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 5 — Nawilżanie adiabatyczne powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{t1}&lt;/b&gt; °C i zawilżeniu &lt;b&gt;{X1}&lt;/b&gt; g/kg wpływa do komory zraszania, gdzie jest nawilżane rozpyloną wodą (ciśnienie 0,1 MPa). W wyniku odparowania wody temperatura powietrza spada o &lt;b&gt;{dt}&lt;/b&gt; K. Obliczyć zawilżenie powietrza po nawilżeniu \(X_2\).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: nawilżanie wodą przebiega przy \(h\) = const — stan 2 leży na izentalpie \(h_1 = h_2\) przechodzącej przez stan 1, w temperaturze \(t_2 = t_1 - \Delta t\). Odczytaj \(X_2\) z wykresu h‑X (od punktu 1 wzdłuż izentalpy do izotermy \(t_2\)) albo oblicz: zapisz \(h_1 = h_2\) ze wzoru na entalpię (Karta Wzorów — powietrze wilgotne) i wyznacz \(X_2\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_2\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 5 — Nawilżanie adiabatyczne powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{t1}&lt;/b&gt; °C i zawilżeniu &lt;b&gt;{X1}&lt;/b&gt; g/kg wpływa do komory zraszania, gdzie jest nawilżane rozpyloną wodą (ciśnienie 0,1 MPa). W wyniku odparowania wody temperatura powietrza spada o &lt;b&gt;{dt}&lt;/b&gt; K. Obliczyć zawilżenie powietrza po nawilżeniu \(X_2\).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_2\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(h_1 = 1{,}005\,t_1 + X_1(2501 + 1{,}86\,t_1)\) (X w kg/kg), \(t_2 = t_1 - \Delta t\), z \(h_2 = h_1\): \(X_2 = (h_1 - 1{,}005\,t_2)/(2501 + 1{,}86\,t_2)\) (na wykresie h‑X: punkt 2 na izentalpie przez punkt 1). Wykład W12 „Nawilżanie Adiabatyczne (Wodą)”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: nawilżanie wodą przebiega przy \(h\) = const — stan 2 leży na izentalpie \(h_1 = h_2\) przechodzącej przez stan 1, w temperaturze \(t_2 = t_1 - \Delta t\). Odczytaj \(X_2\) z wykresu h‑X (od punktu 1 wzdłuż izentalpy do izotermy \(t_2\)) albo oblicz: zapisz \(h_1 = h_2\) ze wzoru na entalpię (Karta Wzorów — powietrze wilgotne) i wyznacz \(X_2\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(h_1 = 1{,}005\,t_1 + X_1(2501 + 1{,}86\,t_1)\) (X w kg/kg), \(t_2 = t_1 - \Delta t\), z \(h_2 = h_1\): \(X_2 = (h_1 - 1{,}005\,t_2)/(2501 + 1{,}86\,t_2)\) (na wykresie h‑X: punkt 2 na izentalpie przez punkt 1). Wykład W12 „Nawilżanie Adiabatyczne (Wodą)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>4.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -14531,10 +14531,10 @@
             <text>Zad05b_Nagrzewnica</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 5b — Ogrzewanie powietrza w nagrzewnicy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze wilgotne o temperaturze &lt;b&gt;{t1}&lt;/b&gt; °C, wilgotności względnej &lt;b&gt;{phi1}&lt;/b&gt; % i ciśnieniu barometrycznym 1013 hPa przepływa przez nagrzewnicę elektryczną, która podnosi jego temperaturę do &lt;b&gt;{t2}&lt;/b&gt; °C. Obliczyć wilgotność względną powietrza na wylocie z nagrzewnicy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: ogrzewanie bez dodawania wody — zawilżenie \(X\) i ciśnienie cząstkowe pary \(p_w\) nie zmieniają się; zmienia się tylko \(\varphi = p_w/p_s(t)\), bo rośnie ciśnienie nasycenia \(p_s(t)\). Ciśnienia nasycenia odczytaj z tablic (lub \(\varphi_2\) wprost z wykresu h‑X).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\varphi_2\) [%]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 5b — Ogrzewanie powietrza w nagrzewnicy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze wilgotne o temperaturze &lt;b&gt;{t1}&lt;/b&gt; °C, wilgotności względnej &lt;b&gt;{phi1}&lt;/b&gt; % i ciśnieniu barometrycznym 1013 hPa przepływa przez nagrzewnicę elektryczną, która podnosi jego temperaturę do &lt;b&gt;{t2}&lt;/b&gt; °C. Obliczyć wilgotność względną powietrza na wylocie z nagrzewnicy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\varphi_2\) [%]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(p_w = \varphi_1 \, p_s(t_1)\) = const, \(\varphi_2 = p_w / p_s(t_2) = \varphi_1 \, p_s(t_1)/p_s(t_2)\). Wykład W12 „Przykłady Obliczeniowe – Zadanie 1: Ogrzewanie Powietrza”, „Przemiana 1: Ogrzewanie izobaryczne (X = const)”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: ogrzewanie bez dodawania wody — zawilżenie \(X\) i ciśnienie cząstkowe pary \(p_w\) nie zmieniają się; zmienia się tylko \(\varphi = p_w/p_s(t)\), bo rośnie ciśnienie nasycenia \(p_s(t)\). Ciśnienia nasycenia odczytaj z tablic (lub \(\varphi_2\) wprost z wykresu h‑X).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(p_w = \varphi_1 \, p_s(t_1)\) = const, \(\varphi_2 = p_w / p_s(t_2) = \varphi_1 \, p_s(t_1)/p_s(t_2)\). Wykład W12 „Przykłady Obliczeniowe – Zadanie 1: Ogrzewanie Powietrza”, „Przemiana 1: Ogrzewanie izobaryczne (X = const)”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>3.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -15250,10 +15250,10 @@
             <text>Zad10_Wymiennik_przeciwprad</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 10 — Wymiennik ciepła przeciwprądowy (strumień ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W wymienniku przeciwprądowym woda jest ogrzewana od &lt;b&gt;{t1z}&lt;/b&gt; °C do &lt;b&gt;{t2z}&lt;/b&gt; °C strumieniem gorącej wody, która wchodzi z temperaturą &lt;b&gt;{t1g}&lt;/b&gt; °C i wychodzi z temperaturą &lt;b&gt;{t2g}&lt;/b&gt; °C. Współczynnik przenikania ciepła wymiennika wynosi \(U\) = &lt;b&gt;{U}&lt;/b&gt; W/(m²·K), a powierzchnia wymiany ciepła &lt;b&gt;{A}&lt;/b&gt; m². Obliczyć strumień ciepła wymienianego w wymienniku.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: \(\dot{{Q}} = U A \, \Delta T_{{lm}}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2) / \ln(\Delta T_1 / \Delta T_2)\); w przeciwprądzie \(\Delta T_1 = t_{g,we} - t_{z,wy}\), \(\Delta T_2 = t_{g,wy} - t_{z,we}\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 10 — Wymiennik ciepła przeciwprądowy (strumień ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W wymienniku przeciwprądowym woda jest ogrzewana od &lt;b&gt;{t1z}&lt;/b&gt; °C do &lt;b&gt;{t2z}&lt;/b&gt; °C strumieniem gorącej wody, która wchodzi z temperaturą &lt;b&gt;{t1g}&lt;/b&gt; °C i wychodzi z temperaturą &lt;b&gt;{t2g}&lt;/b&gt; °C. Współczynnik przenikania ciepła wymiennika wynosi \(U\) = &lt;b&gt;{U}&lt;/b&gt; W/(m²·K), a powierzchnia wymiany ciepła &lt;b&gt;{A}&lt;/b&gt; m². Obliczyć strumień ciepła wymienianego w wymienniku.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(\Delta T_1 = t_{g,we} - t_{z,wy}\), \(\Delta T_2 = t_{g,wy} - t_{z,we}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2)/\ln(\Delta T_1/\Delta T_2)\), \(\dot{{Q}} = U A \Delta T_{{lm}}\) (W → kW). Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: \(\dot{{Q}} = U A \, \Delta T_{{lm}}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2) / \ln(\Delta T_1 / \Delta T_2)\); w przeciwprądzie \(\Delta T_1 = t_{g,we} - t_{z,wy}\), \(\Delta T_2 = t_{g,wy} - t_{z,we}\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(\Delta T_1 = t_{g,we} - t_{z,wy}\), \(\Delta T_2 = t_{g,wy} - t_{z,we}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2)/\ln(\Delta T_1/\Delta T_2)\), \(\dot{{Q}} = U A \Delta T_{{lm}}\) (W → kW). Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>4.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -16644,10 +16644,10 @@
             <text>Zad10b_Wymiennik_wspolprad</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 10b — Wymiennik współprądowy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W wymienniku współprądowym olej jest chłodzony od &lt;b&gt;{t1g}&lt;/b&gt; °C do &lt;b&gt;{t2g}&lt;/b&gt; °C wodą wchodzącą z temperaturą &lt;b&gt;{t1z}&lt;/b&gt; °C i wychodzącą z temperaturą &lt;b&gt;{t2z}&lt;/b&gt; °C. Współczynnik przenikania ciepła wynosi \(U\) = &lt;b&gt;{U}&lt;/b&gt; W/(m²·K), powierzchnia wymiany ciepła &lt;b&gt;{A}&lt;/b&gt; m². Obliczyć strumień ciepła wymienianego w wymienniku.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: dla wymiennika współprądowego \(\Delta T_1 = t_{g,we} - t_{z,we}\), \(\Delta T_2 = t_{g,wy} - t_{z,wy}\). Dalej: \(\dot{{Q}} = U A \, \Delta T_{{lm}}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2) / \ln(\Delta T_1 / \Delta T_2)\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 10b — Wymiennik współprądowy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W wymienniku współprądowym olej jest chłodzony od &lt;b&gt;{t1g}&lt;/b&gt; °C do &lt;b&gt;{t2g}&lt;/b&gt; °C wodą wchodzącą z temperaturą &lt;b&gt;{t1z}&lt;/b&gt; °C i wychodzącą z temperaturą &lt;b&gt;{t2z}&lt;/b&gt; °C. Współczynnik przenikania ciepła wynosi \(U\) = &lt;b&gt;{U}&lt;/b&gt; W/(m²·K), powierzchnia wymiany ciepła &lt;b&gt;{A}&lt;/b&gt; m². Obliczyć strumień ciepła wymienianego w wymienniku.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;Tok rozwiązania: \(\Delta T_1 = t_{g,we} - t_{z,we}\), \(\Delta T_2 = t_{g,wy} - t_{z,wy}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2)/\ln(\Delta T_1/\Delta T_2)\), \(\dot{{Q}} = U A \Delta T_{{lm}}\) (W → kW). Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;i&gt;Wskazówka: dla wymiennika współprądowego \(\Delta T_1 = t_{g,we} - t_{z,we}\), \(\Delta T_2 = t_{g,wy} - t_{z,wy}\). Dalej: \(\dot{{Q}} = U A \, \Delta T_{{lm}}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2) / \ln(\Delta T_1 / \Delta T_2)\).&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Tok rozwiązania: \(\Delta T_1 = t_{g,we} - t_{z,we}\), \(\Delta T_2 = t_{g,wy} - t_{z,wy}\), \(\Delta T_{{lm}} = (\Delta T_1 - \Delta T_2)/\ln(\Delta T_1/\Delta T_2)\), \(\dot{{Q}} = U A \Delta T_{{lm}}\) (W → kW). Wykład W14 „5. Wymienniki Ciepła”, „Współprąd vs Przeciwprąd”.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>4.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
