@@ -7,10 +7,10 @@
     </question>
     <question type="calculated">
         <name>
-            <text>Ćw2 Zad. dom. – Strumień wody [kg/s]</text>
+            <text>Ćw2 Zad. dom. – Strumień wody [kg/h]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;Z chłodnicy sprężarki odzyskujemy &lt;b&gt;{eta_odz}&lt;/b&gt;% ciepła, tj. \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{eta_odz}&lt;/b&gt;/100 × &lt;b&gt;{Qch}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Chcemy podgrzać wodę z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C. Ciepło właściwe wody: \( c_w = 4190 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymagany strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/s&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wzór:&lt;/em&gt; \( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot \Delta T \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 cyfr znaczących (np. 0,045).&lt;/p&gt;</text>
+            <text>&lt;p&gt;Z chłodnicy sprężarki odzyskujemy &lt;b&gt;{eta_odz}&lt;/b&gt;% ciepła, tj. \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{eta_odz}&lt;/b&gt;/100 × &lt;b&gt;{Qch}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Chcemy podgrzać wodę z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C. Ciepło właściwe wody: \( c_w = 4190 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymagany strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wzór:&lt;/em&gt; \( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot \Delta T \) (wynik w kg/s pomnóż przez 3600).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -33,11 +33,11 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in}))</text>
-            <tolerance>0.04</tolerance>
+            <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 3600</text>
+            <tolerance>0.02</tolerance>
             <tolerancetype>1</tolerancetype>
-            <correctanswerformat>2</correctanswerformat>
-            <correctanswerlength>2</correctanswerlength>
+            <correctanswerformat>1</correctanswerformat>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1922,7 +1922,7 @@
             <text>Ćw2 Zad. dom. – Bilans energetyczny sprężarkowni</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;Wykonaj pełny bilans energetyczny sprężarkowni z odzyskiem ciepła. Uwzględnij:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Moc dostarczoną do sprężarki (silnik elektryczny)&lt;/li&gt;&lt;li&gt;Ciepło odprowadzone w chłodnicy&lt;/li&gt;&lt;li&gt;Ciepło odzyskane&lt;/li&gt;&lt;li&gt;Ciepło tracone do otoczenia&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Narysuj schemat bilansowy i określ, jaka część energii jest „stracona&quot;.&lt;/p&gt;</text>
+            <text>&lt;p&gt;Wykonaj pełny bilans energetyczny sprężarkowni z odzyskiem ciepła. Uwzględnij:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Moc dostarczoną do sprężarki (silnik elektryczny)&lt;/li&gt;&lt;li&gt;Ciepło odprowadzone w chłodnicy&lt;/li&gt;&lt;li&gt;Ciepło odzyskane&lt;/li&gt;&lt;li&gt;Ciepło tracone do otoczenia&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Narysuj schemat bilansowy i określ, jaka część energii jest „stracona".&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>3</defaultgrade>
         <penalty>0</penalty>

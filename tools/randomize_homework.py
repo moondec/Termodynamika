@@ -464,10 +464,9 @@ def generate_cw02(global_data):
     questions = [
         build_category("$course$/Ćw. 2 – Odzysk ciepła ze sprężarki (Praca domowa)"),
 
-        # wynik 0,029–0,107 kg/s: 2 cyfry znaczące (format 2); zaokrąglenie
-        # najgorszego elementu (0,10678 → 0,11) daje 3,0 %, stąd tolerancja 4 %
+        # wynik 104–385 kg/h (w kg/s byłoby 0,03–0,11 – za mało cyfr); 1 miejsce po przecinku
         build_calculated_question(
-            name="Ćw2 Zad. dom. – Strumień wody [kg/s]",
+            name="Ćw2 Zad. dom. – Strumień wody [kg/h]",
             question_html=(
                 '<p>Z chłodnicy sprężarki odzyskujemy '
                 '<b>{eta_odz}</b>% ciepła, tj. '
@@ -477,14 +476,13 @@ def generate_cw02(global_data):
                 'do <b>{tw_out}</b>°C. '
                 'Ciepło właściwe wody: \\( c_w = 4190 \\text{{ J/(kg·K)}} \\).</p>'
                 '<p>Oblicz wymagany strumień masy wody '
-                '\\( \\dot{{m}}_w \\) w <strong>kg/s</strong>.</p>'
-                '<p><em>Wzór:</em> \\( \\dot{{Q}} = \\dot{{m}}_w \\cdot c_w \\cdot \\Delta T \\)</p>'
-                '<p>Wynik podaj z dokładnością do 2 cyfr znaczących (np. 0,045).</p>'
+                '\\( \\dot{{m}}_w \\) w <strong>kg/h</strong>.</p>'
+                '<p><em>Wzór:</em> \\( \\dot{{Q}} = \\dot{{m}}_w \\cdot c_w \\cdot \\Delta T \\) '
+                '(wynik w kg/s pomnóż przez 3600).</p>'
+                '<p>Wynik podaj z dokładnością do 1 miejsca po przecinku.</p>'
             ),
-            formula="{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in}))",
-            tolerance=0.04,
-            variables_map=var_map, global_data=global_data, defaultgrade=2,
-            correct_answer_format=2, correct_answer_length=2
+            formula="{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 3600",
+            variables_map=var_map, global_data=global_data, defaultgrade=2
         ),
 
         # 1 kg/s wody = 60 l/min; zaokrąglenie do 1 miejsca daje do 2,5 % (1,8465 → 1,8)
