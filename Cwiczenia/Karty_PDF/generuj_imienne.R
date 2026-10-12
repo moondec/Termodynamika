@@ -88,7 +88,8 @@ generate_params <- function(seed_val) {
     t_o = sample(-5:5, 1),
     t_k = sample(seq(35, 45, 5), 1),
     # Zad. 6.7: średnica rury jako ułamek średnicy wymaganej dla 12 m/s
-    # (0.6–0.8: rura za mała jak w przykładzie z ćwiczeń, 0.9–1.1: w normie)
+    # (0.6–0.9: rura za mała jak w przykładzie z ćwiczeń – po zaokrągleniu do 10 mm
+    #  mnożnik 0.9 daje ok. 15,5–16,5 m/s; 1.0–1.1: w normie 8–15 m/s)
     f_rura = sample(c(0.6, 0.7, 0.8, 0.9, 1.0, 1.1), 1),
     t_zima = sample(-15:-5, 1),
     t_lato = sample(seq(28, 36, 2), 1),

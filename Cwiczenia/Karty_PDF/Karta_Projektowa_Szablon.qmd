@@ -258,6 +258,7 @@ h2s_t <- hf_2 + x_is * (hg_2 - hf_2)
 N_turb_ideal <- p$m_dot_turb * (h1_t - h2s_t)
 h2r_t <- h1_t - p$eta_is * (h1_t - h2s_t)
 N_turb_real <- p$m_dot_turb * (h1_t - h2r_t)
+x_r <- (h2r_t - hf_2) / (hg_2 - hf_2)   # stopień suchości za turbiną rzeczywistą (>1 = para przegrzana)
 eta_Carnot <- (1 - (p$t + 273.15) / T1t_K) * 100  # T_L = otoczenie (hala)
 
 # ---- Obliczenia Ćw.5 ----
@@ -649,7 +650,7 @@ Dział spawalniczy potrzebuje przechować **`r p$m_N2_tank` kg** azotu przy ciś
 
 ## Zad. 1.3 --- Odczyt dokumentacji zagranicznej
 
-**Kontekst:** Na tabliczce znamionowej importowanego termicznego zaworu bezpieczeństwa widnieje: *"Opening (set) temperature: `r p$T_valve` $^\circ$F"* --- zawór otwiera się po osiągnięciu tej temperatury. Musisz ją przeliczyć na stopnie Celsjusza i ocenić, czy zawór nadaje się do instalacji, w której maksymalna temperatura procesu wynosi **`r t_proces_max` $^\circ$C** (zawór nie może otwierać się podczas normalnej pracy).
+**Kontekst:** Na tabliczce znamionowej importowanego termicznego zaworu bezpieczeństwa (temperaturowo-ciśnieniowego, T\&P) widnieje: *"Opening (set) temperature: `r p$T_valve` $^\circ$F"* --- zawór otwiera się po osiągnięciu tej temperatury. Musisz ją przeliczyć na stopnie Celsjusza i ocenić, czy zawór nadaje się do instalacji, w której maksymalna temperatura procesu wynosi **`r t_proces_max` $^\circ$C** (zawór nie może otwierać się podczas normalnej pracy). **Reguła:** zawór nadaje się, gdy $t_{\text{otw}} > t_{\text{proces,max}}$ --- otwiera się dopiero powyżej temperatury normalnej pracy.
 
 `r if(!sa) "\\vspace{1.5cm}"`
 - `r p$T_valve` $^\circ$F = `r ans(T_valve_C, "°C")`
@@ -937,6 +938,7 @@ Wyznacz $h_{2s} = h' + x_2(h'' - h')$. Dla `r p$p2_turb` bar: $h' \approx$ `r f(
 `r if(!sa) "\\vspace{2cm}"`
 - $h_{2r}$ = `r ans(h2r_t, "kJ/kg")`
 - Rzeczywista moc $N_r$ = `r ans(N_turb_real, "kW")`
+- Stan pary za turbiną rzeczywistą (porównaj $h_{2r}$ z $h''$ przy $p_2$ = `r f(hg_2, 1)` kJ/kg): `r if(sa) { if (h2r_t < hg_2) paste0("\\textbf{\\textcolor{answercolor}{para mokra}}, $x_r = ", f(x_r, 3), "$ (straty podnoszą entalpię wylotową, więc $x_r > x_{2s}$).") else paste0("\\textbf{\\textcolor{answercolor}{para przegrzana}} --- $h_{2r} > h''$, punkt 2r leży nad krzywą nasycenia.") } else "...................................... (mokra / przegrzana, uzasadnij)"`
 `r sol("\n\n\\textcolor{red}{$$ h_{2r} = %.1f - %.2f \\cdot (%.1f - %.1f) = %.1f \\text{ kJ/kg} $$} \n\n \\textcolor{red}{$$ N_r = %.3f \\cdot (%.1f - %.1f) = %.1f \\text{ kW} $$}", h1_t, p$eta_is, h1_t, h2s_t, h2r_t, p$m_dot_turb, h1_t, h2r_t, N_turb_real)`
 
 ```{r task_4.5_setup, include=FALSE}
@@ -1242,7 +1244,7 @@ Ostatni system do zaudytowania --- **centrala klimatyzacyjna** obsługująca hal
 
 **Cel audytu:** Zaprojektuj procesy przygotowania powietrza (zima/lato), określ moce urządzeń i zaproponuj oszczędności.
 
-**Narzędzie:** Do rozwiązania zadań wykorzystaj wykres **h-X (Molliera) dla powietrza wilgotnego**.
+**Narzędzie:** Do rozwiązania zadań wykorzystaj wykres **h-X (Molliera) dla powietrza wilgotnego**. Wykres sporządzono dla $p = 0{,}1$ MPa, a obliczenia w kluczu wykonano dla $101{,}325$ kPa, dlatego zawartości wilgoci $X$ odczytane z wykresu są o ok. 1\% wyższe --- oba wyniki są poprawne.
 
 ## Zad. 7.1 --- Proces Zimowy (Ogrzewanie + Nawilżanie) \Tablice
 
