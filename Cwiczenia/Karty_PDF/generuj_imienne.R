@@ -202,9 +202,12 @@ for (i in 1:N) {
     fname  <- if (wersja == "klucz") fname_klucz else fname_student
     subdir <- if (wersja == "klucz") "Klucze" else "Studenci"
 
-    cmd <- sprintf('quarto render "%s" %s -o "%s" --quiet 2>&1',
-                   template_path, build_pflags(sys_params[setdiff(names(sys_params), tylko_csv)]), fname)
-    res <- system(cmd, intern = TRUE)
+    # system2 zamiast system(): na Windows system() nie używa powłoki,
+    # więc "2>&1" trafiałoby do quarto jako argument
+    qargs <- c("render", shQuote(template_path),
+               build_pflags(sys_params[setdiff(names(sys_params), tylko_csv)]),
+               "-o", shQuote(fname), "--quiet")
+    res <- suppressWarnings(system2("quarto", qargs, stdout = TRUE, stderr = TRUE))
 
     if (!is.null(attr(res, "status")) && attr(res, "status") != 0) {
       cat(sprintf("ERR(%s)\n", wersja))

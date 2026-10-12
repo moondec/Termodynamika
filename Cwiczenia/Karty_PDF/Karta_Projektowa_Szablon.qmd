@@ -512,7 +512,7 @@ Twoim pierwszym zleceniem jest **kompleksowy audyt energetyczny hali produkcyjne
 | | Nadciśnienie $p_{\text{man}}$ | `r p$p_man` bar |
 | | Temperatura w hali | `r p$t` $^\circ$C |
 | | Ciśnienie atmosf. (barometr) | `r p$p_atm` mmHg |
-| **Sprężarka tłokowa** | Ciśnienie tłoczenia $p_2$ | `r p$p2` bar |
+| **Sprężarka tłokowa** | Ciśnienie tłoczenia $p_2$ (absolutne) | `r p$p2` bar |
 | | Wykładnik politropy $n$ | `r p$n_poly` |
 | | Wydajność $\dot{V}_n$ | `r p$Vn` m$^3$/h |
 | **Kocioł parowy** | Ciśnienie pary | `r p$p_kociol` bar |
@@ -586,7 +586,7 @@ Musisz przygotować dokumentację techniczną zbiornika do UDT (Urząd Dozoru Te
 
 ## Zad. 1.2 --- Próba hydrauliczna
 
-**Kontekst:** Inspektor UDT wymaga próby hydraulicznej --- zbiornik napełnia się wodą i podnosi w nim ciśnienie do ciśnienia próbnego $p_{\text{prob}} = 1{,}5 \cdot p_{\text{rob}}$ (gdzie $p_{\text{rob}} = p_{\text{man}}$ --- nadciśnienie robocze). Zanim to zrobimy, musimy wiedzieć, ile waży zbiornik pełen wody --- czy posadzka wytrzyma?
+**Kontekst:** Inspektor UDT wymaga próby hydraulicznej --- zbiornik napełnia się wodą i podnosi w nim ciśnienie do ciśnienia próbnego $p_{\text{prob}} = 1{,}5 \cdot PS$, liczonego od ciśnienia dopuszczalnego zbiornika $PS$ (konstrukcyjnego, nie roboczego); przyjmij, że $PS$ równa się nadciśnieniu roboczemu $p_{\text{man}}$. Zanim to zrobimy, musimy wiedzieć, ile waży zbiornik pełen wody --- czy posadzka wytrzyma?
 
 **Metodyka:** $m_w = \rho_w \cdot V$, gdzie $\rho_w = 1000$ kg/m$^3$.
 
@@ -1343,7 +1343,7 @@ $t_M = \frac{r}{100} \cdot t_W + \left(1 - \frac{r}{100}\right) \cdot t_Z$, anal
 - Redukcja obciążenia osuszania: `r ans(redukcja_prc, "\\%", d=0)`
 `r sol("\n\n\\textcolor{red}{$$ \\text{Redukcja} = \\left(1 - \\frac{%.1f}{%.1f}\\right) \\cdot 100 = %.0f \\%% $$}", dX_z_rec, dX_bez_rec, redukcja_prc)`
 
-`r reflection("*Dodatkowo rozważ: Oceń skalę oszczędności energii wynikającą z recyrkulacji. Jakie ograniczenia (np. higieniczne --- min. 30 m$^3$/h powietrza świeżego na osobę) należy uwzględnić?*")`
+`r reflection("*Dodatkowo rozważ: Oceń skalę oszczędności energii wynikającą z recyrkulacji. Jakie ograniczenia należy uwzględnić (np. higieniczne --- w pomieszczeniach klimatyzowanych min. 30 m$^3$/h powietrza zewnętrznego na osobę wg PN-B-03430/Az3:2000 przywołanej w Warunkach Technicznych; ogólnie 20 m$^3$/h)?*")`
 
 ## Zad. 7.7 --- Ilość Kondensatu (Lato) \Tablice
 
