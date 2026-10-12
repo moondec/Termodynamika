@@ -10,7 +10,7 @@
             <text>Ćw5 Zad. dom. – Nowy strumień wody [kg/s]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Wymiennik ciepła spaliny–woda ma moc \( \dot{{Q}} = \) &lt;b&gt;{Qwym}&lt;/b&gt; kW. Temperatura wylotowa wody: &lt;b&gt;{tw_out_new}&lt;/b&gt;°C, wlotowa: &lt;b&gt;{tw_in}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Ciepło właściwe wody: \( c_w = 4{{,}}19 \text{{ kJ/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/s&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot (T_{{wyj}} - T_{{wej}}) \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Wymiennik ciepła spaliny–woda ma moc \( \dot{{Q}} = \) &lt;b&gt;{Qwym}&lt;/b&gt; kW. Temperatura wylotowa wody: &lt;b&gt;{tw_out_new}&lt;/b&gt;°C, wlotowa: &lt;b&gt;{tw_in}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Ciepło właściwe wody: \( c_w = 4{{,}}19 \text{{ kJ/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/s&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot (T_{{wyj}} - T_{{wej}}) \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -34,10 +34,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Qwym} / (4.19 * ({tw_out_new} - {tw_in}))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1176,10 +1176,10 @@
     </question>
     <question type="calculated">
         <name>
-            <text>Ćw5 Zad. dom. – Generacja entropii [kW/K]</text>
+            <text>Ćw5 Zad. dom. – Generacja entropii [W/K]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Wymiennik ciepła: spaliny chłodzą się z \( T_{{sp,wej}} = \) &lt;b&gt;{Tsp_in}&lt;/b&gt; K do \( T_{{sp,wyj}} = \) &lt;b&gt;{Tsp_out}&lt;/b&gt; K, woda grzeje się z \( T_{{w,wej}} = \) &lt;b&gt;{tw_in}&lt;/b&gt;°C do \( T_{{w,wyj}} = \) &lt;b&gt;{tw_out_new}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Strumień ciepła: \( \dot{{Q}} = \) &lt;b&gt;{Qwym}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Generacja entropii (średnia arytmetyczna):&lt;/p&gt;&lt;p&gt;\( \dot{{S}}_{{gen}} = \dot{{Q}} \cdot \left( \frac{{1}}{{T_{{w,śr}}}} - \frac{{1}}{{T_{{sp,śr}}}} \right) \)&lt;/p&gt;&lt;p&gt;Wynik w &lt;strong&gt;kW/K&lt;/strong&gt; z dokładnością do 3 miejsc po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Wymiennik ciepła: spaliny chłodzą się z \( T_{{sp,wej}} = \) &lt;b&gt;{Tsp_in}&lt;/b&gt; K do \( T_{{sp,wyj}} = \) &lt;b&gt;{Tsp_out}&lt;/b&gt; K, woda grzeje się z \( t_{{w,wej}} = \) &lt;b&gt;{tw_in}&lt;/b&gt;°C do \( t_{{w,wyj}} = \) &lt;b&gt;{tw_out_new}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;Strumień ciepła: \( \dot{{Q}} = \) &lt;b&gt;{Qwym}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Oblicz generację entropii w wymienniku (jak w Zad. 5.2):&lt;/p&gt;&lt;p&gt;\( \dot{{S}}_{{gen}} = \Delta\dot{{S}}_{{sp}} + \Delta\dot{{S}}_{{w}}, \qquad \Delta\dot{{S}}_i = \dot{{m}}_i \, c_i \, \ln\frac{{T_{{i,wyj}}}}{{T_{{i,wej}}}} \)&lt;/p&gt;&lt;p&gt;Pojemności cieplne strumieni wynikają z bilansu energii: \( \dot{{m}}_w c_w = \dot{{Q}} / (t_{{w,wyj}} - t_{{w,wej}}) \), \( \dot{{m}}_s c_s = \dot{{Q}} / (T_{{sp,wej}} - T_{{sp,wyj}}) \). Temperatury wody przelicz na K.&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;W/K&lt;/strong&gt; z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1202,11 +1202,11 @@
             <text/>
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{Qwym} * (1 / (({tw_in} + 273.15 + {tw_out_new} + 273.15) / 2) - 1 / (({Tsp_in} + {Tsp_out}) / 2))</text>
-            <tolerance>5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <text>{Qwym} * 1000 * (log(({tw_out_new} + 273.15) / ({tw_in} + 273.15)) / ({tw_out_new} - {tw_in}) - log({Tsp_in} / {Tsp_out}) / ({Tsp_in} - {Tsp_out}))</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -2348,9 +2348,10 @@
             <text>Ćw5 Zad. dom. – Wpływ zbliżenia temperatur</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Zwiększenie temperatury wylotowej wody zbliża ją do temperatury spalin. Jaki jest efekt na generację entropii?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Zwiększenie temperatury wylotowej wody zbliża ją do temperatury spalin. Jaki jest efekt na generację entropii?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>1</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">
@@ -2371,12 +2372,12 @@
             <text>Ćw5 Zad. dom. – Wnioski z optymalizacji wymiennika</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Na podstawie obliczeń odpowiedz na pytania:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Czy zbliżenie temperatur czynników zmniejsza generację entropii?&lt;/li&gt;&lt;li&gt;Jaki jest praktyczny kompromis między zmniejszaniem ΔT a wielkością wymiennika?&lt;/li&gt;&lt;li&gt;Czy istnieje teoretyczna granica, przy której generacja entropii wynosi zero?&lt;/li&gt;&lt;/ol&gt;]]&gt;</text>
+            <text>&lt;p&gt;Na podstawie obliczeń odpowiedz na pytania:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Czy zbliżenie temperatur czynników zmniejsza generację entropii?&lt;/li&gt;&lt;li&gt;Jaki jest praktyczny kompromis między zmniejszaniem ΔT a wielkością wymiennika?&lt;/li&gt;&lt;li&gt;Czy istnieje teoretyczna granica, przy której generacja entropii wynosi zero?&lt;/li&gt;&lt;/ol&gt;</text>
         </questiontext>
         <defaultgrade>3</defaultgrade>
         <penalty>0</penalty>
         <graderinfo format="html">
-            <text>&lt;![CDATA[&lt;p&gt;1. Tak. 2. Mała ΔT = duży wymiennik (koszt). 3. Tak, ale wymaga nieskończonej powierzchni.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;1. Tak. 2. Mała ΔT = duży wymiennik (koszt). 3. Tak, ale wymaga nieskończonej powierzchni.&lt;/p&gt;</text>
         </graderinfo>
     </question>
 </quiz>

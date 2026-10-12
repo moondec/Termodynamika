@@ -14,7 +14,7 @@
             <text>Zad01_Izochora_powietrze</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 1 — Ogrzewanie gazu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Ciepło właściwe powietrza przy stałej objętości wynosi \(c_v\) = 0,718 kJ/(kg·K). Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izochora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 1 — Ogrzewanie gazu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Ciepło właściwe powietrza przy stałej objętości wynosi \(c_v\) = 0,718 kJ/(kg·K). Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izochora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -38,10 +38,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * 0.718 * ({T2} - {T1})</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -733,7 +733,7 @@
             <text>Zad01b_Izochora_metan</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 1b — Ogrzewanie metanu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg metanu (\(CH_4\), \(c_v\) = 1,708 kJ/(kg·K)) o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: I Zasada dla układu zamkniętego przy V = const.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 1b — Ogrzewanie metanu przy stałej objętości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W zamkniętym zbiorniku o stałej objętości znajduje się &lt;b&gt;{m}&lt;/b&gt; kg metanu (\(CH_4\), \(c_v\) = 1,708 kJ/(kg·K)) o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C. Gaz ogrzano do temperatury &lt;b&gt;{T2}&lt;/b&gt; °C. Obliczyć ilość ciepła doprowadzonego do gazu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: I Zasada dla układu zamkniętego przy V = const.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -757,10 +757,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * 1.708 * ({T2} - {T1})</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1452,7 +1452,7 @@
             <text>Zad02_Turbina</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 2 — Moc turbiny parowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Przez turbinę przepływa para wodna ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość pary na wlocie to \(\omega_1\) = &lt;b&gt;{c1}&lt;/b&gt; m/s, na wylocie \(\omega_2\) = &lt;b&gt;{c2}&lt;/b&gt; m/s. Turbina jest adiabatyczna. Obliczyć moc mechaniczną na wale turbiny.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 2 — Moc turbiny parowej&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Przez turbinę przepływa para wodna ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Prędkość pary na wlocie to \(\omega_1\) = &lt;b&gt;{c1}&lt;/b&gt; m/s, na wylocie \(\omega_2\) = &lt;b&gt;{c2}&lt;/b&gt; m/s. Turbina jest adiabatyczna. Obliczyć moc mechaniczną na wale turbiny.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1476,10 +1476,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{mdot} * (({h1} - {h2}) + ({c1}*{c1} - {c2}*{c2}) / 2000)</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -2621,7 +2621,7 @@
             <text>Zad02b_Sprezarka</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 2b — Moc sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Sprężarka adiabatyczna spręża powietrze ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Różnice energii kinetycznej pominąć. Obliczyć moc napędową sprężarki.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 2b — Moc sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Sprężarka adiabatyczna spręża powietrze ze strumieniem masy &lt;b&gt;{mdot}&lt;/b&gt; kg/s. Entalpia właściwa na wlocie wynosi &lt;b&gt;{h1}&lt;/b&gt; kJ/kg, na wylocie &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Różnice energii kinetycznej pominąć. Obliczyć moc napędową sprężarki.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans turbiny/sprężarki.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(P\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -2645,10 +2645,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{mdot} * ({h2} - {h1})</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -3340,7 +3340,7 @@
             <text>Zad03a_Carnot_sprawnosc</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 3a — Sprawność obiegu Carnota&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Obliczyć sprawność obiegu Carnota (podać jako ułamek, np. 0,72).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\eta_C\) [-]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 3a — Sprawność obiegu Carnota&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Obliczyć sprawność obiegu Carnota (podać jako ułamek, np. 0,72).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawności obiegów. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\eta_C\) [-]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -3364,10 +3364,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>1 - ({TL} + 273.15) / ({TH} + 273.15)</text>
-            <tolerance>0.01</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -3834,7 +3834,7 @@
             <text>Zad03b_Q_odpr_GJ</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 3b — Straty ciepła w skraplaczu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 3a) Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota. Obliczyć ilość ciepła odprowadzonego w skraplaczu w ciągu &lt;b&gt;{th}&lt;/b&gt; godzin pracy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — związek moc–ciepło. 1 MWh = 3,6 GJ.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q_{odpr}\) [GJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 3b — Straty ciepła w skraplaczu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 3a) Siłownia parowa pracuje między temperaturą pary &lt;b&gt;{TH}&lt;/b&gt; °C (kocioł) a temperaturą wody chłodzącej &lt;b&gt;{TL}&lt;/b&gt; °C (skraplacz). Moc elektryczna bloku wynosi &lt;b&gt;{Pel}&lt;/b&gt; MW, a jego sprawność rzeczywista stanowi &lt;b&gt;{efrac}&lt;/b&gt; sprawności Carnota. Obliczyć ilość ciepła odprowadzonego w skraplaczu w ciągu &lt;b&gt;{th}&lt;/b&gt; godzin pracy.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — związek moc–ciepło. 1 MWh = 3,6 GJ.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(Q_{{odpr}}\) [GJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -3858,10 +3858,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({Pel} / ({efrac} * (1 - ({TL}+273.15)/({TH}+273.15))) - {Pel}) * {th} * 3.6</text>
-            <tolerance>5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -5003,7 +5003,7 @@
             <text>Zad06_Izentropa</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 6 — Izentropowe sprężanie powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar sprężono izentropowo do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć temperaturę końcową gazu po sprężeniu. Przyjąć \(\kappa\) = 1,40.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izentropa. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(T_2\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 6 — Izentropowe sprężanie powietrza&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Powietrze o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar sprężono izentropowo do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć temperaturę końcową gazu po sprężeniu. Przyjąć \(\kappa\) = 1,40.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izentropa. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(T_2\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -5027,10 +5027,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({T1} + 273.15) * pow({p2}/{p1}, 0.285714) - 273.15</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -5722,7 +5722,7 @@
             <text>Zad07_Chlodziarka</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 7 — Chłodziarka (obieg lewobieżny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Chłodziarka pracuje między temperaturą wnętrza &lt;b&gt;{TL}&lt;/b&gt; °C a temperaturą otoczenia &lt;b&gt;{TH}&lt;/b&gt; °C. Moc sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW. Obliczyć maksymalny (Carnota) współczynnik wydajności chłodniczej COP oraz maksymalny strumień ciepła odbieranego z wnętrza.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP chłodziarki. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{Q}_L\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 7 — Chłodziarka (obieg lewobieżny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Chłodziarka pracuje między temperaturą wnętrza &lt;b&gt;{TL}&lt;/b&gt; °C a temperaturą otoczenia &lt;b&gt;{TH}&lt;/b&gt; °C. Moc sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW. Obliczyć maksymalny (Carnota) współczynnik wydajności chłodniczej COP oraz maksymalny strumień ciepła odbieranego z wnętrza.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP chłodziarki. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_L\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -5746,10 +5746,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{P} * ({TL} + 273.15) / (({TH} + 273.15) - ({TL} + 273.15))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -6441,7 +6441,7 @@
             <text>Zad08_Izoterma</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 8 — Rozprężanie izotermiczne gazu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W cylindrze z tłokiem znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar. Gaz rozprężono izotermicznie do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć pracę objętościową wykonaną przez gaz. Przyjąć \(R\) = 287 J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izoterma. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(L\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 8 — Rozprężanie izotermiczne gazu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W cylindrze z tłokiem znajduje się &lt;b&gt;{m}&lt;/b&gt; kg powietrza o temperaturze &lt;b&gt;{T1}&lt;/b&gt; °C i ciśnieniu &lt;b&gt;{p1}&lt;/b&gt; bar. Gaz rozprężono izotermicznie do ciśnienia &lt;b&gt;{p2}&lt;/b&gt; bar. Obliczyć pracę objętościową wykonaną przez gaz. Przyjąć \(R\) = 287 J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — przemiany, izoterma. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(L\) [kJ]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -6465,10 +6465,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{m} * 0.287 * ({T1} + 273.15) * log({p1}/{p2})</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -7385,7 +7385,7 @@
             <text>Zad09_Kociol</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 9 — Kocioł parowy (bilans energii)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W kotle parowym wytwarzane jest izobarycznie &lt;b&gt;{mdot}&lt;/b&gt; t/h pary wodnej przegrzanej o entalpii &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Woda zasilająca kocioł ma temperaturę &lt;b&gt;{tw}&lt;/b&gt; °C (entalpia wody: \(h_1 \approx c_w \cdot t_w\), gdzie \(c_w\) = 4,19 kJ/(kg·K)). Obliczyć strumień ciepła, jaki powinien być doprowadzony do kotła.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans kotła/wymiennika. Przelicz t/h na kg/s.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{Q}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 9 — Kocioł parowy (bilans energii)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W kotle parowym wytwarzane jest izobarycznie &lt;b&gt;{mdot}&lt;/b&gt; t/h pary wodnej przegrzanej o entalpii &lt;b&gt;{h2}&lt;/b&gt; kJ/kg. Woda zasilająca kocioł ma temperaturę &lt;b&gt;{tw}&lt;/b&gt; °C (entalpia wody: \(h_1 \approx c_w \cdot t_w\), gdzie \(c_w\) = 4,19 kJ/(kg·K)). Obliczyć strumień ciepła, jaki powinien być doprowadzony do kotła.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — bilans kotła/wymiennika. Przelicz t/h na kg/s.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -7409,10 +7409,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({mdot} * 1000 / 3600) * ({h2} - 4.19 * {tw})</text>
-            <tolerance>5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -8104,7 +8104,7 @@
             <text>Zad11_Klimatyzator</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 11 — Sprawność klimatyzatora (pompa ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Klimatyzator pracujący w trybie grzania pobiera ciepło z powietrza zewnętrznego o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C i oddaje je do pomieszczenia o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C. Moc elektryczna sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW, a rzeczywisty współczynnik COP urządzenia stanowi &lt;b&gt;{efrac}&lt;/b&gt; wartości COP Carnota. Obliczyć strumień ciepła dostarczanego do pomieszczenia.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP pompy ciepła. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{Q}_H\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 11 — Sprawność klimatyzatora (pompa ciepła)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Klimatyzator pracujący w trybie grzania pobiera ciepło z powietrza zewnętrznego o temperaturze &lt;b&gt;{TL}&lt;/b&gt; °C i oddaje je do pomieszczenia o temperaturze &lt;b&gt;{TH}&lt;/b&gt; °C. Moc elektryczna sprężarki wynosi &lt;b&gt;{P}&lt;/b&gt; kW, a rzeczywisty współczynnik COP urządzenia stanowi &lt;b&gt;{efrac}&lt;/b&gt; wartości COP Carnota. Obliczyć strumień ciepła dostarczanego do pomieszczenia.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — COP pompy ciepła. Temperatury w kelwinach.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(\dot{{Q}}_H\) [kW]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -8128,10 +8128,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{P} * {efrac} * ({TH}+273.15) / (({TH}+273.15) - ({TL}+273.15))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -9048,7 +9048,7 @@
             <text>Zad12_Rekuperator</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 12 — Rekuperator powietrza (sprawność temperaturowa)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W rekuperatorze krzyżowym powietrze nawiewane (świeże) o temperaturze &lt;b&gt;{tzew}&lt;/b&gt; °C jest podgrzewane powietrzem wywiewanym (zużytym) o temperaturze &lt;b&gt;{twew}&lt;/b&gt; °C. Sprawność temperaturowa rekuperatora wynosi &lt;b&gt;{eta}&lt;/b&gt; %. Obliczyć temperaturę powietrza nawiewanego po przejściu przez rekuperator.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawność rekuperatora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_{naw,wy}\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 12 — Rekuperator powietrza (sprawność temperaturowa)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W rekuperatorze krzyżowym powietrze nawiewane (świeże) o temperaturze &lt;b&gt;{tzew}&lt;/b&gt; °C jest podgrzewane powietrzem wywiewanym (zużytym) o temperaturze &lt;b&gt;{twew}&lt;/b&gt; °C. Sprawność temperaturowa rekuperatora wynosi &lt;b&gt;{eta}&lt;/b&gt; %. Obliczyć temperaturę powietrza nawiewanego po przejściu przez rekuperator.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — sprawność rekuperatora.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_{naw,wy}\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -9072,10 +9072,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{tzew} + {eta}/100 * ({twew} - {tzew})</text>
-            <tolerance>1</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -9767,7 +9767,7 @@
             <text>Zad13a_Mieszanie_t</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 13a — Mieszanie strumieni powietrza wilgotnego&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W centrali wentylacyjnej miesza się dwa strumienie powietrza:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Strumień 1 (zewnętrzny): &lt;b&gt;{m1}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;/li&gt;&lt;li&gt;Strumień 2 (obiegowy): &lt;b&gt;{m2}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t2}&lt;/b&gt; °C.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Obliczyć temperaturę powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_M\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 13a — Mieszanie strumieni powietrza wilgotnego&lt;/b&gt;&lt;/p&gt;&lt;p&gt;W centrali wentylacyjnej miesza się dwa strumienie powietrza:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Strumień 1 (zewnętrzny): &lt;b&gt;{m1}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;/li&gt;&lt;li&gt;Strumień 2 (obiegowy): &lt;b&gt;{m2}&lt;/b&gt; kg/s, temperatura &lt;b&gt;{t2}&lt;/b&gt; °C.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Obliczyć temperaturę powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(t_M\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -9791,10 +9791,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({m1}*{t1} + {m2}*{t2}) / ({m1}+{m2})</text>
-            <tolerance>1</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -10711,7 +10711,7 @@
             <text>Zad13b_Mieszanie_X</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Zadanie 13b — Mieszanie strumieni (zawilżenie)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 13a) Zawilżenie strumieni wynosi: \(X_1\) = &lt;b&gt;{X1}&lt;/b&gt; g/kg, \(X_2\) = &lt;b&gt;{X2}&lt;/b&gt; g/kg. Strumienie masy: &lt;b&gt;{m1}&lt;/b&gt; kg/s i &lt;b&gt;{m2}&lt;/b&gt; kg/s. Obliczyć zawilżenie powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_M\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Zadanie 13b — Mieszanie strumieni (zawilżenie)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;(kontynuacja Zadania 13a) Zawilżenie strumieni wynosi: \(X_1\) = &lt;b&gt;{X1}&lt;/b&gt; g/kg, \(X_2\) = &lt;b&gt;{X2}&lt;/b&gt; g/kg. Strumienie masy: &lt;b&gt;{m1}&lt;/b&gt; kg/s i &lt;b&gt;{m2}&lt;/b&gt; kg/s. Obliczyć zawilżenie powietrza po zmieszaniu.&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wskazówka: Patrz Karta Wzorów — mieszanie strumieni.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Podaj \(X_M\) [g/kg]:&lt;/b&gt;&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -10735,10 +10735,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({m1}*{X1} + {m2}*{X2}) / ({m1}+{m2})</text>
-            <tolerance>0.5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>

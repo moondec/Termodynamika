@@ -14,10 +14,10 @@
             <text>Cw03_Zad3_2_Moc_kotla</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Kocioł Parowy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Kocioł produkuje parę: \(p =\) &lt;b&gt;{pk}&lt;/b&gt; bar, \(t =\) &lt;b&gt;{tp}&lt;/b&gt; °C, \(\dot{m} =\) &lt;b&gt;{md}&lt;/b&gt; t/h.&lt;br&gt;Woda zasilająca: \(t_{zas} =\) &lt;b&gt;{tz}&lt;/b&gt; °C (entalpia \(h_1 \approx 4.19 \cdot t_{zas}\) kJ/kg).&lt;br&gt;Entalpia pary przegrzanej: przyjmij \(h_2 \approx 2800\) kJ/kg (uproszczenie).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc cieplną kotła \(\dot{Q}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{Q} = \dot{m} \cdot (h_2 - h_1)$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Kocioł Parowy&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Kocioł produkuje parę: \(p =\) &lt;b&gt;{pk}&lt;/b&gt; bar, \(t =\) &lt;b&gt;{tp}&lt;/b&gt; °C, \(\dot{{m}} =\) &lt;b&gt;{md}&lt;/b&gt; t/h.&lt;br&gt;Woda zasilająca: \(t_{{zas}} =\) &lt;b&gt;{tz}&lt;/b&gt; °C (entalpia \(h_1 \approx 4.19 \cdot t_{{zas}}\) kJ/kg).&lt;br&gt;Entalpię pary przegrzanej \(h_2\) odczytaj z tablic pary przegrzanej (Załącznik B, kolumna \(p\); dla temperatury między wierszami interpoluj liniowo).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc cieplną kotła \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{Q}} = \dot{{m}} \cdot (h_2 - h_1)$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;1. \(h_1 = 4.19 \cdot t_{zas}\) kJ/kg.&lt;br&gt;2. \(\dot{m}\) [kg/s] = \(\dot{m}\) [t/h] \(\cdot 1000/3600\).&lt;br&gt;3. \(\dot{Q} = \dot{m} \cdot (2800 - h_1)\) [kW].&lt;/p&gt;</text>
+            <text>&lt;p&gt;1. \(h_1 = 4.19 \cdot t_{{zas}}\) kJ/kg.&lt;br&gt;2. \(h_2\) – Załącznik B (np. 10 bar, 250 °C: 2943 kJ/kg).&lt;br&gt;3. \(\dot{{m}}\) [kg/s] = \(\dot{{m}}\) [t/h] \(\cdot 1000/3600\).&lt;br&gt;4. \(\dot{{Q}} = \dot{{m}} \cdot (h_2 - h_1)\) [kW].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -37,11 +37,11 @@
             <text />
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{md} * 1000 / 3600 * ((2401.59 + 2.7229*{tp} + (-11.4741)*{pk} + 0.032085*{tp}*{pk} + (-0.00163053)*pow({tp},2) + (-0.0237)*pow({pk},2)) - 4.19 * {tz})</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <text>{md} * 1000 / 3600 * ((2933.78 + 2.28353*({tp}-250) + (-3.82234)*({pk}-12.5) + 0.0351747*({tp}-250)*({pk}-12.5) + (-0.00191809)*pow(({tp}-250),2) + (-0.0381269)*pow(({pk}-12.5),2) + 1.49888e-05*pow(({tp}-250),3) + (-0.000283354)*pow(({tp}-250),2)*({pk}-12.5) + 0.000853504*({tp}-250)*pow(({pk}-12.5),2) + (-0.000769777)*pow(({pk}-12.5),3)) - 4.19 * {tz})</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -501,6 +501,456 @@
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>tp</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>200</text>
+                </minimum>
+                <maximum>
+                    <text>300</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>200</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>pk</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>10</text>
+                </minimum>
+                <maximum>
+                    <text>15</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>15</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
         </dataset_definitions>
     </question>
     <question type="calculated">
@@ -508,10 +958,10 @@
             <text>Cw03_Zad3_3_Zuzycie_gazu</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Zużycie Paliwa&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Moc kotła: obliczona z danych powyżej. Sprawność: \(\eta_k =\) &lt;b&gt;{ek}&lt;/b&gt;.&lt;br&gt;Wartość opałowa gazu: \(W_d = 50\) MJ/kg, gęstość gazu: \(\rho = 0.7\) kg/m³.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz zużycie gazu \(\dot{V}_{gaz}\) [m³/h]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{V} = \frac{\dot{Q}}{\eta_k \cdot W_d \cdot \rho}$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Zużycie Paliwa&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Kocioł produkuje parę: \(p =\) &lt;b&gt;{pk}&lt;/b&gt; bar, \(t =\) &lt;b&gt;{tp}&lt;/b&gt; °C, \(\dot{{m}} =\) &lt;b&gt;{md}&lt;/b&gt; t/h; woda zasilająca: \(t_{{zas}} =\) &lt;b&gt;{tz}&lt;/b&gt; °C (\(h_1 \approx 4.19 \cdot t_{{zas}}\) kJ/kg, \(h_2\) z Załącznika B). Moc cieplna kotła \(\dot{{Q}} = \dot{{m}} \cdot (h_2 - h_1)\) [kW] – jak w Zad. 3.2.&lt;br&gt;Sprawność kotła: \(\eta_k =\) &lt;b&gt;{ek}&lt;/b&gt;.&lt;br&gt;Wartość opałowa gazu: \(W_d = 50\) MJ/kg, gęstość gazu: \(\rho = 0.7\) kg/m³.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz zużycie gazu \(\dot{{V}}_{{gaz}}\) [m³/h]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{V}}_{{gaz}} = \frac{\dot{Q}}{\eta_k \cdot W_d \cdot \rho} \cdot 3600 \qquad (\dot{{Q}}\ \text{w kW},\ W_d\ \text{w kJ/kg})$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(\dot{Q}\) [kW] z poprzedniego zadania. \(\dot{V} = \dot{Q} / (\eta \cdot 50000 \cdot 0.7) \cdot 3600\) [m³/h].&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(\dot{{Q}}\) [kW] jak w Zad. 3.2 (\(h_2\) z Załącznika B, \(h_1 = 4.19 \cdot t_{{zas}}\)). \(\dot{{V}}_{{gaz}} = \dot{{Q}} / (\eta_k \cdot 50000 \cdot 0.7) \cdot 3600\) [m³/h].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -531,11 +981,11 @@
             <text />
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{md} * 1000 / 3600 * ((2401.59 + 2.7229*{tp} + (-11.4741)*{pk} + 0.032085*{tp}*{pk} + (-0.00163053)*pow({tp},2) + (-0.0237)*pow({pk},2)) - 4.19 * {tz}) / ({ek} * 50000 * 0.7) * 3600</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <text>{md} * 1000 / 3600 * ((2933.78 + 2.28353*({tp}-250) + (-3.82234)*({pk}-12.5) + 0.0351747*({tp}-250)*({pk}-12.5) + (-0.00191809)*pow(({tp}-250),2) + (-0.0381269)*pow(({pk}-12.5),2) + 1.49888e-05*pow(({tp}-250),3) + (-0.000283354)*pow(({tp}-250),2)*({pk}-12.5) + 0.000853504*({tp}-250)*pow(({pk}-12.5),2) + (-0.000769777)*pow(({pk}-12.5),3)) - 4.19 * {tz}) / ({ek} * 50000 * 0.7) * 3600</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -1220,6 +1670,456 @@
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>tp</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>200</text>
+                </minimum>
+                <maximum>
+                    <text>300</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>200</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>pk</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>10</text>
+                </minimum>
+                <maximum>
+                    <text>15</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>15</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
         </dataset_definitions>
     </question>
     <question type="calculated">
@@ -1227,10 +2127,10 @@
             <text>Cw03_Zad3_5_Stopien_suchosci</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Stopień Suchości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Pomiar w odbiorniku: \(p =\) &lt;b&gt;{pdl}&lt;/b&gt; bar, zmierzona entalpia \(h =\) &lt;b&gt;{hm}&lt;/b&gt; kJ/kg.&lt;br&gt;Z tablic nasycenia przyjmij przybliżenie: \(h\prime \approx 500\) kJ/kg, \(h\prime\prime \approx 2710\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stopień suchości \(x\):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$x = \frac{h - h\prime}{h\prime\prime - h\prime}$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Stopień Suchości&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Pomiar w odbiorniku: \(p =\) &lt;b&gt;{pdl}&lt;/b&gt; bar, zmierzona entalpia \(h =\) &lt;b&gt;{hm}&lt;/b&gt; kJ/kg.&lt;br&gt;Entalpie cieczy i pary nasyconej \(h\prime\), \(h\prime\prime\) odczytaj z tablic nasycenia (Załącznik A, wiersz \(p\)).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stopień suchości \(x\):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$x = \frac{h - h\prime}{h\prime\prime - h\prime}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(x = (h - 500) / (2710 - 500)\). Jeśli \(x &lt; 0.85\) → ryzyko erozji łopatek turbiny.&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(x = (h - h\prime) / (h\prime\prime - h\prime)\) (np. 2 bar: \(h\prime = 504.7\), \(h\prime\prime = 2707\) kJ/kg). Jeśli \(x &lt; 0.85\) → ryzyko erozji łopatek turbiny.&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1250,11 +2150,11 @@
             <text />
         </incorrectfeedback>
         <answer fraction="100">
-            <text>({hm} - (2.1757*pow({pdl},3) + (-29.9971)*pow({pdl},2) + 169.0692*{pdl} + 269.2620)) / ((0.9171*pow({pdl},3) + (-12.5552)*pow({pdl},2) + 65.5716*{pdl} + 2618.0251) - (2.1757*pow({pdl},3) + (-29.9971)*pow({pdl},2) + 169.0692*{pdl} + 269.2620))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <text>({hm} - (417.546 + 117.783*log({pdl}) + 10.4073*pow(log({pdl}),2) + 1.44645*pow(log({pdl}),3))) / ((2674.9 + 44.2915*log({pdl}) + 1.87826*pow(log({pdl}),2) + (-0.70967)*pow(log({pdl}),3)) - (417.546 + 117.783*log({pdl}) + 10.4073*pow(log({pdl}),2) + 1.44645*pow(log({pdl}),3)))</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -1721,10 +2621,10 @@
             <text>Cw03_Zad3_7_Entropia_kotla</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Zmiana Entropii w Kotle&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Woda zasilająca: \(t_{zas} =\) &lt;b&gt;{tz}&lt;/b&gt; °C (entropia \(s_1 \approx 4.19 \cdot \ln(T_1/273.15)\) kJ/(kg·K)).&lt;br&gt;Para wylotowa: przyjmij \(s_2 \approx 6.8\) kJ/(kg·K) (przybliżenie dla pary przegrzanej).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz \(\Delta s = s_2 - s_1\) [kJ/(kg·K)]:&lt;/b&gt;&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Zmiana Entropii w Kotle&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Kocioł produkuje parę: \(p =\) &lt;b&gt;{pk}&lt;/b&gt; bar, \(t =\) &lt;b&gt;{tp}&lt;/b&gt; °C, \(\dot{{m}} =\) &lt;b&gt;{md}&lt;/b&gt; t/h.&lt;br&gt;Woda zasilająca: \(t_{{zas}} =\) &lt;b&gt;{tz}&lt;/b&gt; °C – entropię \(s_1 = s\prime(t_{{zas}})\) odczytaj z Załącznika A2 (lub \(s_1 \approx 4.19 \cdot \ln(T_1/273.15)\) kJ/(kg·K)).&lt;br&gt;Entropię pary przegrzanej \(s_2\) odczytaj z Załącznika B (kolumna \(p\), interpolacja liniowa w temperaturze).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz strumień entropii wody/pary w kotle \(\dot{{S}} = \dot{{m}} \cdot (s_2 - s_1)\) [kW/K]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(s_1 = 4.19 \cdot \ln((t_{zas}+273.15)/273.15)\). \(\Delta s = 6.8 - s_1\).&lt;/p&gt;</text>
+            <text>&lt;p&gt;1. \(s_1 = s\prime(t_{{zas}})\) z Załącznika A2 (np. 60 °C: 0.831 kJ/(kg·K)).&lt;br&gt;2. \(s_2\) z Załącznika B (np. 10 bar, 250 °C: 6.926 kJ/(kg·K)).&lt;br&gt;3. \(\dot{{m}}\) [kg/s] = \(\dot{{m}}\) [t/h] \(\cdot 1000/3600\).&lt;br&gt;4. \(\dot{{S}} = \dot{{m}} \cdot (s_2 - s_1)\) [kW/K] (na 1 kg: \(\Delta s = s_2 - s_1\)).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1744,11 +2644,11 @@
             <text />
         </incorrectfeedback>
         <answer fraction="100">
-            <text>{md} * 1000 / 3600 * ((6.2457 + 0.007326*{tp} + (-0.101072)*{pk} + 0.00006159*{tp}*{pk} + (-0.0000073331)*pow({tp},2) + 0.001669*pow({pk},2)) - (-0.00001826*pow({tz},2) + 0.014766*{tz} + 0.0111))</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <text>{md} * 1000 / 3600 * ((6.80985 + 0.00436404*({tp}-250) + (-0.042532)*({pk}-12.5) + 6.85312e-05*({tp}-250)*({pk}-12.5) + (-7.97314e-06)*pow(({tp}-250),2) + 0.00143735*pow(({pk}-12.5),2) + 3.92716e-08*pow(({tp}-250),3) + (-6.17443e-07)*pow(({tp}-250),2)*({pk}-12.5) + 1.69356e-06*({tp}-250)*pow(({pk}-12.5),2) + (-8.27672e-05)*pow(({pk}-12.5),3)) - (-0.00001826*pow({tz},2) + 0.014766*{tz} + 0.0111))</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -1983,36 +2883,7 @@
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
-        </dataset_definitions>
-    </question>
-    <question type="multichoice">
-        <name>
-            <text>Cw03_Zad3_1_Stan_pary</text>
-        </name>
-        <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 3 — Kocioł Parowy&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Kocioł produkuje parę wodną o parametrach:&lt;/p&gt;
-&lt;p&gt;Ciśnienie \(p=10\) bar, Temperatura \(t=250^\circ C\).&lt;/p&gt;
-&lt;p&gt;Temperatura nasycenia (wrzenia) dla ciśnienia 10 bar wynosi \(t_{sat} \approx 180^\circ C\).&lt;/p&gt;
-&lt;p&gt;W jakim stanie termodynamicznym znajduje się ta para?&lt;/p&gt;</text>
-        </questiontext>
-        <answer fraction="100" format="html">
-            <text>Para Przegrzana</text>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>Para Nasycona Sucha</text>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>Para Nasycona Mokra</text>
-        </answer>
-        <answer fraction="0" format="html">
-            <text>Ciecz (woda wrząca)</text>
-        </answer>
-        <shuffleanswers>1</shuffleanswers>
-        <single>true</single>
-        <answernumbering>abc</answernumbering>
-    </question>
-<question type="calculated"><name><text>Cw03_Zad3_8_Bilans_kondensatu</text></name><questiontext format="html"><text>&lt;![CDATA[&lt;p&gt;Wymiennik ciepła skrapla parę z parametrów kotłowych do stanu cieczy nasyconej przy ciśnieniu dławienia {pdl} bar. Oblicz moc cieplną wymiennika [kW].&lt;/p&gt;]]&gt;</text></questiontext><generalfeedback format="html"><text /></generalfeedback><defaultgrade>1.0000000</defaultgrade><penalty>0.3333333</penalty><hidden>0</hidden><synchronize>1</synchronize><single>0</single><answernumbering>abc</answernumbering><shuffleanswers>0</shuffleanswers><correctanswerformat>1</correctanswerformat><correctanswerlength>1</correctanswerlength><answer fraction="100" format="moodle_auto_format"><text>{md} * 1000 / 3600 * ((2401.59 + 2.7229*{tp} + (-11.4741)*{pk} + 0.032085*{tp}*{pk} + (-0.00163053)*pow({tp},2) + (-0.0237)*pow({pk},2)) - (2.1757*pow({pdl},3) + (-29.9971)*pow({pdl},2) + 169.0692*{pdl} + 269.2620))</text><tolerance>5</tolerance><tolerancetype>1</tolerancetype><correctanswerformat>1</correctanswerformat><correctanswerlength>1</correctanswerlength><feedback format="html"><text /></feedback></answer><dataset_definitions><dataset_definition>
+            <dataset_definition>
                 <status>
                     <text>shared</text>
                 </status>
@@ -2033,7 +2904,6 @@
                     <text>1</text>
                 </decimals>
                 <itemcount>50</itemcount>
-                <number_of_items>50</number_of_items>
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
@@ -2236,230 +3106,1431 @@
                         <value>3.0</value>
                     </dataset_item>
                 </dataset_items>
+                <number_of_items>50</number_of_items>
             </dataset_definition>
             <dataset_definition>
                 <status>
                     <text>shared</text>
                 </status>
                 <name>
-                    <text>tz</text>
+                    <text>tp</text>
                 </name>
                 <type>calculated</type>
                 <distribution>
                     <text>uniform</text>
                 </distribution>
                 <minimum>
-                    <text>40</text>
+                    <text>200</text>
                 </minimum>
                 <maximum>
-                    <text>80</text>
+                    <text>300</text>
                 </maximum>
                 <decimals>
                     <text>0</text>
                 </decimals>
                 <itemcount>50</itemcount>
-                <number_of_items>50</number_of_items>
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>80</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>60</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>60</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>40</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>10</number>
-                        <value>60</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>11</number>
-                        <value>80</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>12</number>
-                        <value>50</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>13</number>
-                        <value>40</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>14</number>
-                        <value>70</value>
+                        <value>200</value>
                     </dataset_item>
                     <dataset_item>
                         <number>15</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>16</number>
-                        <value>80</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>70</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>70</value>
+                        <value>200</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>50</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>70</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>70</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>40</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>26</number>
-                        <value>50</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>27</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>28</number>
-                        <value>80</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>29</number>
-                        <value>60</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>30</number>
-                        <value>80</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>31</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>32</number>
-                        <value>60</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>33</number>
-                        <value>40</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>34</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>35</number>
-                        <value>60</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>36</number>
-                        <value>40</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>37</number>
-                        <value>80</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>38</number>
-                        <value>40</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>39</number>
-                        <value>80</value>
+                        <value>300</value>
                     </dataset_item>
                     <dataset_item>
                         <number>40</number>
-                        <value>70</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>41</number>
-                        <value>60</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>42</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>43</number>
-                        <value>80</value>
+                        <value>200</value>
                     </dataset_item>
                     <dataset_item>
                         <number>44</number>
-                        <value>60</value>
+                        <value>250</value>
                     </dataset_item>
                     <dataset_item>
                         <number>45</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>80</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>60</value>
+                        <value>225</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>50</value>
+                        <value>275</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>40</value>
+                        <value>200</value>
                     </dataset_item>
                 </dataset_items>
+                <number_of_items>50</number_of_items>
             </dataset_definition>
-        </dataset_definitions></question></quiz>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>pk</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>10</text>
+                </minimum>
+                <maximum>
+                    <text>15</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>15</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+        </dataset_definitions>
+    </question>
+    <question type="multichoice">
+        <name>
+            <text>Cw03_Zad3_1_Stan_pary</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 3 — Kocioł Parowy&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Kocioł produkuje parę wodną o parametrach:&lt;/p&gt;
+&lt;p&gt;Ciśnienie \(p=10\) bar, Temperatura \(t=250^\circ C\).&lt;/p&gt;
+&lt;p&gt;Temperatura nasycenia (wrzenia) dla ciśnienia 10 bar wynosi \(t_{sat} \approx 180^\circ C\).&lt;/p&gt;
+&lt;p&gt;W jakim stanie termodynamicznym znajduje się ta para?&lt;/p&gt;</text>
+        </questiontext>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <answer fraction="100" format="html">
+            <text>Para Przegrzana</text>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>Para Nasycona Sucha</text>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>Para Nasycona Mokra</text>
+        </answer>
+        <answer fraction="0" format="html">
+            <text>Ciecz (woda wrząca)</text>
+        </answer>
+        <shuffleanswers>1</shuffleanswers>
+        <single>true</single>
+        <answernumbering>abc</answernumbering>
+    </question>
+<question type="calculated">
+        <name>
+            <text>Cw03_Zad3_8_Bilans_kondensatu</text>
+        </name>
+        <questiontext format="html">
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 3 — Bilans Kondensatu&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Para z kotła: \(p =\) &lt;b&gt;{pk}&lt;/b&gt; bar, \(t =\) &lt;b&gt;{tp}&lt;/b&gt; °C, \(\dot{{m}} =\) &lt;b&gt;{md}&lt;/b&gt; t/h, jest dławiona (\(h = const\)) do ciśnienia \(p_{{dl}} =\) &lt;b&gt;{pdl}&lt;/b&gt; bar, a następnie w wymienniku ciepła skrapla się do cieczy nasyconej (wrzątku) przy tym ciśnieniu.&lt;br&gt;Entalpię pary \(h_{{para}} = h(p, t)\) odczytaj z Załącznika B (dławienie nie zmienia \(h\)), entalpię cieczy nasyconej \(h\prime(p_{{dl}})\) – z Załącznika A.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc cieplną wymiennika \(\dot{{Q}}_{{wym}}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{Q}}_{{wym}} = \dot{{m}} \cdot (h_{{para}} - h\prime)$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
+        </questiontext>
+        <generalfeedback format="html">
+            <text>&lt;p&gt;1. \(h_{{para}}\) – Załącznik B dla \(p, t\) (np. 10 bar, 250 °C: 2943 kJ/kg); dławienie: \(h = const\).&lt;br&gt;2. \(h\prime\) – Załącznik A, wiersz \(p_{{dl}}\) (np. 2 bar: 504.7 kJ/kg).&lt;br&gt;3. \(\dot{{m}}\) [kg/s] = \(\dot{{m}}\) [t/h] \(\cdot 1000/3600\).&lt;br&gt;4. \(\dot{{Q}}_{{wym}} = \dot{{m}} \cdot (h_{{para}} - h\prime)\) [kW].&lt;/p&gt;</text>
+        </generalfeedback>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
+        <hidden>0</hidden>
+        <idnumber />
+        <synchronize>1</synchronize>
+        <single>0</single>
+        <answernumbering>abc</answernumbering>
+        <shuffleanswers>1</shuffleanswers>
+        <correctfeedback>
+            <text />
+        </correctfeedback>
+        <partiallycorrectfeedback>
+            <text />
+        </partiallycorrectfeedback>
+        <incorrectfeedback>
+            <text />
+        </incorrectfeedback>
+        <answer fraction="100">
+            <text>{md} * 1000 / 3600 * ((2933.78 + 2.28353*({tp}-250) + (-3.82234)*({pk}-12.5) + 0.0351747*({tp}-250)*({pk}-12.5) + (-0.00191809)*pow(({tp}-250),2) + (-0.0381269)*pow(({pk}-12.5),2) + 1.49888e-05*pow(({tp}-250),3) + (-0.000283354)*pow(({tp}-250),2)*({pk}-12.5) + 0.000853504*({tp}-250)*pow(({pk}-12.5),2) + (-0.000769777)*pow(({pk}-12.5),3)) - (417.546 + 117.783*log({pdl}) + 10.4073*pow(log({pdl}),2) + 1.44645*pow(log({pdl}),3)))</text>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
+            <correctanswerformat>1</correctanswerformat>
+            <correctanswerlength>1</correctanswerlength>
+            <feedback format="html">
+                <text />
+            </feedback>
+        </answer>
+        <unitgradingtype>0</unitgradingtype>
+        <unitpenalty>1.0000000</unitpenalty>
+        <showunits>3</showunits>
+        <unitsleft>0</unitsleft>
+        <dataset_definitions>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>md</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>1.5</text>
+                </minimum>
+                <maximum>
+                    <text>3.0</text>
+                </maximum>
+                <decimals>
+                    <text>1</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>1.5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>2.0</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>3.0</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>tp</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>200</text>
+                </minimum>
+                <maximum>
+                    <text>300</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>300</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>200</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>250</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>225</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>275</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>200</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>pk</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>10</text>
+                </minimum>
+                <maximum>
+                    <text>15</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>10</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>11</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>13</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>15</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>12</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>14</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>15</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+            <dataset_definition>
+                <status>
+                    <text>shared</text>
+                </status>
+                <name>
+                    <text>pdl</text>
+                </name>
+                <type>calculated</type>
+                <distribution>
+                    <text>uniform</text>
+                </distribution>
+                <minimum>
+                    <text>2</text>
+                </minimum>
+                <maximum>
+                    <text>6</text>
+                </maximum>
+                <decimals>
+                    <text>0</text>
+                </decimals>
+                <itemcount>50</itemcount>
+                <dataset_items>
+                    <dataset_item>
+                        <number>1</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>2</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>3</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>4</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>5</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>6</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>7</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>8</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>9</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>10</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>16</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>17</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>18</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>19</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>20</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>21</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>22</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>23</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>24</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>25</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>26</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>5</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>3</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>45</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>46</number>
+                        <value>2</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>47</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>48</number>
+                        <value>6</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>49</number>
+                        <value>4</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>50</number>
+                        <value>2</value>
+                    </dataset_item>
+                </dataset_items>
+                <number_of_items>50</number_of_items>
+            </dataset_definition>
+        </dataset_definitions>
+    </question>
+</quiz>

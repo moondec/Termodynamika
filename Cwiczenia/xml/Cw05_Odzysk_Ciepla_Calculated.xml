@@ -14,10 +14,10 @@
             <text>Cw05_Zad5_1_Moc_wymiennika</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Odzysk Ciepła: Bilans Energii&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{m}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{in} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{out} =\) &lt;b&gt;{tso}&lt;/b&gt; °C.&lt;br&gt;\(c_{p,s} = 1000\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc cieplną wymiennika \(\dot{Q}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{Q} = \dot{m}_s \cdot c_s \cdot (t_{in} - t_{out})$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Odzysk Ciepła: Bilans Energii&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{{m}}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{{in}} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{{out}} =\) &lt;b&gt;{tso}&lt;/b&gt; °C.&lt;br&gt;\(c_s = 1000\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc cieplną wymiennika \(\dot{{Q}}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{Q}} = \dot{{m}}_s \cdot c_s \cdot (t_{{in}} - t_{{out}})$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(\dot{Q} = \dot{m}_s \cdot 1000 \cdot (t_{in}-t_{out}) / 1000\) [kW].&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(\dot{{Q}} = \dot{{m}}_s \cdot 1000 \cdot (t_{{in}}-t_{{out}}) / 1000\) [kW].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -38,10 +38,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{ms5} * 1000 * ({tsi} - {tso}) / 1000</text>
-            <tolerance>1</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -733,10 +733,10 @@
             <text>Cw05_Zad5_1b_Strumien_wody</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Strumień Wody&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Moc wymiennika: \(\dot{Q}\) z zad. 5.1. Woda: \(t_{w,in} =\) &lt;b&gt;{twi5}&lt;/b&gt; °C, \(t_{w,out} =\) &lt;b&gt;{two5}&lt;/b&gt; °C, \(c_w = 4190\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz strumień masy wody \(\dot{m}_w\) [kg/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{m}_w = \frac{\dot{Q}}{c_w \cdot (t_{w,out} - t_{w,in})}$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Strumień Wody&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{{m}}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{{in}} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{{out}} =\) &lt;b&gt;{tso}&lt;/b&gt; °C, \(c_s = 1000\) J/(kg·K) (moc wymiennika \(\dot{{Q}} = \dot{{m}}_s c_s (t_{{in}} - t_{{out}})\) jak w zad. 5.1).&lt;br&gt;Woda: \(t_{w,in} =\) &lt;b&gt;{twi5}&lt;/b&gt; °C, \(t_{w,out} =\) &lt;b&gt;{two5}&lt;/b&gt; °C, \(c_w = 4190\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz strumień masy wody \(\dot{{m}}_w\) [kg/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{m}}_w = \frac{\dot{Q}}{c_w \cdot (t_{w,out} - t_{w,in})}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(\dot{m}_w = \dot{Q} \cdot 1000 / (4190 \cdot \Delta t_w)\) [kg/s].&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(\dot{{Q}} = \dot{{m}}_s \cdot 1000 \cdot (t_{{in}} - t_{{out}})\) [W]; \(\dot{{m}}_w = \dot{{Q}} / (4190 \cdot \Delta t_w)\) [kg/s].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -757,10 +757,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{ms5} * 1000 * ({tsi} - {tso}) / (4190 * ({two5} - {twi5}))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -1902,10 +1902,10 @@
             <text>Cw05_Zad5_2_Entropia_spalin</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Generacja Entropii (spaliny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{m}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{in} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{out} =\) &lt;b&gt;{tso}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz zmianę strumienia entropii spalin \(\Delta\dot{S}_s\) [W/K]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\Delta\dot{S}_s = \dot{m}_s \cdot c_s \cdot \ln\frac{T_{out}}{T_{in}}$$&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Generacja Entropii (spaliny)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{{m}}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{{in}} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{{out}} =\) &lt;b&gt;{tso}&lt;/b&gt; °C, \(c_s = 1000\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz zmianę strumienia entropii spalin \(\Delta\dot{{S}}_s\) [W/K]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\Delta\dot{{S}}_s = \dot{{m}}_s \cdot c_s \cdot \ln\frac{T_{out}}{T_{in}}$$&lt;/p&gt;&lt;p&gt;Temperatury w kelwinach (\(T = t + 273.15\)). Wynik podaj ze znakiem, z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(\Delta\dot{S}_s = \dot{m}_s \cdot 1000 \cdot \ln((t_{out}+273.15)/(t_{in}+273.15))\) — wartość ujemna (spaliny tracą entropię).&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(\Delta\dot{{S}}_s = \dot{{m}}_s \cdot 1000 \cdot \ln((t_{{out}}+273.15)/(t_{{in}}+273.15))\) — wartość ujemna (spaliny tracą entropię).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1926,10 +1926,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{ms5} * 1000 * log(({tso} + 273.15) / ({tsi} + 273.15))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -2621,10 +2621,10 @@
             <text>Cw05_Zad5_3_Gouy_Stodola</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Strata Egzergii (Gouy-Stodola)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{m}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{s,in} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{s,out} =\) &lt;b&gt;{tso}&lt;/b&gt; °C.&lt;br&gt;Woda: \(t_{w,in} =\) &lt;b&gt;{twi5}&lt;/b&gt; °C, \(t_{w,out} =\) &lt;b&gt;{two5}&lt;/b&gt; °C.&lt;br&gt;Temperatura otoczenia: \(T_0 =\) &lt;b&gt;{T05}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stratę egzergii \(\dot{B}_{str}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{B}_{str} = T_0 \cdot \Delta\dot{S}_{gen}$$&lt;/p&gt;&lt;p&gt;gdzie \(\Delta\dot{S}_{gen} = |\Delta\dot{S}_s| + \Delta\dot{S}_w\) (suma zmian entropii obu strumieni, wynik dodatni).&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 5 — Strata Egzergii (Gouy-Stodola)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Spaliny: \(\dot{{m}}_s =\) &lt;b&gt;{ms5}&lt;/b&gt; kg/s, \(t_{s,in} =\) &lt;b&gt;{tsi}&lt;/b&gt; °C, \(t_{s,out} =\) &lt;b&gt;{tso}&lt;/b&gt; °C.&lt;br&gt;Woda: \(t_{w,in} =\) &lt;b&gt;{twi5}&lt;/b&gt; °C, \(t_{w,out} =\) &lt;b&gt;{two5}&lt;/b&gt; °C.&lt;br&gt;Temperatura otoczenia (hali): \(t_0 =\) &lt;b&gt;{T05}&lt;/b&gt; °C (\(T_0 = t_0 + 273.15\) K). \(c_s = 1000\) J/(kg·K), \(c_w = 4190\) J/(kg·K).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz stratę egzergii \(\dot{{B}}_{{str}}\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{B}}_{{str}} = T_0 \cdot \Delta\dot{{S}}_{{gen}}$$&lt;/p&gt;&lt;p&gt;gdzie \(\Delta\dot{{S}}_{{gen}} = \Delta\dot{{S}}_s + \Delta\dot{{S}}_w = \Delta\dot{{S}}_w - |\Delta\dot{{S}}_s|\) (suma zmian entropii obu strumieni: \(\Delta\dot{{S}}_s \lt 0\), \(\Delta\dot{{S}}_w \gt 0\), wynik dodatni). Strumień wody wyznacz z bilansu energii: \(\dot{{m}}_w c_w = \dot{{Q}}/\Delta t_w\).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;1. \(\Delta\dot{S}_s = \dot{m}_s c_s \ln(T_{s,out}/T_{s,in})\) [W/K] (ujemna).&lt;br&gt;2. \(\dot{m}_w = \dot{m}_s c_s \Delta T_s / (c_w \Delta T_w)\).&lt;br&gt;3. \(\Delta\dot{S}_w = \dot{m}_w c_w \ln(T_{w,out}/T_{w,in})\) (dodatnia).&lt;br&gt;4. \(\Delta\dot{S}_{gen} = \Delta\dot{S}_s + \Delta\dot{S}_w &gt; 0\).&lt;br&gt;5. \(\dot{B}_{str} = T_0 \cdot \Delta\dot{S}_{gen} / 1000\) [kW].&lt;/p&gt;</text>
+            <text>&lt;p&gt;1. \(\Delta\dot{{S}}_s = \dot{{m}}_s c_s \ln(T_{s,out}/T_{s,in})\) [W/K] (ujemna).&lt;br&gt;2. \(\dot{{m}}_w = \dot{{m}}_s c_s \Delta T_s / (c_w \Delta T_w)\).&lt;br&gt;3. \(\Delta\dot{{S}}_w = \dot{{m}}_w c_w \ln(T_{w,out}/T_{w,in})\) (dodatnia).&lt;br&gt;4. \(\Delta\dot{{S}}_{{gen}} = \Delta\dot{{S}}_s + \Delta\dot{{S}}_w = \Delta\dot{{S}}_w - |\Delta\dot{{S}}_s| &gt; 0\).&lt;br&gt;5. \(\dot{{B}}_{{str}} = T_0 \cdot \Delta\dot{{S}}_{{gen}} / 1000\) [kW].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -2645,10 +2645,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({T05} + 273.15) * ({ms5} * 1000 * log(({tso} + 273.15) / ({tsi} + 273.15)) + {ms5} * 1000 * ({tsi} - {tso}) / (4190 * ({two5} - {twi5})) * 4190 * log(({two5} + 273.15) / ({twi5} + 273.15))) / 1000</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -4022,11 +4022,13 @@
 &lt;li&gt;Czynnik zimny (woda): wlot \(t''_{in} = 20^\circ C\), wylot \(t''_{out} = 80^\circ C\).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;b&gt;Oblicz średnią logarytmiczną różnicę temperatur \(LMTD\) (Log Mean Temperature Difference) dla układu przeciwprądowego.&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Wzór: \(LMTD = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1 / \Delta T_2)}\)&lt;/p&gt;</text>
+&lt;p&gt;Wzór: \(LMTD = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1 / \Delta T_2)}\), gdzie \(\Delta T_1\), \(\Delta T_2\) – różnice temperatur czynników na obu końcach wymiennika.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
         <answer fraction="100">
             <text>171.1</text>
-            <tolerance>1</tolerance>
+            <tolerance>3</tolerance>
         </answer>
         <unitgradingtype>0</unitgradingtype>
     </question>

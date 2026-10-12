@@ -10,7 +10,7 @@
             <text>Ćw4 Zad. dom. – Moc elektryczna generatora [kW]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Turbina parowa o mocy teoretycznej \( N_t = \) &lt;b&gt;{Nt}&lt;/b&gt; kW napędza generator o sprawności \( \eta_{{gen}} = \) &lt;b&gt;{eta_gen}&lt;/b&gt;%.&lt;/p&gt;&lt;p&gt;Oblicz rzeczywistą moc elektryczną \( N_{{el}} \) w &lt;strong&gt;kW&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Turbina parowa o rzeczywistej mocy na wale (jak \( N_r \) w Zad. 4.4) \( N_r = \) &lt;b&gt;{Nt}&lt;/b&gt; kW napędza generator o sprawności \( \eta_{{gen}} = \) &lt;b&gt;{eta_gen}&lt;/b&gt;%.&lt;/p&gt;&lt;p&gt;Oblicz moc elektryczną \( N_{{el}} = N_r \cdot \eta_{{gen}} \) w &lt;strong&gt;kW&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -34,10 +34,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Nt} * {eta_gen} / 100</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1179,7 +1179,7 @@
             <text>Ćw4 Zad. dom. – Roczna produkcja energii [MWh]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Generator o mocy \( N_{{el}} = \) &lt;b&gt;{Nt}&lt;/b&gt; × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 kW pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok.&lt;/p&gt;&lt;p&gt;Oblicz roczną produkcję energii elektrycznej w &lt;strong&gt;MWh/rok&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok.&lt;/p&gt;&lt;p&gt;Oblicz roczną produkcję energii elektrycznej w &lt;strong&gt;MWh/rok&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1203,10 +1203,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Nt} * {eta_gen} / 100 * {h_rok} / 1000</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -2348,7 +2348,7 @@
             <text>Ćw4 Zad. dom. – Roczny zysk [PLN]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Roczna produkcja energii wynika z mocy generatora i czasu pracy. Cena prądu: &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz roczny zysk (oszczędność) w &lt;strong&gt;PLN&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do tysięcy.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok (roczna produkcja energii – jak w poprzednim pytaniu). Cena prądu: &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz roczny zysk (oszczędność) w &lt;strong&gt;PLN&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -2372,10 +2372,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Nt} * {eta_gen} / 100 * {h_rok} * {cena_kWh}</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -3517,7 +3517,7 @@
             <text>Ćw4 Zad. dom. – Czas zwrotu inwestycji SPBT [lata]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Koszt instalacji turbiny: &lt;b&gt;{koszt_inv}&lt;/b&gt; PLN. Roczny zysk wynika z produkcji energii i ceny prądu.&lt;/p&gt;&lt;p&gt;Oblicz prosty czas zwrotu inwestycji SPBT w &lt;strong&gt;latach&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( SPBT = \frac{{\text{{Koszt inwestycji}}}}{{\text{{Roczny zysk}}}} \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Koszt instalacji turbiny: &lt;b&gt;{koszt_inv}&lt;/b&gt; PLN. Roczny zysk wynika z produkcji energii i ceny prądu (jak w poprzednim pytaniu): generator o mocy \( N_{{el}} = N_r \cdot \eta_{{gen}} = \) &lt;b&gt;{Nt}&lt;/b&gt; kW × &lt;b&gt;{eta_gen}&lt;/b&gt;/100 pracuje &lt;b&gt;{h_rok}&lt;/b&gt; h/rok, cena prądu &lt;b&gt;{cena_kWh}&lt;/b&gt; PLN/kWh.&lt;/p&gt;&lt;p&gt;Oblicz prosty czas zwrotu inwestycji SPBT w &lt;strong&gt;latach&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;\( SPBT = \frac{{\text{{Koszt inwestycji}}}}{{\text{{Roczny zysk}}}} \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -3541,8 +3541,8 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{koszt_inv} / ({Nt} * {eta_gen} / 100 * {h_rok} * {cena_kWh})</text>
-            <tolerance>5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.03</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
@@ -4686,9 +4686,10 @@
             <text>Ćw4 Zad. dom. – Czy inwestycja się opłaca?</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Na podstawie obliczeń SPBT, która z poniższych interpretacji jest NAJLEPSZA?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Na podstawie obliczeń SPBT, która z poniższych interpretacji jest NAJLEPSZA?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>1</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">

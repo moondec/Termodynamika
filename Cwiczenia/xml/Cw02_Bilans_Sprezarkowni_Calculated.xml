@@ -18,16 +18,17 @@
 &lt;p&gt;Sprężarka tłokowa spręża powietrze z ciśnienia \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar.&lt;br&gt;
 Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;br&gt;
 Wykładnik politropy: \(n =\) &lt;b&gt;{npoly}&lt;/b&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oblicz jednostkową pracę techniczną sprężania \(l_t\) [kJ/kg]:&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;$$l_t = \frac{n}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}} - 1\right]$$&lt;/p&gt;
-&lt;p&gt;gdzie \(R = 287\) J/(kg·K).&lt;/p&gt;</text>
+&lt;p&gt;&lt;b&gt;Oblicz wartość bezwzględną jednostkowej pracy technicznej sprężania \(|l_t|\) [kJ/kg] (przy sprężaniu \(l_t &lt; 0\) – układ pobiera pracę):&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;$$|l_t| = \frac{{n}}{n-1} \cdot R \cdot T_1 \cdot \left[\left(\frac{{p_2}}{{p_1}}\right)^{\frac{n-1}{n}} - 1\right]$$&lt;/p&gt;
+&lt;p&gt;gdzie \(R = 287\) J/(kg·K).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
 1. Przelicz temperaturę: \(T_1 = t_1 + 273.15\) [K].&lt;br&gt;
 2. Podstaw do wzoru na pracę techniczną politropy:&lt;br&gt;
-$$l_t = \frac{n}{n-1} \cdot 287 \cdot T_1 \cdot \left[(p_2/p_1)^{(n-1)/n} - 1\right]$$&lt;br&gt;
-3. Podziel wynik przez 1000, aby uzyskać kJ/kg.&lt;/p&gt;</text>
+$$|l_t| = \frac{{n}}{n-1} \cdot 287 \cdot T_1 \cdot \left[(p_2/p_1)^{(n-1)/n} - 1\right]$$&lt;br&gt;
+3. Podziel wynik przez 1000, aby uzyskać kJ/kg.&lt;br&gt;
+4. Praca techniczna sprężania jest ujemna (\(l_t = -|l_t|\)) – sprężarka pobiera pracę z silnika; moc liczymy z \(|l_t|\).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -48,10 +49,10 @@ $$l_t = \frac{n}{n-1} \cdot 287 \cdot T_1 \cdot \left[(p_2/p_1)^{(n-1)/n} - 1\ri
         </incorrectfeedback>
         <answer fraction="100">
             <text>{npoly} / ({npoly} - 1) * 287 * ({t1} + 273.15) * (pow({p2} / 1, ({npoly} - 1) / {npoly}) - 1) / 1000</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -746,16 +747,16 @@ $$l_t = \frac{n}{n-1} \cdot 287 \cdot T_1 \cdot \left[(p_2/p_1)^{(n-1)/n} - 1\ri
             <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 2 — Bilans Sprężarkowni&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Sprężarka spręża powietrze z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar.&lt;br&gt;
 Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy: \(n =\) &lt;b&gt;{npoly}&lt;/b&gt;.&lt;br&gt;
-Wydajność normalna: \(\dot{V}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;br&gt;
+Wydajność normalna: \(\dot{{V}}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;br&gt;
 Sprawność mechaniczna: \(\eta_m = 0.9\).&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oblicz moc silnika napędowego \(N_{silnika}\) [kW]:&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Wskazówka: \(\dot{m} = \frac{p_n \cdot \dot{V}_n}{R \cdot T_n}\), gdzie \(p_n = 101325\) Pa, \(T_n = 273.15\) K.&lt;/p&gt;</text>
+&lt;p&gt;&lt;b&gt;Oblicz moc silnika napędowego \(N_{{silnika}}\) [kW]:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Wskazówka: \(\dot{{m}} = \frac{p_n \cdot \dot{{V}}_n}{R \cdot T_n}\), gdzie \(p_n = 101325\) Pa, \(T_n = 273.15\) K.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
-1. Strumień masy: \(\dot{m} = p_n \cdot \dot{V}_n / (R \cdot T_n) = 101325 \cdot V_n/(3600) / (287 \cdot 273.15)\) [kg/s].&lt;br&gt;
-2. Praca tech.: \(l_t\) = jak w Zad. 2.1 [J/kg].&lt;br&gt;
-3. Moc: \(N = \dot{m} \cdot l_t / \eta_m\) [W] → podziel przez 1000 → [kW].&lt;/p&gt;</text>
+1. Strumień masy: \(\dot{{m}} = p_n \cdot \dot{{V}}_n / (R \cdot T_n) = 101325 \cdot V_n/(3600) / (287 \cdot 273.15)\) [kg/s].&lt;br&gt;
+2. Praca tech.: \(|l_t|\) = jak w Zad. 2.1 [J/kg].&lt;br&gt;
+3. Moc: \(N = \dot{{m}} \cdot |l_t| / \eta_m\) [W] → podziel przez 1000 → [kW].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -776,10 +777,10 @@ Sprawność mechaniczna: \(\eta_m = 0.9\).&lt;/p&gt;
         </incorrectfeedback>
         <answer fraction="100">
             <text>(101325 * {Vn} / 3600) / (287 * 273.15) * ({npoly} / ({npoly} - 1) * 287 * ({t1} + 273.15) * (pow({p2} / 1, ({npoly} - 1) / {npoly}) - 1)) / 0.9 / 1000</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -1700,7 +1701,7 @@ Sprawność mechaniczna: \(\eta_m = 0.9\).&lt;/p&gt;
 &lt;p&gt;Sprężarka spręża powietrze z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar.&lt;br&gt;
 Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy: \(n =\) &lt;b&gt;{npoly}&lt;/b&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Oblicz temperaturę tłoczenia \(t_2\) [°C]:&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;$$T_2 = T_1 \cdot \left(\frac{p_2}{p_1}\right)^{\frac{n-1}{n}}$$&lt;/p&gt;</text>
+&lt;p&gt;$$T_2 = T_1 \cdot \left(\frac{{p_2}}{{p_1}}\right)^{\frac{n-1}{n}}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
@@ -1727,10 +1728,10 @@ Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy:
         </incorrectfeedback>
         <answer fraction="100">
             <text>({t1} + 273.15) * pow({p2} / 1, ({npoly} - 1) / {npoly}) - 273.15</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -2425,17 +2426,17 @@ Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy:
             <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 2 — Bilans Sprężarkowni&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Sprężarka spręża powietrze z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar.&lt;br&gt;
 Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy: \(n =\) &lt;b&gt;{npoly}&lt;/b&gt;.&lt;br&gt;
-Wydajność normalna: \(\dot{V}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;/p&gt;
-&lt;p&gt;Powietrze po sprężeniu jest schładzane w chłodnicy do \(t_{chl} =\) &lt;b&gt;{tchl}&lt;/b&gt; °C.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oblicz moc cieplną chłodnicy \(\dot{Q}\) [kW]:&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;$$\dot{Q} = \dot{m} \cdot c_p \cdot (T_2 - T_{chl})$$&lt;/p&gt;
-&lt;p&gt;gdzie \(c_p = 1005\) J/(kg·K).&lt;/p&gt;</text>
+Wydajność normalna: \(\dot{{V}}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;/p&gt;
+&lt;p&gt;Powietrze po sprężeniu jest schładzane w chłodnicy do \(t_{{chl}} =\) &lt;b&gt;{tchl}&lt;/b&gt; °C.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Oblicz strumień ciepła odprowadzanego w chłodnicy \(|\dot{{Q}}_{{chl}}|\) [kW] (ciepło odprowadzone z układu: \(\dot{{Q}}_{{chl}} &lt; 0\)):&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;$$|\dot{{Q}}_{{chl}}| = \dot{{m}} \cdot c_p \cdot (T_2 - T_{{chl}})$$&lt;/p&gt;
+&lt;p&gt;gdzie \(c_p = 1005\) J/(kg·K).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
-1. \(\dot{m}\) z warunków normalnych.&lt;br&gt;
+1. \(\dot{{m}}\) z warunków normalnych.&lt;br&gt;
 2. \(T_2\) z równania politropy.&lt;br&gt;
-3. \(\dot{Q} = \dot{m} \cdot 1005 \cdot (T_2 - T_{chl})\) [W] → ÷1000 → [kW].&lt;/p&gt;</text>
+3. \(|\dot{{Q}}_{{chl}}| = \dot{{m}} \cdot 1005 \cdot (T_2 - T_{{chl}})\) [W] → ÷1000 → [kW].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -2456,10 +2457,10 @@ Wydajność normalna: \(\dot{V}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;/p&gt;
         </incorrectfeedback>
         <answer fraction="100">
             <text>(101325 * {Vn} / 3600) / (287 * 273.15) * 1005 * (({t1} + 273.15) * pow({p2} / 1, ({npoly} - 1) / {npoly}) - ({tchl} + 273.15)) / 1000</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -3602,15 +3603,15 @@ Wydajność normalna: \(\dot{V}_n =\) &lt;b&gt;{Vn}&lt;/b&gt; m³/h.&lt;/p&gt;
         </name>
         <questiontext format="html">
             <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 2 — Sprężanie Dwustopniowe&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;Sprężarka spręża powietrze z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar z chłodzeniem międzystopniowym do \(t_{chl} =\) &lt;b&gt;{tchl}&lt;/b&gt; °C.&lt;br&gt;
+&lt;p&gt;Sprężarka spręża powietrze z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar z chłodzeniem międzystopniowym do \(t_{{chl}} =\) &lt;b&gt;{tchl}&lt;/b&gt; °C.&lt;br&gt;
 Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy: \(n =\) &lt;b&gt;{npoly}&lt;/b&gt;.&lt;/p&gt;
-&lt;p&gt;Ciśnienie pośrednie: \(p_{pośr} = \sqrt{p_1 \cdot p_2}\).&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oblicz temperaturę na wyjściu z I stopnia \(t_{I,out}\) [°C]:&lt;/b&gt;&lt;/p&gt;</text>
+&lt;p&gt;Ciśnienie pośrednie: \(p_{{pośr}} = \sqrt{p_1 \cdot p_2}\).&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Oblicz temperaturę na wyjściu z I stopnia \(t_{I,out}\) [°C]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
-1. \(p_{pośr} = \sqrt{1 \cdot p_2}\) [bar].&lt;br&gt;
-2. \(T_{I,out} = T_1 \cdot (p_{pośr}/p_1)^{(n-1)/n}\).&lt;br&gt;
+1. \(p_{{pośr}} = \sqrt{1 \cdot p_2}\) [bar].&lt;br&gt;
+2. \(T_{I,out} = T_1 \cdot (p_{{pośr}}/p_1)^{(n-1)/n}\).&lt;br&gt;
 3. \(t_{I,out} = T_{I,out} - 273.15\) [°C].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
@@ -3632,10 +3633,10 @@ Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy:
         </incorrectfeedback>
         <answer fraction="100">
             <text>({t1} + 273.15) * pow(sqrt({p2}) / 1, ({npoly} - 1) / {npoly}) - 273.15</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -4555,13 +4556,13 @@ Temperatura ssania: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C, wykładnik politropy:
             <text>&lt;p&gt;&lt;b&gt;Ćwiczenie 2 — Porównanie Procesów Sprężania&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Sprężanie powietrza z \(p_1 = 1\) bar do \(p_2 =\) &lt;b&gt;{p2}&lt;/b&gt; bar.&lt;br&gt;
 Temperatura: \(t_1 =\) &lt;b&gt;{t1}&lt;/b&gt; °C.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oblicz pracę techniczną sprężania izotermicznego \(l_{t,izo}\) [kJ/kg]:&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;$$l_{t,izo} = R \cdot T_1 \cdot \ln\left(\frac{p_2}{p_1}\right)$$&lt;/p&gt;</text>
+&lt;p&gt;&lt;b&gt;Oblicz wartość bezwzględną pracy technicznej sprężania izotermicznego \(|l_{t,izo}|\) [kJ/kg]:&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;$$|l_{t,izo}| = R \cdot T_1 \cdot \ln\left(\frac{{p_2}}{{p_1}}\right)$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;&lt;b&gt;Wyjaśnienie:&lt;/b&gt;&lt;br&gt;
-\(l_{t,izo} = 287 \cdot T_1 \cdot \ln(p_2/1)\) [J/kg] → ÷1000 → [kJ/kg].&lt;br&gt;
-Izoterma wymaga najmniej pracy.&lt;/p&gt;</text>
+\(|l_{t,izo}| = 287 \cdot T_1 \cdot \ln(p_2/1)\) [J/kg] → ÷1000 → [kJ/kg].&lt;br&gt;
+Izoterma wymaga najmniej pracy (przy sprężaniu \(l_t &lt; 0\) – podajemy wartość bezwzględną).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -4582,10 +4583,10 @@ Izoterma wymaga najmniej pracy.&lt;/p&gt;</text>
         </incorrectfeedback>
         <answer fraction="100">
             <text>287 * ({t1} + 273.15) * log({p2} / 1) / 1000</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text />
             </feedback>
@@ -5057,11 +5058,13 @@ Izoterma wymaga najmniej pracy.&lt;/p&gt;</text>
 &lt;p&gt;Dysponujemy wodą wodociągową o temperaturze wejściowej &lt;b&gt;\(15^\circ C\)&lt;/b&gt;.&lt;/p&gt;
 &lt;p&gt;Maksymalna temperatura wody na wylocie wynosi &lt;b&gt;\(40^\circ C\)&lt;/b&gt;.&lt;/p&gt;
 &lt;p&gt;Oblicz wymagany strumień wody chłodzącej &lt;b&gt;\(\dot{m}_w\)&lt;/b&gt; [kg/s].&lt;/p&gt;
-&lt;p&gt;Przyjmij ciepło właściwe wody \(c_w = 4190\text{ J}/(\text{kg K})\).&lt;/p&gt;</text>
+&lt;p&gt;Przyjmij ciepło właściwe wody \(c_w = 4190\text{ J}/(\text{kg K})\).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 cyfr znaczących.&lt;/p&gt;</text>
         </questiontext>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
         <answer fraction="100">
             <text>0.0764</text>
-            <tolerance>0.005</tolerance>
+            <tolerance>0.0015</tolerance>
         </answer>
         <unitgradingtype>0</unitgradingtype>
     </question>
@@ -5076,11 +5079,13 @@ Izoterma wymaga najmniej pracy.&lt;/p&gt;</text>
 &lt;li&gt;Ssanie: \(p_1 = 1\) bar, \(t_1 = 22^\circ C\)&lt;/li&gt;
 &lt;li&gt;Tłoczenie: \(p_2 = 8\) bar, \(t_2 = 215^\circ C\)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Oblicz rzeczywisty wykładnik politropy &lt;b&gt;\(n\)&lt;/b&gt; procesu sprężania.&lt;/p&gt;</text>
+&lt;p&gt;Oblicz rzeczywisty wykładnik politropy &lt;b&gt;\(n\)&lt;/b&gt; procesu sprężania.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
+        <defaultgrade>1.0000000</defaultgrade>
+        <penalty>0.3333333</penalty>
         <answer fraction="100">
             <text>1.32</text>
-            <tolerance>0.05</tolerance>
+            <tolerance>0.03</tolerance>
         </answer>
         <unitgradingtype>0</unitgradingtype>
     </question>

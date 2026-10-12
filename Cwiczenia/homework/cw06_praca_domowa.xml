@@ -10,7 +10,7 @@
             <text>Ćw6 Zad. dom. – Temperatura ssania po przegrzaniu [°C]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;W obiegu chłodniczym z czynnikiem R134a temperatura parowania wynosi \( t_0 = \) &lt;b&gt;{t0}&lt;/b&gt;°C. Stosujemy przegrzanie par na ssaniu sprężarki o \( \Delta T_{{sh}} = \) &lt;b&gt;{dTsh}&lt;/b&gt; K.&lt;/p&gt;&lt;p&gt;Jaka jest temperatura czynnika na ssaniu sprężarki \( t_1 \) w &lt;strong&gt;°C&lt;/strong&gt;?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;W obiegu chłodniczym z czynnikiem R134a temperatura parowania wynosi \( t_0 = \) &lt;b&gt;{t0}&lt;/b&gt;°C. Stosujemy przegrzanie par na ssaniu sprężarki o \( \Delta T_{{sh}} = \) &lt;b&gt;{dTsh}&lt;/b&gt; K.&lt;/p&gt;&lt;p&gt;Jaka jest temperatura czynnika na ssaniu sprężarki \( t_1 \) w &lt;strong&gt;°C&lt;/strong&gt;?&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -35,9 +35,9 @@
         <answer fraction="100">
             <text>{t0} + {dTsh}</text>
             <tolerance>0.1</tolerance>
-            <tolerancetype>1</tolerancetype>
+            <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -954,7 +954,7 @@
             <text>Ćw6 Zad. dom. – Temperatura cieczy po dochłodzeniu [°C]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Temperatura skraplania czynnika R134a wynosi \( t_k = \) &lt;b&gt;{tk}&lt;/b&gt;°C. Stosujemy dochłodzenie cieczy o \( \Delta T_{{sc}} = \) &lt;b&gt;{dTsc}&lt;/b&gt; K.&lt;/p&gt;&lt;p&gt;Jaka jest temperatura czynnika przed dławieniem \( t_3 \) w &lt;strong&gt;°C&lt;/strong&gt;?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Temperatura skraplania czynnika R134a wynosi \( t_k = \) &lt;b&gt;{tk}&lt;/b&gt;°C. Stosujemy dochłodzenie cieczy o \( \Delta T_{{sc}} = \) &lt;b&gt;{dTsc}&lt;/b&gt; K.&lt;/p&gt;&lt;p&gt;Jaka jest temperatura czynnika przed dławieniem \( t_3 \) w &lt;strong&gt;°C&lt;/strong&gt;?&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -979,9 +979,9 @@
         <answer fraction="100">
             <text>{tk} - {dTsc}</text>
             <tolerance>0.1</tolerance>
-            <tolerancetype>1</tolerancetype>
+            <tolerancetype>2</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1898,9 +1898,10 @@
             <text>Ćw6 Zad. dom. – Wpływ dochłodzenia na wydajność chłodniczą</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Dochłodzenie cieczy przed dławieniem powoduje, że entalpia czynnika przed zaworem rozprężnym jest &lt;strong&gt;niższa&lt;/strong&gt;. Jaki jest efekt na wydajność chłodniczą \( q_0 \)?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Dochłodzenie cieczy przed dławieniem powoduje, że entalpia czynnika przed zaworem rozprężnym jest &lt;strong&gt;niższa&lt;/strong&gt;. Jaki jest efekt na wydajność chłodniczą \( q_0 \)?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>2</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">
@@ -1921,13 +1922,14 @@
             <text>Ćw6 Zad. dom. – Wpływ przegrzania na pracę sprężarki</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Przegrzanie par na ssaniu sprężarki powoduje, że punkt 1 na wykresie p-h przesuwa się w prawo (wyższa entalpia na ssaniu). Jaki jest efekt na pracę sprężarki \( l_k \)?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Przegrzanie par na ssaniu sprężarki powoduje, że punkt 1 na wykresie p-h przesuwa się w prawo (wyższa entalpia na ssaniu). Jaki jest efekt na pracę sprężarki \( l_k \)?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>2</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">
-            <text>Praca sprężarki \( l_k \) rośnie, bo sprężamy z wyższej entalpii.</text>
+            <text>Praca sprężarki \( l_k \) nieznacznie rośnie – w obszarze pary przegrzanej izentropy na wykresie p-h „rozchylają się”, więc przy tym samym sprężu przyrost entalpii \( h_2 - h_1 \) jest większy.</text>
         </answer>
         <answer fraction="0">
             <text>Praca sprężarki maleje.</text>
@@ -1944,12 +1946,12 @@
             <text>Ćw6 Zad. dom. – Nowy EER z przegrzaniem i dochłodzeniem</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Narysuj na wykresie log p–h obieg chłodniczy R134a z przegrzaniem i dochłodzeniem.&lt;/p&gt;&lt;p&gt;Na podstawie odczytanych entalpii oblicz:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Nowy efekt chłodniczy \( q_0 = h_1 - h_4 \) [kJ/kg]&lt;/li&gt;&lt;li&gt;Nową pracę sprężarki \( l_k = h_2 - h_1 \) [kJ/kg]&lt;/li&gt;&lt;li&gt;Nowy wskaźnik EER = \( q_0 / l_k \)&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Porównaj z wartością EER z ćwiczeń.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Narysuj na wykresie log p–h obieg chłodniczy R134a z przegrzaniem i dochłodzeniem.&lt;/p&gt;&lt;p&gt;Na podstawie odczytanych entalpii oblicz:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Nowy efekt chłodniczy \( q_0 = h_1 - h_4 \) [kJ/kg]&lt;/li&gt;&lt;li&gt;Nową pracę sprężarki \( l_k = h_2 - h_1 \) [kJ/kg]&lt;/li&gt;&lt;li&gt;Nowy wskaźnik EER = \( q_0 / l_k \)&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Porównaj z wartością EER z ćwiczeń.&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>5</defaultgrade>
         <penalty>0</penalty>
         <graderinfo format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Przegrzanie zwiększa l_k, dochłodzenie zwiększa q_0. Bilans netto: EER rośnie nieznacznie.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Przegrzanie zwiększa nieco i q_0, i l_k (dla R134a EER praktycznie bez zmian – chodzi o ochronę sprężarki), dochłodzenie zwiększa q_0 bez zmiany l_k. Bilans netto: EER rośnie o kilka procent. Orientacyjnie (CoolProp, t_0 = 2 °C, t_k = 40 °C, ΔT_sh = ΔT_sc = 5 K): h_1 ≈ 404, h_2 ≈ 429, h_3 = h_4 ≈ 249 kJ/kg, q_0 ≈ 155 kJ/kg, l_k ≈ 25 kJ/kg, EER ≈ 6,2 wobec ≈ 5,8–5,9 dla obiegu bez przegrzania i dochłodzenia (odczyt z wykresu może różnić się o kilka kJ/kg).&lt;/p&gt;</text>
         </graderinfo>
     </question>
 </quiz>

@@ -10,7 +10,7 @@
             <text>Ćw3 Zad. dom. – Masa pary wodnej w spalinach [kg/h]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Kocioł zużywa \( V_{{gaz}} = \) &lt;b&gt;{Vgas}&lt;/b&gt; m³/h gazu ziemnego. Przy spalaniu 1 m³ gazu powstaje ok. &lt;b&gt;{kgH2O}&lt;/b&gt; kg wody w spalinach.&lt;/p&gt;&lt;p&gt;Oblicz masowy strumień pary wodnej w spalinach w &lt;strong&gt;kg/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Kocioł zużywa \( V_{{gaz}} = \) &lt;b&gt;{Vgas}&lt;/b&gt; m³/h gazu ziemnego. Przy spalaniu 1 m³ gazu powstaje ok. &lt;b&gt;{kgH2O}&lt;/b&gt; kg wody w spalinach.&lt;/p&gt;&lt;p&gt;Oblicz masowy strumień pary wodnej w spalinach w &lt;strong&gt;kg/h&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -34,10 +34,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Vgas} * {kgH2O}</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -509,10 +509,10 @@
                     <text>uniform</text>
                 </distribution>
                 <minimum>
-                    <text>2400</text>
+                    <text>2380</text>
                 </minimum>
                 <maximum>
-                    <text>2550</text>
+                    <text>2460</text>
                 </maximum>
                 <decimals>
                     <text>0</text>
@@ -522,203 +522,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2499</value>
+                        <value>2433</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2546</value>
+                        <value>2458</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2430</value>
+                        <value>2396</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2473</value>
+                        <value>2419</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2460</value>
+                        <value>2412</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2480</value>
+                        <value>2423</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2421</value>
+                        <value>2391</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2417</value>
+                        <value>2389</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2437</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>2407</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>2520</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>2465</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>2544</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>2547</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
                         <value>2400</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>10</number>
+                        <value>2384</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>2444</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>2457</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>2458</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>2380</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>16</number>
-                        <value>2410</value>
+                        <value>2385</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2408</value>
+                        <value>2384</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>2493</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>2476</value>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>2428</value>
+                        <value>2395</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>2518</value>
+                        <value>2443</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>2459</value>
+                        <value>2411</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>2531</value>
+                        <value>2450</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>2438</value>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>2479</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2538</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2490</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>2425</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2500</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>2512</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>2492</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2445</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2505</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2516</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2438</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>2424</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>2517</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>2471</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>2466</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
                         <value>2422</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>26</number>
+                        <value>2454</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2428</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2433</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2440</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2429</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2404</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2436</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2400</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2418</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2392</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>45</number>
-                        <value>2545</value>
+                        <value>2457</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>2494</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>2509</value>
+                        <value>2438</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>2496</value>
+                        <value>2431</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>2469</value>
+                        <value>2417</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2517</value>
+                        <value>2442</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -1179,7 +1179,7 @@
             <text>Ćw3 Zad. dom. – Dodatkowe ciepło z kondensacji [kW]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;W spalinach kotła powstaje \( \dot{{m}}_w = \) &lt;b&gt;{Vgas}&lt;/b&gt; × &lt;b&gt;{kgH2O}&lt;/b&gt; kg/h pary wodnej. Ciepło parowania wody wynosi \( r = \) &lt;b&gt;{r_w}&lt;/b&gt; kJ/kg.&lt;/p&gt;&lt;p&gt;Oblicz dodatkowy strumień ciepła \( \dot{{Q}}_{{kond}} \), który można odzyskać skraplając &lt;strong&gt;całą&lt;/strong&gt; parę wodną ze spalin.&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kW&lt;/strong&gt;. Zaokrąglij do całości.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;W spalinach kotła powstaje \( \dot{{m}}_w = \) &lt;b&gt;{Vgas}&lt;/b&gt; × &lt;b&gt;{kgH2O}&lt;/b&gt; kg/h pary wodnej. Ciepło parowania wody wynosi \( r = \) &lt;b&gt;{r_w}&lt;/b&gt; kJ/kg.&lt;/p&gt;&lt;p&gt;Oblicz dodatkowy strumień ciepła \( \dot{{Q}}_{{kond}} \), który można odzyskać skraplając &lt;strong&gt;całą&lt;/strong&gt; parę wodną ze spalin.&lt;/p&gt;&lt;p&gt;Wynik podaj w &lt;strong&gt;kW&lt;/strong&gt;. Zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -1203,10 +1203,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Vgas} * {kgH2O} * {r_w} / 3600</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1678,10 +1678,10 @@
                     <text>uniform</text>
                 </distribution>
                 <minimum>
-                    <text>2400</text>
+                    <text>2380</text>
                 </minimum>
                 <maximum>
-                    <text>2550</text>
+                    <text>2460</text>
                 </maximum>
                 <decimals>
                     <text>0</text>
@@ -1691,203 +1691,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2499</value>
+                        <value>2433</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2546</value>
+                        <value>2458</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2430</value>
+                        <value>2396</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2473</value>
+                        <value>2419</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2460</value>
+                        <value>2412</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2480</value>
+                        <value>2423</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2421</value>
+                        <value>2391</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2417</value>
+                        <value>2389</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2437</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>2407</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>2520</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>2465</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>2544</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>2547</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
                         <value>2400</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>10</number>
+                        <value>2384</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>2444</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>2457</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>2458</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>2380</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>16</number>
-                        <value>2410</value>
+                        <value>2385</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2408</value>
+                        <value>2384</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>2493</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>2476</value>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>2428</value>
+                        <value>2395</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>2518</value>
+                        <value>2443</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>2459</value>
+                        <value>2411</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>2531</value>
+                        <value>2450</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>2438</value>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>2479</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2538</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2490</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>2425</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2500</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>2512</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>2492</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2445</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2505</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2516</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2438</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>2424</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>2517</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>2471</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>2466</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
                         <value>2422</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>26</number>
+                        <value>2454</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2428</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2433</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2440</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2429</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2404</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2436</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2400</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2418</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2392</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>45</number>
-                        <value>2545</value>
+                        <value>2457</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>2494</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>2509</value>
+                        <value>2438</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>2496</value>
+                        <value>2431</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>2469</value>
+                        <value>2417</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2517</value>
+                        <value>2442</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -2348,7 +2348,7 @@
             <text>Ćw3 Zad. dom. – Wzrost sprawności [punkty procentowe]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Kocioł ma sprawność \( \eta = \) &lt;b&gt;{eta_kotla}&lt;/b&gt;% i moc cieplną \( \dot{{Q}}_{{uż}} = \) &lt;b&gt;{Quz}&lt;/b&gt; kW. Dodatkowy odzysk ciepła z kondensacji wynosi \( \dot{{Q}}_{{kond}} \) (obliczone w poprzednim pytaniu).&lt;/p&gt;&lt;p&gt;O ile &lt;strong&gt;punktów procentowych&lt;/strong&gt; wzrośnie sprawność kotłowni po zainstalowaniu kondensacji spalin?&lt;/p&gt;&lt;p&gt;\( \Delta\eta = \frac{{\dot{{Q}}_{{kond}}}}{{\dot{{Q}}_{{paliwa}}}} \cdot 100\% \), gdzie \( \dot{{Q}}_{{paliwa}} = \frac{{\dot{{Q}}_{{uż}}}}{{\eta}} \)&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Kocioł ma sprawność \( \eta = \) &lt;b&gt;{eta_kotla}&lt;/b&gt;% i moc cieplną \( \dot{{Q}}_{{uż}} = \) &lt;b&gt;{Quz}&lt;/b&gt; kW. Kocioł zużywa \( V_{{gaz}} = \) &lt;b&gt;{Vgas}&lt;/b&gt; m³/h gazu; przy spalaniu 1 m³ gazu powstaje ok. &lt;b&gt;{kgH2O}&lt;/b&gt; kg wody w spalinach, ciepło skraplania \( r = \) &lt;b&gt;{r_w}&lt;/b&gt; kJ/kg. Dodatkowy odzysk ciepła z kondensacji \( \dot{{Q}}_{{kond}} \) oblicz jak w poprzednim pytaniu (skroplenie całej pary wodnej ze spalin).&lt;/p&gt;&lt;p&gt;O ile &lt;strong&gt;punktów procentowych&lt;/strong&gt; wzrośnie sprawność kotłowni po zainstalowaniu kondensacji spalin?&lt;/p&gt;&lt;p&gt;\( \Delta\eta = \frac{{\dot{{Q}}_{{kond}}}}{{\dot{{Q}}_{{paliwa}}}} \cdot 100\% \), gdzie \( \dot{{Q}}_{{paliwa}} = \frac{{\dot{{Q}}_{{uż}}}}{{\eta}} \)&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -2372,10 +2372,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>({Vgas} * {kgH2O} * {r_w} / 3600) / ({Quz} / ({eta_kotla} / 100)) * 100</text>
-            <tolerance>5</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.02</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -2847,10 +2847,10 @@
                     <text>uniform</text>
                 </distribution>
                 <minimum>
-                    <text>2400</text>
+                    <text>2380</text>
                 </minimum>
                 <maximum>
-                    <text>2550</text>
+                    <text>2460</text>
                 </maximum>
                 <decimals>
                     <text>0</text>
@@ -2860,203 +2860,203 @@
                 <dataset_items>
                     <dataset_item>
                         <number>1</number>
-                        <value>2499</value>
+                        <value>2433</value>
                     </dataset_item>
                     <dataset_item>
                         <number>2</number>
-                        <value>2546</value>
+                        <value>2458</value>
                     </dataset_item>
                     <dataset_item>
                         <number>3</number>
-                        <value>2430</value>
+                        <value>2396</value>
                     </dataset_item>
                     <dataset_item>
                         <number>4</number>
-                        <value>2473</value>
+                        <value>2419</value>
                     </dataset_item>
                     <dataset_item>
                         <number>5</number>
-                        <value>2460</value>
+                        <value>2412</value>
                     </dataset_item>
                     <dataset_item>
                         <number>6</number>
-                        <value>2480</value>
+                        <value>2423</value>
                     </dataset_item>
                     <dataset_item>
                         <number>7</number>
-                        <value>2421</value>
+                        <value>2391</value>
                     </dataset_item>
                     <dataset_item>
                         <number>8</number>
-                        <value>2417</value>
+                        <value>2389</value>
                     </dataset_item>
                     <dataset_item>
                         <number>9</number>
-                        <value>2437</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>10</number>
-                        <value>2407</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>11</number>
-                        <value>2520</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>12</number>
-                        <value>2465</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>13</number>
-                        <value>2544</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>14</number>
-                        <value>2547</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>15</number>
                         <value>2400</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>10</number>
+                        <value>2384</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>11</number>
+                        <value>2444</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>12</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>13</number>
+                        <value>2457</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>14</number>
+                        <value>2458</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>15</number>
+                        <value>2380</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>16</number>
-                        <value>2410</value>
+                        <value>2385</value>
                     </dataset_item>
                     <dataset_item>
                         <number>17</number>
-                        <value>2408</value>
+                        <value>2384</value>
                     </dataset_item>
                     <dataset_item>
                         <number>18</number>
-                        <value>2493</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>19</number>
-                        <value>2476</value>
+                        <value>2421</value>
                     </dataset_item>
                     <dataset_item>
                         <number>20</number>
-                        <value>2428</value>
+                        <value>2395</value>
                     </dataset_item>
                     <dataset_item>
                         <number>21</number>
-                        <value>2518</value>
+                        <value>2443</value>
                     </dataset_item>
                     <dataset_item>
                         <number>22</number>
-                        <value>2459</value>
+                        <value>2411</value>
                     </dataset_item>
                     <dataset_item>
                         <number>23</number>
-                        <value>2531</value>
+                        <value>2450</value>
                     </dataset_item>
                     <dataset_item>
                         <number>24</number>
-                        <value>2438</value>
+                        <value>2400</value>
                     </dataset_item>
                     <dataset_item>
                         <number>25</number>
-                        <value>2479</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>26</number>
-                        <value>2538</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>27</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>28</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>29</number>
-                        <value>2432</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>30</number>
-                        <value>2490</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>31</number>
-                        <value>2425</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>32</number>
-                        <value>2500</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>33</number>
-                        <value>2512</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>34</number>
-                        <value>2492</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>35</number>
-                        <value>2489</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>36</number>
-                        <value>2445</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>37</number>
-                        <value>2505</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>38</number>
-                        <value>2516</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>39</number>
-                        <value>2438</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>40</number>
-                        <value>2424</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>41</number>
-                        <value>2517</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>42</number>
-                        <value>2471</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>43</number>
-                        <value>2466</value>
-                    </dataset_item>
-                    <dataset_item>
-                        <number>44</number>
                         <value>2422</value>
                     </dataset_item>
                     <dataset_item>
+                        <number>26</number>
+                        <value>2454</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>27</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>28</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>29</number>
+                        <value>2397</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>30</number>
+                        <value>2428</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>31</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>32</number>
+                        <value>2433</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>33</number>
+                        <value>2440</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>34</number>
+                        <value>2429</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>35</number>
+                        <value>2427</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>36</number>
+                        <value>2404</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>37</number>
+                        <value>2436</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>38</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>39</number>
+                        <value>2400</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>40</number>
+                        <value>2393</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>41</number>
+                        <value>2442</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>42</number>
+                        <value>2418</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>43</number>
+                        <value>2415</value>
+                    </dataset_item>
+                    <dataset_item>
+                        <number>44</number>
+                        <value>2392</value>
+                    </dataset_item>
+                    <dataset_item>
                         <number>45</number>
-                        <value>2545</value>
+                        <value>2457</value>
                     </dataset_item>
                     <dataset_item>
                         <number>46</number>
-                        <value>2494</value>
+                        <value>2430</value>
                     </dataset_item>
                     <dataset_item>
                         <number>47</number>
-                        <value>2509</value>
+                        <value>2438</value>
                     </dataset_item>
                     <dataset_item>
                         <number>48</number>
-                        <value>2496</value>
+                        <value>2431</value>
                     </dataset_item>
                     <dataset_item>
                         <number>49</number>
-                        <value>2469</value>
+                        <value>2417</value>
                     </dataset_item>
                     <dataset_item>
                         <number>50</number>
-                        <value>2517</value>
+                        <value>2442</value>
                     </dataset_item>
                 </dataset_items>
             </dataset_definition>
@@ -3517,9 +3517,10 @@
             <text>Ćw3 Zad. dom. – Temperatura punktu rosy spalin</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Aby kocioł kondensacyjny mógł odzyskiwać ciepło skraplania, temperatura spalin musi spaść poniżej pewnej wartości. Jak nazywa się ta temperatura?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Aby kocioł kondensacyjny mógł odzyskiwać ciepło skraplania, temperatura spalin musi spaść poniżej pewnej wartości. Jak nazywa się ta temperatura?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>1</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">
@@ -3540,12 +3541,12 @@
             <text>Ćw3 Zad. dom. – Warunki opłacalności kotła kondensacyjnego</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Wyjaśnij, dlaczego w praktyce nie zawsze udaje się odzyskać 100% ciepła kondensacji ze spalin.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Wyjaśnij, dlaczego w praktyce nie zawsze udaje się odzyskać 100% ciepła kondensacji ze spalin.&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>2</defaultgrade>
         <penalty>0</penalty>
         <graderinfo format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Oczekiwane odpowiedzi: Niska tw powrotu, korozyjność.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Oczekiwane odpowiedzi: (1) kondensacja zachodzi tylko wtedy, gdy temperatura wody powrotnej jest niższa od punktu rosy spalin (ok. 55 °C dla gazu ziemnego) – przy wysokiej temperaturze powrotu (np. 60–70 °C) para nie skrapla się wcale lub tylko częściowo; (2) nawet przy niskim powrocie spaliny opuszczają kocioł jako nasycone w temperaturze powyżej otoczenia, więc część pary zawsze uchodzi; (3) kondensat jest kwaśny (korozja) – potrzebne materiały odporne i odprowadzenie kondensatu; (4) ciepło skraplania ma niską temperaturę (40–55 °C), co ogranicza jego wykorzystanie (np. tylko podgrzew wody zasilającej).&lt;/p&gt;</text>
         </graderinfo>
     </question>
 </quiz>

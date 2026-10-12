@@ -10,7 +10,7 @@
             <text>Ćw2 Zad. dom. – Strumień wody [kg/s]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Z chłodnicy sprężarki odzyskujemy &lt;b&gt;{eta_odz}&lt;/b&gt;% ciepła, tj. \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{eta_odz}&lt;/b&gt;/100 × &lt;b&gt;{Qch}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Chcemy podgrzać wodę z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C. Ciepło właściwe wody: \( c_w = 4190 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymagany strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/s&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wzór:&lt;/em&gt; \( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot \Delta T \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 4 miejsc po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Z chłodnicy sprężarki odzyskujemy &lt;b&gt;{eta_odz}&lt;/b&gt;% ciepła, tj. \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{eta_odz}&lt;/b&gt;/100 × &lt;b&gt;{Qch}&lt;/b&gt; kW.&lt;/p&gt;&lt;p&gt;Chcemy podgrzać wodę z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C. Ciepło właściwe wody: \( c_w = 4190 \text{{ J/(kg·K)}} \).&lt;/p&gt;&lt;p&gt;Oblicz wymagany strumień masy wody \( \dot{{m}}_w \) w &lt;strong&gt;kg/s&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Wzór:&lt;/em&gt; \( \dot{{Q}} = \dot{{m}}_w \cdot c_w \cdot \Delta T \)&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 cyfr znaczących (np. 0,045).&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -34,10 +34,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in}))</text>
-            <tolerance>2</tolerance>
-            <tolerancetype>2</tolerancetype>
-            <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <tolerance>0.04</tolerance>
+            <tolerancetype>1</tolerancetype>
+            <correctanswerformat>2</correctanswerformat>
+            <correctanswerlength>2</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -954,7 +954,7 @@
             <text>Ćw2 Zad. dom. – Strumień wody [l/min]</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Z chłodnicy sprężarki można odzyskać ciepło. Woda ma być podgrzana z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;\( c_w = 4190 \text{{ J/(kg·K)}} \), \( \rho_w = 1000 \text{{ kg/m}}^3 \).&lt;/p&gt;&lt;p&gt;Ciepło do dyspozycji: \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{Qch}&lt;/b&gt; × &lt;b&gt;{eta_odz}&lt;/b&gt;/100 kW.&lt;/p&gt;&lt;p&gt;Oblicz strumień objętościowy wody w &lt;strong&gt;l/min&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Z chłodnicy sprężarki można odzyskać ciepło. Woda ma być podgrzana z &lt;b&gt;{tw_in}&lt;/b&gt;°C do &lt;b&gt;{tw_out}&lt;/b&gt;°C.&lt;/p&gt;&lt;p&gt;\( c_w = 4190 \text{{ J/(kg·K)}} \), \( \rho_w = 1000 \text{{ kg/m}}^3 \).&lt;/p&gt;&lt;p&gt;Ciepło do dyspozycji: \( \dot{{Q}}_{{odz}} = \) &lt;b&gt;{Qch}&lt;/b&gt; × &lt;b&gt;{eta_odz}&lt;/b&gt;/100 kW.&lt;/p&gt;&lt;p&gt;Oblicz strumień objętościowy wody w &lt;strong&gt;l/min&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Wynik zaokrąglij do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
@@ -978,10 +978,10 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Qch} * {eta_odz} / 100 * 1000 / (4190 * ({tw_out} - {tw_in})) * 60</text>
-            <tolerance>3</tolerance>
-            <tolerancetype>2</tolerancetype>
+            <tolerance>0.03</tolerance>
+            <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
-            <correctanswerlength>4</correctanswerlength>
+            <correctanswerlength>1</correctanswerlength>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1898,9 +1898,10 @@
             <text>Ćw2 Zad. dom. – Interpretacja wyniku</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Obliczono strumień wody wynikający z odzysku ciepła ze sprężarki. Która z poniższych interpretacji jest poprawna?&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Obliczono strumień wody wynikający z odzysku ciepła ze sprężarki. Która z poniższych interpretacji jest poprawna?&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>1</defaultgrade>
+        <penalty>0.3333333</penalty>
         <single>true</single>
         <shuffleanswers>true</shuffleanswers>
         <answer fraction="100">
@@ -1921,12 +1922,12 @@
             <text>Ćw2 Zad. dom. – Bilans energetyczny sprężarkowni</text>
         </name>
         <questiontext format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Wykonaj pełny bilans energetyczny sprężarkowni z odzyskiem ciepła. Uwzględnij:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Moc dostarczoną do sprężarki (silnik elektryczny)&lt;/li&gt;&lt;li&gt;Ciepło odprowadzone w chłodnicy&lt;/li&gt;&lt;li&gt;Ciepło odzyskane&lt;/li&gt;&lt;li&gt;Ciepło tracone do otoczenia&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Narysuj schemat bilansowy i określ, jaka część energii jest „stracona&quot;.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Wykonaj pełny bilans energetyczny sprężarkowni z odzyskiem ciepła. Uwzględnij:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Moc dostarczoną do sprężarki (silnik elektryczny)&lt;/li&gt;&lt;li&gt;Ciepło odprowadzone w chłodnicy&lt;/li&gt;&lt;li&gt;Ciepło odzyskane&lt;/li&gt;&lt;li&gt;Ciepło tracone do otoczenia&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Narysuj schemat bilansowy i określ, jaka część energii jest „stracona&quot;.&lt;/p&gt;</text>
         </questiontext>
         <defaultgrade>3</defaultgrade>
         <penalty>0</penalty>
         <graderinfo format="html">
-            <text>&lt;![CDATA[&lt;p&gt;Sprawdź: bilans musi się zgadzać. Ciepło odzyskane = Qch × eta_odz/100.&lt;/p&gt;]]&gt;</text>
+            <text>&lt;p&gt;Sprawdź: bilans musi się zgadzać. Ciepło odzyskane = Qch × eta_odz/100.&lt;/p&gt;</text>
         </graderinfo>
     </question>
 </quiz>

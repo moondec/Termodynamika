@@ -156,7 +156,7 @@
             </feedback>
         </answer>
         <answer fraction="0" format="html">
-            <text>&lt;p&gt;\(Q - \Delta H\)&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(\int V \, dp\)&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -309,7 +309,7 @@
             </feedback>
         </answer>
         <answer fraction="0" format="html">
-            <text>&lt;p&gt;ciśnienie osiąga wartość maksymalną&lt;/p&gt;</text>
+            <text>&lt;p&gt;temperatura wrzenia przestaje zależeć od ciśnienia&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -342,13 +342,13 @@
             <text>Niepoprawna odpowiedź.</text>
         </incorrectfeedback>
         <answer fraction="0" format="html">
-            <text>&lt;p&gt;85% cieczy i 15% pary&lt;/p&gt;</text>
+            <text>&lt;p&gt;85% cieczy i 15% pary (udziały masowe)&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
         </answer>
         <answer fraction="100" format="html">
-            <text>&lt;p&gt;85% pary i 15% cieczy&lt;/p&gt;</text>
+            <text>&lt;p&gt;85% pary i 15% cieczy (udziały masowe)&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1802,7 +1802,7 @@
             <text>P27_PF_Przeciwprad</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;P27.&lt;/b&gt; Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych warunkach brzegowych.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;P27.&lt;/b&gt; Wymiennik przeciwprądowy pozwala osiągnąć większą średnią różnicę temperatur niż wymiennik współprądowy przy tych samych temperaturach wlotowych i tych samych strumieniach płynów.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text/>
