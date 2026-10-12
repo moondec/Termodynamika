@@ -513,7 +513,7 @@
             </feedback>
         </answer>
         <answer fraction="100" format="html">
-            <text>&lt;p&gt;izentropowej (adiabatycznej odwracalnej)&lt;/p&gt;</text>
+            <text>&lt;p&gt;izentropowej&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
@@ -1578,7 +1578,7 @@
             </feedback>
         </answer>
         <answer fraction="100" format="html">
-            <text>&lt;p&gt;dławienia (przepływu przez opór bez wymiany ciepła)&lt;/p&gt;</text>
+            <text>&lt;p&gt;dławienia&lt;/p&gt;</text>
             <feedback format="html">
                 <text/>
             </feedback>
