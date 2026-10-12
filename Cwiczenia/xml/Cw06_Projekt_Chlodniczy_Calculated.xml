@@ -14,10 +14,10 @@
             <text>Cw06_Zad6_1_EER</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Obieg Chłodniczy: EER&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Wydajność chłodnicza: \(\dot{{Q}}_o =\) &lt;b&gt;{{Qo6}}&lt;/b&gt; kW. Czynnik R134a.&lt;br&gt;Temperatura parowania: \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, skraplania: \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego (linearyzacja tablicy R134a i wykresu p-h wokół punktu bazowego \(t_o = 2\) °C, \(t_k = 40\) °C z Zad. 6.1):&lt;br&gt;\(h_1 = h''(t_o) \approx 399.8 + 0.58 \cdot (t_o - 2)\) kJ/kg,&lt;br&gt;\(h_3 = h'(t_k) \approx 256.4 + 1.49 \cdot (t_k - 40)\) kJ/kg,&lt;br&gt;\(h_2 \approx h_1 + 24.4 + 0.56 \cdot (t_k - 40) - 0.76 \cdot (t_o - 2)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz EER (COP chłodziarki):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$EER = \frac{{q_o}}{{l_k}} = \frac{h_1 - h_4}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Uwaga: \(h_4 = h_3\) (dławienie izentalpowe).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Obieg Chłodniczy: EER&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Wydajność chłodnicza: \(\dot{{Q}}_o =\) &lt;b&gt;{{Qo6}}&lt;/b&gt; kW. Czynnik R134a.&lt;br&gt;Temperatura parowania: \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, skraplania: \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego odczytaj jak w Zad. 6.1: \(h_1 = h''(t_o)\) i \(s_1 = s''(t_o)\) z tablicy nasycenia R134a (Załącznik C, interpolacja liniowa między wierszami), \(h_3 = h_4 = h'(t_k)\) z tej samej tablicy, \(h_2\) z wykresu p-h (Załącznik F) na przecięciu izentropy \(s_1\) z izobarą \(p_k = p_s(t_k)\). Niepewność odczytu z wykresu jest uwzględniona w tolerancji odpowiedzi.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz EER (COP chłodziarki):&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$EER = \frac{{q_o}}{{l_k}} = \frac{h_1 - h_4}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Uwaga: \(h_4 = h_3\) (dławienie izentalpowe).&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;1. \(h_1 \approx 399.8 + 0.58(t_o - 2)\), \(h_3 = h_4 \approx 256.4 + 1.49(t_k - 40)\), \(h_2 \approx h_1 + 24.4 + 0.56(t_k - 40) - 0.76(t_o - 2)\) (wartości zgodne z tablicą R134a i wykresem p-h).&lt;br&gt;2. \(q_o = h_1 - h_4\), \(l_k = h_2 - h_1\).&lt;br&gt;3. EER = \(q_o / l_k\).&lt;/p&gt;</text>
+            <text>&lt;p&gt;1. \(h_1 = h''(t_o)\), \(h_3 = h_4 = h'(t_k)\) z tablicy R134a; \(h_2\) z wykresu p-h (izentropa \(s_1 = s''(t_o)\) do \(p_k\)). Dla \(t_o = 2\) °C, \(t_k = 40\) °C: \(h_1 \approx 400\), \(h_3 \approx 256\), \(h_2 \approx 425\) kJ/kg.&lt;br&gt;2. \(q_o = h_1 - h_4\), \(l_k = h_2 - h_1\).&lt;br&gt;3. EER = \(q_o / l_k\).&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -38,7 +38,7 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>((-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703) - (0.002042*pow({tk6},2) + 1.3296*{tk6} + 200.0224)) / ((398.7923 + (-0.152673)*{to6} + 0.722686*{tk6} + (-0.00060308)*{to6}*{tk6} + 0.00212521*pow({to6},2) + (-0.00201033)*pow({tk6},2)) - (-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703))</text>
-            <tolerance>0.02</tolerance>
+            <tolerance>0.1</tolerance>
             <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>2</correctanswerlength>
@@ -508,7 +508,7 @@
             <text>Cw06_Zad6_2_Moc_sprezarki</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Moc Sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, obieg teoretyczny.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego (linearyzacja tablicy R134a i wykresu p-h wokół punktu bazowego \(t_o = 2\) °C, \(t_k = 40\) °C z Zad. 6.1):&lt;br&gt;\(h_1 = h''(t_o) \approx 399.8 + 0.58 \cdot (t_o - 2)\) kJ/kg,&lt;br&gt;\(h_3 = h'(t_k) \approx 256.4 + 1.49 \cdot (t_k - 40)\) kJ/kg,&lt;br&gt;\(h_2 \approx h_1 + 24.4 + 0.56 \cdot (t_k - 40) - 0.76 \cdot (t_o - 2)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc napędową sprężarki \(N\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$N = \frac{\dot{{Q}}_o}{{EER}} = \dot{{m}} \cdot l_k, \qquad EER = \frac{h_1 - h_3}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Moc Sprężarki&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, obieg teoretyczny.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego odczytaj jak w Zad. 6.1: \(h_1 = h''(t_o)\) i \(s_1 = s''(t_o)\) z tablicy nasycenia R134a (Załącznik C, interpolacja liniowa między wierszami), \(h_3 = h_4 = h'(t_k)\) z tej samej tablicy, \(h_2\) z wykresu p-h (Załącznik F) na przecięciu izentropy \(s_1\) z izobarą \(p_k = p_s(t_k)\). Niepewność odczytu z wykresu jest uwzględniona w tolerancji odpowiedzi.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz moc napędową sprężarki \(N\) [kW]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$N = \frac{\dot{{Q}}_o}{{EER}} = \dot{{m}} \cdot l_k, \qquad EER = \frac{h_1 - h_3}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;\(EER = (h_1 - h_3)/(h_2 - h_1)\) jak w zad. 6.1; \(N = \dot{{Q}}_o / EER\) [kW].&lt;/p&gt;</text>
@@ -532,7 +532,7 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Qo6} / (((-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703) - (0.002042*pow({tk6},2) + 1.3296*{tk6} + 200.0224)) / ((398.7923 + (-0.152673)*{to6} + 0.722686*{tk6} + (-0.00060308)*{to6}*{tk6} + 0.00212521*pow({to6},2) + (-0.00201033)*pow({tk6},2)) - (-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703)))</text>
-            <tolerance>0.02</tolerance>
+            <tolerance>0.1</tolerance>
             <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>1</correctanswerlength>
@@ -1227,10 +1227,10 @@
             <text>Cw06_Zad6_3_Strumien_masy</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Strumień Masy Czynnika&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, obieg teoretyczny.&lt;/p&gt;&lt;p&gt;Entalpie (linearyzacja tablicy R134a wokół punktu bazowego \(t_o = 2\) °C, \(t_k = 40\) °C z Zad. 6.1):&lt;br&gt;\(h_1 = h''(t_o) \approx 399.8 + 0.58 \cdot (t_o - 2)\) kJ/kg, \(h_3 = h_4 = h'(t_k) \approx 256.4 + 1.49 \cdot (t_k - 40)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz strumień masy czynnika \(\dot{{m}}\) [kg/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{m}} = \frac{\dot{{Q}}_o}{{q_o}} = \frac{\dot{{Q}}_o}{h_1 - h_4}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Strumień Masy Czynnika&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, obieg teoretyczny.&lt;/p&gt;&lt;p&gt;Entalpie odczytaj z tablicy nasycenia R134a (Załącznik C, interpolacja liniowa między wierszami) jak w Zad. 6.1: \(h_1 = h''(t_o)\), \(h_3 = h_4 = h'(t_k)\).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz strumień masy czynnika \(\dot{{m}}\) [kg/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$\dot{{m}} = \frac{\dot{{Q}}_o}{{q_o}} = \frac{\dot{{Q}}_o}{h_1 - h_4}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
-            <text>&lt;p&gt;\(q_o = h_1 - h_4 = h''(t_o) - h'(t_k)\) (przybliżenia liniowe z treści). \(\dot{{m}} = \dot{{Q}}_o / q_o\) [kg/s].&lt;/p&gt;</text>
+            <text>&lt;p&gt;\(q_o = h_1 - h_4 = h''(t_o) - h'(t_k)\) (z tablicy nasycenia R134a). \(\dot{{m}} = \dot{{Q}}_o / q_o\) [kg/s].&lt;/p&gt;</text>
         </generalfeedback>
         <defaultgrade>1.0000000</defaultgrade>
         <penalty>0.3333333</penalty>
@@ -1251,7 +1251,7 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>{Qo6} / ((-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703) - (0.002042*pow({tk6},2) + 1.3296*{tk6} + 200.0224))</text>
-            <tolerance>0.02</tolerance>
+            <tolerance>0.03</tolerance>
             <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>2</correctanswerlength>
@@ -1946,7 +1946,7 @@
             <text>Cw06_Zad6_4_COP_pompa_ciepla</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Pompa Ciepła (COP)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, ten sam obieg teoretyczny co w zad. 6.1, wykorzystany jako pompa ciepła.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego (linearyzacja tablicy R134a i wykresu p-h wokół punktu bazowego \(t_o = 2\) °C, \(t_k = 40\) °C z Zad. 6.1):&lt;br&gt;\(h_1 = h''(t_o) \approx 399.8 + 0.58 \cdot (t_o - 2)\) kJ/kg,&lt;br&gt;\(h_3 = h'(t_k) \approx 256.4 + 1.49 \cdot (t_k - 40)\) kJ/kg,&lt;br&gt;\(h_2 \approx h_1 + 24.4 + 0.56 \cdot (t_k - 40) - 0.76 \cdot (t_o - 2)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz COP pompy ciepła:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$COP_{{PC}} = \frac{q_{sk}}{{l_k}} = \frac{h_2 - h_3}{h_2 - h_1} = EER + 1$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Pompa Ciepła (COP)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C. Czynnik R134a, ten sam obieg teoretyczny co w zad. 6.1, wykorzystany jako pompa ciepła.&lt;/p&gt;&lt;p&gt;Entalpie obiegu teoretycznego odczytaj jak w Zad. 6.1: \(h_1 = h''(t_o)\) i \(s_1 = s''(t_o)\) z tablicy nasycenia R134a (Załącznik C, interpolacja liniowa między wierszami), \(h_3 = h_4 = h'(t_k)\) z tej samej tablicy, \(h_2\) z wykresu p-h (Załącznik F) na przecięciu izentropy \(s_1\) z izobarą \(p_k = p_s(t_k)\). Niepewność odczytu z wykresu jest uwzględniona w tolerancji odpowiedzi.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz COP pompy ciepła:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$COP_{{PC}} = \frac{q_{sk}}{{l_k}} = \frac{h_2 - h_3}{h_2 - h_1} = EER + 1$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;Pompa ciepła wykorzystuje ciepło skraplacza. \(COP_{{PC}} = EER + 1\).&lt;/p&gt;</text>
@@ -1970,7 +1970,7 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>((-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703) - (0.002042*pow({tk6},2) + 1.3296*{tk6} + 200.0224)) / ((398.7923 + (-0.152673)*{to6} + 0.722686*{tk6} + (-0.00060308)*{to6}*{tk6} + 0.00212521*pow({to6},2) + (-0.00201033)*pow({tk6},2)) - (-0.002127*pow({to6},2) + 0.6041*{to6} + 398.5703)) + 1</text>
-            <tolerance>0.02</tolerance>
+            <tolerance>0.1</tolerance>
             <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>2</correctanswerlength>
@@ -2440,7 +2440,7 @@
             <text>Cw06_Zad6_7_Predkosc_rurociagu</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Prędkość w Rurociągu Ssawnym&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C.&lt;br&gt;Średnica rury: \(d =\) &lt;b&gt;{dr6}&lt;/b&gt; mm. Czynnik R134a. Objętość właściwa pary nasyconej na ssaniu (tablica R134a): \(v_1 = v''(t_o) \approx 0.0693 - 0.00244 \cdot t_o + 0.00005 \cdot t_o^2\) m³/kg.&lt;br&gt;Strumień masy jak w zad. 6.3: \(\dot{{m}} = \dot{{Q}}_o / (h_1 - h_3)\), \(h_1 \approx 399.8 + 0.58 \cdot (t_o - 2)\) kJ/kg, \(h_3 \approx 256.4 + 1.49 \cdot (t_k - 40)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz prędkość czynnika \(w\) [m/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$w = \frac{\dot{{m}} \cdot v_1}{\pi d^2/4}$$&lt;/p&gt;&lt;p&gt;Dopuszczalna: 8–15 m/s.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Prędkość w Rurociągu Ssawnym&lt;/b&gt;&lt;/p&gt;&lt;p&gt;\(\dot{{Q}}_o =\) &lt;b&gt;{Qo6}&lt;/b&gt; kW, \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C, \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C.&lt;br&gt;Średnica rury: \(d =\) &lt;b&gt;{dr6}&lt;/b&gt; mm. Czynnik R134a. Objętość właściwą pary nasyconej na ssaniu \(v_1 = v''(t_o)\) odczytaj z tablicy nasycenia R134a (Załącznik C, interpolacja między wierszami).&lt;br&gt;Strumień masy jak w zad. 6.3: \(\dot{{m}} = \dot{{Q}}_o / (h_1 - h_3)\), \(h_1 = h''(t_o)\), \(h_3 = h'(t_k)\) z tej samej tablicy.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz prędkość czynnika \(w\) [m/s]:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$w = \frac{\dot{{m}} \cdot v_1}{\pi d^2/4}$$&lt;/p&gt;&lt;p&gt;Dopuszczalna: 8–15 m/s.&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 1 miejsca po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;\(w = \dot{{m}} \cdot v_1 / (\pi \cdot (d/1000)^2 / 4)\) [m/s], \(v_1 = v''(t_o)\) z tablicy R134a (ok. 0.065 m³/kg przy 2 °C).&lt;/p&gt;</text>
@@ -3411,7 +3411,7 @@
             <text>Cw06_Zad6_6_EER_R290</text>
         </name>
         <questiontext format="html">
-            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Porównanie Czynników: EER dla R290 (propan)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Obieg chłodniczy teoretyczny z propanem (R290) pracuje między temperaturą parowania \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C a temperaturą skraplania \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C (bez przegrzania i dochłodzenia, \(h_4 = h_3\)).&lt;/p&gt;&lt;p&gt;Entalpie (linearyzacja tablicy R290 i wykresu p-h wokół punktu bazowego \(t_o = 2\) °C, \(t_k = 40\) °C z Zad. 6.6):&lt;br&gt;\(h_1 = h''(t_o) \approx 577.1 + 1.10 \cdot (t_o - 2)\) kJ/kg,&lt;br&gt;\(h_3 = h'(t_k) \approx 307.2 + 2.90 \cdot (t_k - 40)\) kJ/kg,&lt;br&gt;\(h_2 \approx h_1 + 46.7 + 1.08 \cdot (t_k - 40) - 1.45 \cdot (t_o - 2)\) kJ/kg.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz EER dla R290:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$EER = \frac{{q_o}}{{l_k}} = \frac{h_1 - h_4}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
+            <text>&lt;p&gt;&lt;b&gt;Ćw. 6 — Porównanie Czynników: EER dla R290 (propan)&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Obieg chłodniczy teoretyczny z propanem (R290) pracuje między temperaturą parowania \(t_o =\) &lt;b&gt;{to6}&lt;/b&gt; °C a temperaturą skraplania \(t_k =\) &lt;b&gt;{tk6}&lt;/b&gt; °C (bez przegrzania i dochłodzenia, \(h_4 = h_3\)).&lt;/p&gt;&lt;p&gt;Entalpie odczytaj jak w Zad. 6.6: \(h_1 = h''(t_o)\), \(s_1 = s''(t_o)\) i \(h_3 = h_4 = h'(t_k)\) z tablicy nasycenia R290 (Załącznik D), \(h_2\) z wykresu p-h R290 (Załącznik G) lub z tablicy pary przegrzanej R290 – na przecięciu izentropy \(s_1\) z izobarą \(p_k = p_s(t_k)\).&lt;/p&gt;&lt;p&gt;&lt;b&gt;Oblicz EER dla R290:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;$$EER = \frac{{q_o}}{{l_k}} = \frac{h_1 - h_4}{h_2 - h_1}$$&lt;/p&gt;&lt;p&gt;Wynik podaj z dokładnością do 2 miejsc po przecinku.&lt;/p&gt;</text>
         </questiontext>
         <generalfeedback format="html">
             <text>&lt;p&gt;\(q_o = h_1 - h_3\), \(l_k = h_2 - h_1\), EER = \(q_o / l_k\). Dla R290 EER jest praktycznie taki sam jak dla R134a (różnica ok. 2 %), ale \(q_o\) jest ok. 2 razy większe – potrzebny strumień czynnika jest prawie o połowę mniejszy. O wyborze decydują GWP i palność (R290 – klasa A3).&lt;/p&gt;</text>
@@ -3435,7 +3435,7 @@
         </incorrectfeedback>
         <answer fraction="100">
             <text>((-0.004186*pow({to6},2) + 1.1477*{to6} + 574.7918) - (0.005311*pow({tk6},2) + 2.4687*{tk6} + 200.0520)) / ((575.1506 + (-0.298900)*{to6} + 1.381165*{tk6} + (-0.00118242)*{to6}*{tk6} + 0.00392480*pow({to6},2) + (-0.00371714)*pow({tk6},2)) - (-0.004186*pow({to6},2) + 1.1477*{to6} + 574.7918))</text>
-            <tolerance>0.02</tolerance>
+            <tolerance>0.06</tolerance>
             <tolerancetype>1</tolerancetype>
             <correctanswerformat>1</correctanswerformat>
             <correctanswerlength>2</correctanswerlength>

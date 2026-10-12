@@ -181,7 +181,7 @@ def make_calculated_question(name, questiontext, formula, tolerance=0.02,
     ET.SubElement(q, 'synchronize').text = '1'
     ET.SubElement(q, 'single').text = '0'
     ET.SubElement(q, 'answernumbering').text = 'abc'
-    ET.SubElement(q, 'shuffleanswers').text = '0'
+    ET.SubElement(q, 'shuffleanswers').text = '1'
     for tag in ('correctfeedback', 'partiallycorrectfeedback', 'incorrectfeedback'):
         el = ET.SubElement(q, tag, format='html')
         ET.SubElement(el, 'text')
@@ -196,7 +196,7 @@ def make_calculated_question(name, questiontext, formula, tolerance=0.02,
     ET.SubElement(fb, 'text')
 
     ET.SubElement(q, 'unitgradingtype').text = '0'
-    ET.SubElement(q, 'unitpenalty').text = '0.1000000'
+    ET.SubElement(q, 'unitpenalty').text = '1.0000000'
     ET.SubElement(q, 'showunits').text = '3'
     ET.SubElement(q, 'unitsleft').text = '0'
     ET.SubElement(q, 'dataset_definitions')
@@ -304,6 +304,17 @@ def process_cw06(filepath):
     changes += set_formula(root, 'Cw06_Zad6_4_COP_pompa_ciepla', f"{eer} + 1")
     changes += set_formula(root, 'Cw06_Zad6_7_Predkosc_rurociagu',
                            f"({{Qo6}} / (({H1_R134A}) - ({H3_R134A}))) * ({V_R134A}) / (3.14159265 * pow({{dr6}} / 1000, 2) / 4)")
+    # Studenci odczytują h2 z wykresu p-h: przy l_k = 19–33 kJ/kg błąd odczytu ±1–1.5 kJ/kg
+    # daje do ~10 % na EER/N/COP i ~1.5 % na q_o (strumień masy) – stąd tolerancje.
+    for qname, tol in (('Cw06_Zad6_1_EER', '0.1'), ('Cw06_Zad6_2_Moc_sprezarki', '0.1'),
+                       ('Cw06_Zad6_4_COP_pompa_ciepla', '0.1'), ('Cw06_Zad6_3_Strumien_masy', '0.03'),
+                       ('Cw06_Zad6_7_Predkosc_rurociagu', '0.03'), ('Cw06_Zad6_6_EER_R290', '0.06')):
+        q = find_question(root, qname)
+        if q is not None:
+            t = q.find('answer/tolerance')
+            if t is not None and t.text != tol:
+                t.text = tol
+                changes += 1
 
     # Zad 6.6 — R134a vs R290
     if find_question(root, 'Cw06_Zad6_6_EER_R290') is None:
@@ -313,10 +324,19 @@ def process_cw06(filepath):
             '<p>Obieg chłodniczy teoretyczny z propanem (R290) pracuje między temperaturą '
             'parowania \\(t_o =\\) <b>{to6}</b> °C a temperaturą skraplania \\(t_k =\\) <b>{tk6}</b> °C '
             '(bez przegrzania i dochłodzenia, \\(h_4 = h_3\\)).</p>'
-            '<p><b>Oblicz EER = \\(q_o / l_k\\) dla R290:</b></p>'
+            "<p>Entalpie odczytaj jak w Zad. 6.6: \\(h_1 = h''(t_o)\\), \\(s_1 = s''(t_o)\\) i "
+            "\\(h_3 = h_4 = h'(t_k)\\) z tablicy nasycenia R290 (Załącznik D), \\(h_2\\) z wykresu p-h R290 "
+            '(Załącznik G) lub z tablicy pary przegrzanej R290 – na przecięciu izentropy \\(s_1\\) '
+            'z izobarą \\(p_k = p_s(t_k)\\).</p>'
+            '<p><b>Oblicz EER dla R290:</b></p>'
+            '<p>$$EER = \\frac{{q_o}}{{l_k}} = \\frac{h_1 - h_4}{h_2 - h_1}$$</p>'
             '<p>Wynik podaj z dokładnością do 2 miejsc po przecinku.</p>',
             f"(({H1_R290}) - ({H3_R290})) / (({H2S_R290}) - ({H1_R290}))",
-            correctanswerlength=2)
+            tolerance=0.06, correctanswerlength=2,
+            generalfeedback='<p>\\(q_o = h_1 - h_3\\), \\(l_k = h_2 - h_1\\), EER = \\(q_o / l_k\\). '
+            'Dla R290 EER jest praktycznie taki sam jak dla R134a (różnica ok. 2 %), ale \\(q_o\\) jest ok. 2 razy '
+            'większe – potrzebny strumień czynnika jest prawie o połowę mniejszy. O wyborze decydują GWP i palność '
+            '(R290 – klasa A3).</p>')
         template = find_question(root, 'Cw06_Zad6_1_EER')
         for var in ['to6', 'tk6']:
             copy_dataset_item(root, var, q66, preferred=template,
