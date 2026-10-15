@@ -26,7 +26,7 @@ if (!file.exists(input_file)) {
 
 # Lista z USOS (PDF): wiersze "  1 Nazwisko Imię      WYK1, LAB1"
 read_usos_pdf <- function(path) {
-  txt <- system2("pdftotext", c("-layout", shQuote(path), "-"), stdout = TRUE)
+  txt <- system2("pdftotext", c("-layout", "-enc", "UTF-8", shQuote(path), "-"), stdout = TRUE)
   m <- regmatches(txt, regexec("^\\s*\\d+\\s+(\\S.*?)(?:\\s{2,}(\\S.*?))?\\s*$", txt, perl = TRUE))
   m <- Filter(function(r) length(r) == 3, m)
   data.frame(osoba = sapply(m, `[`, 2), grupy = sapply(m, `[`, 3))
