@@ -25,11 +25,22 @@ if (!file.exists(input_file)) {
 }
 
 # Lista z USOS (PDF): wiersze "  1 Nazwisko Imię      WYK1, LAB1"
+# albo lista grupy laboratoryjnej "  1 158463 Nazwisko Imię" (grupa z nagłówka strony)
 read_usos_pdf <- function(path) {
   txt <- system2("pdftotext", c("-layout", "-enc", "UTF-8", shQuote(path), "-"), stdout = TRUE)
-  m <- regmatches(txt, regexec("^\\s*\\d+\\s+(\\S.*?)(?:\\s{2,}(\\S.*?))?\\s*$", txt, perl = TRUE))
-  m <- Filter(function(r) length(r) == 3, m)
-  data.frame(osoba = sapply(m, `[`, 2), grupy = sapply(m, `[`, 3))
+  grupa <- ""
+  out <- list()
+  for (ln in txt) {
+    g <- regmatches(ln, regexec("laboratorium, grupa nr (\\d+)", ln))[[1]]
+    if (length(g) == 2) grupa <- paste0("LAB", g[2])
+    m <- regmatches(ln, regexec("^\\s*\\d+\\s+(?:(\\d{5,7})\\s+)?(\\S.*?)(?:\\s{2,}(\\S.*?))?\\s*$",
+                                ln, perl = TRUE))[[1]]
+    if (length(m) == 4 && grepl("[[:alpha:]]", m[3])) {
+      out[[length(out) + 1]] <- data.frame(osoba = m[3], album = m[2],
+                                           grupy = if (m[4] != "") m[4] else grupa)
+    }
+  }
+  do.call(rbind, out)
 }
 
 cat("=== Wczytywanie listy studentów z:", input_file, "===\n")
@@ -37,7 +48,7 @@ if (grepl("\\.pdf$", input_file, ignore.case = TRUE)) {
   lista <- read_usos_pdf(input_file)
 } else {
   osoby <- readLines(input_file, warn = FALSE, encoding = "UTF-8")
-  lista <- data.frame(osoba = osoby, grupy = "")
+  lista <- data.frame(osoba = osoby, album = "", grupy = "")
 }
 Encoding(lista$osoba) <- "UTF-8"
 lista$osoba <- gsub("\\s+", " ", trimws(lista$osoba)) # spacje na końcu psuły nazwy plików
@@ -194,7 +205,7 @@ for (i in 1:N) {
 
   sys_params$student_name <- osoba
   sys_params$zestaw_nr <- i
-  zestawienie[[i]] <- data.frame(nr = i, osoba = osoba, grupy = lista$grupy[i],
+  zestawienie[[i]] <- data.frame(nr = i, osoba = osoba, album = lista$album[i], grupy = lista$grupy[i],
                                  seed = seed_val, sys_params[setdiff(names(sys_params), c("student_name", "zestaw_nr"))])
 
   # 1. Wersja dla studenta, 2. klucz (dla prowadzącego)
