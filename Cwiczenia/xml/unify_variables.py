@@ -151,7 +151,7 @@ for name, vmin, vmax, dec, step in VARS:
     print(f"  {name:10s}  [{vmin} .. {vmax}]  step={step}  dec={dec}  sample: {all_values[name][:5]}")
 
 # ========================= PROCESS EACH XML FILE =========================
-xml_dir = "/Users/marekurbaniak/Documents/R/Termodynamika_quatro/Cwiczenia/xml"
+xml_dir = "/Users/marekurbaniak/Documents/dydaktyka/Termodynamika_quatro/Cwiczenia/xml"
 
 for fname in sorted(os.listdir(xml_dir)):
     if not fname.startswith("Cw0") or not fname.endswith(".xml"):

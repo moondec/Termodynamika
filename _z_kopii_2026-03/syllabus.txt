@@ -1,0 +1,533 @@
+Skrócony konspekt zajęć z Termodynamiki
+🏛️ Wykłady (W) – Razem: 30 godzin
+Struktura modułowa wykładów, od podstaw teoretycznych po zaawansowane aplikacje w inżynierii środowiska.
+Moduł
+Temat Wykładu
+Godz. (W)
+Kluczowe Zagadnienia
+Powiązane Efekty Uczenia (E)
+W1
+Wprowadzenie do Termodynamiki
+(Moduł 1: Podstawy)
+2h
+• Definicja termodynamiki technicznej.
+• Układ termodynamiczny, otoczenie, granice (zamknięty, otwarty, izolowany).
+• Parametry stanu (p, T, v), stan równowagi.
+• Zasada Zerowa Termodynamiki, skale temperatur.
+• Przemiana termodynamiczna, proces, obieg.
+E1, E3
+W2
+I Zasada Termodynamiki
+
+(Moduł 2: Bilans Energii)
+4h
+• Energia wewnętrzna, praca (objętościowa), ciepło.
+• Sformułowanie I Zasady dla układów zamkniętych (Bilans energii).
+• Entalpia (definicja i znaczenie techniczne).
+• I Zasada dla układów otwartych (równanie przepływu ustalonego, SSFE).
+• Zastosowanie SSFE do urządzeń (sprężarka, turbina, wymiennik ciepła).
+E1, E3, E5
+W3
+Właściwości Substancji Czystych
+
+(Moduł 3: Czynniki)
+4h
+• Gaz doskonały (równanie Clapeyrona, ciepła właściwe).
+• Gazy rzeczywiste (krótko: równanie van der Waalsa).
+• Przemiany fazowe, para nasycona (sucha, mokra), para przegrzana.
+• Korzystanie z tabel pary wodnej.
+
+• Wykresy termodynamiczne (p-v, T-s, wykres p-h dla chłodnictwa).
+E1, E3, E5
+W4
+II Zasada Termodynamiki
+
+(Moduł 4: Kierunek Procesów)
+4h
+• Procesy odwracalne i nieodwracalne (źródła nieodwracalności).
+• Sformułowania II Zasady (Clausiusa, Kelvina-Plancka).
+• Obieg Carnota (silnik, pompa ciepła, chłodziarka) i jego sprawność/efektywność.
+• Entropia (definicja, zasada wzrostu entropii).
+• Egzergia (energia dostępna) i straty egzergii (anergia).
+E1, E5
+W5
+Przemiany Gazów Doskonałych
+
+(Moduł 5: Procesy)
+3h
+• Charakterystyczne przemiany: izochoryczna, izobaryczna, izotermiczna.
+• Przemiana adiabatyczna (odwracalna - izentropowa).
+• Przemiana politropowa (jako uogólnienie).
+• Obliczanie pracy, ciepła, zmian energii wewn. i entalpii dla każdej przemiany.
+E1, E5
+W6
+Obiegi Termodynamiczne
+
+(Moduł 6: Systemy)
+3h
+• Obiegi silników cieplnych (przegląd: Otto, Diesla, Rankine'a).
+• Obiegi lewobieżne (chłodnicze) i prawobieżne (silnikowe).
+• Obieg porównawczy chłodniczy (parowy, sprężarkowy).
+• Wprowadzenie do pomp ciepła.
+E1, E2, E3
+W7
+Zastosowanie: Chłodnictwo i Pompy Ciepła
+
+(Moduł 7: Aplikacje HVAC-R cz. 1)
+4h
+• Budowa i zasada działania sprężarkowej pompy ciepła/chłodziarki.
+• Analiza obiegu na wykresie p-h.
+• Współczynniki efektywności: COP (pompa ciepła) i EER (chłodziarka).
+• Czynniki chłodnicze (R-czynniki) i ich wpływ na środowisko.
+• Energooszczędność w systemach chłodniczych.
+E2, E4, E5
+W8
+Powietrze Wilgotne (Psychrometria)
+
+(Moduł 8: Aplikacje HVAC-R cz. 2)
+3h
+• Parametry powietrza wilgotnego (wilgotność względna, bezwzględna, entalpia, temp. punktu rosy, temp. termometru mokrego).
+• Wykres Molliera (h-x) – budowa i zastosowanie.
+• Odczytywanie parametrów z wykresu.
+E1, E3, E4
+W9
+Zastosowanie: Wentylacja i Klimatyzacja
+
+(Moduł 9: Aplikacje HVAC-R cz. 3)
+2h
+• Podstawowe procesy uzdatniania powietrza na wykresie h-x:
+  • Ogrzewanie i chłodzenie (jawne).
+  • Nawilżanie (parowe, wodne) i osuszanie.
+  • Mieszanie strumieni powietrza.
+• Zasada działania centrali wentylacyjnej (AHU).
+E2, E4, E5
+W10
+Elementy Wymiany Ciepła i Efektywność
+
+(Moduł 10: Integracja)
+1h
+• Podstawy wymiany ciepła (przewodzenie, konwekcja, promieniowanie).
+• Przenikanie ciepła przez przegrody budowlane (Współczynnik U).
+• Pojęcie sprawności i efektywności energetycznej w budynkach.
+E1, E2
+W11
+Podsumowanie i Rozwój
+
+(Moduł 11: Zakończenie)
+1h
+• Podsumowanie kursu.
+• Aspekty ekonomiczne i ekologiczne (analiza cyklu życia).
+• Kierunki rozwoju (OZE, kogeneracja).
+• Wskazówki do samodzielnej nauki (normy, nowe technologie).
+E2, E6
+
+🔬 Ćwiczenia (Ć) – Razem: 15 godzin
+Sesje praktyczne skoncentrowane na rozwiązywaniu problemów inżynierskich, skorelowane bezpośrednio z modułami wykładowymi.
+Moduł
+Temat Ćwiczeń
+Godz. (Ć)
+Typ Zajęć
+Konkretne Zadania / Problemy
+Powiązanie z Wykładem
+Ć1
+Parametry Stanu i Systemy
+1h
+Obliczeniowe
+• Przeliczanie jednostek (ciśnienie, temperatura, energia).
+• Określanie parametrów stanu. Identyfikacja typów układów.
+W1
+Ć2
+Bilans Energii (I Zasada)
+2h
+Obliczeniowe
+• Obliczanie pracy i ciepła w układach zamkniętych.
+• Zadania z bilansem energii dla układów otwartych (SSFE):
+  • Prosta sprężarka, turbina, dławik.
+W2
+Ć3
+Warsztat: Tabele Parowe i Wykresy
+2h
+Obliczeniowe / Warsztat
+• Odczytywanie właściwości wody i pary z tabel parowych.
+• Określanie stanu czynnika (ciecz, para mokra, przegrzana).
+• Wstęp do wykresu p-h (odczyt dla czynników chłodniczych).
+W3
+Ć4
+II Zasada i Entropia
+1h
+Obliczeniowe
+• Obliczanie sprawności obiegu Carnota.
+• Obliczanie zmian entropii w prostych procesach.
+• Ocena nieodwracalności procesu.
+W4
+Ć5
+Przemiany Gazów Doskonałych
+2h
+Obliczeniowe
+• Obliczanie pracy, ciepła, $\Delta U$, $\Delta H$ dla przemian (izo-, adia-, politropowa).
+• Rysowanie przemian na wykresach p-v i T-s.
+W5
+Ć6
+Projekt: Obieg Chłodniczy / Pompa Ciepła
+2h
+Obliczeniowe / Projektowe (Praca samodzielna / E7)
+• Analiza obiegu sprężarkowego na wykresie p-h.
+• Obliczanie COP/EER, mocy sprężarki, strumienia masy czynnika.
+
+• Dobór czynnika chłodniczego.
+W6, W7
+Ć7
+Warsztat: Wykres Molliera (h-x)
+2h
+Obliczeniowe / Warsztat (Praca zespołowa / E7)
+• Odczytywanie wszystkich parametrów powietrza wilgotnego z wykresu h-x.
+• Określanie parametrów w punkcie rosy.
+• Mieszanie dwóch strumieni powietrza (analitycznie i graficznie).
+W8
+Ć8
+Projekt: Procesy Klimatyzacyjne (HVAC)
+2h
+Obliczeniowe / Projektowe (Praca zespołowa / E7)
+• Projektowanie procesu uzdatniania powietrza na wykresie h-x:
+  • Np. ogrzewanie i nawilżanie powietrza zimowego.
+  • Np. chłodzenie i osuszanie powietrza letniego.
+
+• Obliczanie zapotrzebowania na moc (cieplną, chłodniczą).
+W9, W10
+Ć9
+Zajęcia Podsumowujące
+1h
+Konsultacje / Q&A
+• Omówienie najtrudniejszych zagadnień.
+• Konsultacje do projektów (Ć6, Ć8).
+• Sesja pytań i odpowiedzi przed egzaminem.
+W1-W11
+
+💡 Integracja Teorii z Praktyką (Punkty Kluczowe)
+	•	Moduł 3 (W3 -> Ć3): Teoria właściwości substancji (wykład) jest natychmiast przełożona na praktyczną umiejętność pracy z tabelami parowymi i wykresami p-h (ćwiczenia). Studenci uczą się, gdzie znaleźć dane potrzebne do obliczeń.
+	•	Moduł 7 (W7 -> Ć6): Teoria obiegu chłodniczego (wykład) jest realizowana w formie mini-projektu obliczeniowego (ćwiczenia), gdzie studenci samodzielnie analizują obieg na wykresie p-h i obliczają kluczowe wskaźniki (COP/EER).
+	•	Moduł 8 i 9 (W8, W9 -> Ć7, Ć8): Teoria psychrometrii (wykład) przechodzi płynnie w warsztaty z wykresem Molliera h-x (ćwiczenia). Następnie studenci wykorzystują ten wykres do rozwiązywania realnych problemów inżynierskich (projektowanie procesów wentylacyjnych), co bezpośrednio łączy teorię z praktyką HVAC.
+	•	Efekty E6 i E7: Ćwiczenia projektowe (Ć6, Ć7, Ć8) są zaprojektowane tak, aby mogły być wykonywane w małych zespołach (E7), a moduł W11 i charakter zadań (opartych o normy i realne urządzenia) promują konieczność samodzielnego poszukiwania informacji (E6).
+
+Szczegółowe rozwinięcie - odnośniki do źródeł
+W1: Wprowadzenie do Termodynamiki.
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	NASA Glenn Research Center
+	•	Link: What is Thermodynamics?
+	•	Opis: Oficjalna strona edukacyjna NASA. Ten artykuł precyzyjnie definiuje Zerową Zasadę Termodynamiki, równowagę termodynamiczną i temperaturę.
+	•	MIT OpenCourseWare (MIT OCW)
+	•	Link: Unified Engineering: Thermodynamics - Lecture Notes
+	•	Opis: To są kompletne notatki z wykładów. Proszę skupić się na Rozdziale 1: Introduction to Thermodynamics, który szczegółowo omawia system (1.2.2), stan (1.2.3), równowagę (1.2.4), proces (1.2.5) oraz Zerową Zasadę (1.3.2).
+	•	Khan Academy
+	•	Link: The laws of thermodynamics (Artykuł)
+	•	Opis: Ten artykuł zawiera bardzo jasne i wizualne definicje układu otwartego, zamkniętego i izolowanego, co jest kluczowe dla pierwszego wykładu.
+	•	Repozytoria Polskich Uczelni
+	•	Link: (Brak stałego linku)
+	•	Opis: Tak jak wspomniałem, polecam strategię wyszukiwania, np. w Google: termodynamika podstawowe pojęcia wykład pdf politechnika wrocławska lub termodynamika techniczna skrypt agh. Daje to dostęp do materiałów (skryptów, prezentacji) bezpośrednio od polskich wykładowców.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Organic Chemistry Tutor
+	•	Link: Thermodynamics, PV Diagrams, Internal Energy, Heat, Work... Physics
+	•	Opis: To jest obszerny tutorial wideo. Na początku filmu (i w opisie) znajdują się jasne definicje systemu i otoczenia oraz omówienie podstawowych pojęć, które stanowią świetne wprowadzenie.
+	•	Crash Course
+	•	Link: The First & Zeroth Laws of Thermodynamics: Crash Course Engineering #9
+	•	Opis: Ten odcinek z serii "Inżynieria" (Engineering) jest idealny dla modułu W1, ponieważ bezpośrednio i w angażujący sposób tłumaczy znaczenie Zerowej Zasady Termodynamiki oraz jej związek z definiowaniem temperatury.
+Ten film z kanału Crash Course w przystępny sposób wyjaśnia, dlaczego Zerowa Zasada jest fundamentem dla wszystkich innych praw termodynamiki i jak definiuje ona pojęcie temperatury.
+W2: I Zasada Termodynamiki (w tym SSFE - Równania Przepływu Ustalonego).
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	NASA Glenn Research Center
+	•	Link: The First Law of Thermodynamics
+	•	Opis: Strona NASA w klarowny sposób przedstawia I Zasadę Termodynamiki ($\Delta E = Q - W$) jako zasadę zachowania energii. Definiuje energię wewnętrzną, pracę i ciepło w kontekście inżynierskim. Jest to doskonałe źródło do zrozumienia podstawowego sformułowania dla układów zamkniętych.
+	•	MIT OpenCourseWare (MIT OCW)
+	•	Link: Lecture 4: First Law of Thermodynamics (Notatki)
+	•	Opis: Te notatki z wykładów (z kursu Unified Engineering) precyzyjnie wyprowadzają I Zasadę dla układu zamkniętego (procesu i cyklu).
+	•	Link 2: Lecture 5: First Law for a Control Volume (SSFE) (Notatki)
+	•	Opis: To jest kluczowy zasób dla modułu W2. Wyprowadza Równanie Przepływu Ustalonego (Steady Flow Energy Equation - SSFE). Definiuje entalpię ($H = U + pV$) jako wygodną "grupę" energii (energia wewnętrzna + praca przepływu). Pokazuje też zastosowanie SSFE do turbin, sprężarek i wymienników ciepła.
+	•	Akademia Górniczo-Hutnicza (Open AGH)
+	•	Link: e-Podręcznik AGH: I zasada termodynamiki (w języku polskim)
+	•	Opis: Rozdział z polskiego e-podręcznika akademickiego. Szczegółowo omawia bilans energii dla układu zamkniętego i otwartego (przepływowego), wprowadzając pojęcie pracy technicznej i entalpii w kontekście procesów przepływowych.
+	•	Engineering LibreTexts
+	•	Link: The First Law for a Control Volume
+	•	Opis: Bardzo dobry, techniczny tekst (OER - Otwarty Zasób Edukacyjny) wyprowadzający SSFE (nazywane tu "Control Volume") krok po kroku. Zawiera przykłady zastosowania dla dysz, dyfuzorów, zaworów dławiących, turbin i sprężarek.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Organic Chemistry Tutor
+	•	Link: Enthalpy Change of Reaction & Formation - Thermochemistry
+	•	Opis: Chociaż skupia się na chemii, ten film zawiera jedną z najlepszych i najbardziej intuicyjnych definicji entalpii (H = U + pV) i wyjaśnia, dlaczego jest ona używana w procesach przy stałym ciśnieniu (co jest typowe dla wielu urządzeń HVAC).
+	•	Engineer4Free
+	•	Link: First Law of Thermodynamics for an Open System (Control Volume) | E4F 15
+	•	Opis: To jest idealne wideo dla studentów inżynierii środowiska. W 12 minut wyprowadza SSFE i pokazuje, jak je upraszczać dla konkretnych urządzeń: turbiny, pompy/sprężarki, wymiennika ciepła (bojlera) i zaworu dławiącego. Dokładnie pokrywa praktyczną część modułu W2.
+	•	MIT OpenCourseWare (Kanał YouTube)
+	•	Link: Lecture 3: First Law of Thermodynamics, Enthalpy, Heat Capacity...
+	•	Opis: Pełny wykład prof. Sadoway'a z MIT. Jest gęsty merytorycznie, ale dogłębnie wyjaśnia związek między energią wewnętrzną a entalpią oraz wprowadza pojęcie pojemności cieplnej ($C_v$ i $C_p$). Świetne dla studentów chcących zrozumieć temat na głębszym poziomie.
+
+W3: Właściwości Substancji Czystych.
+Ten moduł ma kluczowe znaczenie praktyczne. Studenci muszą opanować umiejętność korzystania z tabel pary wodnej oraz wykresów (szczególnie p-h). Bez tej umiejętności nie da się rozwiązać zadań z modułów W6-W9.
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	Politechnika Wrocławska (Open E-learning)
+	•	Link: e-Kurs: Właściwości termodynamiczne pary wodnej (w języku polskim)
+	•	Opis: Jest to prawdopodobnie najważniejszy zasób w tym zestawie. Cały moduł e-learningowy PWr poświęcony parze wodnej. Obejmuje definicje (para nasycona, mokra, przegrzana), wykresy T-v i p-v oraz, co najważniejsze, szczegółowe instrukcje jak korzystać z tablic pary wodnej. Zawiera również same tablice (w układzie SI) do pobrania w PDF.
+	•	MIT OpenCourseWare (MIT OCW)
+	•	Link: Lecture 6: Properties of Pure Substances (Notatki)
+	•	Opis: Te notatki z MIT dogłębnie wyjaśniają teorię stojącą za właściwościami substancji. Wprowadzają powierzchnię p-v-T i pokazują, jak wykresy p-v i T-v (tzw. "kopuły parowe") są jej rzutami. Doskonałe do zrozumienia teoretycznego, dlaczego tabele i wykresy wyglądają tak, jak wyglądają.
+	•	NASA Glenn Research Center
+	•	Link: Phase Changes
+	•	Opis: Prosty, ale bardzo klarowny artykuł od NASA wyjaśniający koncepcję przemian fazowych i ciepła utajonego (latent heat). Świetny jako materiał wprowadzający, zanim studenci zanurzą się w skomplikowane tabele.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: How to Use Steam Tables
+	•	Opis: Niezwykle przejrzysty, 13-minutowy tutorial pokazujący krok po kroku, jak odczytywać właściwości z tabel. Obejmuje wszystkie trzy regiony: ciecz sprężoną (compressed liquid), mieszaninę nasyconą (saturated mixture) – w tym kluczowe obliczanie jakości/stopnia suchości (x) – oraz parę przegrzaną (superheated vapor). To jest materiał obowiązkowy do ćwiczeń Ć3.
+	•	The Engineering Mindset
+	•	Link: Pressure Enthalpy Diagram explained (p-h chart)
+	•	Opis: Kluczowy film dla studentów inżynierii środowiska. W doskonały wizualnie sposób wyjaśnia budowę i sposób korzystania z wykresu p-h (ciśnienie-entalpia), który jest podstawowym narzędziem w chłodnictwie i pompach ciepła (moduły W6, W7, Ć6). Pokazuje, jak na wykresie wyglądają poszczególne stany i procesy.
+	•	The Organic Chemistry Tutor
+	•	Link: Phase Diagrams - T-v and P-v Diagrams (fragmenty dotyczące P-V i T-V)
+	•	Opis: Ten film (choć długi) bardzo dobrze wizualizuje wykresy T-v i p-v dla substancji czystych (jak woda). Pomaga studentom zrozumieć, jak poruszać się po "kopule parowej" i co oznaczają poszczególne linie (np. izotermy na wykresie p-v).
+
+W4: II Zasada Termodynamiki.
+Ten moduł jest często najtrudniejszy koncepcyjnie dla studentów. Wprowadza kierunek procesów (dlaczego ciepło płynie od gorącego do zimnego), limit efektywności (Obieg Carnota) oraz pojęcie entropii i egzergii (energii użytecznej).
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	NASA Glenn Research Center
+	•	Link: The Second Law of Thermodynamics
+	•	Opis: Doskonałe, zwięzłe wprowadzenie. Wyjaśnia II Zasadę używając klasycznych sformułowań (m.in. Clausiusa: "ciepło nie przepływa spontanicznie z zimnego do gorącego"). Definiuje także procesy odwracalne i nieodwracalne oraz wprowadza entropię jako miarę nieodwracalności.
+	•	MIT OpenCourseWare (MIT OCW)
+	•	Link: Lecture 7: Second Law and Entropy (Notatki)
+	•	Opis: Bardzo szczegółowe notatki wyprowadzające koncepcję entropii ($S$) w oparciu o sformułowania Kelvina-Plancka i Clausiusa. Pokazuje, dlaczego żaden silnik nie może być w 100% sprawny.
+	•	Link 2: Lecture 8: Carnot Cycle (Notatki)
+	•	Opis: Matematyczna analiza obiegu Carnota (dla silnika, chłodziarki i pompy ciepła). Wyprowadza wzór na maksymalną możliwą sprawność/efektywność ($COP_{Carnot}$, $EER_{Carnot}$) działającą między dwoma rezerwuarami ciepła.
+	•	Engineering LibreTexts
+	•	Link: Entropy and the Second Law
+	•	Opis: Dobry rozdział podręcznika online. Definiuje entropię, wyprowadza zasadę wzrostu entropii (kluczową dla oceny realności procesów) i pokazuje, jak obliczać zmiany entropii dla różnych substancji (w tym przy użyciu tabel parowych).
+	•	Politechnika Gdańska (Most Wiedzy)
+	•	Link: Egzergia (hasło encyklopedyczne) (w języku polskim)
+	•	Opis: Zwięzła, akademicka definicja egzergii (nazywanej też energią dostępną lub pracą użyteczną) oraz anergii (energii bezużytecznej). Jest to kluczowe pojęcie dla zaawansowanej analizy efektywności energetycznej systemów HVAC.
+
+📺 Rekomowane Kanały Edukacyjne (YouTube)
+	•	The Organic Chemistry Tutor
+	•	Link: Entropy (S) and The Second Law of Thermodynamics
+	•	Opis: Bardzo klarowny film (ponad 40 min) wyjaśniający entropię (zarówno z perspektywy makroskopowej - Clausiusa, jak i mikroskopowej - Boltzmanna). Zawiera wiele przykładów obliczeniowych dotyczących zmiany entropii w różnych procesach (zmiana fazy, mieszanie itp.).
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Second Law of Thermodynamics and Carnot's Heat Engine
+	•	Opis: 10-minutowy film koncentrujący się na silniku Carnota. Wizualizuje 4 procesy składowe obiegu (2 izotermy, 2 adiabaty) i wyprowadza wzór na jego sprawność.
+	•	Link 2: Entropy calculation examples (Steam Tables)
+	•	Opis: Krótki tutorial pokazujący, jak obliczać zmianę entropii przy użyciu tabel parowych (co jest bezpośrednim połączeniem z modułem W3 i niezbędne do ćwiczeń).
+	•	Crash Course
+	•	Link: Entropy: Crash Course Physics #23
+	•	Opis: Jak zwykle u Crash Course – szybkie, dynamiczne i bardzo intuicyjne wprowadzenie do pojęcia entropii jako "miary nieporządku" lub (lepiej) miary rozproszenia energii. Świetne jako materiał wprowadzający lub motywujący.
+
+W5: Przemiany Gazów Doskonałych.
+Jest to moduł "warsztatowy", w którym łączymy wiedzę z W2 (I Zasada) i W3 (Gaz Doskonały), aby wyprowadzić praktyczne wzory na ciepło ($Q$), pracę ($W$) i zmiany energii/entalpii ($\Delta U, \Delta H$) dla fundamentalnych procesów. Kluczowe jest tu również opanowanie rysowania tych przemian na wykresach $p-v$ (pracy) i $T-s$ (ciepła).
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	Politechnika Wrocławska (Oficjalny kanał YouTube)
+	•	Link: Wykład: Przemiany politropowe gazów (Wykład Dr hab. inż. Andrzeja Tatarka)
+	•	Opis: To jest doskonały zasób. Polski wykład akademicki, który skupia się na przemianie politropowej ($pV^n = \text{const}$). Jest to kluczowe, ponieważ ta przemiana jest uogólnieniem wszystkich innych (izotermiczna $n=1$, izentropowa $n=k$, izobaryczna $n=0$, izochoryczna $n=\infty$). Wykładowca wyprowadza wzory na pracę i ciepło, co jest esencją tego modułu.
+	•	Politechnika Wrocławska (Open E-learning)
+	•	Link: e-Kurs: Przemiany gazu doskonałego (w języku polskim)
+	•	Opis: Kolejny świetny, interaktywny moduł z PWr. Szczegółowo omawia każdą z przemian (izo-, adia-, politropowa), zawiera niezbędne wzory oraz, co ważne, przykłady obliczeniowe ilustrujące ich zastosowanie.
+	•	NASA Glenn Research Center
+	•	Link: Ideal Gas Processes (p-V Diagram)
+	•	Opis: Interaktywna (Java) animacja od NASA, która pokazuje, jak każda z czterech podstawowych przemian (izobaryczna, izochoryczna, izotermiczna, adiabatyczna) wygląda na wykresie $p-v$. Pozwala to studentom wizualnie zrozumieć, jak zmienia się ciśnienie, objętość i temperatura oraz która przemiana generuje najwięcej/najmniej pracy.
+	•	Engineering LibreTexts
+	•	Link: Thermodynamic Processes (Ideal Gas)
+	•	Opis: Podręcznikowy rozdział, który bardzo przejrzyście zestawia wszystkie przemiany. Jego największą zaletą jest tabela podsumowująca (na końcu sekcji), która dla każdego procesu (isobaric, isochoric, isothermal, isentropic, polytropic) podaje gotowe wzory na $\Delta U$, $\Delta H$, $Q$ i $W$. To idealna "ściąga" do rozwiązywania zadań.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Organic Chemistry Tutor
+	•	Link: Isobaric, Isochoric, Isothermal, and Adiabatic Processes, Heat & Work...
+	•	Opis: Bardzo obszerny (ponad 1h) tutorial wideo, który jest w zasadzie kompletnym ćwiczeniem obliczeniowym. Krok po kroku prowadzi przez obliczenia pracy, ciepła, zmiany energii wewnętrznej i entalpii dla każdej z przemian, używając tych samych danych wyjściowych. Niezastąpiony do zrozumienia praktycznych obliczeń.
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Ideal Gas P-V and T-S Diagrams
+	•	Opis: Krótki (5 min) film instruktażowy pokazujący, jak narysować przemiany (izo-, adia-) na wykresach $p-v$ i $T-s$. Skupia się na nachyleniu krzywych (np. dlaczego adiabata jest bardziej stroma niż izoterma na wykresie $p-v$), co jest kluczowe dla rysowania obiegów cieplnych w następnym module.
+	•	Engineer4Free
+	•	Link: Thermodynamics: Polytropic Processes | E4F 12
+	•	Opis: Zwięzłe wyjaśnienie przemiany politropowej z perspektywy inżynierskiej. Dobrze tłumaczy, dlaczego ta przemiana jest tak użyteczna do modelowania rzeczywistych urządzeń (jak sprężarki), które nie są ani idealnie izotermiczne, ani idealnie adiabatyczne.
+
+W6: Obiegi Termodynamiczne.
+Ten moduł stanowi pomost między czystą teorią a praktycznymi zastosowaniami w inżynierii środowiska. Kluczowe jest tu zrozumienie fundamentalnej różnicy między obiegami prawobieżnymi (silnikowymi), które produkują pracę, a lewobieżnymi (chłodniczymi/grzewczymi), które zużywają pracę do transportu ciepła.
+To tutaj wprowadzamy parowy obieg sprężarkowy, który jest sercem niemal każdego systemu klimatyzacji i pompy ciepła.
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	Politechnika Wrocławska (Open E-learning)
+	•	Link: e-Kurs: Obiegi termodynamiczne (w języku polskim)
+	•	Opis: Doskonały moduł e-learningowy, który zaczyna się od definicji obiegu, sprawności i pracy obiegu. Co najważniejsze, precyzyjnie rozróżnia obiegi prawobieżne (silnikowe) i lewobieżne (chłodziarki, pompy ciepła). Wprowadza pojęcia sprawności (dla silników) oraz współczynnika wydajności (COP) dla pomp ciepła i chłodziarek.
+	•	MIT OpenCourseWare (MIT OCW)
+	•	Link: Lecture 9: Refrigeration Cycles (Notatki)
+	•	Opis: Te notatki z MIT są idealne do zrozumienia teorii obiegu chłodniczego. Wyprowadzają idealny obieg parowy sprężarkowy (ideal vapor-compression cycle). Definiują efekt chłodniczy, pracę sprężania i współczynnik wydajności (COP). Pokazują też, jak ten obieg wygląda na wykresach $T-s$ i $p-h$.
+	•	NASA Glenn Research Center
+	•	Link: Heat Engines and Refrigerators
+	•	Opis: Strona NASA w bardzo prosty sposób wyjaśnia fundamentalną różnicę między silnikiem cieplnym a chłodziarką, bazując bezpośrednio na II Zasadzie Termodynamiki. Świetne jako materiał koncepcyjny.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Engineering Mindset
+	•	Link: Refrigeration Cycle Explained (Vapor Compression)
+	•	Opis: Absolutnie kluczowy film dla studentów inżynierii środowiska. Wykorzystuje doskonałe animacje, aby pokazać 4 główne komponenty obiegu sprężarkowego (sprężarka, skraplacz, zawór rozprężny, parownik) i śledzi, jak czynnik chłodniczy zmienia stan (ciśnienie, temperaturę, fazę) w każdym z nich.
+	•	The Organic Chemistry Tutor
+	•	Link: Heat Pumps & Refrigerators Explained - COP, EER...
+	•	Opis: Ten film świetnie tłumaczy, że pompa ciepła i chłodziarka to ten sam obieg, ale z innym celem (chłodzenie pomieszczenia vs. ogrzewanie pomieszczenia). Co ważne, wyprowadza i wyjaśnia wzory na współczynnik wydajności (COP) dla obu urządzeń i pokazuje ich związek ($COP_{HP} = COP_{Ref} + 1$).
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Rankine Cycle Overview
+	•	Opis: Aby studenci dobrze zrozumieli obieg lewobieżny (chłodniczy), warto pokazać im najlepszy przykład obiegu prawobieżnego (silnikowego) wykorzystującego parę – czyli Obieg Rankine'a (podstawa działania elektrowni parowych). Ten film w 8 minut pokazuje jego komponenty (pompa, kocioł, turbina, skraplacz) i rysuje go na wykresie $T-s$.
+
+
+
+
+
+
+W7: Zastosowanie: Chłodnictwo i Pompy Ciepła.
+To jest kulminacyjny moduł dla inżynierii środowiska, w którym łączymy całą dotychczasową wiedzę (W1-W6) i stosujemy ją do analizy rzeczywistych urządzeń. Nacisk kładziony jest na praktyczną analizę na wykresie p-h, obliczanie kluczowych wskaźników efektywności (COP/EER) oraz świadomość stosowanych czynników (R-czynników).
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	Politechnika Wrocławska (Open E-learning)
+	•	Link: e-Kurs: Rzeczywiste obiegi chłodnicze (w języku polskim)
+	•	Opis: Ten moduł jest bezpośrednią kontynuacją poprzedniego. Wyjaśnia, czym rzeczywisty obieg różni się od idealnego – wprowadza kluczowe pojęcia przegrzania (superheating) pary przed sprężarką i dochłodzenia (subcooling) cieczy przed zaworem. To jest absolutnie kluczowe dla poprawnych obliczeń projektowych (Ć6).
+	•	Engineering LibreTexts
+	•	Link: Vapor-Compression Refrigeration Cycle
+	•	Opis: Bardzo dobry, techniczny tekst analizujący obieg. Zawiera przejrzyste przykłady obliczeniowe krok po kroku, pokazujące, jak odczytać entalpie ($h$) z tabel dla każdego punktu obiegu, a następnie obliczyć COP i EER.
+	•	U.S. Department of Energy (Energy.gov)
+	•	Link: How a Heat Pump Works
+	•	Opis: Strona rządowego departamentu energii. Wyjaśnia zasadę działania pomp ciepła w prosty, ale technicznie poprawny sposób. Co ważne, kładzie duży nacisk na efektywność energetyczną (COP, EER) i nowoczesne rozwiązania, co jest istotne dla inżynierów środowiska.
+	•	The Institute of Refrigeration (IOR)
+	•	Link: Refrigerants: A Basic Guide
+	•	Opis: Brytyjski Instytut Chłodnictwa. Ta strona to wiarygodne źródło informacji o czynnikach chłodniczych (R-czynnikach). Wyjaśnia ich nazewnictwo oraz kluczowe wskaźniki środowiskowe: ODP (Potencjał Niszczenia Ozonu) i GWP (Potencjał Tworzenia Efektu Cieplarnianego).
+
+📺 Rekomendowane Kanałe Edukacyjne (YouTube)
+	•	The Engineering Mindset
+	•	Link: P-h Diagram (Pressure Enthalpy Diagram) Basics (ponownie, ale kluczowe)
+	•	Opis: Ten film (wspomniany w W3) jest fundamentem dla tego modułu. Pokazuje, jak narysować cały obieg sprężarkowy na wykresie p-h, co jest podstawową umiejętnością wymaganą na ćwiczeniach (Ć6).
+	•	Link 2: Heat Pumps Explained - How Heat Pumps Work HVAC
+	•	Opis: Ten film pokazuje fizyczne komponenty pompy ciepła (sprężarka, wymienniki, zawór rewersyjny) i łączy je bezpośrednio z ich funkcją w obiegu termodynamicznym.
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Vapor Compression Refrigeration Cycle (Example Calculation)
+	•	Opis: Doskonały, 15-minutowy tutorial, który jest w zasadzie gotowym rozwiązaniem zadania z ćwiczeń. Pokazuje krok po kroku, jak używając tabel i wykresu p-h (dla R-134a) obliczyć entalpie w każdym punkcie, a następnie COP obiegu.
+	•	Link 3: Actual Vapor Compression Cycle (Superheating and Subcooling)
+	•	Opis: Kontynuacja poprzedniego filmu, wyjaśniająca dlaczego w rzeczywistych obiegach stosuje się przegrzanie (ochrona sprężarki) i dochłodzenie (wzrost efektywności) i jak wpływa to na obliczenia.
+	•	HVAC School (Bryan Orr)
+	•	Link: What is EER, SEER, and COP?
+	•	Opis: Kanał prowadzony przez praktyków HVAC. Ten film w bardzo przystępny sposób tłumaczy różnice między wskaźnikami efektywności: EER (Energy Efficiency Ratio) i COP (Coefficient of Performance), wyjaśniając, kiedy i dlaczego używa się każdego z nich.
+
+W8: Powietrze Wilgotne (Psychrometria).
+To jest fundamentalny moduł dla specjalistów od HVAC (Wentylacji, Ogrzewania i Klimatyzacji). Celem jest opanowanie posługiwania się wykresem Molliera (h-x), który jest podstawowym narzędziem inżynierskim do analizy procesów uzdatniania powietrza.
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe (w języku polskim)
+	•	Politechnika Warszawska (Materiały do ćwiczeń)
+	•	Link: PDF: Ćwiczenie nr 7 - Badanie Wilgotności Powietrza
+	•	Opis: Oficjalna instrukcja do ćwiczeń laboratoryjnych z Politechniki Warszawskiej. Definiuje ona parametry powietrza wilgotnego (wilgotność bezwzględna X, entalpia i) i pokazuje wykres Molliera (i-x) jako narzędzie do analizy. Doskonały materiał pokazujący akademickie zastosowanie wykresu.
+	•	Portal "Dobory" (Artykuł Techniczny)
+	•	Link: Wykres Molliera - przemiany powietrza wilgotnego
+	•	Opis: Bardzo praktyczny artykuł branżowy. Wyjaśnia, jak odczytać wszystkie kluczowe parametry (temp., $\phi$, $x$, $h$, temp. punktu rosy) znając tylko dwa z nich. Co najważniejsze, pokazuje graficznie, jak na wykresie h-x wyglądają podstawowe procesy HVAC (ogrzewanie, chłodzenie, nawilżanie parowe, nawilżanie wodne).
+	•	Portal "Klimatyzacja.pl" (Artykuł Techniczny)
+	•	Link: Wykres Moliera (i-x)
+	•	Opis: Kolejny świetny zasób branżowy. Wyjaśnia, dlaczego wykres Molliera (stosowany w Polsce/Europie) jest obrócony w stosunku do amerykańskiego wykresu Carriera (psychrometrycznego) oraz jak odczytywać z niego gęstość i ciśnienie cząstkowe.
+	•	Condair (Zasoby Producenta)
+	•	Link: Co to jest wykres h-x?
+	•	Opis: Materiał od wiodącego producenta systemów nawilżania. W bardzo przystępny sposób, na konkretnych przykładach, pokazuje jak czytać wykres i jak śledzić na nim procesy ogrzewania i nawilżania adiabatycznego (rozpylania wody).
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	Testo SE & Co. KGaA (Producent aparatury pomiarowej)
+	•	Link: Wykres psychrometryczny (Wprowadzenie do wykresu h,x)
+	•	Opis: Krótki, profesjonalnie przygotowany film, który w jasny sposób wprowadza wykres h-x. Wyjaśnia, co oznaczają poszczególne osie (entalpia $h$, zawartość wody $x$) oraz jak wyglądają linie stałej temperatury, wilgotności względnej i gęstości. Idealny jako wizualne wprowadzenie do tematu.
+	•	BELIMO (Producent automatyki HVAC)
+	•	Link: Czym jest wykres h-x? (Nawilżanie w prosty sposób)
+	•	Opis: Kolejny świetny materiał od strony praktycznej (producenta). Tłumaczy, jak wykres h-x jest wykorzystywany w technologii budynków do planowania procesów nawilżania i osuszania, aby zapewnić komfort cieplny.
+	•	The Engineering Mindset
+	•	Link: How to Read a Psychrometric Chart for HVAC
+	•	Opis: Klasyczny tutorial od The Engineering Mindset. Należy jednak zaznaczyć, że ten film (i większość amerykańskich) używa wykresu psychrometrycznego ASHRAE, który różni się wizualnie od wykresu Molliera h-x (jest inaczej zorientowany). Koncepcje są te same, ale dla studentów w Polsce bardziej bezpośrednio przydatne będą filmy (1) i (2).
+
+Poniższy film od firmy Testo stanowi doskonałe, wizualne wprowadzenie do wykresu h-x, pokazując jego budowę i kluczowe parametry.
+Wprowadzenie do wykresu h,x
+
+W9: Zastosowanie: Wentylacja i Klimatyzacja (HVAC).
+W tym module studenci przechodzą od teorii psychrometrii (W8) do jej praktycznego zastosowania. Uczą się, jak podstawowe procesy (ogrzewanie, chłodzenie, nawilżanie, osuszanie, mieszanie) są realizowane w centrali wentylacyjnej (AHU - Air Handling Unit) i jak śledzić te procesy na wykresie h-x, aby obliczyć bilans energetyczny systemu.
+
+🏛️ Portale Branżowe i Zasoby Techniczne (w języku polskim)
+	•	Portal "Klimatyzacja.pl" (Artykuł Techniczny)
+	•	Link: Przemiany powietrza wilgotnego na wykresie i-x
+	•	Opis: Kluczowy artykuł branżowy, który jest dokładnie tym, czego potrzeba do tego modułu. W sposób graficzny (bezpośrednio na wykresie Molliera h-x) pokazuje, jak wyglądają poszczególne procesy:
+	•	Ogrzewanie (linia pozioma w prawo)
+	•	Chłodzenie (linia pozioma w lewo)
+	•	Nawilżanie parowe (linia pionowa w górę)
+	•	Nawilżanie wodne (adiabatyczne) (wzdłuż linii stałej entalpii)
+	•	Chłodzenie z osuszaniem (linia w lewo i w dół, kluczowe dla klimatyzacji letniej)
+	•	Portal "Wentylacja.com.pl" (Artykuł Techniczny)
+	•	Link: Mieszanie powietrza na wykresie i-x
+	•	Opis: Drugi niezbędny proces w centralach AHU to mieszanie strumieni powietrza (np. powietrza świeżego, zewnętrznego z powietrzem powrotnym, obiegowym). Ten artykuł wyjaśnia (w tym graficznie na wykresie h-x), jak znaleźć parametry mieszaniny, stosując bilans masy i energii (zasada "dźwigni").
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Engineering Mindset
+	•	Link: Air Handling Unit Explained (AHU HVAC system)
+	•	Opis: Absolutnie fundamentalny film dla tego modułu. W doskonały sposób pokazuje budowę centrali wentylacyjnej (AHU) kawałek po kawałku (filtry, wentylator, nagrzewnica, chłodnica, sekcja nawilżania) i wyjaśnia, co robi każdy komponent. To idealne połączenie teorii termodynamicznej z rzeczywistym urządzeniem.
+	•	
+	•	Shutterstock
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Psychrometrics: Mixing Two Streams (Example Calculation)
+	•	Opis: Praktyczny, akademicki tutorial pokazujący, jak obliczyć (analitycznie) parametry powietrza po zmieszaniu dwóch strumieni o różnych właściwościach. Jest to bezpośrednie przełożenie teorii z portalu "Wentylacja.com.pl" na zadanie obliczeniowe (jak na ćwiczeniach Ć8).
+	•	HVAC School (Bryan Orr)
+	•	Link: The Basic HVAC Processes on a Psych Chart
+	•	Opis: Ten film, prowadzony przez praktyka, pokazuje jak czytać wykres psychrometryczny (wersja amerykańska) w kontekście rzeczywistych problemów napotykanych przez techników HVAC. Bardzo dobrze buduje intuicję, co się dzieje z powietrzem, gdy jest ono "jawnie chłodzone" (sensible cooling) vs. "chłodzone i osuszane" (latent cooling).
+W10: Elementy Wymiany Ciepła i Efektywność.
+Ten moduł łączy termodynamikę z fizyką budowli. Studenci muszą zrozumieć podstawowe mechanizmy transportu ciepła (przewodzenie, konwekcja, promieniowanie), aby zrozumieć, jak obliczany jest współczynnik przenikania ciepła (U), który jest kluczowym parametrem w projektowaniu energooszczędnych budynków.
+
+🏛️ Renomowane Instytucje i Zasoby Portalowe
+	•	Politechnika Gdańska (Most Wiedzy)
+	•	Link: Hasło: Współczynnik przenikania ciepła (U) (w języku polskim)
+	•	Opis: Akademicka, precyzyjna definicja współczynnika U ($W/(m^2K)$). Wyjaśnia, że określa on ilość ciepła traconego przez przegrodę i jak zależy on od współczynników przewodzenia ciepła ($\lambda$) poszczególnych warstw oraz oporów przejmowania ciepła.
+	•	Engineering LibreTexts
+	•	Link: Mechanisms of Heat Transfer (Conduction, Convection, Radiation)
+	•	Opis: Bardzo dobry, zwięzły rozdział wprowadzający trzy mechanizmy wymiany ciepła. Definiuje przewodzenie (prawo Fouriera), konwekcję (prawo Newtona) i promieniowanie (prawo Stefana-Boltzmanna). To solidna podstawa teoretyczna.
+	•	"https://www.google.com/search?q=Izolacje.com.pl" (Portal Branżowy)
+	•	Link: Jak obliczyć współczynnik przenikania ciepła U przegrody?
+	•	Opis: Niezwykle praktyczny artykuł branżowy. Pokazuje krok po kroku wzór na obliczanie współczynnika U dla przegrody wielowarstwowej (ściany, dachu), sumując opory cieplne poszczególnych warstw ($R = d/\lambda$). Zawiera odniesienia do polskich norm budowlanych (Warunki Techniczne).
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	The Engineering Mindset
+	•	Link: U-Value calculation explained (Heat loss building fabric)
+	•	Opis: Absolutnie kluczowy film dla tego modułu. W typowy dla tego kanału, wizualny sposób, pokazuje jak obliczyć współczynnik U dla ściany warstwowej. Wyjaśnia, czym jest opór cieplny (R-value) i jak przewodność cieplna ($\lambda$) materiałów (cegła, izolacja, tynk) wpływa na końcową wartość U.
+	•	LearnChemE (University of Colorado Boulder)
+	•	Link: Mechanisms of Heat Transfer (Conduction, Convection, Radiation)
+	•	Opis: Krótki (5 min) akademicki film, który wizualizuje i podaje podstawowe równania dla przewodzenia, konwekcji i promieniowania. Świetny do szybkiego wprowadzenia teoretycznego.
+	•	Building Science
+	•	Link: Heat Transfer Mechanisms in Buildings
+	•	Opis: Ten film (chociaż starszy) jest prowadzony przez eksperta od fizyki budowli. W bardzo przystępny sposób tłumaczy, jak wszystkie trzy mechanizmy (przewodzenie przez materiały, konwekcja powietrza w szczelinach, promieniowanie między powierzchniami) współpracują ze sobą, prowadząc do strat ciepła w rzeczywistym budynku.
+
+W11: Podsumowanie i Rozwój.
+Ten moduł zamyka kurs, wskazując studentom dalsze ścieżki rozwoju (realizując efekt E6: Uczenie się przez całe życie) oraz osadzając wiedzę termodynamiczną w szerszym kontekście ekonomicznym (np. LCCA), ekologicznym (LCA, ślad węglowy) i technologicznym (OZE, kogeneracja).
+
+🏛️ Instytucje, Organizacje Branżowe i Portale Wiedzy
+	•	ASHRAE (American Society of Heating, Refrigerating and Air-Conditioning Engineers)
+	•	Link: ASHRAE Strona Główna
+	•	Opis: Jest to najważniejsza na świecie organizacja branżowa HVAC. Dla studenta (E6) jest to główne źródło wiedzy o standardach, nowych badaniach i najlepszych praktykach. Zachęcenie studentów do śledzenia publikacji ASHRAE jest kluczowe dla ich rozwoju zawodowego.
+	•	REHVA (Federation of European Heating, Ventilation and Air Conditioning Associations)
+	•	Link: REHVA Knowledge Hub
+	•	Opis: Europejski odpowiednik ASHRAE. Ich "Knowledge Hub" zawiera przewodniki techniczne, artykuły i webinary dotyczące efektywności energetycznej budynków, OZE w HVAC (Renewable Energy Sources) i aktualnych regulacji UE (np. dyrektywy EPBD).
+	•	Krajowa Agencja Poszanowania Energii (KAPE)
+	•	Link: Strona główna KAPE (w języku polskim)
+	•	Opis: Kluczowa polska instytucja zajmująca się efektywnością energetyczną. Ich publikacje i raporty często dotyczą aspektów ekonomicznych modernizacji, audytów energetycznych oraz wdrażania OZE w polskim budownictwie.
+	•	U.S. Department of Energy (Energy.gov)
+	•	Link: Strona o Kogeneracji (CHP)
+	•	Opis: Bardzo dobre, techniczne (ale przystępne) źródło wiedzy o kogeneracji (CHP), czyli jednoczesnej produkcji ciepła i energii elektrycznej. Wyjaśnia, dlaczego jest to tak efektywny proces (sprawność całkowita >80%) i jakie ma zastosowania.
+	•	Portal "Teraz Środowisko" (Artykuły Branżowe)
+	•	Link: Przykładowy artykuł o LCA (w języku polskim)
+	•	Opis: Warto wyszukać na tym portalu hasła "LCA" (Life Cycle Assessment) lub "ślad węglowy" w kontekście budownictwa. Artykuły te wyjaśniają, jak ocenia się pełny wpływ ekologiczny produktu lub systemu (od produkcji po utylizację), co jest kluczowe dla inżynierów środowiska.
+
+📺 Rekomendowane Kanały Edukacyjne (YouTube)
+	•	U.S. Department of Energy (DOE)
+	•	Link: Energy 101: Combined Heat & Power (CHP)
+	•	Opis: Zwięzły, 3-minutowy film animowany, który doskonale tłumaczy zasadę działania kogeneracji (CHP) i jej przewagę nad tradycyjną, rozdzieloną produkcją prądu i ciepła.
+	•	The Engineering Mindset
+	•	Link: Solar Thermal Explained
+	•	Opis: Film wyjaśniający działanie kolektorów słonecznych (Solar Thermal) do produkcji ciepłej wody użytkowej. Jest to jedno z najprostszych i najbardziej powszechnych zastosowań OZE w budynkach, bezpośrednio związane z termodynamiką.
+	•	Arup (Globalna firma inżynierska)
+	•	Link: What is Life Cycle Assessment (LCA)?
+	•	Opis: Krótki film od wiodącej firmy projektowej, który wyjaśnia, czym jest ocena cyklu życia (LCA) i dlaczego jest tak ważna w nowoczesnym, zrównoważonym projektowaniu budynków.
+
+
+
+
+
+

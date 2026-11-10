@@ -7,7 +7,7 @@ import pandas as pd
 import time
 
 # Configuration
-HTML_FILE = "/Users/marekurbaniak/Documents/R/Termodynamika_quatro/Cwiczenia/xml/tablice_termodynamiczne.html"
+HTML_FILE = "/Users/marekurbaniak/Documents/dydaktyka/Termodynamika_quatro/Cwiczenia/xml/tablice_termodynamiczne.html"
 NIST_BASE_URL = "https://webbook.nist.gov/cgi/fluid.cgi"
 
 # Mapping: HTML Fluid Name -> NIST ID

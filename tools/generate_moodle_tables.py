@@ -3,7 +3,7 @@ import CoolProp.CoolProp as CP
 import numpy as np
 
 # Configuration
-OUTPUT_FILE = "/Users/marekurbaniak/Documents/R/Termodynamika_quatro/Cwiczenia/xml/tablice_termodynamiczne_moodle.html"
+OUTPUT_FILE = "/Users/marekurbaniak/Documents/dydaktyka/Termodynamika_quatro/Cwiczenia/xml/tablice_termodynamiczne_moodle.html"
 
 # Common Inline Styles
 STYLE_TABLE = "width: 100%; border-collapse: collapse; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; margin: 0 auto;"
