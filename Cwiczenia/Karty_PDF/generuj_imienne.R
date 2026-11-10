@@ -13,6 +13,8 @@
 # Użycie: cd Cwiczenia/Karty_PDF && Rscript generuj_imienne.R [lista] [katalog]
 #         Rscript generuj_imienne.R studenci.txt                    # -> output_imienne/
 #         Rscript generuj_imienne.R ~/Downloads/lista.pdf output_2026_2027
+#
+# Pojedyncza osoba dopisana później (bez przegenerowania grupy): dopisz_studenta.R
 # ============================================================================
 
 args <- commandArgs(trailingOnly = TRUE)
