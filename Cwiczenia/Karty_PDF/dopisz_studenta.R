@@ -9,17 +9,20 @@
 # definitions are loaded from that file; seeds already used in the group are
 # skipped.
 #
-# Usage: cd Cwiczenia/Karty_PDF && Rscript dopisz_studenta.R "Nazwisko Imię" <katalog> ["grupy"]
+# Usage: cd Cwiczenia/Karty_PDF && Rscript dopisz_studenta.R "Nazwisko Imię" <katalog> ["grupy"] [album]
 #        Rscript dopisz_studenta.R "Korbacz Maja" ~/Documents/dydaktyka/IŚ_S_2026_2027/output_2026_2027 "WYK1, LAB2"
+# The album number is stored only if the group's zestawienie has an "album"
+# column (lists generated before that column existed do not).
 # ============================================================================
 
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) < 2) {
-  stop('Użycie: Rscript dopisz_studenta.R "Nazwisko Imię" <katalog> ["grupy"]')
+  stop('Użycie: Rscript dopisz_studenta.R "Nazwisko Imię" <katalog> ["grupy"] [album]')
 }
 osoba   <- gsub("\\s+", " ", trimws(enc2utf8(args[1])))
 out_dir <- args[2]
 grupy   <- if (length(args) > 2) args[3] else ""
+album   <- if (length(args) > 3) args[4] else ""
 
 csv_path <- file.path(out_dir, "zestawienie.csv")
 if (!file.exists(csv_path)) {
@@ -52,9 +55,15 @@ sys_params <- uzupelnij_params(sys_params)
 safe_name <- gsub("[^a-zA-Z0-9_ -]", "", iconv(osoba, from = "UTF-8", to = "ASCII//TRANSLIT"))
 sys_params$student_name <- osoba
 sys_params$zestaw_nr <- i
-wiersz <- data.frame(nr = i, osoba = osoba, grupy = grupy, seed = seed_val,
+wiersz <- data.frame(nr = i, osoba = osoba, album = album, grupy = grupy, seed = seed_val,
                      sys_params[setdiff(names(sys_params), c("student_name", "zestaw_nr"))])
-stopifnot(identical(names(wiersz), names(zest)))
+# Match the column layout of this group's zestawienie (with or without "album")
+if (!"album" %in% names(zest)) {
+  if (album != "") warning("Zestawienie nie ma kolumny album — numer albumu pominięty.")
+  wiersz$album <- NULL
+}
+stopifnot(setequal(names(wiersz), names(zest)))
+wiersz <- wiersz[names(zest)]
 
 dir.create(file.path(out_dir, "Studenci"), showWarnings = FALSE)
 dir.create(file.path(out_dir, "Klucze"), showWarnings = FALSE)
