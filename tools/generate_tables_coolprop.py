@@ -3,7 +3,7 @@ import CoolProp.CoolProp as CP
 import numpy as np
 
 # Configuration
-OUTPUT_FILE = "/Users/marekurbaniak/Documents/dydaktyka/Termodynamika_quatro/Cwiczenia/xml/tablice_termodynamiczne.html"
+OUTPUT_FILE = "/Users/marekurbaniak/Documents/dydaktyka/kursy/termodynamika/Cwiczenia/xml/tablice_termodynamiczne.html"
 
 # CSS Styles
 CSS = """

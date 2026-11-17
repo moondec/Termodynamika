@@ -10,7 +10,7 @@
 # skipped.
 #
 # Usage: cd Cwiczenia/Karty_PDF && Rscript dopisz_studenta.R "Nazwisko Imię" <katalog> ["grupy"] [album]
-#        Rscript dopisz_studenta.R "Korbacz Maja" ~/Documents/dydaktyka/IŚ_S_2026_2027/output_2026_2027 "WYK1, LAB2"
+#        Rscript dopisz_studenta.R "Korbacz Maja" ~/Documents/dydaktyka/studenci/2026_2027/IŚ_S/output_2026_2027 "WYK1, LAB2"
 # The album number is stored only if the group's zestawienie has an "album"
 # column (lists generated before that column existed do not).
 # ============================================================================
